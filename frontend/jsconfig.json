@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./src",
+        "jsx": "react",
+        "paths": {
+            "@icons/*": ["icons/*"],
+            "@lib/*": ["lib/*"],
+            "@modules/*": ["modules/*"],
+            "@ui/*": ["ui/*"],
+            "@providers/*": ["providers/*"]
+        }
+    }
+}
