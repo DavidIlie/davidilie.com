@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { SplitText } from "@utils/SplitText";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 export default function LeftPortion() {
     const [visible, setVisible] = useState(false);
@@ -12,15 +12,11 @@ export default function LeftPortion() {
     return (
         <div>
             <AnimatePresence>
-                <motion.div
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                >
+                <div>
                     <SplitText
                         initial={{ y: "100%" }}
                         animate="visible"
-                        className="text-4xl mb-1 ml-1"
+                        className="text-4xl ml-1"
                         variants={{
                             visible: (i) => ({
                                 y: 0,
@@ -30,22 +26,17 @@ export default function LeftPortion() {
                             }),
                         }}
                     >
-                        Hey! My name is
+                        Hello There! I'm
                     </SplitText>
-                </motion.div>
+                </div>
             </AnimatePresence>
             <AnimatePresence>
-                <motion.div
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className={visible ? "visible" : "invisible"}
-                >
+                <div>
                     {visible ? (
                         <SplitText
                             initial={{ y: "100%" }}
                             animate="visible"
-                            className="text-7xl font-semibold"
+                            className="text-7xl font-semibold visible"
                             variants={{
                                 visible: (i) => ({
                                     y: 0,
@@ -58,9 +49,11 @@ export default function LeftPortion() {
                             David Ilie
                         </SplitText>
                     ) : (
-                        <h1 className="text-7xl font-semibold">David Ilie</h1>
+                        <h1 className="text-7xl font-semibold invisible">
+                            David Ilie
+                        </h1>
                     )}
-                </motion.div>
+                </div>
             </AnimatePresence>
         </div>
     );

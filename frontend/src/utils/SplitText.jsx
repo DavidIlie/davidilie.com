@@ -11,7 +11,10 @@ export function SplitText({ children, ...rest }) {
             >
                 <motion.div
                     {...rest}
-                    style={{ display: "inline-block", willChange: "transform" }}
+                    style={{
+                        display: "inline-block",
+                        willChange: "transform",
+                    }}
                     custom={i}
                 >
                     {word + (i !== words.length - 1 ? "\u00A0" : "")}
