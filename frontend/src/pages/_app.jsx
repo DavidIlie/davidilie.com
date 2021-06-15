@@ -1,7 +1,7 @@
-import 'tailwindcss/tailwind.css'
+import "tailwindcss/tailwind.css";
 
-function ComingSoon({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function PersonalWebsite({ Component, pageProps }) {
+    return <Component {...pageProps} />;
 }
 
-export default ComingSoon
+export default PersonalWebsite;
