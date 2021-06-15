@@ -7,7 +7,8 @@
             "@lib/*": ["lib/*"],
             "@modules/*": ["modules/*"],
             "@ui/*": ["ui/*"],
-            "@providers/*": ["providers/*"]
+            "@providers/*": ["providers/*"],
+            "@utils/*": ["utils/*"]
         }
     }
 }
