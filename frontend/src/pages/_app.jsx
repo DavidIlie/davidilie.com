@@ -7,10 +7,10 @@ import "react-toastify/dist/ReactToastify.css";
 function PersonalWebsite({ Component, pageProps }) {
     useEffect(async () => await checkAPI());
     return (
-        <div>
+        <>
             <Component {...pageProps} />
             <ToastContainer autoClose={2500} newestOnTop={true} />
-        </div>
+        </>
     );
 }
 
