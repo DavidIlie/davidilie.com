@@ -26,7 +26,7 @@ export default function LeftPortion() {
                             }),
                         }}
                     >
-                        Hello There! I'm
+                        Hello There!
                     </SplitText>
                 </div>
             </AnimatePresence>
@@ -46,11 +46,11 @@ export default function LeftPortion() {
                                 }),
                             }}
                         >
-                            David Ilie
+                            I'm David Ilie
                         </SplitText>
                     ) : (
                         <h1 className="text-7xl font-semibold invisible">
-                            David Ilie
+                            I'm David Ilie
                         </h1>
                     )}
                 </div>
