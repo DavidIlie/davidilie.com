@@ -12,11 +12,11 @@ export default function LeftPortion() {
     return (
         <div>
             <AnimatePresence>
-                <div>
+                <div className="h-8 text-center -ml-2">
                     <SplitText
                         initial={{ y: "100%" }}
                         animate="visible"
-                        className="text-4xl ml-1"
+                        className="text-4xl"
                         variants={{
                             visible: (i) => ({
                                 y: 0,
