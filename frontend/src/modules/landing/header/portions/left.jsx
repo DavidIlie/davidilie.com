@@ -1,18 +1,10 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { SplitText } from "@utils/SplitText";
 import { AnimatePresence, motion } from "framer-motion";
-import Typewriter from "typewriter-effect";
 
 export default function LeftPortion() {
-    const [data, setData] = useState(false);
     const [visible, setVisible] = useState(false);
     useEffect(async () => {
-        const request = await axios.get(
-            "https://davidilie.com/api/agenda/job/statistics"
-        );
-        setData(request.data);
-
         setTimeout(() => {
             setVisible(true);
         }, 500);
@@ -28,7 +20,7 @@ export default function LeftPortion() {
                     <SplitText
                         initial={{ y: "100%" }}
                         animate="visible"
-                        className="text-4xl mb-1"
+                        className="text-4xl mb-1 ml-1"
                         variants={{
                             visible: (i) => ({
                                 y: 0,
@@ -53,7 +45,7 @@ export default function LeftPortion() {
                         <SplitText
                             initial={{ y: "100%" }}
                             animate="visible"
-                            className="text-7xl font-semibold tracking-tight"
+                            className="text-7xl font-semibold"
                             variants={{
                                 visible: (i) => ({
                                     y: 0,
@@ -66,27 +58,10 @@ export default function LeftPortion() {
                             David Ilie
                         </SplitText>
                     ) : (
-                        <h1 className="text-7xl font-semibold tracking-tight">
-                            David Ilie
-                        </h1>
+                        <h1 className="text-7xl font-semibold">David Ilie</h1>
                     )}
                 </motion.div>
             </AnimatePresence>
-            {data !== false ? (
-                <div className="text-3xl">
-                    <Typewriter
-                        options={{
-                            strings: [
-                                `Subscribers: ${data.subscribers}`,
-                                `Views: ${data.views}`,
-                                `Videos: ${data.videos}`,
-                            ],
-                            autoStart: true,
-                            loop: true,
-                        }}
-                    />
-                </div>
-            ) : null}
         </div>
     );
 }
