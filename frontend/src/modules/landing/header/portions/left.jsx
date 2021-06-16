@@ -10,7 +10,7 @@ export default function LeftPortion() {
         }, 500);
     }, []);
     return (
-        <div>
+        <div className="text-white">
             <AnimatePresence>
                 <div className="h-8 text-center -ml-2">
                     <SplitText
