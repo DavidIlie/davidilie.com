@@ -38,7 +38,7 @@ export default function Header() {
                     </div>
                 </AnimatePresence>
                 <AnimatePresence>
-                    <div className="h-15">
+                    <div>
                         {secondVisible ? (
                             <SplitText
                                 initial={{ y: "100%" }}
@@ -68,7 +68,7 @@ export default function Header() {
                             <SplitText
                                 initial={{ y: "100%" }}
                                 animate="visible"
-                                className="mb-1 text-3xl visible"
+                                className="text-3xl visible"
                                 variants={{
                                     visible: (i) => ({
                                         y: 0,
