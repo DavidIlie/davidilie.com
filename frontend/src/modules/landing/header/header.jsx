@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { SplitText } from "@utils/SplitText";
 import { AnimatePresence } from "framer-motion";
 
+import Socials from "./socials";
+
 export default function Header() {
     const [secondVisible, setSecondVisible] = useState(false);
     const [thirdVisible, setThirdVisible] = useState(false);
@@ -41,7 +43,7 @@ export default function Header() {
                             <SplitText
                                 initial={{ y: "100%" }}
                                 animate="visible"
-                                className="text-7xl font-semibold visible"
+                                className="text-7xl font-semibold visible hover:underline cursor-pointer"
                                 variants={{
                                     visible: (i) => ({
                                         y: 0,
@@ -66,26 +68,28 @@ export default function Header() {
                             <SplitText
                                 initial={{ y: "100%" }}
                                 animate="visible"
-                                className="mb-1 text-3xl font-semibold visible"
+                                className="mb-1 text-3xl visible"
                                 variants={{
                                     visible: (i) => ({
                                         y: 0,
                                         transition: {
-                                            delay: i * 0.10,
+                                            delay: i * 0.15,
                                         },
                                     }),
                                 }}
                             >
-                                a 14 year old Web Dev
+                                a 14 year old Software Developer
                             </SplitText>
                         ) : (
-                            <h1 className="text-3xl font-semibold invisible">
-                                a 14 year old Web Dev
+                            <h1 className="text-3xl invisible">
+                                a 14 year old Software Developer
                             </h1>
                         )}
                     </div>
+
                 </AnimatePresence>
             </div>
+            <Socials />
         </div>
     );
 }
