@@ -16,7 +16,7 @@ export default function Header() {
         }, 500);
     }, []);
     return (
-        <div className="h-full flex justify-center items-center space-x-32 bg-background">
+        <div className="h-full flex justify-center items-center space-x-32 bg-background bg-cover">
             <div className="text-white text-center">
                 <AnimatePresence>
                     <div className="mt-2 h-10 text-center -ml-2">
@@ -86,7 +86,6 @@ export default function Header() {
                             </h1>
                         )}
                     </div>
-
                 </AnimatePresence>
             </div>
             <Socials />
