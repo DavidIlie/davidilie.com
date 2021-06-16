@@ -5,10 +5,10 @@ import { toast } from "react-toastify";
 export default function Socials() {
     const HandleCopy = () => {
         navigator.clipboard.writeText("Albastru#0871")
-        toast.info("Copied successfully!", { toastId: "copiedDiscord"})
+        toast.info("Copied successfully!", { toastId: "copiedDiscord" })
     }
     return (
-        <div className="text-white text-3xl absolute right-0 p-2">
+        <div className="text-white text-3xl absolute right-0 p-3">
             <Tooltip content="DavidIlie" placement="left">
                 <a href="https://github.com/DavidIlie" target="_blank" className="hover:text-blue-100 duration-250">
                     <FaGithub className="mb-1" />
