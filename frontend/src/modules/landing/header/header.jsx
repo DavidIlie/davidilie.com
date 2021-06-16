@@ -71,7 +71,7 @@ export default function Header() {
                                     visible: (i) => ({
                                         y: 0,
                                         transition: {
-                                            delay: i * 0.25,
+                                            delay: i * 0.10,
                                         },
                                     }),
                                 }}
