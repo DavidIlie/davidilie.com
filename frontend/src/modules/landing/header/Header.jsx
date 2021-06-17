@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { SplitText } from "@utils/SplitText";
 import { AnimatePresence, motion } from "framer-motion";
 
-import Socials from "./socials";
+import Socials from "./Socials";
 
 export default function Header() {
     const [secondVisible, setSecondVisible] = useState(false);

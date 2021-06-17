@@ -1,9 +1,13 @@
-import PageProvider from "@providers/PageProvider"
+import PageProvider from "@providers/PageProvider";
 
-import Header from "@modules/landing/header/header"
+import NavBar from "@modules/NavBar";
+import Header from "@modules/landing/header/Header";
 
 export default function Home() {
-  return <PageProvider title="Home">
-    <Header/>
-  </PageProvider>
+    return (
+        <PageProvider title="Home">
+            <NavBar />
+            <Header />
+        </PageProvider>
+    );
 }
