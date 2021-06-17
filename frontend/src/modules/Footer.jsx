@@ -8,7 +8,7 @@ export default function Footer() {
     const currentPage = router.pathname;
     return (
         <footer className="bg-black text-white pt-5 pb-5 w-full">
-            <div className="flex justify-center items-center space-x-12 mb-5">
+            <div className="flex justify-center items-center space-x-6 mb-5">
                 {pages.map((page, index) => {
                     const current = currentPage === page.url;
                     return (
