@@ -15,7 +15,7 @@ export default function Socials(props) {
     };
     return (
         <div
-            className={`text-white text-3xl flex space-x-10 justify-center ${
+            className={`mt-2 text-white text-3xl flex space-x-10 justify-center ${
                 props.invisible ? "invisible" : "visible"
             }`}
         >
