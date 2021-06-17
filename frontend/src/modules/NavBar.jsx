@@ -1,8 +1,14 @@
+import { pages } from "@lib/constants";
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
 export default function NavBar() {
+    const router = useRouter();
+
     const [clickMobileMenu, setClickMobileMenu] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+
+    const currentPage = router.pathname;
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -18,7 +24,7 @@ export default function NavBar() {
         <nav
             className={`${
                 scrolled ? "bg-gray-800" : ""
-            } w-full fixed duration-500 cursor-pointer`}
+            } w-full fixed duration-500 cursor-pointer z-50`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
@@ -28,13 +34,26 @@ export default function NavBar() {
                         </div>
                         <div className="hidden md:block">
                             <div className="ml-10 flex items-baseline space-x-4">
-                                <a className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium duration-250">
-                                    Home
-                                </a>
-
-                                <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium duration-250">
-                                    Contact
-                                </a>
+                                {pages.map((page, index) => {
+                                    const current = currentPage === page.url;
+                                    return (
+                                        <span
+                                            onClick={() =>
+                                                !current
+                                                    ? router.push(page.url)
+                                                    : null
+                                            }
+                                            key={index}
+                                            className={
+                                                current
+                                                    ? "bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium duration-200"
+                                                    : "text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium duration-200"
+                                            }
+                                        >
+                                            {page.name}
+                                        </span>
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
@@ -87,12 +106,24 @@ export default function NavBar() {
             {clickMobileMenu ? (
                 <div className="md:hidden" id="mobile-menu">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                        <a className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">
-                            Dashboard
-                        </a>
-                        <a className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                            Contact
-                        </a>
+                        {pages.map((page, index) => {
+                            const current = currentPage === page.url;
+                            return (
+                                <span
+                                    onClick={() =>
+                                        !current ? router.push(page.url) : null
+                                    }
+                                    key={index}
+                                    className={
+                                        current
+                                            ? "bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+                                            : "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                                    }
+                                >
+                                    {page.name}
+                                </span>
+                            );
+                        })}
                     </div>
                 </div>
             ) : null}

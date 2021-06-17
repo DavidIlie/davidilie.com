@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { SplitText } from "@utils/SplitText";
 import { AnimatePresence, motion } from "framer-motion";
 
-import Socials from "./Socials";
+import Socials from "@modules/Socials";
 
 export default function Header() {
     const [secondVisible, setSecondVisible] = useState(false);
     const [thirdVisible, setThirdVisible] = useState(false);
+    const [name, setName] = useState("I'm David Ilie");
+
     useEffect(async () => {
         setTimeout(() => {
             setSecondVisible(true);
@@ -14,6 +16,15 @@ export default function Header() {
                 setThirdVisible(true);
             }, 500);
         }, 500);
+
+        window.addEventListener("resize", () => {
+            const width = window.innerWidth;
+            if (width > 500) {
+                setName("I'm David Ilie");
+            } else {
+                setName("I'm David");
+            }
+        });
     }, []);
     const fadeIn = {
         hidden: { opacity: 0 },
@@ -62,11 +73,11 @@ export default function Header() {
                                     }),
                                 }}
                             >
-                                I'm David Ilie
+                                {name}
                             </SplitText>
                         ) : (
                             <h1 className="text-7xl font-semibold invisible">
-                                I'm David Ilie
+                                {name}
                             </h1>
                         )}
                     </div>
