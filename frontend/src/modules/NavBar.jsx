@@ -57,7 +57,7 @@ export default function NavBar() {
                             </div>
                         </div>
                     </div>
-                    <div className="absolute right-0 mr-96 hidden md:hidden xl:block">
+                    <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
                             <a
                                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium duration-200"
