@@ -29,6 +29,9 @@ export default function Footer() {
                 })}
             </div>
             <Socials />
+            <h1 className="text-section text-center mt-2">
+                Copyright © David Ilie Platform - All rights reserved.
+            </h1>
         </footer>
     );
 }
