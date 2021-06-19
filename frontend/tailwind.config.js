@@ -50,11 +50,23 @@ module.exports = {
                         transform: "translateY(0)",
                     },
                 },
+                "bounce-up": {
+                    "0%, 20%, 60%, 100%": {
+                        transform: "translateY(0)",
+                    },
+                    "40%": {
+                        transform: "translateY(-5px) rotate(3deg)",
+                    },
+                    "80%": {
+                        transform: "translateY(-5px) rotate(-3deg)",
+                    },
+                },
             },
             animation: {
-                wiggle: "wiggle 1s ease-in-out infinite",
+                wiggle: "wiggle 2s ease-in-out infinite",
                 "fade-in-down": "fade-in-down 0.5s ease-out",
                 "fade-in-up": "fade-in-up 0.5s ease-out",
+                "bounce-up": "bounce-up 5s ease infinite",
             },
         },
     },

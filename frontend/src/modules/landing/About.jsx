@@ -4,40 +4,42 @@ import Tooltip from "@ui/Tooltip";
 
 export default function About() {
     const [statistics, setStatistics] = useState(false);
-    const [WhoAmIView, setWhoAmIView] = useState(false);
+
+    const [AboutView, setAboutView] = useState(false);
     const [skillsView, setSkillsView] = useState(false);
+
     useEffect(async () => {
         const request = await axios.get(
             "https://davidilie.com/api/agenda/job/statistics"
         );
         if (request.status === 200) setStatistics(request.data);
+
+        setAboutView(window.scrollY);
+        setSkillsView(window.scrollY);
+
         window.addEventListener("scroll", () => {
-            console.log(window.scrollY);
-            if (!WhoAmIView) {
-                if (window.scrollY >= 400) setWhoAmIView(true);
+            if (!AboutView) {
+                if (window.scrollY >= 400) setAboutView(true);
             }
             if (!skillsView) {
-                if (window.scrollY >= 800) setSkillsView(true);
+                if (window.scrollY >= 900) setSkillsView(true);
             }
         });
-    }, []);
+    }, [AboutView, skillsView]);
+
     return (
         <div className="mb-32">
             <div className="bg-blue-600 text-white text-center px-10 pt-32 pb-32">
                 <h1
                     className={`${
-                        WhoAmIView
-                            ? "visible animate-fade-in-down"
-                            : "invisible"
+                        AboutView ? "visible animate-fade-in-down" : "invisible"
                     } text-4xl font-semibold mb-5`}
                 >
                     First of all, Who am i?
                 </h1>
                 <h1
                     className={`${
-                        WhoAmIView
-                            ? "visible animate-fade-in-down"
-                            : "invisible"
+                        AboutView ? "visible animate-fade-in-down" : "invisible"
                     } text-section 2xl:px-96 xl:px-32 lg:px-24 md:px-24 sm:px-5 mb-32`}
                 >
                     I'm a 14 year old software developer, focusing my learning
@@ -100,7 +102,7 @@ export default function About() {
                 <div className="xl:w-1/3 xs:w-full">
                     <img
                         src="/images/svg/backend.svg"
-                        className="h-24 w-24 mx-auto 2xl:animate-bounce xl:animate-bounce md:animate-bounce lg:animate-bounce animate-pulse mb-4"
+                        className="h-24 w-24 mx-auto animate-bounce-up mb-4"
                     />
                     <div className="text-center mb-10">
                         <h1 className="text-2xl font-semibold mb-5">
@@ -139,7 +141,7 @@ export default function About() {
                 <div className="xl:w-1/3 xs:w-full">
                     <img
                         src="/images/svg/contentcreator.svg"
-                        className="h-24 w-24 mx-auto 2xl:animate-bounce xl:animate-bounce md:animate-bounce lg:animate-bounce animate-pulse mb-4"
+                        className="h-24 w-24 mx-auto animate-bounce-up mb-4"
                     />
                     <div className="text-center mb-10">
                         <h1 className="text-2xl font-semibold mb-5">
@@ -171,7 +173,7 @@ export default function About() {
                             Software I use:
                         </h1>
                         <p className="text-section">
-                            Adobe Premiere & Photoshop, OBS Studio
+                            Adobe Premiere & Photoshop
                         </p>
                     </div>
                     <div className="text-center">
