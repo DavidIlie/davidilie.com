@@ -5,6 +5,7 @@
         "paths": {
             "@icons/*": ["icons/*"],
             "@lib/*": ["lib/*"],
+            "@components/*": ["components/*"],
             "@modules/*": ["modules/*"],
             "@ui/*": ["ui/*"],
             "@providers/*": ["providers/*"],

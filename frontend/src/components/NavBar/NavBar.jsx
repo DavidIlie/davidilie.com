@@ -2,7 +2,7 @@ import { pages } from "@lib/constants";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
-export default function NavBar() {
+export const NavBar = () => {
     const router = useRouter();
 
     const [clickMobileMenu, setClickMobileMenu] = useState(false);
@@ -23,7 +23,7 @@ export default function NavBar() {
     return (
         <nav
             className={`w-full fixed duration-500 cursor-pointer z-50 ${
-                scrolled ? "bg-gray-800" : ""
+                scrolled ? "backdrop-filter backdrop-blur" : ""
             } `}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -158,4 +158,4 @@ export default function NavBar() {
             ) : null}
         </nav>
     );
-}
+};

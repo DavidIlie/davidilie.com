@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 
 import { pages } from "@lib/constants";
-import Socials from "./Socials";
+import Socials from "@components/Socials";
 
-export default function Footer() {
+export const Footer = () => {
     const router = useRouter();
     const currentPage = router.pathname;
     return (
@@ -34,4 +34,4 @@ export default function Footer() {
             </h1>
         </footer>
     );
-}
+};
