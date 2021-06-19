@@ -10,8 +10,12 @@ import { toast } from "react-toastify";
 
 export default function Socials(props) {
     const HandleCopy = () => {
-        navigator.clipboard.writeText("Albastru#0871");
-        toast.info("Copied successfully!", { toastId: "copiedDiscord" });
+        try {
+            navigator.clipboard.writeText("Albastru#0871");
+            toast.info("Copied successfully!", { toastId: "copiedDiscord" });   
+        } catch (error) {
+            toast.error("Couldn't copy! Discord: Albastru#0871")
+        }
     };
     return (
         <div

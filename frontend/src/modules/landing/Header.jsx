@@ -17,6 +17,13 @@ export default function Header() {
             }, 500);
         }, 500);
 
+        const width = window.innerWidth;
+        if (width > 500) {
+            setName("I'm David Ilie");
+        } else {
+            setName("I'm David");
+        }
+
         window.addEventListener("resize", () => {
             const width = window.innerWidth;
             if (width > 500) {

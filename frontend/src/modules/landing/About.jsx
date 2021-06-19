@@ -25,7 +25,7 @@ export default function About() {
                 if (window.scrollY >= 900) setSkillsView(true);
             }
         });
-    }, [AboutView, skillsView]);
+    }, []);
 
     return (
         <div className="mb-32">
@@ -58,7 +58,7 @@ export default function About() {
             <div
                 className={`${
                     skillsView ? "visible animate-fade-in-down" : "invisible"
-                } p-10 pt-16 pb-0 -mt-48 max-w-md mx-auto bg-white rounded-2xl shadow-xl md:max-w-6xl flex md:flex-nowrap flex-wrap`}
+                } p-5 pt-16 pb-0 -mt-48 max-w-xs mx-auto bg-white rounded-2xl shadow-xl md:max-w-6xl flex md:flex-nowrap flex-wrap`}
             >
                 <div className="xl:w-1/3 xs:w-full">
                     <img
