@@ -22,9 +22,9 @@ export default function NavBar() {
 
     return (
         <nav
-            className={`${
+            className={`w-full fixed duration-500 cursor-pointer z-50 ${
                 scrolled ? "bg-gray-800" : ""
-            } w-full fixed duration-500 cursor-pointer z-50`}
+            } `}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
