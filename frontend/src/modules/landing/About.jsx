@@ -22,7 +22,7 @@ export default function About() {
                 if (window.scrollY >= 400) setAboutView(true);
             }
             if (!skillsView) {
-                if (window.scrollY >= 900) setSkillsView(true);
+                if (window.scrollY >= 800) setSkillsView(true);
             }
         });
     }, []);
