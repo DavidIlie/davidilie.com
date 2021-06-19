@@ -20,7 +20,9 @@ export const Socials = (props) => {
     };
     return (
         <div
-            className={`mt-2 text-white text-3xl flex space-x-10 justify-center ${
+            className={`mt-2 text-white text-${
+                props.font !== undefined ? props.font : 3
+            }xl flex space-x-10 justify-center ${
                 props.invisible ? "invisible" : "visible"
             }`}
         >

@@ -7,9 +7,7 @@ export default function PageProvider(props) {
     return (
         <div className="h-screen">
             <Head>
-                <title>
-                    David Ilie {props.title ? `- ${props.title}` : ""}
-                </title>
+                <title>{props.title ? props.title : ""} | David Ilie</title>
             </Head>
             <NavBar />
             {props.children}
