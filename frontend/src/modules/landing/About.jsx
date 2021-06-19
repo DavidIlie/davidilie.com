@@ -30,7 +30,7 @@ export default function About() {
                     public, while getting feedback in the process.
                 </h1>
             </div>
-            <div className="p-10 pt-16 -mt-48 max-w-md mx-auto bg-white rounded-2xl shadow-xl md:max-w-6xl flex md:flex-nowrap flex-wrap">
+            <div className="p-10 pt-16 pb-0 -mt-48 max-w-md mx-auto bg-white rounded-2xl shadow-xl md:max-w-6xl flex md:flex-nowrap flex-wrap">
                 <div className="xl:w-1/3 xs:w-full">
                     <img
                         src="/images/svg/frontend.svg"
