@@ -58,9 +58,9 @@ export default function About() {
             <div
                 className={`${
                     skillsView ? "visible animate-fade-in-down" : "invisible"
-                } p-5 pt-16 pb-0 -mt-48 max-w-xs mx-auto bg-white rounded-2xl shadow-xl md:max-w-6xl flex md:flex-nowrap flex-wrap`}
+                } -mt-48 max-w-sm mx-auto bg-white rounded-2xl shadow-xl md:max-w-6xl flex md:flex-nowrap justify-evenly flex-wrap`}
             >
-                <div className="xl:w-1/3 xs:w-full">
+                <div className="xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 border-b-2 border-fuchsia-600 px-5 pt-10">
                     <img
                         src="/images/svg/frontend.svg"
                         className="h-24 w-24 mx-auto animate-wiggle mb-4"
@@ -99,10 +99,10 @@ export default function About() {
                         <p className="text-section">Pen & Paper</p>
                     </div>
                 </div>
-                <div className="xl:w-1/3 xs:w-full">
+                <div className="xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 border-b-2 border-fuchsia-600 px-5 pt-10">
                     <img
                         src="/images/svg/backend.svg"
-                        className="h-24 w-24 mx-auto animate-bounce-up mb-4"
+                        className="h-24 w-24 mx-auto animate-pulse mb-4"
                     />
                     <div className="text-center mb-10">
                         <h1 className="text-2xl font-semibold mb-5">
@@ -138,7 +138,7 @@ export default function About() {
                         <p className="text-section">Terminal</p>
                     </div>
                 </div>
-                <div className="xl:w-1/3 xs:w-full">
+                <div className="xl:w-1/3 xs:w-full pt-10 px-5">
                     <img
                         src="/images/svg/contentcreator.svg"
                         className="h-24 w-24 mx-auto animate-bounce-up mb-4"
