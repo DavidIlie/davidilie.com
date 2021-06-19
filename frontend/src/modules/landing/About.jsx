@@ -4,19 +4,42 @@ import Tooltip from "@ui/Tooltip";
 
 export default function About() {
     const [statistics, setStatistics] = useState(false);
+    const [WhoAmIView, setWhoAmIView] = useState(false);
+    const [skillsView, setSkillsView] = useState(false);
     useEffect(async () => {
         const request = await axios.get(
             "https://davidilie.com/api/agenda/job/statistics"
         );
         if (request.status === 200) setStatistics(request.data);
+        window.addEventListener("scroll", () => {
+            console.log(window.scrollY);
+            if (!WhoAmIView) {
+                if (window.scrollY >= 400) setWhoAmIView(true);
+            }
+            if (!skillsView) {
+                if (window.scrollY >= 800) setSkillsView(true);
+            }
+        });
     }, []);
     return (
         <div className="mb-32">
             <div className="bg-blue-600 text-white text-center px-10 pt-32 pb-32">
-                <h1 className="text-4xl font-semibold mb-5">
+                <h1
+                    className={`${
+                        WhoAmIView
+                            ? "visible animate-fade-in-down"
+                            : "invisible"
+                    } text-4xl font-semibold mb-5`}
+                >
                     First of all, Who am i?
                 </h1>
-                <h1 className="text-section 2xl:px-96 xl:px-32 lg:px-24 md:px-24 sm:px-5 mb-32">
+                <h1
+                    className={`${
+                        WhoAmIView
+                            ? "visible animate-fade-in-down"
+                            : "invisible"
+                    } text-section 2xl:px-96 xl:px-32 lg:px-24 md:px-24 sm:px-5 mb-32`}
+                >
                     I'm a 14 year old software developer, focusing my learning
                     into web development. I've been interested into computer
                     science ever since I was younger but never got into proper
@@ -30,11 +53,15 @@ export default function About() {
                     public, while getting feedback in the process.
                 </h1>
             </div>
-            <div className="p-10 pt-16 pb-0 -mt-48 max-w-md mx-auto bg-white rounded-2xl shadow-xl md:max-w-6xl flex md:flex-nowrap flex-wrap">
+            <div
+                className={`${
+                    skillsView ? "visible animate-fade-in-down" : "invisible"
+                } p-10 pt-16 pb-0 -mt-48 max-w-md mx-auto bg-white rounded-2xl shadow-xl md:max-w-6xl flex md:flex-nowrap flex-wrap`}
+            >
                 <div className="xl:w-1/3 xs:w-full">
                     <img
                         src="/images/svg/frontend.svg"
-                        className="h-24 w-24 mx-auto 2xl:animate-bounce xl:animate-bounce md:animate-bounce lg:animate-bounce animate-pulse mb-4"
+                        className="h-24 w-24 mx-auto animate-wiggle mb-4"
                     />
                     <div className="text-center mb-10">
                         <h1 className="text-2xl font-semibold mb-5">
