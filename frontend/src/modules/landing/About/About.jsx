@@ -23,7 +23,7 @@ export const About = () => {
     }, []);
 
     return (
-        <div className="mb-32">
+        <>
             <div className="bg-blue-600 text-white text-center px-10 pt-32 pb-32">
                 <h1
                     className={`${
@@ -59,6 +59,6 @@ export const About = () => {
                 <BackendDeveloper />
                 <ContentCreator />
             </div>
-        </div>
+        </>
     );
 };

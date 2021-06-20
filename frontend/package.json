@@ -8,6 +8,8 @@
         "start": "next start"
     },
     "dependencies": {
+        "@chakra-ui/react": "^1.6.4",
+        "@emotion/styled": "^11.3.0",
         "@tippyjs/react": "^4.2.5",
         "axios": "^0.21.1",
         "framer-motion": "^4.1.17",

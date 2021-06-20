@@ -8,6 +8,7 @@ export default function Home() {
         <PageProvider title="Home">
             <Header />
             <About />
+            <div className="h-96"></div>
         </PageProvider>
     );
 }

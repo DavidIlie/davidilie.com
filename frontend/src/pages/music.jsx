@@ -1,6 +1,5 @@
 import { useQuery } from "react-query";
 
-import { FaSpotify } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
 
 import PageProvider from "@providers/PageProvider";
@@ -29,58 +28,43 @@ function Music({ data, error }) {
                     </h1>
                 </Fade>
                 <Fade delay={500} direction="up" triggerOnce cascade>
-                    <h1 className=" text-center mt-2">
-                        *Top Songs and Artists over the past 6 months
+                    <h1 className="text-center text-section mb-12">
+                        I'm a little "classic" when it comes to music
                     </h1>
                 </Fade>
-                <Fade delay={1000} direction="up" triggerOnce cascade>
-                    <div className="flex justify-center mt-5">
-                        <a
-                            href="https://open.spotify.com/user/uh4szel3uuoei5h6308u3suic"
-                            target="_blank"
-                        >
-                            <button className="flex justify-center items-center space-x-2 hover:bg-gray-700 duration-500 p-2 rounded-xl w-auto">
-                                <FaSpotify className="text-green-500 text-xl" />
-                                <p className="text-green-200 font-bold">
-                                    View my profile
-                                </p>
-                            </button>
-                        </a>
-                    </div>
-                </Fade>
-                <div className="flex justify-center space-x-20 ml-12">
-                    <Fade delay={1000} triggerOnce cascade>
-                        <div>
-                            <h1 className="text-4xl font-semibold text-center mb-8">
-                                Top Artists
-                            </h1>
-                            <TopArtists artists={data.artists} />
-                        </div>
-                    </Fade>
-
-                    <Fade delay={1500} triggerOnce cascade>
+                <div className="flex justify-center space-x-20 mr-12 flex-wrap">
+                    <Fade delay={500} triggerOnce cascade>
                         <div>
                             <h1 className="text-4xl font-semibold text-center mb-5">
-                                Currently Playing
+                                Currently Listening
                             </h1>
                             <CurrentPlaying song={currentlyPlaying} />
                         </div>
                     </Fade>
+
+                    <Fade delay={1000} triggerOnce cascade>
+                        <div>
+                            <h1 className="text-4xl font-semibold text-center mb-10">
+                                Favorite Artists
+                            </h1>
+                            <TopArtists artists={data.artists} />
+                        </div>
+                    </Fade>
                 </div>
-                <div className="flex justify-center items-center space-x-10 mt-10">
-                    <Fade delay={2000} triggerOnce cascade>
+                <div className="flex justify-center items-center space-x-10 mt-10 flex-wrap">
+                    <Fade delay={1500} triggerOnce cascade>
                         <div>
                             <h1 className="text-4xl font-semibold text-center mb-6">
-                                Top Songs
+                                Top Played Songs
                             </h1>
                             <TopSongs songs={data.songs.items} />
                         </div>
                     </Fade>
 
-                    <Fade delay={2500} triggerOnce cascade>
+                    <Fade delay={2000} triggerOnce cascade>
                         <div>
                             <h1 className="text-4xl font-semibold text-center mb-5">
-                                Recently Played Songs
+                                Recently Played
                             </h1>
                             <RecentSongs songs={data.recentlyPlayed.items} />
                         </div>

@@ -1,40 +1,95 @@
+import { useState } from "react";
 import Image from "next/image";
 
+import { Box, Flex, SimpleGrid, Skeleton, Text } from "@chakra-ui/react";
+
+import styles from "../../styles/styles.module.css";
+
 const SongCard = ({ song, titleCard, isPlaying }) => {
+    const [imageLoad, setImageLoad] = useState(false);
     return (
-        <div
-            className="flex items-center rounded-2xl bg-gray-700 p-5 duration-200 mb-6"
-            style={{ width: "650px", height: titleCard ? "175px" : "150px" }}
+        <Box
+            as="a"
+            target="_blank"
+            href={song.external_urls?.spotify}
+            h="full"
+            w="650px"
+            isTruncated
+            overflow="visible"
         >
-            <Image
-                alt={song?.name + " album cover"}
-                width={titleCard ? `150px` : `110px`}
-                height={titleCard ? `150px` : `110px`}
-                className="rounded-2xl"
-                src={
-                    song.albumImageUrl ||
-                    song.album.images
-                        .filter((image) => image.height > 109)
-                        .slice(-1)[0].url
-                }
-            />
-            <div className="flex flex-col ml-5 -mt-2 max-w-full truncate">
-                <h1 className="text-3xl truncate font-semibold">{`${song.name}${
-                    titleCard && !isPlaying ? ` - Paused` : ``
-                }`}</h1>
-                <div className="flex flex-col mt-2 truncate max-w-full text-gray-300">
-                    <h1>Album • {song.album.name || song.album}</h1>
-                    <h1>
-                        {" "}
-                        Artist{song.artists?.length > 1 && `s`} •{` `}
-                        {song.artist ||
-                            song.artists
-                                ?.map((artist) => artist.name)
-                                .join(`, `)}
-                    </h1>
-                </div>
-            </div>
-        </div>
+            <SimpleGrid
+                my={5}
+                p={5}
+                overflow="visible"
+                width="650px"
+                maxWidth="2xl"
+                templateColumns={`${titleCard ? `150px` : `110px`} 1fr`}
+                border="1px solid"
+                bg={"gray.800"}
+                borderColor={"gray.800"}
+                boxShadow="lg"
+                transition="all 0.25s"
+                borderRadius="2xl"
+                transitionTimingFunction="spring(1 100 10 10)"
+                _hover={{ transform: `translateY(-4px)`, shadow: `xl` }}
+            >
+                <Skeleton
+                    borderRadius="2xl"
+                    boxSize={titleCard ? `150px` : `110px`}
+                    isLoaded={imageLoad}
+                >
+                    <Image
+                        alt={song?.name + " album cover"}
+                        className={styles.image}
+                        width={titleCard ? `150px` : `110px`}
+                        height={titleCard ? `150px` : `110px`}
+                        onLoad={() => setImageLoad(true)}
+                        src={
+                            song.albumImageUrl ||
+                            song.album.images
+                                .filter((image) => image.height > 109)
+                                .slice(-1)[0].url
+                        }
+                    />
+                </Skeleton>
+
+                <Flex direction="column" ml={5} maxWidth="full" isTruncated>
+                    <Text
+                        isTruncated
+                        maxWidth="full"
+                        fontSize={
+                            titleCard
+                                ? { base: `2xl`, md: `3xl` }
+                                : { base: `xl`, md: `2xl` }
+                        }
+                        fontWeight="semibold"
+                    >
+                        {`${song.name}${
+                            titleCard && !isPlaying ? ` - Paused` : ``
+                        }`}
+                    </Text>
+                    <Flex
+                        direction="column"
+                        color="gray.400"
+                        mt={2}
+                        isTruncated
+                        width="full"
+                        fontSize={{ base: `sm`, sm: `md` }}
+                    >
+                        <Text isTruncated maxWidth="full">
+                            Album • {song.album.name || song.album}
+                        </Text>
+                        <Text isTruncated maxWidth="full">
+                            Artist{song.artists?.length > 1 && `s`} •{` `}
+                            {song.artist ||
+                                song.artists
+                                    ?.map((artist) => artist.name)
+                                    .join(`, `)}
+                        </Text>
+                    </Flex>
+                </Flex>
+            </SimpleGrid>
+        </Box>
     );
 };
 

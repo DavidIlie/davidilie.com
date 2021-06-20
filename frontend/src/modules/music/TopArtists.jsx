@@ -5,7 +5,7 @@ const TopArtists = (props) => {
     return (
         <div className="flex justify-center space-x-6">
             {artists.items.map((artist, index) => (
-                <AristCard artist={artist} index={index} />
+                <AristCard artist={artist} key={index} />
             ))}
         </div>
     );

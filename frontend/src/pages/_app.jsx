@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
-import Router from "next/router";
+import { ChakraProvider } from "@chakra-ui/react";
 import Loader from "@components/Loader";
 import { DefaultSeo } from "next-seo";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { checkAPI } from "@lib/checkAPI";
+import theme from "../theme";
+import { motion } from "framer-motion";
 
 import "tailwindcss/tailwind.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,7 +15,7 @@ import "tippy.js/animations/shift-away.css";
 import "../styles/global.css";
 
 const queryClient = new QueryClient();
-function PersonalWebsite({ Component, pageProps }) {
+function PersonalWebsite({ Component, pageProps, router }) {
     const [loading, setLoading] = useState(false);
     useEffect(async () => {
         await checkAPI();
@@ -24,13 +26,13 @@ function PersonalWebsite({ Component, pageProps }) {
         const end = () => {
             setLoading(false);
         };
-        Router.events.on(`routeChangeStart`, start);
-        Router.events.on(`routeChangeComplete`, end);
-        Router.events.on(`routeChangeError`, end);
+        router.events.on(`routeChangeStart`, start);
+        router.events.on(`routeChangeComplete`, end);
+        router.events.on(`routeChangeError`, end);
         return () => {
-            Router.events.off(`routeChangeStart`, start);
-            Router.events.off(`routeChangeComplete`, end);
-            Router.events.off(`routeChangeError`, end);
+            router.events.off(`routeChangeStart`, start);
+            router.events.off(`routeChangeComplete`, end);
+            router.events.off(`routeChangeError`, end);
         };
     });
     return (
@@ -50,9 +52,25 @@ function PersonalWebsite({ Component, pageProps }) {
                 }}
                 description="A 14 year aspiring web developer experimenting by publishing my work on the web."
             />
-            <QueryClientProvider client={queryClient}>
-                {loading ? <Loader /> : <Component {...pageProps} />}
-            </QueryClientProvider>
+            <ChakraProvider theme={theme}>
+                <QueryClientProvider client={queryClient}>
+                    <motion.div
+                        key={router.route}
+                        initial="pageInitial"
+                        animate="pageAnimate"
+                        variants={{
+                            pageInitial: {
+                                opacity: 0,
+                            },
+                            pageAnimate: {
+                                opacity: 1,
+                            },
+                        }}
+                    >
+                        {loading ? <Loader /> : <Component {...pageProps} />}
+                    </motion.div>
+                </QueryClientProvider>
+            </ChakraProvider>
             <ToastContainer autoClose={2500} newestOnTop={true} />
         </>
     );
