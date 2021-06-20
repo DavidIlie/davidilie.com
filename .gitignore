@@ -1,3 +1,4 @@
 frontend/.next/
 frontend/node_modules/
 frontend/yarn.lock
+frontend/.env
