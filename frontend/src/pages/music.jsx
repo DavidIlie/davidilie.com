@@ -76,7 +76,9 @@ function Music({ data, error }) {
 }
 
 export async function getServerSideProps() {
-    const response = await fetch("http://localhost:3000/api/spotify/get-data");
+    const response = await fetch(
+        `https://${process.env.NEXT_PUBLIC_VERCEL_URL}localhost:3000/api/spotify/get-data`
+    );
     let error = null;
     if (response.status !== 200) {
         error = `There was an error ${response.status}`;
