@@ -13,8 +13,8 @@ export const Footer = () => {
 
     return (
         <footer className="bg-gray-900 text-white pt-5 pb-5 w-full">
-            <div className="animate-fade-in-down flex justify-center items-center justify-between flex-wrap">
-                <div className="w-1/3 flex justify-center items-center">
+            <div className="px-12 flex flex-wrap items-center 2xl:justify-between xl:justify-between md:justify-between lg:justify-between justify-center">
+                <div className="flex justify-center items-center">
                     {currentlyPlaying?.songUrl ? (
                         <>
                             <div className="text-2xl text-green-500 mr-1">
@@ -34,7 +34,10 @@ export const Footer = () => {
                             </div>
                             <Tooltip content={currentlyPlaying.artist}>
                                 <a href={currentlyPlaying.songUrl}>
-                                    <h1 className="mr-1">
+                                    <h1
+                                        className="mr-1 truncate"
+                                        style={{ width: "200px" }}
+                                    >
                                         - {currentlyPlaying.name} -
                                     </h1>
                                 </a>
@@ -63,10 +66,10 @@ export const Footer = () => {
                     )}
                 </div>
 
-                <h1 className="w-1/3 text-center text-xl">
+                <h1 className="text-center text-xl mb-1 mt-1">
                     Copyright © David Ilie Platform.
                 </h1>
-                <div className="w-1/3">
+                <div>
                     <Socials font={2} />
                 </div>
             </div>

@@ -6,6 +6,7 @@ import { DefaultSeo } from "next-seo";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { checkAPI } from "@lib/checkAPI";
 import theme from "../theme";
+import AppLayout from "@components/AppLayout";
 
 import "tailwindcss/tailwind.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -53,7 +54,9 @@ function PersonalWebsite({ Component, pageProps, router }) {
             />
             <ChakraProvider theme={theme}>
                 <QueryClientProvider client={queryClient}>
-                    {loading ? <Loader /> : <Component {...pageProps} />}
+                    <AppLayout>
+                        {loading ? <Loader /> : <Component {...pageProps} />}
+                    </AppLayout>
                 </QueryClientProvider>
             </ChakraProvider>
             <ToastContainer autoClose={2500} newestOnTop={true} />

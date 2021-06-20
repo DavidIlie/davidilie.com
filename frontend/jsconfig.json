@@ -8,7 +8,6 @@
             "@components/*": ["components/*"],
             "@modules/*": ["modules/*"],
             "@ui/*": ["ui/*"],
-            "@providers/*": ["providers/*"],
             "@utils/*": ["utils/*"]
         }
     }

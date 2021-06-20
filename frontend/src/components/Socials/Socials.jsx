@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 
 import { SocialIcon } from "./SocialIcon";
 
-export const Socials = (props) => {
+export const Socials = ({ font, invisible }) => {
     const HandleCopy = () => {
         try {
             navigator.clipboard.writeText("Albastru#0871");
@@ -21,9 +21,9 @@ export const Socials = (props) => {
     return (
         <div
             className={`mt-2 text-white text-${
-                props.font !== undefined ? props.font : 3
+                font !== undefined ? font : 3
             }xl flex space-x-10 justify-center ${
-                props.invisible ? "invisible" : "visible"
+                invisible ? "invisible" : "visible"
             }`}
         >
             <SocialIcon tooltip="DavidIlie" link="/api/redir/github">

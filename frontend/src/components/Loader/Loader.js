@@ -2,7 +2,7 @@ import { Fade } from "react-awesome-reveal";
 
 export const Loader = () => {
     return (
-        <section className="bg-gray-900 h-screen flex justify-center items-center">
+        <section className="h-screen flex justify-center items-center">
             <Fade>
                 <div className="loading-loader">
                     <span />

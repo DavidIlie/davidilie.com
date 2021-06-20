@@ -2,8 +2,6 @@ import { useQuery } from "react-query";
 
 import { Fade } from "react-awesome-reveal";
 
-import PageProvider from "@providers/PageProvider";
-
 import TopArtists from "@modules/music/TopArtists";
 import CurrentPlaying from "@modules/music/CurrentlyPlaying";
 import TopSongs from "@modules/music/TopSongs";
@@ -20,7 +18,7 @@ function Music({ data, error }) {
     }
 
     return (
-        <PageProvider title="Music">
+        <>
             <div className="text-white pt-32 pb-32">
                 <Fade direction="up" triggerOnce cascade>
                     <h1 className="text-6xl text-center font-semibold">
@@ -71,7 +69,7 @@ function Music({ data, error }) {
                     </Fade>
                 </div>
             </div>
-        </PageProvider>
+        </>
     );
 }
 

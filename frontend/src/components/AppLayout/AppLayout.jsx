@@ -7,11 +7,11 @@ import { UpDown } from "@components/Animations/Animation";
 import SVG from "@components/SVG";
 import { Box } from "@chakra-ui/react";
 
-export default function PageProvider({ children, title }) {
+export const AppLayout = ({ children, title }) => {
     return (
         <div>
             <Head>
-                <title>{title ? title : ""} | David Ilie</title>
+                <title>David Ilie</title>
             </Head>
             <UpDown type="normal">
                 <SVG icon="triangle" width={48} stroke left="10%" top="20%" />
@@ -94,4 +94,4 @@ export default function PageProvider({ children, title }) {
             <Footer />
         </div>
     );
-}
+};
