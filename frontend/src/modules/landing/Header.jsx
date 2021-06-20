@@ -43,7 +43,7 @@ export default function Header() {
         },
     };
     return (
-        <div className="h-screen flex justify-center items-center space-x-32 bg-background bg-cover">
+        <div className="h-screen flex justify-center items-center space-x-32">
             <div className="text-white text-center">
                 <AnimatePresence>
                     <div className="mt-2 h-10 text-center -ml-2">

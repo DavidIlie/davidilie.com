@@ -13,8 +13,8 @@ export const Footer = () => {
 
     return (
         <footer className="bg-gray-900 text-white pt-5 pb-5 w-full">
-            <div className="px-12 flex flex-wrap items-center 2xl:justify-between xl:justify-between md:justify-between lg:justify-between justify-center">
-                <div className="flex justify-center items-center">
+            <div className="px-24 flex flex-wrap items-center 2xl:justify-between xl:justify-between md:justify-between lg:justify-between justify-center">
+                <div className="flex justify-evenly items-center">
                     {currentlyPlaying?.songUrl ? (
                         <>
                             <div className="text-2xl text-green-500 mr-1">
@@ -32,17 +32,13 @@ export const Footer = () => {
                                     </Tooltip>
                                 )}
                             </div>
+                            <span className="mx-1"> - </span>
                             <Tooltip content={currentlyPlaying.artist}>
                                 <a href={currentlyPlaying.songUrl}>
-                                    <h1
-                                        className="mr-1 truncate"
-                                        style={{ width: "200px" }}
-                                    >
-                                        - {currentlyPlaying.name} -
-                                    </h1>
+                                    <h1>{currentlyPlaying.name}</h1>
                                 </a>
                             </Tooltip>
-
+                            <span className="mx-1"> - </span>
                             <a
                                 href="https://open.spotify.com/user/uh4szel3uuoei5h6308u3suic"
                                 className="text-green-800 font-bold"
@@ -66,7 +62,7 @@ export const Footer = () => {
                     )}
                 </div>
 
-                <h1 className="text-center text-xl mb-1 mt-1">
+                <h1 className="text-xl mb-1 mt-1">
                     Copyright © David Ilie Platform.
                 </h1>
                 <div>
