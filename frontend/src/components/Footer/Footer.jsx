@@ -1,4 +1,4 @@
-import { AiOutlinePause, AiOutlinePlayCircle } from "react-icons/ai";
+import { FaSpotify } from "react-icons/fa";
 import { useQuery } from "react-query";
 
 import Socials from "@components/Socials";
@@ -13,7 +13,7 @@ export const Footer = () => {
 
     return (
         <footer className="bg-gray-900 text-white pt-5 pb-5 w-full">
-            <div className="animate-fade-in-down flex justify-center items-center justify-between">
+            <div className="animate-fade-in-down flex justify-center items-center justify-between flex-wrap">
                 <div className="w-1/3 flex justify-center items-center">
                     {currentlyPlaying?.songUrl ? (
                         <>
@@ -21,13 +21,13 @@ export const Footer = () => {
                                 {currentlyPlaying.isPlaying ? (
                                     <Tooltip content="Currently Playing">
                                         <span>
-                                            <AiOutlinePlayCircle />
+                                            <FaSpotify />
                                         </span>
                                     </Tooltip>
                                 ) : (
                                     <Tooltip content="Currently paused">
                                         <span>
-                                            <AiOutlinePause />
+                                            <FaSpotify />
                                         </span>
                                     </Tooltip>
                                 )}
@@ -35,23 +35,21 @@ export const Footer = () => {
                             <Tooltip content={currentlyPlaying.artist}>
                                 <a href={currentlyPlaying.songUrl}>
                                     <h1 className="mr-1">
-                                        {currentlyPlaying.name} -
+                                        - {currentlyPlaying.name} -
                                     </h1>
                                 </a>
                             </Tooltip>
 
-                            <Tooltip content="Playing on spotify">
-                                <a
-                                    href="https://open.spotify.com/user/uh4szel3uuoei5h6308u3suic"
-                                    className="text-green-800 font-bold"
-                                >
-                                    Spotify
-                                </a>
-                            </Tooltip>
+                            <a
+                                href="https://open.spotify.com/user/uh4szel3uuoei5h6308u3suic"
+                                className="text-green-800 font-bold"
+                            >
+                                Spotify
+                            </a>
                         </>
                     ) : (
                         <p className="flex">
-                            <AiOutlinePause className="text-2xl text-green-500 mr-1" />
+                            <FaSpotify className="text-2xl text-green-500 mr-1" />
                             {error
                                 ? "There was an error - "
                                 : "Not Playing Anything - "}

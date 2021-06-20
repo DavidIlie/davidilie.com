@@ -5,7 +5,7 @@ import Footer from "@components/Footer";
 
 export default function PageProvider(props) {
     return (
-        <div className="h-screen">
+        <div className="bg-gray-800">
             <Head>
                 <title>{props.title ? props.title : ""} | David Ilie</title>
             </Head>

@@ -1,5 +1,11 @@
 module.exports = {
-    purge: ['./src/pages/**/*.{js,ts,jsx,tsx}','./src/modules/**/*.{js,ts,jsx,tsx}','./src/providers/**/*.{js,ts,jsx,tsx}', './src/utils/**/*.{js,ts,jsx,tsx}' ,'./src/ui/**/*.{js,ts,jsx,tsx}'],
+    purge: [
+        "./src/pages/**/*.{js,ts,jsx,tsx}",
+        "./src/modules/**/*.{js,ts,jsx,tsx}",
+        "./src/providers/**/*.{js,ts,jsx,tsx}",
+        "./src/utils/**/*.{js,ts,jsx,tsx}",
+        "./src/ui/**/*.{js,ts,jsx,tsx}",
+    ],
     darkMode: false,
     theme: {
         fontSize: {
@@ -18,6 +24,10 @@ module.exports = {
             section: "1.27rem",
         },
         extend: {
+            gridTemplateColumns: {
+                musicTitle: "minmax(150px, 1fr)",
+                musicNormal: "minmax(110px, 1fr)",
+            },
             backgroundImage: (theme) => ({
                 background: "url('/images/gif/background.gif')",
             }),
@@ -71,7 +81,9 @@ module.exports = {
         },
     },
     variants: {
-        extend: {},
+        extend: {
+            margin: ["hover"],
+        },
     },
     plugins: [],
 };

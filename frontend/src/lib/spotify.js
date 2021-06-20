@@ -3,7 +3,7 @@ import querystring from "querystring";
 const client_id = "ce6114d303e14cb9bf12784ad01d5e7d";
 const client_secret = "2860be2fd8ec47eea538bf409dbdfd56";
 const refresh_token =
-    "AQB0-BgKCUP7_4SmIE4o96LIgenMTC_cBs3juO-QKTyZJBV6HZKRcxC0HFbUoS8zoNtQpCaE-QXxkAco5EwkCd9oh74WDL3p8QcR8ZbjXTSQE0ZPG5lmo5SCkqOCUz5ESLY";
+    "AQD9hk0AFxSq4qCU70MuhgpWMeTPGTzuroVXzEzC5mG-H1Sa-T5fjT7F1Ef5hV1E0fGbIpqXBL8ZH_NJaEb1EdEOvMZISMcrc_qi96widUSmjOatkL3u9KM4BMJ46tYa7h8";
 
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString(`base64`);
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
