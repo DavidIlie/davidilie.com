@@ -1,11 +1,5 @@
 module.exports = {
-    purge: [
-        "./src/pages/**/*.{js,ts,jsx,tsx}",
-        "./src/modules/**/*.{js,ts,jsx,tsx}",
-        "./src/providers/**/*.{js,ts,jsx,tsx}",
-        "./src/utils/**/*.{js,ts,jsx,tsx}",
-        "./src/ui/**/*.{js,ts,jsx,tsx}",
-    ],
+    purge: ["./src/**/*.{js,ts,jsx,tsx}"],
     darkMode: false,
     theme: {
         fontSize: {

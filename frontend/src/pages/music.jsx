@@ -75,7 +75,7 @@ function Music({ data, error }) {
     );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const response = await fetch("http://localhost:3000/api/spotify/get-data");
     let error = null;
     if (response.status !== 200) {
