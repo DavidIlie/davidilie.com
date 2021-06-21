@@ -59,18 +59,18 @@
 
 @keyframes UpDown {
     from {
-        transform: translateY(0);
+        transform: rotate(0deg) translateY(0);
     }
     to {
-        transform: translateY(50px);
+        transform: rotate(20deg) translateY(50px);
     }
 }
 @keyframes UpDownWide {
     from {
-        transform: translateY(0);
+        transform: rotate(0deg) translateY(0);
     }
     to {
-        transform: translateY(300px);
+        transform: rotate(12deg) translateY(300px);
     }
 }
 
