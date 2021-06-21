@@ -10,7 +10,7 @@ export const UpDown = ({ children, type }) => {
                     ? `UpDownSlowAnimation`
                     : `UpDownAnimation`
             } overflow-hidden absolute top-0 left-0 right-0`}
-            style={{ zIndex: -500, bottom: "-100vh" }}
+            style={{ zIndex: -500 }}
         >
             {children}
         </div>
