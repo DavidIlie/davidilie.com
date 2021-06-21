@@ -32,7 +32,7 @@ export const Footer = () => {
                                     </Tooltip>
                                 )}
                             </div>
-                            <span className="mx-1"> - </span>
+                            <span className="mx-0.5" />
                             <Tooltip content={currentlyPlaying.artist}>
                                 <a href={currentlyPlaying.songUrl}>
                                     <h1>{currentlyPlaying.name}</h1>
