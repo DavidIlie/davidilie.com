@@ -20,9 +20,7 @@ export const Socials = ({ font, invisible }) => {
     };
     return (
         <div
-            className={`mt-2 text-white text-${
-                font !== undefined ? font : 3
-            }xl flex space-x-10 justify-center ${
+            className={`mt-2 text-white flex space-x-10 justify-center ${
                 invisible ? "invisible" : "visible"
             }`}
         >
@@ -31,31 +29,37 @@ export const Socials = ({ font, invisible }) => {
                 newPage
                 link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/github`}
             >
-                <FaGithub className="mb-1" />
+                <FaGithub
+                    className="mb-1"
+                    size={font !== undefined ? `${font}em` : "1.75em"}
+                />
             </SocialIcon>
             <SocialIcon tooltip="Albastru#0871" onClick={HandleCopy}>
-                <FaDiscord />
+                <FaDiscord size={font !== undefined ? `${font}em` : "1.75em"} />
             </SocialIcon>
             <SocialIcon
                 tooltip="Albastru"
                 newPage
                 link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/youtube`}
             >
-                <FaYoutube className="mb-1" />
+                <FaYoutube
+                    className="mb-1"
+                    size={font !== undefined ? `${font}em` : "1.75em"}
+                />
             </SocialIcon>
             <SocialIcon
                 tooltip="AlbastruYT"
                 newPage
                 link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/twitch`}
             >
-                <FaTwitch />
+                <FaTwitch size={font !== undefined ? `${font}em` : "1.75em"} />
             </SocialIcon>
             <SocialIcon
                 tooltip="AlbastruYT"
                 newPage
                 link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/twitter`}
             >
-                <FaTwitter />
+                <FaTwitter size={font !== undefined ? `${font}em` : "1.75em"} />
             </SocialIcon>
         </div>
     );

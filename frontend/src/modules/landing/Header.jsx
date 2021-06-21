@@ -97,10 +97,10 @@ export default function Header() {
                                 initial="hidden"
                                 animate="show"
                             >
-                                <Socials font={3} />
+                                <Socials font="1.75" />
                             </motion.div>
                         ) : (
-                            <Socials invisible font={3} />
+                            <Socials invisible font="1.75" />
                         )}
                     </div>
                 </AnimatePresence>

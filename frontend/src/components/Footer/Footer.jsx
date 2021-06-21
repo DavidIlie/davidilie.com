@@ -66,7 +66,7 @@ export const Footer = () => {
                     Copyright © David Ilie Platform.
                 </h1>
                 <div>
-                    <Socials font={2} />
+                    <Socials font="1.5" />
                 </div>
             </div>
         </footer>
