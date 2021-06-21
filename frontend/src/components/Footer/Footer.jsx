@@ -50,8 +50,8 @@ export const Footer = () => {
                         <p className="flex">
                             <FaSpotify className="text-2xl text-green-500 mr-1" />
                             {error
-                                ? "There was an error - "
-                                : "Not Playing Anything - "}
+                                ? "- There was an error - "
+                                : "- Not Playing Anything - "}
                             <a
                                 href="https://open.spotify.com/user/uh4szel3uuoei5h6308u3suic"
                                 className="ml-1 text-green-800 font-bold"
