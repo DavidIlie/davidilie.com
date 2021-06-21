@@ -52,7 +52,7 @@ export const SVG = ({
         className={`absolute fill-current text-${color}`}
         style={{
             width: `${width / 2 / 2}rem`,
-            filter: "blur(8px) saturate(180%)",
+            filter: "blur(8px) saturate(160%)",
             left: left,
             top: top,
             zIndex,
