@@ -21,31 +21,34 @@ function Music({ data, error }) {
         <>
             <div className="text-white pt-32 pb-32">
                 <Fade direction="up" triggerOnce cascade>
-                    <h1 className="text-6xl text-center font-semibold">
+                    <h1 className="2xl:text-6xl xl:text-6xl md:text-5xl lg:text-4xl sm:text-4xl text-4xl text-center font-semibold">
                         Here's what I'm listening to at the moment
                     </h1>
                 </Fade>
                 <Fade delay={500} direction="up" triggerOnce cascade>
-                    <h1 className="text-center text-section mb-12">
+                    <h1 className="text-center text-section mb-16">
                         I'm a little "classic" when it comes to music
                     </h1>
                 </Fade>
-                <div className="flex justify-center space-x-20 mr-12 flex-wrap">
-                    <Fade delay={500} triggerOnce cascade>
-                        <div>
-                            <h1 className="text-4xl font-semibold text-center mb-5">
-                                Currently Listening
-                            </h1>
-                            <CurrentPlaying song={currentlyPlaying} />
-                        </div>
-                    </Fade>
-
+                <div
+                    className={`flex justify-center 2xl:space-x-20 xl:space-x-20 md:space-x-20 lg:space-x-20 flex-wrap mb-16 ${
+                        currentlyPlaying?.isPlaying !== false ? "ml-12" : ""
+                    }`}
+                >
                     <Fade delay={1000} triggerOnce cascade>
                         <div>
                             <h1 className="text-4xl font-semibold text-center mb-10">
                                 Favorite Artists
                             </h1>
                             <TopArtists artists={data.artists} />
+                        </div>
+                    </Fade>
+                    <Fade delay={500} triggerOnce cascade>
+                        <div>
+                            <h1 className="text-4xl font-semibold text-center mb-5">
+                                Currently Listening
+                            </h1>
+                            <CurrentPlaying song={currentlyPlaying} />
                         </div>
                     </Fade>
                 </div>
