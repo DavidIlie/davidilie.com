@@ -37,7 +37,7 @@ function Music({ data, error }) {
                             : "mr-12"
                     }`}
                 >
-                    <Fade delay={500} triggerOnce cascade>
+                    <Fade delay={600} triggerOnce cascade>
                         <div>
                             <h1 className="text-4xl font-semibold text-center mb-10">
                                 Favorite Artists
@@ -45,7 +45,7 @@ function Music({ data, error }) {
                             <TopArtists artists={data.artists} />
                         </div>
                     </Fade>
-                    <Fade delay={1500} triggerOnce cascade>
+                    <Fade delay={1100} triggerOnce cascade>
                         <div>
                             <h1 className="text-4xl font-semibold text-center mb-5">
                                 Currently Listening
@@ -55,7 +55,7 @@ function Music({ data, error }) {
                     </Fade>
                 </div>
                 <div className="flex justify-center items-center mt-10 ml-10 flex-wrap">
-                    <Fade delay={1700} triggerOnce cascade>
+                    <Fade delay={1200} triggerOnce cascade>
                         <div>
                             <h1 className="text-4xl font-semibold text-center mb-3">
                                 Top Played Songs
@@ -64,7 +64,7 @@ function Music({ data, error }) {
                         </div>
                     </Fade>
 
-                    <Fade delay={2100} triggerOnce cascade>
+                    <Fade delay={1700} triggerOnce cascade>
                         <div>
                             <h1 className="text-4xl font-semibold text-center mb-3">
                                 Recently Played
