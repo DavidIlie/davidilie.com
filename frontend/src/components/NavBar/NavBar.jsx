@@ -61,12 +61,6 @@ export const NavBar = () => {
                         <div className="ml-10 flex items-baseline space-x-4">
                             <a
                                 className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium duration-200"
-                                href="https://thedavidones.live"
-                            >
-                                Blog
-                            </a>
-                            <a
-                                className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium duration-200"
                                 href="https://status.davidilie.com"
                             >
                                 Status
@@ -127,7 +121,10 @@ export const NavBar = () => {
                             return (
                                 <span
                                     onClick={() =>
-                                        !current ? router.push(page.url) : null
+                                        !current
+                                            ? router.push(page.url) &&
+                                              setClickMobileMenu(false)
+                                            : null
                                     }
                                     key={index}
                                     className={
@@ -141,12 +138,6 @@ export const NavBar = () => {
                             );
                         })}
                         <hr class="border-0 bg-gray-500 text-gray-500 h-px" />
-                        <a
-                            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                            href="https://thedavidones.live"
-                        >
-                            Blog
-                        </a>
                         <a
                             className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                             href="https://status.davidilie.com"
