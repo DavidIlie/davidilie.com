@@ -13,7 +13,7 @@ const SongCard = ({ song, titleCard, isPlaying }) => {
             target="_blank"
             href={song.external_urls?.spotify}
             h="full"
-            w="650px"
+            w={{ base: "400px", md: "500px", lg: "600px" }}
             isTruncated
             overflow="visible"
         >
@@ -21,7 +21,7 @@ const SongCard = ({ song, titleCard, isPlaying }) => {
                 my={5}
                 p={5}
                 overflow="visible"
-                width="600px"
+                w={{ base: "400px", md: "500px", lg: "600px" }}
                 maxWidth="2xl"
                 templateColumns={`${titleCard ? `150px` : `110px`} 1fr`}
                 border="1px solid"

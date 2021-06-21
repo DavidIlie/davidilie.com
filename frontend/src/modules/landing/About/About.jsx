@@ -24,11 +24,11 @@ export const About = () => {
 
     return (
         <>
-            <div className="bg-blue-600 text-white text-center px-10 pt-32 pb-32">
+            <div className="bg-blue-600 text-white text-center px-10 pt-24 pb-32">
                 <h1
                     className={`${
                         AboutView ? "visible animate-fade-in-down" : "invisible"
-                    } text-4xl font-semibold mb-5`}
+                    } 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-4xl text-4xl font-semibold mb-5`}
                 >
                     First of all, Who am i?
                 </h1>

@@ -22,12 +22,20 @@ function Music({ data, error }) {
             <div className="text-white pt-32 pb-32">
                 <Fade direction="up" triggerOnce cascade>
                     <h1 className="2xl:text-6xl xl:text-6xl md:text-5xl lg:text-4xl sm:text-4xl text-4xl text-center font-semibold">
-                        Here's what I'm listening to at the moment
+                        Here is the music I listen.
                     </h1>
                 </Fade>
                 <Fade delay={500} direction="up" triggerOnce cascade>
                     <h1 className="text-center text-section mb-16">
-                        I'm a little "classic" when it comes to music
+                        I'm a little{" "}
+                        <span className="font-semibold text-green-600">
+                            classic
+                        </span>{" "}
+                        when it comes to{" "}
+                        <span className="font-semibold text-green-600">
+                            music
+                        </span>
+                        .
                     </h1>
                 </Fade>
                 <div
@@ -38,9 +46,9 @@ function Music({ data, error }) {
                     }`}
                 >
                     <Fade delay={600} triggerOnce cascade>
-                        <div>
+                        <div className="2xl:mb-0 xl:mb-0 md:mb-0 lg:mb-0 mb-12">
                             <h1 className="text-4xl font-semibold text-center mb-10">
-                                Favorite Artists
+                                Top Artists
                             </h1>
                             <TopArtists artists={data.artists} />
                         </div>
@@ -54,7 +62,7 @@ function Music({ data, error }) {
                         </div>
                     </Fade>
                 </div>
-                <div className="flex justify-center items-center mt-10 ml-10 flex-wrap">
+                <div className="flex justify-center items-center mt-10 ml-10 2xl:space-x-6 xl:space-x-6 md:space-x-6 lg:space-x-6 flex-wrap">
                     <Fade delay={1200} triggerOnce cascade>
                         <div>
                             <h1 className="text-4xl font-semibold text-center mb-3">

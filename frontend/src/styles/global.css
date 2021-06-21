@@ -1,3 +1,11 @@
+.header-gradient {
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(rgb(43, 172, 144), rgb(0, 102, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .loading-loader {
     border-radius: 50%;
     position: relative;
