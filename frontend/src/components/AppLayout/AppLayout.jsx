@@ -18,21 +18,21 @@ export const AppLayout = ({ children }) => {
                 <SVG icon="hexa" width={48} stroke left="60%" top="6%" />
                 <SVG icon="box" width={6} left="60%" top="4%" />
                 <SVG icon="triangle" width={48} stroke left="98%" top="8%" />
-                <SVG icon="hexa" width={48} stroke left="30%" top="15%" />
+                <SVG icon="hexa" width={48} stroke left="30%" top="25%" />
                 <SVG icon="box" width={6} left="12%" top="70%" />
                 <SVG icon="triangle" width={48} stroke left="80%" top="14%" />
                 <SVG icon="box" width={6} left="18%" top="29%" />
-                <SVG icon="triangle" width={48} stroke left="12%" top="18%" />
+                <SVG icon="triangle" width={48} stroke left="12%" top="28%" />
                 <SVG icon="hexa" width={48} stroke left="10%" top="5%" />
-                <SVG icon="box" width={6} left="70%" top="12%" />
+                <SVG icon="box" width={6} left="70%" top="22%" />
             </UpDown>
             <UpDown type="wide">
                 <SVG icon="hexa" width={24} stroke left="65%" top="8%" />
-                <SVG icon="box" width={12} stroke left="90%" top="50%" />
-                <SVG icon="triangle" width={16} stroke left="30%" top="4%" />
+                <SVG icon="box" width={12} stroke left="10%" top="50%" />
+                <SVG icon="triangle" width={16} stroke left="30%" top="24%" />
                 <SVG icon="hexa" width={24} stroke left="12%" top="80%" />
-                <SVG icon="triangle" width={12} stroke left="50%" top="2%" />
-                <SVG icon="triangle" width={16} stroke left="80%" top="1%" />
+                <SVG icon="triangle" width={12} stroke left="50%" top="32%" />
+                <SVG icon="triangle" width={16} stroke left="80%" top="21%" />
                 <SVG icon="hexa" width={24} stroke left="85%" top="8%" />
                 <SVG icon="triangle" width={12} stroke left="90%" top="73%" />
                 <SVG icon="hexa" width={16} stroke left="60%" top="84%" />
