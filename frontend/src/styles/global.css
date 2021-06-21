@@ -6,6 +6,10 @@
     -webkit-text-fill-color: transparent;
 }
 
+.hoverItem:hover {
+    transform: translateY(-4px);
+}
+
 .loading-loader {
     border-radius: 50%;
     position: relative;

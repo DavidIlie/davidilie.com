@@ -1,5 +1,3 @@
-import { chakra } from "@chakra-ui/react";
-
 const icons = {
     triangle: {
         shape: (
@@ -40,10 +38,8 @@ const icons = {
 export const SVG = ({
     stroke = false,
     color = `${
-        [`gray`, `brand`, `teal`, `blue`, `green`][
-            Math.floor(Math.random() * 6)
-        ]
-    }.${[`50`, `100`, `200`, `300`, `400`][Math.floor(Math.random() * 5)]}`,
+        [`gray`, `indigo`, `blue`, `green`][Math.floor(Math.random() * 5)]
+    }-${[`50`, `100`, `200`, `300`, `400`][Math.floor(Math.random() * 5)]}`,
     zIndex = -500,
     width,
     icon,
@@ -51,22 +47,19 @@ export const SVG = ({
     top,
     hiddenMobile = false,
 }) => (
-    <chakra.svg
-        sx={{
-            position: `absolute`,
-            stroke: stroke ? `currentColor` : `none`,
-            fill: stroke ? `none` : `currentColor`,
-            display: hiddenMobile ? { base: `none`, md: `block` } : `block`,
-            overflow: `visible`,
-            color,
+    <svg
+        stroke={stroke ? "currentColor" : `none`}
+        fill={stroke ? `none` : `currentColor`}
+        className={`absolute w-${width} text-${color}`}
+        style={{
+            filter: "blur(8px) saturate(180%)",
+            left: left,
+            top: top,
             zIndex,
-            width,
-            left,
-            top,
-            filter: `blur(8px) saturate(180%)`,
+            display: hiddenMobile ? { base: `none`, md: `block` } : `block`,
         }}
         viewBox={icons[icon].viewBox}
     >
         {icons[icon].shape}
-    </chakra.svg>
+    </svg>
 );

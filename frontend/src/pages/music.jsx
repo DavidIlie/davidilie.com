@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 
+import { NextSeo } from "next-seo";
 import { Fade } from "react-awesome-reveal";
 
 import TopArtists from "@modules/music/TopArtists";
@@ -19,9 +20,10 @@ function Music({ data, error }) {
 
     return (
         <>
+            <NextSeo title="Music" />
             <div className="text-white pt-32 pb-32">
                 <Fade direction="up" triggerOnce cascade>
-                    <h1 className="2xl:text-6xl xl:text-6xl md:text-5xl lg:text-4xl sm:text-4xl text-4xl text-center font-semibold">
+                    <h1 className="2xl:text-6xl xl:text-6xl md:text-5xl lg:text-4xl sm:text-4xl text-4xl text-center font-bold header-gradient">
                         Here is the music I listen.
                     </h1>
                 </Fade>

@@ -5,7 +5,6 @@ import Footer from "@components/Footer";
 
 import { UpDown } from "@components/Animations/Animation";
 import SVG from "@components/SVG";
-import { Box } from "@chakra-ui/react";
 
 export const AppLayout = ({ children }) => {
     return (
@@ -66,7 +65,9 @@ export const AppLayout = ({ children }) => {
                 />
             </UpDown>
             <NavBar />
-            <Box bg={"rgba(26, 33, 42, 0.8)"}>{children}</Box>
+            <div style={{ background: "rgba(26, 33, 42, 0.8)" }}>
+                {children}
+            </div>
             <Footer />
         </div>
     );

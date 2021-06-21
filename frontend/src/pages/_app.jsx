@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
-import { ChakraProvider } from "@chakra-ui/react";
 import Loader from "@components/Loader";
 import { DefaultSeo } from "next-seo";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { checkAPI } from "@lib/checkAPI";
-import theme from "../theme";
 import AppLayout from "@components/AppLayout";
 
 import "tailwindcss/tailwind.css";
@@ -39,6 +37,7 @@ function PersonalWebsite({ Component, pageProps, router }) {
         <>
             <DefaultSeo
                 defaultTitle="David Ilie"
+                titleTemplate="%s | David Ilie"
                 openGraph={{
                     title: `David Ilie`,
                     type: `website`,
@@ -52,13 +51,11 @@ function PersonalWebsite({ Component, pageProps, router }) {
                 }}
                 description="A 14 year aspiring web developer experimenting by publishing my work on the web."
             />
-            <ChakraProvider theme={theme}>
-                <QueryClientProvider client={queryClient}>
-                    <AppLayout>
-                        {loading ? <Loader /> : <Component {...pageProps} />}
-                    </AppLayout>
-                </QueryClientProvider>
-            </ChakraProvider>
+            <QueryClientProvider client={queryClient}>
+                <AppLayout>
+                    {loading ? <Loader /> : <Component {...pageProps} />}
+                </AppLayout>
+            </QueryClientProvider>
             <ToastContainer autoClose={2500} newestOnTop={true} />
         </>
     );
