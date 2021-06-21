@@ -28,6 +28,7 @@ export const Socials = ({ font, invisible }) => {
         >
             <SocialIcon
                 tooltip="DavidIlie"
+                newPage
                 link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/github`}
             >
                 <FaGithub className="mb-1" />
@@ -37,18 +38,21 @@ export const Socials = ({ font, invisible }) => {
             </SocialIcon>
             <SocialIcon
                 tooltip="Albastru"
+                newPage
                 link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/youtube`}
             >
                 <FaYoutube className="mb-1" />
             </SocialIcon>
             <SocialIcon
                 tooltip="AlbastruYT"
+                newPage
                 link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/twitch`}
             >
                 <FaTwitch />
             </SocialIcon>
             <SocialIcon
                 tooltip="AlbastruYT"
+                newPage
                 link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/twitter`}
             >
                 <FaTwitter />

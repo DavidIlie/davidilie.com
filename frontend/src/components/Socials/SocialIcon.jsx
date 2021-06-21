@@ -6,7 +6,7 @@ export const SocialIcon = (props) => {
             <Tooltip content={props.tooltip} placement="bottom">
                 <a
                     href={props.link}
-                    target="_blank"
+                    target={props.newPage ? "_blank" : ""}
                     className="hover:text-blue-100 duration-250"
                     {...props}
                 >
