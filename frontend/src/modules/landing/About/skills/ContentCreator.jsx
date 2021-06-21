@@ -17,6 +17,7 @@ export const ContentCreator = () => {
         <div className="xl:w-1/3 xs:w-full pt-10 px-5">
             <img
                 src="/images/svg/contentcreator.svg"
+                alt="Content Creator"
                 className="h-24 w-24 mx-auto animate-bounce-up mb-4"
             />
             <div className="text-center mb-10">

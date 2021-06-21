@@ -26,19 +26,31 @@ export const Socials = ({ font, invisible }) => {
                 invisible ? "invisible" : "visible"
             }`}
         >
-            <SocialIcon tooltip="DavidIlie" link="/api/redir/github">
+            <SocialIcon
+                tooltip="DavidIlie"
+                link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/github`}
+            >
                 <FaGithub className="mb-1" />
             </SocialIcon>
             <SocialIcon tooltip="Albastru#0871" onClick={HandleCopy}>
                 <FaDiscord />
             </SocialIcon>
-            <SocialIcon tooltip="Albastru" link="/api/redir/youtube">
+            <SocialIcon
+                tooltip="Albastru"
+                link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/youtube`}
+            >
                 <FaYoutube className="mb-1" />
             </SocialIcon>
-            <SocialIcon tooltip="AlbastruYT" link="/api/redir/twitch">
+            <SocialIcon
+                tooltip="AlbastruYT"
+                link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/twitch`}
+            >
                 <FaTwitch />
             </SocialIcon>
-            <SocialIcon tooltip="AlbastruYT" link="/api/redir/twitter">
+            <SocialIcon
+                tooltip="AlbastruYT"
+                link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/twitter`}
+            >
                 <FaTwitter />
             </SocialIcon>
         </div>

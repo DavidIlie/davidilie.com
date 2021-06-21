@@ -3,6 +3,7 @@ export const BackendDeveloper = () => {
         <div className="xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 border-b-2 border-fuchsia-600 px-5 pt-10">
             <img
                 src="/images/svg/backend.svg"
+                alt="Backend Developer"
                 className="h-24 w-24 mx-auto animate-pulse mb-4"
             />
             <div className="text-center mb-10">

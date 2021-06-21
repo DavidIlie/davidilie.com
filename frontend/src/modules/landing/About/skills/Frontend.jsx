@@ -3,6 +3,7 @@ export const FrontendDeveloper = () => {
         <div className="xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 2xl:border-b-0 md:border-b-0 xl:border-b-0 border-b-2 border-fuchsia-600 px-5 pt-10">
             <img
                 src="/images/svg/frontend.svg"
+                alt="Frontend Developer"
                 className="h-24 w-24 mx-auto animate-wiggle mb-4"
             />
             <div className="text-center mb-10">
