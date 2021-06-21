@@ -31,11 +31,13 @@ function Music({ data, error }) {
                     </h1>
                 </Fade>
                 <div
-                    className={`flex justify-center 2xl:space-x-20 xl:space-x-20 md:space-x-20 lg:space-x-20 flex-wrap mb-16 ${
-                        currentlyPlaying?.isPlaying !== false ? "ml-12" : ""
+                    className={`flex justify-center 2xl:space-x-28 xl:space-x-28 md:space-x-28 lg:space-x-28 flex-wrap mb-16 ${
+                        currentlyPlaying?.isPlaying !== false
+                            ? "ml-12"
+                            : "mr-12"
                     }`}
                 >
-                    <Fade delay={1000} triggerOnce cascade>
+                    <Fade delay={500} triggerOnce cascade>
                         <div>
                             <h1 className="text-4xl font-semibold text-center mb-10">
                                 Favorite Artists
@@ -43,7 +45,7 @@ function Music({ data, error }) {
                             <TopArtists artists={data.artists} />
                         </div>
                     </Fade>
-                    <Fade delay={500} triggerOnce cascade>
+                    <Fade delay={1500} triggerOnce cascade>
                         <div>
                             <h1 className="text-4xl font-semibold text-center mb-5">
                                 Currently Listening
@@ -52,19 +54,19 @@ function Music({ data, error }) {
                         </div>
                     </Fade>
                 </div>
-                <div className="flex justify-center items-center space-x-10 mt-10 flex-wrap">
-                    <Fade delay={1500} triggerOnce cascade>
+                <div className="flex justify-center items-center mt-10 ml-10 flex-wrap">
+                    <Fade delay={1700} triggerOnce cascade>
                         <div>
-                            <h1 className="text-4xl font-semibold text-center mb-6">
+                            <h1 className="text-4xl font-semibold text-center mb-3">
                                 Top Played Songs
                             </h1>
                             <TopSongs songs={data.songs.items} />
                         </div>
                     </Fade>
 
-                    <Fade delay={2000} triggerOnce cascade>
+                    <Fade delay={2100} triggerOnce cascade>
                         <div>
-                            <h1 className="text-4xl font-semibold text-center mb-5">
+                            <h1 className="text-4xl font-semibold text-center mb-3">
                                 Recently Played
                             </h1>
                             <RecentSongs songs={data.recentlyPlayed.items} />

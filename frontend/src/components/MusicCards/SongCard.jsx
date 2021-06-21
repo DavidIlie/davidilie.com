@@ -21,7 +21,7 @@ const SongCard = ({ song, titleCard, isPlaying }) => {
                 my={5}
                 p={5}
                 overflow="visible"
-                width="650px"
+                width="600px"
                 maxWidth="2xl"
                 templateColumns={`${titleCard ? `150px` : `110px`} 1fr`}
                 border="1px solid"
