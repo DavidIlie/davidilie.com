@@ -15,4 +15,12 @@ export const pinnedRepos = [
         description:
             "I never found a good way to display my YouTube analytics in a text format on my stream like popular Twitch streamers do, so I made my own. This is a pretty scuffed project as its the first one I did using Typescript.",
     },
+    {
+        image: "https://user-images.githubusercontent.com/47594764/122973725-d6a83a80-d391-11eb-8e23-ba35a1c1f234.png",
+        name: "Personal Website",
+        id: "davidilie.com",
+        language: "Javascript",
+        description:
+            "This website has been my testing grounds since it has been created. It allowed me to experiment with different technologies/different techniques and so on. I've always had an interest to properly learn TailwindCSS, and I am having a blast creating it.",
+    },
 ];

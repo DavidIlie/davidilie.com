@@ -63,7 +63,7 @@ function Projects({ repos }) {
                     <p className="text-section mt-2 mb-10">
                         A list of all my public repositories on GitHub.
                     </p>
-                    <div className="flex flex-wrap justify-center gap-4">
+                    <div className="flex flex-wrap justify-center gap-4 ">
                         <Fade
                             duration={500}
                             direction="up"
