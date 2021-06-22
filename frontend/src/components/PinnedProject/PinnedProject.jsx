@@ -53,7 +53,7 @@ export const PinnedProject = ({ repo, left, projectData }) => {
             </div>
         </div>
     ) : (
-        <div className="p-4" style={{ width: "450px" }}>
+        <div className="p-4" style={{ width: "400px" }}>
             <div className="p-2 h-full bg-gray-800 rounded-lg overflow-hidden">
                 <h1 className="text-2xl font-semibold">
                     {projectData.name}

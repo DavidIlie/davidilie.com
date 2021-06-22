@@ -78,7 +78,7 @@ function Projects({ repos }) {
                     className="mb-10"
                 />
 
-                <div className="flex flex-wrap justify-center gap-2 mx-10">
+                <div className="flex flex-wrap justify-center gap-2 2xl:mx-10 xl:mx-10 md:mx-10 lg:mx-10 mx-0">
                     {repos
                         .sort(
                             (a, b) =>
