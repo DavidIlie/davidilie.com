@@ -3,7 +3,7 @@ export const RepoCard = ({ repo, i }) => {
         <a
             key={i.toString()}
             href={repo.html_url}
-            className="h-full w-full truncate overflow-visible"
+            className="h-full w-full truncate overflow-visible p-1"
             style={{ width: "400px" }}
         >
             <div className="justify-start items-start flex p-3 truncate bg-gray-800 rounded-lg shadow-lg duration-200 hoverItem text-left pl-5 flex-col">
