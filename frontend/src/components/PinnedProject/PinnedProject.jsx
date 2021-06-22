@@ -106,9 +106,3 @@ const ProjectImage = ({ link }) => {
         />
     );
 };
-
-// export const PinnedProject = ({ repo, projectData }) => {
-//     return (
-
-//     );
-// };
