@@ -21,6 +21,6 @@ export const pinnedRepos = [
         id: "davidilie.com",
         language: "Javascript",
         description:
-            "This website has been my testing grounds since it has been created. It allowed me to experiment with different technologies/different techniques and so on. I've always had an interest to properly learn TailwindCSS, and I am having a blast creating it.",
+            "This website has been my testing grounds since it has been created. It allowed me to experiment with different technologies/different techniques and so on. The website uses NextJS along with TailwindCSS, and I am having a blast working on it.",
     },
 ];
