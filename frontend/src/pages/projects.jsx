@@ -93,7 +93,7 @@ function Projects({ repos }) {
     );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/github`);
 
     const { stars, repos, followers } = await response.json();
