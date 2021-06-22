@@ -1,36 +1,103 @@
 import { Fade } from "react-awesome-reveal";
 
-import WIP from "@components/WIP";
+import { pinnedRepos } from "../../data/pinnedRepos";
+import PinnedProject from "@components/PinnedProject";
+
+import RepoCard from "@components/RepoCard";
 
 import { NextSeo } from "next-seo";
 
-export default function Home() {
+function Projects({ repos }) {
     return (
         <>
             <NextSeo title="Projects" />
-            <WIP />
-            {/* <div className="text-white pt-32 pb-32 w-full h-full mx-auto px-3">
-                <div className="text-center">
-                    <Fade direction="up" triggerOnce cascade>
-                        <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
-                            My projects
-                        </h1>
-                    </Fade>
-                    <Fade delay={500} direction="up" triggerOnce cascade>
-                        <p className="text-section mt-2">
-                            A quick collection of my projects.
-                        </p>
-                    </Fade>
-                </div> 
+            <div className="text-white text-center pt-20 pb-12 w-full h-full mx-auto px-3">
+                <Fade direction="up" triggerOnce cascade>
+                    <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
+                        My projects
+                    </h1>
+                </Fade>
+                <Fade delay={500} direction="up" triggerOnce cascade>
+                    <p className="text-section mt-2 mb-5">
+                        A quick collection of my projects.
+                    </p>
+                </Fade>
+                <div className="flex justify-center items-center flex-wrap">
+                    <div className="flex justify-center flex-wrap">
+                        <Fade delay={1000} direction="up" triggerOnce cascade>
+                            {pinnedRepos
+                                .sort(
+                                    (a, b) =>
+                                        new Date(
+                                            repos.filter(
+                                                (x) => x.name === a.id
+                                            )[0].created_at
+                                        ).getTime() -
+                                        new Date(
+                                            repos.filter(
+                                                (y) => y.name === b.id
+                                            )[0].created_at
+                                        ).getTime()
+                                )
+                                .reverse()
+                                .map((data, index) => (
+                                    <PinnedProject
+                                        key={index}
+                                        repo={
+                                            repos.filter(
+                                                (x) => x.name === data.id
+                                            )[0]
+                                        }
+                                        left={index % 2 === 0}
+                                        projectData={data}
+                                    />
+                                ))}
+                        </Fade>
+                    </div>
+                </div>
+
                 <div className="text-center">
                     <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
                         Repositories
                     </h1>
-                    <p className="text-section mt-2">
+                    <p className="text-section mt-2 mb-10">
                         A list of all my public repositories on GitHub.
                     </p>
+                    <div className="flex flex-wrap justify-center gap-4">
+                        <Fade
+                            duration={500}
+                            direction="up"
+                            triggerOnce
+                            cascade
+                            style={{ width: "400px" }}
+                        >
+                            {repos
+                                .sort(
+                                    (a, b) =>
+                                        new Date(a.pushed_at).getTime() -
+                                        new Date(b.pushed_at).getTime()
+                                )
+                                .reverse()
+                                .map((repo, index) => (
+                                    <RepoCard
+                                        key={index.toString()}
+                                        repo={repo}
+                                        i={index}
+                                    />
+                                ))}
+                        </Fade>
+                    </div>
                 </div>
-            </div> */}
+            </div>
         </>
     );
 }
+
+export async function getStaticProps() {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/github`);
+
+    const { stars, repos, followers } = await response.json();
+    return { props: { stars, repos, followers, revalidate: 600 } };
+}
+
+export default Projects;

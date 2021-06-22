@@ -1,0 +1,28 @@
+export const RepoCard = ({ repo, i }) => {
+    return (
+        <a
+            key={i.toString()}
+            href={repo.html_url}
+            className="h-full w-full truncate overflow-visible"
+            style={{ width: "400px" }}
+        >
+            <div className="justify-start items-start flex p-3 truncate bg-gray-800 rounded-lg shadow-lg duration-200 transform hoverItem text-left pl-5 flex-col">
+                <h1 className="mb-3 font-semibold text-xl truncate">
+                    {repo.name}
+
+                    {repo.language ? (
+                        <span className="ml-2 inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-green-100 bg-green-600 rounded-md">
+                            {repo.language}
+                        </span>
+                    ) : null}
+                </h1>
+                <h1
+                    className="text-gray-400 max-w-full truncate"
+                    style={{ justifySelf: "center" }}
+                >
+                    {repo.description}
+                </h1>
+            </div>
+        </a>
+    );
+};
