@@ -6,7 +6,7 @@ export const RepoCard = ({ repo, i }) => {
             className="h-full w-full truncate overflow-visible"
             style={{ width: "400px" }}
         >
-            <div className="justify-start items-start flex p-3 truncate bg-gray-800 rounded-lg shadow-lg duration-200 transform hoverItem text-left pl-5 flex-col">
+            <div className="justify-start items-start flex p-3 truncate bg-gray-800 rounded-lg shadow-lg duration-200 hoverItem text-left pl-5 flex-col">
                 <h1 className="mb-3 font-semibold text-xl truncate">
                     {repo.name}
 

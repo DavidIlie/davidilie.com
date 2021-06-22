@@ -17,6 +17,14 @@ module.exports = {
             "7xl": "5rem",
             section: "1.27rem",
         },
+        screens: {
+            xs: "416px",
+            sm: "600px",
+            md: "768px",
+            lg: "1024px",
+            xl: "1280px",
+            xxl: "1520px",
+        },
         extend: {
             gridTemplateColumns: {
                 musicTitle: "minmax(150px, 1fr)",

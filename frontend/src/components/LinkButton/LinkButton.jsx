@@ -1,6 +1,8 @@
-export const LinkButton = ({ link, text, Icon }) => {
+export const LinkButton = ({ link, text, Icon, className }) => {
     return (
-        <button className="bg-gray-700 hover:bg-blue-500 duration-200 p-2 rounded-xl">
+        <button
+            className={`bg-gray-700 hover:bg-blue-500 duration-200 p-2 rounded-xl ${className}`}
+        >
             <a href={link} target="_blank" className="inline-flex items-center">
                 <Icon className="w-4 h-4 mr-2" />
                 {text}

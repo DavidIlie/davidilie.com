@@ -3,6 +3,9 @@ import { Fade } from "react-awesome-reveal";
 import { pinnedRepos } from "../../data/pinnedRepos";
 import PinnedProject from "@components/PinnedProject";
 
+import LinkButton from "@components/LinkButton";
+import { FaGithub } from "react-icons/fa";
+
 import RepoCard from "@components/RepoCard";
 
 import { NextSeo } from "next-seo";
@@ -11,20 +14,26 @@ function Projects({ repos }) {
     return (
         <>
             <NextSeo title="Projects" />
-            <div className="text-white text-center pt-20 pb-12 w-full h-full mx-auto px-3">
+            <div className="text-white text-center pt-32 pb-12 px-3">
                 <Fade direction="up" triggerOnce cascade>
                     <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
                         My projects
                     </h1>
                 </Fade>
-                <Fade delay={500} direction="up" triggerOnce cascade>
+                <Fade direction="up" triggerOnce cascade>
                     <p className="text-section mt-2 mb-5">
                         A quick collection of my projects.
                     </p>
                 </Fade>
                 <div className="flex justify-center items-center flex-wrap">
-                    <div className="flex justify-center flex-wrap">
-                        <Fade delay={1000} direction="up" triggerOnce cascade>
+                    <div>
+                        <Fade
+                            delay={500}
+                            duration={750}
+                            direction="up"
+                            triggerOnce
+                            cascade
+                        >
                             {pinnedRepos
                                 .sort(
                                     (a, b) =>
@@ -56,37 +65,34 @@ function Projects({ repos }) {
                     </div>
                 </div>
 
-                <div className="text-center">
-                    <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
-                        Repositories
-                    </h1>
-                    <p className="text-section mt-2 mb-10">
-                        A list of all my public repositories on GitHub.
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-4 ">
-                        <Fade
-                            duration={500}
-                            direction="up"
-                            triggerOnce
-                            cascade
-                            style={{ width: "400px" }}
-                        >
-                            {repos
-                                .sort(
-                                    (a, b) =>
-                                        new Date(a.pushed_at).getTime() -
-                                        new Date(b.pushed_at).getTime()
-                                )
-                                .reverse()
-                                .map((repo, index) => (
-                                    <RepoCard
-                                        key={index.toString()}
-                                        repo={repo}
-                                        i={index}
-                                    />
-                                ))}
-                        </Fade>
-                    </div>
+                <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
+                    Repositories
+                </h1>
+                <p className="text-section mt-2 mb-4">
+                    A list of all my public repositories on GitHub.
+                </p>
+                <LinkButton
+                    link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/github`}
+                    Icon={FaGithub}
+                    text="View my profile"
+                    className="mb-10"
+                />
+
+                <div className="flex flex-wrap justify-center gap-4 mx-10">
+                    {repos
+                        .sort(
+                            (a, b) =>
+                                new Date(a.pushed_at).getTime() -
+                                new Date(b.pushed_at).getTime()
+                        )
+                        .reverse()
+                        .map((repo, index) => (
+                            <RepoCard
+                                key={index.toString()}
+                                repo={repo}
+                                i={index}
+                            />
+                        ))}
                 </div>
             </div>
         </>
