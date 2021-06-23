@@ -15,7 +15,16 @@ function Music({ data, error }) {
         { refetchOnMount: true }
     );
     if (error || currentError) {
-        return <div>There was an error fetching data from spotify</div>;
+        return (
+            <Fade direction="down">
+                <div className="flex flex-col justify-center items-center h-screen w-full">
+                    <h1 className="header-gradient font-semibold 2xl:text-6xl xl:text-6xl md:text-6xl lg:text-6xl text-4xl text-center max-w-5xl">
+                        There was an error fetching the data from Spotify.
+                    </h1>
+                    <p className="text-gray-500 text-2xl">Come back later!</p>
+                </div>
+            </Fade>
+        );
     }
 
     return (

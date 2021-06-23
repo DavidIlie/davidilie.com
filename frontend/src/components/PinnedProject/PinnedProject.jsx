@@ -101,6 +101,7 @@ const ProjectImage = ({ link }) => {
             class="w-full object-cover md:h-full md:w-96"
             height="400px"
             width="1250px"
+            loading="eager"
             src={link}
             alt="project image"
         />
