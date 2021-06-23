@@ -1,6 +1,6 @@
 import { Fade } from "react-awesome-reveal";
 
-import { pinnedRepos } from "../../data/pinnedRepos";
+import { pinnedRepos } from "@data/pinnedRepos";
 import PinnedProject from "@components/PinnedProject";
 
 import LinkButton from "@components/LinkButton";
