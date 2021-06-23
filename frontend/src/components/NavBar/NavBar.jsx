@@ -40,7 +40,14 @@ export const NavBar = () => {
                                         <span
                                             onClick={() =>
                                                 !current
-                                                    ? router.push(page.url)
+                                                    ? router
+                                                          .push(page.url)
+                                                          .then(() =>
+                                                              window.scrollTo(
+                                                                  0,
+                                                                  0
+                                                              )
+                                                          )
                                                     : null
                                             }
                                             key={index}
@@ -122,8 +129,11 @@ export const NavBar = () => {
                                 <span
                                     onClick={() =>
                                         !current
-                                            ? router.push(page.url) &&
-                                              setClickMobileMenu(false)
+                                            ? router
+                                                  .push(page.url)
+                                                  .then(() =>
+                                                      window.scrollTo(0, 0)
+                                                  ) && setClickMobileMenu(false)
                                             : null
                                     }
                                     key={index}
