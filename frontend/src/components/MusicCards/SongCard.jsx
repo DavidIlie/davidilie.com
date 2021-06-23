@@ -27,6 +27,10 @@ const SongCard = ({ song, titleCard, isPlaying }) => {
                         className={styles.image}
                         width={titleCard ? `150px` : `110px`}
                         height={titleCard ? `150px` : `110px`}
+                        blurDataURL={
+                            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
+                        }
+                        placeholder="blur"
                         src={
                             song.albumImageUrl ||
                             song.album.images

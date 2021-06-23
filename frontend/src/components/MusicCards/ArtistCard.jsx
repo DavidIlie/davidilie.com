@@ -15,6 +15,10 @@ const AristCard = ({ artist }) => {
                 alt={artist?.name + " artist image"}
                 width="150px"
                 height="150px"
+                blurDataURL={
+                    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
+                }
+                placeholder="blur"
                 src={
                     artist.images
                         .filter((image) => image.height >= 150)

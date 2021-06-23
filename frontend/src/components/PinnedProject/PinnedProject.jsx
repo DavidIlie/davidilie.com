@@ -78,6 +78,10 @@ export const PinnedProject = ({ repo, left, projectData }) => {
                     src={projectData.image}
                     width="720px"
                     height="400px"
+                    blurDataURL={
+                        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
+                    }
+                    placeholder="blur"
                     alt={projectData.name}
                 />
                 <div className="px-3 py-3">
@@ -101,7 +105,10 @@ const ProjectImage = ({ link }) => {
             class="w-full object-cover md:h-full md:w-96"
             height="400px"
             width="1250px"
-            loading="eager"
+            blurDataURL={
+                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
+            }
+            placeholder="blur"
             src={link}
             alt="project image"
         />
