@@ -1,0 +1,165 @@
+---
+title: "Welcome to my Blog! - The backstory, How it works, etc."
+publishedAt: "2021-06-24"
+summary: "This is my first ever blog post on this website! On this blog post I completely document how the Blog post works, to the seeing how many views it has to storing the actual blog post in the first place. Worth a read!"
+tags: ["WebDev", "Next.JS", "Blogging", "Backend"]
+by: { name: "David Ilie", avatar: "/images/png/me.png" }
+image: "/images/blog/hello/banner.png"
+---
+
+# Hello There!
+
+Hey! Welcome to my very fist blog post (on this website)! I used to run a blog like this one on a previous website ([The David Ones](https://thedavidones.live)) but I decided that it would be more fun to create the blog myself instead of using [Ghost](https://ghost.org/) as the publisher, which is what I did.
+
+Talking about how the blog is made, I decided to challenge myself to make this a fully fledged blog.
+
+## What am I using?
+
+I am a huge fan of [Next.JS](https://nextjs.org/), so its already extremely easy to store the blog posts locally due to the fact that Next.JS uses Server Side Rendering as opposed to React's Client Side Rendering.
+
+```jsx:src/pages/projects.jsx
+export async function getServerSideProps() {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/github`);
+
+    const { stars, repos, followers } = await response.json();
+    return { props: { stars, repos, followers, revalidate: 600 } };
+}
+```
+
+The code below fetches data for my [projects](/projects) page. However you will see later an example with my blog.
+
+Along with this, I use [MDX](https://mdxjs.com/) which is the simplest way to use custom React Components with my Markdown code. For instance, I use a custom component to display my code blocks to make them look even more interactive than they would be just normally displayed as text:
+
+```jsx:src/components/MDXComponents/MDXComponents.jsx
+export const CustomCode = (props) => {
+    return (
+        <code
+            {...props}
+            className={`${props.className} text-gray-200 code overflow-auto`}
+        />
+    );
+};
+```
+
+## How does it work?
+
+Each blog post is a `.mdx` file which is kept at `src/data/blog/*post*.mdx`. When you visit the Blog page. A function is called which gets all my blog posts and returns them as props which can be displayed onto the page:
+
+```jsx:src/lib/mdx.js
+export async function getAllFilesFrontMatter() {
+  const files = fs.readdirSync(path.join(process.cwd(), `src`, `data`, `blog`));
+
+  return files.reduce((allPosts, postSlug) => {
+    const source = fs.readFileSync(
+      path.join(process.cwd(), `src`, `data`, `blog`, postSlug),
+      `utf8`
+    );
+    const { data } = matter(source);
+
+    return [
+      {
+        ...data,
+        slug: postSlug.replace(`.mdx`, ``),
+      },
+      ...allPosts,
+    ];
+  }, []);
+}
+```
+
+However, that is just to get a list of blog posts. But how do we get the information in the blog post actually displayed?
+
+Well, we will be using [dynamic pages](https://nextjs.org/docs/routing/dynamic-routes) which will take our blog name and find the correct `.mdx` file.
+
+```jsx:src/pages/blog/[slug].jsx
+export async function getStaticPaths() {
+    const posts = await getFiles(`blog`);
+
+    return {
+        paths: posts.map((p) => ({
+            params: {
+                slug: p.replace(/\.mdx/, ``),
+            },
+        })),
+        fallback: false,
+    };
+}
+
+export async function getStaticProps({ params }) {
+    const post = await getFileBySlug(`blog`, params.slug);
+
+    return { props: { ...post } };
+}
+```
+
+With the file found, we can now proceed to the more complicated stuff.
+
+## How is the informaton formatted?
+
+A layout is used for each blog post to show the elements that needs to persist between each blog post. This consists on the things you see at the very top (title, author, etc).
+
+```jsx:src/components/BlogLayout/BlogLayout.jsx
+<article className="text-white flex flex-col justify-start pt-28 w-full min-h-screen mx-auto max-w-2xl">
+    {frontMatter.tags && (
+        <div className="flex w-full px-3 mb-4 justify-start flex-wrap">
+            {frontMatter.tags.map((tag, i) => (
+                <BlogBadge tag={tag} key={i.toString()} />
+            ))}
+        </div>
+    )}
+    <h1 className="text-5xl font-semibold px-4 header-gradient">
+        {frontMatter.title}
+    </h1>
+    <div className="flex flex-row justify-between items-center max-w-2xl mx-auto mb-12 px-3 mt-5 w-full">
+        <div className="flex items-center">
+            <span className="ml-1 inline-flex items-center justify-center px-2 py-2 mr-2 text-xs font-bold leading-none text-green-100 bg-green-800 rounded-md">
+                <Image
+                    className="rounded-full"
+                    src={frontMatter.by.avatar}
+                    width="25px"
+                    height="25px"
+                />
+                <span className="ml-1">{frontMatter.by.name}</span>
+            </span>
+            <h1 className="text-gray-300">
+                {" • "}
+                {format(
+                    parseISO(frontMatter.publishedAt),
+                    "MMMM dd, yyyy"
+                )}
+            </h1>
+        </div>
+        <h1>
+            {frontMatter.wordCount.toLocaleString() + " words"}
+            {` • `}
+            {frontMatter.readingTime?.text}
+        </h1>
+    </div>
+    <Image
+        alt="Post picture"
+        className="rounded-2xl"
+        src={frontMatter.image}
+        width={1905 / 2}
+        height={957 / 2}
+        blurDataURL={
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
+        }
+        placeholder="blur"
+    />
+    <div className="mb-10 px-2 max-w-4xl w-full blog-content">
+        {children}
+    </div>
+</article>
+```
+
+## How simple is it to add a new post?
+
+With all the advanced setup that we had to do before, you would think that it is very complicated to add a new post. But that's not the case! If you understand [Markdown](https://www.markdownguide.org/) you just create a new files in the blog folder it will automatically be present in the blog page! This makes it as easy as when I used [Ghost](https://ghost.org/) which is what I was aiming for. Nice!
+
+## Now, how can others interact with these posts?
+
+As of right now, this has not been implemented yet. But I want to add this sooner rather than later as its a way of integrating your opinion to my posts, most likely through something like comments.
+
+## Conclusion
+
+Well then, thanks for reading my first (but detailed) blog post! If you have any opinions to what I can do to make this page feel better, feel free to visit my [contact](/contact) page in order to give me feedback. Cheers!

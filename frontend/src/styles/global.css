@@ -101,3 +101,104 @@
     animation-direction: alternate;
     animation-iteration-count: infinite;
 }
+
+.blog-content * {
+    margin-top: 1.1em !important;
+}
+
+.blog-content h1 {
+    font-size: 2.225rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.blog-content h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.blog-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.blog-content p {
+    font-size: 1rem;
+}
+
+.remark-code-title + pre {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+@keyframes animatedUnderline {
+    0% {
+        stroke-dashoffset: 850;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+.code .token.operator,
+.code .token.entity,
+.code .token.url,
+.code .language-css .token.string,
+.code .style .token.string {
+    color: #f59e0b;
+}
+
+.code .token.regex,
+.code .token.important,
+.code .token.variable {
+    color: #f59e0b;
+}
+
+.code .token.comment,
+.code .token.prolog,
+.code .token.doctype,
+.code .token.cdata,
+.code .token.punctuation {
+    color: #e5e7eb;
+}
+
+.code .token.atrule,
+.code .token.attr-value,
+.code .token.keyword {
+    color: #f9a8d4;
+}
+
+.code .token.selector,
+.code .token.attr-name,
+.code .token.string,
+.code .token.char,
+.code .token.builtin,
+.code .token.inserted {
+    color: #93c5fd;
+}
+
+.code .token.function,
+.code .token.class-name {
+    color: #93c5fd;
+}
+
+.code .token.property,
+.code .token.tag,
+.code .token.boolean,
+.code .token.number,
+.code .token.constant,
+.code .token.symbol,
+.code .token.deleted {
+    color: #c4b5fd;
+}
+
+.animated-underline {
+    stroke-dasharray: 850;
+    stroke-dashoffset: 850;
+
+    animation: animatedUnderline 2s ease-in-out forwards;
+    animation-delay: 2s;
+}
