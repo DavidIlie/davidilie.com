@@ -5,12 +5,16 @@ import { DefaultSeo } from "next-seo";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { checkAPI } from "@lib/checkAPI";
 import AppLayout from "@components/AppLayout";
+import ReactModal from "react-modal";
+import { Provider as AuthProvider } from "next-auth/client";
 
 import "tailwindcss/tailwind.css";
 import "react-toastify/dist/ReactToastify.css";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
 import "../styles/global.css";
+
+ReactModal.setAppElement("#__next");
 
 const queryClient = new QueryClient();
 function PersonalWebsite({ Component, pageProps, router }) {
@@ -49,12 +53,14 @@ function PersonalWebsite({ Component, pageProps, router }) {
                         },
                     ],
                 }}
-                description="A 14 year aspiring web developer experimenting by publishing my work on the web."
+                description="A 14 year aspiring web developer experimenting with programming by publishing my work on the web."
             />
             <QueryClientProvider client={queryClient}>
-                <AppLayout>
-                    {loading ? <Loader /> : <Component {...pageProps} />}
-                </AppLayout>
+                <AuthProvider session={pageProps.session}>
+                    <AppLayout>
+                        {loading ? <Loader /> : <Component {...pageProps} />}
+                    </AppLayout>
+                </AuthProvider>
             </QueryClientProvider>
             <ToastContainer autoClose={2500} newestOnTop={true} />
         </>

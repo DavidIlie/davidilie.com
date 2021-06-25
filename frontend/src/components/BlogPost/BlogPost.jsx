@@ -1,9 +1,15 @@
 import Link from "next/link";
-
+import { useQuery } from "react-query";
 import formatDistance from "date-fns/formatDistance";
 import BlogBadge from "@components/BlogBadge";
 
 export const BlogPost = ({ title, summary, slug, tags, publishedAt }) => {
+    const { data } = useQuery(`stats${slug}`, () => {
+        return fetch(`/api/blog/get/${slug}`).then((res) => res.json());
+    });
+    const views = data?.views;
+    const comments = data?.commentCount;
+
     return (
         <Link href={`/blog/${slug}`} passHref>
             <div
@@ -25,8 +31,13 @@ export const BlogPost = ({ title, summary, slug, tags, publishedAt }) => {
                         Posted{" "}
                         {formatDistance(new Date(publishedAt), new Date(), {
                             addSuffix: true,
-                        })}
-                        {" •"} 23 Views
+                        })}{" "}
+                        {" • "}{" "}
+                        {`${views ? views : "0"} view${views !== 1 ? "s" : ""}`}
+                        {" • "}
+                        {`${comments ? comments : "0"} comment${
+                            comments !== 1 ? "s" : ""
+                        }`}
                     </h1>
                 </div>
                 <h1 className="text-2xl font-semibold mt-2 mb-2">{title}</h1>

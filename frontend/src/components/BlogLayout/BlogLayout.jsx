@@ -1,11 +1,25 @@
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
-import BlogBadge from "@components/BlogBadge";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { useQuery } from "react-query";
+
+import BlogBadge from "@components/BlogBadge";
+import BlogViewCounter from "@components/BlogViewCounter";
+import BlogInteractions from "@components/BlogInteractions";
+import BlogComments from "@components/BlogComments";
 
 export const BlogLayout = ({ children, frontMatter }) => {
     const router = useRouter();
+
+    const { data, refetch } = useQuery(`stats${frontMatter.slug}`, () => {
+        return fetch(`/api/blog/get/${frontMatter.slug}`).then((res) =>
+            res.json()
+        );
+    });
+
+    const comments = data?.comments;
+
     return (
         <>
             <NextSeo
@@ -68,6 +82,8 @@ export const BlogLayout = ({ children, frontMatter }) => {
                         {frontMatter.wordCount.toLocaleString() + " words"}
                         {` • `}
                         {frontMatter.readingTime?.text}
+                        {` • `}
+                        <BlogViewCounter slug={frontMatter.slug} />
                     </h1>
                 </div>
                 <Image
@@ -83,6 +99,17 @@ export const BlogLayout = ({ children, frontMatter }) => {
                 />
                 <div className="mb-10 px-2 max-w-4xl w-full blog-content">
                     {children}
+                </div>
+                <div className="p-3">
+                    <BlogInteractions
+                        refetch={refetch}
+                        slug={frontMatter.slug}
+                    />
+                    <BlogComments
+                        refetch={refetch}
+                        comments={comments}
+                        slug={frontMatter.slug}
+                    />
                 </div>
             </article>
         </>

@@ -158,7 +158,57 @@ With all the advanced setup that we had to do before, you would think that it is
 
 ## Now, how can others interact with these posts?
 
-As of right now, this has not been implemented yet. But I want to add this sooner rather than later as its a way of integrating your opinion to my posts, most likely through something like comments.
+As opposed to the blog itself, data such as the views or comments are not something that can be generated at build as they change when someone interacts with the blog. Fortunately, I have experience using MongoDB so I decided to use that to store my blog posts along with all of its data. However, I decided to keep all this logic as an API route in Next.JS as I wanted to try and keep the entire website running in one app.
+
+I am using [Monk](https://www.npmjs.com/package/monk) which is essentially the more simpler version of well-known [Mongoose](https://mongoosejs.com/).
+
+```js:src/lib/mongo.js
+import monk from "monk";
+
+const db = monk(process.env.MONGO_URI);
+
+export default db;
+```
+
+I can then import this function anywhere where I would need it. For instance, I created basic API routes to add views, add/delete comments and so on. To then integrate it with the actual frontend I am using [react-query](https://react-query.tanstack.com/) to interact between the API and frontend.
+
+```jsx:src/components/BlogLayout/BlogLayout.jsx
+const { data, refetch } = useQuery(`stats${frontMatter.slug}`, () => {
+    return fetch(`/api/blog/get/${frontMatter.slug}`).then((res) =>
+        res.json()
+    );
+});
+```
+
+However, in order to have a proper comments system we would need to be able to store some user information on our database in order to identify who is actually commented.
+
+Luckily, I discovered [next-auth](https://next-auth.js.org/) which is my holy grail to getting authentication done. I have integrated both Google and Discord and they both return the information that I would need to keep in my database.
+
+```jsx:src/pages/api/auth/[...nextauth].js
+export default NextAuth({
+    providers: [
+        Providers.Google({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            authorizationUrl:
+                "https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code",
+        }),
+        Providers.Discord({
+            clientId: process.env.DISCORD_CLIENT_ID,
+            clientSecret: process.env.DISCORD_SECRET,
+            scope: "identify",
+        }),
+    ],
+    database: `mongodb://${process.env.MONGO_URI}`,
+    callbacks: {
+        redirect: async (url, baseUrl) => {
+            return Promise.resolve(url);
+        },
+    },
+});
+```
+
+You can see this in action by scrolling down to the "What do you think?" section of the blog post.
 
 ## Conclusion
 

@@ -28,7 +28,7 @@ function Blog({ posts }) {
                     </p>
                     <div className="mt-3 mb-4 w-full flex items-center justify-between px-2">
                         <div className="relative flex flex-wrap w-72 items-stretch mb-3">
-                            <span class="z-10 mt-1 h-full leading-snug font-normal absolute text-center absolute bg-transparent text-base items-center justify-center pl-3 py-3">
+                            <span className="z-10 mt-1 h-full leading-snug font-normal absolute text-center absolute bg-transparent text-base items-center justify-center pl-3 py-3">
                                 <AiOutlineSearch />
                             </span>
                             <input
