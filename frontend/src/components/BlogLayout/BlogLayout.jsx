@@ -4,6 +4,8 @@ import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 
+import BarLoader from "react-spinners/BarLoader";
+
 import BlogBadge from "@components/BlogBadge";
 import BlogViewCounter from "@components/BlogViewCounter";
 import BlogInteractions from "@components/BlogInteractions";
@@ -12,11 +14,14 @@ import BlogComments from "@components/BlogComments";
 export const BlogLayout = ({ children, frontMatter }) => {
     const router = useRouter();
 
-    const { data, refetch } = useQuery(`stats${frontMatter.slug}`, () => {
-        return fetch(`/api/blog/get/${frontMatter.slug}`).then((res) =>
-            res.json()
-        );
-    });
+    const { isLoading, data, refetch } = useQuery(
+        `stats${frontMatter.slug}`,
+        () => {
+            return fetch(`/api/blog/get/${frontMatter.slug}`).then((res) =>
+                res.json()
+            );
+        }
+    );
 
     const comments = data?.comments;
 
@@ -105,6 +110,14 @@ export const BlogLayout = ({ children, frontMatter }) => {
                         refetch={refetch}
                         slug={frontMatter.slug}
                     />
+                    <div className="flex justify-center">
+                        <BarLoader
+                            color="#60A5FA"
+                            width="42rem"
+                            size={75}
+                            loading={isLoading}
+                        />
+                    </div>
                     <BlogComments
                         refetch={refetch}
                         comments={comments}

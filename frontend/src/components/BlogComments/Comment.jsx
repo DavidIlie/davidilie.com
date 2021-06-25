@@ -2,12 +2,16 @@ import { format } from "date-fns";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
 import { toast } from "react-toastify";
+import { useState } from "react";
 
 const Comment = ({ data, refetch }) => {
     const [session, loading] = useSession();
     const router = useRouter();
 
+    const [deleting, setDeleting] = useState(false);
+
     const deleteEntry = async () => {
+        setDeleting(true);
         const deleteRequest = await fetch(
             `/api/blog/comment/${router.query.slug}`,
             {
@@ -18,15 +22,15 @@ const Comment = ({ data, refetch }) => {
             }
         );
 
-        refetch();
-
         const response = await deleteRequest.json();
-
         if (deleteRequest.status === 200) {
             toast.success("Deleted successfully!");
         } else {
             toast.error(response);
         }
+
+        await refetch();
+        setDeleting(false);
     };
 
     return (
@@ -50,10 +54,10 @@ const Comment = ({ data, refetch }) => {
                             {" "}
                             /{" "}
                             <span
-                                className="text-red-400 cursor-pointer"
+                                className="text-red-400 cursor-pointer hover:underline"
                                 onClick={deleteEntry}
                             >
-                                Delete
+                                {deleting ? "Deleting" : "Delete"}
                             </span>
                         </span>
                     )}

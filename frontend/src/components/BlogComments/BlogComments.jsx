@@ -10,10 +10,10 @@ export const BlogComments = ({ comments, refetch }) => {
                 <Comment refetch={refetch} key={index} data={comment} />
             ))}
             {comments?.length === 0 && (
-                <>
+                <div className="-mt-5">
                     <h1 className="text-center text-3xl">No Comments</h1>
-                    <p className="text-center">Be the first one to comment!</p>
-                </>
+                    <p className="text-center">Be the first to do so!</p>
+                </div>
             )}
         </div>
     );

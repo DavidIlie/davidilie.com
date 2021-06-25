@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { FaCommentDots } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 import LoginModal from "@components/LoginModal";
 import CustomField from "@ui/form/CustomField";
@@ -14,6 +15,8 @@ export const BlogInteractions = ({ slug, refetch }) => {
     const [session, loading] = useSession();
 
     const [modalOpen, setModalOpen] = useState(false);
+
+    const [submitting, setSubmitting] = useState(false);
 
     const FormValidationSchema = yup.object({
         comment: yup
@@ -28,6 +31,9 @@ export const BlogInteractions = ({ slug, refetch }) => {
             <h1 className="mt-2 text-3xl font-semibold header-gradient">
                 What do you think?
             </h1>
+            <div className="flex justify-center">
+                <ClipLoader color="#60A5FA" size={75} loading={loading} />
+            </div>
             {!session && (
                 <div>
                     <div className="border rounded p-6 my-4 w-full border-gray-800 bg-blue-opaque">
@@ -69,6 +75,7 @@ export const BlogInteractions = ({ slug, refetch }) => {
                         validationSchema={FormValidationSchema}
                         onSubmit={async (data, { resetForm }) => {
                             resetForm();
+                            setSubmitting(true);
 
                             const CommentRequest = await fetch(
                                 `/api/blog/comment/${slug}`,
@@ -85,6 +92,7 @@ export const BlogInteractions = ({ slug, refetch }) => {
                             } else {
                                 toast.error(response.message);
                             }
+                            setSubmitting(false);
                             refetch();
                         }}
                     >
@@ -102,7 +110,13 @@ export const BlogInteractions = ({ slug, refetch }) => {
                                     icon={FaCommentDots}
                                     as={CustomField}
                                 />
-                                <CustomSubmitButton text="Submit Comment" />
+                                <div className="text-center">
+                                    <CustomSubmitButton
+                                        text="Submit Comment"
+                                        submitting={submitting}
+                                        submitText="Submitting"
+                                    />
+                                </div>
                             </Form>
                         )}
                     </Formik>
