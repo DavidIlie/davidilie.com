@@ -199,13 +199,14 @@ export default NextAuth({
             scope: "identify",
         }),
     ],
-    database: `mongodb://${process.env.MONGO_URI}`,
+    database: process.env.MONGO_URI,
     callbacks: {
         redirect: async (url, baseUrl) => {
             return Promise.resolve(url);
         },
     },
 });
+
 ```
 
 You can see this in action by scrolling down to the "What do you think?" section of the blog post.

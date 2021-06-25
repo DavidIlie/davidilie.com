@@ -29,6 +29,12 @@ export const AppLayout = ({ children }) => {
                 <SVG icon="triangle" width={12} stroke left="90%" top="50%" />
 
                 <SVG icon="triangle" width={16} stroke left="30%" top="65%" />
+
+                <SVG icon="triangle" width={24} stroke left="35%" top="58%" />
+
+                <SVG icon="triangle" width={12} stroke left="20%" top="50%" />
+
+                <SVG icon="triangle" width={16} stroke left="10%" top="85%" />
             </UpDown>
             <UpDown type="slow">
                 <SVG

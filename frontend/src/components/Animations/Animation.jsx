@@ -1,5 +1,3 @@
-//TODO FIND A WAY TO COVER THE ENTIRE PAGE
-
 export const UpDown = ({ children, type }) => {
     return (
         <div
