@@ -12,7 +12,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - run: ls /home/runner/work/davidilie.com/davidilie.com
             - name: Publish to GitLab Container Registry
               uses: elgohr/Publish-Docker-Github-Action@master
               with:
