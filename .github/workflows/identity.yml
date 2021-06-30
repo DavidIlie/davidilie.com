@@ -4,8 +4,8 @@ on:
     push:
         branches:
             - master
-        # paths:
-        #     - "identity/**"
+        paths:
+            - "identity/**"
 
 jobs:
     build:
