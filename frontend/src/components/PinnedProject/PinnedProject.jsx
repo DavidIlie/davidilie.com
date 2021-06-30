@@ -23,14 +23,18 @@ export const PinnedProject = ({ repo, left, projectData }) => {
                     <h1 className="text-2xl font-semibold">
                         {projectData.name}
                         <span className="ml-2 text-gray-500 text-section">
-                            {format(new Date(repo.created_at), `dd/MM/yy`)}
+                            {format(new Date(repo.date.created_at), `dd/MM/yy`)}
                         </span>
                     </h1>
                     <h1 className="flex justify-center text-gray-400 mb-2">
                         Last updated{" "}
-                        {formatDistance(new Date(repo.pushed_at), Date.now(), {
-                            addSuffix: true,
-                        })}{" "}
+                        {formatDistance(
+                            new Date(repo.date.last_push),
+                            Date.now(),
+                            {
+                                addSuffix: true,
+                            }
+                        )}{" "}
                         •
                         {repo.language ? (
                             <span className="ml-1 inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-green-100 bg-green-600 rounded-md">
@@ -58,12 +62,12 @@ export const PinnedProject = ({ repo, left, projectData }) => {
                 <h1 className="text-2xl font-semibold">
                     {projectData.name}
                     <span className="ml-2 text-gray-500 text-section">
-                        {format(new Date(repo.created_at), `dd/MM/yy`)}
+                        {format(new Date(repo.date.created_at), `dd/MM/yy`)}
                     </span>
                 </h1>
                 <h1 className="flex justify-center text-gray-400 mb-2">
                     Last updated{" "}
-                    {formatDistance(new Date(repo.pushed_at), Date.now(), {
+                    {formatDistance(new Date(repo.date.last_push), Date.now(), {
                         addSuffix: true,
                     })}{" "}
                     •

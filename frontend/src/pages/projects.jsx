@@ -40,12 +40,12 @@ function Projects({ repos }) {
                                         new Date(
                                             repos.filter(
                                                 (x) => x.name === a.id
-                                            )[0].created_at
+                                            )[0].date.created_at
                                         ).getTime() -
                                         new Date(
                                             repos.filter(
                                                 (y) => y.name === b.id
-                                            )[0].created_at
+                                            )[0].date.created_at
                                         ).getTime()
                                 )
                                 .reverse()
@@ -100,9 +100,9 @@ function Projects({ repos }) {
 }
 
 export async function getServerSideProps() {
-    const projects = await getGithubProjects;
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/github`);
 
-    const { repos } = await projects.json();
+    const { repos } = await response.json();
     return { props: { repos, revalidate: 600 } };
 }
 
