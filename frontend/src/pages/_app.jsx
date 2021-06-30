@@ -3,7 +3,6 @@ import { ToastContainer } from "react-toastify";
 import Loader from "@components/Loader";
 import { DefaultSeo } from "next-seo";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { checkAPI } from "@lib/checkAPI";
 import AppLayout from "@components/AppLayout";
 import ReactModal from "react-modal";
 import { Provider as AuthProvider } from "next-auth/client";
@@ -20,7 +19,6 @@ const queryClient = new QueryClient();
 function PersonalWebsite({ Component, pageProps, router }) {
     const [loading, setLoading] = useState(false);
     useEffect(async () => {
-        await checkAPI();
         document.documentElement.lang = `en-US`;
         const start = () => {
             setLoading(true);

@@ -2,3 +2,9 @@ frontend/.next/
 frontend/node_modules/
 frontend/yarn.lock
 frontend/.env
+agenda/yarn.lock
+agenda/.env
+agenda/node_modules
+identity/node_modules
+identity/yarn.lock
+identity/.env

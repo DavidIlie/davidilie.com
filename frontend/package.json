@@ -5,12 +5,11 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
+        "create-db-posts": "MONGO_URI=mongodb://192.168.1.152:27017/personal-website node src/lib/createPosts.js",
         "start": "next start",
         "format": "prettier --ignore-path .gitignore \"src/**/*.+(js|tsx)\" --write"
     },
     "dependencies": {
-        "@chakra-ui/react": "^1.6.4",
-        "@emotion/styled": "^11.3.0",
         "@mapbox/rehype-prism": "^0.6.0",
         "@mdx-js/loader": "^1.6.22",
         "@next/mdx": "^11.0.1",

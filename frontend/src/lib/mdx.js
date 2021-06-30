@@ -4,8 +4,6 @@ import readingTime from "reading-time";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import mdxPrism from "@mapbox/rehype-prism";
-import db from "@lib/mongo";
-const posts = db.get("posts");
 
 export const getFiles = (type) =>
     fs.readdirSync(path.join(process.cwd(), `src`, `data`, type));
@@ -56,15 +54,6 @@ export async function getAllFilesFrontMatter() {
         );
 
         const slug = postSlug.replace(`.mdx`, ``);
-
-        const post = await posts.findOne({ slug: slug });
-        if (!post) {
-            posts.insert({
-                slug: slug,
-                views: 0,
-                comments: [],
-            });
-        }
 
         const { data } = matter(source);
 
