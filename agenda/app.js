@@ -7,6 +7,7 @@ require("dotenv").config();
 const db = require("./utils/database/mongo");
 const agendaJobs = db.get("agendaJobs");
 const { updateAlbastruStatistics } = require("./jobs/youtube");
+const { updateDavidIlieGitHubRepos } = require("./jobs/github");
 const agenda = require("./utils/agenda/agenda");
 const middlewares = require("./utils/middlewares");
 const api = require("./api");
@@ -36,12 +37,15 @@ app.use(cookieParser());
 app.use("/api/agenda/dash", verifyToken, Agendash(agenda));
 
 agenda.define("Update YT Stats", updateAlbastruStatistics);
+agenda.define("Update GitHub Repos", updateDavidIlieGitHubRepos);
 
 const initAgenda = async () => {
     const ytStatJob = agenda.create("Update YT Stats");
+    const githubRepoJob = agenda.create("Update GitHub Repos");
     await agendaJobs.remove({});
     await agenda.start();
     await ytStatJob.repeatEvery("10 minutes").save();
+    await githubRepoJob.repeatEvery("1 hour").save();
 };
 
 initAgenda();
