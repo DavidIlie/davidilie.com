@@ -33,7 +33,7 @@ router.post("/login", async (req, res, next) => {
             }
         } else {
             res.status(404).json({
-                message: "user not found",
+                message: "no user",
             });
         }
     } catch (error) {
