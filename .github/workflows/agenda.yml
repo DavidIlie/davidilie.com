@@ -1,17 +1,26 @@
-name: frontend:build_and_deploy
+name: agenda:build_and_deploy
 
 on:
     push:
         branches:
             - master
-        paths:
-            - "frontend/**"
+        # paths:
+        #     - "agenda/**"
 
 jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v1
+            - name: Use Node.js 15.10
+              uses: actions/setup-node@v1
+              with:
+                  node-version: "15.10"
+            - name: Install dependencies, then build the docker image
+              run: |
+                  yarn
+              env:
+                  CI: true
             - name: Publish to GitLab Container Registry
               uses: elgohr/Publish-Docker-Github-Action@master
               with:
@@ -20,8 +29,8 @@ jobs:
                   username: DavidIlie
                   password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
                   dockerfile: Dockerfile
-                  tags: davidilie-frontend
-                  workdir: frontend/
+                  tags: davidilie-agenda
+                  workdir: agenda/
     deploy:
         needs: build
         runs-on: ubuntu-latest
@@ -31,4 +40,4 @@ jobs:
               env:
                   KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
               with:
-                  args: rollout restart deploy frontend -n davidilie-com
+                  args: rollout restart deploy agenda -n davidilie-com
