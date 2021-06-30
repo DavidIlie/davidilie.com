@@ -4,8 +4,8 @@ on:
     push:
         branches:
             - master
-        paths:
-            - "frontend/**"
+        # paths:
+        #     - "frontend/**"
 
 jobs:
     build:
@@ -20,6 +20,7 @@ jobs:
                   password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
                   dockerfile: Dockerfile
                   tags: davidilie-frontend
+                  workdir: frontend
     deploy:
         needs: build
         runs-on: ubuntu-latest
