@@ -16,7 +16,7 @@ jobs:
                   registry: registry.gitlab.com
                   username: DavidIlie
                   password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-                  dockerfile: frontend/Dockerfile
+                  dockerfile: Dockerfile
                   tags: davidilie-frontend
     deploy:
         needs: build
