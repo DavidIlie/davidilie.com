@@ -11,7 +11,7 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - run: ls /home/runner/work/davidilie.com/davidilie.com/frontend
+            - run: ls /home/runner/work/davidilie.com/frontend
             - name: Publish to GitLab Container Registry
               uses: elgohr/Publish-Docker-Github-Action@master
               with:
@@ -21,7 +21,7 @@ jobs:
                   password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
                   dockerfile: Dockerfile
                   tags: davidilie-frontend
-                  workdir: frontend
+                  workdir: frontend/
     deploy:
         needs: build
         runs-on: ubuntu-latest
