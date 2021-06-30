@@ -13,10 +13,10 @@ function Home({ repos }) {
         .sort(
             (a, b) =>
                 new Date(
-                    repos.filter((x) => x.name === a.id)[0].created_at
+                    repos.filter((x) => x.name === a.id)[0].date.created_at
                 ).getTime() -
                 new Date(
-                    repos.filter((y) => y.name === b.id)[0].created_at
+                    repos.filter((y) => y.name === b.id)[0].date.created_at
                 ).getTime()
         )
         .reverse();
