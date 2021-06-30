@@ -100,10 +100,10 @@ function Projects({ repos }) {
 }
 
 export async function getServerSideProps() {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/github`);
+    const projects = await getGithubProjects;
 
-    const { stars, repos, followers } = await response.json();
-    return { props: { stars, repos, followers, revalidate: 600 } };
+    const { repos } = await projects.json();
+    return { props: { repos, revalidate: 600 } };
 }
 
 export default Projects;

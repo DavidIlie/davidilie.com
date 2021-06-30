@@ -58,8 +58,8 @@ function Home({ repos }) {
 export async function getServerSideProps() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/github`);
 
-    const { stars, repos, followers } = await response.json();
-    return { props: { stars, repos, followers, revalidate: 600 } };
+    const { repos } = await response.json();
+    return { props: { repos, revalidate: 600 } };
 }
 
 export default Home;
