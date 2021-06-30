@@ -11,7 +11,7 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - run: cat /home/runner/work/davidilie.com/davidilie.com/frontend/Dockerfile
+            - run: ls /home/runner/work
             - name: Publish to GitLab Container Registry
               uses: elgohr/Publish-Docker-Github-Action@master
               with:
