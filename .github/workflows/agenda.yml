@@ -12,8 +12,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
-            - name: Use Node.js
-                uses: actions/setup-node@v1
+            - uses: actions/setup-node@v1
             - run: cd agenda && yarn
             - name: Publish to GitLab Container Registry
               uses: elgohr/Publish-Docker-Github-Action@master
