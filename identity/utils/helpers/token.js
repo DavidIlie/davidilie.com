@@ -1,5 +1,5 @@
 const db = require("../database/mongo");
-const users = db.get("users");
+const identity = db.get("identity");
 
 const { verify } = require("jsonwebtoken");
 
@@ -17,7 +17,7 @@ async function verifyToken(req, res, next) {
         return res.sendStatus(401);
     }
 
-    const user = await users.findOne({ _id: payload.userId });
+    const user = await identity.findOne({ _id: payload.userId });
 
     if (!user) {
         return res.sendStatus(500);

@@ -5,7 +5,7 @@ const morgan = require("morgan");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const db = require("./utils/database/mongo");
-const identities = db.get("identities");
+const identity = db.get("identity");
 const middlewares = require("./utils/middlewares");
 const api = require("./api");
 const app = express();
@@ -35,12 +35,12 @@ app.use(middlewares.errorHandler);
 
 //function to check if user admin there, else create it
 const init = async () => {
-    const adminAccount = await identities.findOne({
+    const adminAccount = await identity.findOne({
         email: "david@davidilie.com",
         password: process.env.ADMIN_PASSWORD,
     });
     if (!adminAccount) {
-        await identities.insert({
+        await identity.insert({
             email: "david@davidilie.com",
             password: process.env.ADMIN_PASSWORD,
             admin: true,

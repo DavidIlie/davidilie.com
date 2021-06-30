@@ -2,6 +2,7 @@ const router = require("express").Router();
 const db = require("../utils/database/mongo");
 
 const statistics = db.get("statistics");
+const github = db.get("github");
 
 router.get("/", (req, res) => {
     res.json({
@@ -19,6 +20,9 @@ router.get("/:job", async (req, res) => {
                 views: statistic[0].views,
                 videos: statistic[0].videos,
             });
+        } else if (job === "github") {
+            const repos = await github.find();
+            res.json(repos);
         } else {
             res.status(404).json({
                 message: "Job not found",

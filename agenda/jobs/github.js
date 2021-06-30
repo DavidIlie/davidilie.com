@@ -5,6 +5,7 @@ const { getRepos } = require("./requests/github");
 
 const updateDavidIlieGitHubRepos = async () => {
     const repos = await getRepos();
+
     for (let i = 0; i < repos.length; i++) {
         const repo = await repos[i];
         if (repo.name !== "DavidIlie") {
