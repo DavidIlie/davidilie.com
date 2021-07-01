@@ -3,8 +3,11 @@ const github = db.get("github");
 
 const { getRepos } = require("./requests/github");
 
-const updateDavidIlieGitHubRepos = async () => {
+const updateDavidIlieGitHubRepos = async (job, done) => {
     const repos = await getRepos();
+
+    let updated = 0;
+    let newRepos = 0;
 
     for (let i = 0; i < repos.length; i++) {
         const repo = await repos[i];
@@ -13,7 +16,7 @@ const updateDavidIlieGitHubRepos = async () => {
                 name: repo.name,
             });
             if (dbRepo) {
-                github.update(
+                await github.update(
                     {
                         name: repo.name,
                     },
@@ -32,8 +35,9 @@ const updateDavidIlieGitHubRepos = async () => {
                         },
                     }
                 );
+                updated = updated + 1;
             } else {
-                github.insert({
+                await github.insert({
                     name: repo.name,
                     url: repo.html_url,
                     description: repo.description,
@@ -45,9 +49,12 @@ const updateDavidIlieGitHubRepos = async () => {
                     stars: repo.stargazers_count,
                     issue_count: repo.open_issues,
                 });
+                newRepos = newRepos + 1;
             }
         }
     }
+
+    job.attrs.data = { total: repos.length, updated: updated, new: newRepos };
 };
 
 module.exports = { updateDavidIlieGitHubRepos };
