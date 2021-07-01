@@ -55,6 +55,7 @@ const updateDavidIlieGitHubRepos = async (job, done) => {
     }
 
     job.attrs.data = { total: repos.length, updated: updated, new: newRepos };
+    done();
 };
 
 module.exports = { updateDavidIlieGitHubRepos };
