@@ -1,5 +1,6 @@
 const db = require("../utils/database/mongo");
 const github = db.get("github");
+const _ = require("lodash");
 
 const { getRepos } = require("./requests/github");
 
@@ -16,26 +17,28 @@ const updateDavidIlieGitHubRepos = async (job, done) => {
                 name: repo.name,
             });
             if (dbRepo) {
-                await github.update(
-                    {
-                        name: repo.name,
-                    },
-                    {
-                        $set: {
+                if (!_.isEqual(dbRepo, repo)) {
+                    await github.update(
+                        {
                             name: repo.name,
-                            url: repo.html_url,
-                            description: repo.description,
-                            language: repo.language,
-                            date: {
-                                created_at: repo.created_at,
-                                last_push: repo.pushed_at,
-                            },
-                            stars: repo.stargazers_count,
-                            issue_count: repo.open_issues,
                         },
-                    }
-                );
-                updated = updated + 1;
+                        {
+                            $set: {
+                                name: repo.name,
+                                url: repo.html_url,
+                                description: repo.description,
+                                language: repo.language,
+                                date: {
+                                    created_at: repo.created_at,
+                                    last_push: repo.pushed_at,
+                                },
+                                stars: repo.stargazers_count,
+                                issue_count: repo.open_issues,
+                            },
+                        }
+                    );
+                    updated = updated + 1;
+                }
             } else {
                 await github.insert({
                     name: repo.name,
