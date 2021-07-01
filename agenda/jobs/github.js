@@ -18,7 +18,7 @@ const updateDavidIlieGitHubRepos = async (job, done) => {
         });
 
         if (dbRepo) {
-            const updated = {
+            const updatedRepo = {
                 name: repo.name,
                 url: repo.html_url,
                 description: repo.description,
@@ -31,7 +31,7 @@ const updateDavidIlieGitHubRepos = async (job, done) => {
                 issue_count: repo.open_issues,
             };
 
-            if (!_.isEqual(repo, updated)) {
+            if (!_.isEqual(repo, updatedRepo)) {
                 await github.update(
                     {
                         name: repo.name,
