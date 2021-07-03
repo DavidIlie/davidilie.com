@@ -26,20 +26,18 @@ function Blog({ posts }) {
                         {posts.length} post
                         {posts.length > 1 && "s"}.
                     </p>
-                    <div className="mt-3 mb-4 w-full flex items-center justify-between px-2">
-                        <div className="relative flex flex-wrap w-72 items-stretch mb-3">
-                            <span className="z-10 mt-1 h-full leading-snug font-normal absolute text-center absolute bg-transparent text-base items-center justify-center pl-3 py-3">
-                                <AiOutlineSearch />
-                            </span>
-                            <input
-                                type="text"
-                                placeholder="Search"
-                                onChange={(e) =>
-                                    setFilter(e.target.value.toLowerCase())
-                                }
-                                className="px-10 py-3 placeholder-gray-300 relative bg-gray-800 rounded-xl text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pr-10"
-                            />
-                        </div>
+                    <div className="mb-5 w-72">
+                        <span className="z-10 mt-1 h-full leading-snug font-normal absolute absolute bg-transparent text-base pl-3 py-3">
+                            <AiOutlineSearch />
+                        </span>
+                        <input
+                            type="text"
+                            placeholder="Search"
+                            onChange={(e) =>
+                                setFilter(e.target.value.toLowerCase())
+                            }
+                            className="px-10 py-3 placeholder-gray-300 relative bg-gray-800 border-2 border-gray-700 rounded-xl text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pr-10"
+                        />
                     </div>
                 </Fade>
                 {filteredBlogPosts.length === 0 && (

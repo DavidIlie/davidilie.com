@@ -2,11 +2,12 @@ export const RepoCard = ({ repo, i }) => {
     return (
         <a
             key={i.toString()}
-            href={repo.html_url}
+            href={repo.url}
+            target="_blank"
             className="h-full w-full truncate overflow-visible p-1"
             style={{ width: "400px" }}
         >
-            <div className="justify-start items-start flex p-3 truncate bg-gray-800 rounded-lg shadow-lg duration-200 hoverItem text-left pl-5 flex-col">
+            <div className="justify-start items-start flex p-3 truncate bg-gray-800 border-2 border-gray-700 rounded-lg shadow-lg duration-200 hoverItem cursor-pointer text-left pl-5 flex-col">
                 <h1 className="mb-3 font-semibold text-xl truncate">
                     {repo.name}
 

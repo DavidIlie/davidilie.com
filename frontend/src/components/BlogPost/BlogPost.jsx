@@ -13,7 +13,7 @@ export const BlogPost = ({ title, summary, slug, tags, publishedAt }) => {
     return (
         <Link href={`/blog/${slug}`} passHref>
             <div
-                className="bg-gray-800 flex mb-8 px-5 py-4 flex-col hoverItem duration-200 rounded-2xl cursor-pointer"
+                className="bg-gray-800 border-2 border-gray-700 flex mb-8 px-5 py-4 flex-col hoverItem duration-200 rounded-2xl cursor-pointer"
                 style={{
                     width: "calc(100% - 10px)",
                     marginLeft: "5px",

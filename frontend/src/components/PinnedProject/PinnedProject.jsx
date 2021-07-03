@@ -16,7 +16,7 @@ export const PinnedProject = ({ repo, left, projectData }) => {
         });
     });
     return pageWidth >= 900 ? (
-        <div className="max-w-md mx-auto bg-gray-800 rounded-xl shadow-md overflow-hidden max-w-5xl mb-7 hoverItem duration-200">
+        <div className="max-w-md mx-auto bg-gray-800 border-2 border-gray-700 rounded-xl shadow-md overflow-hidden max-w-5xl mb-7 hoverItem duration-200">
             <div className="flex">
                 {!left ? <ProjectImage link={projectData.image} /> : null}
                 <div class="p-8">
@@ -46,7 +46,7 @@ export const PinnedProject = ({ repo, left, projectData }) => {
                         <div>
                             <h1 className="mb-5">{projectData.description}</h1>
                             <LinkButton
-                                link={repo.html_url}
+                                link={repo.url}
                                 Icon={FaGithub}
                                 text="View on GitHub"
                             />
@@ -92,7 +92,7 @@ export const PinnedProject = ({ repo, left, projectData }) => {
                     <div>
                         <h1 className="mb-5">{projectData.description}</h1>
                         <LinkButton
-                            link={repo.html_url}
+                            link={repo.url}
                             Icon={FaGithub}
                             text="View on GitHub"
                         />

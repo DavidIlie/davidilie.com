@@ -16,7 +16,7 @@ const SongCard = ({ song, titleCard, isPlaying }) => {
                     width: "600px",
                     gridTemplateColumns: `${titleCard ? `150px` : `110px`} 1fr`,
                 }}
-                className="grid my-5 p-5 overflow-visible max-w-2xl bg-gray-800 shadow-lg duration-200 rounded-2xl hover:shadow-xl hoverItem cursor-pointer"
+                className="grid my-5 p-5 overflow-visible max-w-2xl bg-gray-800 border-2 border-gray-700 shadow-lg duration-200 rounded-2xl hover:shadow-xl hoverItem cursor-pointer"
             >
                 <div
                     style={{ boxSizing: titleCard ? `150px` : `110px` }}
