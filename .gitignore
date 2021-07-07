@@ -5,3 +5,5 @@ agenda/.env
 agenda/node_modules
 identity/node_modules
 identity/.env
+spotify/node_modules
+spotify/.env

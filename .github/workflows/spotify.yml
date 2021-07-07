@@ -1,11 +1,11 @@
-name: agenda:build_and_deploy
+name: spotify:build_and_deploy
 
 on:
     push:
         branches:
             - master
         paths:
-            - "agenda/**"
+            - "spotify/**"
 
 jobs:
     build:
@@ -22,8 +22,8 @@ jobs:
                   username: DavidIlie
                   password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
                   dockerfile: Dockerfile
-                  tags: agenda
-                  workdir: agenda/
+                  tags: spotify
+                  workdir: spotify/
     deploy:
         needs: build
         runs-on: ubuntu-latest
@@ -33,4 +33,4 @@ jobs:
               env:
                   KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
               with:
-                  args: rollout restart deploy agenda -n davidilie-com
+                  args: rollout restart deploy spotify -n davidilie-com

@@ -7,7 +7,10 @@ import Tooltip from "@ui/Tooltip";
 export const Footer = () => {
     const { error, data: currentlyPlaying } = useQuery(
         `currentlyPlaying`,
-        () => fetch(`/api/spotify/get-now-playing`).then((res) => res.json()),
+        () =>
+            fetch(`https://davidilie.com/api/spotify/get-now-playing`).then(
+                (res) => res.json()
+            ),
         { refetchOnMount: true }
     );
 
