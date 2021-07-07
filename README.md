@@ -11,6 +11,7 @@ The website itself uses NextJs along with TailwindCSS and it is place to show of
 | [frontend](frontend) |         Next.js frontend         |
 | [agenda](agenda)     |      Background Processing       |
 | [identity](identity) | Auth server for [agenda](agenda) |
+| [spotify](spotify)   |        Spotify Satistics         |
 
 ## Showcase
 
