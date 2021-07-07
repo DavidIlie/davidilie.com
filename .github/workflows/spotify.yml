@@ -13,7 +13,7 @@ jobs:
         steps:
             - uses: actions/checkout@v1
             - uses: actions/setup-node@v1
-            - run: cd agenda && yarn
+            - run: cd spotify && yarn
             - name: Publish to GitLab Container Registry
               uses: elgohr/Publish-Docker-Github-Action@master
               with:
