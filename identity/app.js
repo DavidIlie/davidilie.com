@@ -33,7 +33,6 @@ app.listen(port, () => {
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
-//function to check if user admin there, else create it
 const init = async () => {
     const adminAccount = await identity.findOne({
         email: "david@davidilie.com",
