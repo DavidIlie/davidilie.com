@@ -70,7 +70,7 @@ export const BlogInteractions = ({
                     <h1 className="mb-1">
                         You are signed in as {session.user.email}. Not You?{" "}
                         <a
-                            onClick={signOut}
+                            onClick={() => signOut()}
                             className="duration-200 text-blue-600 hover:text-blue-700 hover:underline cursor-pointer"
                         >
                             Sign Out
