@@ -180,6 +180,7 @@ interface InputProps {
     onChange: any;
     placeholder: string;
     value: string;
+    type: string;
 }
 
 const Input = ({
@@ -188,6 +189,7 @@ const Input = ({
     onChange,
     placeholder,
     value,
+    type,
 }: Partial<InputProps>): JSX.Element => {
     return (
         <input
@@ -196,6 +198,7 @@ const Input = ({
             placeholder={placeholder}
             onChange={onChange}
             value={value}
+            type={type}
             className={`appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 ${
                 placeholder === "Email" ? "rounded-t-md" : "rounded-b-md"
             } focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
