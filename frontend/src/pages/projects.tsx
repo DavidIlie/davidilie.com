@@ -11,6 +11,8 @@ import RepoCard from "@components/RepoCard";
 
 import { repoType } from "../pages/api/github";
 
+import { PinnedRepoType } from "@data/pinnedRepos";
+
 import { NextSeo } from "next-seo";
 
 function Projects({ repos }) {
@@ -39,16 +41,16 @@ function Projects({ repos }) {
                         >
                             {pinnedRepos
                                 .sort(
-                                    (a, b) =>
+                                    (a: PinnedRepoType, b: PinnedRepoType) =>
                                         new Date(
                                             repos.filter(
-                                                (x) => x.name === a.id
-                                            )[0].date.created_at
+                                                (x: repoType) => x.name === a.id
+                                            )[0]?.date.last_push
                                         ).getTime() -
                                         new Date(
                                             repos.filter(
-                                                (y) => y.name === b.id
-                                            )[0].date.created_at
+                                                (y: repoType) => y.name === b.id
+                                            )[0]?.date.last_push
                                         ).getTime()
                                 )
                                 .reverse()
