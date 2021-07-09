@@ -69,7 +69,7 @@ export const PinnedProject = ({
             </div>
         </div>
     ) : (
-        <div className="mx-auto py-2" style={{ width: "400px" }}>
+        <div className="mx-auto py-2 max-w-md">
             <div className="p-2 h-full bg-gray-800 border-2 border-gray-700 rounded-lg overflow-hidden">
                 <h1 className="text-2xl font-semibold">
                     {projectData.name}
