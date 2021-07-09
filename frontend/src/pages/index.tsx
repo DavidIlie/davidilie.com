@@ -11,18 +11,19 @@ import PinnedProject from "@components/PinnedProject";
 
 import { pinnedRepos } from "@data/pinnedRepos";
 
-function Home({ repos, posts }): JSX.Element {
+function Home({ repos }): JSX.Element {
     const repo = pinnedRepos
         .sort(
             (a, b) =>
                 new Date(
-                    repos.filter((x: any) => x.name === a.id)[0].date.created_at
+                    repos.filter((x: any) => x.name === a.id)[0].date.last_push
                 ).getTime() -
                 new Date(
-                    repos.filter((y: any) => y.name === b.id)[0].date.created_at
+                    repos.filter((y: any) => y.name === b.id)[0].date.last_push
                 ).getTime()
         )
         .reverse();
+
     return (
         <>
             <NextSeo title="Home" />
