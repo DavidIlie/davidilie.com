@@ -3,7 +3,8 @@ import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { Fade } from "react-awesome-reveal";
-import { repoType } from "../pages/api/github";
+
+import { repoType } from "@interfaces/repoType";
 
 import Header from "@modules/landing/Header";
 import About from "@modules/landing/About";
@@ -64,9 +65,9 @@ function Home({ repos }): JSX.Element {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/github`);
+    const response = await fetch(`https://davidilie.com/api/agenda/job/github`);
 
-    const { repos } = await response.json();
+    const repos = await response.json();
     return { props: { repos, revalidate: 600 } };
 };
 

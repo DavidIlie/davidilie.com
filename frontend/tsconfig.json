@@ -22,7 +22,8 @@
             "@modules/*": ["modules/*"],
             "@ui/*": ["ui/*"],
             "@utils/*": ["utils/*"],
-            "@data/*": ["data/*"]
+            "@data/*": ["data/*"],
+            "@interfaces/*": ["types/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.hook.ts", "src"],

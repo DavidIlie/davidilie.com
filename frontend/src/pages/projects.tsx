@@ -9,7 +9,7 @@ import { FaGithub } from "react-icons/fa";
 
 import RepoCard from "@components/RepoCard";
 
-import { repoType } from "../pages/api/github";
+import { repoType } from "@interfaces/repoType";
 
 import { PinnedRepoType } from "@data/pinnedRepos";
 
@@ -105,9 +105,9 @@ function Projects({ repos }) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/github`);
+    const response = await fetch(`https://davidilie.com/api/agenda/job/github`);
 
-    const { repos } = await response.json();
+    const repos = await response.json();
     return { props: { repos, revalidate: 600 } };
 };
 
