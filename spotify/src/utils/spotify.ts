@@ -1,5 +1,5 @@
-const querystring = require("querystring");
-const fetch = require("node-fetch");
+import fetch from "node-fetch";
+import querystring from "querystring";
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_SECRET_ID;
@@ -62,4 +62,4 @@ const getSpotifyData = async () => {
     return { responseArtists, responseRecently, responseTracks };
 };
 
-module.exports = { getNowPlaying, getSpotifyData };
+export { getNowPlaying, getSpotifyData };

@@ -1,26 +1,33 @@
-const router = require("express").Router();
+import express from "express";
+import { Request, Response } from "express";
+
+import SongProps from "@interfaces/Song";
+
+const router = express.Router();
 
 const { getSpotifyData, getNowPlaying } = require("../utils/spotify");
 
-router.get("/", async (req, res) => {
+router.get("/", (req: Request, res: Response) => {
     res.json({ message: "spotify api" });
 });
 
-router.get("/get-now-playing", async (req, res) => {
+router.get("/get-now-playing", async (req: Request, res: Response) => {
     const response = await getNowPlaying();
 
     if (response.status === 204 || response.status > 400) {
         return res.status(200).json({ isPlaying: false });
     }
 
-    const song = await response.json();
+    const song: SongProps = await response.json();
 
     const isPlaying = song.is_playing;
     const { name } = song.item;
-    const artist = song.item.artists.map((_artist) => _artist.name).join(`, `);
+    const artist = song.item.artists
+        .map((_artist: any) => _artist.name)
+        .join(`, `);
     const album = song.item.album.name;
     const albumImageUrl = song.item.album.images
-        .filter((image) => image.height > 109)
+        .filter((image: any) => image.height > 109)
         .slice(-1)[0].url;
     const songUrl = song.item.external_urls.spotify;
 
@@ -43,7 +50,7 @@ router.get("/get-now-playing", async (req, res) => {
     });
 });
 
-router.get("/get-data", async (req, res) => {
+router.get("/get-data", async (req: Request, res: Response) => {
     try {
         const { responseTracks, responseArtists, responseRecently } =
             await getSpotifyData();
@@ -88,4 +95,4 @@ router.get("/get-data", async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

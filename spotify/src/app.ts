@@ -1,10 +1,12 @@
-const express = require("express");
-const cors = require("cors");
-const helmet = require("helmet");
-const morgan = require("morgan");
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+import morgan from "morgan";
 require("dotenv").config();
-const middlewares = require("./utils/middlewares");
-const api = require("./api");
+
+import * as middlewares from "./utils/middlewares";
+import api from "./api";
+
 const app = express();
 
 app.use(cors());
