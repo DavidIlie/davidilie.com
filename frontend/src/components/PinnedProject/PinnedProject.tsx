@@ -7,7 +7,8 @@ import Image from "next/image";
 import LinkButton from "@components/LinkButton";
 import { useEffect, useState } from "react";
 import { PinnedRepoType } from "@data/pinnedRepos";
-import { repoType } from "../../pages/api/github";
+
+import { repoType } from "@interfaces/repoType";
 
 interface PinnedProjectProps {
     repo: repoType;
