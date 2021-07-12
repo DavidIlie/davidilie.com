@@ -1,4 +1,4 @@
-import { repoType } from "../../pages/api/github";
+import { repoType } from "@interfaces/repoType";
 
 interface RepoCardProps {
     repo: repoType;
