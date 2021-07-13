@@ -49,7 +49,10 @@ router.post(
 );
 
 router.get("/user", verifyToken, (req: Request, res: Response) => {
-    res.json(req.user);
+    res.json({
+        email: req.user.email,
+        admin: req.user.admin,
+    });
 });
 
 export default router;

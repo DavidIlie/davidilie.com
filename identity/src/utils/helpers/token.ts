@@ -36,8 +36,6 @@ export async function verifyToken(
     if (!user) {
         return res.sendStatus(500);
     } else {
-        delete user.password;
-        delete user._id;
         req.user = user;
         next();
     }
