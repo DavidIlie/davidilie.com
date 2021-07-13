@@ -1,14 +1,15 @@
-const express = require("express");
-const cors = require("cors");
-const helmet = require("helmet");
-const morgan = require("morgan");
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+import morgan from "morgan";
+import cookieParser from "cookie-parser";
 require("dotenv").config();
-const cookieParser = require("cookie-parser");
-const db = require("./utils/database/mongo");
-const identity = db.get("identity");
-const middlewares = require("./utils/middlewares");
-const api = require("./api");
+import db from "./utils/database/mongo";
+import * as middlewares from "./utils/middlewares";
+import api from "./api/index";
+
 const app = express();
+const identity = db.get("identity");
 
 app.use(
     cors({
