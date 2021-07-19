@@ -5,7 +5,7 @@ interface BlogCommentsProps {
     refetch: any;
 }
 
-interface CommentProps {
+export interface CommentProps {
     comment: string;
     date: Date;
     email: string;

@@ -1,10 +1,18 @@
+import Image from "next/image";
 import { format } from "date-fns";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
 import { toast } from "react-toastify";
 import { useState } from "react";
 
-const Comment = ({ data, refetch }) => {
+import { CommentProps } from "./BlogComments";
+
+interface CommentComponentProps {
+    data: CommentProps;
+    refetch: any;
+}
+
+const Comment = ({ data, refetch }: CommentComponentProps) => {
     const [session, loading] = useSession();
     const router = useRouter();
 
@@ -37,13 +45,17 @@ const Comment = ({ data, refetch }) => {
         <div className="max-h-32 h-32 bg-gray-800 rounded-lg p-3 flex flex-col justify-center items-start shadow-lg mb-4 hoverItem duration-200">
             <p className="px-2">{data.comment}</p>
             <div className="flex flex-row items-center mr-2 mt-4">
-                <img
+                <Image
                     src={data.image}
                     width="48"
                     height="48"
-                    className="rounded-full w-10 h-10 mr-4 shadow-lg"
+                    blurDataURL={
+                        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
+                    }
+                    placeholder="blur"
+                    className="rounded-full w-10 h-10 shadow-lg"
                 />
-                <h1 className="text-gray-300">
+                <h1 className="ml-4 text-gray-300">
                     {data.name}{" "}
                     <span className="text-gray-500">
                         /{" "}

@@ -9,8 +9,8 @@ module.exports = withMDX({
             "user-images.githubusercontent.com",
             "camo.githubusercontent.com",
             "github.com",
-            "s3.davidapps.dev",
-            "i.davidapps.dev",
+            "lh3.googleusercontent.com",
+            "cdn.discordapp.com",
         ],
     },
 });
