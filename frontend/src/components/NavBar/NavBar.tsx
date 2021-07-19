@@ -2,8 +2,25 @@ import { pages } from "@lib/constants";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
+import useScrollPosition from "@hooks/useScrollPosition";
+
 export const NavBar = () => {
     const router = useRouter();
+
+    const { pathname } = useRouter();
+    const [width, setWidth] = useState(0);
+    const { y, max } = useScrollPosition();
+
+    const blogPage = pathname === "/blog/[slug]";
+
+    useEffect(() => {
+        if (blogPage) {
+            const newWidth = y / max;
+            if (newWidth !== width) {
+                setWidth(newWidth * 100);
+            }
+        }
+    }, [y, max, width, blogPage]);
 
     const [clickMobileMenu, setClickMobileMenu] = useState(false);
     const [scrolled, setScrolled] = useState(false);
@@ -22,13 +39,23 @@ export const NavBar = () => {
 
     // backdrop-filter backdrop-blur
 
+    // bg-gray-800
+
     return (
         <nav
             className={`w-full fixed duration-500 z-50 ${
-                scrolled ? "bg-gray-800" : ""
+                scrolled ? "backdrop-filter backdrop-blur" : ""
             } `}
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative">
+                <div className="overflow-hidden h-2 text-xs flex">
+                    <div
+                        style={{ width: `${width}%` }}
+                        className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"
+                    ></div>
+                </div>
+            </div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-1">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <div className="flex-shrink-0">

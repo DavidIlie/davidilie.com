@@ -19,15 +19,15 @@ export const RemarkTitle = (props: any) => {
         <div
             {...props}
             style={{
-                backgroundColor: "#111827",
+                backgroundColor: "#2d3748",
                 marginBottom: "-3%",
                 padding: "1rem",
                 paddingLeft: "1rem",
                 border: "1px solid",
                 borderBottom: "none",
-                borderColor: "#111827",
-                borderTopLeftRadius: "2rem",
-                borderTopRightRadius: "2rem",
+                borderColor: "#2d3748",
+                borderTopLeftRadius: "1rem",
+                borderTopRightRadius: "1rem",
                 fontFamily: "monospace",
             }}
         />
@@ -46,7 +46,7 @@ export const CustomPre = (props: any) => {
     return (
         <pre
             {...props}
-            className="rounded-2xl mt-8 py-5 px-5 bg-gray-800 overflow-auto w-full"
+            className="scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-200 rounded-2xl mt-8 py-5 px-5 bg-gray-900 overflow-auto w-full"
             style={{ maxHeight: "500px" }}
         />
     );

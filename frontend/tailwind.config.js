@@ -86,6 +86,7 @@ module.exports = {
         extend: {
             margin: ["hover"],
         },
+        scrollbar: ["rounded"],
     },
-    plugins: [],
+    plugins: [require("tailwind-scrollbar")],
 };

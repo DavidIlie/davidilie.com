@@ -23,7 +23,8 @@
             "@ui/*": ["ui/*"],
             "@utils/*": ["utils/*"],
             "@data/*": ["data/*"],
-            "@interfaces/*": ["types/*"]
+            "@interfaces/*": ["types/*"],
+            "@hooks/*": ["hooks/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.hook.ts", "src"],
