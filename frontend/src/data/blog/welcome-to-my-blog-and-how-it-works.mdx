@@ -14,16 +14,16 @@ Hey! Welcome to my very fist blog post (on this website)! I used to run a blog l
 Talking about how the blog is made, I decided to challenge myself to make this a fully fledged blog.
 
 <ThoughtQuote>
-    Quick note, this blog post will cover only one aspect of this website (which
-    is the blog), this website has many other functions as well that I might
-    cover on a future date.
+    Quick note, this post will cover <strong>one</strong> aspect of this website (which
+    is about this blog). However, this website has many other aspects as well that I might
+    cover later down the line.
 </ThoughtQuote>
 
 ## What am I using?
 
 I am a huge fan of [Next.JS](https://nextjs.org/), so its already extremely easy to store the blog posts locally due to the fact that Next.JS uses Server Side Rendering as opposed to React's Client Side Rendering.
 
-```jsx:src/pages/projects.jsx
+```jsx:src/pages/projects.tsx
 export async function getServerSideProps() {
     const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/github`);
 
@@ -36,7 +36,7 @@ The code below fetches data for my [projects](/projects) page. However you will 
 
 Along with this, I use [MDX](https://mdxjs.com/) which is the simplest way to use custom React Components with my Markdown code. For instance, I use a custom component to display my code blocks to make them look even more interactive than they would be just normally displayed as text:
 
-```jsx:src/components/MDXComponents/MDXComponents.jsx
+```jsx:src/components/MDXComponents/MDXComponents.tsx
 export const CustomCode = (props) => {
     return (
         <code
@@ -51,7 +51,7 @@ export const CustomCode = (props) => {
 
 Each blog post is a `.mdx` file which is kept at `src/data/blog/*post*.mdx`. When you visit the Blog page. A function is called which gets all my blog posts and returns them as props which can be displayed onto the page:
 
-```jsx:src/lib/mdx.js
+```jsx:src/lib/mdx.ts
 export async function getAllFilesFrontMatter() {
   const files = fs.readdirSync(path.join(process.cwd(), `src`, `data`, `blog`));
 
@@ -77,7 +77,7 @@ However, that is just to get a list of blog posts. But how do we get the informa
 
 Well, we will be using [dynamic pages](https://nextjs.org/docs/routing/dynamic-routes) which will take our blog name and find the correct `.mdx` file.
 
-```jsx:src/pages/blog/[slug].jsx
+```jsx:src/pages/blog/[slug].tsx
 export async function getStaticPaths() {
     const posts = await getFiles(`blog`);
 
@@ -104,7 +104,7 @@ With the file found, we can now proceed to the more complicated stuff.
 
 A layout is used for each blog post to show the elements that needs to persist between each blog post. This consists on the things you see at the very top (title, author, etc).
 
-```jsx:src/components/BlogLayout/BlogLayout.jsx
+```jsx:src/components/BlogLayout/BlogLayout.tsx
 <article className="text-white flex flex-col justify-start pt-28 w-full min-h-screen mx-auto max-w-2xl">
     {frontMatter.tags && (
         <div className="flex w-full px-3 mb-4 justify-start flex-wrap">
@@ -168,7 +168,7 @@ As opposed to the blog itself, data such as the views or comments are not someth
 
 I am using [Monk](https://www.npmjs.com/package/monk) which is essentially the more simpler version of well-known [Mongoose](https://mongoosejs.com/).
 
-```js:src/lib/mongo.js
+```js:src/lib/mongo.ts
 import monk from "monk";
 
 const db = monk(process.env.MONGO_URI);
@@ -178,7 +178,7 @@ export default db;
 
 I can then import this function anywhere where I would need it. For instance, I created basic API routes to add views, add/delete comments and so on. To then integrate it with the actual frontend I am using [react-query](https://react-query.tanstack.com/) to interact between the API and frontend.
 
-```jsx:src/components/BlogLayout/BlogLayout.jsx
+```jsx:src/components/BlogLayout/BlogLayout.tsx
 const { data, refetch } = useQuery(`stats${frontMatter.slug}`, () => {
     return fetch(`/api/blog/get/${frontMatter.slug}`).then((res) =>
         res.json()
@@ -197,7 +197,7 @@ However, in order to have a proper comments system we would need to be able to s
     information that I would need to keep in my database.
 </InfoQuote>
 
-```jsx:src/pages/api/auth/[...nextauth].js
+```jsx:src/pages/api/auth/[...nextauth].ts
 export default NextAuth({
     providers: [
         Providers.Google({
