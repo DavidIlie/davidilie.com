@@ -585,6 +585,13 @@
   dependencies:
     react-icons "*"
 
+"@types/react-modal@^3.12.1":
+  version "3.12.1"
+  resolved "https://registry.yarnpkg.com/@types/react-modal/-/react-modal-3.12.1.tgz#fd1558762ed96020291b831190c85bc721aad3c1"
+  integrity sha512-pgq/jAnSJqHX7NXTFyUSXwlFOBUGngBXavFmAIKE7bkM7WNKyF/9XvmMr2+eIBOvR8waiA0Nj2qHfDZqMgeT6w==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-responsive@^8.0.3":
   version "8.0.3"
   resolved "https://registry.yarnpkg.com/@types/react-responsive/-/react-responsive-8.0.3.tgz#7096b888a5963ab7755ec4e9e52b652e1cc3146b"
@@ -2807,6 +2814,11 @@ next-mdx-remote@^3.0.2:
     "@mdx-js/react" "^1.6.22"
     esbuild "^0.11.12"
     pkg-dir "^5.0.0"
+
+next-plausible@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/next-plausible/-/next-plausible-2.0.0.tgz#2f5536ef3945c9a516471c2d5eda68887d447d74"
+  integrity sha512-NaLrAK+LsnEyXz31qy9OjhXZlppp0aWUdKmBPgthrWeGPwLo7ojSWgWU2BzbbUOqi0XVoWjaMa3oNVDfVkyC5w==
 
 next-seo@^4.26.0:
   version "4.26.0"

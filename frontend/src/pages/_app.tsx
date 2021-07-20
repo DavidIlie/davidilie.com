@@ -5,6 +5,7 @@ import Loader from "@components/Loader";
 import { DefaultSeo } from "next-seo";
 import { QueryClient, QueryClientProvider } from "react-query";
 import AppLayout from "@components/AppLayout";
+import PlausibleProvider from "next-plausible";
 import ReactModal from "react-modal";
 import { Provider as AuthProvider } from "next-auth/client";
 
@@ -58,14 +59,26 @@ function PersonalWebsite({
                 }}
                 description="A 14 year aspiring web developer experimenting with programming by publishing my work on the web."
             />
-            <QueryClientProvider client={queryClient}>
-                <AuthProvider session={pageProps.session}>
-                    <AppLayout>
-                        {loading ? <Loader /> : <Component {...pageProps} />}
-                    </AppLayout>
-                </AuthProvider>
-            </QueryClientProvider>
-            <ToastContainer autoClose={2500} newestOnTop={true} />
+            <PlausibleProvider
+                domain="davidilie.com"
+                selfHosted
+                trackOutboundLinks
+                enabled={true}
+                customDomain={"https://stats.davidilie.com"}
+            >
+                <QueryClientProvider client={queryClient}>
+                    <AuthProvider session={pageProps.session}>
+                        <AppLayout>
+                            {loading ? (
+                                <Loader />
+                            ) : (
+                                <Component {...pageProps} />
+                            )}
+                        </AppLayout>
+                    </AuthProvider>
+                </QueryClientProvider>
+                <ToastContainer autoClose={2500} newestOnTop={true} />
+            </PlausibleProvider>
         </>
     );
 }
