@@ -106,26 +106,23 @@ body {
     animation-iteration-count: infinite;
 }
 
-.blog-content * {
+.blog-content *:not(svg) {
     margin-top: 1.1em !important;
 }
 
 .blog-content h1 {
     font-size: 2.225rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
 }
 
 .blog-content h2 {
     font-size: 1.875rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
 }
 
 .blog-content h3 {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
 }
 
 .blog-content p {
@@ -197,12 +194,4 @@ body {
 .code .token.symbol,
 .code .token.deleted {
     color: #c4b5fd;
-}
-
-.animated-underline {
-    stroke-dasharray: 850;
-    stroke-dashoffset: 850;
-
-    animation: animatedUnderline 2s ease-in-out forwards;
-    animation-delay: 2s;
 }

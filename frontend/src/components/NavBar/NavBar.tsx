@@ -43,14 +43,16 @@ export const NavBar = () => {
 
     return (
         <nav
-            className={`w-full fixed duration-500 z-50 ${
-                scrolled ? "backdrop-filter backdrop-blur" : ""
+            className={`w-full fixed duration-500 z-50 border-gray-800 border-b ${
+                scrolled ? "backdrop-filter backdrop-blur-lg bg-opacity-30" : ""
             } `}
         >
             <div className="relative">
                 <div className="overflow-hidden h-2 text-xs flex">
                     <div
-                        style={{ width: `${width}%` }}
+                        style={{
+                            width: `${width}%`,
+                        }}
                         className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"
                     ></div>
                 </div>

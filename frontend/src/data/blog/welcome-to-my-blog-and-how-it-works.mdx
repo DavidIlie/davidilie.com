@@ -13,6 +13,12 @@ Hey! Welcome to my very fist blog post (on this website)! I used to run a blog l
 
 Talking about how the blog is made, I decided to challenge myself to make this a fully fledged blog.
 
+<ThoughtQuote>
+    Quick note, this blog post will cover only one aspect of this website (which
+    is the blog), this website has many other functions as well that I might
+    cover on a future date.
+</ThoughtQuote>
+
 ## What am I using?
 
 I am a huge fan of [Next.JS](https://nextjs.org/), so its already extremely easy to store the blog posts locally due to the fact that Next.JS uses Server Side Rendering as opposed to React's Client Side Rendering.
@@ -182,7 +188,14 @@ const { data, refetch } = useQuery(`stats${frontMatter.slug}`, () => {
 
 However, in order to have a proper comments system we would need to be able to store some user information on our database in order to identify who is actually commented.
 
-Luckily, I discovered [next-auth](https://next-auth.js.org/) which is my holy grail to getting authentication done. I have integrated both Google and Discord and they both return the information that I would need to keep in my database.
+<InfoQuote>
+    However, luck is on my side! I discovered{" "}
+    <a href="https://next-auth.js.org/">next-auth</a> which is my holy grail to
+    getting authentication done. I have integrated both{" "}
+    <a href="https://google.com">Google</a> and{" "}
+    <a href="https://discord.com">Discord</a> and they both return the
+    information that I would need to keep in my database.
+</InfoQuote>
 
 ```jsx:src/pages/api/auth/[...nextauth].js
 export default NextAuth({
