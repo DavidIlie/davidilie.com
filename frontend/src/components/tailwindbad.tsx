@@ -49,6 +49,7 @@ export default function tailwindbad() {
             <h1 className="bg-indigo-500">fuck you tailwind</h1>
             <h1 className="bg-indigo-600">fuck you tailwind</h1>
             <h1 className="bg-indigo-700">fuck you tailwind</h1>
+            <h1 className="bg-indigo-800">fuck you tailwind</h1>
             <h1 className="bg-blue-100">fuck you tailwind</h1>
             <h1 className="bg-blue-200">fuck you tailwind</h1>
             <h1 className="bg-blue-300">fuck you tailwind</h1>
@@ -56,6 +57,7 @@ export default function tailwindbad() {
             <h1 className="bg-blue-500">fuck you tailwind</h1>
             <h1 className="bg-blue-600">fuck you tailwind</h1>
             <h1 className="bg-blue-700">fuck you tailwind</h1>
+            <h1 className="bg-blue-800">fuck you tailwind</h1>
             <h1 className="bg-green-100">fuck you tailwind</h1>
             <h1 className="bg-green-200">fuck you tailwind</h1>
             <h1 className="bg-green-300">fuck you tailwind</h1>
@@ -63,6 +65,7 @@ export default function tailwindbad() {
             <h1 className="bg-green-500">fuck you tailwind</h1>
             <h1 className="bg-green-600">fuck you tailwind</h1>
             <h1 className="bg-green-700">fuck you tailwind</h1>
+            <h1 className="bg-green-800">fuck you tailwind</h1>
             <h1 className="bg-red-100">fuck you tailwind</h1>
             <h1 className="bg-red-200">fuck you tailwind</h1>
             <h1 className="bg-red-300">fuck you tailwind</h1>
@@ -77,6 +80,7 @@ export default function tailwindbad() {
             <h1 className="bg-yellow-500">fuck you tailwind</h1>
             <h1 className="bg-yellow-600">fuck you tailwind</h1>
             <h1 className="bg-yellow-700">fuck you tailwind</h1>
+            <h1 className="bg-yellow-800">fuck you tailwind</h1>
         </>
     );
 }
