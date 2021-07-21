@@ -1,7 +1,9 @@
 import Link from "next/link";
 
-import { HiOutlineInformationCircle } from "react-icons/hi";
+import { HiOutlineInformationCircle, HiOutlineLightBulb } from "react-icons/hi";
 import { RiBubbleChartLine } from "react-icons/ri";
+import { FaQuoteLeft } from "react-icons/fa";
+import { TiWarningOutline } from "react-icons/ti";
 
 interface CustomLinkProps {
     href: string;
@@ -108,6 +110,87 @@ export const ThoughtQuote = ({ children }) => (
             }}
         >
             <RiBubbleChartLine className="text-3xl text-purple-500" />
+        </div>
+        <div className="p-0 m-0 text-lg mb-3">{children}</div>
+    </div>
+);
+
+export const AnnouncementQuote = ({ children }) => (
+    <div className="px-6 py-1 rounded-lg border-l-4 text-gray-300 leading-relaxed relative border-yellow-500 bg-yellow-500 bg-opacity-10">
+        <div
+            className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            style={{
+                float: "left",
+                position: "absolute",
+                top: "-30px",
+                left: "-20px",
+            }}
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-yellow-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
+                />
+            </svg>
+        </div>
+        <div className="p-0 m-0 text-lg mb-3">{children}</div>
+    </div>
+);
+
+export const BlockQuote = ({ children }) => (
+    <div className="px-6 py-1 rounded-lg border-l-4 leading-relaxed dark:text-gray-300 relative border-gray-600 dark:border-gray-300 bg-gray-400 bg-opacity-10">
+        <div
+            className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            style={{
+                float: "left",
+                position: "absolute",
+                top: "-30px",
+                left: "-20px",
+            }}
+        >
+            <FaQuoteLeft />
+        </div>
+        <div className="p-0 m-0 text-lg mb-3 italic">{children}</div>
+    </div>
+);
+
+export const IdeaQuote = ({ children }) => (
+    <div className="px-6 py-1 mb-6 rounded-lg border-l-4 leading-relaxed text-gray-300 relative border-yellow-400 bg-yellow-400 bg-opacity-10">
+        <div
+            className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            style={{
+                float: "left",
+                position: "absolute",
+                top: "-30px",
+                left: "-20px",
+            }}
+        >
+            <HiOutlineLightBulb className="text-3xl text-yellow-400" />
+        </div>
+        <div className="p-0 m-0 text-lg mb-3">{children}</div>
+    </div>
+);
+
+export const WarningQuote = ({ children }) => (
+    <div className="px-6 py-1 mb-6 rounded-lg border-l-4 leading-relaxed text-gray-300 relative border-red-500 bg-red-500 bg-opacity-10">
+        <div
+            className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            style={{
+                float: "left",
+                position: "absolute",
+                top: "-30px",
+                left: "-20px",
+            }}
+        >
+            <TiWarningOutline className="text-3xl text-red-500" />
         </div>
         <div className="p-0 m-0 text-lg mb-3">{children}</div>
     </div>

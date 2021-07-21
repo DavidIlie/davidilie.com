@@ -5,6 +5,10 @@ import {
     CustomLink,
     InfoQuote,
     ThoughtQuote,
+    AnnouncementQuote,
+    BlockQuote,
+    IdeaQuote,
+    WarningQuote,
 } from "./MDXComponents";
 
 const MDXComponents = {
@@ -14,6 +18,10 @@ const MDXComponents = {
     a: CustomLink,
     InfoQuote,
     ThoughtQuote,
+    AnnouncementQuote,
+    BlockQuote,
+    IdeaQuote,
+    WarningQuote,
 };
 
 export default MDXComponents;

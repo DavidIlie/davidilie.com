@@ -13,11 +13,11 @@ Hey! Welcome to my very fist blog post (on this website)! I used to run a blog l
 
 Talking about how the blog is made, I decided to challenge myself to make this a fully fledged blog.
 
-<ThoughtQuote>
-    Quick note, this post will cover <strong>one</strong> aspect of this website
-    (which is about this blog). However, this website has many other aspects as
-    well that I might cover later down the line.
-</ThoughtQuote>
+<WarningQuote>
+    Quick note, this post will only cover <strong>one</strong> aspect of this
+    website (which is about this blog). However, this website has many other
+    aspects as well that I might cover later down the line.
+</WarningQuote>
 
 ## What am I using?
 
@@ -56,6 +56,10 @@ export const InfoQuote = ({ children }) => (
 ```
 
 ## How does it work?
+
+<BlockQuote>
+    "If it works, leave it alone." - Every programmer in 2021
+</BlockQuote>
 
 Each blog post is a `.mdx` file which is kept at `src/data/blog/*post*.mdx`. When you visit the Blog page. A function is called which gets all my blog posts and returns them as props which can be displayed onto the page:
 
@@ -196,14 +200,14 @@ const { data, refetch } = useQuery(`stats${frontMatter.slug}`, () => {
 
 However, in order to have a proper comments system we would need to be able to store some user information on our database in order to identify who is actually commented.
 
-<InfoQuote>
+<IdeaQuote>
     However, luck is on my side! I discovered{" "}
     <a href="https://next-auth.js.org/">next-auth</a> which is my holy grail to
     getting authentication done. I have integrated both{" "}
     <a href="https://google.com">Google</a> and{" "}
     <a href="https://discord.com">Discord</a> and they both return the
     information that I would need to keep in my database.
-</InfoQuote>
+</IdeaQuote>
 
 ```jsx:src/pages/api/auth/[...nextauth].ts
 export default NextAuth({
@@ -230,7 +234,10 @@ export default NextAuth({
 
 ```
 
-You can see this in action by scrolling down to the "What do you think?" section of the blog post.
+<InfoQuote>
+    You can see this in action by scrolling down to the "What do you think?"
+    section of the blog post.
+</InfoQuote>
 
 ## Conclusion
 
