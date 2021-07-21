@@ -106,22 +106,31 @@ body {
     animation-iteration-count: infinite;
 }
 
-.blog-content *:not(svg) {
+.blog-content *:not(svg, h1, h2, h3, h4, h5, h6, a, .codeEditorTitle) {
     margin-top: 1.1em !important;
 }
 
 .blog-content h1 {
-    font-size: 2.225rem;
     font-weight: 600;
 }
 
 .blog-content h2 {
-    font-size: 1.875rem;
     font-weight: 600;
 }
 
 .blog-content h3 {
-    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.blog-content h4 {
+    font-weight: 600;
+}
+
+.blog-content h5 {
+    font-weight: 600;
+}
+
+.blog-content h6 {
     font-weight: 600;
 }
 
@@ -166,15 +175,29 @@ body {
     color: #e5e7eb;
 }
 
+.code .token.parameter {
+    color: #a9dcff;
+}
+
+.code .token.string {
+    color: #bf6f43;
+}
+
 .code .token.atrule,
-.code .token.attr-value,
+.code .token.attr-value {
+    color: #be86c1;
+}
+
 .code .token.keyword {
-    color: #f9a8d4;
+    color: #467ad7;
+}
+
+.code .token.maybe-class-name {
+    color: rgb(43, 172, 144);
 }
 
 .code .token.selector,
 .code .token.attr-name,
-.code .token.string,
 .code .token.char,
 .code .token.builtin,
 .code .token.inserted {
@@ -183,7 +206,7 @@ body {
 
 .code .token.function,
 .code .token.class-name {
-    color: #93c5fd;
+    color: #d4ce91;
 }
 
 .code .token.property,

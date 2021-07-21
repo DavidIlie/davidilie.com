@@ -1,9 +1,14 @@
 import Link from "next/link";
 
+import { formatHashLink } from "@lib/formatHashLink";
+
 import { HiOutlineInformationCircle, HiOutlineLightBulb } from "react-icons/hi";
 import { RiBubbleChartLine } from "react-icons/ri";
 import { FaQuoteLeft } from "react-icons/fa";
 import { TiWarningOutline } from "react-icons/ti";
+import { AiOutlineLink } from "react-icons/ai";
+
+import Tooltip from "@ui/Tooltip";
 
 interface CustomLinkProps {
     href: string;
@@ -34,23 +39,45 @@ export const CustomLink = (props: CustomLinkProps) => {
     );
 };
 
-export const RemarkTitle = (props: any) => {
+const WindowButton = ({ bg }: { bg: string }) => {
+    return (
+        <a
+            style={{ height: "12px", width: "12px", borderRadius: "999px" }}
+            className={`bg-${bg}`}
+        />
+    );
+};
+
+export const RemarkTitle = ({ children }: { children: string }) => {
     return (
         <div
-            {...props}
+            className="z-20 mt-2 -mb-5 flex flex-wrap justify-between items-center py-1 w-full mx-auto codeEditorTitle"
             style={{
-                backgroundColor: "#2d3748",
-                marginBottom: "-3%",
-                padding: "0.75rem",
-                paddingLeft: "1rem",
-                border: "1px solid",
+                background: "rgba(0, 0, 0, 0.4)",
                 borderBottom: "none",
-                borderColor: "#2d3748",
+                border: "1px solid rgba(0, 0, 0, 0.4)",
                 borderTopLeftRadius: "1rem",
                 borderTopRightRadius: "1rem",
-                fontFamily: "monospace",
             }}
-        />
+        >
+            <span
+                className="flex relative justify-start items-center gap-4 px-4 codeEditorTitle"
+                style={{ height: "36px" }}
+            >
+                <WindowButton bg="red-400" />
+                <WindowButton bg="yellow-400" />
+                <WindowButton bg="green-500" />
+            </span>
+            <Tooltip content="Go to file">
+                <a
+                    href={`https://github.com/davidilie/davidilie.com/tree/master/frontend/${children}`}
+                    target="_blank"
+                    className="px-4 text-blue-500 cursor-pointer truncate"
+                >
+                    {children}
+                </a>
+            </Tooltip>
+        </div>
     );
 };
 
@@ -66,7 +93,7 @@ export const CustomPre = (props: any) => {
     return (
         <pre
             {...props}
-            className="scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-200 rounded-2xl mt-8 py-5 px-5 bg-gray-900 overflow-auto w-full"
+            className="z-50 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-200 py-5 px-5 bg-gray-900 overflow-auto w-full"
             style={{ maxHeight: "500px" }}
         />
     );
@@ -194,4 +221,56 @@ export const WarningQuote = ({ children }) => (
         </div>
         <div className="p-0 m-0 text-lg mb-3">{children}</div>
     </div>
+);
+
+const AnchorLink = ({ children }) => {
+    return (
+        <div className="group relative flex items-start gap-1 -ml-7">
+            <div className="opacity-0 group-hover:opacity-50">
+                <a
+                    id={formatHashLink(children[1])}
+                    href={`#${formatHashLink(children[1])}`}
+                >
+                    <AiOutlineLink className="w-5 h-5 hidden md:block -mt-5" />
+                </a>
+            </div>
+            {children}
+        </div>
+    );
+};
+
+export const h1 = ({ children }) => (
+    <h1 className="text-3xl lg:text-4xl font-extrabold text-white">
+        <AnchorLink>{children}</AnchorLink>
+    </h1>
+);
+
+export const h2 = ({ children }) => (
+    <h2 className="text-2xl lg:text-3xl font-extrabold text-white">
+        <AnchorLink>{children}</AnchorLink>
+    </h2>
+);
+
+export const h3 = ({ children }) => (
+    <h3 className="text-xl lg:text-2xl font-extrabold text-white">
+        <AnchorLink>{children}</AnchorLink>
+    </h3>
+);
+
+export const h4 = ({ children }) => (
+    <h4 className="text-lg lg:text-xl font-extrabold text-white">
+        <AnchorLink>{children}</AnchorLink>
+    </h4>
+);
+
+export const h5 = ({ children }) => (
+    <h5 className="text-md lg:text-lg font-extrabold text-white">
+        <AnchorLink>{children}</AnchorLink>
+    </h5>
+);
+
+export const h6 = ({ children }) => (
+    <h6 className="text-md lg:text-md font-extrabold text-white">
+        <AnchorLink>{children}</AnchorLink>
+    </h6>
 );

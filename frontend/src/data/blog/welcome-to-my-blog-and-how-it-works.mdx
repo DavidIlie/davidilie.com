@@ -23,20 +23,20 @@ Talking about how the blog is made, I decided to challenge myself to make this a
 
 I am a huge fan of [Next.JS](https://nextjs.org/), so its already extremely easy to store the blog posts locally due to the fact that Next.JS uses Server Side Rendering as opposed to React's Client Side Rendering.
 
-```jsx:src/pages/projects.tsx
-export async function getServerSideProps() {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/github`);
+```tsx:src/pages/projects.tsx
+export const getServerSideProps: GetServerSideProps = async () => {
+    const response = await fetch(`https://davidilie.com/api/agenda/job/github`);
 
-    const { stars, repos, followers } = await response.json();
-    return { props: { stars, repos, followers, revalidate: 600 } };
-}
+    const repos = await response.json();
+    return { props: { repos, revalidate: 600 } };
+};
 ```
 
-The code below fetches data for my [projects](/projects) page. However you will see later an example with my blog.
+The code above fetches data for my [projects](/projects) page. However you will see later an example with my blog.
 
 Along with this, I use [MDX](https://mdxjs.com/) which is the simplest way to use custom React Components with my Markdown code. For instance, I use a custom component to display information "blocks" in a more good-looking way:
 
-```jsx:src/components/MDXComponents/MDXComponents.tsx
+```tsx:src/components/MDXComponents/MDXComponents.tsx
 export const InfoQuote = ({ children }) => (
     <div className="px-6 py-1 mb-5 rounded-lg border-l-4 leading-relaxed text-gray-300 relative border-blue-500 bg-blue-500 bg-opacity-10">
         <div
@@ -63,7 +63,7 @@ export const InfoQuote = ({ children }) => (
 
 Each blog post is a `.mdx` file which is kept at `src/data/blog/*post*.mdx`. When you visit the Blog page. A function is called which gets all my blog posts and returns them as props which can be displayed onto the page:
 
-```jsx:src/lib/mdx.ts
+```tsx:src/lib/mdx.ts
 export async function getAllFilesFrontMatter() {
   const files = fs.readdirSync(path.join(process.cwd(), `src`, `data`, `blog`));
 
@@ -89,7 +89,7 @@ However, that is just to get a list of blog posts. But how do we get the informa
 
 Well, we will be using [dynamic pages](https://nextjs.org/docs/routing/dynamic-routes) which will take our blog name and find the correct `.mdx` file.
 
-```jsx:src/pages/blog/[slug].tsx
+```tsx:src/pages/blog/[slug].tsx
 export async function getStaticPaths() {
     const posts = await getFiles(`blog`);
 
@@ -116,7 +116,7 @@ With the file found, we can now proceed to the more complicated stuff.
 
 A layout is used for each blog post to show the elements that needs to persist between each blog post. This consists on the things you see at the very top (title, author, etc).
 
-```jsx:src/components/BlogLayout/BlogLayout.tsx
+```tsx:src/components/BlogLayout/BlogLayout.tsx
 <article className="text-white flex flex-col justify-start pt-28 w-full min-h-screen mx-auto max-w-2xl">
     {frontMatter.tags && (
         <div className="flex w-full px-3 mb-4 justify-start flex-wrap">
@@ -190,7 +190,7 @@ export default db;
 
 I can then import this function anywhere where I would need it. For instance, I created basic API routes to add views, add/delete comments and so on. To then integrate it with the actual frontend I am using [react-query](https://react-query.tanstack.com/) to interact between the API and frontend.
 
-```jsx:src/components/BlogLayout/BlogLayout.tsx
+```tsx:src/components/BlogLayout/BlogLayout.tsx
 const { data, refetch } = useQuery(`stats${frontMatter.slug}`, () => {
     return fetch(`/api/blog/get/${frontMatter.slug}`).then((res) =>
         res.json()
@@ -209,7 +209,7 @@ However, in order to have a proper comments system we would need to be able to s
     information that I would need to keep in my database.
 </IdeaQuote>
 
-```jsx:src/pages/api/auth/[...nextauth].ts
+```tsx:src/pages/api/auth/[...nextauth].ts
 export default NextAuth({
     providers: [
         Providers.Google({
