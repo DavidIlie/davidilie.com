@@ -36,7 +36,9 @@ export const NavBar = () => {
                         style={{
                             width: `${width}%`,
                         }}
-                        className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-700"
+                        className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center ${
+                            width > 99 && "duration-200"
+                        } bg-${width === 100 ? "green-500" : "blue-700"}`}
                     ></div>
                 </div>
             </div>
