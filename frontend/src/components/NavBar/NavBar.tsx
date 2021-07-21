@@ -27,19 +27,19 @@ export const NavBar = () => {
     const currentPage = router.pathname;
 
     return (
-        <nav
-            className={`w-full fixed duration-500 z-50 border-gray-800 border-b backdrop-filter backdrop-blur-lg bg-opacity-30`}
-        >
+        <nav className="w-full fixed duration-500 z-50 backdrop-filter backdrop-blur-lg bg-opacity-30">
             <div className="relative">
                 <div className="overflow-hidden h-2 text-xs flex">
-                    <div
-                        style={{
-                            width: `${width}%`,
-                        }}
-                        className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center ${
-                            width > 99 && "duration-200"
-                        } bg-${width === 100 ? "green-500" : "blue-700"}`}
-                    ></div>
+                    {blogPage && (
+                        <div
+                            style={{
+                                width: `${width}%`,
+                            }}
+                            className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center ${
+                                width > 99 && "duration-200"
+                            } bg-${width >= 100 ? "green-500" : "blue-700"}`}
+                        ></div>
+                    )}
                 </div>
             </div>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-1">

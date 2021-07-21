@@ -90,7 +90,7 @@ export const InfoQuote = ({ children }) => (
                 left: "-20px",
             }}
         >
-            <HiOutlineInformationCircle className="text-2xl text-blue-500" />
+            <HiOutlineInformationCircle className="text-3xl text-blue-500" />
         </div>
         <div className="p-0 m-0 text-lg mb-3">{children}</div>
     </div>
@@ -107,7 +107,7 @@ export const ThoughtQuote = ({ children }) => (
                 left: "-20px",
             }}
         >
-            <RiBubbleChartLine className="text-2xl text-purple-500" />
+            <RiBubbleChartLine className="text-3xl text-purple-500" />
         </div>
         <div className="p-0 m-0 text-lg mb-3">{children}</div>
     </div>

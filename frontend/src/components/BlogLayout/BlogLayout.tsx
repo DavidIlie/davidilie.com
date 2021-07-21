@@ -94,7 +94,7 @@ export const BlogLayout = ({
                 </h1>
                 <div className="flex flex-row justify-between items-center max-w-2xl mx-auto mb-12 px-3 mt-5 w-full">
                     <div className="flex items-center">
-                        <span className="ml-2 inline-flex items-center justify-center py-2 text-xs font-bold leading-none rounded-md">
+                        <span className="inline-flex items-center justify-center py-2 text-xs font-bold leading-none rounded-md">
                             <Image
                                 className="rounded-full"
                                 src={frontMatter.by.avatar}
@@ -114,6 +114,8 @@ export const BlogLayout = ({
                         </h1>
                     </div>
                     <h1>
+                        {frontMatter.wordCount.toLocaleString() + " words"}
+                        {` • `}
                         {frontMatter.readingTime?.text}
                         {` • `}
                         <BlogViewCounter slug={frontMatter.slug} />
@@ -133,12 +135,15 @@ export const BlogLayout = ({
                 <div className="mb-10 px-2 max-w-4xl w-full blog-content">
                     {children}
                 </div>
-                <a
-                    className="px-3 pb-3 text-lg text-blue-600 duration-200 hover:text-blue-700 font-semibold"
-                    href={getGitHubEditURL(frontMatter.slug)}
-                >
-                    Edit on GitHub
-                </a>
+                <div className="flex items-center px-3 pb-3 gap-1 justify-end">
+                    <RiEditBoxLine className="mt-0.5" />
+                    <a
+                        className="text-lg text-blue-600 duration-200 hover:text-blue-700 font-semibold"
+                        href={getGitHubEditURL(frontMatter.slug)}
+                    >
+                        Edit on GitHub
+                    </a>
+                </div>
                 <div className="p-3">
                     <BlogInteractions
                         refetch={refetch}
