@@ -23,29 +23,12 @@ export const NavBar = () => {
     }, [y, max, width, blogPage]);
 
     const [clickMobileMenu, setClickMobileMenu] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
 
     const currentPage = router.pathname;
 
-    useEffect(() => {
-        window.addEventListener("scroll", () => {
-            if (window.scrollY >= 80) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-        });
-    }, []);
-
-    // backdrop-filter backdrop-blur
-
-    // bg-gray-800
-
     return (
         <nav
-            className={`w-full fixed duration-500 z-50 border-gray-800 border-b ${
-                scrolled ? "backdrop-filter backdrop-blur-lg bg-opacity-30" : ""
-            } `}
+            className={`w-full fixed duration-500 z-50 border-gray-800 border-b backdrop-filter backdrop-blur-lg bg-opacity-30`}
         >
             <div className="relative">
                 <div className="overflow-hidden h-2 text-xs flex">
@@ -116,7 +99,6 @@ export const NavBar = () => {
                             className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700"
                             onClick={() => {
                                 setClickMobileMenu(!clickMobileMenu);
-                                setScrolled(!clickMobileMenu);
                             }}
                         >
                             {clickMobileMenu ? (
