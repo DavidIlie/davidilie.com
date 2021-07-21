@@ -1,6 +1,6 @@
-// bug with tailwindcss that it removes these classes below which fuck up the entire background :))
+// all the colors that need to stay when the app is built in prod :))
 
-export default function fucktailwind() {
+export default function tailwind_colors() {
     return (
         <>
             <h1 className="text-gray-100">fuck you tailwind</h1>
@@ -23,6 +23,16 @@ export default function fucktailwind() {
             <h1 className="text-green-300">fuck you tailwind</h1>
             <h1 className="text-green-400">fuck you tailwind</h1>
             <h1 className="text-green-500">fuck you tailwind</h1>
+            <h1 className="text-red-100">fuck you tailwind</h1>
+            <h1 className="text-red-200">fuck you tailwind</h1>
+            <h1 className="text-red-300">fuck you tailwind</h1>
+            <h1 className="text-red-400">fuck you tailwind</h1>
+            <h1 className="text-red-500">fuck you tailwind</h1>
+            <h1 className="text-yellow-100">fuck you tailwind</h1>
+            <h1 className="text-yellow-200">fuck you tailwind</h1>
+            <h1 className="text-yellow-300">fuck you tailwind</h1>
+            <h1 className="text-yellow-400">fuck you tailwind</h1>
+            <h1 className="text-yellow-500">fuck you tailwind</h1>
         </>
     );
 }

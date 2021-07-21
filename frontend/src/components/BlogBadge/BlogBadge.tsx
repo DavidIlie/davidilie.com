@@ -6,12 +6,12 @@ export const BlogBadge = ({ tag }: BlogBadeProps): JSX.Element => {
     return (
         <span
             className={`ml-1 inline-flex items-center justify-center px-2 py-2 mr-2 text-xs font-bold leading-none text-${
-                [`gray`, `yellow`, `green`, `blue`][
-                    (tag.charCodeAt(0) + tag.charCodeAt(1)) % 4
+                [`gray`, `red`, `yellow`, `green`, `blue`, `indigo`][
+                    (tag.charCodeAt(0) + tag.charCodeAt(1)) % 6
                 ]
             }-100 bg-${
-                [`gray`, `yellow`, `green`, `blue`][
-                    (tag.charCodeAt(0) + tag.charCodeAt(1)) % 4
+                [`gray`, `red`, `yellow`, `green`, `blue`, `indigo`][
+                    (tag.charCodeAt(0) + tag.charCodeAt(1)) % 6
                 ]
             }-700 rounded-md`}
         >
