@@ -48,9 +48,9 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                         </h1>
                     </Fade>
                 )}
-                {filteredBlogPosts.map((frontMatter) => (
-                    <Fade direction="up">
-                        <BlogPost key={frontMatter.title} {...frontMatter} />
+                {filteredBlogPosts.map((frontMatter: any) => (
+                    <Fade direction="up" key={frontMatter.title}>
+                        <BlogPost {...frontMatter} />
                     </Fade>
                 ))}
             </div>

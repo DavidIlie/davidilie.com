@@ -42,7 +42,7 @@ export const BlogInteractions = ({
             <div className="flex justify-center">
                 <ClipLoader color="#60A5FA" size={75} loading={loading} />
             </div>
-            {!session && (
+            {!loading && !session && (
                 <div>
                     <div className="border rounded p-6 my-4 w-full border-gray-800 bg-blue-opaque">
                         <h5 className="text-lg md:text-xl font-bold text-gray-100">

@@ -65,23 +65,28 @@ Each blog post is a `.mdx` file which is kept at `src/data/blog/*post*.mdx`. Whe
 
 ```tsx:src/lib/mdx.ts
 export async function getAllFilesFrontMatter() {
-  const files = fs.readdirSync(path.join(process.cwd(), `src`, `data`, `blog`));
-
-  return files.reduce((allPosts, postSlug) => {
-    const source = fs.readFileSync(
-      path.join(process.cwd(), `src`, `data`, `blog`, postSlug),
-      `utf8`
+    const files = fs.readdirSync(
+        path.join(process.cwd(), `src`, `data`, `blog`)
     );
-    const { data } = matter(source);
 
-    return [
-      {
-        ...data,
-        slug: postSlug.replace(`.mdx`, ``),
-      },
-      ...allPosts,
-    ];
-  }, []);
+    return files.reduce((allPosts, postSlug) => {
+        const source = fs.readFileSync(
+            path.join(process.cwd(), `src`, `data`, `blog`, postSlug),
+            `utf8`
+        );
+
+        const slug = postSlug.replace(`.mdx`, ``);
+
+        const { data } = matter(source);
+
+        return [
+            {
+                ...data,
+                slug: slug,
+            },
+            ...allPosts,
+        ];
+    }, []);
 }
 ```
 
@@ -89,7 +94,7 @@ However, that is just to get a list of blog posts. But how do we get the informa
 
 Well, we will be using [dynamic pages](https://nextjs.org/docs/routing/dynamic-routes) which will take our blog name and find the correct `.mdx` file.
 
-```tsx:src/pages/blog/[slug].tsx
+```ts:src/pages/blog/[slug].ts
 export async function getStaticPaths() {
     const posts = await getFiles(`blog`);
 
@@ -125,22 +130,24 @@ A layout is used for each blog post to show the elements that needs to persist b
             ))}
         </div>
     )}
-    <h1 className="text-5xl font-semibold px-4 header-gradient">
+    <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-semibold px-4">
         {frontMatter.title}
     </h1>
-    <div className="flex flex-row justify-between items-center max-w-2xl mx-auto mb-12 px-3 mt-5 w-full">
+    <div className="flex flex-wrap justify-between items-center max-w-2xl mx-auto mb-12 px-3 mt-5 w-full">
         <div className="flex items-center">
-            <span className="ml-1 inline-flex items-center justify-center px-2 py-2 mr-2 text-xs font-bold leading-none text-green-100 bg-green-800 rounded-md">
+            <span className="inline-flex items-center justify-center py-2 text-xs font-bold leading-none rounded-md">
                 <Image
                     className="rounded-full"
                     src={frontMatter.by.avatar}
                     width="25px"
                     height="25px"
                 />
-                <span className="ml-1">{frontMatter.by.name}</span>
+                <span className="ml-1 header-gradient text-lg mr-1">
+                    {frontMatter.by.name}
+                </span>
             </span>
             <h1 className="text-gray-300">
-                {" • "}
+                {" / "}
                 {format(
                     parseISO(frontMatter.publishedAt),
                     "MMMM dd, yyyy"
@@ -151,6 +158,8 @@ A layout is used for each blog post to show the elements that needs to persist b
             {frontMatter.wordCount.toLocaleString() + " words"}
             {` • `}
             {frontMatter.readingTime?.text}
+            {` • `}
+            <BlogViewCounter slug={frontMatter.slug} />
         </h1>
     </div>
     <Image
@@ -166,6 +175,29 @@ A layout is used for each blog post to show the elements that needs to persist b
     />
     <div className="mb-10 px-2 max-w-4xl w-full blog-content">
         {children}
+    </div>
+    <div className="flex items-center px-3 pb-3 gap-1 justify-end">
+        <RiEditBoxLine className="mt-0.5" />
+        <a
+            className="text-lg text-blue-600 duration-200 hover:text-blue-700 font-semibold"
+            href={getGitHubEditURL(frontMatter.slug)}
+        >
+            Edit on GitHub
+        </a>
+    </div>
+    <div className="p-3">
+        <BlogInteractions
+            refetch={refetch}
+            slug={frontMatter.slug}
+        />
+        <BlogComments refetch={refetch} comments={comments} />
+        <div className="flex justify-center">
+            <BarLoader
+                color="#60A5FA"
+                width="42rem"
+                loading={isLoading}
+            />
+        </div>
     </div>
 </article>
 ```
@@ -191,11 +223,12 @@ export default db;
 I can then import this function anywhere where I would need it. For instance, I created basic API routes to add views, add/delete comments and so on. To then integrate it with the actual frontend I am using [react-query](https://react-query.tanstack.com/) to interact between the API and frontend.
 
 ```tsx:src/components/BlogLayout/BlogLayout.tsx
-const { data, refetch } = useQuery(`stats${frontMatter.slug}`, () => {
-    return fetch(`/api/blog/get/${frontMatter.slug}`).then((res) =>
-        res.json()
-    );
-});
+const { isLoading, data, refetch } = useQuery(`stats${frontMatter.slug}`, () => {
+        return fetch(`/api/blog/get/${frontMatter.slug}`).then((res) =>
+            res.json()
+        );
+    }
+);
 ```
 
 However, in order to have a proper comments system we would need to be able to store some user information on our database in order to identify who is actually commented.
