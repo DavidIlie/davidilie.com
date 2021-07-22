@@ -237,37 +237,37 @@ const AnchorLink = ({ children }) => {
 };
 
 export const h1 = ({ children }) => (
-    <h1 className="text-4xl lg:text-3xl font-extrabold text-white">
+    <h1 className="text-4xl font-extrabold text-white">
         <AnchorLink>{children}</AnchorLink>
     </h1>
 );
 
 export const h2 = ({ children }) => (
-    <h2 className="text-3xl lg:text-2xl font-extrabold text-white mt-2">
+    <h2 className="text-3xl font-extrabold text-white mt-2">
         <AnchorLink>{children}</AnchorLink>
     </h2>
 );
 
 export const h3 = ({ children }) => (
-    <h3 className="text-3xl lg:text-xl font-extrabold text-white">
+    <h3 className="text-2xl font-extrabold text-white">
         <AnchorLink>{children}</AnchorLink>
     </h3>
 );
 
 export const h4 = ({ children }) => (
-    <h4 className="text-xl lg:text-md font-extrabold text-white">
+    <h4 className="text-xl font-extrabold text-white">
         <AnchorLink>{children}</AnchorLink>
     </h4>
 );
 
 export const h5 = ({ children }) => (
-    <h5 className="text-lg lg:text-sm font-extrabold text-white">
+    <h5 className="text-lg font-extrabold text-white">
         <AnchorLink>{children}</AnchorLink>
     </h5>
 );
 
 export const h6 = ({ children }) => (
-    <h6 className="text-md lg:text-md font-extrabold text-white">
+    <h6 className="text-md font-extrabold text-white">
         <AnchorLink>{children}</AnchorLink>
     </h6>
 );
