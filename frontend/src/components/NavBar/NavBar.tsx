@@ -46,12 +46,16 @@ export const NavBar = () => {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <div className="flex-shrink-0">
-                            <h1
-                                className="text-white text-2xl cursor-pointer"
-                                onClick={() => router.push("/")}
-                            >
-                                David Ilie
-                            </h1>
+                            {router.asPath === "/" ? (
+                                <AnimatedTitle />
+                            ) : (
+                                <h1
+                                    className="text-white text-2xl cursor-pointer"
+                                    onClick={() => router.push("/")}
+                                >
+                                    David Ilie
+                                </h1>
+                            )}
                         </div>
                         <div className="hidden md:block">
                             <div className="ml-10 flex items-baseline space-x-4">
@@ -178,5 +182,38 @@ export const NavBar = () => {
                 </div>
             ) : null}
         </nav>
+    );
+};
+
+const AnimatedTitle = (): JSX.Element => {
+    return (
+        <div className="relative">
+            <a
+                className="text-white text-3xl font-semibold cursor-pointer"
+                href="/"
+            >
+                David Ilie
+                <svg
+                    className="stroke-current text-blue-500 absolute duration-200"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 265 43"
+                    fill="none"
+                    strokeWidth="5px"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeMiterlimit="10"
+                    style={{
+                        height: "27px",
+                        bottom: "-18px",
+                        left: "-32px",
+                    }}
+                >
+                    <path
+                        className="animated-underline"
+                        d="M16.7 20.2c76.5 4.4 153.6-9.7 229.8-4.1 5.4.4 12.4 2.1 11.7 5.6-67.3 1.7-134.5 5.5-201.2 11.5l87.7-.9c35.2-.4 70.8-.7 104.9 4.6"
+                    />
+                </svg>
+            </a>
+        </div>
     );
 };

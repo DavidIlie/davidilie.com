@@ -153,6 +153,12 @@ body {
     }
 }
 
+.animated-underline {
+    stroke-dasharray: 850;
+    stroke-dashoffset: 850;
+    animation: animatedUnderline cubic-bezier(0.51, 0, 0.71, 0.98) 1.4s forwards;
+}
+
 .code .token.operator,
 .code .token.entity,
 .code .token.url,
