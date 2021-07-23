@@ -10,7 +10,6 @@ export const pages = [
             { name: "Music", url: "/music" },
             { name: "Tools", url: "/tools" },
             { name: "Links", url: "/links" },
-            { name: "Stats", url: "/stats" },
         ],
     },
 ];

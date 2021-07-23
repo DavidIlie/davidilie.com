@@ -1,4 +1,4 @@
-import { pages } from "@lib/constants";
+import { pages } from "@data/pages";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -59,7 +59,7 @@ export const NavBar = () => {
                                     <AnimatedTitle />
                                 ) : (
                                     <h1
-                                        className="text-white text-2xl cursor-pointer"
+                                        className="text-white text-3xl font-semibold cursor-pointer mt-3"
                                         onClick={() => router.push("/")}
                                     >
                                         David Ilie
@@ -230,8 +230,8 @@ export const NavBar = () => {
                                             key={index}
                                             className={
                                                 current
-                                                    ? "bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-                                                    : "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                                                    ? "bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+                                                    : "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
                                             }
                                         >
                                             {page.name}
@@ -260,8 +260,8 @@ export const NavBar = () => {
                                                 key={index}
                                                 className={
                                                     current
-                                                        ? "bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-                                                        : "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                                                        ? "bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+                                                        : "text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
                                                 }
                                             >
                                                 {page.name}

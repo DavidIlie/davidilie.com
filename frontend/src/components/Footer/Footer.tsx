@@ -15,8 +15,11 @@ export const Footer = () => {
     );
 
     return (
-        <footer className="bg-gray-900 text-white pt-5 pb-5 w-full">
-            <div className="px-24 flex flex-wrap items-center 2xl:justify-between xl:justify-between md:justify-between lg:justify-between justify-center">
+        <footer
+            className="text-white pt-5 pb-5 w-full"
+            style={{ background: "#171923" }}
+        >
+            <div className="flex flex-wrap items-center 2xl:justify-evenly xl:justify-evenly md:justify-evenly lg:justify-evenly justify-center">
                 <div className="flex justify-evenly items-center">
                     {currentlyPlaying?.songUrl ? (
                         <>
@@ -43,7 +46,8 @@ export const Footer = () => {
                             </Tooltip>
                             <span className="mx-1"> - </span>
                             <a
-                                href="https://open.spotify.com/user/uh4szel3uuoei5h6308u3suic"
+                                href="https://open.spotify.com/user/6ugu6jpzmviq5wvp06gb73gds?si=9d56dc1fe4a14559"
+                                target="_blank"
                                 className="text-green-800 font-bold"
                             >
                                 Spotify
@@ -51,16 +55,15 @@ export const Footer = () => {
                         </>
                     ) : (
                         <p className="flex">
-                            <FaSpotify className="text-2xl text-green-500 mr-1" />
-                            {error
-                                ? "- There was an error - "
-                                : "- Not Playing Anything - "}
                             <a
-                                href="https://open.spotify.com/user/uh4szel3uuoei5h6308u3suic"
-                                className="ml-1 text-green-800 font-bold"
+                                href="https://open.spotify.com/user/6ugu6jpzmviq5wvp06gb73gds?si=9d56dc1fe4a14559"
+                                target="_blank"
                             >
-                                Spotify
+                                <FaSpotify className="text-2xl text-green-500 mr-1" />
                             </a>
+                            {error
+                                ? "- There was an error"
+                                : "- Not Playing Anything"}
                         </p>
                     )}
                 </div>

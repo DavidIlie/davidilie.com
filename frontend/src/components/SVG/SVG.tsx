@@ -1,3 +1,5 @@
+import { useMediaQuery } from "react-responsive";
+
 const icons = {
     triangle: {
         shape: (
@@ -58,19 +60,31 @@ export const SVG = ({
     icon,
     left,
     top,
-}: SVGProps): JSX.Element => (
-    <svg
-        fill={stroke ? `none` : `currentColor`}
-        className={`absolute fill-current text-${color}`}
-        style={{
-            width: `${width / 2 / 2}rem`,
-            filter: "blur(8px) saturate(160%)",
-            left: left,
-            top: top,
-            zIndex,
-        }}
-        viewBox={icons[icon].viewBox}
-    >
-        {icons[icon].shape}
-    </svg>
-);
+    hiddenMobile = false,
+}: SVGProps): JSX.Element => {
+    const isMobileDevice = useMediaQuery({
+        query: "(max-device-width: 480px)",
+    });
+
+    return (
+        <svg
+            fill={stroke ? `none` : `currentColor`}
+            className={`absolute fill-current text-${color}`}
+            style={{
+                width: `${width / 2 / 2}rem`,
+                filter: "blur(8px) saturate(160%)",
+                left: left,
+                top: top,
+                zIndex,
+                display: hiddenMobile
+                    ? isMobileDevice
+                        ? "none"
+                        : "block"
+                    : "block",
+            }}
+            viewBox={icons[icon].viewBox}
+        >
+            {icons[icon].shape}
+        </svg>
+    );
+};
