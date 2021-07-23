@@ -224,3 +224,29 @@ body {
 .code .token.deleted {
     color: #c4b5fd;
 }
+
+.navItem li > ul {
+    transform: translatex(100%) scale(0);
+}
+.navItem li:hover > ul {
+    transform: translatex(101%) scale(1);
+}
+.navItem li > button svg {
+    transform: rotate(-90deg);
+}
+.navItem li:hover > button svg {
+    transform: rotate(-270deg);
+}
+
+.group:hover .group-hover\:scale-100 {
+    transform: scale(1);
+}
+.group:hover .group-hover\:-rotate-180 {
+    transform: rotate(180deg);
+}
+.scale-0 {
+    transform: scale(0);
+}
+.min-w-32 {
+    min-width: 8rem;
+}
