@@ -25,7 +25,7 @@ function Projects({ repos }) {
                         My projects
                     </h1>
                 </Fade>
-                <Fade direction="up" triggerOnce cascade>
+                <Fade direction="up" triggerOnce cascade delay={250}>
                     <p className="text-section mt-2 mb-5">
                         A quick collection of my projects.
                     </p>
@@ -92,11 +92,7 @@ function Projects({ repos }) {
                         )
                         .reverse()
                         .map((repo: repoType, index: number) => (
-                            <RepoCard
-                                key={index.toString()}
-                                repo={repo}
-                                i={index}
-                            />
+                            <RepoCard key={index} repo={repo} />
                         ))}
                 </div>
             </div>

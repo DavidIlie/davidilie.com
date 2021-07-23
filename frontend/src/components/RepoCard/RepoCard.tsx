@@ -2,13 +2,11 @@ import { repoType } from "@interfaces/repoType";
 
 interface RepoCardProps {
     repo: repoType;
-    i: number;
 }
 
-export const RepoCard = ({ repo, i }: RepoCardProps): JSX.Element => {
+export const RepoCard = ({ repo }: RepoCardProps): JSX.Element => {
     return (
         <a
-            key={i.toString()}
             href={repo.url}
             target="_blank"
             className="h-full w-full truncate overflow-visible p-1"

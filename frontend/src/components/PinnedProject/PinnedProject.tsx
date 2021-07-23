@@ -1,11 +1,9 @@
+import { useEffect, useState } from "react";
 import { formatDistance, format } from "date-fns";
 import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
-
 import LinkButton from "@components/LinkButton";
 import { PinnedRepoType } from "@data/pinnedRepos";
-
 import { repoType } from "@interfaces/repoType";
 
 interface PinnedProjectProps {
@@ -19,8 +17,16 @@ export const PinnedProject = ({
     left,
     projectData,
 }: PinnedProjectProps): JSX.Element => {
-    const isMobile = useMediaQuery({ minWidth: 900 });
-    return isMobile ? (
+    const [pageWidth, setPageWidth] = useState(0);
+
+    useEffect(() => {
+        setPageWidth(window.innerWidth);
+        window.addEventListener("resize", () => {
+            setPageWidth(window.innerWidth);
+        });
+    });
+
+    return pageWidth >= 900 ? (
         <div className="mx-auto bg-gray-800 border-2 border-gray-700 rounded-xl shadow-md overflow-hidden max-w-5xl mb-7 hoverItem duration-200">
             <div className="flex">
                 {!left ? <ProjectImage link={projectData.image} /> : null}
