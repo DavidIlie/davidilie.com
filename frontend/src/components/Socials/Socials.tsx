@@ -24,7 +24,7 @@ export const Socials = ({ font, invisible }: SocialsProps): JSX.Element => {
             <SocialIcon
                 tooltip="DavidIlie"
                 newPage
-                link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/github`}
+                link={`/api/redir/github`}
             >
                 <FaGithub
                     className="mb-1"
@@ -37,7 +37,7 @@ export const Socials = ({ font, invisible }: SocialsProps): JSX.Element => {
             <SocialIcon
                 tooltip="Albastru"
                 newPage
-                link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/youtube`}
+                link={`/api/redir/youtube`}
             >
                 <FaYoutube
                     className="mb-1"
@@ -47,14 +47,14 @@ export const Socials = ({ font, invisible }: SocialsProps): JSX.Element => {
             <SocialIcon
                 tooltip="AlbastruYT"
                 newPage
-                link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/twitch`}
+                link={`/api/redir/twitch`}
             >
                 <FaTwitch size={font !== undefined ? `${font}em` : "1.75em"} />
             </SocialIcon>
             <SocialIcon
                 tooltip="AlbastruYT"
                 newPage
-                link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/twitter`}
+                link={`$/api/redir/twitter`}
             >
                 <FaTwitter size={font !== undefined ? `${font}em` : "1.75em"} />
             </SocialIcon>
