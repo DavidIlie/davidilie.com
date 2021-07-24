@@ -9,6 +9,7 @@ on:
 
 jobs:
     build:
+        if: "!contains(github.event.head_commit.message, 'skip ci')"
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v1
@@ -16,7 +17,7 @@ jobs:
               with:
                   node-version: "15"
             - run: cd agenda && yarn
-            - name: Publish to GitLab Container Registry
+            - name: Build docker image and publish to registry.davidapps.dev
               uses: elgohr/Publish-Docker-Github-Action@master
               with:
                   name: davidilie/personal-website
