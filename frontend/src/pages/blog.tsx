@@ -37,7 +37,7 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                             onChange={(e) =>
                                 setFilter(e.target.value.toLowerCase())
                             }
-                            className="px-10 py-3 placeholder-gray-300 relative bg-gray-800 border-gray-700 rounded-xl text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pr-10"
+                            className="px-10 py-3 placeholder-gray-300 relative bg-gray-800 rounded-xl text-sm border-1 shadow outline-none focus:outline-none focus:ring w-full pr-10"
                         />
                     </div>
                 </Fade>

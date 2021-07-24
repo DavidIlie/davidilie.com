@@ -42,7 +42,6 @@ export const BlogPost = ({
                             ))}
                     </div>
                     <h1 className="2xl:mt-0 xl:mt-0 md:mt-0l lg:mt-0 ml-2 mt-2 right text-gray-400">
-                        Posted{" "}
                         {formatDistance(new Date(publishedAt), new Date(), {
                             addSuffix: true,
                         })}{" "}
