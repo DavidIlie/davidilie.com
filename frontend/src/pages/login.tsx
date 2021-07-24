@@ -140,7 +140,7 @@ const Login = ({ loggedIn, identityURL }): JSX.Element => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    const { req, res } = ctx;
+    const { req } = ctx;
     const { access } = req.cookies;
 
     const validateRequest = await fetch(

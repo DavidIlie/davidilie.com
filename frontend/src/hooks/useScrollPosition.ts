@@ -10,9 +10,11 @@ export default function useScrollPosition(): { y: number; max: number } {
     };
 
     useEffect(() => {
+        // @ts-ignore
         window?.addEventListener("scroll", handleScroll, { passive: true });
 
         return () => {
+            // @ts-ignore
             window?.removeEventListener("scroll", handleScroll);
         };
     }, [scrollPosition]);

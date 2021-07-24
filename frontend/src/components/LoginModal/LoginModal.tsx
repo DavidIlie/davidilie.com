@@ -1,6 +1,5 @@
 import Modal from "@ui/Modal";
 import { signIn } from "next-auth/client";
-import { useQuery } from "react-query";
 
 interface LoginModalProps {
     isOpen: boolean;
@@ -8,20 +7,11 @@ interface LoginModalProps {
     callback: string;
 }
 
-interface ProviderProps {
-    name: string;
-    id: string;
-}
-
 export const LoginModal = ({
     isOpen,
     onClose,
     callback,
 }: LoginModalProps): JSX.Element => {
-    const { data: providers } = useQuery(`getProviders`, () => {
-        return fetch(`/api/auth/providers`).then((res) => res.json());
-    });
-
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <div className="grid divide-y divide-gray-500">
@@ -33,27 +23,26 @@ export const LoginModal = ({
                     </p>
                     <div className="flex justify-center">
                         <div>
-                            {providers?.google &&
-                                Object.values(providers).map(
-                                    (
-                                        provider: ProviderProps,
-                                        index: number
-                                    ) => (
-                                        <div
-                                            key={provider.name}
-                                            onClick={() =>
-                                                signIn(provider.id, {
-                                                    callbackUrl: callback,
-                                                })
-                                            }
-                                            className={`w-48 bg-blue-700 duration-200 hover:bg-blue-800 p-3 rounded text-center cursor-pointer ${
-                                                index < 1 && "mb-4"
-                                            }`}
-                                        >
-                                            Sign in with {provider.name}
-                                        </div>
-                                    )
-                                )}
+                            <div
+                                onClick={() =>
+                                    signIn("google", {
+                                        callbackUrl: callback,
+                                    })
+                                }
+                                className={`w-48 bg-blue-700 duration-200 hover:bg-blue-800 p-3 rounded text-center cursor-pointer mb-4`}
+                            >
+                                Sign in with Google
+                            </div>
+                            <div
+                                onClick={() =>
+                                    signIn("discord", {
+                                        callbackUrl: callback,
+                                    })
+                                }
+                                className={`w-48 bg-blue-700 duration-200 hover:bg-blue-800 p-3 rounded text-center cursor-pointer`}
+                            >
+                                Sign in with Discord
+                            </div>
                         </div>
                     </div>
                 </div>

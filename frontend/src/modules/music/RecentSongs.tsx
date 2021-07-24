@@ -1,9 +1,11 @@
 import SongCard from "@components/MusicCards/SongCard";
 
-const RecentSongs = ({ songs }: { songs: any }): JSX.Element => {
+import { Item3 } from "@interfaces/MusicData";
+
+const RecentSongs = ({ songs }: { songs: Item3[] }): JSX.Element => {
     return (
         <div className="flex justify-center flex-col max-w-2xl w-full mx-auto truncated overflow-visible">
-            {songs.map((song: any, index: number) => (
+            {songs.map((song: Item3, index: number) => (
                 <SongCard
                     song={song.track}
                     key={index}

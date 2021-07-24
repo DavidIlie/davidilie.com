@@ -5,10 +5,10 @@ import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import mdxPrism from "@mapbox/rehype-prism";
 
-export const getFiles = (type) =>
+export const getFiles = (type: string) =>
     fs.readdirSync(path.join(process.cwd(), `src`, `data`, type));
 
-export async function getFileBySlug(type, slug) {
+export async function getFileBySlug(type: string, slug: string) {
     const source = slug
         ? fs.readFileSync(
               path.join(process.cwd(), `src`, `data`, type, `${slug}.mdx`),

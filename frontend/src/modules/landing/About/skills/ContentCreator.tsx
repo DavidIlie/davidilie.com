@@ -3,7 +3,7 @@ import Tooltip from "@ui/Tooltip";
 import { useQuery } from "react-query";
 
 export const ContentCreator = () => {
-    const { isLoading, error, data } = useQuery(
+    const { isLoading, data } = useQuery(
         `getYoutubeStatistics`,
         () =>
             fetch(`https://davidilie.com/api/agenda/job/statistics`).then(

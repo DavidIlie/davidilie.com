@@ -1,7 +1,9 @@
 import Image from "next/image";
 import styles from "../../styles/styles.module.css";
 
-const AristCard = ({ artist }: { artist: any }) => {
+import { Item } from "@interfaces/MusicData";
+
+const AristCard = ({ artist }: { artist: Item }) => {
     return (
         <a
             target="_blank"

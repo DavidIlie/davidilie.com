@@ -114,7 +114,7 @@ export const PinnedProject = ({
     );
 };
 
-const ProjectImage = ({ link }) => {
+const ProjectImage = ({ link }: { link: string }) => {
     return (
         <Image
             className="w-full object-cover md:h-full md:w-96"

@@ -6,7 +6,6 @@ import { HiOutlineInformationCircle, HiOutlineLightBulb } from "react-icons/hi";
 import { RiBubbleChartLine } from "react-icons/ri";
 import { FaQuoteLeft } from "react-icons/fa";
 import { TiWarningOutline } from "react-icons/ti";
-import { AiOutlineLink } from "react-icons/ai";
 
 import Tooltip from "@ui/Tooltip";
 
@@ -108,7 +107,7 @@ export const CustomCode = (props: any) => {
     );
 };
 
-export const InfoQuote = ({ children }) => (
+export const InfoQuote = ({ children }: { children: JSX.Element }) => (
     <div className="px-6 py-1 mb-5 rounded-lg border-l-4 leading-relaxed text-gray-300 relative border-blue-500 bg-blue-500 bg-opacity-10">
         <div
             className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
@@ -125,7 +124,7 @@ export const InfoQuote = ({ children }) => (
     </div>
 );
 
-export const ThoughtQuote = ({ children }) => (
+export const ThoughtQuote = ({ children }: { children: JSX.Element }) => (
     <div className="px-6 py-1 rounded-lg border-l-4 leading-relaxed text-gray-300 relative border-purple-500 bg-purple-500 bg-opacity-10">
         <div
             className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
@@ -142,7 +141,7 @@ export const ThoughtQuote = ({ children }) => (
     </div>
 );
 
-export const AnnouncementQuote = ({ children }) => (
+export const AnnouncementQuote = ({ children }: { children: JSX.Element }) => (
     <div className="px-6 py-1 rounded-lg border-l-4 text-gray-300 leading-relaxed relative border-yellow-500 bg-yellow-500 bg-opacity-10">
         <div
             className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
@@ -172,7 +171,7 @@ export const AnnouncementQuote = ({ children }) => (
     </div>
 );
 
-export const BlockQuote = ({ children }) => (
+export const BlockQuote = ({ children }: { children: JSX.Element }) => (
     <div className="px-6 py-1 rounded-lg border-l-4 leading-relaxed dark:text-gray-300 relative border-gray-600 dark:border-gray-300 bg-gray-400 bg-opacity-10">
         <div
             className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
@@ -189,7 +188,7 @@ export const BlockQuote = ({ children }) => (
     </div>
 );
 
-export const IdeaQuote = ({ children }) => (
+export const IdeaQuote = ({ children }: { children: JSX.Element }) => (
     <div className="px-6 py-1 mb-6 rounded-lg border-l-4 leading-relaxed text-gray-300 relative border-yellow-400 bg-yellow-400 bg-opacity-10">
         <div
             className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
@@ -206,7 +205,7 @@ export const IdeaQuote = ({ children }) => (
     </div>
 );
 
-export const WarningQuote = ({ children }) => (
+export const WarningQuote = ({ children }: { children: JSX.Element }) => (
     <div className="px-6 py-1 mb-6 rounded-lg border-l-4 leading-relaxed text-gray-300 relative border-red-500 bg-red-500 bg-opacity-10">
         <div
             className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
@@ -223,7 +222,7 @@ export const WarningQuote = ({ children }) => (
     </div>
 );
 
-const AnchorLink = ({ children }) => {
+const AnchorLink = ({ children }: { children: string }) => {
     return (
         <Tooltip content="Click for anchor link">
             <a
@@ -236,37 +235,37 @@ const AnchorLink = ({ children }) => {
     );
 };
 
-export const h1 = ({ children }) => (
+export const h1 = ({ children }: { children: any }) => (
     <h1 className="text-4xl font-extrabold text-white">
         <AnchorLink>{children}</AnchorLink>
     </h1>
 );
 
-export const h2 = ({ children }) => (
+export const h2 = ({ children }: { children: any }) => (
     <h2 className="text-3xl font-extrabold text-white mt-2">
         <AnchorLink>{children}</AnchorLink>
     </h2>
 );
 
-export const h3 = ({ children }) => (
+export const h3 = ({ children }: { children: any }) => (
     <h3 className="text-2xl font-extrabold text-white">
         <AnchorLink>{children}</AnchorLink>
     </h3>
 );
 
-export const h4 = ({ children }) => (
+export const h4 = ({ children }: { children: any }) => (
     <h4 className="text-xl font-extrabold text-white">
         <AnchorLink>{children}</AnchorLink>
     </h4>
 );
 
-export const h5 = ({ children }) => (
+export const h5 = ({ children }: { children: any }) => (
     <h5 className="text-lg font-extrabold text-white">
         <AnchorLink>{children}</AnchorLink>
     </h5>
 );
 
-export const h6 = ({ children }) => (
+export const h6 = ({ children }: { children: any }) => (
     <h6 className="text-md font-extrabold text-white">
         <AnchorLink>{children}</AnchorLink>
     </h6>

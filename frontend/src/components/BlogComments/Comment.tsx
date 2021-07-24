@@ -13,7 +13,7 @@ interface CommentComponentProps {
 }
 
 const Comment = ({ data, refetch }: CommentComponentProps) => {
-    const [session, loading] = useSession();
+    const [session] = useSession();
     const router = useRouter();
 
     const [deleting, setDeleting] = useState(false);
@@ -59,7 +59,7 @@ const Comment = ({ data, refetch }: CommentComponentProps) => {
                     {data.name}{" "}
                     <span className="text-gray-500">
                         /{" "}
-                        {format(new Date(data.date), "d MMM yyyy 'at' h:mm bb")}
+                        {format(new Date(data.date), "d MMM yyyy 'at' hh:mm a")}
                     </span>
                     {session && session.user.email === data.email && (
                         <span className="text-gray-500">

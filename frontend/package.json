@@ -5,7 +5,8 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "create-db-posts": "MONGO_URI=mongodb://192.168.1.152:27017/personal-website node src/lib/createPosts.js",
+        "create-db-posts-prod": "MONGO_URI=mongodb://192.168.1.152:27017/personal-website node src/lib/createPosts.js",
+        "create-db-posts-dev": "node src/lib/createPosts.js",
         "start": "next start",
         "format": "prettier --ignore-path .gitignore \"src/**/*.+(js|tsx)\" --write"
     },
@@ -51,6 +52,7 @@
         "@types/react-modal": "^3.12.1",
         "@types/react-responsive": "^8.0.3",
         "@types/react-toastify": "^4.1.0",
+        "@types/uuid": "^8.3.1",
         "autoprefixer": "^10.2.6",
         "postcss": "^8.3.2",
         "prettier": "^2.3.1",

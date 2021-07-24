@@ -1,8 +1,10 @@
 import Image from "next/image";
 import styles from "../../styles/styles.module.css";
 
+import { Item2 } from "@interfaces/MusicData";
+
 interface SongCardProps {
-    song: any;
+    song: Item2;
     titleCard: boolean;
     isPlaying: boolean;
 }
@@ -12,6 +14,7 @@ const SongCard = ({
     titleCard,
     isPlaying,
 }: SongCardProps): JSX.Element => {
+    console.log(song);
     return (
         <div>
             {song !== undefined && (

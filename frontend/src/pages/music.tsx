@@ -8,7 +8,14 @@ import CurrentPlaying from "@modules/music/CurrentlyPlaying";
 import TopSongs from "@modules/music/TopSongs";
 import RecentSongs from "@modules/music/RecentSongs";
 
-function Music({ data, error }) {
+import { MusicData } from "@interfaces/MusicData";
+
+interface MusicProps {
+    data: MusicData;
+    error: any;
+}
+
+function Music({ data, error }: MusicProps) {
     const { error: currentError, data: currentlyPlaying } = useQuery(
         `currentlyPlaying`,
         () =>
