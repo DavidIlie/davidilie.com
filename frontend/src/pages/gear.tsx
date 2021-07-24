@@ -22,7 +22,7 @@ function Stats(): JSX.Element {
                             return <Device device={device} key={index} />;
                         })}
                     </div>
-                    <h1 className="mt-10 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
+                    <h1 className="mt-10 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient text-center">
                         My Hosting Infastructure
                     </h1>
                     <p className="text-section mb-5 px-5 text-center">
