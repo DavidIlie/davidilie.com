@@ -27,10 +27,10 @@ module.exports = {
         },
         minWidth: {
             0: "0",
-            "2/4": "40%",
-            "1/2": "45%",
+            "1/2": "50%",
             "3/4": "75%",
             full: "100%",
+            device: "47%",
         },
         extend: {
             gridTemplateColumns: {

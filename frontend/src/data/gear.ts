@@ -37,7 +37,7 @@ export const devices: DeviceProps[] = [
             },
             {
                 prefix: "SSD",
-                suffix: "Samsung 500GB NVME SSD",
+                suffix: "Samsung 500GB NVME",
             },
             {
                 prefix: "HDD",
