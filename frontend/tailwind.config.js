@@ -25,6 +25,13 @@ module.exports = {
             xl: "1280px",
             xxl: "1520px",
         },
+        minWidth: {
+            0: "0",
+            "2/4": "40%",
+            "1/2": "45%",
+            "3/4": "75%",
+            full: "100%",
+        },
         extend: {
             gridTemplateColumns: {
                 musicTitle: "minmax(150px, 1fr)",
