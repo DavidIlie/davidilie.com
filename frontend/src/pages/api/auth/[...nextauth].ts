@@ -16,6 +16,14 @@ export default NextAuth({
         }),
     ],
     database: process.env.MONGO_URI,
+    secret: process.env.JWT_CODE,
+    session: {
+        jwt: true,
+        maxAge: 30 * 24 * 60 * 60,
+    },
+    jwt: {
+        signingKey: process.env.JWT_CODE,
+    },
     callbacks: {
         redirect: async (url, baseUrl) => {
             return Promise.resolve(url);
