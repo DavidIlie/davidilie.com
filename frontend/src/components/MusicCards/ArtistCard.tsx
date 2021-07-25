@@ -24,7 +24,7 @@ const AristCard = ({ artist }: { artist: Item }) => {
             />
 
             <p
-                className="absolute font-semibold text-section inline w-full text-center"
+                className="absolute font-semibold text-section inline w-full text-center text-white"
                 style={{
                     zIndex: 100,
                     transform: "translate(-50%, -50%)",

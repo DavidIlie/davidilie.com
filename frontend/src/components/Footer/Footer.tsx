@@ -21,7 +21,14 @@ export const Footer = () => {
     return (
         <footer
             className="text-black dark:text-white pt-5 pb-5 w-full"
-            style={{ background: theme === "dark" ? "#171923" : "#f7fafc" }}
+            style={{
+                background:
+                    theme === "light"
+                        ? "#f7fafc"
+                        : theme === "dark"
+                        ? "#171923"
+                        : "#171923",
+            }}
         >
             <div className="flex flex-wrap items-center 2xl:justify-evenly xl:justify-evenly md:justify-evenly lg:justify-evenly justify-center">
                 <div className="flex justify-evenly items-center">

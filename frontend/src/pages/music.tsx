@@ -41,7 +41,7 @@ function Music({ data, error }: MusicProps) {
     return (
         <>
             <NextSeo title="Music" />
-            <div className="text-white pt-32 pb-32">
+            <div className="text-black dark:text-white pt-32 pb-32">
                 <Fade direction="up" triggerOnce cascade>
                     <h1 className="2xl:text-6xl xl:text-6xl md:text-5xl lg:text-4xl sm:text-4xl text-4xl text-center font-bold header-gradient">
                         Here is the music I listen.
@@ -50,26 +50,22 @@ function Music({ data, error }: MusicProps) {
                 <Fade delay={500} direction="up" triggerOnce cascade>
                     <h1 className="text-center text-section mb-16">
                         I'm a little{" "}
-                        <span className="font-semibold text-green-600">
+                        <span className="font-semibold text-green-400 dark:text-green-600">
                             classic
                         </span>{" "}
                         when it comes to{" "}
-                        <span className="font-semibold text-green-600">
+                        <span className="font-semibold text-green-400 dark:text-green-600">
                             music
                         </span>
                         .
                     </h1>
                 </Fade>
                 <div
-                    className={`flex justify-center 2xl:space-x-28 xl:space-x-28 md:space-x-28 lg:space-x-28 flex-wrap mb-16 ${
-                        currentlyPlaying?.isPlaying !== false
-                            ? "ml-12"
-                            : "mr-12"
-                    }`}
+                    className={`flex justify-center flex-wrap 2xl:space-x-32 xl:space-x-32 md:space-x-32 2xl:mb-16 xl:mb-16 md:mb-16`}
                 >
                     <Fade delay={600} triggerOnce cascade>
                         <div className="2xl:mb-0 xl:mb-0 md:mb-0 lg:mb-0 mb-12">
-                            <h1 className="text-4xl font-semibold text-center mb-10">
+                            <h1 className="header-gradient text-4xl font-semibold text-center mb-10">
                                 Top Artists
                             </h1>
                             <TopArtists artists={data.artists} />
@@ -77,17 +73,17 @@ function Music({ data, error }: MusicProps) {
                     </Fade>
                     <Fade delay={1100} triggerOnce cascade>
                         <div>
-                            <h1 className="text-4xl font-semibold text-center mb-5">
+                            <h1 className="header-gradient text-4xl font-semibold text-center mb-5">
                                 Currently Listening
                             </h1>
                             <CurrentPlaying song={currentlyPlaying} />
                         </div>
                     </Fade>
                 </div>
-                <div className="flex justify-center items-center mt-10 ml-10 2xl:space-x-6 xl:space-x-6 md:space-x-6 lg:space-x-6 flex-wrap">
+                <div className="flex justify-center items-center mt-10 2xl:space-x-6 xl:space-x-6 md:space-x-6 lg:space-x-6 flex-wrap">
                     <Fade delay={1200} triggerOnce cascade>
                         <div>
-                            <h1 className="text-4xl font-semibold text-center mb-3">
+                            <h1 className="header-gradient text-4xl font-semibold text-center mb-3">
                                 Top Played Songs
                             </h1>
                             <TopSongs songs={data.songs.items} />
@@ -96,7 +92,7 @@ function Music({ data, error }: MusicProps) {
 
                     <Fade delay={1700} triggerOnce cascade>
                         <div>
-                            <h1 className="text-4xl font-semibold text-center mb-3">
+                            <h1 className="header-gradient text-4xl font-semibold text-center mb-3">
                                 Recently Played
                             </h1>
                             <RecentSongs songs={data.recentlyPlayed.items} />
