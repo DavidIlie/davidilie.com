@@ -44,8 +44,8 @@ export const links: LinkType[] = [
     },
     {
         id: `tailwind-css`,
-        link: `https://chakra-ui.com/`,
-        name: `Tailwind-CSS`,
+        link: `https://tailwindcss.com/`,
+        name: `Tailwind CSS`,
         label: `Web Development`,
         date: new Date(`2021-05-25T19:20`),
     },
