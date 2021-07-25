@@ -2,6 +2,18 @@ body {
     position: relative;
 }
 
+html[class="dark"] .pageBackground {
+    background: rgba(26, 33, 42, 0.8);
+}
+
+html[class="dark"] .footerBackground {
+    background: #171923;
+}
+
+.footerBackground {
+    background: #f7fafc;
+}
+
 .header-gradient {
     background-clip: text;
     -webkit-text-fill-color: transparent;

@@ -4,8 +4,6 @@ import { useQuery } from "react-query";
 import Socials from "@components/Socials";
 import Tooltip from "@ui/Tooltip";
 
-import { useTheme } from "next-themes";
-
 export const Footer = () => {
     const { error, data: currentlyPlaying } = useQuery(
         `currentlyPlaying`,
@@ -16,20 +14,8 @@ export const Footer = () => {
         { refetchOnMount: true }
     );
 
-    const { theme } = useTheme();
-
     return (
-        <footer
-            className="text-black dark:text-white pt-5 pb-5 w-full"
-            style={{
-                background:
-                    theme === "light"
-                        ? "#f7fafc"
-                        : theme === "dark"
-                        ? "#171923"
-                        : "#171923",
-            }}
-        >
+        <footer className="text-black dark:text-white pt-5 pb-5 w-full footerBackground">
             <div className="flex flex-wrap items-center 2xl:justify-evenly xl:justify-evenly md:justify-evenly lg:justify-evenly justify-center">
                 <div className="flex justify-evenly items-center">
                     {currentlyPlaying?.songUrl ? (
