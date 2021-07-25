@@ -286,15 +286,22 @@ export const NavBar = () => {
 };
 
 const AnimatedTitle = (): JSX.Element => {
+    const [isHover, setHover] = useState(false);
+    const router = useRouter();
+
     return (
         <div className="relative mt-3">
             <a
                 className="text-white text-3xl font-semibold cursor-pointer"
-                href="/"
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+                onClick={() => router.pathname !== "/" && router.push("/")}
             >
                 David Ilie
                 <svg
-                    className="stroke-current text-blue-500 absolute duration-200"
+                    className={`stroke-current text-blue-500 absolute ${
+                        isHover && "underlineDash"
+                    }`}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 265 43"
                     fill="none"
@@ -305,7 +312,8 @@ const AnimatedTitle = (): JSX.Element => {
                     style={{
                         height: "27px",
                         bottom: "-18px",
-                        left: "-32px",
+                        left: "-22px",
+                        transition: "all 0.2s",
                     }}
                 >
                     <path
