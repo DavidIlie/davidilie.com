@@ -71,7 +71,7 @@ function PersonalWebsite({
             >
                 <QueryClientProvider client={queryClient}>
                     <AuthProvider session={pageProps.session}>
-                        <ThemeProvider attribute="class" defaultTheme="dark">
+                        <ThemeProvider attribute="class">
                             <AppLayout>
                                 {loading ? (
                                     <Loader />
