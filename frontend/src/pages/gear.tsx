@@ -1,9 +1,9 @@
 import { NextSeo } from "next-seo";
 import { Fade } from "react-awesome-reveal";
 
-import Device from "@components/Device";
+import Device from "@components/DeviceCard";
 
-import { devices, infastructure } from "@data/gear";
+import { devices, infastructure, DeviceProps } from "@data/gear";
 
 function Stats(): JSX.Element {
     return (
@@ -18,7 +18,7 @@ function Stats(): JSX.Element {
                         The expensive things...
                     </p>
                     <div className="flex flex-wrap gap-5">
-                        {devices.map((device, index) => {
+                        {devices.map((device: DeviceProps, index: number) => {
                             return <Device device={device} key={index} />;
                         })}
                     </div>
@@ -38,9 +38,11 @@ function Stats(): JSX.Element {
                         </a>
                     </p>
                     <div className="flex flex-wrap gap-5 mb-5">
-                        {infastructure.map((device, index) => {
-                            return <Device device={device} key={index} />;
-                        })}
+                        {infastructure.map(
+                            (device: DeviceProps, index: number) => {
+                                return <Device device={device} key={index} />;
+                            }
+                        )}
                     </div>
                 </Fade>
             </div>

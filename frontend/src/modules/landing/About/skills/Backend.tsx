@@ -12,20 +12,24 @@ export const BackendDeveloper = () => {
                 </h1>
                 <p className="text-section px-16">
                     I value{" "}
-                    <span className="text-blue-700 font-bold">fast</span> API
-                    calls and{" "}
-                    <span className="text-blue-700 font-bold">efficent</span>{" "}
+                    <span className="text-blue-700 dark:text-blue-500 font-bold">
+                        fast
+                    </span>{" "}
+                    API calls and{" "}
+                    <span className="text-blue-700 dark:text-blue-500 font-bold">
+                        efficent
+                    </span>{" "}
                     code.
                 </p>
             </div>
             <div className="text-center mb-10">
-                <h1 className="text-2xl font-semibold text-blue-700">
+                <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                     Stack I use:
                 </h1>
                 <p className="text-section">MongoDB, Express, NodeJS</p>
             </div>
             <div className="text-center mb-7">
-                <h1 className="text-2xl font-semibold text-blue-700">
+                <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                     Tools I use:
                 </h1>
                 <p className="text-section">Visual Studio Code</p>

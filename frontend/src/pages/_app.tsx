@@ -69,9 +69,9 @@ function PersonalWebsite({
                 enabled={true}
                 customDomain={"https://stats.davidilie.com"}
             >
-                <QueryClientProvider client={queryClient}>
-                    <AuthProvider session={pageProps.session}>
-                        <ThemeProvider attribute="class">
+                <ThemeProvider attribute="class">
+                    <QueryClientProvider client={queryClient}>
+                        <AuthProvider session={pageProps.session}>
                             <AppLayout>
                                 {loading ? (
                                     <Loader />
@@ -79,10 +79,10 @@ function PersonalWebsite({
                                     <Component {...pageProps} />
                                 )}
                             </AppLayout>
-                        </ThemeProvider>
-                    </AuthProvider>
-                </QueryClientProvider>
-                <ToastContainer autoClose={2500} newestOnTop={true} />
+                        </AuthProvider>
+                    </QueryClientProvider>
+                    <ToastContainer autoClose={2500} newestOnTop={true} />
+                </ThemeProvider>
             </PlausibleProvider>
         </div>
     );

@@ -83,17 +83,19 @@ function Projects({ repos }) {
                     className="mb-5"
                 />
 
-                <div className="flex flex-wrap justify-center gap-2 2xl:mx-10 xl:mx-10 md:mx-10 lg:mx-10 mx-0">
-                    {repos
-                        .sort(
-                            (a: repoType, b: repoType) =>
-                                new Date(a.date.last_push).getTime() -
-                                new Date(b.date.last_push).getTime()
-                        )
-                        .reverse()
-                        .map((repo: repoType, index: number) => (
-                            <RepoCard key={index} repo={repo} />
-                        ))}
+                <div className="flex justify-center">
+                    <div className="grid 2xl:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-2">
+                        {repos
+                            .sort(
+                                (a: repoType, b: repoType) =>
+                                    new Date(a.date.last_push).getTime() -
+                                    new Date(b.date.last_push).getTime()
+                            )
+                            .reverse()
+                            .map((repo: repoType, index: number) => (
+                                <RepoCard key={index} repo={repo} />
+                            ))}
+                    </div>
                 </div>
             </div>
         </>

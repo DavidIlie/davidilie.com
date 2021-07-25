@@ -1,11 +1,35 @@
 import { NextSeo } from "next-seo";
-import WIP from "@components/WIP";
+import { Fade } from "react-awesome-reveal";
+
+import links, { LinkType } from "@data/links";
+
+import LinkCard from "@components/LinkCard";
 
 function Stats(): JSX.Element {
     return (
         <>
             <NextSeo title="Links" />
-            <WIP />
+            <div className="flex flex-col items-center pt-28 w-full min-h-screen text-black dark:text-white">
+                <Fade duration={750} direction="up" triggerOnce cascade>
+                    <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
+                        Links
+                    </h1>
+                    <p className="text-section mb-5 px-5 text-center">
+                        My favorite parts of the interwebs.
+                    </p>
+                    <div className="grid 2xl:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-5 mb-10">
+                        {links
+                            .sort(
+                                (a: LinkType, b: LinkType) =>
+                                    a.date.getTime() - b.date.getTime()
+                            )
+                            .reverse()
+                            .map((link: LinkType, i: number) => (
+                                <LinkCard key={i.toString()} {...link} />
+                            ))}
+                    </div>
+                </Fade>
+            </div>
         </>
     );
 }

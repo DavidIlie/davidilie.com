@@ -24,15 +24,15 @@ export const ContentCreator = () => {
                 <p className="text-section px-16">
                     {!isLoading ? (
                         <span>
-                            <span className="text-blue-700 font-bold">
+                            <span className="text-blue-700 dark:text-blue-500 font-bold">
                                 {data.subscribers}
                             </span>{" "}
                             Subscribers,{" "}
-                            <span className="text-blue-700 font-bold">
+                            <span className="text-blue-700 dark:text-blue-500 font-bold">
                                 {data.views}
                             </span>{" "}
                             Views, and{" "}
-                            <span className="text-blue-700 font-bold">
+                            <span className="text-blue-700 dark:text-blue-500 font-bold">
                                 {data.videos}
                             </span>{" "}
                             Videos
@@ -43,21 +43,21 @@ export const ContentCreator = () => {
                 </p>
             </div>
             <div className="text-center mb-10">
-                <h1 className="text-2xl font-semibold text-blue-700">
+                <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                     Software I use:
                 </h1>
                 <p className="text-section">Adobe Premiere & Photoshop</p>
             </div>
             <div className="text-center">
-                <h1 className="text-2xl font-semibold text-blue-700">
+                <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                     Content I produce:
                 </h1>
-                <p className="text-section hover:text-blue-700 duration-200">
+                <p className="text-section hover:text-blue-700 dark:hover:text-blue-500 duration-200">
                     <a href="https://www.youtube.com/channel/UCwfF_jZHkxF1Vxx5b8PlIGA">
                         Albastru
                     </a>
                 </p>
-                <p className="text-section hover:text-blue-700 duration-200">
+                <p className="text-section hover:text-blue-700 dark:hover:text-blue-500 duration-200">
                     <a href="https://www.youtube.com/channel/UC92hn9Y8WcY_5LribMDW8uA">
                         David Ilie
                     </a>

@@ -12,19 +12,24 @@ export const FrontendDeveloper = () => {
                 </h1>
                 <p className="text-section">
                     I like bringing my ideas to{" "}
-                    <span className="text-blue-700 font-bold">reality</span>, by
-                    producing simple but powerful{" "}
-                    <span className="text-blue-700 font-bold">code</span>.
+                    <span className="text-blue-700 dark:text-blue-500 font-bold">
+                        reality
+                    </span>
+                    , by producing simple but powerful{" "}
+                    <span className="text-blue-700 dark:text-blue-500 font-bold">
+                        code
+                    </span>
+                    .
                 </p>
             </div>
             <div className="text-center mb-10">
-                <h1 className="text-2xl font-semibold text-blue-700">
+                <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                     Frameworks I use:
                 </h1>
                 <p className="text-section">HTML, Next.js, Tailwind CSS</p>
             </div>
             <div className="text-center mb-7">
-                <h1 className="text-2xl font-semibold text-blue-700">
+                <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                     Tools I use:
                 </h1>
                 <p className="text-section">Visual Studio Code</p>

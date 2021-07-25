@@ -33,6 +33,9 @@ module.exports = {
             device: "47%",
         },
         extend: {
+            gridTemplateRows: {
+                link: "repeat(3, minmax(0, 1fr))",
+            },
             colors: {
                 "blue-opaque": "rgb(13 42 148 / 18%)",
             },
@@ -98,5 +101,8 @@ module.exports = {
         },
         scrollbar: ["rounded"],
     },
-    plugins: [require("tailwind-scrollbar")],
+    plugins: [
+        require("tailwind-scrollbar"),
+        require("@tailwindcss/aspect-ratio"),
+    ],
 };

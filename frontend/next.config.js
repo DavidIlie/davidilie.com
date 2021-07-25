@@ -11,6 +11,7 @@ module.exports = withMDX({
             "github.com",
             "lh3.googleusercontent.com",
             "cdn.discordapp.com",
+            "rdl.ink",
         ],
     },
 });
