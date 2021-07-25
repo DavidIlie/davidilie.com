@@ -26,6 +26,7 @@
         "next-mdx-remote": "^3.0.2",
         "next-plausible": "^2.0.0",
         "next-seo": "^4.26.0",
+        "nextjs-redirect": "^5.0.2",
         "querystring": "^0.2.1",
         "react": "^17.0.2",
         "react-awesome-reveal": "^3.8.1",

@@ -1,11 +1,17 @@
 import { GetServerSideProps } from "next";
-
 import { useState } from "react";
 import { Formik, Field, Form } from "formik";
 import * as yup from "yup";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+import redirect from "nextjs-redirect";
 
 const Login = ({ loggedIn, identityURL }): JSX.Element => {
+    const router = useRouter();
+    const { fallback }: any = router.query;
+
+    const Redirect = redirect(fallback);
+
     const [pendingLogin, setPendingLogin] = useState(false);
     const [stateLoggedIn, setStateLoggedIn] = useState(loggedIn);
 
@@ -97,7 +103,7 @@ const Login = ({ loggedIn, identityURL }): JSX.Element => {
                                                     cy="12"
                                                     r="10"
                                                     stroke="currentColor"
-                                                    stroke-width="4"
+                                                    strokeWidth="4"
                                                 ></circle>
                                                 <path
                                                     className="opacity-75"
@@ -114,9 +120,9 @@ const Login = ({ loggedIn, identityURL }): JSX.Element => {
                                                 aria-hidden="true"
                                             >
                                                 <path
-                                                    fill-rule="evenodd"
+                                                    fillRule="evenodd"
                                                     d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                                                    clip-rule="evenodd"
+                                                    clipRule="evenodd"
                                                 />
                                             </svg>
                                         )}
@@ -127,6 +133,15 @@ const Login = ({ loggedIn, identityURL }): JSX.Element => {
                         )}
                     </Formik>
                 </div>
+            ) : fallback !== undefined ? (
+                <Redirect>
+                    <h1 className="text-white text-3xl">
+                        Logged in as{" "}
+                        <span className="header-gradient font-semibold">
+                            {stateLoggedIn}
+                        </span>
+                    </h1>
+                </Redirect>
             ) : (
                 <h1 className="text-white text-3xl">
                     Logged in as{" "}
