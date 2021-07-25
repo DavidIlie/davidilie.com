@@ -1,6 +1,6 @@
 export const FrontendDeveloper = () => {
     return (
-        <div className="xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 2xl:border-b-0 md:border-b-0 xl:border-b-0 border-b-2 border-fuchsia-600 px-5 pt-10">
+        <div className="xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 2xl:border-b-0 md:border-b-0 xl:border-b-0 border-b-2 border-fuchasia-600 dark:border-gray-600 px-5 pt-10">
             <img
                 src="/images/svg/frontend.svg"
                 alt="Frontend Developer"

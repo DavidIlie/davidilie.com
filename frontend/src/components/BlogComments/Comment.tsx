@@ -42,7 +42,7 @@ const Comment = ({ data, refetch }: CommentComponentProps) => {
     };
 
     return (
-        <div className="max-h-32 h-32 bg-gray-800 rounded-lg p-3 flex flex-col justify-center items-start shadow-lg mb-4 hoverItem duration-200">
+        <div className="max-h-32 h-32 bg-gray-200 dark:bg-gray-800 rounded-lg p-3 flex flex-col justify-center items-start shadow-lg mb-4 hoverItem duration-200">
             <p className="px-2">{data.comment}</p>
             <div className="flex flex-row items-center mr-2 mt-4">
                 <Image
@@ -55,18 +55,18 @@ const Comment = ({ data, refetch }: CommentComponentProps) => {
                     placeholder="blur"
                     className="rounded-full w-10 h-10 shadow-lg"
                 />
-                <h1 className="ml-4 text-gray-300">
+                <h1 className="ml-4 text-gray-800 dark:text-gray-300">
                     {data.name}{" "}
-                    <span className="text-gray-500">
+                    <span className="text-gray-900 dark:text-gray-500">
                         /{" "}
                         {format(new Date(data.date), "d MMM yyyy 'at' hh:mm a")}
                     </span>
                     {session && session.user.email === data.email && (
-                        <span className="text-gray-500">
+                        <span className="text-gray-900 dark:text-gray-500">
                             {" "}
                             /{" "}
                             <span
-                                className="text-red-400 cursor-pointer hover:underline"
+                                className="text-red-500 dark:text-red-400 cursor-pointer hover:underline"
                                 onClick={deleteEntry}
                             >
                                 {deleting ? "Deleting" : "Delete"}

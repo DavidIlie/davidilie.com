@@ -30,7 +30,7 @@ function Home({ repos }): JSX.Element {
             <NextSeo title="Home" />
             <Header />
             <About />
-            <div className="mx-auto text-center text-white mt-5">
+            <div className="mx-auto text-center text-black dark:text-white mt-5">
                 <Fade direction="up" triggerOnce cascade duration={500}>
                     <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
                         Latest Project
@@ -59,7 +59,7 @@ function Home({ repos }): JSX.Element {
                     </p>
                 </Fade>
             </div>
-            <div className="h-96"></div>
+            <div className="h-32"></div>
         </>
     );
 }

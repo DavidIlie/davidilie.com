@@ -16,7 +16,7 @@ interface SocialsProps {
 export const Socials = ({ font, invisible }: SocialsProps): JSX.Element => {
     return (
         <div
-            className={`mt-2 text-white flex space-x-10 justify-center ${
+            className={`mt-2 text-black dark:text-white flex space-x-10 justify-center ${
                 invisible ? "invisible" : "visible"
             }`}
         >

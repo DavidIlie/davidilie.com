@@ -66,7 +66,7 @@ export const BlogInteractions = ({
                 </div>
             )}
             {session && (
-                <div className="border rounded p-6 my-4 w-full border-gray-800 bg-blue-opaque">
+                <div className="border border-blue-200 rounded p-6 my-4 w-full dark:border-gray-900 bg-blue-50 dark:bg-gray-800">
                     <h1 className="mb-1">
                         You are signed in as {session.user.email}. Not You?{" "}
                         <a

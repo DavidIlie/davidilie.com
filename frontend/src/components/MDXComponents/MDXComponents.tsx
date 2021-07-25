@@ -1,7 +1,5 @@
 import Link from "next/link";
-
 import { formatHashLink } from "@lib/formatHashLink";
-
 import { HiOutlineInformationCircle, HiOutlineLightBulb } from "react-icons/hi";
 import { RiBubbleChartLine } from "react-icons/ri";
 import { FaQuoteLeft } from "react-icons/fa";
@@ -50,11 +48,9 @@ const WindowButton = ({ bg }: { bg: string }) => {
 export const RemarkTitle = ({ children }: { children: string }) => {
     return (
         <div
-            className="z-20 mt-2 -mb-5 flex flex-wrap justify-between items-center py-1 w-full mx-auto codeEditorTitle"
+            className="z-20 mt-2 -mb-5 flex flex-wrap justify-between items-center py-1 w-full mx-auto codeEditorTitle bg-gray-100 dark:bg-black border-gray-200 dark:border-black border-b-0"
             style={{
-                background: "rgba(0, 0, 0, 0.4)",
                 borderBottom: "none",
-                border: "1px solid rgba(0, 0, 0, 0.4)",
                 borderTopLeftRadius: "1rem",
                 borderTopRightRadius: "1rem",
             }}
@@ -92,7 +88,7 @@ export const CustomPre = (props: any) => {
     return (
         <pre
             {...props}
-            className="z-50 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-200 py-5 px-5 bg-gray-900 overflow-auto w-full"
+            className="z-50 scrollbar-thin scrollbar-thumb-blue-500 dark:scrollbar-thumb-blue-700 scrollbar-track-blue-200 py-5 px-5 bg-gray-200 dark:bg-gray-900 overflow-auto w-full"
             style={{ maxHeight: "500px" }}
         />
     );
@@ -108,9 +104,9 @@ export const CustomCode = (props: any) => {
 };
 
 export const InfoQuote = ({ children }: { children: JSX.Element }) => (
-    <div className="px-6 py-1 mb-5 rounded-lg border-l-4 leading-relaxed text-gray-300 relative border-blue-500 bg-blue-500 bg-opacity-10">
+    <div className="px-6 py-1 mb-5 rounded-lg border-l-4 leading-relaxed text-gray-800 dark:text-gray-300 relative border-blue-700 bg-blue-700 bg-opacity-20 dark:border-blue-500 dark:bg-blue-500 dark:bg-opacity-10">
         <div
-            className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            className="text-center bg-gray-200 dark:bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
             style={{
                 float: "left",
                 position: "absolute",
@@ -125,9 +121,9 @@ export const InfoQuote = ({ children }: { children: JSX.Element }) => (
 );
 
 export const ThoughtQuote = ({ children }: { children: JSX.Element }) => (
-    <div className="px-6 py-1 rounded-lg border-l-4 leading-relaxed text-gray-300 relative border-purple-500 bg-purple-500 bg-opacity-10">
+    <div className="px-6 py-1 rounded-lg border-l-4 leading-relaxed text-gray-800 dark:text-gray-300 relative border-purple-700 bg-purple-700 bg-opacity-20 dark:border-purple-500 dark:bg-purple-500 dark:bg-opacity-10">
         <div
-            className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            className="text-center bg-gray-200 dark:bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
             style={{
                 float: "left",
                 position: "absolute",
@@ -135,16 +131,16 @@ export const ThoughtQuote = ({ children }: { children: JSX.Element }) => (
                 left: "-20px",
             }}
         >
-            <RiBubbleChartLine className="text-3xl text-purple-500" />
+            <RiBubbleChartLine className="text-3xl text-purple-600 dark:text-purple-500" />
         </div>
         <div className="p-0 m-0 text-lg mb-3">{children}</div>
     </div>
 );
 
 export const AnnouncementQuote = ({ children }: { children: JSX.Element }) => (
-    <div className="px-6 py-1 rounded-lg border-l-4 text-gray-300 leading-relaxed relative border-yellow-500 bg-yellow-500 bg-opacity-10">
+    <div className="px-6 py-1 rounded-lg border-l-4 text-gray-800 dark:text-gray-300 leading-relaxed relative border-yellow-700 bg-yellow-700 dark:border-yellow-500 dark:bg-yellow-500 bg-opacity-20 dark:bg-opacity-10">
         <div
-            className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            className="text-center bg-gray-200 dark:bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
             style={{
                 float: "left",
                 position: "absolute",
@@ -154,7 +150,7 @@ export const AnnouncementQuote = ({ children }: { children: JSX.Element }) => (
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-yellow-500"
+                className="h-6 w-6 text-yellow-600 dark:text-yellow-500"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -172,9 +168,9 @@ export const AnnouncementQuote = ({ children }: { children: JSX.Element }) => (
 );
 
 export const BlockQuote = ({ children }: { children: JSX.Element }) => (
-    <div className="px-6 py-1 rounded-lg border-l-4 leading-relaxed dark:text-gray-300 relative border-gray-600 dark:border-gray-300 bg-gray-400 bg-opacity-10">
+    <div className="px-6 py-1 rounded-lg border-l-4 leading-relaxed text-gray-800 dark:text-gray-300 relative border-gray-600 dark:border-gray-300 bg-gray-400 bg-opacity-20 dark:bg-opacity-10">
         <div
-            className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            className="text-center bg-gray-200 dark:bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
             style={{
                 float: "left",
                 position: "absolute",
@@ -189,9 +185,9 @@ export const BlockQuote = ({ children }: { children: JSX.Element }) => (
 );
 
 export const IdeaQuote = ({ children }: { children: JSX.Element }) => (
-    <div className="px-6 py-1 mb-6 rounded-lg border-l-4 leading-relaxed text-gray-300 relative border-yellow-400 bg-yellow-400 bg-opacity-10">
+    <div className="px-6 py-1 mb-6 rounded-lg border-l-4 leading-relaxed text-gray-800 dark:text-gray-300 relative border-yellow-600 bg-yellow-600 dark:border-yellow-400 dark:bg-yellow-400 bg-opacity-20 dark:bg-opacity-10">
         <div
-            className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            className="text-center bg-gray-200 dark:bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
             style={{
                 float: "left",
                 position: "absolute",
@@ -199,16 +195,16 @@ export const IdeaQuote = ({ children }: { children: JSX.Element }) => (
                 left: "-20px",
             }}
         >
-            <HiOutlineLightBulb className="text-3xl text-yellow-400" />
+            <HiOutlineLightBulb className="text-3xl text-yellow-500 dark:text-yellow-400" />
         </div>
         <div className="p-0 m-0 text-lg mb-3">{children}</div>
     </div>
 );
 
 export const WarningQuote = ({ children }: { children: JSX.Element }) => (
-    <div className="px-6 py-1 mb-6 rounded-lg border-l-4 leading-relaxed text-gray-300 relative border-red-500 bg-red-500 bg-opacity-10">
+    <div className="px-6 py-1 mb-6 rounded-lg border-l-4 leading-relaxed text-gray-800 dark:text-gray-300 relative bg-red-600 border-red-600 dark:border-red-500 dark:bg-red-500 bg-opacity-20 dark:bg-opacity-10">
         <div
-            className="text-center bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            className="text-center bg-gray-200 dark:bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
             style={{
                 float: "left",
                 position: "absolute",
@@ -216,7 +212,7 @@ export const WarningQuote = ({ children }: { children: JSX.Element }) => (
                 left: "-20px",
             }}
         >
-            <TiWarningOutline className="text-3xl text-red-500" />
+            <TiWarningOutline className="text-3xl text-red-700 dark:text-red-500" />
         </div>
         <div className="p-0 m-0 text-lg mb-3">{children}</div>
     </div>
@@ -236,37 +232,37 @@ const AnchorLink = ({ children }: { children: string }) => {
 };
 
 export const h1 = ({ children }: { children: any }) => (
-    <h1 className="text-4xl font-extrabold text-white">
+    <h1 className="text-4xl font-extrabold text-black dark:text-white mt-2">
         <AnchorLink>{children}</AnchorLink>
     </h1>
 );
 
 export const h2 = ({ children }: { children: any }) => (
-    <h2 className="text-3xl font-extrabold text-white mt-2">
+    <h2 className="text-3xl font-extrabold text-black dark:text-white mt-2">
         <AnchorLink>{children}</AnchorLink>
     </h2>
 );
 
 export const h3 = ({ children }: { children: any }) => (
-    <h3 className="text-2xl font-extrabold text-white">
+    <h3 className="text-2xl font-extrabold text-black dark:text-white">
         <AnchorLink>{children}</AnchorLink>
     </h3>
 );
 
 export const h4 = ({ children }: { children: any }) => (
-    <h4 className="text-xl font-extrabold text-white">
+    <h4 className="text-xl font-extrabold text-black dark:text-white">
         <AnchorLink>{children}</AnchorLink>
     </h4>
 );
 
 export const h5 = ({ children }: { children: any }) => (
-    <h5 className="text-lg font-extrabold text-white">
+    <h5 className="text-lg font-extrabold text-black dark:text-white">
         <AnchorLink>{children}</AnchorLink>
     </h5>
 );
 
 export const h6 = ({ children }: { children: any }) => (
-    <h6 className="text-md font-extrabold text-white">
+    <h6 className="text-md font-extrabold text-black dark:text-white">
         <AnchorLink>{children}</AnchorLink>
     </h6>
 );

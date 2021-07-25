@@ -33,6 +33,9 @@ module.exports = {
             device: "47%",
         },
         extend: {
+            colors: {
+                "blue-opaque": "rgb(13 42 148 / 18%)",
+            },
             gridTemplateColumns: {
                 musicTitle: "minmax(150px, 1fr)",
                 musicNormal: "minmax(110px, 1fr)",

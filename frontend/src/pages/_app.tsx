@@ -8,6 +8,7 @@ import AppLayout from "@components/AppLayout";
 import PlausibleProvider from "next-plausible";
 import ReactModal from "react-modal";
 import { Provider as AuthProvider } from "next-auth/client";
+import { ThemeProvider } from "next-themes";
 
 import "tailwindcss/tailwind.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -24,6 +25,7 @@ function PersonalWebsite({
     router,
 }: AppProps): React.ReactElement {
     const [loading, setLoading] = useState(false);
+
     useEffect(() => {
         document.documentElement.lang = `en-US`;
         const start = () => {
@@ -41,8 +43,9 @@ function PersonalWebsite({
             router.events.off(`routeChangeError`, end);
         };
     });
+
     return (
-        <>
+        <div>
             <DefaultSeo
                 defaultTitle="David Ilie"
                 titleTemplate="%s | David Ilie"
@@ -68,18 +71,20 @@ function PersonalWebsite({
             >
                 <QueryClientProvider client={queryClient}>
                     <AuthProvider session={pageProps.session}>
-                        <AppLayout>
-                            {loading ? (
-                                <Loader />
-                            ) : (
-                                <Component {...pageProps} />
-                            )}
-                        </AppLayout>
+                        <ThemeProvider attribute="class" defaultTheme="dark">
+                            <AppLayout>
+                                {loading ? (
+                                    <Loader />
+                                ) : (
+                                    <Component {...pageProps} />
+                                )}
+                            </AppLayout>
+                        </ThemeProvider>
                     </AuthProvider>
                 </QueryClientProvider>
                 <ToastContainer autoClose={2500} newestOnTop={true} />
             </PlausibleProvider>
-        </>
+        </div>
     );
 }
 

@@ -4,6 +4,8 @@ import { useQuery } from "react-query";
 import Socials from "@components/Socials";
 import Tooltip from "@ui/Tooltip";
 
+import { useTheme } from "next-themes";
+
 export const Footer = () => {
     const { error, data: currentlyPlaying } = useQuery(
         `currentlyPlaying`,
@@ -14,16 +16,18 @@ export const Footer = () => {
         { refetchOnMount: true }
     );
 
+    const { theme } = useTheme();
+
     return (
         <footer
-            className="text-white pt-5 pb-5 w-full"
-            style={{ background: "#171923" }}
+            className="text-black dark:text-white pt-5 pb-5 w-full"
+            style={{ background: theme === "dark" ? "#171923" : "#f7fafc" }}
         >
             <div className="flex flex-wrap items-center 2xl:justify-evenly xl:justify-evenly md:justify-evenly lg:justify-evenly justify-center">
                 <div className="flex justify-evenly items-center">
                     {currentlyPlaying?.songUrl ? (
                         <>
-                            <div className="text-2xl text-green-500 mr-1">
+                            <div className="text-2xl text-green-600 dark:text-green-500 mr-1">
                                 {currentlyPlaying.isPlaying ? (
                                     <Tooltip content="Currently Playing">
                                         <span>
@@ -40,7 +44,11 @@ export const Footer = () => {
                             </div>
                             <span className="mx-0.5" />
                             <Tooltip content={currentlyPlaying.artist}>
-                                <a href={currentlyPlaying.songUrl}>
+                                <a
+                                    href={currentlyPlaying.songUrl}
+                                    target="_blank"
+                                    className="font-semibold"
+                                >
                                     <h1>{currentlyPlaying.name}</h1>
                                 </a>
                             </Tooltip>
@@ -48,7 +56,7 @@ export const Footer = () => {
                             <a
                                 href="https://open.spotify.com/user/6ugu6jpzmviq5wvp06gb73gds?si=9d56dc1fe4a14559"
                                 target="_blank"
-                                className="text-green-800 font-bold"
+                                className="text-green-500 dark:text-green-700 font-bold"
                             >
                                 Spotify
                             </a>

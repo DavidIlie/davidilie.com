@@ -68,7 +68,7 @@ export const ContentCreator = () => {
                     content="School projects, Personal Projects, etc."
                     placement="bottom"
                 >
-                    <p className="text-section text-gray-800 cursor-pointer">
+                    <p className="text-section text-gray-800 dark:text-gray-200 cursor-pointer">
                         And much more...
                     </p>
                 </Tooltip>

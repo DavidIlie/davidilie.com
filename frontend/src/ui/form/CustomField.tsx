@@ -7,7 +7,7 @@ const CustomField = (props) => {
                 </span>
                 <input
                     {...props}
-                    className="px-10 py-3 placeholder-gray-300 relative bg-gray-800 rounded-xl text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pr-10"
+                    className="px-10 py-3 placeholder-gray-600 dark:placeholder-gray-300 relative bg-gray-300 dark:bg-gray-900 rounded-xl text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full pr-10"
                 />
             </div>
         </div>

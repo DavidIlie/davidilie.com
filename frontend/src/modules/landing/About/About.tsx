@@ -7,7 +7,7 @@ import { ContentCreator } from "./skills/ContentCreator";
 export const About = () => {
     return (
         <>
-            <div className="bg-blue-600 text-white text-center px-10 pt-24 pb-32">
+            <div className="bg-blue-600 dark:bg-blue-800 text-white dark:text-gray-100 text-center px-10 pt-24 pb-32">
                 <Fade direction="left" triggerOnce cascade>
                     <h1
                         className={`2xl:text-5xl xl:text-5xl md:text-5xl lg:text-4xl text-4xl font-semibold mb-5`}
@@ -34,7 +34,7 @@ export const About = () => {
             </div>
             <Fade direction="up" triggerOnce cascade>
                 <div
-                    className={`-mt-48 max-w-sm mx-auto bg-white rounded-2xl shadow-xl md:max-w-6xl flex md:flex-nowrap justify-evenly flex-wrap`}
+                    className={`-mt-48 max-w-sm mx-auto bg-white dark:bg-gray-800 dark:text-gray-200 rounded-2xl shadow-xl md:max-w-6xl flex md:flex-nowrap justify-evenly flex-wrap`}
                 >
                     <FrontendDeveloper />
                     <BackendDeveloper />

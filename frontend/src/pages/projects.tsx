@@ -19,7 +19,7 @@ function Projects({ repos }) {
     return (
         <>
             <NextSeo title="Projects" />
-            <div className="text-white text-center pt-32 pb-12 px-3">
+            <div className="text-black dark:text-white text-center pt-32 pb-12 px-3">
                 <Fade direction="up" triggerOnce cascade>
                     <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
                         My projects
@@ -80,7 +80,7 @@ function Projects({ repos }) {
                     link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/github`}
                     Icon={FaGithub}
                     text="View my profile"
-                    className="mb-10"
+                    className="mb-5"
                 />
 
                 <div className="flex flex-wrap justify-center gap-2 2xl:mx-10 xl:mx-10 md:mx-10 lg:mx-10 mx-0">

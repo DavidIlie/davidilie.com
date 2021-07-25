@@ -1,6 +1,6 @@
 const CustomSubmitButton = (props) => {
     return (
-        <span className="inline-flex py-1 rounded-md shadow-sm bg-blue-600 hover:bg-blue-800 duration-200">
+        <span className="inline-flex py-1 rounded-md shadow-sm bg-blue-400 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-800 duration-200">
             <button
                 {...props}
                 type="submit"
@@ -11,7 +11,7 @@ const CustomSubmitButton = (props) => {
             >
                 {props.submitting && (
                     <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white dark:text-white"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"

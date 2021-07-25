@@ -81,7 +81,7 @@ export const BlogLayout = ({
                     ],
                 }}
             />
-            <article className="text-white flex flex-col justify-start pt-28 w-full min-h-screen mx-auto max-w-2xl">
+            <article className="text-black dark:text-white flex flex-col justify-start pt-28 w-full min-h-screen mx-auto max-w-2xl">
                 {frontMatter.tags && (
                     <div className="flex w-full px-3 mb-4 justify-start flex-wrap">
                         {frontMatter.tags.map((tag, i) => (
@@ -105,7 +105,7 @@ export const BlogLayout = ({
                                 {frontMatter.by.name}
                             </span>
                         </span>
-                        <h1 className="text-gray-300">
+                        <h1 className="text-gray-800 dark:text-gray-300">
                             {" / "}
                             {format(
                                 parseISO(frontMatter.publishedAt),

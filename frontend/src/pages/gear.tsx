@@ -9,7 +9,7 @@ function Stats(): JSX.Element {
     return (
         <>
             <NextSeo title="Gear" />
-            <div className="flex flex-col items-center pt-28 w-full min-h-screen mx-auto max-w-3xl text-white">
+            <div className="flex flex-col items-center pt-28 w-full min-h-screen mx-auto max-w-3xl text-black dark:text-white">
                 <Fade duration={750} direction="up" triggerOnce cascade>
                     <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
                         My Gear/Setup

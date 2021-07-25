@@ -27,7 +27,7 @@ export const PinnedProject = ({
     });
 
     return pageWidth >= 900 ? (
-        <div className="mx-auto bg-gray-800 border-2 border-gray-700 rounded-xl shadow-md overflow-hidden max-w-5xl mb-7 hoverItem duration-200">
+        <div className="mx-auto bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl shadow-md overflow-hidden max-w-5xl mb-7 hoverItem duration-200">
             <div className="flex">
                 {!left ? <ProjectImage link={projectData.image} /> : null}
                 <div className="p-8">
@@ -37,7 +37,7 @@ export const PinnedProject = ({
                             {format(new Date(repo.date.created_at), `dd/MM/yy`)}
                         </span>
                     </h1>
-                    <h1 className="flex justify-center text-gray-400 mb-2">
+                    <h1 className="flex justify-center text-black dark:text-gray-400 mb-2">
                         Last updated{" "}
                         {formatDistance(
                             new Date(repo.date.last_push),

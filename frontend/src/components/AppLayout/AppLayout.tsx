@@ -7,12 +7,17 @@ import Footer from "@components/Footer";
 import { UpDown } from "@components/Animations/Animation";
 import SVG from "@components/SVG";
 
+import { useTheme } from "next-themes";
+
 interface AppLayoutProps {
     children: React.ReactElement;
 }
 
 export const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
     const router = useRouter();
+
+    const { theme } = useTheme();
+
     return (
         <>
             <NextSeo
@@ -60,7 +65,16 @@ export const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
                 />
             </UpDown>
             <NavBar />
-            <div style={{ background: "rgba(26, 33, 42, 0.8)" }}>
+            <div
+                style={{
+                    background:
+                        theme === "light"
+                            ? "rgba(255, 255, 255, 0.8)"
+                            : theme === "dark"
+                            ? "rgba(26, 33, 42, 0.8)"
+                            : "rgba(26, 33, 42, 0.8)",
+                }}
+            >
                 {children}
             </div>
             <Footer />
