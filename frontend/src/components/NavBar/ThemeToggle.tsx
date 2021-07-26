@@ -16,13 +16,13 @@ const ThemeToggle = (): JSX.Element => {
                 {theme === "dark" ? (
                     <HiSun
                         aria-label="Toggle Light Mode"
-                        title="Activate light mode"
+                        title="Activate Light mode"
                         className="text-gray-500 dark:text-gray-400 text-2xl cursor-pointer"
                     />
                 ) : (
                     <HiMoon
                         aria-label="Toggle Dark Mode"
-                        title="Activate dark mode"
+                        title="Activate Dark mode"
                         className="text-gray-500 dark:text-gray-400 text-2xl cursor-pointer"
                     />
                 )}
