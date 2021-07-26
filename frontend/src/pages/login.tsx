@@ -214,7 +214,7 @@ const Input = ({
             onChange={onChange}
             value={value}
             type={type}
-            className={`appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 ${
+            className={`appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 dark:placeholder-gray-400 dark:bg-gray-700 text-gray-900 ${
                 placeholder === "Email" ? "rounded-t-md" : "rounded-b-md"
             } focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm`}
         />
