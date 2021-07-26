@@ -8,15 +8,23 @@ const ThemeToggle = (): JSX.Element => {
     return (
         typeof window != "undefined" && (
             <div
-                className="transition duration-200 ease-in-out rounded-md p-2 cursor-pointer"
+                className="transition duration-200 ease-in-out p-2 bg-gray-200 rounded dark:bg-gray-800 cursor-pointer"
                 onClick={() =>
                     theme === "dark" ? setTheme("light") : setTheme("dark")
                 }
             >
                 {theme === "dark" ? (
-                    <HiSun className="text-gray-500 dark:text-gray-400 text-2xl cursor-pointer" />
+                    <HiSun
+                        aria-label="Toggle Light Mode"
+                        title="Activate light mode"
+                        className="text-gray-500 dark:text-gray-400 text-2xl cursor-pointer"
+                    />
                 ) : (
-                    <HiMoon className="text-gray-500 dark:text-gray-400 text-2xl cursor-pointer" />
+                    <HiMoon
+                        aria-label="Toggle Dark Mode"
+                        title="Activate dark mode"
+                        className="text-gray-500 dark:text-gray-400 text-2xl cursor-pointer"
+                    />
                 )}
             </div>
         )
