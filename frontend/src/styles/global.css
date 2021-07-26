@@ -6,6 +6,10 @@ html[class="dark"] .pageBackground {
     background: rgba(26, 33, 42, 0.8);
 }
 
+.pageBackground {
+    background: rgba(255, 255, 255, 0.8);
+}
+
 html[class="dark"] .footerBackground {
     background: #171923;
 }

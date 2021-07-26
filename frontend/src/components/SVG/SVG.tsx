@@ -1,4 +1,5 @@
 import { useMediaQuery } from "react-responsive";
+import { useTheme } from "next-themes";
 
 const icons = {
     triangle: {
@@ -50,11 +51,21 @@ type SVGProps = {
     hiddenMobile?: boolean;
 };
 
+const getColor = () => {
+    const { theme } = useTheme();
+
+    if (theme === "dark") {
+        return [`100`, `200`, `300`, `400`, `500`];
+    } else {
+        return [`500`, `600`, `700`, `800`, `900`];
+    }
+};
+
 export const SVG = ({
     stroke = false,
     color = `${
         [`gray`, `indigo`, `blue`, `green`][Math.floor(Math.random() * 4)]
-    }-${[`100`, `200`, `300`, `400`, `500`][Math.floor(Math.random() * 5)]}`,
+    }-${getColor()[Math.floor(Math.random() * 5)]}`,
     zIndex = -500,
     width,
     icon,
