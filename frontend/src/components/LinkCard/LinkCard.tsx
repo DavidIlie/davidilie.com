@@ -12,7 +12,9 @@ const LinkCard = ({ name, link, date, label }: LinkType): JSX.Element => {
             className="bg-gray-100 border-gray-200 dark:bg-gray-900 dark:border-gray-700 border-2 duration-200 hoverItem rounded-xl overflow-hidden flex items-start flex-col"
         >
             <div className="relative">
-                <Badge label={label} />
+                <div className="absolute z-50 right-2 top-2 ml-1 ">
+                    <Badge label={label} />
+                </div>
                 <div className="md:flex-shrink-0">
                     <Image
                         src={`https://rdl.ink/render/${encodeURIComponent(
