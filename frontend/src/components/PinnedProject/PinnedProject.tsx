@@ -29,7 +29,7 @@ export const PinnedProject = ({
     return pageWidth >= 900 ? (
         <div className="mx-auto bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl shadow-md overflow-hidden max-w-5xl mb-7 hoverItem duration-200">
             <div className="flex">
-                {!left ? <ProjectImage link={projectData.image} /> : null}
+                {!left && <ProjectImage link={projectData.image} />}
                 <div className="p-8">
                     <h1 className="text-2xl font-semibold">
                         {projectData.name}
@@ -64,7 +64,7 @@ export const PinnedProject = ({
                         </div>
                     </div>
                 </div>
-                {left ? <ProjectImage link={projectData.image} /> : null}
+                {left && <ProjectImage link={projectData.image} />}
             </div>
         </div>
     ) : (
