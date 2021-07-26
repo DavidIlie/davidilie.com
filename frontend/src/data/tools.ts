@@ -134,7 +134,7 @@ const Tools: ToolType[] = [
         id: `mongodb-compass`,
         category: [`windows`, `mac`, `linux`],
         link: `https://www.mongodb.com/products/compass`,
-        labels: [`MongoDB GUI Editor`],
+        labels: [`GUI Editor`],
         name: `MongoDB Compass`,
         description: `Powerful MongoDB editor.`,
     },
