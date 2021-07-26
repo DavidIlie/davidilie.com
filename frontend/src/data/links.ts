@@ -18,7 +18,7 @@ export const links: LinkType[] = [
         id: `framer-motion`,
         link: `https://www.framer.com/motion/`,
         name: `Framer Motion`,
-        label: `Web Design`,
+        label: `Web Animations`,
         date: new Date(`2021-03-12T19:20`),
     },
     {
@@ -38,7 +38,7 @@ export const links: LinkType[] = [
     {
         id: `proxmox-ve`,
         link: `https://proxmox.com/en/`,
-        name: `Proxmox`,
+        name: `Proxmox VE`,
         label: `VM/LXC Hypervisor`,
         date: new Date(`2019-04-25T19:20`),
     },

@@ -46,7 +46,7 @@ const Tools: ToolType[] = [
         id: `powertoys`,
         category: [`windows`],
         link: `https://github.com/microsoft/PowerToys`,
-        labels: [`Windows Utilities`],
+        labels: [`Enhancements`],
         name: `PowerToys`,
         description: `Producitive features for Windows.`,
     },

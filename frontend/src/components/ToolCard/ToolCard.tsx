@@ -20,7 +20,7 @@ export const ToolCard = ({
         <a href={link} target="_blank">
             <div
                 className="grid p-3 border-1 bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-900 rounded-2xl shadow-lg duration-200 hoverItem"
-                style={{ gridTemplateColumns: "85px 1fr" }}
+                style={{ gridTemplateColumns: "80px 1fr" }}
             >
                 <div
                     className="relative overflow-hidden rounded-2xl p-2"
@@ -59,11 +59,13 @@ export const ToolCard = ({
                             "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
                         }
                         placeholder="blur"
+                        className="object-scale-down"
                     />
                 </div>
                 <div className="flex text-left flex-col pl-5 justify-center itms-center truncate">
-                    <div className="flex items-center gap-2">
-                        <h1 className="text-xl font-medium">{name}</h1>
+                    <h1 className="text-xl font-medium">{name}</h1>
+                    <p className="text-gray-400">{description}</p>
+                    <div className="max-w-min flex gap-1 mt-1">
                         {labels?.map((label, index) => (
                             <Badge
                                 color={
@@ -81,7 +83,6 @@ export const ToolCard = ({
                             />
                         ))}
                     </div>
-                    <p className="text-gray-400">{description}</p>
                 </div>
             </div>
         </a>

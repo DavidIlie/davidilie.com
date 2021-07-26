@@ -23,9 +23,10 @@ function Stats(): JSX.Element {
                     <div className="block mt-5 mb-10 align-center">
                         <div className="flex flex-wrap gap-6 justify-center">
                             <button
-                                className={`flex items-center gap-1 rounded-2xl duration-200 p-2 ${
-                                    current === "windows" &&
-                                    "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
+                                className={`flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2 ${
+                                    current === "windows"
+                                        ? "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
+                                        : "hover:bg-gray-300 dark:hover:bg-gray-800 cursor-pointer"
                                 }`}
                                 onClick={() => setCurrent("windows")}
                             >
@@ -35,9 +36,10 @@ function Stats(): JSX.Element {
                                 </p>
                             </button>
                             <button
-                                className={`flex items-center gap-1 rounded-2xl duration-200 p-2 ${
-                                    current === "linux" &&
-                                    "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
+                                className={`flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2 ${
+                                    current === "linux"
+                                        ? "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
+                                        : "hover:bg-gray-300 dark:hover:bg-gray-800 cursor-pointer"
                                 }`}
                                 onClick={() => setCurrent("linux")}
                             >
@@ -47,9 +49,10 @@ function Stats(): JSX.Element {
                                 </p>
                             </button>
                             <button
-                                className={`flex items-center gap-1 rounded-2xl duration-200 p-2 ${
-                                    current === "mac" &&
-                                    "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
+                                className={`flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2 ${
+                                    current === "mac"
+                                        ? "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
+                                        : "hover:bg-gray-300 dark:hover:bg-gray-800 cursor-pointer"
                                 }`}
                                 onClick={() => setCurrent("mac")}
                             >
@@ -59,9 +62,10 @@ function Stats(): JSX.Element {
                                 </p>
                             </button>
                             <button
-                                className={`flex items-center gap-1 rounded-2xl duration-200 p-2 ${
-                                    current === "android" &&
-                                    "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
+                                className={`flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2 ${
+                                    current === "android"
+                                        ? "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
+                                        : "hover:bg-gray-300 dark:hover:bg-gray-800 cursor-pointer"
                                 }`}
                                 onClick={() => setCurrent("android")}
                             >
@@ -71,9 +75,10 @@ function Stats(): JSX.Element {
                                 </p>
                             </button>
                             <button
-                                className={`flex items-center gap-1 rounded-2xl duration-200 p-2 ${
-                                    current === "chrome" &&
-                                    "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
+                                className={`flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2 ${
+                                    current === "chrome"
+                                        ? "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
+                                        : "hover:bg-gray-300 dark:hover:bg-gray-800 cursor-pointer"
                                 }`}
                                 onClick={() => setCurrent("chrome")}
                             >

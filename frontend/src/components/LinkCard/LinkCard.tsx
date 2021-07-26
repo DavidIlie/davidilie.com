@@ -9,11 +9,15 @@ const LinkCard = ({ name, link, date, label }: LinkType): JSX.Element => {
         <a
             href={link}
             target="_blank"
-            className="bg-gray-100 border-gray-200 dark:bg-gray-900 dark:border-gray-700 border-2 duration-200 hoverItem rounded-xl overflow-hidden flex items-start flex-col"
+            className="bg-gray-100 border-gray-200 dark:bg-gray-800 dark:border-gray-700 border-2 duration-200 hoverItem rounded-xl overflow-hidden flex items-start flex-col"
         >
             <div className="relative">
-                <div className="absolute z-50 right-2 top-2 ml-1 ">
-                    <Badge label={label} />
+                <div className="absolute z-50 right-2 top-2 ml-1">
+                    <Badge
+                        label={formatDistance(date, new Date(), {
+                            addSuffix: true,
+                        })}
+                    />
                 </div>
                 <div className="md:flex-shrink-0">
                     <Image
@@ -31,12 +35,10 @@ const LinkCard = ({ name, link, date, label }: LinkType): JSX.Element => {
                     />
                 </div>
             </div>
-            <div className="py-2 px-4 -mt-1.5 border-t-4 border-gray-200 dark:border-gray-800 w-full">
-                <div className="flex justify-between font-medium text-sm">
-                    <p>{name}</p>
-                    <p>
-                        {formatDistance(date, new Date(), { addSuffix: true })}
-                    </p>
+            <div className="py-2 px-4 -mt-1.5 border-t-4 border-gray-200 dark:border-gray-900 w-full">
+                <div className="flex justify-between text-sm">
+                    <p className="font-medium">{name}</p>
+                    <p className="text-gray-700 dark:text-gray-300">{label}</p>
                 </div>
             </div>
         </a>
