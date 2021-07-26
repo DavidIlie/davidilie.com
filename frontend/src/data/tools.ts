@@ -48,7 +48,7 @@ const Tools: ToolType[] = [
         link: `https://github.com/microsoft/PowerToys`,
         labels: [`Windows Utilities`],
         name: `PowerToys`,
-        description: `Producitivity features for Windows.`,
+        description: `Producitive features for Windows.`,
     },
     {
         id: `vscode`,
