@@ -32,7 +32,7 @@ function Stats(): JSX.Element {
                         , see{" "}
                         <a
                             className="text-blue-500 hover:text-blue-600 duration-200 cursor-pointer"
-                            href="status.davidapps.dev"
+                            href="https://status.davidapps.dev"
                         >
                             Status
                         </a>

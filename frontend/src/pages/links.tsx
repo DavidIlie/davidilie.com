@@ -15,7 +15,7 @@ function Stats(): JSX.Element {
                         Links
                     </h1>
                     <p className="text-section mb-5 px-5 text-center">
-                        My favorite parts of the interwebs.
+                        My favorite parts of the interweb.
                     </p>
                     <div className="grid 2xl:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-5 mb-10">
                         {links
