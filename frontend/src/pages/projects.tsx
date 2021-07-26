@@ -84,7 +84,7 @@ function Projects({ repos }) {
                 />
 
                 <div className="flex justify-center">
-                    <div className="grid 2xl:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-2">
+                    <div className="grid 2xl:grid-cols-3 xl:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-2">
                         {repos
                             .sort(
                                 (a: repoType, b: repoType) =>
