@@ -3,7 +3,7 @@ body {
 }
 
 @media (min-width: 1580px) {
-    .toolgrid {
+    .responsiveGrid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
