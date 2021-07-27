@@ -76,7 +76,7 @@ const Tools: ToolType[] = [
     },
     {
         id: `discord`,
-        category: [`windows`, `mac`, `android`, `linux`, `chrome`],
+        category: [`windows`, `mac`, `android`, `linux`],
         link: `https://discord.com`,
         labels: [`Voice Chat`],
         name: `Discord`,
