@@ -7,7 +7,7 @@ import { ContentCreator } from "./skills/ContentCreator";
 export const About = () => {
     return (
         <>
-            <div className="bg-blue-600 dark:bg-blue-800 text-white dark:text-gray-100 text-center px-10 pt-24 pb-32">
+            <div className="bg-blue-600 dark:bg-blue-800 text-white dark:text-gray-100 text-center px-10 pt-12 pb-32">
                 <Fade direction="left" triggerOnce cascade>
                     <h1
                         className={`2xl:text-5xl xl:text-5xl md:text-5xl lg:text-4xl text-4xl font-semibold mb-5`}

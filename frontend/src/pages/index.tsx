@@ -30,36 +30,76 @@ function Home({ repos }): JSX.Element {
             <NextSeo title="Home" />
             <Header />
             <About />
-            <div className="mx-auto text-center text-black dark:text-white mt-5">
-                <Fade direction="up" triggerOnce cascade duration={500}>
-                    <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
-                        Latest Project
+            <div className="mt-12 bg-indigo-600 dark:bg-indigo-900 text-white dark:text-gray-100 text-center px-10 pt-12 pb-2">
+                <Fade direction="up" triggerOnce cascade>
+                    <h1
+                        className={`2xl:text-5xl xl:text-5xl md:text-5xl lg:text-4xl text-4xl font-semibold mb-5`}
+                    >
+                        Secondly, What am I doing online?
                     </h1>
-                    <p className="text-section mb-5">
-                        The latest project that I have been working on:
-                    </p>
-                    <div className="mx-auto">
-                        <PinnedProject
-                            repo={
-                                repos.filter(
-                                    (x: repoType) => x.name === repo[0].id
-                                )[0]
-                            }
-                            left={false}
-                            projectData={repo[0]}
-                        />
+                    <h1
+                        className={`text-section 2xl:px-96 xl:px-32 lg:px-24 md:px-24 sm:px-5`}
+                    >
+                        I like to have most of my code (
+                        <a
+                            href="https://github.com/davidilie/davidilie.com"
+                            target="_blank"
+                            className="duration-200 text-blue-200 hover:text-blue-300 hover:underline cursor-pointer"
+                        >
+                            including this website
+                        </a>
+                        ) open source on my{" "}
+                        <a
+                            href="https://github.com/davidilie"
+                            target="_blank"
+                            className="duration-200 text-blue-200 hover:text-blue-300 hover:underline cursor-pointer"
+                        >
+                            GitHub
+                        </a>{" "}
+                        for others to see, rate, and give me their opinion. In
+                        addition, keeping my code open source gives me the
+                        benefit to have a good personal image in my GitHub
+                        profile, which is <strong>key</strong> when I would want
+                        to contribute to open-source projects. Furthermore, I
+                        also like to write posts over on my{" "}
+                        <Link href="/blog">
+                            <a
+                                target="_blank"
+                                className="duration-200 text-blue-200 hover:text-blue-300 hover:underline cursor-pointer"
+                            >
+                                blog
+                            </a>
+                        </Link>{" "}
+                        regarding things that I encounter these days while
+                        working on projects. Below, you can see an example:
+                    </h1>
+                    <div className="mt-5 text-center text-black dark:text-white mx-auto">
+                        <Fade direction="up" triggerOnce cascade duration={500}>
+                            <div className="mx-auto">
+                                <PinnedProject
+                                    repo={
+                                        repos.filter(
+                                            (x: repoType) =>
+                                                x.name === repo[0].id
+                                        )[0]
+                                    }
+                                    left={false}
+                                    projectData={repo[0]}
+                                />
+                            </div>
+                            <p className="text-section -mt-3 text-white">
+                                Want to see more projects? Go to the{" "}
+                                <Link href="/projects">
+                                    <span className="text-gray-200 font-semibold cursor-pointer hover:underline">
+                                        projects page
+                                    </span>
+                                </Link>
+                            </p>
+                        </Fade>
                     </div>
-                    <p className="text-section -mt-3">
-                        Want to see more projects? Go to the{" "}
-                        <Link href="/projects">
-                            <span className="text-blue-500 font-semibold cursor-pointer hover:underline">
-                                projects page
-                            </span>
-                        </Link>
-                    </p>
                 </Fade>
             </div>
-            <div className="h-32"></div>
+            <div className="h-24"></div>
         </>
     );
 }

@@ -45,10 +45,10 @@ export const BlogInteractions = ({
             {!loading && !session && (
                 <div>
                     <div className="border rounded p-6 my-4 w-full border-gray-800 bg-blue-opaque">
-                        <h5 className="text-lg md:text-xl font-bold text-gray-100">
+                        <h5 className="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100">
                             Sign in to comment
                         </h5>
-                        <p className="my-1 text-gray-200">
+                        <p className="my-1 text-gray-900 dark:text-gray-200">
                             Share your opinion regarding this post for the world
                             to see
                         </p>
@@ -58,7 +58,7 @@ export const BlogInteractions = ({
                         >
                             Login
                         </a>
-                        <p className="text-sm text-gray-200">
+                        <p className="text-sm text-gray-900 dark:text-gray-200">
                             Your information is only used to display your name
                             and reply by email.
                         </p>
