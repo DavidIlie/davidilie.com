@@ -2,6 +2,14 @@ body {
     position: relative;
 }
 
+.tool.react-tabs__tab--selected {
+    @apply bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 cursor-default;
+}
+
+.tool:not(.react-tabs__tab--selected) {
+    @apply hover:bg-gray-300 dark:hover:bg-gray-800 cursor-pointer;
+}
+
 html[class="dark"] .pageBackground {
     background: rgba(26, 33, 42, 0.8);
 }

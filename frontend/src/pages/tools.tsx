@@ -1,13 +1,14 @@
 import { NextSeo } from "next-seo";
 import { Fade } from "react-awesome-reveal";
 import { useState } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { AiFillApple, AiFillChrome, AiFillWindows } from "react-icons/ai";
 import { BsPhone } from "react-icons/bs";
 import { FaLinux } from "react-icons/fa";
 import ToolGrid from "@components/ToolGrid";
 
 function Stats(): JSX.Element {
-    const [current, setCurrent] = useState("windows");
+    const [tabIndex, setTabIndex] = useState(0);
 
     return (
         <>
@@ -20,91 +21,76 @@ function Stats(): JSX.Element {
                     <p className="text-section mb-5 px-5 text-center">
                         Some tools I use/find useful.
                     </p>
-                    <div className="block mt-5 mb-10 align-center">
-                        <div className="flex flex-wrap gap-6 justify-center">
-                            <button
-                                className={`flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2 ${
-                                    current === "windows"
-                                        ? "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
-                                        : "hover:bg-gray-300 dark:hover:bg-gray-800 cursor-pointer"
-                                }`}
-                                onClick={() => setCurrent("windows")}
-                            >
+                    <Tabs
+                        forceRenderTabPanel={true}
+                        selectedIndex={tabIndex}
+                        onSelect={(index) => setTabIndex(index)}
+                    >
+                        <TabList className="mt-5 mb-10 align-center flex flex-wrap gap-6 justify-center">
+                            <Tab className="tool flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2">
                                 <AiFillWindows className="text-section" />
                                 <p className="text-section font-semibold">
                                     Windows
                                 </p>
-                            </button>
-                            <button
-                                className={`flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2 ${
-                                    current === "linux"
-                                        ? "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
-                                        : "hover:bg-gray-300 dark:hover:bg-gray-800 cursor-pointer"
-                                }`}
-                                onClick={() => setCurrent("linux")}
-                            >
+                            </Tab>
+                            <Tab className="tool flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2">
                                 <FaLinux className="text-section" />
                                 <p className="text-section font-semibold">
                                     Linux
                                 </p>
-                            </button>
-                            <button
-                                className={`flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2 ${
-                                    current === "mac"
-                                        ? "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
-                                        : "hover:bg-gray-300 dark:hover:bg-gray-800 cursor-pointer"
-                                }`}
-                                onClick={() => setCurrent("mac")}
-                            >
+                            </Tab>
+                            <Tab className="tool flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2">
                                 <AiFillApple className="text-section" />
                                 <p className="text-section font-semibold">
                                     Mac
                                 </p>
-                            </button>
-                            <button
-                                className={`flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2 ${
-                                    current === "android"
-                                        ? "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
-                                        : "hover:bg-gray-300 dark:hover:bg-gray-800 cursor-pointer"
-                                }`}
-                                onClick={() => setCurrent("android")}
-                            >
+                            </Tab>
+                            <Tab className="tool flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2">
                                 <BsPhone className="text-section" />
                                 <p className="text-section font-semibold">
                                     Android
                                 </p>
-                            </button>
-                            <button
-                                className={`flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2 ${
-                                    current === "chrome"
-                                        ? "bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 "
-                                        : "hover:bg-gray-300 dark:hover:bg-gray-800 cursor-pointer"
-                                }`}
-                                onClick={() => setCurrent("chrome")}
-                            >
+                            </Tab>
+                            <Tab className="tool flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2">
                                 <AiFillChrome className="text-section" />
                                 <p className="text-section font-semibold">
                                     Chrome
                                 </p>
-                            </button>
+                            </Tab>
+                        </TabList>
+                        <div className="mb-10">
+                            <TabPanel>
+                                <ToolGrid
+                                    filter="windows"
+                                    hidden={!(tabIndex === 0)}
+                                />
+                            </TabPanel>
+                            <TabPanel>
+                                <ToolGrid
+                                    filter="linux"
+                                    hidden={!(tabIndex === 1)}
+                                />
+                            </TabPanel>
+                            <TabPanel>
+                                <ToolGrid
+                                    filter="mac"
+                                    hidden={!(tabIndex === 2)}
+                                />
+                            </TabPanel>
+                            <TabPanel>
+                                <ToolGrid
+                                    filter="android"
+                                    hidden={!(tabIndex === 3)}
+                                />
+                            </TabPanel>
+                            <TabPanel>
+                                <ToolGrid
+                                    filter="chrome"
+                                    hidden={!(tabIndex === 4)}
+                                />
+                            </TabPanel>
                         </div>
-                    </div>
-                    <div className="mb-10">
-                        <ToolGrid
-                            filter="windows"
-                            hidden={current !== "windows"}
-                        />
-                        <ToolGrid filter="linux" hidden={current !== "linux"} />
-                        <ToolGrid filter="mac" hidden={current !== "mac"} />
-                        <ToolGrid
-                            filter="android"
-                            hidden={current !== "android"}
-                        />
-                        <ToolGrid
-                            filter="chrome"
-                            hidden={current !== "chrome"}
-                        />
-                    </div>
+                    </Tabs>
                 </Fade>
             </div>
         </>

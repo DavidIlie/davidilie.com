@@ -12,7 +12,7 @@ const ToolGrid = ({
 }): JSX.Element => {
     return (
         <div
-            className={`grid 2xl:grid-cols-3 xl:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-5 ${
+            className={`mx-5 grid 2xl:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-5 ${
                 hidden && "hidden"
             }`}
         >
