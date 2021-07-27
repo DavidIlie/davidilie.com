@@ -26,7 +26,7 @@ function Stats(): JSX.Element {
                         selectedIndex={tabIndex}
                         onSelect={(index) => setTabIndex(index)}
                     >
-                        <TabList className="mt-5 mb-10 align-center flex flex-wrap gap-6 justify-center">
+                        <TabList className="mt-5 mb-10 align-center flex flex-wrap gap-6 justify-center mx-3">
                             <Tab className="tool flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2">
                                 <AiFillWindows className="text-section" />
                                 <p className="text-section font-semibold">
