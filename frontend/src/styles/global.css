@@ -2,6 +2,12 @@ body {
     position: relative;
 }
 
+@media (min-width: 1580px) {
+    .toolgrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
 .tool.react-tabs__tab--selected {
     @apply bg-blue-500 text-gray-100 dark:text-white dark:bg-blue-900 cursor-default;
 }
