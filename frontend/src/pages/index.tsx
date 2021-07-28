@@ -74,28 +74,25 @@ function Home({ repos }): JSX.Element {
                         working on projects. Below, you can see an example:
                     </h1>
                     <div className="mt-5 text-center text-black dark:text-white mx-auto">
-                        <Fade direction="up" triggerOnce cascade duration={500}>
-                            <div className="mx-auto">
-                                <PinnedProject
-                                    repo={
-                                        repos.filter(
-                                            (x: repoType) =>
-                                                x.name === repo[0].id
-                                        )[0]
-                                    }
-                                    left={false}
-                                    projectData={repo[0]}
-                                />
-                            </div>
-                            <p className="text-section -mt-3 text-white">
-                                Want to see more projects? Go to the{" "}
-                                <Link href="/projects">
-                                    <span className="text-gray-200 font-semibold cursor-pointer hover:underline">
-                                        projects page
-                                    </span>
-                                </Link>
-                            </p>
-                        </Fade>
+                        <div className="mx-auto">
+                            <PinnedProject
+                                repo={
+                                    repos.filter(
+                                        (x: repoType) => x.name === repo[0].id
+                                    )[0]
+                                }
+                                left={false}
+                                projectData={repo[0]}
+                            />
+                        </div>
+                        <p className="text-section -mt-3 text-white">
+                            Want to see more projects? Go to the{" "}
+                            <Link href="/projects">
+                                <span className="text-gray-200 font-semibold cursor-pointer hover:underline">
+                                    projects page
+                                </span>
+                            </Link>
+                        </p>
                     </div>
                 </Fade>
             </div>
