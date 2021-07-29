@@ -2,7 +2,7 @@
 
 This repository is home to my [website's](https://davidilie.com) code.
 
-The website itself uses NextJs along with TailwindCSS and it is place to show of my projects and my discoveries. The core structure of the website is somewhat finished but there are lots of changes that I want to do in the future.
+The website itself uses [Next.JS](https://nextjs.org/) along with [Tailwind CSS](https://tailwindcss.com/) and it is place to show of my projects and my discoveries. The core structure of the website is somewhat finished but there are lots of changes that I want to do in the future.
 
 ## Structure
 
@@ -15,11 +15,7 @@ The website itself uses NextJs along with TailwindCSS and it is place to show of
 
 ## Showcase
 
-to be added
-
-## How to run it
-
-to be added
+TBD
 
 ## Contributions
 
