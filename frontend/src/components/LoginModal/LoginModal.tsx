@@ -1,10 +1,11 @@
 import Modal from "@ui/Modal";
+import { useRouter } from "next/router";
 import { signIn } from "next-auth/client";
 
 interface LoginModalProps {
     isOpen: boolean;
     onClose: any;
-    callback: string;
+    callback?: string;
 }
 
 export const LoginModal = ({
@@ -12,6 +13,8 @@ export const LoginModal = ({
     onClose,
     callback,
 }: LoginModalProps): JSX.Element => {
+    const router = useRouter();
+
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <div className="grid divide-y divide-gray-500">
@@ -26,7 +29,8 @@ export const LoginModal = ({
                             <div
                                 onClick={() =>
                                     signIn("google", {
-                                        callbackUrl: callback,
+                                        callbackUrl:
+                                            callback || router.pathname,
                                     })
                                 }
                                 className={`w-48 bg-blue-700 duration-200 hover:bg-blue-800 p-3 rounded text-center cursor-pointer mb-4`}
@@ -36,7 +40,8 @@ export const LoginModal = ({
                             <div
                                 onClick={() =>
                                     signIn("discord", {
-                                        callbackUrl: callback,
+                                        callbackUrl:
+                                            callback || router.pathname,
                                     })
                                 }
                                 className={`w-48 bg-blue-700 duration-200 hover:bg-blue-800 p-3 rounded text-center cursor-pointer`}
