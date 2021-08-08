@@ -6,26 +6,14 @@ The frontend uses [Next.JS](https://nextjs.org/) along with [Tailwind CSS](https
 
 All the other services are custom APIs created with [Express.js](https://expressjs.com/) which are fetched from different parts of the backend.
 
-<div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-
-[![frontend:build_and_deploy](https://github.com/DavidIlie/davidilie.com/actions/workflows/frontend.yml/badge.svg)](https://github.com/DavidIlie/davidilie.com/actions/workflows/frontend.yml)
-
-[![agenda:build_and_deploy](https://github.com/DavidIlie/davidilie.com/actions/workflows/agenda.yml/badge.svg)](https://github.com/DavidIlie/davidilie.com/actions/workflows/agenda.yml)
-
-[![identity:build_and_deploy](https://github.com/DavidIlie/davidilie.com/actions/workflows/identity.yml/badge.svg)](https://github.com/DavidIlie/davidilie.com/actions/workflows/identity.yml)
-
-[![spotify:build_and_deploy](https://github.com/DavidIlie/davidilie.com/actions/workflows/spotify.yml/badge.svg)](https://github.com/DavidIlie/davidilie.com/actions/workflows/spotify.yml)
-
-</div>
-
 ## Structure
 
-| Codebase             |           Description            |
-| :------------------- | :------------------------------: |
-| [frontend](frontend) |         Next.js frontend         |
-| [agenda](agenda)     |      Background Processing       |
-| [identity](identity) | Auth server for [agenda](agenda) |
-| [spotify](spotify)   |        Spotify Satistics         |
+| Codebase             |           Description            |                                                                                             Status                                                                                             |
+| :------------------- | :------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [frontend](frontend) |         Next.js frontend         | [![frontend:build_and_deploy](https://github.com/DavidIlie/davidilie.com/actions/workflows/frontend.yml/badge.svg)](https://github.com/DavidIlie/davidilie.com/actions/workflows/frontend.yml) |
+| [agenda](agenda)     |      Background Processing       |    [![agenda:build_and_deploy](https://github.com/DavidIlie/davidilie.com/actions/workflows/agenda.yml/badge.svg)](https://github.com/DavidIlie/davidilie.com/actions/workflows/agenda.yml)    |
+| [identity](identity) | Auth server for [agenda](agenda) | [![identity:build_and_deploy](https://github.com/DavidIlie/davidilie.com/actions/workflows/identity.yml/badge.svg)](https://github.com/DavidIlie/davidilie.com/actions/workflows/identity.yml) |
+| [spotify](spotify)   |        Spotify Satistics         |  [![spotify:build_and_deploy](https://github.com/DavidIlie/davidilie.com/actions/workflows/spotify.yml/badge.svg)](https://github.com/DavidIlie/davidilie.com/actions/workflows/spotify.yml)   |
 
 ## Showcase
 
