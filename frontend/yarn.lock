@@ -653,13 +653,6 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/next-auth@^3.15.0":
-  version "3.15.0"
-  resolved "https://registry.yarnpkg.com/@types/next-auth/-/next-auth-3.15.0.tgz#b602f4689b35fff3d2af09500c79ab11c4745bca"
-  integrity sha512-ZVfejlu81YiIRX1m0iKAfvZ3nK7K9EyZWhNARNKsFop8kNAgEvMnlKpTpwN59xkK2OhyWLagPuiDAVBYSO9jSA==
-  dependencies:
-    next-auth "*"
-
 "@types/node@*":
   version "15.12.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-15.12.5.tgz#9a78318a45d75c9523d2396131bd3cca54b2d185"
@@ -2984,24 +2977,6 @@ native-url@0.3.4:
   resolved "https://registry.yarnpkg.com/native-url/-/native-url-0.3.4.tgz#29c943172aed86c63cee62c8c04db7f5756661f8"
   integrity sha512-6iM8R99ze45ivyH8vybJ7X0yekIcPf5GgLV5K0ENCbmRcaRIDoj37BC8iLEmaaBfqqb8enuZ5p0uhY+lVAbAcA==
   dependencies:
-    querystring "^0.2.0"
-
-next-auth@*:
-  version "3.27.2"
-  resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-3.27.2.tgz#5c5715f4d4cab7854f569e09b475e82596ee9bbd"
-  integrity sha512-sKLALoj/0SlvlUZusB+nfJWgmOhQQgR/AC88o8LXERVEnE+PQVLEmHOCMF636asx+mTlfFaueOlf7uXuKt6WDw==
-  dependencies:
-    "@babel/runtime" "^7.14.0"
-    "@next-auth/prisma-legacy-adapter" "0.0.1-canary.127"
-    "@next-auth/typeorm-legacy-adapter" "0.0.2-canary.129"
-    futoin-hkdf "^1.3.2"
-    jose "^1.27.2"
-    jsonwebtoken "^8.5.1"
-    nodemailer "^6.4.16"
-    oauth "^0.9.15"
-    pkce-challenge "^2.1.0"
-    preact "^10.4.1"
-    preact-render-to-string "^5.1.14"
     querystring "^0.2.0"
 
 next-auth@^3.27.0:

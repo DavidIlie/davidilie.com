@@ -1,5 +1,11 @@
-import NextAuth from "next-auth";
+import NextAuth, { User } from "next-auth";
 import Providers from "next-auth/providers";
+
+import db from "@lib/mongo";
+const users = db.get("users");
+
+import Adapters from "next-auth/adapters";
+import Models from "../../../models";
 
 export default NextAuth({
     providers: [
@@ -15,7 +21,12 @@ export default NextAuth({
             scope: "identify",
         }),
     ],
-    database: process.env.MONGO_URI,
+    adapter: Adapters.TypeORM.Adapter(process.env.MONGO_URI, {
+        models: {
+            //@ts-ignore
+            User: Models.User,
+        },
+    }),
     secret: process.env.JWT_CODE,
     session: {
         jwt: true,
@@ -27,6 +38,21 @@ export default NextAuth({
     callbacks: {
         redirect: async (url, baseUrl) => {
             return Promise.resolve(url);
+        },
+        async session(session, token: User) {
+            if (session?.user) {
+                try {
+                    const findUser = await users.findOne({ _id: token.sub });
+
+                    token.isAdmin = findUser.isAdmin;
+                    token.isBanned = findUser.isBanned;
+                } catch (e) {
+                    console.error(e);
+                }
+                session.user = { ...session.user, ...token };
+            }
+
+            return session;
         },
     },
 });
