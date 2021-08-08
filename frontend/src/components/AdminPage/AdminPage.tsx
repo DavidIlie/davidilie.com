@@ -11,7 +11,7 @@ const AdminPage = (props): JSX.Element => {
 
     return (
         <ProtectedPage>
-            {session.user.isAdmin ? (
+            {session?.user.isAdmin ? (
                 <div {...props}>{props.children}</div>
             ) : (
                 <>
