@@ -4,7 +4,7 @@ This repository is home to my [website's](https://davidilie.com) code.
 
 The frontend uses [Next.JS](https://nextjs.org/) along with [Tailwind CSS](https://tailwindcss.com/) and it is place to show of my projects and my discoveries. The core structure of the website is somewhat finished but there are lots of changes that I want to do in the future.
 
-All the other services are custom APIs created with [Express.js](https://expressjs.com/) which are fetched from different parts of the backend.
+All the other services are custom APIs created with [Express.js](https://expressjs.com/) which are fetched from different parts of the frontend.
 
 ## Structure
 
