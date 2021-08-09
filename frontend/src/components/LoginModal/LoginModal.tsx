@@ -33,7 +33,7 @@ export const LoginModal = ({
                                             callback || router.pathname,
                                     })
                                 }
-                                className={`w-48 bg-blue-700 duration-200 hover:bg-blue-800 p-3 rounded text-center cursor-pointer mb-4`}
+                                className={`w-48 text-white bg-blue-600 dark:bg-blue-700 duration-200 hover:bg-blue-700 dark:hover:bg-blue-800 p-3 rounded text-center cursor-pointer mb-4`}
                             >
                                 Sign in with Google
                             </div>
@@ -44,7 +44,7 @@ export const LoginModal = ({
                                             callback || router.pathname,
                                     })
                                 }
-                                className={`w-48 bg-blue-700 duration-200 hover:bg-blue-800 p-3 rounded text-center cursor-pointer`}
+                                className={`w-48 text-white bg-blue-600 dark:bg-blue-700 duration-200 hover:bg-blue-700 dark:hover:bg-blue-800 p-3 rounded text-center cursor-pointer`}
                             >
                                 Sign in with Discord
                             </div>

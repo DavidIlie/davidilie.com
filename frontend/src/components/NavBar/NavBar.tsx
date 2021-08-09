@@ -6,7 +6,7 @@ import Link from "next/link";
 import useScrollPosition from "@hooks/useScrollPosition";
 
 import AnimatedTitle from "./AnimatedTitle";
-import ThemeToggle from "./ThemeToggle";
+import UserDropdown from "./UserDropdown";
 
 export const NavBar = () => {
     const router = useRouter();
@@ -72,7 +72,7 @@ export const NavBar = () => {
                                 )}
                             </div>
                             <div className="hidden md:block">
-                                <div className="ml-10 flex items-baseline space-x-4 mt-3">
+                                <div className="ml-10 flex items-baseline space-x-4 mt-6">
                                     {pages.map((page, index) => {
                                         const current =
                                             currentPage === page.url;
@@ -157,19 +157,13 @@ export const NavBar = () => {
                             </div>
                         </div>
                         <div className="hidden md:block">
-                            <div className="ml-10 flex items-center space-x-4 mt-3">
-                                <a
-                                    className="text-gray-800 dark:text-gray-300 hover:bg-gray-600 dark:hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium duration-200"
-                                    href="https://status.davidapps.dev"
-                                >
-                                    Status
-                                </a>
-                                <ThemeToggle />
+                            <div className="ml-10 flex items-center space-x-4 mt-6">
+                                <UserDropdown />
                             </div>
                         </div>
                         <div className="-mr-2 flex items-center md:hidden mt-3">
                             <div className="mr-5">
-                                <ThemeToggle />
+                                <UserDropdown />
                             </div>
                             <button
                                 type="button"
