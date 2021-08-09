@@ -15,13 +15,11 @@ const UserDropdown = (): JSX.Element => {
 
     const [session, loading] = useSession();
 
-    if (loading) return null;
-
     return (
         <>
             <Menu as="div" className="mt-1 relative inline-block text-right">
                 <Menu.Button>
-                    {!session ? (
+                    {!session || loading ? (
                         <div className="transition duration-100 ease-in-out p-2 bg-gray-200 hover:bg-gray-300 rounded dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
                             <FiSettings
                                 className="cursor-pointer rounded-full h-6 w-6 text-gray-500 dark:text-gray-400"
@@ -72,22 +70,26 @@ const UserDropdown = (): JSX.Element => {
                                 <ThemeToggle />
                             </Menu.Item>
                         </div>
-                        <Menu.Item>
-                            <a
-                                className="font-semibold cursor-pointer bg-gray-300 dark:bg-blue-800 text-center group flex justify-center rounded-b-md items-center w-full py-2 text-sm"
-                                onClick={() =>
-                                    !session ? setModalOpen(true) : signOut()
-                                }
-                                aria-label={`Click to log ${
-                                    !session ? "in" : "out"
-                                } to your account`}
-                                title={`Click to log ${
-                                    !session ? "in" : "out"
-                                } to your account`}
-                            >
-                                {!session ? "Log In" : "Log Out"}
-                            </a>
-                        </Menu.Item>
+                        {!loading && (
+                            <Menu.Item>
+                                <a
+                                    className="font-semibold cursor-pointer bg-gray-300 dark:bg-blue-800 text-center group flex justify-center rounded-b-md items-center w-full py-2 text-sm"
+                                    onClick={() =>
+                                        !session
+                                            ? setModalOpen(true)
+                                            : signOut()
+                                    }
+                                    aria-label={`Click to log ${
+                                        !session ? "in" : "out"
+                                    } to your account`}
+                                    title={`Click to log ${
+                                        !session ? "in" : "out"
+                                    } to your account`}
+                                >
+                                    {!session ? "Log In" : "Log Out"}
+                                </a>
+                            </Menu.Item>
+                        )}
                     </Menu.Items>
                 </Transition>
             </Menu>
