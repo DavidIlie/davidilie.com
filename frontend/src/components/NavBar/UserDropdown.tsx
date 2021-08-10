@@ -61,7 +61,7 @@ const UserDropdown = (): JSX.Element => {
                                     title="Submit a bug report"
                                 >
                                     <DropdownElement>
-                                        <AiFillBug className="text-2xl" />
+                                        <AiFillBug className="mx-0.5 text-xl" />
                                         Report a bug
                                     </DropdownElement>
                                 </a>
