@@ -24,7 +24,7 @@ function PersonalWebsite({
     pageProps,
     router,
 }: AppProps): React.ReactElement {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
         document.documentElement.lang = `en-US`;

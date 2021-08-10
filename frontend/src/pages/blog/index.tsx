@@ -8,7 +8,7 @@ import { Fade } from "react-awesome-reveal";
 import BlogPost from "@components/BlogPost";
 
 function Blog({ posts }: { posts: any }): JSX.Element {
-    const [filter, setFilter] = useState("");
+    const [filter, setFilter] = useState<string>("");
 
     const filteredBlogPosts = posts.filter((frontMatter: any) =>
         frontMatter.title.toLowerCase().includes(filter)

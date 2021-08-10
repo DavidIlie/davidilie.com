@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 
+interface StateProps {
+    y: number;
+    max: number;
+}
+
 export default function useScrollPosition(): { y: number; max: number } {
-    const [scrollPosition, setScrollPosition] = useState({ y: 0, max: 0 });
+    const [scrollPosition, setScrollPosition] = useState<StateProps>({
+        y: 0,
+        max: 0,
+    });
     const handleScroll = (e: WheelEvent) => {
         const { target } = e;
         const { scrollingElement } = target as HTMLDocument;

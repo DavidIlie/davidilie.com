@@ -8,7 +8,7 @@ import { FaLinux } from "react-icons/fa";
 import ToolGrid from "@components/ToolGrid";
 
 function Stats(): JSX.Element {
-    const [tabIndex, setTabIndex] = useState(0);
+    const [tabIndex, setTabIndex] = useState<number>(0);
 
     return (
         <>

@@ -16,7 +16,7 @@ const Comment = ({ data, refetch }: CommentComponentProps) => {
     const [session] = useSession();
     const router = useRouter();
 
-    const [deleting, setDeleting] = useState(false);
+    const [deleting, setDeleting] = useState<boolean>(false);
 
     const deleteEntry = async () => {
         setDeleting(true);
