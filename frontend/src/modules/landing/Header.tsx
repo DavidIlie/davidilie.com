@@ -5,9 +5,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import Socials from "@components/Socials";
 
 export default function Header() {
-    const [secondVisible, setSecondVisible] = useState(false);
-    const [thirdVisible, setThirdVisible] = useState(false);
-    const [name, setName] = useState("I'm David Ilie");
+    const [secondVisible, setSecondVisible] = useState<boolean>(false);
+    const [thirdVisible, setThirdVisible] = useState<boolean>(false);
+    const [name, setName] = useState<string>("I'm David Ilie");
 
     useEffect(() => {
         setTimeout(() => {

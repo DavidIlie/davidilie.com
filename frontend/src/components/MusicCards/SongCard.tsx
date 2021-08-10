@@ -14,7 +14,6 @@ const SongCard = ({
     titleCard,
     isPlaying,
 }: SongCardProps): JSX.Element => {
-    console.log(song);
     return (
         <div>
             {song !== undefined && (

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 
 const AnimatedTitle = (): JSX.Element => {
-    const [isHover, setHover] = useState(false);
+    const [isHover, setHover] = useState<boolean>(false);
     const router = useRouter();
 
     return (

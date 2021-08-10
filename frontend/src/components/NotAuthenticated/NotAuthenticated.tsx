@@ -4,7 +4,7 @@ import { useState } from "react";
 import LoginModal from "@components/LoginModal";
 
 const NotAuthenticated = (): JSX.Element => {
-    const [modalOpen, setModalOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
     return (
         <>
             <Fade direction="down">

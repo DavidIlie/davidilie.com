@@ -12,7 +12,7 @@ export const NavBar = () => {
     const router = useRouter();
 
     const { pathname } = useRouter();
-    const [width, setWidth] = useState(0);
+    const [width, setWidth] = useState<number>(0);
     const { y, max } = useScrollPosition();
 
     const blogPage = pathname === "/blog/[slug]";
@@ -26,7 +26,7 @@ export const NavBar = () => {
         }
     }, [y, max, width, blogPage]);
 
-    const [clickMobileMenu, setClickMobileMenu] = useState(false);
+    const [clickMobileMenu, setClickMobileMenu] = useState<boolean>(false);
 
     const currentPage = router.pathname;
 

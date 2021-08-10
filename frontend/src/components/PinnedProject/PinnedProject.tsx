@@ -17,7 +17,7 @@ export const PinnedProject = ({
     left,
     projectData,
 }: PinnedProjectProps): JSX.Element => {
-    const [pageWidth, setPageWidth] = useState(0);
+    const [pageWidth, setPageWidth] = useState<number>(0);
 
     useEffect(() => {
         setPageWidth(window.innerWidth);

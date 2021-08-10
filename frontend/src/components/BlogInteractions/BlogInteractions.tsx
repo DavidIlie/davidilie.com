@@ -22,9 +22,9 @@ export const BlogInteractions = ({
 }: BlogInteractionsProps): JSX.Element => {
     const [session, loading] = useSession();
 
-    const [modalOpen, setModalOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState<boolean>(false);
 
-    const [submitting, setSubmitting] = useState(false);
+    const [submitting, setSubmitting] = useState<boolean>(false);
 
     const FormValidationSchema = yup.object({
         comment: yup
