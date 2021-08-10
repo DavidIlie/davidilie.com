@@ -1,24 +1,29 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useSession, signOut } from "next-auth/client";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import React, { Fragment, useState, useRef } from "react";
+
 import { FiSettings } from "react-icons/fi";
 import { AiFillBug } from "react-icons/ai";
+import { RiAdminLine } from "react-icons/ri";
 
 import ThemeToggle from "./ThemeToggle";
 
 import LoginModal from "@components/LoginModal";
-import React from "react";
 
 const UserDropdown = (): JSX.Element => {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
+
+    //TODO: find a type-safe way to "click" the button when you click on a link in dropdown
+    const buttonRef = useRef();
 
     const [session, loading] = useSession();
 
     return (
         <>
             <Menu as="div" className="mt-1 relative inline-block text-right">
-                <Menu.Button>
+                <Menu.Button ref={buttonRef}>
                     {!session || loading ? (
                         <div className="transition duration-100 ease-in-out p-2 bg-gray-200 hover:bg-gray-300 rounded dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
                             <FiSettings
@@ -69,6 +74,23 @@ const UserDropdown = (): JSX.Element => {
                             <Menu.Item as={DropdownElement}>
                                 <ThemeToggle />
                             </Menu.Item>
+                            {session?.user.isAdmin && (
+                                <Menu.Item>
+                                    <Link href="/admin">
+                                        <a
+                                            onClick={() =>
+                                                //@ts-ignore
+                                                buttonRef.current?.click()
+                                            }
+                                        >
+                                            <DropdownElement>
+                                                <RiAdminLine className="mx-0.5 text-xl" />
+                                                Admin Panel
+                                            </DropdownElement>
+                                        </a>
+                                    </Link>
+                                </Menu.Item>
+                            )}
                         </div>
                         {!loading && (
                             <Menu.Item>
