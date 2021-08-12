@@ -2,7 +2,7 @@ import Image from "next/image";
 import { format } from "date-fns";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/client";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { useState } from "react";
 
 import { CommentProps } from "./BlogComments";
@@ -19,26 +19,34 @@ const Comment = ({ data, refetch }: CommentComponentProps) => {
     const [deleting, setDeleting] = useState<boolean>(false);
 
     const deleteEntry = async () => {
-        setDeleting(true);
-        const deleteRequest = await fetch(
-            `/api/blog/comment/${router.query.slug}`,
-            {
-                method: "DELETE",
-                body: JSON.stringify({
-                    id: data.id,
-                }),
+        const deletePromise = new Promise<string>(async (resolve, reject) => {
+            setDeleting(true);
+            const deleteRequest = await fetch(
+                `/api/blog/comment/${router.query.slug}`,
+                {
+                    method: "DELETE",
+                    body: JSON.stringify({
+                        id: data.id,
+                    }),
+                }
+            );
+
+            const response = await deleteRequest.json();
+            if (deleteRequest.status === 200) {
+                resolve("Deleted successfully!");
+            } else {
+                reject(response);
             }
-        );
 
-        const response = await deleteRequest.json();
-        if (deleteRequest.status === 200) {
-            toast.success("Deleted successfully!");
-        } else {
-            toast.error(response);
-        }
+            await refetch();
+            setDeleting(false);
+        });
 
-        await refetch();
-        setDeleting(false);
+        toast.promise(deletePromise, {
+            loading: "Loading",
+            success: "Deleted successfully!",
+            error: "Error when fetching!",
+        });
     };
 
     return (

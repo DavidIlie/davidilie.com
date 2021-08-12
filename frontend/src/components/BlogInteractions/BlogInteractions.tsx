@@ -2,7 +2,7 @@ import { signOut, useSession } from "next-auth/client";
 import { Formik, Field, Form } from "formik";
 import * as yup from "yup";
 import { FaCommentDots } from "react-icons/fa";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { useState } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 
@@ -82,26 +82,36 @@ export const BlogInteractions = ({
                         validateOnBlur={false}
                         validationSchema={FormValidationSchema}
                         onSubmit={async (data, { resetForm }) => {
-                            resetForm();
-                            setSubmitting(true);
+                            const createPromise = new Promise<string>(
+                                async (resolve, reject) => {
+                                    resetForm();
+                                    setSubmitting(true);
 
-                            const CommentRequest = await fetch(
-                                `/api/blog/comment/${slug}`,
-                                {
-                                    method: "POST",
-                                    body: JSON.stringify({
-                                        comment: data.comment,
-                                    }),
+                                    const CommentRequest = await fetch(
+                                        `/api/blog/comment/${slug}`,
+                                        {
+                                            method: "POST",
+                                            body: JSON.stringify({
+                                                comment: data.comment,
+                                            }),
+                                        }
+                                    );
+                                    const response =
+                                        await CommentRequest.json();
+                                    if (CommentRequest.status === 200) {
+                                        resolve(response.message);
+                                    } else {
+                                        reject(response.message);
+                                    }
+                                    setSubmitting(false);
+                                    refetch();
                                 }
                             );
-                            const response = await CommentRequest.json();
-                            if (CommentRequest.status === 200) {
-                                toast.success(response.message);
-                            } else {
-                                toast.error(response.message);
-                            }
-                            setSubmitting(false);
-                            refetch();
+                            toast.promise(createPromise, {
+                                loading: "Loading",
+                                success: "Created successfully!",
+                                error: "Error when fetching!",
+                            });
                         }}
                     >
                         {(errors) => (

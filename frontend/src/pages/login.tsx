@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import { useState } from "react";
 import { Formik, Field, Form } from "formik";
 import * as yup from "yup";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import redirect from "nextjs-redirect";
 
@@ -39,32 +39,42 @@ const Login = ({ loggedIn, identityURL }): JSX.Element => {
                         validateOnBlur={false}
                         validationSchema={FormValidationSchema}
                         onSubmit={async (data, { resetForm }) => {
-                            setPendingLogin(true);
+                            const loginPromise = new Promise<string>(
+                                async (resolve, reject) => {
+                                    setPendingLogin(true);
 
-                            const loginRequest = await fetch(
-                                `${identityURL}/login`,
+                                    const loginRequest = await fetch(
+                                        `${identityURL}/login`,
 
-                                {
-                                    headers: {
-                                        Accept: "application/json",
-                                        "Content-Type": "application/json",
-                                    },
-                                    method: "POST",
-                                    body: JSON.stringify(data),
+                                        {
+                                            headers: {
+                                                Accept: "application/json",
+                                                "Content-Type":
+                                                    "application/json",
+                                            },
+                                            method: "POST",
+                                            body: JSON.stringify(data),
+                                        }
+                                    );
+
+                                    const body = await loginRequest.json();
+
+                                    if (loginRequest.status === 200) {
+                                        setPendingLogin(false);
+                                        setStateLoggedIn(true);
+                                        resolve(body.email);
+                                    } else {
+                                        setPendingLogin(false);
+                                        setStateLoggedIn(false);
+                                        reject(body.message);
+                                    }
                                 }
                             );
-
-                            const body = await loginRequest.json();
-
-                            if (loginRequest.status === 200) {
-                                setPendingLogin(false);
-                                setStateLoggedIn(body.email);
-                            } else {
-                                toast.error(body.message, {
-                                    toastId: body.message,
-                                });
-                                setPendingLogin(false);
-                            }
+                            toast.promise(loginPromise, {
+                                loading: "Loading",
+                                success: "Logged successfully!",
+                                error: "Authortization error!",
+                            });
                         }}
                     >
                         {({ errors }) => (

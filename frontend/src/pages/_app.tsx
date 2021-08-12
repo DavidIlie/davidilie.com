@@ -1,6 +1,5 @@
 import { AppProps } from "next/app";
 import { useEffect, useState } from "react";
-import { ToastContainer } from "react-toastify";
 import Loader from "@components/Loader";
 import { DefaultSeo } from "next-seo";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -9,6 +8,7 @@ import PlausibleProvider from "next-plausible";
 import ReactModal from "react-modal";
 import { Provider as AuthProvider } from "next-auth/client";
 import { ThemeProvider } from "next-themes";
+import { Toaster } from "react-hot-toast";
 
 import "tailwindcss/tailwind.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -72,6 +72,7 @@ function PersonalWebsite({
                 <ThemeProvider attribute="class">
                     <QueryClientProvider client={queryClient}>
                         <AuthProvider session={pageProps.session}>
+                            <Toaster />
                             <AppLayout>
                                 {loading ? (
                                     <Loader />
@@ -81,7 +82,6 @@ function PersonalWebsite({
                             </AppLayout>
                         </AuthProvider>
                     </QueryClientProvider>
-                    <ToastContainer autoClose={2500} newestOnTop={true} />
                 </ThemeProvider>
             </PlausibleProvider>
         </div>

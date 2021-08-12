@@ -37,16 +37,20 @@ export const NavBar = () => {
             }`}
         >
             {blogPage && (
-                <div className="relative">
-                    <div className="overflow-hidden h-2 text-xs flex">
-                        <div
-                            style={{
-                                width: `${width}%`,
-                            }}
-                            className={`shadow-none flex flex-col text-center whitespace-nowrap text-black dark:text-white justify-center ${
-                                width > 99 && "duration-200"
-                            } bg-${width >= 100 ? "green-500" : "blue-700"}`}
-                        ></div>
+                <div className="absolute w-full">
+                    <div className="relative">
+                        <div className="overflow-hidden h-1 text-xs flex">
+                            <div
+                                style={{
+                                    width: `${width}%`,
+                                }}
+                                className={`shadow-none flex flex-col text-center whitespace-nowrap text-black dark:text-white justify-center ${
+                                    width > 99 && "duration-200"
+                                } bg-${
+                                    width >= 100 ? "green-500" : "blue-700"
+                                }`}
+                            ></div>
+                        </div>
                     </div>
                 </div>
             )}
