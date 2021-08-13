@@ -20,7 +20,11 @@ export const Socials = ({ font, invisible }: SocialsProps): JSX.Element => {
                 invisible ? "invisible" : "visible"
             }`}
         >
-            <SocialIcon tooltip="DavidIlie" newPage link={`/api/redir/github`}>
+            <SocialIcon
+                tooltip="DavidIlie"
+                newPage
+                link={`https://davidilie.com/api/redir/github`}
+            >
                 <FaGithub
                     className="mb-1"
                     size={font !== undefined ? `${font}em` : "1.75em"}
@@ -29,19 +33,27 @@ export const Socials = ({ font, invisible }: SocialsProps): JSX.Element => {
             <SocialIcon tooltip="Albastru#0871" notLink>
                 <FaDiscord size={font !== undefined ? `${font}em` : "1.75em"} />
             </SocialIcon>
-            <SocialIcon tooltip="Albastru" newPage link={`/api/redir/youtube`}>
+            <SocialIcon
+                tooltip="Albastru"
+                newPage
+                link={`https://davidilie.com/api/redir/youtube`}
+            >
                 <FaYoutube
                     className="mb-1"
                     size={font !== undefined ? `${font}em` : "1.75em"}
                 />
             </SocialIcon>
-            <SocialIcon tooltip="AlbastruYT" newPage link={`/api/redir/twitch`}>
+            <SocialIcon
+                tooltip="AlbastruYT"
+                newPage
+                link={`https://davidilie.com/api/redir/twitch`}
+            >
                 <FaTwitch size={font !== undefined ? `${font}em` : "1.75em"} />
             </SocialIcon>
             <SocialIcon
                 tooltip="AlbastruYT"
                 newPage
-                link={`$/api/redir/twitter`}
+                link={`https://davidilie.com/api/redir/twitter`}
             >
                 <FaTwitter size={font !== undefined ? `${font}em` : "1.75em"} />
             </SocialIcon>
