@@ -17,18 +17,20 @@ export const About = () => {
                     <h1
                         className={`text-section 2xl:px-96 xl:px-32 lg:px-24 md:px-24 sm:px-5 mb-32`}
                     >
-                        I'm a 14 year old software developer, focusing my
-                        learning into web development. I've been interested into
-                        computer science ever since I was younger but never got
-                        into proper development until about 2 years ago. I don't
-                        know what brought me into it, it could have been my
-                        father's career or my discovery of the huge world the
-                        internet has to offer. For a while i've found myself
-                        looking into how a website functions, but I never tried
-                        doing it myself until recently. The goal of this website
-                        is to express my{" "}
-                        <span className="font-bold">"experiements"</span> to the
-                        public, while getting feedback in the process.
+                        I&apos;m a 14 year old software developer, focusing my
+                        learning into web development. I&apos;ve been interested
+                        into computer science ever since I was younger but never
+                        got into proper development until about 2 years ago. I
+                        don&apos;t know what brought me into it, it could have
+                        been my father&apos;s career or my discovery of the huge
+                        world the internet has to offer. For a while i&apos;ve
+                        found myself looking into how a website functions, but I
+                        never tried doing it myself until recently. The goal of
+                        this website is to express my{" "}
+                        <span className="font-bold">
+                            &quot;experiements&quot;
+                        </span>{" "}
+                        to the public, while getting feedback in the process.
                     </h1>
                 </Fade>
             </div>

@@ -1,6 +1,7 @@
-import Tooltip from "@ui/Tooltip";
-
 import { useQuery } from "react-query";
+import Image from "next/image";
+
+import Tooltip from "@ui/Tooltip";
 
 export const ContentCreator = () => {
     const { isLoading, data } = useQuery(
@@ -14,11 +15,19 @@ export const ContentCreator = () => {
 
     return (
         <div className="xl:w-1/3 xs:w-full pt-10 px-5">
-            <img
-                src="/images/svg/contentcreator.svg"
-                alt="Content Creator"
-                className="h-24 w-24 mx-auto animate-bounce-up mb-4"
-            />
+            <div className="flex justify-center mb-3">
+                <Image
+                    src="/images/svg/contentcreator.svg"
+                    alt="Content Creator"
+                    className="w-24 h-24 animate-bounce-up"
+                    blurDataURL={
+                        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
+                    }
+                    placeholder="blur"
+                    width="100%"
+                    height="100%"
+                />
+            </div>
             <div className="text-center mb-10">
                 <h1 className="text-2xl font-semibold mb-5">Content Creator</h1>
                 <p className="text-section px-16">

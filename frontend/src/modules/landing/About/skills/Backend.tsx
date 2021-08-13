@@ -1,11 +1,21 @@
+import Image from "next/image";
+
 export const BackendDeveloper = () => {
     return (
         <div className="xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 md:border-b-0 xl:border-b-0 border-b-2 border-fuchasia-600 dark:border-gray-600 px-5 pt-10">
-            <img
-                src="/images/svg/backend.svg"
-                alt="Backend Developer"
-                className="h-24 w-24 mx-auto animate-pulse mb-4"
-            />
+            <div className="flex justify-center mb-3">
+                <Image
+                    src="/images/svg/backend.svg"
+                    alt="Backend Developer"
+                    className="w-24 h-24 animate-pulse"
+                    blurDataURL={
+                        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
+                    }
+                    placeholder="blur"
+                    width="100%"
+                    height="100%"
+                />
+            </div>
             <div className="text-center mb-10">
                 <h1 className="text-2xl font-semibold mb-5">
                     Backend Developer
