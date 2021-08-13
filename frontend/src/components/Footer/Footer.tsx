@@ -40,6 +40,7 @@ export const Footer = () => {
                                 <a
                                     href={currentlyPlaying.songUrl}
                                     target="_blank"
+                                    rel="noreferrer"
                                     className="font-semibold"
                                 >
                                     <h1>{currentlyPlaying.name}</h1>
@@ -49,6 +50,7 @@ export const Footer = () => {
                             <a
                                 href="https://open.spotify.com/user/6ugu6jpzmviq5wvp06gb73gds?si=9d56dc1fe4a14559"
                                 target="_blank"
+                                rel="noreferrer"
                                 className="text-green-500 dark:text-green-700 font-bold"
                             >
                                 Spotify
@@ -59,6 +61,7 @@ export const Footer = () => {
                             <a
                                 href="https://open.spotify.com/user/6ugu6jpzmviq5wvp06gb73gds?si=9d56dc1fe4a14559"
                                 target="_blank"
+                                rel="noreferrer"
                             >
                                 <FaSpotify className="text-2xl text-green-500 mr-1" />
                             </a>
@@ -71,7 +74,11 @@ export const Footer = () => {
 
                 <h1 className="text-xl mb-1 mt-1">
                     Copyright ©{" "}
-                    <a href="https://davidapps.dev" target="_blank">
+                    <a
+                        href="https://davidapps.dev"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         David Ilie Platform
                     </a>
                     .

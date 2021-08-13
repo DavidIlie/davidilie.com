@@ -20,6 +20,7 @@ export const LinkButton = ({
             <a
                 href={link}
                 target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center text-white"
             >
                 <Icon className="w-4 h-4 mr-2" />

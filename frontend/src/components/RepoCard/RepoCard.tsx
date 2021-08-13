@@ -9,6 +9,7 @@ export const RepoCard = ({ repo }: RepoCardProps): JSX.Element => {
         <a
             href={repo.url}
             target="_blank"
+            rel="noreferrer"
             className="h-full w-full truncate overflow-visible p-1 max-w-md"
         >
             <div className="justify-start items-start flex p-3 truncate bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-lg shadow-md duration-200 hoverItem cursor-pointer text-left pl-5 flex-col">

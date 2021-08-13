@@ -62,6 +62,7 @@ const UserDropdown = (): JSX.Element => {
                                 <a
                                     href="https://github.com/DavidIlie/davidilie.com/issues"
                                     target="_blank"
+                                    rel="noreferrer"
                                     aria-label="Submit a bug report"
                                     title="Submit a bug report"
                                 >

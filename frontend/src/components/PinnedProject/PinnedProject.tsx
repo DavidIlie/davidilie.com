@@ -24,7 +24,7 @@ export const PinnedProject = ({
         window.addEventListener("resize", () => {
             setPageWidth(window.innerWidth);
         });
-    });
+    }, [pageWidth]);
 
     return pageWidth >= 900 ? (
         <div className="mx-auto bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl shadow-md overflow-hidden max-w-5xl mb-7 hoverItem duration-200">

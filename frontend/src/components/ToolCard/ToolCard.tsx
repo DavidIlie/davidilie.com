@@ -17,7 +17,7 @@ export const ToolCard = ({
     const { theme } = useTheme();
 
     return (
-        <a href={link} target="_blank">
+        <a href={link} target="_blank" rel="noreferrer">
             <div
                 className="grid p-3 border-1 bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-900 rounded-2xl shadow-lg duration-200 hoverItem"
                 style={{ gridTemplateColumns: "80px 1fr" }}

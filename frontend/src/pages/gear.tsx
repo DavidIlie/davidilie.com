@@ -26,7 +26,11 @@ function Stats(): JSX.Element {
                         My Hosting Infastructure
                     </h1>
                     <p className="text-section mb-5 px-5 text-center">
-                        <a href="https://davidapps.dev" target="_blank">
+                        <a
+                            href="https://davidapps.dev"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             David Ilie Apps Platform
                         </a>
                         , see{" "}

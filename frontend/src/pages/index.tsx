@@ -44,6 +44,7 @@ function Home({ repos }): JSX.Element {
                         <a
                             href="https://github.com/davidilie/davidilie.com"
                             target="_blank"
+                            rel="noreferrer"
                             className="duration-200 text-blue-200 hover:text-blue-300 hover:underline cursor-pointer"
                         >
                             including this website
@@ -52,6 +53,7 @@ function Home({ repos }): JSX.Element {
                         <a
                             href="https://github.com/davidilie"
                             target="_blank"
+                            rel="noreferrer"
                             className="duration-200 text-blue-200 hover:text-blue-300 hover:underline cursor-pointer"
                         >
                             GitHub
@@ -87,7 +89,7 @@ function Home({ repos }): JSX.Element {
                         </div>
                         <p className="text-section -mt-3 text-white">
                             Want to see more projects? Go to the{" "}
-                            <Link href="/projects">
+                            <Link href="/projects" passHref={true}>
                                 <span className="text-gray-200 font-semibold cursor-pointer hover:underline">
                                     projects page
                                 </span>

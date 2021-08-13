@@ -62,6 +62,7 @@ const Comment = ({ data, refetch }: CommentComponentProps) => {
                     }
                     placeholder="blur"
                     className="rounded-full w-10 h-10 shadow-lg"
+                    alt={`${data.name}'s profile image`}
                 />
                 <h1 className="ml-4 text-gray-800 dark:text-gray-300">
                     {data.name}{" "}

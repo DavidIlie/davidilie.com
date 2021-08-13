@@ -100,6 +100,7 @@ export const BlogLayout = ({
                                 src={frontMatter.by.avatar}
                                 width="25px"
                                 height="25px"
+                                alt={`${frontMatter.by}'s profile image`}
                             />
                             <span className="ml-1 header-gradient text-lg mr-1">
                                 {frontMatter.by.name}

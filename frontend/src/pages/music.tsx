@@ -49,7 +49,7 @@ function Music({ data, error }: MusicProps) {
                 </Fade>
                 <Fade delay={500} direction="up" triggerOnce cascade>
                     <h1 className="text-center text-section mb-16">
-                        I'm a little{" "}
+                        I&apos;m a little{" "}
                         <span className="font-semibold text-green-400 dark:text-green-600">
                             classic
                         </span>{" "}

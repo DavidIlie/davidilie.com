@@ -67,6 +67,7 @@ export const RemarkTitle = ({ children }: { children: string }) => {
                 <a
                     href={`https://github.com/davidilie/davidilie.com/tree/master/frontend/${children}`}
                     target="_blank"
+                    rel="noreferrer"
                     className="px-4 text-blue-500 cursor-pointer truncate"
                 >
                     {children}

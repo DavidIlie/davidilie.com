@@ -51,7 +51,7 @@ type SVGProps = {
     hiddenMobile?: boolean;
 };
 
-const getColor = () => {
+const GetColor = () => {
     const { theme } = useTheme();
 
     if (theme === "dark") {
@@ -65,7 +65,7 @@ export const SVG = ({
     stroke = false,
     color = `${
         [`gray`, `indigo`, `blue`, `green`][Math.floor(Math.random() * 4)]
-    }-${getColor()[Math.floor(Math.random() * 5)]}`,
+    }-${GetColor()[Math.floor(Math.random() * 5)]}`,
     zIndex = -500,
     width,
     icon,

@@ -9,6 +9,7 @@ const LinkCard = ({ name, link, date, label }: LinkType): JSX.Element => {
         <a
             href={link}
             target="_blank"
+            rel="noreferrer"
             className="bg-gray-100 border-gray-200 dark:bg-gray-800 dark:border-gray-700 border-2 duration-200 hoverItem rounded-xl overflow-hidden flex items-start flex-col"
         >
             <div className="relative">

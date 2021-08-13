@@ -142,6 +142,9 @@ export const NavBar = () => {
                                                                         key={
                                                                             index
                                                                         }
+                                                                        passHref={
+                                                                            true
+                                                                        }
                                                                     >
                                                                         <li className="rounded-sm px-3 py-1 hover:bg-gray-700 duration-200 cursor-pointer">
                                                                             {

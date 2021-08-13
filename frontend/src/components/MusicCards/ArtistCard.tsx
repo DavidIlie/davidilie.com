@@ -7,6 +7,7 @@ const AristCard = ({ artist }: { artist: Item }) => {
     return (
         <a
             target="_blank"
+            rel="noreferrer"
             href={artist.external_urls.spotify}
             style={{ maxHeight: "150px", maxWidth: "150px" }}
             className="overflow-visible relative mx-auto shadow-lg outline-none duration-200 rounded-2xl transform hoverItem hover:shadow-xl"

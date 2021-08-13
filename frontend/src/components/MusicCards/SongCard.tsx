@@ -19,6 +19,7 @@ const SongCard = ({
             {song !== undefined && (
                 <a
                     target="_blank"
+                    rel="noreferrer"
                     href={song.external_urls?.spotify}
                     className="h-full overflow-visible max-w-xl"
                 >

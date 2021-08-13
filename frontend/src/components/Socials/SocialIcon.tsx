@@ -20,6 +20,7 @@ export const SocialIcon = ({
                 <a
                     href={link}
                     target={newPage ? "_blank" : ""}
+                    rel="noreferrer"
                     className="hover:text-blue-100 duration-250"
                 >
                     {children}
