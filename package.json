@@ -1,0 +1,15 @@
+{
+    "scripts": {
+        "prepare": "husky install",
+        "lint": "cd frontend && npx next lint"
+    },
+    "devDependencies": {
+        "husky": "^7.0.1"
+    },
+    "lint-staged": {
+        "src/**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}": [
+            "yarn eslint frontend/src --max-warnings=0",
+            "yarn prettier --write"
+        ]
+    }
+}
