@@ -37,6 +37,6 @@ export async function verifyToken(
         return res.sendStatus(500);
     } else {
         req.user = user;
-        next();
+        return next();
     }
 }

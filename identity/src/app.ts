@@ -14,7 +14,7 @@ const identity = db.get("identity");
 app.use(
     cors({
         credentials: true,
-        origin: function (origin, callback) {
+        origin: function (_origin, callback) {
             callback(null, true);
         },
     })
