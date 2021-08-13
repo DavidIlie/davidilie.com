@@ -10,7 +10,7 @@ const router = express.Router();
 
 const identity = db.get("identity");
 
-router.get("/", (req: Request, res: Response) => {
+router.get("/", (_req: Request, res: Response) => {
     res.json({
         message: "auth api",
     });

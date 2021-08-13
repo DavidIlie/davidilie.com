@@ -1,6 +1,6 @@
 import { sign } from "jsonwebtoken";
 
-export let ACCESS_TOKEN_SECRET = process.env.JWT_SECRET;
+export let ACCESS_TOKEN_SECRET = <string>process.env.JWT_SECRET;
 
 import User from "../../types/User";
 

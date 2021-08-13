@@ -11,7 +11,7 @@ import { ACCESS_TOKEN_SECRET } from "../helpers/auth";
 
 declare module "express-serve-static-core" {
     interface Request {
-        user?: User;
+        user: User;
     }
 }
 

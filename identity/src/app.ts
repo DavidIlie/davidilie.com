@@ -1,9 +1,9 @@
+require("dotenv").config();
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
-require("dotenv").config();
 import db from "./utils/database/mongo";
 import * as middlewares from "./utils/middlewares";
 import api from "./api/index";
