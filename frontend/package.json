@@ -5,10 +5,9 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "create-db-posts-prod": "MONGO_URI=mongodb://192.168.1.152:27017/personal-website node src/lib/createPosts.js",
-        "create-db-posts-dev": "MONGO_URI=mongodb://localhost/personal-website node src/lib/createPosts.js",
         "start": "next start",
-        "format": "prettier --ignore-path .gitignore \"src/**/*.+(js|tsx)\" --write"
+        "create-db-posts-prod": "MONGO_URI=mongodb://192.168.1.152:27017/personal-website node src/lib/createPosts.js",
+        "create-db-posts-dev": "MONGO_URI=mongodb://localhost/personal-website node src/lib/createPosts.js"
     },
     "dependencies": {
         "@headlessui/react": "^1.4.0",
