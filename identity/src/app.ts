@@ -28,7 +28,7 @@ app.use("/api/identity", api);
 
 const port = process.env.PORT || 5002;
 app.listen(port, () => {
-    console.log(`App running on port ${port}`);
+    console.log(`app running on port ${port}`);
 });
 
 app.use(middlewares.notFound);
