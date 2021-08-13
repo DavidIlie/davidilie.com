@@ -1,0 +1,7 @@
+User-agent: Googlebot
+Disallow: /admin/
+
+User-agent: *
+Allow: /
+
+Sitemap: http://davidilie.com/sitemap.xml

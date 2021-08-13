@@ -9,7 +9,7 @@ const db = monk(
 
 const posts = db.get("posts");
 
-const getAllFilesFrontMatter = () => {
+const getAllFilesFrontMatter = async () => {
     const files = fs.readdirSync(
         path.join(process.cwd(), `src`, `data`, `blog`)
     );

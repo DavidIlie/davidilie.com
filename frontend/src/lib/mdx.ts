@@ -5,6 +5,19 @@ import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import mdxPrism from "@mapbox/rehype-prism";
 
+export interface MDXProps {
+    title: string;
+    publishedAt: string;
+    summary: string;
+    tags: string[];
+    by: {
+        name: string;
+        avatar: string;
+    };
+    image: string;
+    slug: string;
+}
+
 export const getFiles = (type: string) =>
     fs.readdirSync(path.join(process.cwd(), `src`, `data`, type));
 

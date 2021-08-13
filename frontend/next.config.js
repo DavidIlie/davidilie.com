@@ -14,4 +14,10 @@ module.exports = withMDX({
             "rdl.ink",
         ],
     },
+    rewrites: async () => [
+        {
+            source: "/sitemap.xml",
+            destination: "/api/sitemap",
+        },
+    ],
 });
