@@ -2,7 +2,7 @@
     "scripts": {
         "prepare": "husky install",
         "frontend-lint": "cd frontend && npx next lint",
-        "format": "prettier --ignore-path .gitignore \"**/*.+(ts|js|jsx|tsx)\" --write --tab-width 4"
+        "format": "prettier --ignore-path .gitignore \"**/*.+(ts|js|jsx|tsx)\" --write --tab-width 4 && git add ."
     },
     "devDependencies": {
         "husky": "^7.0.1"

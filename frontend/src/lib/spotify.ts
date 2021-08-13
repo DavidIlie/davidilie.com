@@ -12,51 +12,51 @@ const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
 const getAccessToken = async () => {
-  const response = await fetch(TOKEN_ENDPOINT, {
-    method: `POST`,
-    headers: {
-      Authorization: `Basic ${basic}`,
-      "Content-Type": `application/x-www-form-urlencoded`,
-    },
-    body: querystring.stringify({
-      grant_type: `refresh_token`,
-      refresh_token,
-    }),
-  });
+    const response = await fetch(TOKEN_ENDPOINT, {
+        method: `POST`,
+        headers: {
+            Authorization: `Basic ${basic}`,
+            "Content-Type": `application/x-www-form-urlencoded`,
+        },
+        body: querystring.stringify({
+            grant_type: `refresh_token`,
+            refresh_token,
+        }),
+    });
 
-  return response.json();
+    return response.json();
 };
 
 export const getNowPlaying = async () => {
-  const { access_token } = await getAccessToken();
+    const { access_token } = await getAccessToken();
 
-  return fetch(NOW_PLAYING_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
+    return fetch(NOW_PLAYING_ENDPOINT, {
+        headers: {
+            Authorization: `Bearer ${access_token}`,
+        },
+    });
 };
 
 export const getSpotifyData = async () => {
-  const { access_token } = await getAccessToken();
+    const { access_token } = await getAccessToken();
 
-  const responseTracks = await fetch(TOP_TRACKS_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
+    const responseTracks = await fetch(TOP_TRACKS_ENDPOINT, {
+        headers: {
+            Authorization: `Bearer ${access_token}`,
+        },
+    });
 
-  const responseArtists = await fetch(TOP_ARTISTS_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
+    const responseArtists = await fetch(TOP_ARTISTS_ENDPOINT, {
+        headers: {
+            Authorization: `Bearer ${access_token}`,
+        },
+    });
 
-  const responseRecently = await fetch(RECENTLY_PLAYED_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
+    const responseRecently = await fetch(RECENTLY_PLAYED_ENDPOINT, {
+        headers: {
+            Authorization: `Bearer ${access_token}`,
+        },
+    });
 
-  return { responseArtists, responseRecently, responseTracks };
+    return { responseArtists, responseRecently, responseTracks };
 };
