@@ -6,11 +6,11 @@ const router = express.Router();
 
 const { getSpotifyData, getNowPlaying } = require("../utils/spotify");
 
-router.get("/", (req: Request, res: Response) => {
+router.get("/", (_req: Request, res: Response) => {
     res.json({ message: "spotify api" });
 });
 
-router.get("/get-now-playing", async (req: Request, res: Response) => {
+router.get("/get-now-playing", async (_req: Request, res: Response) => {
     const response = await getNowPlaying();
 
     if (response.status === 204 || response.status > 400) {
@@ -49,7 +49,7 @@ router.get("/get-now-playing", async (req: Request, res: Response) => {
     });
 });
 
-router.get("/get-data", async (req: Request, res: Response) => {
+router.get("/get-data", async (_req: Request, res: Response) => {
     try {
         const { responseTracks, responseArtists, responseRecently } =
             await getSpotifyData();
