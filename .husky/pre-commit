@@ -3,3 +3,12 @@
 . "$(dirname "$0")/_/husky.sh"
 
 yarn format && yarn frontend-lint
+
+echo checking frontend types
+cd ./frontend && tsc -p ./tsconfig.json
+
+echo checking identity types
+cd ../identity && tsc -p ./tsconfig.json
+
+echo checking spotify types
+cd ../spotify && tsc -p ./tsconfig.json
