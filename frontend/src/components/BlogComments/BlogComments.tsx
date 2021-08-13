@@ -23,7 +23,7 @@ export const BlogComments = ({
             <h1 className="mt-2 text-3xl font-semibold header-gradient mb-4">
                 Comments
             </h1>
-            {comments?.map((comment: CommentProps, index: number) => (
+            {comments?.reverse().map((comment: CommentProps, index: number) => (
                 <Comment refetch={refetch} key={index} data={comment} />
             ))}
             {comments?.length === 0 && (

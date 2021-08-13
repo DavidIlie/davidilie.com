@@ -60,7 +60,7 @@ function PersonalWebsite({
                         },
                     ],
                 }}
-                description="A 14 year aspiring web developer experimenting with programming by publishing my work on the web."
+                description="A 15 year old aspiring web developer experimenting with programming by publishing my work on the web."
             />
             <PlausibleProvider
                 domain="davidilie.com"
@@ -72,7 +72,7 @@ function PersonalWebsite({
                 <ThemeProvider attribute="class">
                     <QueryClientProvider client={queryClient}>
                         <AuthProvider session={pageProps.session}>
-                            <Toaster />
+                            <Toaster position="bottom-center" />
                             <AppLayout>
                                 {loading ? (
                                     <Loader />
