@@ -5,10 +5,16 @@
 yarn format && yarn frontend-lint
 
 echo checking frontend types
-cd ./frontend && tsc -p ./tsconfig.json
+cd frontend && tsc -p ./tsconfig.json
+echo finished checking frontend types
+rm -rf dist/
 
 echo checking identity types
 cd ../identity && tsc -p ./tsconfig.json
+echo finished checking identity types
+rm -rf dist/
 
 echo checking spotify types
 cd ../spotify && tsc -p ./tsconfig.json
+echo finished checking spotify types
+rm -rf dist/
