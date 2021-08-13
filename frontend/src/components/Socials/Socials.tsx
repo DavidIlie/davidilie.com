@@ -26,7 +26,7 @@ export const Socials = ({ font, invisible }: SocialsProps): JSX.Element => {
                     size={font !== undefined ? `${font}em` : "1.75em"}
                 />
             </SocialIcon>
-            <SocialIcon tooltip="Albastru#0871">
+            <SocialIcon tooltip="Albastru#0871" notLink>
                 <FaDiscord size={font !== undefined ? `${font}em` : "1.75em"} />
             </SocialIcon>
             <SocialIcon tooltip="Albastru" newPage link={`/api/redir/youtube`}>
