@@ -2,3 +2,7 @@
 . "$(dirname "$0")/_/husky.sh"
 
 yarn && cd agenda && yarn && cd ../frontend && yarn && cd ../identity && yarn && cd ../spotify && yarn
+
+cd ..
+
+yarn prepare
