@@ -1,15 +1,10 @@
 {
     "scripts": {
         "prepare": "husky install",
-        "lint": "cd frontend && npx next lint"
+        "lint": "cd frontend && npx next lint",
+        "format": "prettier --ignore-path .gitignore \"**/*.+(js|tsx)\" --write --tab-width 4"
     },
     "devDependencies": {
         "husky": "^7.0.1"
-    },
-    "lint-staged": {
-        "src/**/*.{js,jsx,ts,tsx,json,css,scss,md,mdx}": [
-            "yarn eslint frontend/src --max-warnings=0",
-            "yarn prettier --write"
-        ]
     }
 }
