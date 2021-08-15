@@ -4,7 +4,7 @@ import { DeviceProps } from "@data/gear";
 
 const Device = ({ device }: { device: DeviceProps }): JSX.Element => {
     return (
-        <div className="p-5 mx-auto max-w-md min-w-device h-full bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-lg shadow-md overflow-hidden hoverItem duration-200 cursor-pointer">
+        <div className="p-5 mx-auto max-w-md min-w-device h-full bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-lg shadow-md overflow-hidden hoverItem duration-200">
             <div className="text-4xl flex justify-center">
                 {/* 
                 //@ts-ignore */}
