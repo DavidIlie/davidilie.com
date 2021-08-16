@@ -27,9 +27,8 @@ export const BlogPost = ({
     return (
         <Link href={`/blog/${slug}`} passHref>
             <div
-                className="bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 flex mb-8 px-5 py-4 flex-col hoverItem duration-200 rounded-2xl cursor-pointer"
+                className="bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 flex mb-8 px-5 py-4 flex-col hoverItem duration-200 rounded-2xl"
                 style={{
-                    width: "calc(100% - 10px)",
                     marginLeft: "5px",
                     marginRight: "5px",
                 }}
@@ -41,7 +40,7 @@ export const BlogPost = ({
                                 <BlogBadge tag={tag} key={i.toString()} />
                             ))}
                     </div>
-                    <h1 className="2xl:mt-0 xl:mt-0 md:mt-0l lg:mt-0 ml-2 mt-2 right text-gray-800 dark:text-gray-400">
+                    <h1 className="mt-0 mt-0l ml-2  right text-gray-800 dark:text-gray-400">
                         {formatDistance(new Date(publishedAt), new Date(), {
                             addSuffix: true,
                         })}{" "}
@@ -53,7 +52,9 @@ export const BlogPost = ({
                         }`}
                     </h1>
                 </div>
-                <h1 className="text-2xl font-semibold mt-2 mb-2">{title}</h1>
+                <h1 className="xl:text-2xl md:text-2xl text-section font-semibold mt-2 mb-2">
+                    {title}
+                </h1>
                 <p className="text-gray-600 dark:text-gray-200">{summary}</p>
             </div>
         </Link>

@@ -16,7 +16,7 @@ export const Footer = () => {
 
     return (
         <footer className="text-black dark:text-white pt-5 pb-5 w-full footerBackground">
-            <div className="flex flex-wrap items-center 2xl:justify-evenly xl:justify-evenly md:justify-evenly lg:justify-evenly justify-center mx-12">
+            <div className="flex flex-wrap items-center 2xl:justify-around xl:justify-around md:justify-around lg:justify-around justify-center mx-12">
                 <div className="flex justify-evenly items-center">
                     {currentlyPlaying?.songUrl ? (
                         <>
