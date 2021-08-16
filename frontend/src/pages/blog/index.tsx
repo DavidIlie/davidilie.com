@@ -31,7 +31,7 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                     </p>
                 </Fade>
                 <Fade direction="up" delay={750}>
-                    <div className="mb-3 xl:w-1/3 md:w-1/3 w-1/2 ml-2">
+                    <div className="mb-3 xl:w-1/3 md:w-1/3 w-full ml-2 pr-4">
                         <div>
                             {filter === "" ? (
                                 <span className="z-10 mt-1 h-full leading-snug font-normal absolute bg-transparent text-base pl-3 py-3">
