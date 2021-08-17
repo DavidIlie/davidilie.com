@@ -58,7 +58,7 @@ export const BlogLayout = ({
             <NextSeo
                 title={frontMatter.title}
                 description={frontMatter.summary}
-                canonical={`${process.env.NEXT_PUBLIC_HOST}${router.asPath}`}
+                canonical={`https://davidilie.com/${router.asPath}`}
                 twitter={{
                     cardType: "summary_large_image",
                     site: "@AlbastruYT",
@@ -67,7 +67,7 @@ export const BlogLayout = ({
                     title: frontMatter.title,
                     site_name: "David Ilie",
                     description: frontMatter.summary,
-                    url: `${process.env.NEXT_PUBLIC_HOST}${router.asPath}`,
+                    url: `https://davidilie.com/${router.asPath}`,
                     type: "article",
                     article: {
                         publishedTime: new Date(
@@ -76,7 +76,7 @@ export const BlogLayout = ({
                     },
                     images: [
                         {
-                            url: `${process.env.NEXT_PUBLIC_HOST}${frontMatter.image}`,
+                            url: `https://davidilie.com/${frontMatter.image}`,
                         },
                     ],
                 }}

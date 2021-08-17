@@ -77,7 +77,7 @@ function Projects({ repos }) {
                     A list of all my public repositories on GitHub.
                 </p>
                 <LinkButton
-                    link={`${process.env.NEXT_PUBLIC_HOST}/api/redir/github`}
+                    link="/api/redir/github"
                     Icon={FaGithub}
                     text="View my profile"
                     className="mb-5"
