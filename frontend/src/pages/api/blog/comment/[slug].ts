@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/client";
 import { v4 as uuidv4 } from "uuid";
 import db from "@lib/mongo";
+import { createPostsInDB } from "@lib/checkIfPostExistsInDB";
 const posts = db.get("posts");
 
 export default async function handler(
@@ -9,6 +10,8 @@ export default async function handler(
     res: NextApiResponse
 ) {
     const slug = req.query.slug;
+
+    await createPostsInDB(slug as string);
 
     const session = await getSession({ req });
     const body = JSON.parse(req.body);

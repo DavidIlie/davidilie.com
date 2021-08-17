@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import db from "@lib/mongo";
+import { createPostsInDB } from "@lib/checkIfPostExistsInDB";
 const posts = db.get("posts");
 
 export default async function handler(
@@ -7,6 +8,7 @@ export default async function handler(
     res: NextApiResponse
 ) {
     const slug = req.query.slug;
+    await createPostsInDB(slug as string);
     const post = await posts.findOne({
         slug: slug,
     });
