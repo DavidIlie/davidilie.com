@@ -7,12 +7,12 @@ import { ContentCreator } from "./skills/ContentCreator";
 export const About = () => {
     return (
         <>
-            <div className="bg-blue-600 dark:bg-blue-800 text-white dark:text-gray-100 text-center px-10 pt-12 pb-32">
+            <div className="bg-blue-600 dark:bg-blue-800 text-white dark:text-gray-100 2xl:text-center xl:text-center md:text-center text-left px-10 pt-12 pb-32">
                 <Fade direction="left" triggerOnce cascade>
                     <h1
-                        className={`2xl:text-5xl xl:text-5xl md:text-5xl lg:text-4xl text-4xl font-semibold mb-5`}
+                        className={`text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-4xl text-4xl font-semibold mb-5`}
                     >
-                        First of all, Who am i?
+                        First of all, who am i?
                     </h1>
                     <h1
                         className={`text-section 2xl:px-96 xl:px-32 lg:px-24 md:px-24 sm:px-5 mb-32`}

@@ -27,7 +27,7 @@ export const PinnedProject = ({
     }, [pageWidth]);
 
     return pageWidth >= 900 ? (
-        <div className="mx-auto bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl shadow-md overflow-hidden max-w-5xl mb-7 hoverItem duration-200">
+        <div className="mx-auto bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl shadow-md overflow-hidden max-w-5xl mb-7 hoverItem duration-200">
             <div className="flex">
                 {!left && <ProjectImage link={projectData.image} />}
                 <div className="p-8">
@@ -69,7 +69,7 @@ export const PinnedProject = ({
         </div>
     ) : (
         <div className="mx-auto py-2 max-w-md">
-            <div className="p-2 h-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+            <div className="p-2 h-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden cursor-pointer">
                 <h1 className="text-2xl font-semibold">
                     {projectData.name}
                     <span className="ml-2 text-gray-500 text-section">

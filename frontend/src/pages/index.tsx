@@ -30,15 +30,15 @@ function Home({ repos }): JSX.Element {
             <NextSeo title="Home" />
             <Header />
             <About />
-            <div className="mt-12 bg-indigo-600 dark:bg-indigo-900 text-white dark:text-gray-100 text-center px-10 pt-12 pb-2">
+            <div className="mt-12 bg-indigo-600 dark:bg-indigo-900 text-white dark:text-gray-100 2xl:text-center xl:text-center md:text-center text-left pt-12 pb-2">
                 <Fade direction="up" triggerOnce cascade>
                     <h1
-                        className={`2xl:text-5xl xl:text-5xl md:text-5xl lg:text-4xl text-4xl font-semibold mb-5`}
+                        className={`px-10 text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-4xl text-4xl font-semibold mb-5`}
                     >
-                        Secondly, What am I doing online?
+                        Secondly, what am I doing here?
                     </h1>
                     <h1
-                        className={`text-section 2xl:px-96 xl:px-32 lg:px-24 md:px-24 sm:px-5`}
+                        className={`px-10 text-section 2xl:px-96 xl:px-32 lg:px-24 md:px-24 sm:px-5`}
                     >
                         I like to have most of my code (
                         <a
@@ -76,18 +76,16 @@ function Home({ repos }): JSX.Element {
                         working on projects. Below, you can see an example:
                     </h1>
                     <div className="mt-5 text-center text-black dark:text-white mx-auto">
-                        <div className="mx-auto">
-                            <PinnedProject
-                                repo={
-                                    repos.filter(
-                                        (x: repoType) => x.name === repo[0].id
-                                    )[0]
-                                }
-                                left={false}
-                                projectData={repo[0]}
-                            />
-                        </div>
-                        <p className="text-section -mt-3 text-white">
+                        <PinnedProject
+                            repo={
+                                repos.filter(
+                                    (x: repoType) => x.name === repo[0].id
+                                )[0]
+                            }
+                            left={false}
+                            projectData={repo[0]}
+                        />
+                        <p className="text-section px-3 text-white">
                             Want to see more projects? Go to the{" "}
                             <Link href="/projects" passHref={true}>
                                 <span className="text-gray-200 font-semibold cursor-pointer hover:underline">
