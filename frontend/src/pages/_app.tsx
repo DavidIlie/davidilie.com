@@ -45,7 +45,7 @@ function PersonalWebsite({
     });
 
     return (
-        <div>
+        <>
             <DefaultSeo
                 defaultTitle="David Ilie"
                 titleTemplate="%s | David Ilie"
@@ -84,7 +84,7 @@ function PersonalWebsite({
                     </QueryClientProvider>
                 </ThemeProvider>
             </PlausibleProvider>
-        </div>
+        </>
     );
 }
 
