@@ -22,7 +22,7 @@
         "framer-motion": "^4.1.17",
         "gray-matter": "^4.0.3",
         "monk": "^7.3.4",
-        "next": "^11.0.0",
+        "next": "^11.1.0",
         "next-auth": "^3.27.0",
         "next-mdx-remote": "^3.0.2",
         "next-plausible": "^2.0.0",
