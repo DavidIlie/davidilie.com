@@ -5,6 +5,7 @@ import Image from "next/image";
 import LinkButton from "@components/LinkButton";
 import { PinnedRepoType } from "@data/pinnedRepos";
 import { repoType } from "@interfaces/repoType";
+import { shimmer } from "@lib/shimmer";
 
 interface PinnedProjectProps {
     repo: repoType;
@@ -93,9 +94,7 @@ export const PinnedProject = ({
                     src={projectData.image}
                     width="720px"
                     height="400px"
-                    blurDataURL={
-                        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
-                    }
+                    blurDataURL={shimmer(1920, 1080)}
                     placeholder="blur"
                     alt={projectData.name}
                 />
@@ -120,9 +119,7 @@ const ProjectImage = ({ link }: { link: string }) => {
             className="w-full object-cover md:h-full md:w-96"
             height="400px"
             width="1250px"
-            blurDataURL={
-                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
-            }
+            blurDataURL={shimmer(1920, 1080)}
             placeholder="blur"
             src={link}
             alt="project image"

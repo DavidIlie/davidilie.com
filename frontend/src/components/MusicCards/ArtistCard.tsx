@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "../../styles/styles.module.css";
 
 import { Item } from "@interfaces/MusicData";
+import { shimmer } from "@lib/shimmer";
 
 const AristCard = ({ artist }: { artist: Item }) => {
     return (
@@ -17,6 +18,8 @@ const AristCard = ({ artist }: { artist: Item }) => {
                 alt={artist?.name + " artist image"}
                 width="150px"
                 height="150px"
+                blurDataURL={shimmer(1920, 1080)}
+                placeholder="blur"
                 src={
                     artist.images
                         .filter((image) => image.height >= 150)

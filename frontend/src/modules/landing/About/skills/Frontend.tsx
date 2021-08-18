@@ -1,3 +1,4 @@
+import { shimmer } from "@lib/shimmer";
 import Image from "next/image";
 
 export const FrontendDeveloper = () => {
@@ -8,9 +9,7 @@ export const FrontendDeveloper = () => {
                     src="/images/svg/frontend.svg"
                     alt="Frontend Developer"
                     className="w-24 h-24 animate-wiggle"
-                    blurDataURL={
-                        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
-                    }
+                    blurDataURL={shimmer(1920, 1080)}
                     placeholder="blur"
                     width="100%"
                     height="100%"

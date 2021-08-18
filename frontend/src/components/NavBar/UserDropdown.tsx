@@ -11,6 +11,7 @@ import { RiAdminLine } from "react-icons/ri";
 import ThemeToggle from "./ThemeToggle";
 
 import LoginModal from "@components/LoginModal";
+import { shimmer } from "@lib/shimmer";
 
 const UserDropdown = (): JSX.Element => {
     const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -38,9 +39,7 @@ const UserDropdown = (): JSX.Element => {
                             height="40%"
                             className="cursor-pointer rounded-full"
                             src={session.user.image}
-                            blurDataURL={
-                                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
-                            }
+                            blurDataURL={shimmer(1920, 1080)}
                             placeholder="blur"
                             aria-label="Settings+Account"
                             title="Settings+Account"

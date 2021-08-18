@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 
 import { CommentProps } from "./BlogComments";
+import { shimmer } from "@lib/shimmer";
 
 interface CommentComponentProps {
     data: CommentProps;
@@ -57,9 +58,7 @@ const Comment = ({ data, refetch }: CommentComponentProps) => {
                     src={data.image}
                     width="48"
                     height="48"
-                    blurDataURL={
-                        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
-                    }
+                    blurDataURL={shimmer(1920, 1080)}
                     placeholder="blur"
                     className="rounded-full w-10 h-10 shadow-lg"
                     alt={`${data.name}'s profile image`}

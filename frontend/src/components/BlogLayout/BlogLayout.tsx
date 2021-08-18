@@ -13,6 +13,7 @@ import BlogInteractions from "@components/BlogInteractions";
 import BlogComments from "@components/BlogComments";
 
 import { getGitHubEditURL } from "@lib/getGitHubEditUrl";
+import { shimmer } from "@lib/shimmer";
 
 interface BlogLayoutProps {
     children: React.ReactElement;
@@ -100,6 +101,7 @@ export const BlogLayout = ({
                                 src={frontMatter.by.avatar}
                                 width="25px"
                                 height="25px"
+                                blurDataURL={shimmer(1920, 1080)}
                                 alt={`${frontMatter.by}'s profile image`}
                             />
                             <span className="ml-1 header-gradient text-lg mr-1">
@@ -128,9 +130,7 @@ export const BlogLayout = ({
                     src={frontMatter.image}
                     width={1905 / 2}
                     height={957 / 2}
-                    blurDataURL={
-                        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
-                    }
+                    blurDataURL={shimmer(1920, 1080)}
                     placeholder="blur"
                 />
                 <div className="mb-10 px-2 max-w-4xl w-full blog-content">

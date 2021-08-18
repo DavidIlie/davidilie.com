@@ -3,6 +3,7 @@ import Image from "next/image";
 import formatDistance from "date-fns/formatDistance";
 
 import Badge from "@components/Badge";
+import { shimmer } from "@lib/shimmer";
 
 const LinkCard = ({ name, link, date, label }: LinkType): JSX.Element => {
     return (
@@ -27,9 +28,7 @@ const LinkCard = ({ name, link, date, label }: LinkType): JSX.Element => {
                         )}`}
                         width="350px"
                         height="200px"
-                        blurDataURL={
-                            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
-                        }
+                        blurDataURL={shimmer(1920, 1080)}
                         placeholder="blur"
                         className="object-cover h-64 w-full rounded-lg rounded-b-none"
                         alt={name + " screenshot"}

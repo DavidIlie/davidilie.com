@@ -9,5 +9,6 @@ declare namespace NodeJS {
         NEXTAUTH_URL: string;
         IDENTITY_SERVER_URL: string;
         JWT_SECRET: string;
+        PLAUSIBLE_API_KEY: string;
     }
 }

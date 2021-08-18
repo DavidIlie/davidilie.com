@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "../../styles/styles.module.css";
 
 import { Item2 } from "@interfaces/MusicData";
+import { shimmer } from "@lib/shimmer";
 
 interface SongCardProps {
     song: Item2;
@@ -41,9 +42,7 @@ const SongCard = ({
                                 className={styles.image}
                                 width={titleCard ? `150px` : `110px`}
                                 height={titleCard ? `150px` : `110px`}
-                                blurDataURL={
-                                    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAIAAADwyuo0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAIklEQVQImWNgYBDnFZCxsfc0tvJkCI/O+vP/f0tdhZK8CgBLPAfARKUieAAAAABJRU5ErkJggg=="
-                                }
+                                blurDataURL={shimmer(1920, 1080)}
                                 placeholder="blur"
                                 src={
                                     song.albumImageUrl ||
