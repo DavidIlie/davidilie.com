@@ -3,8 +3,6 @@ import React from "react";
 interface StatisticCardProps {
     title: string;
     statistic: string | number;
-    percentage?: number;
-    percentageType?: "increase" | "decrease";
 }
 
 const StatisticCard = ({

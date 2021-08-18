@@ -112,7 +112,10 @@ export const NavBar = () => {
 
                                         if (page.type === "dropdown") {
                                             return (
-                                                <div className="navItem group">
+                                                <div
+                                                    className="navItem group"
+                                                    key={index}
+                                                >
                                                     <button className="outline-none focus:outline-none px-3 py-1 text-gray-800 dark:text-gray-300 hover:bg-gray-600 dark:hover:bg-gray-800 duration-200 hover:text-white rounded-sm flex items-center">
                                                         <span className="pr-1 font-medium flex-1 text-sm">
                                                             {page.name}

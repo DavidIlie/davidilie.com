@@ -25,7 +25,7 @@ const Admin = ({ statistics }: AdminProps): JSX.Element => {
 
     return (
         <AdminPage className="h-screen pt-28 max-w-7xl mx-auto pl-8 px-4 sm:px-6 sm:pl-8 lg:px-8 lg:pl-8 -mt-1">
-            <h1 className="xl:text-5xl text-4xl font-semibold mb-10">
+            <h1 className="xl:text-5xl text-4xl font-semibold mb-5">
                 Welcome back <span className="header-gradient">David!</span>
             </h1>
             <Tab.Group>
@@ -40,7 +40,7 @@ const Admin = ({ statistics }: AdminProps): JSX.Element => {
                         Users
                     </Tab>
                 </Tab.List>
-                <Tab.Panels className="px-2">
+                <Tab.Panels className="px-2 mt-5">
                     <Tab.Panel>
                         <StatisticsModule statistics={statistics} />
                     </Tab.Panel>
