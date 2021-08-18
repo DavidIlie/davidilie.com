@@ -172,7 +172,7 @@ export const NavBar = () => {
                             </div>
                         </div>
                         <div className="-mr-2 flex items-center md:hidden mt-3">
-                            <div className="mr-5">
+                            <div className="mr-5 mt-0.5">
                                 <UserDropdown />
                             </div>
                             <button
@@ -283,13 +283,6 @@ export const NavBar = () => {
                                     });
                                 }
                             })}
-                            <hr className="border-0 bg-gray-500 text-gray-500 h-px" />
-                            <a
-                                className="text-gray-800 dark:text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                                href="https://status.davidilie.com"
-                            >
-                                Status
-                            </a>
                         </div>
                     </div>
                 )}
