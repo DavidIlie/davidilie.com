@@ -1,23 +1,27 @@
 import React from "react";
 import { HiMoon, HiSun } from "react-icons/hi";
 import { useTheme } from "next-themes";
+import ToggleColorMode from "@hooks/ToggleColorMode";
 
 const ThemeToggle = (): JSX.Element => {
-    const { theme, setTheme } = useTheme();
+    const { theme } = useTheme();
+    const changeTheme = ToggleColorMode();
 
     return (
         typeof window != "undefined" && (
             <button
                 className="group flex gap-1 rounded-b-md items-center w-full"
                 aria-label={
-                    theme === "dark" ? "Toggle Light Mode" : "Toggle Dark Mode"
+                    theme === "dark"
+                        ? "Toggle Light Mode (shift+d)"
+                        : "Toggle Dark Mode (shift+d)"
                 }
                 title={
-                    theme === "dark" ? "Toggle Light Mode" : "Toggle Dark Mode"
+                    theme === "dark"
+                        ? "Toggle Light Mode (shift+d)"
+                        : "Toggle Dark Mode (shift+d)"
                 }
-                onClick={() =>
-                    theme === "dark" ? setTheme("light") : setTheme("dark")
-                }
+                onClick={() => changeTheme()}
             >
                 {theme === "dark" ? (
                     <HiSun className="text-2xl" />

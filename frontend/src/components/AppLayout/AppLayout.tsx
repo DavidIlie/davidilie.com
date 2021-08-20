@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
+import { useShortcut } from "litkey";
 
 import NavBar from "@components/NavBar";
 import Footer from "@components/Footer";
@@ -7,12 +8,17 @@ import Footer from "@components/Footer";
 import { UpDown } from "@components/Animations/Animation";
 import SVG from "@components/SVG";
 
+import ToggleColorMode from "@hooks/ToggleColorMode";
+
 interface AppLayoutProps {
     children: React.ReactElement;
 }
 
 export const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
     const router = useRouter();
+
+    const changeTheme = ToggleColorMode();
+    useShortcut("shift+d", () => changeTheme());
 
     return (
         <>
