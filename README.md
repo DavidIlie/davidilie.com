@@ -71,7 +71,7 @@ The website has two themes, light and dark. Below you can see both themes:
 
 </details>
 
-There are other pages, but you can see those for yourself on my [website](https://davidilie.com)
+There are other pages, but you can see those for yourself on my [website](https://davidilie.com) :))
 
 ## Contributions
 
