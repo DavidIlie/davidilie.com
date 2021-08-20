@@ -12,6 +12,7 @@ module.exports = withMDX({
             "lh3.googleusercontent.com",
             "cdn.discordapp.com",
             "rdl.ink",
+            "s3.davidapps.dev",
         ],
     },
     rewrites: async () => [
