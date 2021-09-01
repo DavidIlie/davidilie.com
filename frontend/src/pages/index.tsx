@@ -60,10 +60,9 @@ function Home({ repos }): JSX.Element {
                         </a>{" "}
                         for others to see, rate, and give me their opinion. In
                         addition, keeping my code open source gives me the
-                        benefit to have a good personal image in my GitHub
-                        profile, which is <strong>key</strong> when I would want
-                        to contribute to open-source projects. Furthermore, I
-                        also like to write posts over on my{" "}
+                        benefit of having a good-looking GitHub profile, which
+                        is <strong>key</strong> for the future of my career.
+                        Furthermore, I also like to write posts over on my{" "}
                         <Link href="/blog">
                             <a
                                 target="_blank"
@@ -73,7 +72,8 @@ function Home({ repos }): JSX.Element {
                             </a>
                         </Link>{" "}
                         regarding things that I encounter these days while
-                        working on projects. Below, you can see an example:
+                        working on projects. Below, you can see an example of a
+                        project:
                     </h1>
                     <div className="mt-5 text-center text-black dark:text-white mx-auto">
                         <PinnedProject
