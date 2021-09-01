@@ -52,12 +52,8 @@ export const devices: DeviceProps[] = [
     {
         icon: AiOutlineLaptop,
         name: "Main Laptop",
-        description: "Mars",
+        description: "Dell XPS 13 9310",
         specs: [
-            {
-                prefix: "Model",
-                suffix: "Dell XPS 13 9310",
-            },
             {
                 prefix: "CPU",
                 suffix: "Intel i7-1185G7",
@@ -77,6 +73,10 @@ export const devices: DeviceProps[] = [
             {
                 prefix: "OS",
                 suffix: "Windows 11 Dev Preview",
+            },
+            {
+                prefix: "OS2",
+                suffix: "ChromeOS",
             },
         ],
     },
