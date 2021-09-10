@@ -12,12 +12,12 @@ export const About = () => {
                     <h1
                         className={`text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-4xl text-4xl font-semibold mb-5`}
                     >
-                        First of all, who am i?
+                        First of all, who am I?
                     </h1>
                     <h1
                         className={`text-section 2xl:px-96 xl:px-32 lg:px-24 md:px-24 sm:px-5 mb-32`}
                     >
-                        I&apos;m a 14 year old software developer, focusing my
+                        I&apos;m a 15 year old software developer, focusing my
                         learning into web development. I&apos;ve been interested
                         into computer science ever since I was younger but never
                         got into proper development until about 2 years ago. I
@@ -28,7 +28,7 @@ export const About = () => {
                         never tried doing it myself until recently. The goal of
                         this website is to express my{" "}
                         <span className="font-bold">
-                            &quot;experiements&quot;
+                            &quot;experiments&quot;
                         </span>{" "}
                         to the public, while getting feedback in the process.
                     </h1>
