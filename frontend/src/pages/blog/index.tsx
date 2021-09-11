@@ -16,6 +16,8 @@ function Blog({ posts }: { posts: any }): JSX.Element {
         frontMatter.title.toLowerCase().includes(filter)
     );
 
+    filteredBlogPosts.reverse();
+
     return (
         <>
             <NextSeo title="Blog" />

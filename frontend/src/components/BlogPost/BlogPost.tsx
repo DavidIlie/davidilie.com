@@ -27,7 +27,7 @@ export const BlogPost = ({
     return (
         <Link href={`/blog/${slug}`} passHref>
             <div
-                className="bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 flex mb-8 px-5 py-4 flex-col hoverItem duration-200 rounded-2xl cursor-pointer"
+                className="bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 flex mb-4 px-5 py-4 flex-col hoverItem duration-200 rounded-2xl cursor-pointer"
                 style={{
                     marginLeft: "5px",
                     marginRight: "5px",

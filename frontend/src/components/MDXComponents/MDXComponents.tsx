@@ -20,7 +20,10 @@ export const CustomLink = (props: CustomLinkProps) => {
     if (isInternalLink) {
         return (
             <Link href={props.href}>
-                <a className="duration-200 text-blue-600 hover:text-blue-700 hover:underline cursor-pointer">
+                <a
+                    className="duration-200 text-blue-500 hover:text-blue-600 hover:underline cursor-pointer"
+                    {...props}
+                >
                     {props.children}
                 </a>
             </Link>
@@ -29,10 +32,31 @@ export const CustomLink = (props: CustomLinkProps) => {
     return (
         <a
             href={props.href}
-            className="duration-200 text-blue-600 hover:text-blue-700 hover:underline cursor-pointer"
+            className="duration-200 text-blue-500 hover:text-blue-600 hover:underline cursor-pointer"
+            {...props}
         >
             {props.children}
         </a>
+    );
+};
+
+export const CustomUnorderedList = ({
+    children,
+}: {
+    children: React.ReactNode;
+}): JSX.Element => {
+    return <ul className="mt-3 list-disc ml-5 font-semibold ">{children}</ul>;
+};
+
+export const CustomListItem = ({
+    children,
+}: {
+    children: React.ReactNode;
+}): JSX.Element => {
+    return (
+        <li className="text-blue-500">
+            <span className="text-black dark:text-white">{children}</span>
+        </li>
     );
 };
 
@@ -46,6 +70,10 @@ const WindowButton = ({ bg }: { bg: string }) => {
 };
 
 export const RemarkTitle = ({ children }: { children: string }) => {
+    const checkIfInternal =
+        children.startsWith("Terminal") ||
+        children.startsWith("web/") ||
+        children.startsWith("Example");
     return (
         <div
             className="z-20 mt-2 -mb-5 flex flex-wrap justify-between items-center py-1 w-full mx-auto codeEditorTitle bg-gray-100 dark:bg-black border-gray-200 dark:border-black border-b-0"
@@ -63,16 +91,20 @@ export const RemarkTitle = ({ children }: { children: string }) => {
                 <WindowButton bg="yellow-400" />
                 <WindowButton bg="green-500" />
             </span>
-            <Tooltip content="Go to file">
-                <a
-                    href={`https://github.com/davidilie/davidilie.com/tree/master/frontend/${children}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="px-4 text-blue-500 cursor-pointer truncate"
-                >
-                    {children}
-                </a>
-            </Tooltip>
+            {!checkIfInternal ? (
+                <Tooltip content="Go to file">
+                    <a
+                        href={`https://github.com/davidilie/davidilie.com/tree/master/frontend/${children}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-4 text-blue-500 cursor-pointer truncate"
+                    >
+                        {children}
+                    </a>
+                </Tooltip>
+            ) : (
+                <a className="px-4 text-blue-500 truncate">{children}</a>
+            )}
         </div>
     );
 };
