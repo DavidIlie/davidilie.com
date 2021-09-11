@@ -77,7 +77,7 @@ export const BlogLayout = ({
                     },
                     images: [
                         {
-                            url: `https://davidilie.com/${frontMatter.image}`,
+                            url: frontMatter.image,
                         },
                     ],
                 }}
