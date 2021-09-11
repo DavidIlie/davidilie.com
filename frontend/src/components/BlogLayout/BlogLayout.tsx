@@ -93,7 +93,7 @@ export const BlogLayout = ({
                 <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-semibold px-4">
                     {frontMatter.title}
                 </h1>
-                <div className="flex flex-wrap justify-between items-center max-w-2xl mx-auto mb-12 px-3 mt-5 w-full">
+                <div className="flex flex-wrap justify-between items-center max-w-2xl mx-auto mb-6 px-3 mt-5 w-full">
                     <div className="flex items-center">
                         <span className="inline-flex items-center justify-center py-2 text-xs font-bold leading-none rounded-md">
                             <Image
@@ -133,7 +133,7 @@ export const BlogLayout = ({
                     blurDataURL={shimmer(1920, 1080)}
                     placeholder="blur"
                 />
-                <div className="mb-10 px-2 max-w-4xl w-full blog-content">
+                <div className="mt-3 mb-10 px-2 max-w-4xl w-full blog-content">
                     {children}
                 </div>
                 <div className="flex items-center px-3 pb-3 gap-1 justify-end">
