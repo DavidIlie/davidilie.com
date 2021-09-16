@@ -82,7 +82,7 @@ export const BlogLayout = ({
                     ],
                 }}
             />
-            <article className="text-black dark:text-white flex flex-col justify-start pt-28 w-full min-h-screen mx-auto max-w-2xl">
+            <article className="text-black dark:text-white flex flex-col justify-start pt-28 w-full min-h-screen mx-auto max-w-3xl">
                 {frontMatter.tags && (
                     <div className="flex w-full px-3 mb-4 justify-start flex-wrap">
                         {frontMatter.tags.map((tag, i) => (
@@ -93,7 +93,7 @@ export const BlogLayout = ({
                 <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-semibold px-4">
                     {frontMatter.title}
                 </h1>
-                <div className="flex flex-wrap justify-between items-center max-w-2xl mx-auto mb-6 px-3 mt-5 w-full">
+                <div className="flex flex-wrap justify-between items-center max-w-3xl mx-auto mb-6 px-3 mt-5 w-full">
                     <div className="flex items-center">
                         <span className="inline-flex items-center justify-center py-2 text-xs font-bold leading-none rounded-md">
                             <Image
@@ -124,16 +124,19 @@ export const BlogLayout = ({
                         <BlogViewCounter slug={frontMatter.slug} />
                     </h1>
                 </div>
-                <Image
-                    alt="Post picture"
-                    className="rounded-2xl"
-                    src={frontMatter.image}
-                    width={1905 / 2}
-                    height={957 / 2}
-                    blurDataURL={shimmer(1920, 1080)}
-                    placeholder="blur"
-                />
-                <div className="mt-3 mb-10 px-2 max-w-4xl w-full blog-content">
+                <div className="mx-auto max-w-2xl">
+                    <Image
+                        alt="Post picture"
+                        className="rounded-xl shadow-xl"
+                        src={frontMatter.image}
+                        width={1905 / 2}
+                        height={957 / 2}
+                        blurDataURL={shimmer(1920, 1080)}
+                        placeholder="blur"
+                    />
+                </div>
+
+                <div className="mt-3 mb-10 px-2 max-w-5xl w-full blog-content">
                     {children}
                 </div>
                 <div className="flex items-center px-3 pb-3 gap-1 justify-end">
