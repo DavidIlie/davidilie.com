@@ -23,19 +23,21 @@ function Blog({ posts }: { posts: any }): JSX.Element {
     return (
         <>
             <NextSeo title="Blog" />
-            <div className="flex flex-col pt-28 px-2 w-full min-h-screen mx-auto max-w-4xl text-black dark:text-white">
+            <div className="flex flex-col pt-28 pb-10 px-2 w-full min-h-screen mx-auto max-w-4xl text-black dark:text-white">
                 <Fade direction="up" triggerOnce cascade>
                     <h1 className="text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
                         The David Ones
                     </h1>
-                    <p className="text-section mb-5 px-5 text-center">
-                        Here are a collection of my blog posts, with{" "}
-                        {posts.length} post
+                    <p className="text-center text-section mb-5 px-12">
+                        I&apos;ve been writing blog posts since 2020, mostly
+                        about my random technologic encounters during my
+                        day-to-day life. Currently there are {posts.length} blog
+                        post
                         {posts.length > 1 && "s"}.
                     </p>
                 </Fade>
                 <Fade direction="up" delay={750} triggerOnce>
-                    <div className="mb-6 px-12">
+                    <div className="mb-6 px-3">
                         <div>
                             {filter === "" ? (
                                 <span className="z-10 mt-1 h-full leading-snug font-normal absolute bg-transparent text-base pl-3 py-3">
@@ -90,7 +92,7 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                                 key={frontMatter.title}
                                 triggerOnce
                             >
-                                <div className="grid sm:grid-cols-2 grid-cols-1 gap-2 md:px-4">
+                                <div className="mt-5 grid sm:grid-cols-2 grid-cols-1 gap-2 md:px-4">
                                     <BlogPost
                                         {...frontMatter}
                                         feature={false}

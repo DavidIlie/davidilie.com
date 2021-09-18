@@ -30,7 +30,7 @@ export const BlogPost = ({
     by,
     featured,
 }: BlogPostProps): JSX.Element => {
-    const { data } = useQuery(`stats${slug}`, () => {
+    const { data } = useQuery(`stats-${slug}`, () => {
         return fetch(`/api/blog/get/${slug}`).then((res) => res.json());
     });
     const views = data?.views;
@@ -48,60 +48,74 @@ export const BlogPost = ({
     if ((featured && pageWidth >= 550) || (featured && pageWidth >= 550)) {
         return (
             <Link href={`/blog/${slug}`} passHref>
-                <article className="mx-3 cursor-pointer bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl flex justify-center gap-4 hoverItem duration-200 flex-wrap md:flex-nowrap mb-4 md:px-3 md:py-2">
-                    <Image
-                        alt="Post picture"
-                        className="shadow-xl rounded"
-                        src={image}
-                        width={1905 / 2}
-                        height={957 / 2}
-                        blurDataURL={shimmer(1920, 1080)}
-                        placeholder="blur"
-                        objectFit="cover"
-                    />
-                    <div className="md:max-w-sm md:px-0 px-1">
-                        {tags &&
-                            tags.map((tag, i) => (
-                                <BlogBadge tag={tag} key={i.toString()} />
-                            ))}
-                        <h1 className="xl:text-2xl md:text-2xl text-section font-semibold mt-1 mb-1">
-                            {title}
+                <>
+                    <article
+                        className={`${
+                            featured && "mt-8 rounded-tl-sm"
+                        } mx-3 cursor-pointer bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl flex justify-center gap-4 transform hover:-translate-y-1 duration-200 flex-wrap md:flex-nowrap mb-4 md:px-3 md:py-2`}
+                    >
+                        <h1
+                            className="z-10 absolute -top-9 -left-0.5 bg-blue-300 dark:bg-blue-600 text-blue-900 dark:text-blue-100 dark:bg-opacity-50 py-1 px-4 rounded-t font-semibold"
+                            style={{
+                                border: "2px solid rgba(29, 78, 216, var(--tw-border-opacity)",
+                            }}
+                        >
+                            Featured Post
                         </h1>
-                        <p className="text-gray-800 dark:text-gray-300">
-                            {summary}
-                        </p>
-                        <div className="flex items-center">
-                            <span className="flex items-center justify-center py-2 text-xs leading-none rounded-md">
-                                <Image
-                                    className="rounded-full"
-                                    src={by.avatar}
-                                    width="30px"
-                                    height="30px"
-                                    blurDataURL={shimmer(1920, 1080)}
-                                    alt={`${by}'s profile image`}
-                                />
-                                <div className="ml-2">
-                                    <span className="text-sm text-gray-700 dark:text-gray-300 ">
-                                        {by.name}
-                                    </span>
-                                    <h1 className="text-gray-800 dark:text-gray-400">
-                                        {formatDistance(
-                                            new Date(publishedAt),
-                                            new Date(),
-                                            {
-                                                addSuffix: true,
-                                            }
-                                        )}{" "}
-                                        {" • "}{" "}
-                                        {`${views ? views : "0"} view${
-                                            views !== 1 ? "s" : ""
-                                        }`}
-                                    </h1>
-                                </div>
-                            </span>
+                        <Image
+                            alt="Post picture"
+                            className="shadow-xl rounded"
+                            src={image}
+                            width={1905 / 2}
+                            height={957 / 2}
+                            blurDataURL={shimmer(1920, 1080)}
+                            placeholder="blur"
+                            objectFit="cover"
+                        />
+                        <div className="md:max-w-sm md:px-0 py-1">
+                            {tags &&
+                                tags.map((tag, i) => (
+                                    <BlogBadge tag={tag} key={i.toString()} />
+                                ))}
+                            <h1 className="xl:text-2xl md:text-2xl text-section font-semibold mt-1 mb-1">
+                                {title}
+                            </h1>
+                            <p className="text-gray-800 dark:text-gray-300">
+                                {summary}
+                            </p>
+                            <div className="flex items-center">
+                                <span className="flex items-center justify-center py-2 text-xs leading-none rounded-md">
+                                    <Image
+                                        className="rounded-full"
+                                        src={by.avatar}
+                                        width="30px"
+                                        height="30px"
+                                        blurDataURL={shimmer(1920, 1080)}
+                                        alt={`${by}'s profile image`}
+                                    />
+                                    <div className="ml-2">
+                                        <span className="text-sm text-gray-700 dark:text-gray-300 ">
+                                            {by.name}
+                                        </span>
+                                        <h1 className="text-gray-800 dark:text-gray-400">
+                                            {formatDistance(
+                                                new Date(publishedAt),
+                                                new Date(),
+                                                {
+                                                    addSuffix: true,
+                                                }
+                                            )}{" "}
+                                            {" • "}{" "}
+                                            {`${views ? views : "0"} view${
+                                                views !== 1 ? "s" : ""
+                                            }`}
+                                        </h1>
+                                    </div>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                </article>
+                    </article>
+                </>
             </Link>
         );
     } else {
@@ -124,10 +138,14 @@ export const BlogPost = ({
                             <h2 className="font-semibold text-2xl tracking-normal">
                                 {title}
                             </h2>
-                            <p className="text-md mt-2 text-gray-800 dark:text-gray-200 truncate-2-lines">
+                            <p className="text-md mt-2 mb-3 text-gray-800 dark:text-gray-200 truncate-2-lines">
                                 {summary}
                             </p>
-                            <div className="flex items-center mr-1 mt-2 mb-1">
+                            {tags &&
+                                tags.map((tag, i) => (
+                                    <BlogBadge tag={tag} key={i.toString()} />
+                                ))}
+                            <div className="flex items-center mr-1 mt-1 mb-1">
                                 <span className="text-md text-gray-800 dark:text-gray-200">
                                     {formatDistance(
                                         new Date(publishedAt),
