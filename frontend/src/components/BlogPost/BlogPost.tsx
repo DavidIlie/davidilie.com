@@ -94,10 +94,10 @@ export const BlogPost = ({
                                         alt={`${by}'s profile image`}
                                     />
                                     <div className="ml-2">
-                                        <span className="text-sm text-gray-700 dark:text-gray-300 ">
+                                        <span className="text-sm text-gray-700 dark:text-gray-300">
                                             {by.name}
                                         </span>
-                                        <h1 className="text-gray-800 dark:text-gray-400">
+                                        <h1 className="text-gray-800 dark:text-gray-400 mt-0.5">
                                             {formatDistance(
                                                 new Date(publishedAt),
                                                 new Date(),
