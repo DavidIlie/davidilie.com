@@ -12,8 +12,10 @@ import Tooltip from "@ui/Tooltip";
 function Blog({ posts }: { posts: any }): JSX.Element {
     const [filter, setFilter] = useState<string>("");
 
-    const filteredBlogPosts = posts.filter((frontMatter: any) =>
-        frontMatter.title.toLowerCase().includes(filter)
+    const filteredBlogPosts = posts.filter(
+        (frontMatter: any) =>
+            frontMatter.title.toLowerCase().includes(filter) &&
+            (frontMatter.published || process.env.NODE_ENV === "development")
     );
 
     filteredBlogPosts.reverse();
