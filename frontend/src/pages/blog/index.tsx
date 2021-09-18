@@ -26,7 +26,7 @@ function Blog({ posts }: { posts: any }): JSX.Element {
             <div className="flex flex-col pt-28 px-2 w-full min-h-screen mx-auto max-w-4xl text-black dark:text-white">
                 <Fade direction="up" triggerOnce cascade>
                     <h1 className="text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
-                        Blog Posts
+                        The David Ones
                     </h1>
                     <p className="text-section mb-5 px-5 text-center">
                         Here are a collection of my blog posts, with{" "}
@@ -34,8 +34,8 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                         {posts.length > 1 && "s"}.
                     </p>
                 </Fade>
-                <Fade direction="up" delay={750}>
-                    <div className="mb-3 xl:w-1/3 md:w-1/3 w-full ml-2 pr-4">
+                <Fade direction="up" delay={750} triggerOnce>
+                    <div className="mb-6 px-12">
                         <div>
                             {filter === "" ? (
                                 <span className="z-10 mt-1 h-full leading-snug font-normal absolute bg-transparent text-base pl-3 py-3">
@@ -70,11 +70,36 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                         </h1>
                     </Fade>
                 )}
-                {filteredBlogPosts.map((frontMatter: any) => (
-                    <Fade direction="up" key={frontMatter.title}>
-                        <BlogPost {...frontMatter} />
-                    </Fade>
-                ))}
+                {filteredBlogPosts.map((frontMatter: any, index: number) => {
+                    const featured = index === 0;
+
+                    if (featured) {
+                        return (
+                            <Fade
+                                direction="up"
+                                key={frontMatter.title}
+                                triggerOnce
+                            >
+                                <BlogPost {...frontMatter} featured />
+                            </Fade>
+                        );
+                    } else {
+                        return (
+                            <Fade
+                                direction="up"
+                                key={frontMatter.title}
+                                triggerOnce
+                            >
+                                <div className="grid sm:grid-cols-2 grid-cols-1 gap-2 md:px-4">
+                                    <BlogPost
+                                        {...frontMatter}
+                                        feature={false}
+                                    />
+                                </div>
+                            </Fade>
+                        );
+                    }
+                })}
             </div>
         </>
     );
