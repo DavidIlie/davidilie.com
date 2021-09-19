@@ -122,7 +122,7 @@ export const BlogPost = ({
         return (
             <Link href={`/blog/${slug}`} passHref>
                 <a className="hoverItem duration-200">
-                    <div className="bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 shadow-2xl rounded-lg mb-6">
+                    <div className="bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 shadow-2xl rounded-lg mb-6 hoverItem duration-200">
                         <div className="md:flex-shrink-0">
                             <Image
                                 src={image}

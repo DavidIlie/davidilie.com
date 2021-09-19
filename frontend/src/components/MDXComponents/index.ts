@@ -11,6 +11,7 @@ import {
     WarningQuote,
     CustomUnorderedList,
     CustomListItem,
+    CustomImage,
     h1,
     h2,
     h3,
@@ -38,6 +39,7 @@ const MDXComponents = {
     BlockQuote,
     IdeaQuote,
     WarningQuote,
+    Image: CustomImage,
 };
 
 export default MDXComponents;

@@ -25,13 +25,20 @@ function Blog({ posts }: { posts: any }): JSX.Element {
         });
     }, [pageWidth]);
 
-    const filteredBlogPosts = posts.filter(
-        (frontMatter: any) =>
-            frontMatter.title.toLowerCase().includes(filter) &&
-            (frontMatter.published || process.env.NODE_ENV === "development")
-    );
-
-    filteredBlogPosts.reverse();
+    const filteredBlogPosts = posts
+        .filter(
+            (frontMatter: any) =>
+                frontMatter.title.toLowerCase().includes(filter) &&
+                (frontMatter.published ||
+                    process.env.NODE_ENV === "development")
+        )
+        .sort((a: any, b: any) => {
+            return (
+                new Date(a.publishedAt).getTime() -
+                new Date(b.publishedAt).getTime()
+            );
+        })
+        .reverse();
 
     return (
         <>
@@ -72,7 +79,7 @@ function Blog({ posts }: { posts: any }): JSX.Element {
             )}
 
             <div className="flex flex-col pt-28 pb-10 px-2 w-full min-h-screen mx-auto max-w-4xl text-black dark:text-white">
-                <Fade direction="up" triggerOnce cascade>
+                <Fade direction="up" triggerOnce>
                     <h1 className="text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
                         The David Ones
                     </h1>
@@ -83,8 +90,6 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                         post
                         {posts.length > 1 && "s"}.
                     </p>
-                </Fade>
-                <Fade direction="up" delay={750} triggerOnce>
                     <div className="mb-6 px-3">
                         <div>
                             {filter === "" ? (
@@ -120,36 +125,36 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                         </h1>
                     </Fade>
                 )}
-                {filteredBlogPosts.map((frontMatter: any, index: number) => {
-                    const featured = index === 0;
 
-                    if (featured) {
-                        return (
-                            <Fade
-                                direction="up"
-                                key={frontMatter.title}
-                                triggerOnce
-                            >
-                                <BlogPost {...frontMatter} featured />
-                            </Fade>
-                        );
-                    } else {
-                        return (
-                            <Fade
-                                direction="up"
-                                key={frontMatter.title}
-                                triggerOnce
-                            >
-                                <div className="mt-5 grid sm:grid-cols-2 grid-cols-1 gap-2 md:px-4">
-                                    <BlogPost
-                                        {...frontMatter}
-                                        feature={false}
-                                    />
-                                </div>
-                            </Fade>
-                        );
-                    }
-                })}
+                <Fade
+                    direction="up"
+                    key={filteredBlogPosts[0].title}
+                    triggerOnce
+                >
+                    <BlogPost {...filteredBlogPosts[0]} featured />
+                </Fade>
+
+                <div className="mt-5 grid sm:grid-cols-2 grid-cols-1 gap-2 md:px-4">
+                    {filteredBlogPosts.map(
+                        (frontMatter: any, index: number) => {
+                            const featured = index === 0;
+                            if (!featured) {
+                                return (
+                                    <Fade
+                                        direction="up"
+                                        key={frontMatter.title}
+                                        triggerOnce
+                                    >
+                                        <BlogPost
+                                            {...frontMatter}
+                                            feature={false}
+                                        />
+                                    </Fade>
+                                );
+                            }
+                        }
+                    )}
+                </div>
             </div>
         </>
     );

@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
 import { NextSeo } from "next-seo";
@@ -6,7 +5,6 @@ import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 import BarLoader from "react-spinners/BarLoader";
 import { RiEditBoxLine } from "react-icons/ri";
-import toast from "react-hot-toast";
 
 import BlogBadge from "@components/BlogBadge";
 import BlogViewCounter from "@components/BlogViewCounter";
@@ -45,15 +43,6 @@ export const BlogLayout = ({
 }: BlogLayoutProps): JSX.Element => {
     const router = useRouter();
 
-    useEffect(() => {
-        if (!frontMatter.published) {
-            toast.error("This post is not done yet!", {
-                id: "NotDoneBlogPost",
-            });
-            router.push("/blog");
-        }
-    });
-
     const { isLoading, data, refetch } = useQuery(
         `stats${frontMatter.slug}`,
         () => {
@@ -64,10 +53,6 @@ export const BlogLayout = ({
     );
 
     const comments = data?.comments;
-
-    if (!frontMatter.published) {
-        return <div className="h-screen" />;
-    }
 
     return (
         <>

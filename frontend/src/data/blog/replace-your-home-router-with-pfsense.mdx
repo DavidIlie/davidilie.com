@@ -1,0 +1,117 @@
+---
+title: "Your home router is too basic! Replace it with pfSense!"
+publishedAt: "2021-09-19"
+summary: "Recently, I decided to switch from my standard cheap home router, to a custom virtual machine running pfSense on my server. This blog post will contain all the hurdles and issues that I went through, and how you can setup this up for yourself!"
+tags: ["Home Network", "pfSense", "Open Source"]
+by: { name: "David Alexandru Ilie", avatar: "/images/png/me.png" }
+image: "https://s3.davidapps.dev/davidilie-blog/assets/1450fece-7e8d-4603-93f5-48531cd6e736.png"
+published: false
+---
+
+# Introduction
+
+The internet, some of us use it for consuming content, some of us use it for basic business duties and then people such as myself provide services for the other two by means of programming. Nonetheless, technology has empowered us with the opportunity to have access to the internet at our fingertips, and to the comfort of our homes via our montly subscription to access the internet.
+
+Okay okay, no more cheesy paragraphs. Let’s get straight to the point. I’m pretty sure you’ve all seen this little guy around your house somewhere.
+
+<Image
+    src="/images/blog/ont-router.jpg"
+    alt="The standard home-router."
+    width={800 / 2}
+    height={800 / 2}
+/>
+
+The proper term for these guys is an ONT/Router which most of the time means:
+
+-   It act as a modem (allowing you to connect your network to the outer-world via a fiber-optic-cable)
+-   It act as a router (allowing you to connect home devices to your network and let them communicate with each other)
+-   Finally, it provides a Wi-Fi access point to you and your family.
+
+For most people this device would be great, and it is! That’s why so many ISPs prefer to give one of these multipurpose devices instead of 3 different devices.
+
+# The Idea
+
+However, if you’re more technical, and have 3 servers in your attic, it can get really annoying that some of the options on your router's interface (such as preferred DNS servers, etc) are blocked by default to prevent you from bricking your entire home network, which I’ve done in the past.
+
+<Image
+    src="/images/blog/home-cluster.png"
+    alt="My home infastructure."
+    width={1295}
+    height={410}
+/>
+
+# The problem
+
+For the past month now, I’ve been having issues with my internet connection where it would work fine for a couple of days, and then randomly would just stop working. And I mean completely, dead. Sometimes I would be able to load one web page but then have to wait an obscene amount of time for the page to load, but most of the time it just times out. The last time it happened, I managed to run some tests in my network and saw that for every 10 packets that would be sent out from my router, 5 of them would be lost, which means a 50% packet loss!
+
+Obviously I was annoyed and every time this happened, I would ring up my ISP, and here is what they would say most of the time:
+
+<BlockQuote>
+    "Unfortunately sir, there is a major problem with our line in your area.
+    Please wait a couple of hours and it should come back."
+</BlockQuote>
+
+In those cases I just waited it out and then, low and behold, my internet would come back! However, I was working on my computer and this problem happened again, I thought it might have been another outage, so I decided to call them to check:
+
+<BlockQuote>
+    "Currently there are no reported outages in your area, I will have to run
+    some more tests but it looks like the latency is too high and most requests
+    time out."
+</BlockQuote>
+
+Latency is the problem?! I knew it. That 50% packet loss must mean there is a problem with my router, or the router on the other end, as later in the call they clarified that the fiber connection is stable.
+
+## Monitoring the problem
+
+About 7 days ago, I set up a simple raspberry pi with a couple of docker containers monitoring my internet connection by running a speedtest every 30 minutes, and then displaying it in a nice Grafana dashboard, and this is where I saw the real problem.
+
+<Image
+    src="/images/blog/monitoring-pi.png"
+    alt="Custom Grafana dashboard with metrics."
+    width={806 / 2}
+    height={683 / 2}
+/>
+
+Looking at these two points, we can see that there are moments where my speed goes relatively lower than normal. In addition, I looked at my router's metrics and thought about this:
+
+What if my router is running out of resources because:
+
+-   30 Wi-Fi Clients
+-   40 Wired Devices
+
+Considering this, a basic home network wouldn't have this many devices flowing through it, so I knew the problem might be that the router is too weak to handle all of this load, and I do have about 150GB of ram and 16 cores lying around unused in my server…
+
+<IdeaQuote>
+    Okay, a router doesn’t really need that much resources but this did give me
+    an idea. My current router is like a pet, it's restricted by default, really
+    simple, and a lot of maintenance is required when something goes wrong.
+    However, if I build the router myself, and use highly documented software, I
+    can freely configure any part of the router to my needs, and have it be part
+    of my cattle infrastructure.
+</IdeaQuote>
+
+# The new system
+
+When I bought Nucleus, I specifically made sure that 2 of the 4 ethernet ports in the server can be passed through to a virtual machine, and I already have a pfsense virtual machine created from a couple of months back.
+
+<Image
+    src="/images/blog/iommu-pci-device.png"
+    alt="IOMMU passthrough in Proxmox."
+    width={432}
+    height={201}
+/>
+
+# Getting everything working
+
+There are two _well-known_ ways to accomplish a setup like this:
+
+-   Connect fiber-optic cable directly to the VM
+-   <span className="text-blue-600">
+        Change router to bridge mode to connect to VM
+    </span> (This is the one I will talk about)
+
+<InfoQuote>
+    Bridge mode switches disabled the router and Wi-Fi modules to
+</InfoQuote>
+
+Getting a router into bridge mode can be different for the different models of routers that exists out there.

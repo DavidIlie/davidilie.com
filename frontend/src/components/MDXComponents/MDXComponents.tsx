@@ -4,6 +4,8 @@ import { HiOutlineInformationCircle, HiOutlineLightBulb } from "react-icons/hi";
 import { RiBubbleChartLine } from "react-icons/ri";
 import { FaQuoteLeft } from "react-icons/fa";
 import { TiWarningOutline } from "react-icons/ti";
+import Image, { ImageProps } from "next/image";
+import { shimmer } from "@lib/shimmer";
 
 import Tooltip from "@ui/Tooltip";
 
@@ -37,6 +39,32 @@ export const CustomLink = (props: CustomLinkProps) => {
         >
             {props.children}
         </a>
+    );
+};
+
+interface CustomImageProps {
+    border?: boolean;
+}
+
+export const CustomImage = ({
+    alt,
+    border,
+    ...props
+}: ImageProps & CustomImageProps): JSX.Element => {
+    return (
+        <div className="flex-col justify-center w-full blog-image">
+            <div className="flex justify-center blog-image">
+                <Image
+                    alt={alt}
+                    {...props}
+                    placeholder="blur"
+                    blurDataURL={shimmer(1920, 1080)}
+                />
+            </div>
+            <h1 className="text-center font-semibold mt-2 text-gray-300 blog-image">
+                {alt}
+            </h1>
+        </div>
     );
 };
 

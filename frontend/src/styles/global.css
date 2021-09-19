@@ -136,8 +136,9 @@ html[class="dark"] .footerBackground {
     animation-iteration-count: infinite;
 }
 
-.blog-content *:not(svg, h1, h2, h3, h4, h5, h6, a, .codeEditorTitle) {
-    margin-top: 1.1em !important;
+.blog-content
+    *:not(svg, h1, h2, h3, h4, h5, h6, a, .codeEditorTitle, .blog-image) {
+    margin-top: 1em !important;
 }
 
 .blog-content h1 {
