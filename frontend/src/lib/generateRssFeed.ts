@@ -49,6 +49,7 @@ export const generateRssFeed = async () => {
             link: url,
             description: post.summary,
             content: [...post.tags] as any,
+            image: post.image,
             author: [author],
             contributor: [author],
             date: new Date(post.publishedAt),
