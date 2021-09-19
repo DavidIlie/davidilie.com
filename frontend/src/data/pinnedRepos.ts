@@ -8,12 +8,12 @@ export interface PinnedRepoType {
 
 export const pinnedRepos: PinnedRepoType[] = [
     {
-        image: "https://camo.githubusercontent.com/09e8c935231f1dd0851cf5ea950f12fc975e8863b1199ec148ba843e426e3802/68747470733a2f2f73332e67696679752e636f6d2f696d616765732f6e6f726d616c2d6170706c69636174696f6e2e676966",
-        name: "Cow App",
-        id: "cow-app",
-        language: "Python",
+        image: "https://user-images.githubusercontent.com/47594764/133920730-573c74c2-ad29-416e-9e88-fad7d7abddc3.gif",
+        name: "ShareX Media Server",
+        id: "sharex-media-server",
+        language: "Typescript",
         description:
-            "As part of my preparation for my IGCSE Computer Science Exam, I was asked to produce an application which keeps track of the yeilds a farmer would do. However, I over engineered this basic concept in order to advance my knowledge of Python.",
+            "I've always wanted a good way to store screenshots/files/etc on my server and not on my computer. When I discovered ShareX (and it's custom uploader feature), I knew I wanted to create my own advanced uploader with support for all upload types, and a nice frontend to go with it.",
     },
     {
         image: "https://user-images.githubusercontent.com/47594764/122973725-d6a83a80-d391-11eb-8e23-ba35a1c1f234.png",

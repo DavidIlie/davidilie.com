@@ -118,7 +118,7 @@ const ProjectImage = ({ link }: { link: string }) => {
         <Image
             className="w-full object-cover md:h-full md:w-96"
             height="400px"
-            width="1250px"
+            width="1500px"
             blurDataURL={shimmer(1920, 1080)}
             placeholder="blur"
             src={link}
