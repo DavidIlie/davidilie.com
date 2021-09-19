@@ -15,7 +15,7 @@ export const LinkButton = ({
 }: Partial<LinkButtonProps>): JSX.Element => {
     return (
         <button
-            className={`bg-gray-500 dark:bg-gray-700 dark:hover:bg-blue-500 duration-200 p-2 rounded-xl ${className}`}
+            className={`inline-flex bg-blue-500 dark:bg-blue-900 dark:hover:bg-blue-800 duration-200 p-2 rounded-xl ${className}`}
         >
             <a
                 href={link}

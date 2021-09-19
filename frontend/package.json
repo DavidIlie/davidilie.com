@@ -16,6 +16,7 @@
         "@tippyjs/react": "^4.2.5",
         "axios": "^0.21.1",
         "date-fns": "^2.22.1",
+        "feed": "^4.2.2",
         "formik": "^2.2.9",
         "framer-motion": "^4.1.17",
         "gray-matter": "^4.0.3",

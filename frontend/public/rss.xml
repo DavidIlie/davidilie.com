@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>The David Ones</title>
+        <link>https://davidilie.com</link>
+        <description>A 15 year old aspiring web developer experimenting with programming by publishing my work on the web.</description>
+        <lastBuildDate>Sun, 19 Sep 2021 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/davidilie/davidilie.com</generator>
+        <image>
+            <title>The David Ones</title>
+            <url>https://davidilie.com/images/png/me.png</url>
+            <link>https://davidilie.com</link>
+        </image>
+        <copyright>All rights reserved 2021, David Ilie Apps Platform</copyright>
+        <item>
+            <title><![CDATA[Your home router sucks! Replace it with pfSense!]]></title>
+            <link>https://davidilie.com/blog/replace-your-home-router-with-pfsense</link>
+            <guid>https://davidilie.com/blog/replace-your-home-router-with-pfsense</guid>
+            <pubDate>Sun, 19 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Recently, I decided to switch from my standard cheap home router, to a custom virtual machine running pfSense on my server. This blog post will contain all the hurdles and issues that I went through, and how you can setup this up for yourself!]]></description>
+            <content:encoded><![CDATA[Home Network]]><![CDATA[pfSense]]><![CDATA[Open Source]]></content:encoded>
+            <author>david@davidilie.com (David Ilie)</author>
+        </item>
+        <item>
+            <title><![CDATA[How I persist live data in Next.js without waiting for async requests.]]></title>
+            <link>https://davidilie.com/blog/how-i-persist-live-data-across-my-nextjs-app</link>
+            <guid>https://davidilie.com/blog/how-i-persist-live-data-across-my-nextjs-app</guid>
+            <pubDate>Sat, 11 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[While working on one of my projects, I came across a problem with fetching dynamic data from my API. The problem was that I didn't want to do the request on every render, just when I wanted it to be fetched.]]></description>
+            <content:encoded><![CDATA[Next.js]]><![CDATA[State Management]]><![CDATA[Web Development]]></content:encoded>
+            <author>david@davidilie.com (David Ilie)</author>
+        </item>
+        <item>
+            <title><![CDATA[Welcome to my Blog! - The backstory, How it works, etc.]]></title>
+            <link>https://davidilie.com/blog/welcome-to-my-blog-and-how-it-works</link>
+            <guid>https://davidilie.com/blog/welcome-to-my-blog-and-how-it-works</guid>
+            <pubDate>Thu, 24 Jun 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[This is my first ever blog post on this website! On this blog post I completely document how the Blog post works, to the seeing how many views it has to storing the actual blog post in the first place. Worth a read!]]></description>
+            <content:encoded><![CDATA[Blogging]]><![CDATA[Web Development]]><![CDATA[Next.JS]]><![CDATA[MDX]]></content:encoded>
+            <author>david@davidilie.com (David Ilie)</author>
+        </item>
+    </channel>
+</rss>

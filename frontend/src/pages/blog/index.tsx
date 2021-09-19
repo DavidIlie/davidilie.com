@@ -1,29 +1,20 @@
 import { GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
 import { getAllFilesFrontMatter } from "@lib/mdx";
-import {
-    AiOutlineSearch,
-    AiOutlineArrowUp,
-    AiOutlineArrowDown,
-} from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
+import { FiRss } from "react-icons/fi";
 import { MdClear } from "react-icons/md";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Fade } from "react-awesome-reveal";
 
 import BlogPost from "@components/BlogPost";
 import Tooltip from "@ui/Tooltip";
+import LinkButton from "@components/LinkButton";
+
+import { generateRssFeed } from "@lib/generateRssFeed";
 
 function Blog({ posts }: { posts: any }): JSX.Element {
     const [filter, setFilter] = useState<string>("");
-    const [open, setOpen] = useState<boolean>(false);
-    const [pageWidth, setPageWidth] = useState<number>(0);
-
-    useEffect(() => {
-        setPageWidth(window.innerWidth);
-        window.addEventListener("resize", () => {
-            setPageWidth(window.innerWidth);
-        });
-    }, [pageWidth]);
 
     const filteredBlogPosts = posts
         .filter(
@@ -43,53 +34,25 @@ function Blog({ posts }: { posts: any }): JSX.Element {
     return (
         <>
             <NextSeo title="Blog" />
-            {pageWidth >= 900 && (
-                <div className="z-50 bottom-0 right-0 fixed mr-24">
-                    <h1
-                        onClick={() => setOpen(!open)}
-                        className="cursor-pointer inline-flex items-center gap-2 duration-200 text-section p-2 px-4 rounded-t-xl bg-blue-300 dark:bg-blue-800 dark:hover:bg-blue-900 hover:bg-blue-400 text-blue-900 dark:text-blue-100"
-                    >
-                        Did you know
-                        {open ? (
-                            <AiOutlineArrowDown className="mt-1" />
-                        ) : (
-                            <AiOutlineArrowUp className="mt-1" />
-                        )}
-                    </h1>
-                    {open && (
-                        <div
-                            className="bg-gray-800 p-2 py-4"
-                            style={{ maxWidth: "11.5rem" }}
-                        >
-                            <h1 className="text-blue-200">
-                                The blog page can also be accessed from{" "}
-                                <a
-                                    href="https://thedavidones.live"
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="duration-200 text-blue-500 hover:text-blue-600 hover:underline cursor-pointer"
-                                >
-                                    thedavidones.live
-                                </a>
-                                !
-                            </h1>
-                        </div>
-                    )}
-                </div>
-            )}
-
             <div className="flex flex-col pt-28 pb-10 px-2 w-full min-h-screen mx-auto max-w-4xl text-black dark:text-white">
                 <Fade direction="up" triggerOnce>
                     <h1 className="text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
                         The David Ones
                     </h1>
-                    <p className="text-center text-section mb-5 px-12">
+                    <p className="text-center text-section px-12">
                         I&apos;ve been writing blog posts since 2020, mostly
                         about my random technologic encounters during my
                         day-to-day life. Currently there are {posts.length} blog
                         post
                         {posts.length > 1 && "s"}.
                     </p>
+                    <div className="flex justify-center my-3 mb-4">
+                        <LinkButton
+                            link="/rss.xml"
+                            Icon={FiRss}
+                            text="Subscribe via RSS"
+                        />
+                    </div>
                     <div className="mb-6 px-3">
                         <div>
                             {filter === "" ? (
@@ -161,6 +124,8 @@ function Blog({ posts }: { posts: any }): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+    await generateRssFeed();
+
     const posts = await getAllFilesFrontMatter();
     return { props: { posts } };
 };
