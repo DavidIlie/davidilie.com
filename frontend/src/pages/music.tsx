@@ -2,11 +2,13 @@ import { useQuery } from "react-query";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import { Fade } from "react-awesome-reveal";
+import { FaSpotify } from "react-icons/fa";
 
-import TopArtists from "@modules/music/TopArtists";
-import CurrentPlaying from "@modules/music/CurrentlyPlaying";
+import CurrrentlyPlaying from "@modules/music/CurrentlyPlaying";
 import TopSongs from "@modules/music/TopSongs";
 import RecentSongs from "@modules/music/RecentSongs";
+
+import LinkButton from "@components/LinkButton";
 
 import { MusicData } from "@interfaces/MusicData";
 
@@ -41,64 +43,68 @@ function Music({ data, error }: MusicProps) {
     return (
         <>
             <NextSeo title="Music" />
-            <div className="text-black dark:text-white pt-32 pb-32">
+            <div className="text-black dark:text-white pt-32 pb-12">
                 <Fade direction="up" triggerOnce cascade>
                     <h1 className="2xl:text-6xl xl:text-6xl md:text-5xl lg:text-4xl sm:text-4xl text-4xl text-center font-bold header-gradient">
-                        Here is the music I listen.
+                        Here is the music I listen to.
                     </h1>
-                </Fade>
-                <Fade delay={500} direction="up" triggerOnce cascade>
-                    <h1 className="text-center text-section mb-16">
+                    <h1 className="text-center text-section mb-4">
                         I&apos;m a little{" "}
-                        <span className="font-semibold text-green-400 dark:text-green-600">
-                            classic
+                        <span className="font-semibold header-gradient">
+                            random
                         </span>{" "}
                         when it comes to{" "}
-                        <span className="font-semibold text-green-400 dark:text-green-600">
+                        <span className="font-semibold header-gradient">
                             music
                         </span>
                         .
                     </h1>
+                    <div className="flex justify-center mb-6">
+                        <LinkButton
+                            link="https://open.spotify.com/user/e1lg6nepjzvt6rjhfey78hqan"
+                            Icon={FaSpotify}
+                            text="See my profile"
+                        />
+                    </div>
                 </Fade>
-                <div
-                    className={`flex justify-center flex-wrap 2xl:space-x-32 xl:space-x-32 md:space-x-32 2xl:mb-16 xl:mb-16 md:mb-16`}
-                >
-                    <Fade delay={600} triggerOnce cascade>
-                        <div className="2xl:mb-0 xl:mb-0 md:mb-0 lg:mb-0 mb-12">
-                            <h1 className="header-gradient text-4xl font-semibold text-center mb-10">
-                                Top Artists
-                            </h1>
-                            <TopArtists artists={data.artists} />
-                        </div>
-                    </Fade>
-                    <Fade delay={1100} triggerOnce cascade>
-                        <div>
-                            <h1 className="header-gradient text-4xl font-semibold text-center mb-5">
-                                Currently Listening
-                            </h1>
-                            <CurrentPlaying song={currentlyPlaying} />
-                        </div>
-                    </Fade>
-                </div>
-                <div className="flex justify-center items-center mt-10 2xl:space-x-6 xl:space-x-6 md:space-x-6 lg:space-x-6 flex-wrap">
-                    <Fade delay={1200} triggerOnce cascade>
-                        <div>
-                            <h1 className="header-gradient text-4xl font-semibold text-center mb-3">
-                                Top Played Songs
-                            </h1>
-                            <TopSongs songs={data.songs.items} />
-                        </div>
-                    </Fade>
 
-                    <Fade delay={1700} triggerOnce cascade>
-                        <div>
-                            <h1 className="header-gradient text-4xl font-semibold text-center mb-3">
-                                Recently Played
-                            </h1>
-                            <RecentSongs songs={data.recentlyPlayed.items} />
+                <Fade delay={1100} triggerOnce cascade>
+                    <div className="mb-5">
+                        <h1 className="header-gradient text-4xl font-semibold text-center">
+                            Currently Listening
+                        </h1>
+                        <div className="max-w-screen-sm mx-auto p-2">
+                            <CurrrentlyPlaying song={currentlyPlaying} />
                         </div>
-                    </Fade>
-                </div>
+                    </div>
+                </Fade>
+
+                <Fade delay={1200} triggerOnce cascade>
+                    <div className="mb-5">
+                        <h1 className="header-gradient text-4xl font-semibold text-center mb-3">
+                            Recently Played Songs
+                        </h1>
+                        <div className="flex justify-center">
+                            <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4 mx-auto p-2">
+                                <RecentSongs
+                                    songs={data.recentlyPlayed.items}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </Fade>
+                <Fade delay={1200} triggerOnce cascade>
+                    <>
+                        <h1 className="header-gradient text-4xl font-semibold text-center mb-3">
+                            Top Played Songs
+                        </h1>
+                        <div className="flex justify-center">
+                            <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4 mx-auto p-2">
+                                <TopSongs songs={data.songs.items} />
+                            </div>
+                        </div>
+                    </>
+                </Fade>
             </div>
         </>
     );

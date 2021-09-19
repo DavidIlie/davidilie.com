@@ -30,7 +30,7 @@ const SongCard = ({
                                 titleCard ? `150px` : `110px`
                             } 1fr`,
                         }}
-                        className="grid my-5 p-5 overflow-visible max-w-xl bg-gray-100 border-gray-200 dark:bg-gray-800 border-2 dark:border-gray-700 shadow-lg duration-200 rounded-2xl hover:shadow-xl hoverItem cursor-pointer"
+                        className="grid my-1 p-5 overflow-visible max-w-xl bg-gray-100 border-gray-200 dark:bg-gray-800 border-2 dark:border-gray-700 shadow-lg duration-200 rounded-2xl hover:shadow-xl hoverItem cursor-pointer"
                     >
                         <div
                             //@ts-ignore

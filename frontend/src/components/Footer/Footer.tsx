@@ -48,7 +48,7 @@ export const Footer = () => {
                             </Tooltip>
                             <span className="mx-1"> - </span>
                             <a
-                                href="https://open.spotify.com/user/6ugu6jpzmviq5wvp06gb73gds?si=9d56dc1fe4a14559"
+                                href="https://open.spotify.com/user/e1lg6nepjzvt6rjhfey78hqan"
                                 target="_blank"
                                 rel="noreferrer"
                                 className="text-green-500 dark:text-green-700 font-bold"
