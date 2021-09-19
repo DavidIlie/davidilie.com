@@ -1,11 +1,11 @@
 ---
-title: "Your home router is too basic! Replace it with pfSense!"
+title: "Your home router sucks! Replace it with pfSense!"
 publishedAt: "2021-09-19"
 summary: "Recently, I decided to switch from my standard cheap home router, to a custom virtual machine running pfSense on my server. This blog post will contain all the hurdles and issues that I went through, and how you can setup this up for yourself!"
 tags: ["Home Network", "pfSense", "Open Source"]
 by: { name: "David Alexandru Ilie", avatar: "/images/png/me.png" }
 image: "https://s3.davidapps.dev/davidilie-blog/assets/1450fece-7e8d-4603-93f5-48531cd6e736.png"
-published: false
+published: true
 ---
 
 # Introduction
@@ -101,7 +101,7 @@ When I bought Nucleus, I specifically made sure that 2 of the 4 ethernet ports i
     height={201}
 />
 
-# Getting everything working
+# Prerequisites
 
 There are two _well-known_ ways to accomplish a setup like this:
 
@@ -111,9 +111,71 @@ There are two _well-known_ ways to accomplish a setup like this:
     </span> (This is the one I will talk about)
 
 <InfoQuote>
-    Bridge mode disableds the router and Wi-Fi portions and only leaves the
-    mode, exposing it to the first ethernet jack to be able to plugged in to
-    another router and so on.
+    Bridge mode disables the built-in router and Wi-Fi portions and only leaves
+    the modem, exposing it to the connection to a ethernet port to be able to
+    plugged in to another router and so on.
 </InfoQuote>
 
-Getting a router into bridge mode can be different for the different models of routers that exists out there.
+Getting a router into bridge mode can be relatively differnet so I won't tell you how to do it. But if you can't see it in your router's web page or you can't modifiy it, you can call your ISP like I did.
+
+In my case, they immediately put my router in bridge mode, meaning I lost access to the internet.
+
+# Connecting the WAN and LAN ports
+
+When my ISP routed my fiber cable a year ago, they decided to put it under my desk, which is not very useful when my server is in my attic. Thankfully, I already had an ethernet cable going up there for my servers so I decided to re-use that one.
+
+<Image
+    src="/images/blog/server-wan-lan.jpg"
+    alt="My WAN and LAN cables connected to my server."
+    width={1448 / 3}
+    height={1086 / 3}
+/>
+
+Yes, my servers are sitting on a box. Don't make fun of me!
+
+Then you need to connect the LAN cable to your main switch so that other clients can connect to pfSense's LAN.
+
+<Image
+    src="/images/blog/home-switch.jpg"
+    alt={`My "main" switch connecting my home to the internet.`}
+    width={1448 / 3}
+    height={1086 / 3}
+/>
+
+With that done, we can then pass through those two ports to the virtual machine and start the VM!
+
+# Configuring the Virtual Machine
+
+There is not much that I can show you as it would
+
+-   Show private information about my server
+-   Every setup is different!
+    -   My configuration might not work for you!
+
+Because of this, I recommend you to follow some tutorials online to get your router configured. I recommend this video below by [NetworkChuck](https://www.youtube.com/c/NetworkChuck) as it clearly shows how to configure pfSense to your needs.
+
+<div className="flex justify-center blog-image">
+    <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/lUzSsX4T4WQ"
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+    ></iframe>
+</div>
+
+# Conclusion
+
+By fully taking control of your router, it enables more capabilities than what you had before (granted, there are now risks of bricking your internet). Here are some key things I did to my pfSense install to protect my home network
+
+-   You can change default DNS servers to anything you want (like Pi-Hole)
+-   You can add custom plugins like WireGuard or OpenVPN and have them running externally instead of internally
+-   You can add custom firewalls like pfBlockerNG which is perfect for blocking requests
+
+and so much more...
+
+Anyways, hope you enjoyed this blog post. This is actually a modified script of a video that I will post of my [channel](https://www.youtube.com/channel/UC92hn9Y8WcY_5LribMDW8uA) soon (keep an eye out for that), I also will start making blog posts for every single video that I post, so that you can have a readable version of my video.
+
+Cheers!
