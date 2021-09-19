@@ -30,7 +30,7 @@ export const BlogPost = ({
     by,
     featured,
 }: BlogPostProps): JSX.Element => {
-    const { data } = useQuery(`stats-${slug}`, () => {
+    const { data } = useQuery(`stats${slug}`, () => {
         return fetch(`/api/blog/get/${slug}`).then((res) => res.json());
     });
     const views = data?.views;
@@ -50,7 +50,7 @@ export const BlogPost = ({
             <Link href={`/blog/${slug}`} passHref>
                 <article
                     className={`${
-                        featured && "mt-8 rounded-tl-sm"
+                        featured && "mt-11 rounded-tl-sm"
                     } mx-3 cursor-pointer bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl flex justify-center gap-4 transform hover:-translate-y-1 duration-200 flex-wrap md:flex-nowrap mb-4 md:px-3 md:py-2`}
                 >
                     <h1
