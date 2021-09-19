@@ -37,7 +37,7 @@ function Blog({ posts }: { posts: any }): JSX.Element {
         <>
             <NextSeo title="Blog" />
             {pageWidth >= 900 && (
-                <div className="bottom-0 right-0 fixed mr-24">
+                <div className="z-50 bottom-0 right-0 fixed mr-24">
                     <h1
                         onClick={() => setOpen(!open)}
                         className="cursor-pointer inline-flex items-center gap-2 duration-200 text-section p-2 px-4 rounded-t-xl bg-blue-300 dark:bg-blue-800 dark:hover:bg-blue-900 hover:bg-blue-400 text-blue-900 dark:text-blue-100"
