@@ -21,7 +21,7 @@
         <link href="https://davidilie.com/blog/replace-your-home-router-with-pfsense"/>
         <updated>2021-09-19T08:12:14.000Z</updated>
         <summary type="html"><![CDATA[Recently, I decided to switch from my standard cheap home router, to a custom virtual machine running pfSense on my server. This blog post will contain all the hurdles and issues that I went through, and how you can setup this up for yourself!]]></summary>
-        <content type="html"><![CDATA[Home Network]]><![CDATA[pfSense]]><![CDATA[Open Source]]></content>
+        <content type="html"><![CDATA[Home Network, pfSense, Open Source]]></content>
         <author>
             <name>David Ilie</name>
             <email>david@davidilie.com</email>
@@ -39,7 +39,7 @@
         <link href="https://davidilie.com/blog/how-i-persist-live-data-across-my-nextjs-app"/>
         <updated>2021-09-11T10:56:40.000Z</updated>
         <summary type="html"><![CDATA[While working on one of my projects, I came across a problem with fetching dynamic data from my API. The problem was that I didn't want to do the request on every render, just when I wanted it to be fetched.]]></summary>
-        <content type="html"><![CDATA[Next.js]]><![CDATA[State Management]]><![CDATA[Web Development]]></content>
+        <content type="html"><![CDATA[Next.js, State Management, Web Development]]></content>
         <author>
             <name>David Ilie</name>
             <email>david@davidilie.com</email>
@@ -57,7 +57,7 @@
         <link href="https://davidilie.com/blog/welcome-to-my-blog-and-how-it-works"/>
         <updated>2021-06-24T17:38:32.000Z</updated>
         <summary type="html"><![CDATA[This is my first ever blog post on this website! On this blog post I completely document how the Blog post works, to the seeing how many views it has to storing the actual blog post in the first place. Worth a read!]]></summary>
-        <content type="html"><![CDATA[Blogging]]><![CDATA[Web Development]]><![CDATA[Next.JS]]><![CDATA[MDX]]></content>
+        <content type="html"><![CDATA[Blogging, Web Development, Next.JS, MDX]]></content>
         <author>
             <name>David Ilie</name>
             <email>david@davidilie.com</email>

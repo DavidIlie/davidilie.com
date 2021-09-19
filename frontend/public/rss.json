@@ -12,11 +12,7 @@
     "items": [
         {
             "id": "https://davidilie.com/blog/replace-your-home-router-with-pfsense",
-            "content_html": [
-                "Home Network",
-                "pfSense",
-                "Open Source"
-            ],
+            "content_html": "Home Network, pfSense, Open Source",
             "url": "https://davidilie.com/blog/replace-your-home-router-with-pfsense",
             "title": "Your home router sucks! Replace it with pfSense!",
             "summary": "Recently, I decided to switch from my standard cheap home router, to a custom virtual machine running pfSense on my server. This blog post will contain all the hurdles and issues that I went through, and how you can setup this up for yourself!",
@@ -29,11 +25,7 @@
         },
         {
             "id": "https://davidilie.com/blog/how-i-persist-live-data-across-my-nextjs-app",
-            "content_html": [
-                "Next.js",
-                "State Management",
-                "Web Development"
-            ],
+            "content_html": "Next.js, State Management, Web Development",
             "url": "https://davidilie.com/blog/how-i-persist-live-data-across-my-nextjs-app",
             "title": "How I persist live data in Next.js without waiting for async requests.",
             "summary": "While working on one of my projects, I came across a problem with fetching dynamic data from my API. The problem was that I didn't want to do the request on every render, just when I wanted it to be fetched.",
@@ -46,12 +38,7 @@
         },
         {
             "id": "https://davidilie.com/blog/welcome-to-my-blog-and-how-it-works",
-            "content_html": [
-                "Blogging",
-                "Web Development",
-                "Next.JS",
-                "MDX"
-            ],
+            "content_html": "Blogging, Web Development, Next.JS, MDX",
             "url": "https://davidilie.com/blog/welcome-to-my-blog-and-how-it-works",
             "title": "Welcome to my Blog! - The backstory, How it works, etc.",
             "summary": "This is my first ever blog post on this website! On this blog post I completely document how the Blog post works, to the seeing how many views it has to storing the actual blog post in the first place. Worth a read!",

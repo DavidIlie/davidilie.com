@@ -19,7 +19,7 @@
             <guid>https://davidilie.com/blog/replace-your-home-router-with-pfsense</guid>
             <pubDate>Sun, 19 Sep 2021 08:12:14 GMT</pubDate>
             <description><![CDATA[Recently, I decided to switch from my standard cheap home router, to a custom virtual machine running pfSense on my server. This blog post will contain all the hurdles and issues that I went through, and how you can setup this up for yourself!]]></description>
-            <content:encoded><![CDATA[Home Network]]><![CDATA[pfSense]]><![CDATA[Open Source]]></content:encoded>
+            <content:encoded><![CDATA[Home Network, pfSense, Open Source]]></content:encoded>
             <author>david@davidilie.com (David Ilie)</author>
             <enclosure url="https://s3.davidapps.dev/davidilie-blog/assets/1450fece-7e8d-4603-93f5-48531cd6e736.png" length="0" type="image/png"/>
         </item>
@@ -29,7 +29,7 @@
             <guid>https://davidilie.com/blog/how-i-persist-live-data-across-my-nextjs-app</guid>
             <pubDate>Sat, 11 Sep 2021 10:56:40 GMT</pubDate>
             <description><![CDATA[While working on one of my projects, I came across a problem with fetching dynamic data from my API. The problem was that I didn't want to do the request on every render, just when I wanted it to be fetched.]]></description>
-            <content:encoded><![CDATA[Next.js]]><![CDATA[State Management]]><![CDATA[Web Development]]></content:encoded>
+            <content:encoded><![CDATA[Next.js, State Management, Web Development]]></content:encoded>
             <author>david@davidilie.com (David Ilie)</author>
             <enclosure url="https://s3.davidapps.dev/davidilie-blog/assets/2cd843dc-fa3b-4818-8058-18ff368f7af4.png" length="0" type="image/png"/>
         </item>
@@ -39,7 +39,7 @@
             <guid>https://davidilie.com/blog/welcome-to-my-blog-and-how-it-works</guid>
             <pubDate>Thu, 24 Jun 2021 17:38:32 GMT</pubDate>
             <description><![CDATA[This is my first ever blog post on this website! On this blog post I completely document how the Blog post works, to the seeing how many views it has to storing the actual blog post in the first place. Worth a read!]]></description>
-            <content:encoded><![CDATA[Blogging]]><![CDATA[Web Development]]><![CDATA[Next.JS]]><![CDATA[MDX]]></content:encoded>
+            <content:encoded><![CDATA[Blogging, Web Development, Next.JS, MDX]]></content:encoded>
             <author>david@davidilie.com (David Ilie)</author>
             <enclosure url="https://s3.davidapps.dev/davidilie-blog/assets/4db21e98-17b3-4137-b0a8-b2eac3fca7ea.png" length="0" type="image/png"/>
         </item>

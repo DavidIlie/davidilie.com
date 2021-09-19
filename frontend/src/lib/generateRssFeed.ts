@@ -43,12 +43,14 @@ export const generateRssFeed = async () => {
     filteredBlogPosts.forEach((post) => {
         const url = `${siteURL}/blog/${post.slug}`;
 
+        let tags = post.tags.join(", ");
+
         feed.addItem({
             title: post.title,
             id: url,
             link: url,
             description: post.summary,
-            content: [...post.tags] as any,
+            content: tags,
             image: post.image,
             author: [author],
             contributor: [author],
