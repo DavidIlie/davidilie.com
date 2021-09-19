@@ -37,7 +37,7 @@
         <title type="html"><![CDATA[How I persist live data in Next.js without waiting for async requests.]]></title>
         <id>https://davidilie.com/blog/how-i-persist-live-data-across-my-nextjs-app</id>
         <link href="https://davidilie.com/blog/how-i-persist-live-data-across-my-nextjs-app"/>
-        <updated>2021-09-11T10:56:04.000Z</updated>
+        <updated>2021-09-11T10:56:40.000Z</updated>
         <summary type="html"><![CDATA[While working on one of my projects, I came across a problem with fetching dynamic data from my API. The problem was that I didn't want to do the request on every render, just when I wanted it to be fetched.]]></summary>
         <content type="html"><![CDATA[Next.js]]><![CDATA[State Management]]><![CDATA[Web Development]]></content>
         <author>
