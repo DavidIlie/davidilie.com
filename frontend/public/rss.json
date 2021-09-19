@@ -21,7 +21,7 @@
             "title": "Your home router sucks! Replace it with pfSense!",
             "summary": "Recently, I decided to switch from my standard cheap home router, to a custom virtual machine running pfSense on my server. This blog post will contain all the hurdles and issues that I went through, and how you can setup this up for yourself!",
             "image": "https://s3.davidapps.dev/davidilie-blog/assets/1450fece-7e8d-4603-93f5-48531cd6e736.png",
-            "date_modified": "2021-09-19T00:00:00.000Z",
+            "date_modified": "2021-09-19T08:12:14.000Z",
             "author": {
                 "name": "David Ilie",
                 "url": "https://davidilie.com"
@@ -38,7 +38,7 @@
             "title": "How I persist live data in Next.js without waiting for async requests.",
             "summary": "While working on one of my projects, I came across a problem with fetching dynamic data from my API. The problem was that I didn't want to do the request on every render, just when I wanted it to be fetched.",
             "image": "https://s3.davidapps.dev/davidilie-blog/assets/2cd843dc-fa3b-4818-8058-18ff368f7af4.png",
-            "date_modified": "2021-09-11T00:00:00.000Z",
+            "date_modified": "2021-09-11T10:56:04.000Z",
             "author": {
                 "name": "David Ilie",
                 "url": "https://davidilie.com"
@@ -56,7 +56,7 @@
             "title": "Welcome to my Blog! - The backstory, How it works, etc.",
             "summary": "This is my first ever blog post on this website! On this blog post I completely document how the Blog post works, to the seeing how many views it has to storing the actual blog post in the first place. Worth a read!",
             "image": "https://s3.davidapps.dev/davidilie-blog/assets/4db21e98-17b3-4137-b0a8-b2eac3fca7ea.png",
-            "date_modified": "2021-06-24T00:00:00.000Z",
+            "date_modified": "2021-06-24T17:38:32.000Z",
             "author": {
                 "name": "David Ilie",
                 "url": "https://davidilie.com"
