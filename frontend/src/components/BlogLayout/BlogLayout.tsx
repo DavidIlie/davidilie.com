@@ -22,6 +22,10 @@ interface BlogLayoutProps {
             name: string;
         };
         image: string;
+        imageDimensions: {
+            height: number;
+            width: number;
+        };
         publishedAt: string;
         readingTime: {
             minutes: number;
@@ -124,13 +128,13 @@ export const BlogLayout = ({
                         <BlogViewCounter slug={frontMatter.slug} />
                     </h1>
                 </div>
-                <div className="mx-auto max-w-2xl">
+                <div className="mx-auto">
                     <Image
                         alt="Post picture"
                         className="rounded-xl shadow-xl"
                         src={frontMatter.image}
-                        width={1905 / 2}
-                        height={957 / 2}
+                        width={frontMatter.imageDimensions.width / 2}
+                        height={frontMatter.imageDimensions.height / 2}
                         blurDataURL={shimmer(1920, 1080)}
                         placeholder="blur"
                     />
