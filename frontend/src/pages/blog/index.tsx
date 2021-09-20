@@ -39,7 +39,7 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                     <h1 className="text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
                         The David Ones
                     </h1>
-                    <p className="text-center text-section px-12">
+                    <p className="text-center md:text-section md:px-12 px-6">
                         I&apos;ve been writing blog posts since 2020, mostly
                         about my random technologic encounters during my
                         day-to-day life. Currently there are {posts.length} blog
