@@ -97,27 +97,24 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                     <BlogPost {...filteredBlogPosts[0]} featured />
                 </Fade>
 
-                <div className="mt-5 grid sm:grid-cols-2 grid-cols-1 gap-2 md:px-4">
-                    {filteredBlogPosts.map(
-                        (frontMatter: any, index: number) => {
-                            const featured = index === 0;
-                            if (!featured) {
-                                return (
-                                    <Fade
-                                        direction="up"
-                                        key={frontMatter.title}
-                                        triggerOnce
-                                    >
+                <Fade direction="up" triggerOnce cascade>
+                    <div className="mt-5 grid sm:grid-cols-2 grid-cols-1 gap-2 md:px-4">
+                        {filteredBlogPosts.map(
+                            (frontMatter: any, index: number) => {
+                                const featured = index === 0;
+                                if (!featured) {
+                                    return (
                                         <BlogPost
+                                            key={index}
                                             {...frontMatter}
                                             feature={false}
                                         />
-                                    </Fade>
-                                );
+                                    );
+                                }
                             }
-                        }
-                    )}
-                </div>
+                        )}
+                    </div>
+                </Fade>
             </div>
         </>
     );
