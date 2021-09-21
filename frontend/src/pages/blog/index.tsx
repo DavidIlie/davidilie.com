@@ -89,13 +89,11 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                     </Fade>
                 )}
 
-                <Fade
-                    direction="up"
-                    key={filteredBlogPosts[0].title}
-                    triggerOnce
-                >
-                    <BlogPost {...filteredBlogPosts[0]} featured />
-                </Fade>
+                {filteredBlogPosts[0] && (
+                    <Fade direction="up" triggerOnce>
+                        <BlogPost {...filteredBlogPosts[0]} featured />
+                    </Fade>
+                )}
 
                 <Fade direction="up" triggerOnce cascade>
                     <div className="mt-5 grid sm:grid-cols-2 grid-cols-1 gap-2 md:px-4">
