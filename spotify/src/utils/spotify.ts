@@ -12,6 +12,10 @@ const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists?time_ran
 const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played?limit=10`;
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
+interface accessToken {
+    access_token: string;
+}
+
 const getAccessToken = async () => {
     const response = await fetch(TOKEN_ENDPOINT, {
         method: `POST`,
@@ -25,7 +29,7 @@ const getAccessToken = async () => {
         }),
     });
 
-    return response.json();
+    return response.json() as any as accessToken;
 };
 
 const getNowPlaying = async () => {

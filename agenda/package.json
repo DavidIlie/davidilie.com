@@ -11,20 +11,20 @@
     "author": "david@davidilie.com",
     "license": "ISC",
     "dependencies": {
-        "agenda": "^4.0.1",
-        "agendash": "^2.0.0",
+        "agenda": "^4.2.1",
+        "agendash": "^2.1.1",
         "cookie-parser": "^1.4.5",
         "cors": "^2.8.5",
         "dotenv": "^10.0.0",
         "express": "^4.17.1",
-        "helmet": "^4.4.1",
+        "helmet": "^4.6.0",
         "lodash": "^4.17.21",
-        "mongodb": "^3.6.3",
-        "monk": "^7.3.3",
+        "mongodb": "^4.1.2",
+        "monk": "^7.3.4",
         "morgan": "^1.10.0",
-        "node-fetch": "^2.6.1"
+        "node-fetch": "^3.0.0"
     },
     "devDependencies": {
-        "nodemon": "^2.0.7"
+        "nodemon": "^2.0.13"
     }
 }
