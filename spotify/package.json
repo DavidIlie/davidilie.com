@@ -16,7 +16,7 @@
         "express": "^4.17.1",
         "helmet": "^4.6.0",
         "morgan": "^1.10.0",
-        "node-fetch": "^3.0.0",
+        "node-fetch": "2.6.1",
         "querystring": "^0.2.1",
         "yup": "^0.32.9"
     },
@@ -27,6 +27,7 @@
         "@types/helmet": "^4.0.0",
         "@types/morgan": "^1.9.3",
         "@types/node": "^16.10.1",
+        "@types/node-fetch": "^2.5.12",
         "@types/yup": "^0.29.13",
         "nodemon": "^2.0.13",
         "ts-node": "^10.2.1",
