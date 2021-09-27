@@ -9,8 +9,8 @@ export interface PinnedRepoType {
 export const pinnedRepos: PinnedRepoType[] = [
     {
         image: "https://user-images.githubusercontent.com/47594764/133920730-573c74c2-ad29-416e-9e88-fad7d7abddc3.gif",
-        name: "ShareX Media Server",
-        id: "sharex-media-server",
+        name: "ShareX Upload Server",
+        id: "sharex-upload-server",
         language: "Typescript",
         description:
             "I've always wanted a good way to store screenshots/files/etc on my server and not on my computer. When I discovered ShareX (and it's custom uploader feature), I knew I wanted to create my own advanced uploader with support for all upload types, and a nice frontend to go with it.",
