@@ -118,7 +118,7 @@ export const devices: DeviceProps[] = [
         specs: [
             {
                 prefix: "Router",
-                suffix: "Huawei EG8145V5",
+                suffix: "pfSense Router",
             },
             {
                 prefix: "Network Type",
