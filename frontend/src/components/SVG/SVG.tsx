@@ -64,8 +64,10 @@ const GetColor = () => {
 export const SVG = ({
     stroke = false,
     color = `${
-        [`gray`, `indigo`, `blue`, `green`][Math.floor(Math.random() * 4)]
-    }-${GetColor()[Math.floor(Math.random() * 5)]}`,
+        [`indigo`, `blue`, `green`, `purple`, `gray`][
+            Math.floor(Math.random() * 5)
+        ]
+    }-${GetColor()[Math.floor(Math.random() * 4)]}`,
     zIndex = -500,
     width,
     icon,

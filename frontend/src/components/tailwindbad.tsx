@@ -1,17 +1,8 @@
-// all the colors that need to stay when the app is built in prod :))
+// tailwind bad so i need to define the classes in a file so that it will pick them up
 
 export default function tailwindbad() {
     return (
         <>
-            <h1 className="text-gray-100">screw you tailwind</h1>
-            <h1 className="text-gray-200">screw you tailwind</h1>
-            <h1 className="text-gray-300">screw you tailwind</h1>
-            <h1 className="text-gray-400">screw you tailwind</h1>
-            <h1 className="text-gray-500">screw you tailwind</h1>
-            <h1 className="text-gray-600">screw you tailwind</h1>
-            <h1 className="text-gray-700">screw you tailwind</h1>
-            <h1 className="text-gray-800">screw you tailwind</h1>
-            <h1 className="text-gray-900">screw you tailwind</h1>
             <h1 className="text-indigo-100">screw you tailwind</h1>
             <h1 className="text-indigo-200">screw you tailwind</h1>
             <h1 className="text-indigo-300">screw you tailwind</h1>
@@ -21,6 +12,15 @@ export default function tailwindbad() {
             <h1 className="text-indigo-700">screw you tailwind</h1>
             <h1 className="text-indigo-800">screw you tailwind</h1>
             <h1 className="text-indigo-900">screw you tailwind</h1>
+            <h1 className="text-purple-100">screw you tailwind</h1>
+            <h1 className="text-purple-200">screw you tailwind</h1>
+            <h1 className="text-purple-300">screw you tailwind</h1>
+            <h1 className="text-purple-400">screw you tailwind</h1>
+            <h1 className="text-purple-500">screw you tailwind</h1>
+            <h1 className="text-purple-600">screw you tailwind</h1>
+            <h1 className="text-purple-700">screw you tailwind</h1>
+            <h1 className="text-purple-800">screw you tailwind</h1>
+            <h1 className="text-purple-900">screw you tailwind</h1>
             <h1 className="text-blue-100">screw you tailwind</h1>
             <h1 className="text-blue-200">screw you tailwind</h1>
             <h1 className="text-blue-300">screw you tailwind</h1>
@@ -39,6 +39,24 @@ export default function tailwindbad() {
             <h1 className="text-green-700">screw you tailwind</h1>
             <h1 className="text-green-800">screw you tailwind</h1>
             <h1 className="text-green-900">screw you tailwind</h1>
+            <h1 className="text-purple-100">screw you tailwind</h1>
+            <h1 className="text-purple-200">screw you tailwind</h1>
+            <h1 className="text-purple-300">screw you tailwind</h1>
+            <h1 className="text-purple-400">screw you tailwind</h1>
+            <h1 className="text-purple-500">screw you tailwind</h1>
+            <h1 className="text-purple-600">screw you tailwind</h1>
+            <h1 className="text-purple-700">screw you tailwind</h1>
+            <h1 className="text-purple-800">screw you tailwind</h1>
+            <h1 className="text-purple-900">screw you tailwind</h1>
+            <h1 className="text-gray-100">screw you tailwind</h1>
+            <h1 className="text-gray-200">screw you tailwind</h1>
+            <h1 className="text-gray-300">screw you tailwind</h1>
+            <h1 className="text-gray-400">screw you tailwind</h1>
+            <h1 className="text-gray-500">screw you tailwind</h1>
+            <h1 className="text-gray-600">screw you tailwind</h1>
+            <h1 className="text-gray-700">screw you tailwind</h1>
+            <h1 className="text-gray-800">screw you tailwind</h1>
+            <h1 className="text-gray-900">screw you tailwind</h1>
             <h1 className="text-red-100">screw you tailwind</h1>
             <h1 className="text-red-200">screw you tailwind</h1>
             <h1 className="text-red-300">screw you tailwind</h1>
@@ -48,61 +66,6 @@ export default function tailwindbad() {
             <h1 className="text-red-700">screw you tailwind</h1>
             <h1 className="text-red-800">screw you tailwind</h1>
             <h1 className="text-red-900">screw you tailwind</h1>
-            <h1 className="text-yellow-100">screw you tailwind</h1>
-            <h1 className="text-yellow-200">screw you tailwind</h1>
-            <h1 className="text-yellow-300">screw you tailwind</h1>
-            <h1 className="text-yellow-400">screw you tailwind</h1>
-            <h1 className="text-yellow-500">screw you tailwind</h1>
-            <h1 className="text-yellow-600">screw you tailwind</h1>
-            <h1 className="text-yellow-700">screw you tailwind</h1>
-            <h1 className="text-yellow-800">screw you tailwind</h1>
-            <h1 className="text-yellow-900">screw you tailwind</h1>
-            <h1 className="bg-gray-100">screw you tailwind</h1>
-            <h1 className="bg-gray-200">screw you tailwind</h1>
-            <h1 className="bg-gray-300">screw you tailwind</h1>
-            <h1 className="bg-gray-400">screw you tailwind</h1>
-            <h1 className="bg-gray-500">screw you tailwind</h1>
-            <h1 className="bg-gray-600">screw you tailwind</h1>
-            <h1 className="bg-gray-700">screw you tailwind</h1>
-            <h1 className="bg-indigo-100">screw you tailwind</h1>
-            <h1 className="bg-indigo-200">screw you tailwind</h1>
-            <h1 className="bg-indigo-300">screw you tailwind</h1>
-            <h1 className="bg-indigo-400">screw you tailwind</h1>
-            <h1 className="bg-indigo-500">screw you tailwind</h1>
-            <h1 className="bg-indigo-600">screw you tailwind</h1>
-            <h1 className="bg-indigo-700">screw you tailwind</h1>
-            <h1 className="bg-indigo-800">screw you tailwind</h1>
-            <h1 className="bg-blue-100">screw you tailwind</h1>
-            <h1 className="bg-blue-200">screw you tailwind</h1>
-            <h1 className="bg-blue-300">screw you tailwind</h1>
-            <h1 className="bg-blue-400">screw you tailwind</h1>
-            <h1 className="bg-blue-500">screw you tailwind</h1>
-            <h1 className="bg-blue-600">screw you tailwind</h1>
-            <h1 className="bg-blue-700">screw you tailwind</h1>
-            <h1 className="bg-blue-800">screw you tailwind</h1>
-            <h1 className="bg-green-100">screw you tailwind</h1>
-            <h1 className="bg-green-200">screw you tailwind</h1>
-            <h1 className="bg-green-300">screw you tailwind</h1>
-            <h1 className="bg-green-400">screw you tailwind</h1>
-            <h1 className="bg-green-500">screw you tailwind</h1>
-            <h1 className="bg-green-600">screw you tailwind</h1>
-            <h1 className="bg-green-700">screw you tailwind</h1>
-            <h1 className="bg-green-800">screw you tailwind</h1>
-            <h1 className="bg-red-100">screw you tailwind</h1>
-            <h1 className="bg-red-200">screw you tailwind</h1>
-            <h1 className="bg-red-300">screw you tailwind</h1>
-            <h1 className="bg-red-400">screw you tailwind</h1>
-            <h1 className="bg-red-500">screw you tailwind</h1>
-            <h1 className="bg-red-600">screw you tailwind</h1>
-            <h1 className="bg-red-700">screw you tailwind</h1>
-            <h1 className="bg-yellow-100">screw you tailwind</h1>
-            <h1 className="bg-yellow-200">screw you tailwind</h1>
-            <h1 className="bg-yellow-300">screw you tailwind</h1>
-            <h1 className="bg-yellow-400">screw you tailwind</h1>
-            <h1 className="bg-yellow-500">screw you tailwind</h1>
-            <h1 className="bg-yellow-600">screw you tailwind</h1>
-            <h1 className="bg-yellow-700">screw you tailwind</h1>
-            <h1 className="bg-yellow-800">screw you tailwind</h1>
         </>
     );
 }
