@@ -71,7 +71,7 @@ export const ContentCreator = () => {
                     </a>
                 </p>
                 <p className="text-section">Short Movies</p>
-                <p className="text-section">Comercials</p>
+                <p className="text-section">Commercials</p>
                 <Tooltip
                     content="School projects, Personal Projects, etc."
                     placement="bottom"
