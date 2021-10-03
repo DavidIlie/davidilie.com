@@ -37,3 +37,4 @@ USER nextjs
 
 EXPOSE ${PORT}
 
+CMD ["yarn", "start"]
