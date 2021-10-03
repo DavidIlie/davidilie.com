@@ -7,7 +7,7 @@ RUN yarn install --frozen-lockfile
 FROM node:alpine AS builder
 WORKDIR /usr/src/app
 COPY . .
-COPY --from=deps /usr/src/appnode_modules ./node_modules
+COPY --from=deps /usr/src/app/node_modules ./node_modules
 RUN yarn build
 
 FROM node:alpine AS runner
