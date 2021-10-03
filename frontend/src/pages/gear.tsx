@@ -1,6 +1,5 @@
 import { NextSeo } from "next-seo";
 import { Fade } from "react-awesome-reveal";
-import toast from "react-hot-toast";
 
 import Device from "@components/DeviceCard";
 
@@ -35,12 +34,14 @@ function Stats(): JSX.Element {
                             David Ilie Apps Platform
                         </a>
                         , see{" "}
-                        <span
+                        <a
                             className="text-blue-500 hover:text-blue-600 duration-200 cursor-pointer"
-                            onClick={() => toast.error("Coming Soon!")}
+                            href="https://status.davidapps.dev"
+                            target="_blank"
+                            rel="noreferrer"
                         >
                             Status
-                        </span>
+                        </a>
                     </p>
                     <div className="flex flex-wrap gap-5 mb-5">
                         {infastructure.map(
