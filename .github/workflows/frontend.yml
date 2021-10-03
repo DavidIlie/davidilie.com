@@ -30,4 +30,4 @@ jobs:
                   method: kubeconfig
                   kubeconfig: ${{ secrets.NEW_KUBE_CONFIG }}
             - name: "Restart deployment"
-              run: kubectl rollout restart deploy frontend -n davidilie.com
+              run: kubectl rollout restart deploy frontend -n davidilie-com
