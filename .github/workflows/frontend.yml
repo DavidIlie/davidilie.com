@@ -28,6 +28,6 @@ jobs:
               uses: Azure/k8s-set-context@v1
               with:
                   method: kubeconfig
-                  kubeconfig: ${{ secrets.KUBE_CONFIG }}
+                  kubeconfig: ${{ secrets.NEW_KUBE_CONFIG }}
             - name: "Restart deployment"
               run: kubectl rollout restart deploy frontend -n davidilie.com
