@@ -34,7 +34,6 @@ COPY --from=builder /usr/src/app/node_modules ./node_modules
 COPY --from=builder /usr/src/app/package.json ./package.json
 
 USER nextjs
-
 EXPOSE ${PORT}
 
 CMD ["yarn", "start"]
