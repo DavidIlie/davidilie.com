@@ -18,6 +18,7 @@ import {
     h4,
     h5,
     h6,
+    Definition,
 } from "./MDXComponents";
 
 const MDXComponents = {
@@ -40,6 +41,7 @@ const MDXComponents = {
     IdeaQuote,
     WarningQuote,
     Image: CustomImage,
+    Definition: Definition,
 };
 
 export default MDXComponents;

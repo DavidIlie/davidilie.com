@@ -14,10 +14,15 @@ export const BlogViewCounter = ({
     const views = new Number(data?.views);
 
     useEffect(() => {
-        const registerView = () =>
-            fetch(`/api/blog/views/${slug}`, {
-                method: "POST",
-            });
+        const alreadyViewed = localStorage.getItem(`viewed-${slug}`);
+        const registerView = () => {
+            if (alreadyViewed !== "true") {
+                fetch(`/api/blog/views/${slug}`, {
+                    method: "POST",
+                });
+                localStorage.setItem(`viewed-${slug}`, "true");
+            }
+        };
 
         registerView();
     }, [slug]);

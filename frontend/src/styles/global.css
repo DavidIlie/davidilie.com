@@ -141,6 +141,10 @@ html[class="dark"] .footerBackground {
     margin-top: 1em !important;
 }
 
+.blog-content code {
+    @apply text-yellow-500;
+}
+
 .blog-content h1 {
     font-weight: 600;
 }

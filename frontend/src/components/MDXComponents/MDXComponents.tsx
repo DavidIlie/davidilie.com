@@ -9,6 +9,35 @@ import { shimmer } from "@lib/shimmer";
 
 import Tooltip from "@ui/Tooltip";
 
+interface DefinitionStylesProps {
+    term: string;
+    definition: string;
+    link?: string;
+}
+
+export const Definition = ({
+    term,
+    definition,
+    link,
+}: DefinitionStylesProps): JSX.Element => {
+    return (
+        <Tooltip content={definition}>
+            {typeof link === "string" ? (
+                <a
+                    href={link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-blue-400 cursor-pointer"
+                >
+                    {term}
+                </a>
+            ) : (
+                <span className="text-blue-400 cursor-pointer">{term}</span>
+            )}
+        </Tooltip>
+    );
+};
+
 interface CustomLinkProps {
     href: string;
     children: React.ReactNode;
@@ -82,7 +111,7 @@ export const CustomListItem = ({
     children: React.ReactNode;
 }): JSX.Element => {
     return (
-        <li className="text-blue-500">
+        <li className="text-indigo-500">
             <span className="text-black dark:text-white">{children}</span>
         </li>
     );

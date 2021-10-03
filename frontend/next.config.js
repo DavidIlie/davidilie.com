@@ -1,8 +1,11 @@
+const withPlugins = require("next-compose-plugins");
+
+const { withPlausibleProxy } = require("next-plausible");
 const withMDX = require("@next/mdx")({
     extension: /\.mdx?$/,
 });
 
-module.exports = withMDX({
+const nextConfig = {
     images: {
         domains: [
             "i.scdn.co",
@@ -21,4 +24,6 @@ module.exports = withMDX({
             destination: "/api/sitemap",
         },
     ],
-});
+};
+
+module.exports = withPlugins([withPlausibleProxy, withMDX, nextConfig]);
