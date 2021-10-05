@@ -1,0 +1,2 @@
+tasks:
+  - init: yarn install && cd frontend && yarn && cd ../agenda && yarn && cd ../identity && yarn && cd ../spotify && yarn
