@@ -10,5 +10,6 @@ declare namespace NodeJS {
         IDENTITY_SERVER_URL: string;
         JWT_SECRET: string;
         PLAUSIBLE_API_KEY: string;
+        GMAIL_PASSWORD: string;
     }
 }

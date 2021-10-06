@@ -18,7 +18,7 @@ export const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
     const router = useRouter();
 
     const changeTheme = ToggleColorMode();
-    useShortcut("shift+d", () => changeTheme());
+    useShortcut("ctrl+shift+e", () => changeTheme());
 
     return (
         <>

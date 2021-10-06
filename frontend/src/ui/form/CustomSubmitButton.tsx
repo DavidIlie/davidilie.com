@@ -1,15 +1,30 @@
-const CustomSubmitButton = (props) => {
+interface Props {
+    submitting: boolean;
+    submitText: string;
+    text: string;
+    width?: number;
+}
+
+const CustomSubmitButton = ({
+    submitting,
+    submitText,
+    text,
+    width,
+    ...rest
+}: Props) => {
     return (
         <span className="inline-flex py-1 rounded-md shadow-sm bg-blue-400 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-800 duration-200">
             <button
-                {...props}
+                {...rest}
                 type="submit"
-                className={`inline-flex items-center w-full mx-auto px-4 py-2 border border-transparent ${
-                    props.submitting && "cursor-not-allowed"
+                className={`inline-flex items-center w-${
+                    width ? width : "full"
+                } mx-auto px-4 py-2 border border-transparent ${
+                    submitting && "cursor-not-allowed"
                 }`}
-                disabled={props.submitting}
+                disabled={submitting}
             >
-                {props.submitting && (
+                {submitting && (
                     <svg
                         className="animate-spin -ml-1 mr-3 h-5 w-5 text-white dark:text-white"
                         xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +37,7 @@ const CustomSubmitButton = (props) => {
                             cy="12"
                             r="10"
                             stroke="currentColor"
-                            stroke-width="4"
+                            strokeWidth="4"
                         ></circle>
                         <path
                             className="opacity-75"
@@ -31,7 +46,7 @@ const CustomSubmitButton = (props) => {
                         ></path>
                     </svg>
                 )}
-                {props.submitting ? props.submitText : props.text}
+                <div className="mx-auto">{submitting ? submitText : text}</div>
             </button>
         </span>
     );

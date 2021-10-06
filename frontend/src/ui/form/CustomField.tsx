@@ -1,7 +1,7 @@
 const CustomField = (props) => {
     return (
         <div className="mt-3 mb-4 w-full flex items-center justify-between">
-            <div className="relative flex flex-wrap w-full items-stretch mb-3">
+            <div className="relative flex flex-wrap w-full items-stretch">
                 <span className="z-10 mt-1 h-full leading-snug font-normal text-center absolute bg-transparent text-base items-center justify-center pl-3 py-3">
                     <props.icon />
                 </span>

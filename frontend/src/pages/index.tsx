@@ -97,14 +97,14 @@ function Home({ repos }): JSX.Element {
                     </div>
                 </Fade>
             </div>
-            <div className="text-white dark:text-gray-100 2xl:text-center xl:text-center md:text-center text-left pt-12 pb-2">
+            <div className="text-white dark:text-gray-100 2xl:text-center xl:text-center md:text-center text-left pt-8 pb-2">
                 <Fade direction="up" triggerOnce cascade>
                     <div
-                        className={`px-10 text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-4xl text-4xl font-semibold mb-5`}
+                        className={`px-10 text-center sm:text-5xl text-4xl font-semibold mb-5`}
                     >
-                        <h1>Finally, how can I contact you?</h1>
+                        <h1>Finally, how can you contact me?</h1>
                         <p className="text-xl font-normal -mt-1">
-                            You can contact me with the form below.
+                            Using this form below, you can send me a message.
                         </p>
                     </div>
                     <div className="text-left">
@@ -112,7 +112,7 @@ function Home({ repos }): JSX.Element {
                     </div>
                 </Fade>
             </div>
-            <div className="py-12" />
+            <div className="py-6" />
         </>
     );
 }
