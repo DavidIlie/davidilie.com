@@ -33,9 +33,11 @@ export const BackendDeveloper = () => {
             </div>
             <div className="text-center mb-10">
                 <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
-                    Stack I use:
+                    Technologies I use:
                 </h1>
-                <p className="text-section">MongoDB, Express, NodeJS</p>
+                <p className="text-section">
+                    MongoDB, Express, GraphQL, NodeJS
+                </p>
             </div>
             <div className="text-center mb-7">
                 <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
@@ -44,9 +46,7 @@ export const BackendDeveloper = () => {
                 <p className="text-section">Visual Studio Code</p>
                 <p className="text-section">MongoDB Compass</p>
                 <p className="text-section">Postman</p>
-                <p className="text-section">Github</p>
-                <p className="text-section">Linux</p>
-                <p className="text-section">Terminal</p>
+                <p className="text-section">Windows Terminal</p>
             </div>
         </div>
     );

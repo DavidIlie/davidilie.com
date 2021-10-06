@@ -29,6 +29,6 @@ export const pinnedRepos: PinnedRepoType[] = [
         id: "personal-dashboard",
         language: "Typescript",
         description:
-            "I've always had some sort of dashboard setup which allows me to keep track of all my services that are running in my homelab. However, all of the services that I used had their own quirks so I decided to create my own Dashboard using NextJS, TailwindCSS and Typescript.",
+            "I've always had a dashboard setup which allows me to keep track of all my services. I decided to create one myself, using Next.js and Tailwind CSS. Once I showcased it to Reddit, it recieved much interest to make it customizable, which is what I am working on now.",
     },
 ];

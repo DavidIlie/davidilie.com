@@ -95,7 +95,7 @@ const UserDropdown = (): JSX.Element => {
                         {!loading && (
                             <Menu.Item>
                                 <a
-                                    className="font-semibold cursor-pointer bg-gray-300 dark:bg-blue-800 text-center group flex justify-center rounded-b-md items-center w-full py-2 text-sm"
+                                    className="font-semibold cursor-pointer bg-blue-600 dark:bg-blue-800 text-white text-center group flex justify-center rounded-b-md items-center w-full py-2 text-sm"
                                     onClick={() =>
                                         !session
                                             ? setModalOpen(true)

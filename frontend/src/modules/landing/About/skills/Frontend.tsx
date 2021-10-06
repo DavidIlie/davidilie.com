@@ -33,9 +33,9 @@ export const FrontendDeveloper = () => {
             </div>
             <div className="text-center mb-10">
                 <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
-                    Frameworks I use:
+                    Technologies I use:
                 </h1>
-                <p className="text-section">HTML, Next.js, Tailwind CSS</p>
+                <p className="text-section">React, Next.js, Tailwind CSS</p>
             </div>
             <div className="text-center mb-7">
                 <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">

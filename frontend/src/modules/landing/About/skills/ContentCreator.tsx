@@ -56,7 +56,7 @@ export const ContentCreator = () => {
                 </h1>
                 <p className="text-section">Adobe Premiere & Photoshop</p>
             </div>
-            <div className="text-center">
+            <div className="text-center mb-2">
                 <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                     Content I produce:
                 </h1>
