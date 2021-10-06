@@ -9,6 +9,7 @@ import { repoType } from "@interfaces/repoType";
 import Header from "@modules/landing/Header";
 import About from "@modules/landing/About";
 import PinnedProject from "@components/PinnedProject";
+import ContactFormModule from "@modules/landing/ContactForm";
 
 import { pinnedRepos } from "@data/pinnedRepos";
 
@@ -96,7 +97,22 @@ function Home({ repos }): JSX.Element {
                     </div>
                 </Fade>
             </div>
-            <div className="h-24"></div>
+            <div className="text-white dark:text-gray-100 2xl:text-center xl:text-center md:text-center text-left pt-12 pb-2">
+                <Fade direction="up" triggerOnce cascade>
+                    <div
+                        className={`px-10 text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-4xl text-4xl font-semibold mb-5`}
+                    >
+                        <h1>Finally, how can I contact you?</h1>
+                        <p className="text-xl font-normal -mt-1">
+                            You can contact me with the form below.
+                        </p>
+                    </div>
+                    <div className="text-left">
+                        <ContactFormModule />
+                    </div>
+                </Fade>
+            </div>
+            <div className="py-12" />
         </>
     );
 }

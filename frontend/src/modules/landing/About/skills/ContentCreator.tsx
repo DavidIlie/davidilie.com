@@ -56,7 +56,7 @@ export const ContentCreator = () => {
                 </h1>
                 <p className="text-section">Adobe Premiere & Photoshop</p>
             </div>
-            <div className="text-center mb-2">
+            <div className="text-center">
                 <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                     Content I produce:
                 </h1>
@@ -70,8 +70,6 @@ export const ContentCreator = () => {
                         David Ilie
                     </a>
                 </p>
-                <p className="text-section">Short Movies</p>
-                <p className="text-section">Commercials</p>
                 <Tooltip
                     content="School projects, Personal Projects, etc."
                     placement="bottom"
