@@ -8,6 +8,13 @@ export interface LinkType {
 
 export const links: LinkType[] = [
     {
+        id: `typeorm`,
+        link: `https://typeorm.io/`,
+        name: `TypeORM`,
+        label: `Perfect ORM for typescript`,
+        date: new Date(`2021-08-31T19:20`),
+    },
+    {
         id: `nextjs`,
         link: `https://nextjs.org/`,
         name: `Next.JS`,
