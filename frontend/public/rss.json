@@ -27,7 +27,7 @@
             "id": "https://davidilie.com/blog/replace-your-home-router-with-pfsense",
             "content_html": "Home Network, pfSense, Open Source",
             "url": "https://davidilie.com/blog/replace-your-home-router-with-pfsense",
-            "title": "Your home router sucks! Replace it with pfSense!",
+            "title": "Replace your weak home router, with pfSense!",
             "summary": "Recently, I decided to switch from my standard cheap home router, to a custom virtual machine running pfSense on my server. This blog post will contain all the hurdles and issues that I went through, and how you can setup this up for yourself!",
             "image": "https://s3.davidapps.dev/davidilie-blog/assets/1450fece-7e8d-4603-93f5-48531cd6e736.png",
             "date_modified": "2021-09-19T00:00:00.000Z",
