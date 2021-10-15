@@ -26,14 +26,27 @@ export const NavBar = () => {
         }
     }, [y, max, width, blogPage]);
 
+    const [top, setTop] = useState<boolean>(true);
+
+    useEffect(() => {
+        const scrollHandler = () => {
+            window.pageYOffset > 10 ? setTop(false) : setTop(true);
+        };
+        window.addEventListener("scroll", scrollHandler);
+        return () => window.removeEventListener("scroll", scrollHandler);
+    }, [top]);
+
     const [clickMobileMenu, setClickMobileMenu] = useState<boolean>(false);
 
     const currentPage = router.pathname;
 
     return (
         <nav
-            className={`w-full fixed duration-500 z-50 backdrop-filter backdrop-blur-lg pb-4 ${
+            className={`w-full fixed duration-300 z-50 backdrop-filter backdrop-blur-lg pb-4 ${
                 clickMobileMenu ? "bg-gray-800 bg-opacity-50" : "bg-opacity-30"
+            } ${
+                !top &&
+                "backdrop-filter backdrop-blur-lg bg-white dark:bg-gray-800 shadow-lg bg-opacity-70 dark:bg-opacity-70 hover:bg-opacity-90 dark:hover:bg-opacity-90"
             }`}
         >
             {blogPage && (
@@ -61,7 +74,7 @@ export const NavBar = () => {
                 }`}
             >
                 <div className="max-w-7xl mx-auto pl-8 px-4 sm:px-6 sm:pl-8 lg:px-8 lg:pl-8 -mt-1">
-                    <div className="flex items-center justify-between h-16">
+                    <div className="flex items-center justify-between h-16 mb-2">
                         <div className="flex items-center">
                             <div className="flex-shrink-0">
                                 {!clickMobileMenu ? (

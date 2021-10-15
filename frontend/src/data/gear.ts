@@ -4,6 +4,7 @@ import { FaDesktop, FaNetworkWired } from "react-icons/fa";
 import { FiSmartphone } from "react-icons/fi";
 import { AiOutlineLaptop } from "react-icons/ai";
 import { BiServer } from "react-icons/bi";
+import { IoServer } from "react-icons/io5";
 
 interface Specs {
     prefix: string;
@@ -45,7 +46,7 @@ export const devices: DeviceProps[] = [
             },
             {
                 prefix: "OS",
-                suffix: "Windows 11 Dev Preview",
+                suffix: "Windows 10 21H1",
             },
         ],
     },
@@ -72,11 +73,11 @@ export const devices: DeviceProps[] = [
             },
             {
                 prefix: "OS",
-                suffix: "Windows 11 Dev Preview",
+                suffix: "Windows 10 21H1",
             },
             {
                 prefix: "OS2",
-                suffix: "ChromeOS",
+                suffix: "ChromeOS 94",
             },
         ],
     },
@@ -204,6 +205,37 @@ export const infastructure: DeviceProps[] = [
             {
                 prefix: "OS",
                 suffix: "Debian 11 (Proxmox VE 7)",
+            },
+        ],
+    },
+    {
+        icon: IoServer,
+        name: "NAS",
+        description: "Venus",
+        specs: [
+            {
+                prefix: "Model",
+                suffix: "HP Microserver Gen 8",
+            },
+            {
+                prefix: "CPU",
+                suffix: "Intel Pentium G2020T",
+            },
+            {
+                prefix: "RAM",
+                suffix: "16GB DDR4 ECC",
+            },
+            {
+                prefix: "Storage",
+                suffix: "128GB SSD",
+            },
+            {
+                prefix: "Array",
+                suffix: "7.5TB HDD Array",
+            },
+            {
+                prefix: "OS",
+                suffix: "TrueNAS Core",
             },
         ],
     },
