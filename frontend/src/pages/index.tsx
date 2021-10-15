@@ -97,7 +97,7 @@ function Home({ repos }): JSX.Element {
                     </div>
                 </Fade>
             </div>
-            <div className="text-white dark:text-gray-100 2xl:text-center xl:text-center md:text-center text-left pt-8 pb-2">
+            <div className="text-black dark:text-gray-100 2xl:text-center xl:text-center md:text-center text-left pt-8 pb-2">
                 <Fade direction="up" triggerOnce cascade>
                     <div
                         className={`px-10 text-center sm:text-5xl text-4xl font-semibold mb-5`}
