@@ -129,6 +129,15 @@ export default function tailwindbad() {
             <h1 className="bg-red-700">screw you tailwind</h1>
             <h1 className="bg-red-800">screw you tailwind</h1>
             <h1 className="bg-red-900">screw you tailwind</h1>
+            <h1 className="bg-yellow-100">screw you tailwind</h1>
+            <h1 className="bg-yellow-200">screw you tailwind</h1>
+            <h1 className="bg-yellow-300">screw you tailwind</h1>
+            <h1 className="bg-yellow-400">screw you tailwind</h1>
+            <h1 className="bg-yellow-500">screw you tailwind</h1>
+            <h1 className="bg-yellow-600">screw you tailwind</h1>
+            <h1 className="bg-yellow-700">screw you tailwind</h1>
+            <h1 className="bg-yellow-800">screw you tailwind</h1>
+            <h1 className="bg-yellow-900">screw you tailwind</h1>
         </>
     );
 }
