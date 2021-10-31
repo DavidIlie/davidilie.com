@@ -135,11 +135,11 @@ export const devices: DeviceProps[] = [
             },
             {
                 prefix: "DL Speed",
-                suffix: "600Mbit/s",
+                suffix: "~520Mbit/s",
             },
             {
                 prefix: "Up Speed",
-                suffix: "600Mbit/s",
+                suffix: "~508Mbit/s",
             },
         ],
     },
