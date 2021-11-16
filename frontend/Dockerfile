@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:15.4.0-alpine as build
 
 RUN mkdir -p /usr/src/app
 ENV PORT 3000
