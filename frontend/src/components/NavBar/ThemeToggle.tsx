@@ -13,13 +13,13 @@ const ThemeToggle = (): JSX.Element => {
                 className="group flex gap-1 rounded-b-md items-center w-full"
                 aria-label={
                     theme === "dark"
-                        ? "Toggle Light Mode (shift+d)"
-                        : "Toggle Dark Mode (shift+d)"
+                        ? "Toggle Light Mode (ctrl+shift+e)"
+                        : "Toggle Dark Mode (ctrl+shift+e)"
                 }
                 title={
                     theme === "dark"
-                        ? "Toggle Light Mode (shift+d)"
-                        : "Toggle Dark Mode (shift+d)"
+                        ? "Toggle Light Mode (ctrl+shift+e)"
+                        : "Toggle Dark Mode (ctrl+shift+e)"
                 }
                 onClick={() => changeTheme()}
             >
