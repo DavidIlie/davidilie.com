@@ -22,7 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
             const mailData = {
                 to: "david@davidilie.com",
-                subject: `Contact email from ${body.name} - ${body.title}`,
+                subject: `Contact email from ${body.name} - ${body.title} - ${body.email}`,
                 from: body.email,
                 text: body.message,
             };
