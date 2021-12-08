@@ -1,4 +1,4 @@
-import { signOut, useSession } from "next-auth/client";
+import { signOut, useSession } from "next-auth/react";
 import { Formik, Field, Form } from "formik";
 import * as yup from "yup";
 import { FaCommentDots } from "react-icons/fa";
@@ -20,7 +20,7 @@ export const BlogInteractions = ({
     slug,
     refetch,
 }: BlogInteractionsProps): JSX.Element => {
-    const [session, loading] = useSession();
+    const { data: session } = useSession();
 
     const [modalOpen, setModalOpen] = useState<boolean>(false);
 
@@ -40,9 +40,13 @@ export const BlogInteractions = ({
                 What do you think?
             </h1>
             <div className="flex justify-center">
-                <ClipLoader color="#60A5FA" size={75} loading={loading} />
+                <ClipLoader
+                    color="#60A5FA"
+                    size={75}
+                    loading={session === undefined}
+                />
             </div>
-            {!loading && !session && (
+            {!session && (
                 <div>
                     <div className="border rounded p-6 my-4 w-full border-gray-800 bg-blue-opaque">
                         <h5 className="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100">

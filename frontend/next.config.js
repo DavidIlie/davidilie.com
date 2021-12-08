@@ -24,6 +24,7 @@ const nextConfig = {
             destination: "/api/sitemap",
         },
     ],
+    swcMinify: true,
 };
 
 module.exports = withPlugins([withPlausibleProxy, withMDX, nextConfig]);

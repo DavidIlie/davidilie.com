@@ -1,6 +1,6 @@
 import Modal from "@ui/Modal";
 import { useRouter } from "next/router";
-import { signIn } from "next-auth/client";
+import { signIn } from "next-auth/react";
 
 interface LoginModalProps {
     isOpen: boolean;

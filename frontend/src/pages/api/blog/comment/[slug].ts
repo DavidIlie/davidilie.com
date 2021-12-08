@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/client";
+import { getSession } from "next-auth/react";
 import { v4 as uuidv4 } from "uuid";
 import db from "@lib/mongo";
 import { createPostsInDB } from "@lib/checkIfPostExistsInDB";

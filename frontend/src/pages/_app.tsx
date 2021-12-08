@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import AppLayout from "@components/AppLayout";
 import PlausibleProvider from "next-plausible";
 import ReactModal from "react-modal";
-import { Provider as AuthProvider } from "next-auth/client";
+import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "react-hot-toast";
 
@@ -71,7 +71,7 @@ function PersonalWebsite({
             >
                 <ThemeProvider attribute="class">
                     <QueryClientProvider client={queryClient}>
-                        <AuthProvider session={pageProps.session}>
+                        <SessionProvider session={pageProps.session}>
                             <Toaster position="bottom-center" />
                             <AppLayout>
                                 {loading ? (
@@ -80,7 +80,7 @@ function PersonalWebsite({
                                     <Component {...pageProps} />
                                 )}
                             </AppLayout>
-                        </AuthProvider>
+                        </SessionProvider>
                     </QueryClientProvider>
                 </ThemeProvider>
             </PlausibleProvider>

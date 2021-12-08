@@ -46,7 +46,7 @@ export const devices: DeviceProps[] = [
             },
             {
                 prefix: "OS",
-                suffix: "Windows 10 21H1",
+                suffix: "Windows 11 21H1",
             },
         ],
     },
@@ -73,11 +73,11 @@ export const devices: DeviceProps[] = [
             },
             {
                 prefix: "OS",
-                suffix: "Windows 10 21H1",
+                suffix: "Windows 11 21H1",
             },
             {
                 prefix: "OS2",
-                suffix: "ChromeOS 94",
+                suffix: "ChromeOS 96",
             },
         ],
     },

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { format } from "date-fns";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/client";
+import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { useState } from "react";
 
@@ -14,7 +14,7 @@ interface CommentComponentProps {
 }
 
 const Comment = ({ data, refetch }: CommentComponentProps) => {
-    const [session] = useSession();
+    const { data: session } = useSession();
     const router = useRouter();
 
     const [deleting, setDeleting] = useState<boolean>(false);

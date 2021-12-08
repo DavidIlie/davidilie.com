@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useSession, signOut } from "next-auth/client";
+import { useSession, signOut } from "next-auth/react";
 import { Menu, Transition } from "@headlessui/react";
 import React, { Fragment, useState, useRef } from "react";
 
@@ -19,13 +19,13 @@ const UserDropdown = (): JSX.Element => {
     //TODO: find a type-safe way to "click" the button when you click on a link in dropdown
     const buttonRef = useRef();
 
-    const [session, loading] = useSession();
+    const { data: session } = useSession();
 
     return (
         <>
             <Menu as="div" className="mt-1 relative inline-block text-right">
                 <Menu.Button ref={buttonRef}>
-                    {!session || loading ? (
+                    {!session ? (
                         <div className="transition duration-100 ease-in-out p-2 bg-gray-200 hover:bg-gray-300 rounded dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
                             <FiSettings
                                 className="cursor-pointer rounded-full h-6 w-6 text-gray-500 dark:text-gray-400"
@@ -92,7 +92,7 @@ const UserDropdown = (): JSX.Element => {
                                 </Menu.Item>
                             )}
                         </div>
-                        {!loading && (
+                        {!session && (
                             <Menu.Item>
                                 <a
                                     className="font-semibold cursor-pointer bg-blue-600 dark:bg-blue-800 text-white text-center group flex justify-center rounded-b-md items-center w-full py-2 text-sm"

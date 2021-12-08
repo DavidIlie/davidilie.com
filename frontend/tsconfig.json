@@ -1,41 +1,75 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "lib": ["dom", "dom.iterable", "es6", "esnext"],
-        "allowJs": true,
-        "strict": false,
-        "skipLibCheck": true,
-        "removeComments": true,
-        "strictFunctionTypes": true,
-        "noImplicitThis": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": false,
-        "noFallthroughCasesInSwitch": true,
-        "allowSyntheticDefaultImports": true,
-        "forceConsistentCasingInFileNames": true,
-        "noEmit": true,
-        "esModuleInterop": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "preserve",
-        "baseUrl": "./src",
-        "paths": {
-            "@icons/*": ["icons/*"],
-            "@lib/*": ["lib/*"],
-            "@components/*": ["components/*"],
-            "@modules/*": ["modules/*"],
-            "@ui/*": ["ui/*"],
-            "@utils/*": ["utils/*"],
-            "@data/*": ["data/*"],
-            "@interfaces/*": ["types/*"],
-            "@hooks/*": ["hooks/*"]
-        }
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "es6",
+      "esnext"
+    ],
+    "allowJs": true,
+    "strict": false,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "baseUrl": "./src",
+    "paths": {
+      "@icons/*": [
+        "icons/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@modules/*": [
+        "modules/*"
+      ],
+      "@ui/*": [
+        "ui/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@data/*": [
+        "data/*"
+      ],
+      "@interfaces/*": [
+        "types/*"
+      ],
+      "@hooks/*": [
+        "hooks/*"
+      ]
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src"],
-    "exclude": ["node_modules"],
-    "typeAcquisition": {
-        "include": ["react", "next"]
-    }
+    "incremental": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "typeAcquisition": {
+    "include": [
+      "react",
+      "next"
+    ]
+  }
 }
