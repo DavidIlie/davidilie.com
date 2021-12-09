@@ -1,12 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { Menu, Transition } from "@headlessui/react";
 import React, { Fragment, useState, useRef } from "react";
 
 import { FiSettings } from "react-icons/fi";
 import { AiFillBug } from "react-icons/ai";
-import { RiAdminLine } from "react-icons/ri";
 
 import ThemeToggle from "./ThemeToggle";
 
@@ -74,23 +72,6 @@ const UserDropdown = (): JSX.Element => {
                             <Menu.Item as={DropdownElement}>
                                 <ThemeToggle />
                             </Menu.Item>
-                            {session?.user.isAdmin && (
-                                <Menu.Item>
-                                    <Link href="/admin">
-                                        <a
-                                            onClick={() =>
-                                                //@ts-ignore
-                                                buttonRef.current?.click()
-                                            }
-                                        >
-                                            <DropdownElement>
-                                                <RiAdminLine className="mx-0.5 text-xl" />
-                                                Admin Panel
-                                            </DropdownElement>
-                                        </a>
-                                    </Link>
-                                </Menu.Item>
-                            )}
                         </div>
                         {!session && (
                             <Menu.Item>

@@ -17,13 +17,13 @@ jobs:
             - name: Login to GitHub Container Registry
               uses: docker/login-action@v1
               with:
-                  registry: registry.davidapps.dev
+                  registry: ghcr.io
                   username: DavidIlie
-                  password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+                  password: ${{ secrets.GHCR_PASSWORD }}
             - name: Build and publish Docker image
               run: |
-                  cd frontend && docker build -t registry.davidapps.dev/davidilie/personal-website:frontend .
-                  docker push registry.davidapps.dev/davidilie/personal-website:frontend
+                  cd frontend && docker build -t ghcr.io/davidilie/personal-website/frontend .
+                  docker push ghcr.io/davidilie/personal-website/frontend
             - name: "Set Kubernetes Context"
               uses: Azure/k8s-set-context@v1
               with:

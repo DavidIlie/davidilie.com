@@ -77,7 +77,7 @@ export const devices: DeviceProps[] = [
             },
             {
                 prefix: "OS2",
-                suffix: "ChromeOS 96",
+                suffix: "ChromeOS 94",
             },
         ],
     },
