@@ -43,10 +43,10 @@ export const NavBar = () => {
     return (
         <nav
             className={`w-full fixed duration-300 z-50 backdrop-filter backdrop-blur-lg pb-4 ${
-                clickMobileMenu ? "bg-gray-800 bg-opacity-50" : "bg-opacity-30"
+                clickMobileMenu ? "bg-cyan-900 bg-opacity-20" : "bg-opacity-30"
             } ${
                 !top &&
-                "backdrop-filter backdrop-blur-lg bg-white dark:bg-gray-800 shadow-lg bg-opacity-70 dark:bg-opacity-70 hover:bg-opacity-90 dark:hover:bg-opacity-90"
+                "backdrop-filter backdrop-blur-lg bg-cyan-100 dark:bg-cyan-900 bg-opacity-50 dark:bg-opacity-10 hover:bg-opacity-60 hover:bg-cyan-50 dark:hover:bg-opacity-20 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.3)] shadow-black"
             }`}
         >
             {blogPage && (
@@ -70,7 +70,8 @@ export const NavBar = () => {
 
             <div
                 className={`${
-                    clickMobileMenu && "bg-white dark:bg-gray-800 bg-opacity-50"
+                    clickMobileMenu &&
+                    "bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-40"
                 }`}
             >
                 <div className="max-w-7xl mx-auto pl-8 px-4 sm:px-6 sm:pl-8 lg:px-8 lg:pl-8 -mt-1">
@@ -190,7 +191,7 @@ export const NavBar = () => {
                             </div>
                             <button
                                 type="button"
-                                className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700"
+                                className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700"
                                 onClick={() => {
                                     setClickMobileMenu(!clickMobileMenu);
                                 }}
@@ -256,8 +257,8 @@ export const NavBar = () => {
                                             key={index}
                                             className={
                                                 current
-                                                    ? "bg-gray-600 dark:bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
-                                                    : "text-gray-800 dark:text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+                                                    ? "bg-cyan-600 dark:bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+                                                    : "text-gray-800 dark:text-gray-300 hover:bg-cyan-800 dark:hover:bg-cyan-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
                                             }
                                         >
                                             {page.name}
@@ -286,8 +287,8 @@ export const NavBar = () => {
                                                 key={index}
                                                 className={
                                                     current
-                                                        ? "bg-gray-600 dark:bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
-                                                        : "text-gray-800 dark:text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+                                                        ? "bg-cyan-600 dark:bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+                                                        : "text-gray-800 dark:text-gray-300 hover:bg-cyan-800 dark:hover:bg-cyan-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
                                                 }
                                             >
                                                 {page.name}

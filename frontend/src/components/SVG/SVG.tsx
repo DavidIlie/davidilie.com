@@ -1,6 +1,8 @@
 import { useMediaQuery } from "react-responsive";
 import { useTheme } from "next-themes";
 
+import { colors } from "@lib/colors";
+
 const icons = {
     triangle: {
         shape: (
@@ -63,11 +65,9 @@ const GetColor = () => {
 
 export const SVG = ({
     stroke = false,
-    color = `${
-        [`indigo`, `blue`, `green`, `purple`, `gray`][
-            Math.floor(Math.random() * 5)
-        ]
-    }-${GetColor()[Math.floor(Math.random() * 4)]}`,
+    color = `${colors[Math.floor(Math.random() * 17)]}-${
+        GetColor()[Math.floor(Math.random() * 4)]
+    }`,
     zIndex = -500,
     width,
     icon,
@@ -85,7 +85,7 @@ export const SVG = ({
             className={`absolute fill-current text-${color}`}
             style={{
                 width: `${width / 2 / 2}rem`,
-                filter: "blur(8px) saturate(160%)",
+                filter: "blur(8px) saturate(100%)",
                 left: left,
                 top: top,
                 zIndex,

@@ -58,13 +58,7 @@ export const AppLayout = ({ children }: AppLayoutProps): JSX.Element => {
                     top="70%"
                 />
                 <SVG icon="circle" width={6} left="4%" top="20%" />
-                <SVG
-                    icon="circle"
-                    width={12}
-                    left="50%"
-                    top="60%"
-                    color="gray.100"
-                />
+                <SVG icon="circle" width={12} left="50%" top="60%" />
             </UpDown>
             <NavBar />
             <div className="pageBackground">{children}</div>

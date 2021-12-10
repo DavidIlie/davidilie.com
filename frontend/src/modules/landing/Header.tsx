@@ -70,7 +70,7 @@ export default function Header() {
                             <SplitText
                                 initial={{ y: "100%" }}
                                 animate="visible"
-                                className="text-7xl font-semibold visible hover:underline cursor-pointer header-gradient"
+                                className="text-7xl font-semibold visible header-gradient"
                                 variants={{
                                     visible: (i) => ({
                                         y: 0,
