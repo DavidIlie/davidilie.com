@@ -65,7 +65,7 @@ const GetColor = () => {
 
 export const SVG = ({
     stroke = false,
-    color = `${colors[Math.floor(Math.random() * 17)]}-${
+    color = `${colors[Math.floor(Math.random() * 12)]}-${
         GetColor()[Math.floor(Math.random() * 4)]
     }`,
     zIndex = -500,
