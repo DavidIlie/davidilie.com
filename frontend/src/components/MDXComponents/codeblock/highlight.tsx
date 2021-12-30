@@ -35,7 +35,7 @@ function Highlight({ codeString, language, showLines }) {
                                         key: i,
                                     });
                                     return (
-                                        <div {...lineProps}>
+                                        <div {...lineProps} key={i}>
                                             {showLines && (
                                                 <span className="px-4 select-none text-md">
                                                     {i + 1}
@@ -47,6 +47,7 @@ function Highlight({ codeString, language, showLines }) {
                                                         token,
                                                         key,
                                                     })}
+                                                    key={key}
                                                 />
                                             ))}
                                         </div>

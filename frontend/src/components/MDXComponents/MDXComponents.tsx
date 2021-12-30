@@ -117,82 +117,6 @@ export const CustomListItem = ({
     );
 };
 
-// const WindowButton = ({ bg }: { bg: string }) => {
-//     return (
-//         <a
-//             style={{ height: "12px", width: "12px", borderRadius: "999px" }}
-//             className={`bg-${bg}`}
-//         />
-//     );
-// };
-
-// export const RemarkTitle = ({ children }: { children: string }) => {
-//     const checkIfInternal =
-//         children.startsWith("Terminal") ||
-//         children.startsWith("web/") ||
-//         children.startsWith("Example");
-//     return (
-//         <div
-//             className="z-20 flex flex-wrap items-center justify-between w-full py-1 mx-auto mt-2 -mb-5 bg-gray-100 border-b-0 border-gray-200 codeEditorTitle dark:bg-black dark:border-black"
-//             style={{
-//                 borderBottom: "none",
-//                 borderTopLeftRadius: "1rem",
-//                 borderTopRightRadius: "1rem",
-//             }}
-//         >
-//             <span
-//                 className="relative flex items-center justify-start gap-4 px-4 codeEditorTitle"
-//                 style={{ height: "36px" }}
-//             >
-//                 <WindowButton bg="red-400" />
-//                 <WindowButton bg="yellow-400" />
-//                 <WindowButton bg="green-500" />
-//             </span>
-//             {!checkIfInternal ? (
-//                 <Tooltip content="Go to file">
-//                     <a
-//                         href={`https://github.com/davidilie/davidilie.com/tree/master/frontend/${children}`}
-//                         target="_blank"
-//                         rel="noreferrer"
-//                         className="px-4 text-blue-200 truncate cursor-pointer"
-//                     >
-//                         {children}
-//                     </a>
-//                 </Tooltip>
-//             ) : (
-//                 <a className="px-4 text-blue-200 truncate">{children}</a>
-//             )}
-//         </div>
-//     );
-// };
-
-// export const CustomDiv = (props: any) => {
-//     if (props?.className?.includes("remark-code-title")) {
-//         return <RemarkTitle {...props} />;
-//     } else {
-//         return <div {...props} />;
-//     }
-// };
-
-// export const CustomPre = (props: any) => {
-//     return (
-//         <pre
-//             {...props}
-//             className="z-50 w-full px-5 py-5 overflow-auto bg-gray-200 scrollbar-thin scrollbar-thumb-blue-500 dark:scrollbar-thumb-blue-700 scrollbar-track-blue-200 dark:bg-gray-900"
-//             style={{ maxHeight: "500px" }}
-//         />
-//     );
-// };
-
-// export const CustomCode = (props: any) => {
-//     return (
-//         <code
-//             {...props}
-//             className={`${props.className} text-gray-200 code overflow-auto`}
-//         />
-//     );
-// };
-
 export const InfoQuote = ({ children }: { children: JSX.Element }) => (
     <div className="relative px-6 py-1 mb-5 leading-relaxed text-gray-800 bg-blue-700 border-l-4 border-blue-700 rounded-lg dark:text-gray-300 bg-opacity-20 dark:border-blue-500 dark:bg-blue-500 dark:bg-opacity-10">
         <div
@@ -387,7 +311,11 @@ export const GitHubRepository = ({
     repo: string;
 }) => (
     <span className="flex justify-center pb-3">
-        <a href={`https://github.com/${username}/${repo}`} target="_blank">
+        <a
+            href={`https://github.com/${username}/${repo}`}
+            target="_blank"
+            rel="noreferrer"
+        >
             <img
                 src={`https://github-readme-stats.vercel.app/api/pin/?username=${username}&repo=${repo}&title_color=fff&icon_color=79ff97&text_color=9f9f9f&bg_color=151515`}
             />
