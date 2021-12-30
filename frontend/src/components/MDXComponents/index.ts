@@ -1,7 +1,7 @@
 import {
-    CustomPre,
-    CustomCode,
-    CustomDiv,
+    // CustomPre,
+    // CustomCode,
+    // CustomDiv,
     CustomLink,
     InfoQuote,
     ThoughtQuote,
@@ -19,13 +19,18 @@ import {
     h5,
     h6,
     Definition,
+    YouTubeVideo,
+    GitHubRepository,
 } from "./MDXComponents";
 
+import Codeblock from "./codeblock";
+
 const MDXComponents = {
-    div: CustomDiv,
+    // div: CustomDiv,
     a: CustomLink,
-    pre: CustomPre,
-    code: CustomCode,
+    // pre: CustomPre,
+    // code: CustomCode,
+    code: Codeblock,
     ul: CustomUnorderedList,
     li: CustomListItem,
     h1: h1,
@@ -42,6 +47,8 @@ const MDXComponents = {
     WarningQuote,
     Image: CustomImage,
     Definition: Definition,
+    YouTubeVideo: YouTubeVideo,
+    GitHubRepository: GitHubRepository,
 };
 
 export default MDXComponents;

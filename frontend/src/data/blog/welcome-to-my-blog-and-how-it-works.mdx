@@ -25,7 +25,7 @@ Talking about how the blog is made, I decided to challenge myself to make this a
 
 I am a huge fan of [Next.JS](https://nextjs.org/), so its already extremely easy to store the blog posts locally due to the fact that Next.JS uses Server Side Rendering as opposed to React's Client Side Rendering.
 
-```tsx:src/pages/projects.tsx
+```tsx title="Server Side Fetching Example"
 export const getServerSideProps: GetServerSideProps = async () => {
     const response = await fetch(`https://davidilie.com/api/agenda/job/github`);
 
@@ -38,7 +38,7 @@ The code above fetches data for my [projects](/projects) page. However you will 
 
 Along with this, I use [MDX](https://mdxjs.com/) which is the simplest way to use custom React Components with my Markdown code. For instance, I use a custom component to display information "blocks" in a more good-looking way:
 
-```tsx:src/components/MDXComponents/MDXComponents.tsx
+```tsx title="Custom MDX Component Example"
 export const InfoQuote = ({ children }) => (
     <div className="px-6 py-1 mb-5 rounded-lg border-l-4 leading-relaxed text-gray-300 relative border-blue-500 bg-blue-500 bg-opacity-10">
         <div
@@ -65,7 +65,7 @@ export const InfoQuote = ({ children }) => (
 
 Each blog post is a `.mdx` file which is kept at `src/data/blog/*post*.mdx`. When you visit the Blog page. A function is called which gets all my blog posts and returns them as props which can be displayed onto the page:
 
-```tsx:src/lib/mdx.ts
+```tsx title="Helper function for MDX"
 export async function getAllFilesFrontMatter() {
     const files = fs.readdirSync(
         path.join(process.cwd(), `src`, `data`, `blog`)
@@ -96,7 +96,7 @@ However, that is just to get a list of blog posts. But how do we get the informa
 
 Well, we will be using [dynamic pages](https://nextjs.org/docs/routing/dynamic-routes) which will take our blog name and find the correct `.mdx` file.
 
-```ts:src/pages/blog/[slug].ts
+```ts title="Find correct post from slug"
 export async function getStaticPaths() {
     const posts = await getFiles(`blog`);
 
@@ -123,8 +123,8 @@ With the file found, we can now proceed to the more complicated stuff.
 
 A layout is used for each blog post to show the elements that needs to persist between each blog post. This consists on the things you see at the very top (title, author, etc).
 
-```tsx:src/components/BlogLayout/BlogLayout.tsx
-<article className="text-white flex flex-col justify-start pt-28 w-full min-h-screen mx-auto max-w-2xl">
+```tsx title="Article Code"
+<article className="text-black dark:text-white flex flex-col justify-start pt-28 w-full min-h-screen mx-auto max-w-3xl">
     {frontMatter.tags && (
         <div className="flex w-full px-3 mb-4 justify-start flex-wrap">
             {frontMatter.tags.map((tag, i) => (
@@ -135,7 +135,7 @@ A layout is used for each blog post to show the elements that needs to persist b
     <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-semibold px-4">
         {frontMatter.title}
     </h1>
-    <div className="flex flex-wrap justify-between items-center max-w-2xl mx-auto mb-12 px-3 mt-5 w-full">
+    <div className="flex flex-wrap justify-between items-center max-w-3xl mx-auto mb-6 px-3 mt-5 w-full">
         <div className="flex items-center">
             <span className="inline-flex items-center justify-center py-2 text-xs font-bold leading-none rounded-md">
                 <Image
@@ -143,17 +143,16 @@ A layout is used for each blog post to show the elements that needs to persist b
                     src={frontMatter.by.avatar}
                     width="25px"
                     height="25px"
+                    blurDataURL={shimmer(1920, 1080)}
+                    alt={`${frontMatter.by}'s profile image`}
                 />
                 <span className="ml-1 header-gradient text-lg mr-1">
                     {frontMatter.by.name}
                 </span>
             </span>
-            <h1 className="text-gray-300">
+            <h1 className="text-gray-800 dark:text-gray-300">
                 {" / "}
-                {format(
-                    parseISO(frontMatter.publishedAt),
-                    "MMMM dd, yyyy"
-                )}
+                {format(parseISO(frontMatter.publishedAt), "MMMM dd, yyyy")}
             </h1>
         </div>
         <h1>
@@ -164,16 +163,19 @@ A layout is used for each blog post to show the elements that needs to persist b
             <BlogViewCounter slug={frontMatter.slug} />
         </h1>
     </div>
-    <Image
-        alt="Post picture"
-        className="rounded-2xl"
-        src={frontMatter.image}
-        width={1905 / 2}
-        height={957 / 2}
-        blurDataURL={shimmer(1920, 1080)}
-        placeholder="blur"
-    />
-    <div className="mb-10 px-2 max-w-4xl w-full blog-content">
+    <div className="mx-auto">
+        <Image
+            alt="Post picture"
+            className="rounded-xl shadow-xl"
+            src={frontMatter.image}
+            width={frontMatter.imageDimensions.width / 2}
+            height={frontMatter.imageDimensions.height / 2}
+            blurDataURL={shimmer(1920, 1080)}
+            placeholder="blur"
+        />
+    </div>
+
+    <div className="mt-3 mb-10 px-2 max-w-5xl w-full blog-content">
         {children}
     </div>
     <div className="flex items-center px-3 pb-3 gap-1 justify-end">
@@ -186,17 +188,10 @@ A layout is used for each blog post to show the elements that needs to persist b
         </a>
     </div>
     <div className="p-3">
-        <BlogInteractions
-            refetch={refetch}
-            slug={frontMatter.slug}
-        />
+        <BlogInteractions refetch={refetch} slug={frontMatter.slug} />
         <BlogComments refetch={refetch} comments={comments} />
         <div className="flex justify-center">
-            <BarLoader
-                color="#60A5FA"
-                width="42rem"
-                loading={isLoading}
-            />
+            <BarLoader color="#60A5FA" width="42rem" loading={isLoading} />
         </div>
     </div>
 </article>
@@ -212,7 +207,7 @@ As opposed to the blog itself, data such as the views or comments are not someth
 
 I am using [Monk](https://www.npmjs.com/package/monk) which is essentially the more simpler version of well-known [Mongoose](https://mongoosejs.com/).
 
-```js:src/lib/mongo.ts
+```js title="MongoDB integration"
 import monk from "monk";
 
 const db = monk(process.env.MONGO_URI);
@@ -222,8 +217,10 @@ export default db;
 
 I can then import this function anywhere where I would need it. For instance, I created basic API routes to add views, add/delete comments and so on. To then integrate it with the actual frontend I am using [react-query](https://react-query.tanstack.com/) to interact between the API and frontend.
 
-```tsx:src/components/BlogLayout/BlogLayout.tsx
-const { isLoading, data, refetch } = useQuery(`stats${frontMatter.slug}`, () => {
+```tsx title="Fetch comments"
+const { isLoading, data, refetch } = useQuery(
+    `stats${frontMatter.slug}`,
+    () => {
         return fetch(`/api/blog/get/${frontMatter.slug}`).then((res) =>
             res.json()
         );
@@ -242,35 +239,19 @@ However, in order to have a proper comments system we would need to be able to s
     information that I would need to keep in my database.
 </IdeaQuote>
 
-```tsx:src/pages/api/auth/[...nextauth].ts
+```tsx title="NextAuth provider"
 export default NextAuth({
     providers: [
-        Providers.Google({
+        GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            authorizationUrl:
-                "https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code",
         }),
-        Providers.Discord({
+        DiscordProvider({
             clientId: process.env.DISCORD_CLIENT_ID,
             clientSecret: process.env.DISCORD_SECRET,
-            scope: "identify",
         }),
     ],
-    database: process.env.MONGO_URI,
     secret: process.env.JWT_CODE,
-    session: {
-        jwt: true,
-        maxAge: 30 * 24 * 60 * 60,
-    },
-    jwt: {
-        signingKey: process.env.JWT_CODE,
-    },
-    callbacks: {
-        redirect: async (url, baseUrl) => {
-            return Promise.resolve(url);
-        },
-    },
 });
 ```
 

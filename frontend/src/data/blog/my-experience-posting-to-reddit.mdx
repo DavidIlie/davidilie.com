@@ -102,15 +102,11 @@ In my opinion, seeing analytics is one of the most interesting parts of web deve
 
 When I built my website, I discovered [Plausible Analytics](https://plausible.io/) which is by default a paid software, but it's free to use if you can self-host it yourself, so I spinned up a virtual machine and followed their `docker-compose` guide:
 
-<span className="flex justify-center pb-3">
-    <a href="https://github.com/plausible/hosting" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=plausible&repo=hosting&title_color=fff&icon_color=79ff97&text_color=9f9f9f&bg_color=151515" />
-    </a>
-</span>
+<GitHubRepository username="plausible" repo="hosting" />
 
 To then integrate it in any `Next.js` application, you can install the [next-plausible](https://www.npmjs.com/package/next-plausible) package and then add this JSX code to your `_app.tsx`:
 
-```tsx:src/pages/_app.tsx
+```tsx title="Plausible _app.tsx example"
 <PlausibleProvider
     domain="davidilie.com"
     selfHosted
@@ -172,11 +168,7 @@ Many people commented that they would like to see a customizable version which a
 
 I've started work on a new update for the dashboard and once it's done I'll update this post with what happens. You can check out the repo here:
 
-<span className="flex justify-center pb-3">
-    <a href="https://github.com/davidilie/personal-dashboard" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=davidilie&repo=personal-dashboard&title_color=fff&icon_color=79ff97&text_color=9f9f9f&bg_color=151515" />
-    </a>
-</span>
+<GitHubRepository repo="personal-dashboard" />
 
 # The mistakes
 

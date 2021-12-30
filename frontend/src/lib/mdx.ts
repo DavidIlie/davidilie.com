@@ -3,7 +3,9 @@ import path from "path";
 import readingTime from "reading-time";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
-import mdxPrism from "@mapbox/rehype-prism";
+import remarkAutoLinkHeadings from "remark-autolink-headings";
+import remarkSlug from "remark-slug";
+import remarkCodeTitles from "remark-code-titles";
 
 export interface MDXProps {
     title: string;
@@ -36,11 +38,10 @@ export async function getFileBySlug(type: string, slug: string) {
     const mdxSource = await serialize(content, {
         mdxOptions: {
             remarkPlugins: [
-                import("remark-slug"),
-                [import("remark-autolink-headings")],
-                require("remark-code-titles"),
+                remarkAutoLinkHeadings,
+                remarkSlug,
+                remarkCodeTitles,
             ],
-            rehypePlugins: [mdxPrism],
         },
     });
 

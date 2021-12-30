@@ -15,17 +15,12 @@ While working on one of my projects ([sharex-media-server](https://github.com/da
 
 Furthermore, if you have a deep component structure, and need to fetch the same data in more than one component, you would essentially be making the same request many times in the same page to access the data (I know props are a thing, but it's annoying to persist in a deep-component structure).
 
-```tsx:Example
-const { isLoading, data: isLoggedIn } = useQuery('/api/user');
+```tsx title="Example"
+const { isLoading, data: isLoggedIn } = useQuery("/api/user");
 
-return isLoading ? (
-    <Loader />
-) : (
-    // actual page
-)
+return isLoading ? <Loader /> : <Website />;
 
-// this would need to be repeated for
-// every component which would need this data
+// this would need to be repeated for every component which would need this data
 ```
 
 It's also common practice that you should cut down on requests as much as possible. To keep a stable performance both in the frontend and backend. So I knew that I had to find a better solution to solve this problem.
@@ -51,7 +46,7 @@ Before I talk about the solution, you first need to understand the stack I used 
 
 I mentioned in one of my previous blog posts that I love [Next.js](https://nextjs.org), which one of its main features is that it uses SSR by default; allowing me to use `getServerSideProps` to make requests before the page actually loads, preventing the need for nested if statements checking if my `isLoggedIn` requests have gone through (see example above).
 
-```tsx:web/src/pages/control-panel.tsx
+```tsx title="getServerSideProps method"
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     const user = await loginCheckAndGetUser(req, res);
     return {
@@ -64,7 +59,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
 I also have a `getInitialProps` function running on `_app.tsx` which fetches the settings for my website:
 
-```tsx:web/src/pages/_app.tsx
+```tsx title="_app.tsx getInitialProps method"
 App.getInitialProps = async () => {
     const settingsRequest = await fetch(`${process.env.API_URL}/api/settings`);
     const settingsResponse = await settingsRequest.json();
@@ -86,13 +81,13 @@ That's when I started looking into other, more _basic_, state management librari
 
 First you need to install [zustand](https://github.com/pmndrs/zustand):
 
-```bash:Terminal
+```bash title="Terminal"
 yarn add zustand
 ```
 
 Afterwards you can create a "store" for your data:
 
-```ts:web/src/global-stores/useSettingsStore.ts
+```ts title="Custom Zustand Store"
 import create from "zustand";
 import { SettingsType } from "@sharex-server/common";
 
@@ -124,13 +119,13 @@ Afterwards we need to add some custom code in the `_app.tsx` to do the following
 
 To do that, we first define a local state to check if all the data has been loaded:
 
-```tsx:web/src/pages/_app.tsx
+```tsx
 const [finishedDataCheck, setFinishedDataCheck] = useState<boolean>(false);
 ```
 
 Then we create a check to not return any JSX if finishedDataCheck is false:
 
-```tsx:web/src/pages/_app.tsx
+```tsx title="Not render JSX if data is not loaded"
 if (!finishedSettingsCheck) {
     return null;
 }
@@ -138,14 +133,13 @@ if (!finishedSettingsCheck) {
 
 Afterwards we create a useEffect hook which complies with the 3 points I mentioned earlier:
 
-```tsx:web/src/pages_app.tsx
+```tsx title="Example useEffect hook"
 const { settings, updateSettings } = useSettingsStore((s) => s);
 const { user, updateUser } = useUserStore();
 
 useEffect(() => {
     if (performance.navigation.type != 1) {
-        if (settings.name && user.name)
-            return setFinishedDataCheck(true);
+        if (settings.name && user.name) return setFinishedDataCheck(true);
     }
     const getData = async () => {
         const settings = await getSettingsData();
@@ -160,7 +154,7 @@ useEffect(() => {
 
 With that done, we can now create a custom hook which we can use in any page, **any time**:
 
-```ts:web/src/hooks/useSettings.ts
+```ts title="Custom Hook for the zustand store"
 import { useSettingsStore } from "@global-stores/useSettingsStore";
 
 export default function useSettings() {
@@ -174,7 +168,7 @@ export default function useSettings() {
 
 Now, any time I want, I can use this hook to fetch my data and I won't need any `isLoading` if statements or risk it being undefined (unless the server is offline :p)
 
-```ts:Example
+```ts title="Example"
 const settings = useSettings();
 ```
 
@@ -184,13 +178,13 @@ One of my goals was to also be able to update the data whenever I want, and then
 
 Take a look at this function, I first import the store (without the hook) so that I have access to the update function:
 
-```tsx:web/src/modules/user/profile/profile-information.tsx
+```tsx title="Example"
 const { user, updateUser } = useUserStore();
 ```
 
 Now, we can actually use the function:
 
-```tsx:web/src/modules/user/profile/profile-information.tsx
+```tsx title="Real Example"
 onSubmit={async (data, { setSubmitting }) => {
     setSubmitting(true);
 
@@ -222,11 +216,7 @@ Nice! I finally got this system working and it can actually be used in other pro
 
 Hope this guide/rant has been helpful, if you want to check out the rest of the code for this project, here it is below.
 
-<span className="flex justify-center pb-3">
-    <a href="https://github.com/DavidIlie/sharex-media-server" target="_blank">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=DavidIlie&repo=sharex-media-server&title_color=fff&icon_color=79ff97&text_color=9f9f9f&bg_color=151515" />
-    </a>
-</span>
+<GitHubRepository repo="sharex-upload-server" />
 
 Anyways, have a good rest of your day!
 

@@ -52,7 +52,7 @@ export const CustomLink = (props: CustomLinkProps) => {
         return (
             <Link href={props.href}>
                 <a
-                    className="duration-200 text-blue-500 hover:text-blue-600 hover:underline cursor-pointer"
+                    className="text-blue-500 duration-200 cursor-pointer hover:text-blue-600 hover:underline"
                     {...props}
                 >
                     {props.children}
@@ -63,7 +63,7 @@ export const CustomLink = (props: CustomLinkProps) => {
     return (
         <a
             href={props.href}
-            className="duration-200 text-blue-500 hover:text-blue-600 hover:underline cursor-pointer"
+            className="text-blue-500 duration-200 cursor-pointer hover:text-blue-600 hover:underline"
             {...props}
         >
             {props.children}
@@ -90,7 +90,7 @@ export const CustomImage = ({
                     blurDataURL={shimmer(1920, 1080)}
                 />
             </div>
-            <h1 className="text-center font-semibold mt-2 text-gray-300 blog-image">
+            <h1 className="mt-2 font-semibold text-center text-gray-300 blog-image">
                 {alt}
             </h1>
         </div>
@@ -102,7 +102,7 @@ export const CustomUnorderedList = ({
 }: {
     children: React.ReactNode;
 }): JSX.Element => {
-    return <ul className="mt-3 list-disc ml-5 font-semibold ">{children}</ul>;
+    return <ul className="mt-3 ml-5 font-semibold list-disc ">{children}</ul>;
 };
 
 export const CustomListItem = ({
@@ -117,86 +117,86 @@ export const CustomListItem = ({
     );
 };
 
-const WindowButton = ({ bg }: { bg: string }) => {
-    return (
-        <a
-            style={{ height: "12px", width: "12px", borderRadius: "999px" }}
-            className={`bg-${bg}`}
-        />
-    );
-};
+// const WindowButton = ({ bg }: { bg: string }) => {
+//     return (
+//         <a
+//             style={{ height: "12px", width: "12px", borderRadius: "999px" }}
+//             className={`bg-${bg}`}
+//         />
+//     );
+// };
 
-export const RemarkTitle = ({ children }: { children: string }) => {
-    const checkIfInternal =
-        children.startsWith("Terminal") ||
-        children.startsWith("web/") ||
-        children.startsWith("Example");
-    return (
-        <div
-            className="z-20 mt-2 -mb-5 flex flex-wrap justify-between items-center py-1 w-full mx-auto codeEditorTitle bg-gray-100 dark:bg-black border-gray-200 dark:border-black border-b-0"
-            style={{
-                borderBottom: "none",
-                borderTopLeftRadius: "1rem",
-                borderTopRightRadius: "1rem",
-            }}
-        >
-            <span
-                className="flex relative justify-start items-center gap-4 px-4 codeEditorTitle"
-                style={{ height: "36px" }}
-            >
-                <WindowButton bg="red-400" />
-                <WindowButton bg="yellow-400" />
-                <WindowButton bg="green-500" />
-            </span>
-            {!checkIfInternal ? (
-                <Tooltip content="Go to file">
-                    <a
-                        href={`https://github.com/davidilie/davidilie.com/tree/master/frontend/${children}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="px-4 text-blue-500 cursor-pointer truncate"
-                    >
-                        {children}
-                    </a>
-                </Tooltip>
-            ) : (
-                <a className="px-4 text-blue-500 truncate">{children}</a>
-            )}
-        </div>
-    );
-};
+// export const RemarkTitle = ({ children }: { children: string }) => {
+//     const checkIfInternal =
+//         children.startsWith("Terminal") ||
+//         children.startsWith("web/") ||
+//         children.startsWith("Example");
+//     return (
+//         <div
+//             className="z-20 flex flex-wrap items-center justify-between w-full py-1 mx-auto mt-2 -mb-5 bg-gray-100 border-b-0 border-gray-200 codeEditorTitle dark:bg-black dark:border-black"
+//             style={{
+//                 borderBottom: "none",
+//                 borderTopLeftRadius: "1rem",
+//                 borderTopRightRadius: "1rem",
+//             }}
+//         >
+//             <span
+//                 className="relative flex items-center justify-start gap-4 px-4 codeEditorTitle"
+//                 style={{ height: "36px" }}
+//             >
+//                 <WindowButton bg="red-400" />
+//                 <WindowButton bg="yellow-400" />
+//                 <WindowButton bg="green-500" />
+//             </span>
+//             {!checkIfInternal ? (
+//                 <Tooltip content="Go to file">
+//                     <a
+//                         href={`https://github.com/davidilie/davidilie.com/tree/master/frontend/${children}`}
+//                         target="_blank"
+//                         rel="noreferrer"
+//                         className="px-4 text-blue-200 truncate cursor-pointer"
+//                     >
+//                         {children}
+//                     </a>
+//                 </Tooltip>
+//             ) : (
+//                 <a className="px-4 text-blue-200 truncate">{children}</a>
+//             )}
+//         </div>
+//     );
+// };
 
-export const CustomDiv = (props: any) => {
-    if (props?.className?.includes("remark-code-title")) {
-        return <RemarkTitle {...props} />;
-    } else {
-        return <div {...props} />;
-    }
-};
+// export const CustomDiv = (props: any) => {
+//     if (props?.className?.includes("remark-code-title")) {
+//         return <RemarkTitle {...props} />;
+//     } else {
+//         return <div {...props} />;
+//     }
+// };
 
-export const CustomPre = (props: any) => {
-    return (
-        <pre
-            {...props}
-            className="z-50 scrollbar-thin scrollbar-thumb-blue-500 dark:scrollbar-thumb-blue-700 scrollbar-track-blue-200 py-5 px-5 bg-gray-200 dark:bg-gray-900 overflow-auto w-full"
-            style={{ maxHeight: "500px" }}
-        />
-    );
-};
+// export const CustomPre = (props: any) => {
+//     return (
+//         <pre
+//             {...props}
+//             className="z-50 w-full px-5 py-5 overflow-auto bg-gray-200 scrollbar-thin scrollbar-thumb-blue-500 dark:scrollbar-thumb-blue-700 scrollbar-track-blue-200 dark:bg-gray-900"
+//             style={{ maxHeight: "500px" }}
+//         />
+//     );
+// };
 
-export const CustomCode = (props: any) => {
-    return (
-        <code
-            {...props}
-            className={`${props.className} text-gray-200 code overflow-auto`}
-        />
-    );
-};
+// export const CustomCode = (props: any) => {
+//     return (
+//         <code
+//             {...props}
+//             className={`${props.className} text-gray-200 code overflow-auto`}
+//         />
+//     );
+// };
 
 export const InfoQuote = ({ children }: { children: JSX.Element }) => (
-    <div className="px-6 py-1 mb-5 rounded-lg border-l-4 leading-relaxed text-gray-800 dark:text-gray-300 relative border-blue-700 bg-blue-700 bg-opacity-20 dark:border-blue-500 dark:bg-blue-500 dark:bg-opacity-10">
+    <div className="relative px-6 py-1 mb-5 leading-relaxed text-gray-800 bg-blue-700 border-l-4 border-blue-700 rounded-lg dark:text-gray-300 bg-opacity-20 dark:border-blue-500 dark:bg-blue-500 dark:bg-opacity-10">
         <div
-            className="text-center bg-gray-200 dark:bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            className="flex items-center justify-center w-10 h-10 text-center bg-gray-200 rounded-full dark:bg-gray-900"
             style={{
                 float: "left",
                 position: "absolute",
@@ -206,14 +206,14 @@ export const InfoQuote = ({ children }: { children: JSX.Element }) => (
         >
             <HiOutlineInformationCircle className="text-3xl text-blue-500" />
         </div>
-        <div className="p-0 m-0 text-lg mb-3">{children}</div>
+        <div className="p-0 m-0 mb-3 text-lg">{children}</div>
     </div>
 );
 
 export const ThoughtQuote = ({ children }: { children: JSX.Element }) => (
-    <div className="px-6 py-1 rounded-lg border-l-4 leading-relaxed text-gray-800 dark:text-gray-300 relative border-purple-700 bg-purple-700 bg-opacity-20 dark:border-purple-500 dark:bg-purple-500 dark:bg-opacity-10">
+    <div className="relative px-6 py-1 leading-relaxed text-gray-800 bg-purple-700 border-l-4 border-purple-700 rounded-lg dark:text-gray-300 bg-opacity-20 dark:border-purple-500 dark:bg-purple-500 dark:bg-opacity-10">
         <div
-            className="text-center bg-gray-200 dark:bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            className="flex items-center justify-center w-10 h-10 text-center bg-gray-200 rounded-full dark:bg-gray-900"
             style={{
                 float: "left",
                 position: "absolute",
@@ -223,14 +223,14 @@ export const ThoughtQuote = ({ children }: { children: JSX.Element }) => (
         >
             <RiBubbleChartLine className="text-3xl text-purple-600 dark:text-purple-500" />
         </div>
-        <div className="p-0 m-0 text-lg mb-3">{children}</div>
+        <div className="p-0 m-0 mb-3 text-lg">{children}</div>
     </div>
 );
 
 export const AnnouncementQuote = ({ children }: { children: JSX.Element }) => (
-    <div className="px-6 py-1 rounded-lg border-l-4 text-gray-800 dark:text-gray-300 leading-relaxed relative border-yellow-700 bg-yellow-700 dark:border-yellow-500 dark:bg-yellow-500 bg-opacity-20 dark:bg-opacity-10">
+    <div className="relative px-6 py-1 leading-relaxed text-gray-800 bg-yellow-700 border-l-4 border-yellow-700 rounded-lg dark:text-gray-300 dark:border-yellow-500 dark:bg-yellow-500 bg-opacity-20 dark:bg-opacity-10">
         <div
-            className="text-center bg-gray-200 dark:bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            className="flex items-center justify-center w-10 h-10 text-center bg-gray-200 rounded-full dark:bg-gray-900"
             style={{
                 float: "left",
                 position: "absolute",
@@ -240,7 +240,7 @@ export const AnnouncementQuote = ({ children }: { children: JSX.Element }) => (
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-yellow-600 dark:text-yellow-500"
+                className="w-6 h-6 text-yellow-600 dark:text-yellow-500"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -253,14 +253,14 @@ export const AnnouncementQuote = ({ children }: { children: JSX.Element }) => (
                 />
             </svg>
         </div>
-        <div className="p-0 m-0 text-lg mb-3">{children}</div>
+        <div className="p-0 m-0 mb-3 text-lg">{children}</div>
     </div>
 );
 
 export const BlockQuote = ({ children }: { children: JSX.Element }) => (
-    <div className="px-6 py-1 rounded-lg border-l-4 leading-relaxed text-gray-800 dark:text-gray-300 relative border-gray-600 dark:border-gray-300 bg-gray-400 bg-opacity-20 dark:bg-opacity-10">
+    <div className="relative px-6 py-1 leading-relaxed text-gray-800 bg-gray-400 border-l-4 border-gray-600 rounded-lg dark:text-gray-300 dark:border-gray-300 bg-opacity-20 dark:bg-opacity-10">
         <div
-            className="text-center bg-gray-200 dark:bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            className="flex items-center justify-center w-10 h-10 text-center bg-gray-200 rounded-full dark:bg-gray-900"
             style={{
                 float: "left",
                 position: "absolute",
@@ -270,14 +270,14 @@ export const BlockQuote = ({ children }: { children: JSX.Element }) => (
         >
             <FaQuoteLeft />
         </div>
-        <div className="p-0 m-0 text-lg mb-3 italic">{children}</div>
+        <div className="p-0 m-0 mb-3 text-lg italic">{children}</div>
     </div>
 );
 
 export const IdeaQuote = ({ children }: { children: JSX.Element }) => (
-    <div className="px-6 py-1 mb-6 rounded-lg border-l-4 leading-relaxed text-gray-800 dark:text-gray-300 relative border-yellow-600 bg-yellow-600 dark:border-yellow-400 dark:bg-yellow-400 bg-opacity-20 dark:bg-opacity-10">
+    <div className="relative px-6 py-1 mb-6 leading-relaxed text-gray-800 bg-yellow-600 border-l-4 border-yellow-600 rounded-lg dark:text-gray-300 dark:border-yellow-400 dark:bg-yellow-400 bg-opacity-20 dark:bg-opacity-10">
         <div
-            className="text-center bg-gray-200 dark:bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            className="flex items-center justify-center w-10 h-10 text-center bg-gray-200 rounded-full dark:bg-gray-900"
             style={{
                 float: "left",
                 position: "absolute",
@@ -287,14 +287,14 @@ export const IdeaQuote = ({ children }: { children: JSX.Element }) => (
         >
             <HiOutlineLightBulb className="text-3xl text-yellow-500 dark:text-yellow-400" />
         </div>
-        <div className="p-0 m-0 text-lg mb-3">{children}</div>
+        <div className="p-0 m-0 mb-3 text-lg">{children}</div>
     </div>
 );
 
 export const WarningQuote = ({ children }: { children: JSX.Element }) => (
-    <div className="px-6 py-1 mb-6 rounded-lg border-l-4 leading-relaxed text-gray-800 dark:text-gray-300 relative bg-red-600 border-red-600 dark:border-red-500 dark:bg-red-500 bg-opacity-20 dark:bg-opacity-10">
+    <div className="relative px-6 py-1 mb-6 leading-relaxed text-gray-800 bg-red-600 border-l-4 border-red-600 rounded-lg dark:text-gray-300 dark:border-red-500 dark:bg-red-500 bg-opacity-20 dark:bg-opacity-10">
         <div
-            className="text-center bg-gray-200 dark:bg-gray-900 rounded-full w-10 h-10 flex items-center justify-center"
+            className="flex items-center justify-center w-10 h-10 text-center bg-gray-200 rounded-full dark:bg-gray-900"
             style={{
                 float: "left",
                 position: "absolute",
@@ -304,7 +304,7 @@ export const WarningQuote = ({ children }: { children: JSX.Element }) => (
         >
             <TiWarningOutline className="text-3xl text-red-700 dark:text-red-500" />
         </div>
-        <div className="p-0 m-0 text-lg mb-3">{children}</div>
+        <div className="p-0 m-0 mb-3 text-lg">{children}</div>
     </div>
 );
 
@@ -322,13 +322,13 @@ const AnchorLink = ({ children }: { children: string }) => {
 };
 
 export const h1 = ({ children }: { children: any }) => (
-    <h1 className="text-4xl font-extrabold text-black dark:text-white mt-2">
+    <h1 className="mt-2 text-4xl font-extrabold text-black dark:text-white">
         <AnchorLink>{children}</AnchorLink>
     </h1>
 );
 
 export const h2 = ({ children }: { children: any }) => (
-    <h2 className="text-3xl font-extrabold text-black dark:text-white mt-2">
+    <h2 className="mt-2 text-3xl font-extrabold text-black dark:text-white">
         <AnchorLink>{children}</AnchorLink>
     </h2>
 );
@@ -352,7 +352,45 @@ export const h5 = ({ children }: { children: any }) => (
 );
 
 export const h6 = ({ children }: { children: any }) => (
-    <h6 className="text-md font-extrabold text-black dark:text-white">
+    <h6 className="font-extrabold text-black text-md dark:text-white">
         <AnchorLink>{children}</AnchorLink>
     </h6>
+);
+
+export const YouTubeVideo = ({
+    url,
+    width = 560,
+    height = 312,
+}: {
+    url: string;
+    width?: number;
+    height?: number;
+}) => (
+    <div className="flex justify-center blog-image">
+        <iframe
+            width={width}
+            height={height}
+            src={url}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+        ></iframe>
+    </div>
+);
+
+export const GitHubRepository = ({
+    username = "DavidIlie",
+    repo,
+}: {
+    username: string;
+    repo: string;
+}) => (
+    <span className="flex justify-center pb-3">
+        <a href={`https://github.com/${username}/${repo}`} target="_blank">
+            <img
+                src={`https://github-readme-stats.vercel.app/api/pin/?username=${username}&repo=${repo}&title_color=fff&icon_color=79ff97&text_color=9f9f9f&bg_color=151515`}
+            />
+        </a>
+    </span>
 );
