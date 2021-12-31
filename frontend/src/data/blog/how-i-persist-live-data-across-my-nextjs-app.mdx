@@ -11,7 +11,7 @@ published: true
 
 # The problem
 
-While working on one of my projects ([sharex-media-server](https://github.com/davidilie/sharex-media-server)) I came across a problem with fetching data such as settings from my backend. The problem was that I didn't want to do the request on **every** request, just in the moments where I wanted it to be fetched (such as updating the profile or force-reload).
+While working on one of my projects ([sharex-upload-server](https://github.com/davidilie/sharex-upload-server)) I came across a problem with fetching data such as settings from my backend. The problem was that I didn't want to do the request on **every** request, just in the moments where I wanted it to be fetched (such as updating the profile or force-reload).
 
 Furthermore, if you have a deep component structure, and need to fetch the same data in more than one component, you would essentially be making the same request many times in the same page to access the data (I know props are a thing, but it's annoying to persist in a deep-component structure).
 
