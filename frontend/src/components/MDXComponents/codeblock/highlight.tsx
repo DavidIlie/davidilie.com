@@ -23,40 +23,36 @@ function Highlight({ codeString, language, showLines }) {
             //@ts-ignore
             theme={customTheme}
         >
-            {({ className, style, tokens, getLineProps, getTokenProps }) => {
-                return (
-                    <div className="pb-4 overflow-x-auto">
-                        <pre className={className} style={style}>
-                            {tokens
-                                .splice(0, tokens.length - 1)
-                                .map((line, i) => {
-                                    const lineProps = getLineProps({
-                                        line,
-                                        key: i,
-                                    });
-                                    return (
-                                        <div {...lineProps} key={i}>
-                                            {showLines && (
-                                                <span className="px-4 select-none text-md">
-                                                    {i + 1}
-                                                </span>
-                                            )}
-                                            {line.map((token, key) => (
-                                                <span
-                                                    {...getTokenProps({
-                                                        token,
-                                                        key,
-                                                    })}
-                                                    key={key}
-                                                />
-                                            ))}
-                                        </div>
-                                    );
-                                })}
-                        </pre>
-                    </div>
-                );
-            }}
+            {({ className, style, tokens, getLineProps, getTokenProps }) => (
+                <div className="pb-4 overflow-x-auto">
+                    <pre className={className} style={style}>
+                        {tokens.splice(0, tokens.length - 1).map((line, i) => {
+                            const lineProps = getLineProps({
+                                line,
+                                key: i,
+                            });
+                            return (
+                                <div {...lineProps} key={i}>
+                                    {showLines && (
+                                        <span className="px-4 select-none text-md">
+                                            {i + 1}
+                                        </span>
+                                    )}
+                                    {line.map((token, key) => (
+                                        <span
+                                            {...getTokenProps({
+                                                token,
+                                                key,
+                                            })}
+                                            key={key}
+                                        />
+                                    ))}
+                                </div>
+                            );
+                        })}
+                    </pre>
+                </div>
+            )}
         </BaseHighlight>
     );
 }
