@@ -86,18 +86,18 @@ export const BlogLayout = ({
                     ],
                 }}
             />
-            <article className="text-black dark:text-white flex flex-col justify-start pt-28 w-full min-h-screen mx-auto max-w-3xl">
+            <article className="flex flex-col justify-start w-full max-w-3xl min-h-screen mx-auto text-black dark:text-white pt-28">
                 {frontMatter.tags && (
-                    <div className="flex w-full px-3 mb-4 justify-start flex-wrap">
+                    <div className="flex flex-wrap justify-start w-full px-3 mb-4">
                         {frontMatter.tags.map((tag, i) => (
                             <BlogBadge tag={tag} key={i.toString()} />
                         ))}
                     </div>
                 )}
-                <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-semibold px-4">
+                <h1 className="px-4 text-4xl font-semibold 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl">
                     {frontMatter.title}
                 </h1>
-                <div className="flex flex-wrap justify-between items-center max-w-3xl mx-auto mb-6 px-3 mt-5 w-full">
+                <div className="flex flex-wrap items-center justify-between w-full max-w-3xl px-3 mx-auto mt-5 mb-6">
                     <div className="flex items-center">
                         <span className="inline-flex items-center justify-center py-2 text-xs font-bold leading-none rounded-md">
                             <Image
@@ -108,7 +108,7 @@ export const BlogLayout = ({
                                 blurDataURL={shimmer(1920, 1080)}
                                 alt={`${frontMatter.by}'s profile image`}
                             />
-                            <span className="ml-1 header-gradient text-lg mr-1">
+                            <span className="ml-1 mr-1 text-lg header-gradient">
                                 {frontMatter.by.name}
                             </span>
                         </span>
@@ -131,7 +131,7 @@ export const BlogLayout = ({
                 <div className="mx-auto">
                     <Image
                         alt="Post picture"
-                        className="rounded-xl shadow-xl"
+                        className="shadow-xl rounded-xl"
                         src={frontMatter.image}
                         width={frontMatter.imageDimensions.width / 2}
                         height={frontMatter.imageDimensions.height / 2}
@@ -140,13 +140,13 @@ export const BlogLayout = ({
                     />
                 </div>
 
-                <div className="mt-3 mb-10 px-2 max-w-5xl w-full blog-content">
+                <div className="w-full max-w-5xl px-2 mt-3 mb-10 blog-content">
                     {children}
                 </div>
-                <div className="flex items-center px-3 pb-3 gap-1 justify-end">
+                <div className="flex items-center justify-end gap-1 px-3 pb-3">
                     <RiEditBoxLine className="mt-0.5" />
                     <a
-                        className="text-lg text-blue-600 duration-200 hover:text-blue-700 font-semibold"
+                        className="text-lg font-semibold text-blue-600 duration-200 hover:text-blue-700"
                         href={getGitHubEditURL(frontMatter.slug)}
                     >
                         Edit on GitHub

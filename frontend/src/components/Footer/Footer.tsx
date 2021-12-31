@@ -15,12 +15,12 @@ export const Footer = () => {
     );
 
     return (
-        <footer className="text-black dark:text-white pt-5 pb-5 w-full bg-slate-200 bg-opacity-40 dark:bg-slate-800 dark:bg-opacity-80">
-            <div className="flex flex-wrap items-center sm:justify-evenly justify-center mx-12">
-                <div className="flex justify-evenly items-center sm:mb-0 mb-2">
+        <footer className="w-full pt-5 pb-5 text-black dark:text-white bg-slate-200 bg-opacity-40 dark:bg-slate-800 dark:bg-opacity-80">
+            <div className="flex flex-wrap items-center justify-center mx-12 sm:justify-evenly">
+                <div className="flex items-center mb-2 justify-evenly sm:mb-0">
                     {currentlyPlaying?.songUrl ? (
                         <>
-                            <div className="text-2xl text-green-600 dark:text-green-500 mr-1">
+                            <div className="mr-1 text-2xl text-green-600 dark:text-green-500">
                                 {currentlyPlaying.isPlaying ? (
                                     <Tooltip content="Currently Playing">
                                         <span>
@@ -51,7 +51,7 @@ export const Footer = () => {
                                 href="https://open.spotify.com/user/e1lg6nepjzvt6rjhfey78hqan"
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-green-500 dark:text-green-700 font-bold"
+                                className="font-bold text-green-500 dark:text-green-700"
                             >
                                 Spotify
                             </a>
@@ -63,7 +63,7 @@ export const Footer = () => {
                                 target="_blank"
                                 rel="noreferrer"
                             >
-                                <FaSpotify className="text-2xl text-green-500 mr-1" />
+                                <FaSpotify className="mr-1 text-2xl text-green-500" />
                             </a>
                             {error
                                 ? "- There was an error"
@@ -72,7 +72,7 @@ export const Footer = () => {
                     )}
                 </div>
 
-                <h1 className="text-xl sm:mb-0 mb-2">
+                <h1 className="mb-2 text-xl sm:mb-0">
                     Copyright ©{" "}
                     <a
                         href="https://davidapps.dev"

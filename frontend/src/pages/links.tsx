@@ -9,15 +9,15 @@ function Stats(): JSX.Element {
     return (
         <>
             <NextSeo title="Links" />
-            <div className="flex flex-col items-center pt-28 w-full min-h-screen text-black dark:text-white">
+            <div className="flex flex-col items-center w-full min-h-screen text-black pt-28 dark:text-white">
                 <Fade duration={750} direction="up" triggerOnce cascade>
-                    <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
+                    <h1 className="text-4xl font-bold 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl header-gradient">
                         Links
                     </h1>
-                    <p className="text-section mb-5 px-5 text-center">
+                    <p className="px-5 mb-5 text-center text-section">
                         My favorite parts of the interweb.
                     </p>
-                    <div className="grid 2xl:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-5 mb-10">
+                    <div className="grid grid-cols-1 gap-5 mb-10 2xl:grid-cols-3 xl:grid-cols-3 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1">
                         {links
                             .sort(
                                 (a: LinkType, b: LinkType) =>

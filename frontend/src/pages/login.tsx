@@ -27,10 +27,10 @@ const Login = ({ loggedIn, identityURL }): JSX.Element => {
     });
 
     return (
-        <div className="h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-center h-screen px-4 py-12 sm:px-6 lg:px-8">
             {stateLoggedIn === false ? (
-                <div className="max-w-md w-full space-y-8">
-                    <h2 className="mt-6 -mb-5 text-center text-3xl font-extrabold header-gradient">
+                <div className="w-full max-w-md space-y-8">
+                    <h2 className="mt-6 -mb-5 text-3xl font-extrabold text-center header-gradient">
                         API Log In
                     </h2>
                     <Formik
@@ -79,7 +79,7 @@ const Login = ({ loggedIn, identityURL }): JSX.Element => {
                     >
                         {({ errors }) => (
                             <Form>
-                                <div className="rounded-md shadow-sm -space-y-px mb-3">
+                                <div className="mb-3 -space-y-px rounded-md shadow-sm">
                                     <Field
                                         name="email"
                                         placeholder="Email"
@@ -92,17 +92,17 @@ const Login = ({ loggedIn, identityURL }): JSX.Element => {
                                         as={Input}
                                     />
                                 </div>
-                                <h1 className="text-red-500 font-semibold text-center mb-1 -mt-1">
+                                <h1 className="mb-1 -mt-1 font-semibold text-center text-red-500">
                                     {errors.password || errors.email}
                                 </h1>
                                 <button
                                     type="submit"
-                                    className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 duration-200 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white duration-200 bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                 >
-                                    <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                                    <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                                         {pendingLogin ? (
                                             <svg
-                                                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                                                className="w-5 h-5 mr-3 -ml-1 text-white animate-spin"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 fill="none"
                                                 viewBox="0 0 24 24"
@@ -123,7 +123,7 @@ const Login = ({ loggedIn, identityURL }): JSX.Element => {
                                             </svg>
                                         ) : (
                                             <svg
-                                                className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 duration-200"
+                                                className="w-5 h-5 text-indigo-500 duration-200 group-hover:text-indigo-400"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 20 20"
                                                 fill="currentColor"
@@ -145,17 +145,17 @@ const Login = ({ loggedIn, identityURL }): JSX.Element => {
                 </div>
             ) : fallback !== undefined ? (
                 <Redirect>
-                    <h1 className="text-white text-3xl">
+                    <h1 className="text-3xl text-white">
                         Logged in as{" "}
-                        <span className="header-gradient font-semibold">
+                        <span className="font-semibold header-gradient">
                             {stateLoggedIn}
                         </span>
                     </h1>
                 </Redirect>
             ) : (
-                <h1 className="text-white text-3xl">
+                <h1 className="text-3xl text-white">
                     Logged in as{" "}
-                    <span className="header-gradient font-semibold">
+                    <span className="font-semibold header-gradient">
                         {stateLoggedIn}
                     </span>
                 </h1>

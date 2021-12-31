@@ -8,7 +8,7 @@ const AnimatedTitle = (): JSX.Element => {
     return (
         <div className="relative mt-3">
             <a
-                className="text-black dark:text-white text-3xl font-semibold cursor-pointer"
+                className="text-3xl font-semibold text-black cursor-pointer dark:text-white"
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
                 onClick={() => router.pathname !== "/" && router.push("/")}

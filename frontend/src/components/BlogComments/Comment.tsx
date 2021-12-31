@@ -51,16 +51,16 @@ const Comment = ({ data, refetch }: CommentComponentProps) => {
     };
 
     return (
-        <div className="max-h-32 h-32 bg-gray-200 dark:bg-gray-800 rounded-lg p-3 flex flex-col justify-center items-start shadow-lg mb-4 hoverItem duration-200">
+        <div className="flex flex-col items-start justify-center h-32 p-3 mb-4 duration-200 bg-gray-200 rounded-lg shadow-lg max-h-32 dark:bg-gray-800 hoverItem">
             <p className="px-2">{data.comment}</p>
-            <div className="flex flex-row items-center mr-2 mt-4">
+            <div className="flex flex-row items-center mt-4 mr-2">
                 <Image
                     src={data.image}
                     width="48"
                     height="48"
                     blurDataURL={shimmer(1920, 1080)}
                     placeholder="blur"
-                    className="rounded-full w-10 h-10 shadow-lg"
+                    className="w-10 h-10 rounded-full shadow-lg"
                     alt={`${data.name}'s profile image`}
                 />
                 <h1 className="ml-4 text-gray-800 dark:text-gray-300">
@@ -74,7 +74,7 @@ const Comment = ({ data, refetch }: CommentComponentProps) => {
                             {" "}
                             /{" "}
                             <span
-                                className="text-red-500 dark:text-red-400 cursor-pointer hover:underline"
+                                className="text-red-500 cursor-pointer dark:text-red-400 hover:underline"
                                 onClick={deleteEntry}
                             >
                                 {deleting ? "Deleting" : "Delete"}

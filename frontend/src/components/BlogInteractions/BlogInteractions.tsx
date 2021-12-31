@@ -48,8 +48,8 @@ export const BlogInteractions = ({
             </div>
             {!session && (
                 <div>
-                    <div className="border rounded p-6 my-4 w-full border-sky-500 dark:border-sky-900 bg-sky-300 dark:bg-sky-900 dark:bg-opacity-25 bg-opacity-25">
-                        <h5 className="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100">
+                    <div className="w-full p-6 my-4 bg-opacity-25 border rounded border-sky-500 dark:border-sky-900 bg-sky-300 dark:bg-sky-900 dark:bg-opacity-25">
+                        <h5 className="text-lg font-bold text-gray-800 md:text-xl dark:text-gray-100">
                             Sign in to comment
                         </h5>
                         <p className="my-1 text-gray-900 dark:text-gray-200">
@@ -57,12 +57,12 @@ export const BlogInteractions = ({
                             to see
                         </p>
                         <a
-                            className="flex items-center justify-center my-4 font-bold h-8 bg-slate-700 hover:bg-gray-600 duration-200 cursor-pointer text-gray-100 rounded w-28"
+                            className="flex items-center justify-center h-8 my-4 font-bold text-gray-100 duration-200 rounded cursor-pointer bg-slate-700 hover:bg-gray-600 w-28"
                             onClick={() => setModalOpen(true)}
                         >
                             Login
                         </a>
-                        <p className="text-sm text-gray-900 dark:text-gray-200 italic">
+                        <p className="text-sm italic text-gray-900 dark:text-gray-200">
                             Your information is only used to display your name
                             and reply by email.
                         </p>
@@ -70,12 +70,12 @@ export const BlogInteractions = ({
                 </div>
             )}
             {session && (
-                <div className="border rounded p-6 my-4 w-full border-sky-500 dark:border-sky-900 bg-sky-300 dark:bg-sky-900 dark:bg-opacity-25 bg-opacity-25">
+                <div className="w-full p-6 my-4 bg-opacity-25 border rounded border-sky-500 dark:border-sky-900 bg-sky-300 dark:bg-sky-900 dark:bg-opacity-25">
                     <h1 className="mb-1">
                         You are signed in as {session.user.email}. Not You?{" "}
                         <a
                             onClick={() => signOut()}
-                            className="duration-200 text-blue-600 hover:text-blue-700 hover:underline cursor-pointer"
+                            className="text-blue-600 duration-200 cursor-pointer hover:text-blue-700 hover:underline"
                         >
                             Sign Out
                         </a>

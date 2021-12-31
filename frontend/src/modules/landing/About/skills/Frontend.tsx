@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const FrontendDeveloper = () => {
     return (
-        <div className="xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 2xl:border-b-0 md:border-b-0 xl:border-b-0 border-b-2 border-fuchasia-600 dark:border-gray-600 px-5 pt-10">
+        <div className="px-5 pt-10 border-b-2 xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 2xl:border-b-0 md:border-b-0 xl:border-b-0 border-fuchasia-600 dark:border-gray-600">
             <div className="flex justify-center mb-3">
                 <Image
                     src="/images/svg/frontend.svg"
@@ -15,23 +15,23 @@ export const FrontendDeveloper = () => {
                     height="100%"
                 />
             </div>
-            <div className="text-center mb-10">
-                <h1 className="text-2xl font-semibold mb-5">
+            <div className="mb-10 text-center">
+                <h1 className="mb-5 text-2xl font-semibold">
                     Frontend Developer
                 </h1>
                 <p className="text-section">
                     I like bringing my ideas to{" "}
-                    <span className="text-blue-700 dark:text-blue-500 font-bold">
+                    <span className="font-bold text-blue-700 dark:text-blue-500">
                         reality
                     </span>
                     , by producing simple but powerful{" "}
-                    <span className="text-blue-700 dark:text-blue-500 font-bold">
+                    <span className="font-bold text-blue-700 dark:text-blue-500">
                         code
                     </span>
                     .
                 </p>
             </div>
-            <div className="text-center mb-10">
+            <div className="mb-10 text-center">
                 <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                     Technologies I use:
                 </h1>

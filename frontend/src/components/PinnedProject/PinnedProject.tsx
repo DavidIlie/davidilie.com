@@ -28,7 +28,7 @@ export const PinnedProject = ({
     }, [pageWidth]);
 
     return pageWidth >= 900 ? (
-        <div className="mx-auto bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl shadow-md overflow-hidden max-w-5xl mb-7 hoverItem duration-200">
+        <div className="max-w-5xl mx-auto overflow-hidden duration-200 bg-gray-100 border-2 border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 rounded-xl mb-7 hoverItem">
             <div className="flex">
                 {!left && <ProjectImage link={projectData.image} />}
                 <div className="p-8">
@@ -38,7 +38,7 @@ export const PinnedProject = ({
                             {format(new Date(repo.date.created_at), `dd/MM/yy`)}
                         </span>
                     </h1>
-                    <h1 className="flex justify-center text-black dark:text-gray-400 mb-2">
+                    <h1 className="flex justify-center mb-2 text-black dark:text-gray-400">
                         Last updated{" "}
                         {formatDistance(
                             new Date(repo.date.last_push),
@@ -49,7 +49,7 @@ export const PinnedProject = ({
                         )}{" "}
                         •
                         {repo.language ? (
-                            <span className="ml-1 inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-green-100 bg-green-600 rounded-md">
+                            <span className="inline-flex items-center justify-center px-2 py-1 ml-1 mr-2 text-xs font-bold leading-none text-green-100 bg-green-600 rounded-md">
                                 {repo.language}
                             </span>
                         ) : null}
@@ -69,22 +69,22 @@ export const PinnedProject = ({
             </div>
         </div>
     ) : (
-        <div className="mx-auto py-2 max-w-md">
-            <div className="p-2 h-full bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden cursor-pointer">
+        <div className="max-w-md py-2 mx-auto">
+            <div className="h-full p-2 overflow-hidden bg-white border-2 border-gray-200 rounded-lg cursor-pointer dark:bg-gray-800 dark:border-gray-700">
                 <h1 className="text-2xl font-semibold">
                     {projectData.name}
                     <span className="ml-2 text-gray-500 text-section">
                         {format(new Date(repo.date.created_at), `dd/MM/yy`)}
                     </span>
                 </h1>
-                <h1 className="flex justify-center text-gray-400 mb-2">
+                <h1 className="flex justify-center mb-2 text-gray-400">
                     Last updated{" "}
                     {formatDistance(new Date(repo.date.last_push), Date.now(), {
                         addSuffix: true,
                     })}{" "}
                     •
                     {repo.language ? (
-                        <span className="ml-1 inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-green-100 bg-green-600 rounded-md">
+                        <span className="inline-flex items-center justify-center px-2 py-1 ml-1 mr-2 text-xs font-bold leading-none text-green-100 bg-green-600 rounded-md">
                             {repo.language}
                         </span>
                     ) : null}
@@ -116,7 +116,7 @@ export const PinnedProject = ({
 const ProjectImage = ({ link }: { link: string }) => {
     return (
         <Image
-            className="w-full object-cover md:h-full md:w-96"
+            className="object-cover w-full md:h-full md:w-96"
             height="400px"
             width="1500px"
             blurDataURL={shimmer(1920, 1080)}

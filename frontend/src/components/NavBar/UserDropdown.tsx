@@ -21,12 +21,12 @@ const UserDropdown = (): JSX.Element => {
 
     return (
         <>
-            <Menu as="div" className="mt-1 relative inline-block text-right">
+            <Menu as="div" className="relative inline-block mt-1 text-right">
                 <Menu.Button ref={buttonRef}>
                     {!session ? (
-                        <div className="transition duration-100 ease-in-out p-2 bg-gray-200 hover:bg-gray-300 rounded dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer">
+                        <div className="p-2 transition duration-100 ease-in-out bg-gray-200 rounded cursor-pointer hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700">
                             <FiSettings
-                                className="cursor-pointer rounded-full h-6 w-6 text-gray-500 dark:text-gray-400"
+                                className="w-6 h-6 text-gray-500 rounded-full cursor-pointer dark:text-gray-400"
                                 aria-label="Settings"
                                 title="Settings"
                             />
@@ -35,7 +35,7 @@ const UserDropdown = (): JSX.Element => {
                         <Image
                             width="40%"
                             height="40%"
-                            className="cursor-pointer rounded-full"
+                            className="rounded-full cursor-pointer"
                             src={session.user.image}
                             blurDataURL={shimmer(1920, 1080)}
                             placeholder="blur"
@@ -53,8 +53,8 @@ const UserDropdown = (): JSX.Element => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                 >
-                    <Menu.Items className="absolute right-0 w-36 bg-gray-100 dark:bg-gray-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="border-1 rounded-t-md border-gray-200 dark:border-gray-900">
+                    <Menu.Items className="absolute right-0 bg-gray-100 rounded-md shadow-lg w-36 dark:bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <div className="border-gray-200 border-1 rounded-t-md dark:border-gray-900">
                             <Menu.Item>
                                 <a
                                     href="https://github.com/DavidIlie/davidilie.com/issues"
@@ -76,7 +76,7 @@ const UserDropdown = (): JSX.Element => {
                         {!session && (
                             <Menu.Item>
                                 <a
-                                    className="font-semibold cursor-pointer bg-blue-600 dark:bg-blue-800 text-white text-center group flex justify-center rounded-b-md items-center w-full py-2 text-sm"
+                                    className="flex items-center justify-center w-full py-2 text-sm font-semibold text-center text-white bg-blue-600 cursor-pointer dark:bg-blue-800 group rounded-b-md"
                                     onClick={() =>
                                         !session
                                             ? setModalOpen(true)
@@ -112,7 +112,7 @@ export const DropdownElement = ({
     children: React.ReactNode;
 }) => {
     return (
-        <div className="group flex gap-1 rounded-b-md items-center w-full px-2 py-2 text-sm">
+        <div className="flex items-center w-full gap-1 px-2 py-2 text-sm group rounded-b-md">
             {children}
         </div>
     );

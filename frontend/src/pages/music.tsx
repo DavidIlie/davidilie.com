@@ -30,11 +30,11 @@ function Music({ data, error }: MusicProps) {
     if (error || currentError) {
         return (
             <Fade direction="down">
-                <div className="flex flex-col justify-center items-center h-screen w-full">
-                    <h1 className="header-gradient font-semibold 2xl:text-6xl xl:text-6xl md:text-6xl lg:text-6xl text-4xl text-center max-w-5xl">
+                <div className="flex flex-col items-center justify-center w-full h-screen">
+                    <h1 className="max-w-5xl text-4xl font-semibold text-center header-gradient 2xl:text-6xl xl:text-6xl md:text-6xl lg:text-6xl">
                         There was an error fetching the data from Spotify.
                     </h1>
-                    <p className="text-gray-500 text-2xl">Come back later!</p>
+                    <p className="text-2xl text-gray-500">Come back later!</p>
                 </div>
             </Fade>
         );
@@ -43,12 +43,12 @@ function Music({ data, error }: MusicProps) {
     return (
         <>
             <NextSeo title="Music" />
-            <div className="text-black dark:text-white pt-32 pb-12">
+            <div className="pt-32 pb-12 text-black dark:text-white">
                 <Fade direction="up" triggerOnce cascade>
-                    <h1 className="2xl:text-6xl xl:text-6xl md:text-5xl lg:text-4xl sm:text-4xl text-4xl text-center font-bold header-gradient">
+                    <h1 className="text-4xl font-bold text-center 2xl:text-6xl xl:text-6xl md:text-5xl lg:text-4xl sm:text-4xl header-gradient">
                         Here is the music I listen to.
                     </h1>
-                    <h1 className="text-center text-section mb-4">
+                    <h1 className="mb-4 text-center text-section">
                         I&apos;m a little{" "}
                         <span className="font-semibold header-gradient">
                             random
@@ -70,10 +70,10 @@ function Music({ data, error }: MusicProps) {
 
                 <Fade delay={1100} triggerOnce cascade>
                     <div className="mb-5">
-                        <h1 className="header-gradient text-4xl font-semibold text-center">
+                        <h1 className="text-4xl font-semibold text-center header-gradient">
                             Currently Listening
                         </h1>
-                        <div className="max-w-screen-sm mx-auto p-2">
+                        <div className="max-w-screen-sm p-2 mx-auto">
                             <CurrrentlyPlaying song={currentlyPlaying} />
                         </div>
                     </div>
@@ -81,11 +81,11 @@ function Music({ data, error }: MusicProps) {
 
                 <Fade delay={1200} triggerOnce cascade>
                     <div className="mb-5">
-                        <h1 className="header-gradient text-4xl font-semibold text-center mb-3">
+                        <h1 className="mb-3 text-4xl font-semibold text-center header-gradient">
                             Recently Played Songs
                         </h1>
                         <div className="flex justify-center">
-                            <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4 mx-auto p-2">
+                            <div className="grid grid-cols-1 gap-4 p-2 mx-auto xl:grid-cols-2 md:grid-cols-2">
                                 <RecentSongs
                                     songs={data.recentlyPlayed.items}
                                 />
@@ -95,11 +95,11 @@ function Music({ data, error }: MusicProps) {
                 </Fade>
                 <Fade delay={1200} triggerOnce cascade>
                     <>
-                        <h1 className="header-gradient text-4xl font-semibold text-center mb-3">
+                        <h1 className="mb-3 text-4xl font-semibold text-center header-gradient">
                             Top Played Songs
                         </h1>
                         <div className="flex justify-center">
-                            <div className="grid xl:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-4 mx-auto p-2">
+                            <div className="grid grid-cols-1 gap-4 p-2 mx-auto xl:grid-cols-2 md:grid-cols-2">
                                 <TopSongs songs={data.songs.items} />
                             </div>
                         </div>

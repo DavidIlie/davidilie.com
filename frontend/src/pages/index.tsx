@@ -31,7 +31,7 @@ function Home({ repos }): JSX.Element {
             <NextSeo title="Home" />
             <Header />
             <About />
-            <div className="mt-12 bg-indigo-600 dark:bg-indigo-900 text-white dark:text-gray-100 2xl:text-center xl:text-center md:text-center text-left pt-12 pb-2">
+            <div className="pt-12 pb-2 mt-12 text-left text-white bg-indigo-600 dark:bg-indigo-900 dark:text-gray-100 2xl:text-center xl:text-center md:text-center">
                 <Fade direction="up" triggerOnce cascade>
                     <h1
                         className={`px-10 text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-4xl text-4xl font-semibold mb-5`}
@@ -46,7 +46,7 @@ function Home({ repos }): JSX.Element {
                             href="https://github.com/davidilie/davidilie.com"
                             target="_blank"
                             rel="noreferrer"
-                            className="duration-200 text-blue-200 hover:text-blue-300 hover:underline cursor-pointer"
+                            className="text-blue-200 duration-200 cursor-pointer hover:text-blue-300 hover:underline"
                         >
                             including this website
                         </a>
@@ -55,7 +55,7 @@ function Home({ repos }): JSX.Element {
                             href="https://github.com/davidilie"
                             target="_blank"
                             rel="noreferrer"
-                            className="duration-200 text-blue-200 hover:text-blue-300 hover:underline cursor-pointer"
+                            className="text-blue-200 duration-200 cursor-pointer hover:text-blue-300 hover:underline"
                         >
                             GitHub
                         </a>{" "}
@@ -67,7 +67,7 @@ function Home({ repos }): JSX.Element {
                         <Link href="/blog">
                             <a
                                 target="_blank"
-                                className="duration-200 text-blue-200 hover:text-blue-300 hover:underline cursor-pointer"
+                                className="text-blue-200 duration-200 cursor-pointer hover:text-blue-300 hover:underline"
                             >
                                 blog
                             </a>
@@ -76,7 +76,7 @@ function Home({ repos }): JSX.Element {
                         working on projects. Below, you can see an example of a
                         project:
                     </h1>
-                    <div className="mt-5 text-center text-black dark:text-white mx-auto">
+                    <div className="mx-auto mt-5 text-center text-black dark:text-white">
                         <PinnedProject
                             repo={
                                 repos.filter(
@@ -86,10 +86,10 @@ function Home({ repos }): JSX.Element {
                             left={false}
                             projectData={repo[0]}
                         />
-                        <p className="text-section px-3 text-white">
+                        <p className="px-3 text-white text-section">
                             Want to see more projects? Go to the{" "}
                             <Link href="/projects" passHref={true}>
-                                <span className="text-gray-200 font-semibold cursor-pointer hover:underline">
+                                <span className="font-semibold text-gray-200 cursor-pointer hover:underline">
                                     projects page
                                 </span>
                             </Link>
@@ -97,13 +97,13 @@ function Home({ repos }): JSX.Element {
                     </div>
                 </Fade>
             </div>
-            <div className="text-black dark:text-gray-100 2xl:text-center xl:text-center md:text-center text-left pt-8 pb-2">
+            <div className="pt-8 pb-2 text-left text-black dark:text-gray-100 2xl:text-center xl:text-center md:text-center">
                 <Fade direction="up" triggerOnce cascade>
                     <div
                         className={`px-10 text-center sm:text-5xl text-4xl font-semibold mb-5`}
                     >
                         <h1>Finally, how can you contact me?</h1>
-                        <p className="text-xl font-normal -mt-1">
+                        <p className="-mt-1 text-xl font-normal">
                             Using this form below, you can send me a message.
                         </p>
                     </div>

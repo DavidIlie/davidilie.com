@@ -48,7 +48,7 @@ export const BlogPost = ({
     if ((featured && pageWidth >= 550) || (featured && pageWidth >= 550)) {
         return (
             <Link href={`/blog/${slug}`} passHref>
-                <div className="hoverItem duration-200">
+                <div className="duration-200 hoverItem">
                     <article
                         className={`${
                             featured && "mt-11 rounded-tl-sm"
@@ -64,7 +64,7 @@ export const BlogPost = ({
                         </h1>
                         <Image
                             alt="Post picture"
-                            className="shadow-xl rounded"
+                            className="rounded shadow-xl"
                             src={image}
                             width={1905 / 2}
                             height={957 / 2}
@@ -72,12 +72,12 @@ export const BlogPost = ({
                             placeholder="blur"
                             objectFit="cover"
                         />
-                        <div className="md:max-w-sm md:px-0 py-1">
+                        <div className="py-1 md:max-w-sm md:px-0">
                             {tags &&
                                 tags.map((tag, i) => (
                                     <BlogBadge tag={tag} key={i.toString()} />
                                 ))}
-                            <h1 className="xl:text-2xl md:text-2xl text-section font-semibold mt-1 mb-1">
+                            <h1 className="mt-1 mb-1 font-semibold xl:text-2xl md:text-2xl text-section">
                                 {title}
                             </h1>
                             <p className="text-gray-800 dark:text-gray-300">
@@ -121,8 +121,8 @@ export const BlogPost = ({
     } else {
         return (
             <Link href={`/blog/${slug}`} passHref>
-                <a className="hoverItem duration-200">
-                    <div className="bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 shadow-2xl rounded-lg mb-6 hoverItem duration-200">
+                <a className="duration-200 hoverItem">
+                    <div className="mb-6 duration-200 bg-gray-100 border-2 border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700 hoverItem">
                         <div className="md:flex-shrink-0">
                             <Image
                                 src={image}
@@ -135,18 +135,18 @@ export const BlogPost = ({
                             />
                         </div>
                         <div className="px-4 py-2 -mt-1.5 border-t-2 border-gray-700">
-                            <h2 className="font-semibold text-2xl tracking-normal">
+                            <h2 className="text-2xl font-semibold tracking-normal">
                                 {title}
                             </h2>
-                            <p className="text-md mt-2 mb-3 text-gray-800 dark:text-gray-200 truncate-2-lines">
+                            <p className="mt-2 mb-3 text-gray-800 text-md dark:text-gray-200 truncate-2-lines">
                                 {summary}
                             </p>
                             {tags &&
                                 tags.map((tag, i) => (
                                     <BlogBadge tag={tag} key={i.toString()} />
                                 ))}
-                            <div className="flex items-center mr-1 mt-1 mb-1">
-                                <span className="text-md text-gray-800 dark:text-gray-200">
+                            <div className="flex items-center mt-1 mb-1 mr-1">
+                                <span className="text-gray-800 text-md dark:text-gray-200">
                                     {formatDistance(
                                         new Date(publishedAt),
                                         new Date(),

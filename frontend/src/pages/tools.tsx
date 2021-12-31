@@ -13,12 +13,12 @@ function Stats(): JSX.Element {
     return (
         <>
             <NextSeo title="Tools" />
-            <div className="flex flex-col items-center pt-28 w-full min-h-screen text-black dark:text-white">
+            <div className="flex flex-col items-center w-full min-h-screen text-black pt-28 dark:text-white">
                 <Fade duration={750} direction="up" triggerOnce cascade>
-                    <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
+                    <h1 className="text-4xl font-bold 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl header-gradient">
                         Tools
                     </h1>
-                    <p className="text-section mb-5 px-5 text-center">
+                    <p className="px-5 mb-5 text-center text-section">
                         Some tools I use/find useful.
                     </p>
                     <Tabs
@@ -26,34 +26,34 @@ function Stats(): JSX.Element {
                         selectedIndex={tabIndex}
                         onSelect={(index) => setTabIndex(index)}
                     >
-                        <TabList className="mt-5 mb-10 align-center flex flex-wrap gap-6 justify-center mx-3">
-                            <Tab className="tool flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2">
+                        <TabList className="flex flex-wrap justify-center gap-6 mx-3 mt-5 mb-10 align-center">
+                            <Tab className="flex items-center gap-1 p-2 duration-200 cursor-default tool rounded-2xl">
                                 <AiFillWindows className="text-section" />
-                                <p className="text-section font-semibold">
+                                <p className="font-semibold text-section">
                                     Windows
                                 </p>
                             </Tab>
-                            <Tab className="tool flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2">
+                            <Tab className="flex items-center gap-1 p-2 duration-200 cursor-default tool rounded-2xl">
                                 <FaLinux className="text-section" />
-                                <p className="text-section font-semibold">
+                                <p className="font-semibold text-section">
                                     Linux
                                 </p>
                             </Tab>
-                            <Tab className="tool flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2">
+                            <Tab className="flex items-center gap-1 p-2 duration-200 cursor-default tool rounded-2xl">
                                 <AiFillApple className="text-section" />
-                                <p className="text-section font-semibold">
+                                <p className="font-semibold text-section">
                                     Mac
                                 </p>
                             </Tab>
-                            <Tab className="tool flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2">
+                            <Tab className="flex items-center gap-1 p-2 duration-200 cursor-default tool rounded-2xl">
                                 <BsPhone className="text-section" />
-                                <p className="text-section font-semibold">
+                                <p className="font-semibold text-section">
                                     Android
                                 </p>
                             </Tab>
-                            <Tab className="tool flex items-center gap-1 rounded-2xl duration-200 cursor-default p-2">
+                            <Tab className="flex items-center gap-1 p-2 duration-200 cursor-default tool rounded-2xl">
                                 <AiFillChrome className="text-section" />
-                                <p className="text-section font-semibold">
+                                <p className="font-semibold text-section">
                                     Chrome
                                 </p>
                             </Tab>

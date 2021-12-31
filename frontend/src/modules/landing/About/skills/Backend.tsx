@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const BackendDeveloper = () => {
     return (
-        <div className="xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 md:border-b-0 xl:border-b-0 border-b-2 border-fuchasia-600 dark:border-gray-600 px-5 pt-10">
+        <div className="px-5 pt-10 border-b-2 xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 md:border-b-0 xl:border-b-0 border-fuchasia-600 dark:border-gray-600">
             <div className="flex justify-center mb-3">
                 <Image
                     src="/images/svg/backend.svg"
@@ -15,23 +15,23 @@ export const BackendDeveloper = () => {
                     height="100%"
                 />
             </div>
-            <div className="text-center mb-10">
-                <h1 className="text-2xl font-semibold mb-5">
+            <div className="mb-10 text-center">
+                <h1 className="mb-5 text-2xl font-semibold">
                     Backend Developer
                 </h1>
-                <p className="text-section px-16">
+                <p className="px-16 text-section">
                     I value{" "}
-                    <span className="text-blue-700 dark:text-blue-500 font-bold">
+                    <span className="font-bold text-blue-700 dark:text-blue-500">
                         fast
                     </span>{" "}
                     API calls and{" "}
-                    <span className="text-blue-700 dark:text-blue-500 font-bold">
+                    <span className="font-bold text-blue-700 dark:text-blue-500">
                         efficent
                     </span>{" "}
                     code.
                 </p>
             </div>
-            <div className="text-center mb-10">
+            <div className="mb-10 text-center">
                 <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                     Technologies I use:
                 </h1>

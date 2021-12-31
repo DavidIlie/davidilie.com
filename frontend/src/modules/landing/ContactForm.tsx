@@ -26,7 +26,7 @@ export const ContactValidationSchema = yup.object().shape({
 
 const ContactFormModule = (): JSX.Element => {
     return (
-        <div className="mx-auto max-w-2xl rounded-xl p-5 bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700">
+        <div className="max-w-2xl p-5 mx-auto bg-gray-100 border-2 border-gray-200 rounded-xl dark:bg-gray-800 dark:border-gray-700">
             <Formik
                 validateOnChange={false}
                 validateOnBlur={false}

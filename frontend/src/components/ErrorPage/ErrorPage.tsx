@@ -7,17 +7,17 @@ interface ErrorPageProps {
 
 const ErrorPage = ({ statusCode, message }: ErrorPageProps): JSX.Element => {
     return (
-        <div className="flex flex-col justify-center items-center h-screen w-full">
+        <div className="flex flex-col items-center justify-center w-full h-screen">
             <div className="flex items-center justify-start">
-                <div className="px-4 text-4xl font-semibold text-gray-300 border-r border-gray-500 tracking-wider">
+                <div className="px-4 text-4xl font-semibold tracking-wider text-gray-300 border-r border-gray-500">
                     {statusCode}
                 </div>
 
-                <div className="ml-4 text-3xl text-gray-300 tracking-wider">
+                <div className="ml-4 text-3xl tracking-wider text-gray-300">
                     {message}
                 </div>
             </div>
-            <div className="flex justify-center text-section mt-2">
+            <div className="flex justify-center mt-2 text-section">
                 <Link href="/">
                     <a className="hover:underline">Want to go home?</a>
                 </Link>

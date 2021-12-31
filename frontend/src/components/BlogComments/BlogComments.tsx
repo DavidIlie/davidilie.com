@@ -19,8 +19,8 @@ export const BlogComments = ({
     refetch,
 }: BlogCommentsProps): JSX.Element => {
     return (
-        <div className="mb-5 mt-5">
-            <h1 className="mt-2 text-3xl font-semibold header-gradient mb-4">
+        <div className="mt-5 mb-5">
+            <h1 className="mt-2 mb-4 text-3xl font-semibold header-gradient">
                 Comments
             </h1>
             {comments?.reverse().map((comment: CommentProps, index: number) => (
@@ -28,7 +28,7 @@ export const BlogComments = ({
             ))}
             {comments?.length === 0 && (
                 <div className="-mt-5">
-                    <h1 className="text-center text-3xl">No Comments</h1>
+                    <h1 className="text-3xl text-center">No Comments</h1>
                 </div>
             )}
         </div>

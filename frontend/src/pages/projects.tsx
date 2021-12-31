@@ -19,18 +19,18 @@ function Projects({ repos }) {
     return (
         <>
             <NextSeo title="Projects" />
-            <div className="text-black dark:text-white text-center pt-32 pb-12 px-3">
+            <div className="px-3 pt-32 pb-12 text-center text-black dark:text-white">
                 <Fade direction="up" triggerOnce cascade>
-                    <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
+                    <h1 className="text-4xl font-bold 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl header-gradient">
                         My projects
                     </h1>
                 </Fade>
                 <Fade direction="up" triggerOnce cascade delay={250}>
-                    <p className="text-section mt-2 mb-5">
+                    <p className="mt-2 mb-5 text-section">
                         A quick collection of my projects.
                     </p>
                 </Fade>
-                <div className="flex justify-center items-center flex-wrap">
+                <div className="flex flex-wrap items-center justify-center">
                     <div>
                         <Fade
                             delay={500}
@@ -70,10 +70,10 @@ function Projects({ repos }) {
                     </div>
                 </div>
 
-                <h1 className="2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
+                <h1 className="text-4xl font-bold 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl header-gradient">
                     Repositories
                 </h1>
-                <p className="text-section mt-2 mb-4">
+                <p className="mt-2 mb-4 text-section">
                     A list of all my public repositories on GitHub.
                 </p>
                 <LinkButton
@@ -84,7 +84,7 @@ function Projects({ repos }) {
                 />
 
                 <div className="flex justify-center">
-                    <div className="grid 2xl:grid-cols-3 responsiveGrid xl:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-2">
+                    <div className="grid grid-cols-1 gap-2 2xl:grid-cols-3 responsiveGrid xl:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1">
                         {repos
                             .sort(
                                 (a: repoType, b: repoType) =>

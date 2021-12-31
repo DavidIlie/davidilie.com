@@ -52,7 +52,7 @@ export const NavBar = () => {
             {blogPage && (
                 <div className="absolute w-full">
                     <div className="relative">
-                        <div className="overflow-hidden h-1 text-xs flex">
+                        <div className="flex h-1 overflow-hidden text-xs">
                             <div
                                 style={{
                                     width: `${width}%`,
@@ -74,7 +74,7 @@ export const NavBar = () => {
                     "bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-40"
                 }`}
             >
-                <div className="max-w-7xl mx-auto pl-8 px-4 sm:px-6 sm:pl-8 lg:px-8 lg:pl-8 -mt-1">
+                <div className="px-4 pl-8 mx-auto -mt-1 max-w-7xl sm:px-6 sm:pl-8 lg:px-8 lg:pl-8">
                     <div className="flex items-center justify-between h-16 mb-2">
                         <div className="flex items-center">
                             <div className="flex-shrink-0">
@@ -82,7 +82,7 @@ export const NavBar = () => {
                                     <AnimatedTitle />
                                 ) : (
                                     <h1
-                                        className="text-black dark:text-white text-3xl font-semibold cursor-pointer mt-3"
+                                        className="mt-3 text-3xl font-semibold text-black cursor-pointer dark:text-white"
                                         onClick={() => router.push("/")}
                                     >
                                         David Ilie
@@ -90,7 +90,7 @@ export const NavBar = () => {
                                 )}
                             </div>
                             <div className="hidden md:block">
-                                <div className="ml-10 flex items-baseline space-x-4 mt-6">
+                                <div className="flex items-baseline mt-6 ml-10 space-x-4">
                                     {pages.map((page, index) => {
                                         const current =
                                             currentPage === page.url;
@@ -130,14 +130,13 @@ export const NavBar = () => {
                                                     className="navItem group"
                                                     key={index}
                                                 >
-                                                    <button className="outline-none focus:outline-none px-3 py-1 text-gray-800 dark:text-gray-300 hover:bg-gray-600 dark:hover:bg-gray-800 duration-200 hover:text-white rounded-sm flex items-center">
-                                                        <span className="pr-1 font-medium flex-1 text-sm">
+                                                    <button className="flex items-center px-3 py-1 text-gray-800 duration-200 rounded-sm outline-none focus:outline-none dark:text-gray-300 hover:bg-gray-600 dark:hover:bg-gray-800 hover:text-white">
+                                                        <span className="flex-1 pr-1 text-sm font-medium">
                                                             {page.name}
                                                         </span>
                                                         <span>
                                                             <svg
-                                                                className="fill-current h-4 w-4 transform group-hover:-rotate-180
-                                          transition duration-150 ease-in-out"
+                                                                className="w-4 h-4 transition duration-150 ease-in-out transform fill-current group-hover:-rotate-180"
                                                                 xmlns="http://www.w3.org/2000/svg"
                                                                 viewBox="0 0 20 20"
                                                             >
@@ -146,8 +145,7 @@ export const NavBar = () => {
                                                         </span>
                                                     </button>
                                                     <ul
-                                                        className="bg-gray-600 dark:bg-gray-800 text-white transform scale-0 group-hover:scale-100 absolute 
-                                    transition duration-150 ease-in-out origin-top min-w-32"
+                                                        className="absolute text-white transition duration-150 ease-in-out origin-top transform scale-0 bg-gray-600 dark:bg-gray-800 group-hover:scale-100 min-w-32"
                                                     >
                                                         {page.links.map(
                                                             (page, index) => {
@@ -163,7 +161,7 @@ export const NavBar = () => {
                                                                             true
                                                                         }
                                                                     >
-                                                                        <li className="rounded-sm px-3 py-1 hover:bg-gray-700 duration-200 cursor-pointer">
+                                                                        <li className="px-3 py-1 duration-200 rounded-sm cursor-pointer hover:bg-gray-700">
                                                                             {
                                                                                 page.name
                                                                             }
@@ -181,24 +179,24 @@ export const NavBar = () => {
                             </div>
                         </div>
                         <div className="hidden md:block">
-                            <div className="ml-10 flex items-center space-x-4 mt-6">
+                            <div className="flex items-center mt-6 ml-10 space-x-4">
                                 <UserDropdown />
                             </div>
                         </div>
-                        <div className="-mr-2 flex items-center md:hidden mt-3">
+                        <div className="flex items-center mt-3 -mr-2 md:hidden">
                             <div className="mr-5 mt-0.5">
                                 <UserDropdown />
                             </div>
                             <button
                                 type="button"
-                                className="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 inline-flex items-center justify-center p-2 rounded-md text-gray-500 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700"
+                                className="inline-flex items-center justify-center p-2 text-gray-500 bg-gray-200 rounded-md dark:bg-gray-800 hover:bg-gray-300 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700"
                                 onClick={() => {
                                     setClickMobileMenu(!clickMobileMenu);
                                 }}
                             >
                                 {clickMobileMenu ? (
                                     <svg
-                                        className="block h-6 w-6"
+                                        className="block w-6 h-6"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -214,7 +212,7 @@ export const NavBar = () => {
                                     </svg>
                                 ) : (
                                     <svg
-                                        className="block h-6 w-6"
+                                        className="block w-6 h-6"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -234,7 +232,7 @@ export const NavBar = () => {
                     </div>
                 </div>
                 {clickMobileMenu && (
-                    <div className="md:hidden h-screen bg-opacity-50 text-center">
+                    <div className="h-screen text-center bg-opacity-50 md:hidden">
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                             {pages.map((page, index) => {
                                 const current = currentPage === page.url;

@@ -13,7 +13,7 @@ const CustomSubmitButton = ({
     ...rest
 }: Props) => {
     return (
-        <span className="inline-flex py-1 rounded-md shadow-sm bg-blue-400 dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-800 duration-200">
+        <span className="inline-flex py-1 duration-200 bg-blue-400 rounded-md shadow-sm dark:bg-blue-600 hover:bg-blue-600 dark:hover:bg-blue-800">
             <button
                 {...rest}
                 type="submit"
@@ -26,7 +26,7 @@ const CustomSubmitButton = ({
             >
                 {submitting && (
                     <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white dark:text-white"
+                        className="w-5 h-5 mr-3 -ml-1 text-white animate-spin dark:text-white"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"

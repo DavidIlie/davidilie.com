@@ -34,12 +34,12 @@ function Blog({ posts }: { posts: any }): JSX.Element {
     return (
         <>
             <NextSeo title="Blog" />
-            <div className="flex flex-col pt-28 pb-10 px-2 w-full min-h-screen mx-auto max-w-4xl text-black dark:text-white">
+            <div className="flex flex-col w-full max-w-4xl min-h-screen px-2 pb-10 mx-auto text-black pt-28 dark:text-white">
                 <Fade direction="up" triggerOnce>
-                    <h1 className="text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl text-4xl font-bold header-gradient">
+                    <h1 className="text-4xl font-bold text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl header-gradient">
                         The David Ones
                     </h1>
-                    <p className="text-center md:text-section md:px-12 px-6">
+                    <p className="px-6 text-center md:text-section md:px-12">
                         I&apos;ve been writing blog posts since 2020, mostly
                         about my random technologic encounters during my
                         day-to-day life. Currently there are {posts.length} blog
@@ -53,10 +53,10 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                             text="Subscribe via RSS"
                         />
                     </div>
-                    <div className="mb-6 px-3">
+                    <div className="px-3 mb-6">
                         <div>
                             {filter === "" ? (
-                                <span className="z-10 mt-1 h-full leading-snug font-normal absolute bg-transparent text-base pl-3 py-3">
+                                <span className="absolute z-10 h-full py-3 pl-3 mt-1 text-base font-normal leading-snug bg-transparent">
                                     <AiOutlineSearch />
                                 </span>
                             ) : (
@@ -76,14 +76,14 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                                 onChange={(e) =>
                                     setFilter(e.target.value.toLowerCase())
                                 }
-                                className="px-10 py-3 placeholder-gray-600 dark:placeholder-gray-100 relative bg-gray-100 dark:bg-gray-800 rounded-xl text-sm border-2 border-gray-200 dark:border-gray-700 shadow outline-none focus:outline-none focus:ring w-full pr-10"
+                                className="relative w-full px-10 py-3 pr-10 text-sm placeholder-gray-600 bg-gray-100 border-2 border-gray-200 shadow outline-none dark:placeholder-gray-100 dark:bg-gray-800 rounded-xl dark:border-gray-700 focus:outline-none focus:ring"
                             />
                         </div>
                     </div>
                 </Fade>
                 {filteredBlogPosts.length === 0 && (
                     <Fade>
-                        <h1 className="text-center text-3xl font-semibold">
+                        <h1 className="text-3xl font-semibold text-center">
                             No Results :(
                         </h1>
                     </Fade>
@@ -96,7 +96,7 @@ function Blog({ posts }: { posts: any }): JSX.Element {
                 )}
 
                 <Fade direction="up" triggerOnce cascade>
-                    <div className="mt-5 grid sm:grid-cols-2 grid-cols-1 gap-2 md:px-4">
+                    <div className="grid grid-cols-1 gap-2 mt-5 sm:grid-cols-2 md:px-4">
                         {filteredBlogPosts.map(
                             (frontMatter: any, index: number) => {
                                 const featured = index === 0;

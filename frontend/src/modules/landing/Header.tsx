@@ -43,10 +43,10 @@ export default function Header() {
         },
     };
     return (
-        <div className="h-screen flex justify-center items-center space-x-32">
-            <div className="text-black dark:text-white text-center">
+        <div className="flex items-center justify-center h-screen space-x-32">
+            <div className="text-center text-black dark:text-white">
                 <AnimatePresence>
-                    <div className="mt-2 h-10 text-center -ml-2">
+                    <div className="h-10 mt-2 -ml-2 text-center">
                         <SplitText
                             initial={{ y: "100%" }}
                             animate="visible"
@@ -70,7 +70,7 @@ export default function Header() {
                             <SplitText
                                 initial={{ y: "100%" }}
                                 animate="visible"
-                                className="text-7xl font-semibold visible header-gradient"
+                                className="visible font-semibold text-7xl header-gradient"
                                 variants={{
                                     visible: (i) => ({
                                         y: 0,
@@ -83,7 +83,7 @@ export default function Header() {
                                 {name}
                             </SplitText>
                         ) : (
-                            <h1 className="text-7xl font-semibold invisible">
+                            <h1 className="invisible font-semibold text-7xl">
                                 {name}
                             </h1>
                         )}

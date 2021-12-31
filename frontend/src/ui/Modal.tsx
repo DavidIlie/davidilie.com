@@ -38,7 +38,7 @@ export default function Modal(props) {
                 {...props}
             >
                 <div className="flex flex-col w-full">
-                    <div className="flex justify-end absolute right-3 top-3">
+                    <div className="absolute flex justify-end right-3 top-3">
                         <Tooltip content="Close" placement="left">
                             <button
                                 className="p-1 text-black dark:text-white"
@@ -49,7 +49,7 @@ export default function Modal(props) {
                         </Tooltip>
                     </div>
                 </div>
-                <div className="focus:outline-none text-black dark:text-white">
+                <div className="text-black focus:outline-none dark:text-white">
                     {props.children}
                 </div>
             </ReactModal>
