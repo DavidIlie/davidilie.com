@@ -4,7 +4,7 @@ import { FaDesktop, FaNetworkWired } from "react-icons/fa";
 import { FiSmartphone } from "react-icons/fi";
 import { AiOutlineLaptop } from "react-icons/ai";
 import { BiServer } from "react-icons/bi";
-import { IoServer } from "react-icons/io5";
+import { SiReasonstudios } from "react-icons/si";
 
 interface Specs {
     prefix: string;
@@ -20,39 +20,8 @@ export interface DeviceProps {
 
 export const devices: DeviceProps[] = [
     {
-        icon: FaDesktop,
-        name: "Main PC",
-        description: "Neptune",
-        specs: [
-            {
-                prefix: "CPU",
-                suffix: "Intel i9-9900k",
-            },
-            {
-                prefix: "GPU",
-                suffix: "Nvidia RTX 2080",
-            },
-            {
-                prefix: "RAM",
-                suffix: "32GB DDR4 2666Mhz",
-            },
-            {
-                prefix: "SSD",
-                suffix: "Samsung 500GB NVME",
-            },
-            {
-                prefix: "HDD",
-                suffix: "Seagate 2TB SSHD",
-            },
-            {
-                prefix: "OS",
-                suffix: "Windows 11 21H1",
-            },
-        ],
-    },
-    {
         icon: AiOutlineLaptop,
-        name: "Main Laptop",
+        name: "Main Computer",
         description: "Dell XPS 13 9310",
         specs: [
             {
@@ -68,8 +37,8 @@ export const devices: DeviceProps[] = [
                 suffix: "KIOXIA 1TB NVME",
             },
             {
-                prefix: "Display",
-                suffix: "16:10 1920x1200",
+                prefix: "GPU",
+                suffix: "Nvidia RTX 2080",
             },
             {
                 prefix: "OS",
@@ -77,7 +46,77 @@ export const devices: DeviceProps[] = [
             },
             {
                 prefix: "OS2",
-                suffix: "ChromeOS 94",
+                suffix: "Ubuntu 20.04",
+            },
+            {
+                prefix: "OS3",
+                suffix: "ChromeOS 96",
+            },
+        ],
+    },
+    {
+        icon: SiReasonstudios,
+        name: "Equipment",
+        description: "How I work day-to-day",
+        specs: [
+            {
+                prefix: "Monitor",
+                suffix: "Lenovo Y27GQ-25 1440p 240Hz",
+            },
+            {
+                prefix: "Monitor",
+                suffix: "2x LG 27QN600-B 1440p 75Hz",
+            },
+            {
+                prefix: "Keyboard",
+                suffix: "Keychron K2 Brown",
+            },
+            {
+                prefix: "Mouse",
+                suffix: "Razer Viper Elite",
+            },
+            {
+                prefix: "Microphone",
+                suffix: "Shure SM7B",
+            },
+            {
+                prefix: "Audio Interface",
+                suffix: "GoXLR",
+            },
+            {
+                prefix: "Camera",
+                suffix: "Sony FDR-AXP55",
+            },
+        ],
+    },
+    {
+        icon: FaNetworkWired,
+        name: "Networking",
+        description: "Home Network",
+        specs: [
+            {
+                prefix: "Modem",
+                suffix: "Huawei EG8145V5",
+            },
+            {
+                prefix: "Router/Firewall",
+                suffix: "pfSense",
+            },
+            {
+                prefix: "Switch",
+                suffix: "Dell PowerConnect 2848",
+            },
+            {
+                prefix: "Access Points",
+                suffix: "2x Xiaomi AX3600 Wi-Fi 6",
+            },
+            {
+                prefix: "DL Speed",
+                suffix: "~520Mbit/s",
+            },
+            {
+                prefix: "Up Speed",
+                suffix: "~508Mbit/s",
             },
         ],
     },
@@ -109,37 +148,6 @@ export const devices: DeviceProps[] = [
             {
                 prefix: "OS",
                 suffix: "MIUI 12",
-            },
-        ],
-    },
-    {
-        icon: FaNetworkWired,
-        name: "Networking",
-        description: "Home Network",
-        specs: [
-            {
-                prefix: "Router",
-                suffix: "Huawei EG8145V5",
-            },
-            {
-                prefix: "Network Type",
-                suffix: "Fiber Optic",
-            },
-            {
-                prefix: "Firewall",
-                suffix: "pfSense VM",
-            },
-            {
-                prefix: "Switch",
-                suffix: "Dell PowerConnect 2848",
-            },
-            {
-                prefix: "DL Speed",
-                suffix: "~520Mbit/s",
-            },
-            {
-                prefix: "Up Speed",
-                suffix: "~508Mbit/s",
             },
         ],
     },
@@ -209,33 +217,33 @@ export const infastructure: DeviceProps[] = [
         ],
     },
     {
-        icon: IoServer,
-        name: "NAS",
-        description: "Venus",
+        icon: FaDesktop,
+        name: "Server",
+        description: "Neptune",
         specs: [
             {
-                prefix: "Model",
-                suffix: "HP Microserver Gen 8",
+                prefix: "CPU",
+                suffix: "Intel i9-9900k",
             },
             {
-                prefix: "CPU",
-                suffix: "Intel Pentium G2020T",
+                prefix: "GPU",
+                suffix: "Nvidia GTX 1070 Ti",
             },
             {
                 prefix: "RAM",
-                suffix: "16GB DDR4 ECC",
+                suffix: "32GB DDR4 2666Mhz",
             },
             {
-                prefix: "Storage",
-                suffix: "128GB SSD",
+                prefix: "SSD",
+                suffix: "2x Samsung 500GB NVME",
             },
             {
-                prefix: "Array",
-                suffix: "7.5TB HDD Array",
+                prefix: "HDD",
+                suffix: "3x Seagate 1TB SSHD",
             },
             {
                 prefix: "OS",
-                suffix: "TrueNAS Core",
+                suffix: "Debian 11 (Proxmox VE 7)",
             },
         ],
     },
