@@ -17,7 +17,7 @@ const Device = ({ device }: { device: DeviceProps }): JSX.Element => {
                 </h2>
                 {device.specs.map((spec, index) => (
                     <h1 key={index}>
-                        <span className="font-bold">{spec.prefix}</span>:{" "}
+                        <span className="font-semibold">{spec.prefix}</span>:{" "}
                         {spec.suffix}
                     </h1>
                 ))}
