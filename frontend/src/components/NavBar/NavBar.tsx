@@ -130,7 +130,7 @@ export const NavBar = () => {
                                                     className="navItem group"
                                                     key={index}
                                                 >
-                                                    <button className="flex items-center px-3 py-1 text-gray-800 duration-200 rounded-sm outline-none focus:outline-none dark:text-gray-300 hover:bg-gray-600 dark:hover:bg-gray-800 hover:text-white">
+                                                    <button className="flex items-center px-3 py-1 text-gray-800 duration-200 outline-none focus:outline-none dark:text-gray-300 hover:bg-gray-600 dark:hover:bg-gray-800 hover:text-white">
                                                         <span className="flex-1 pr-1 text-sm font-medium">
                                                             {page.name}
                                                         </span>
@@ -144,9 +144,7 @@ export const NavBar = () => {
                                                             </svg>
                                                         </span>
                                                     </button>
-                                                    <ul
-                                                        className="absolute text-white transition duration-150 ease-in-out origin-top transform scale-0 bg-gray-600 dark:bg-gray-800 group-hover:scale-100 min-w-32"
-                                                    >
+                                                    <ul className="absolute text-white transition duration-150 ease-in-out origin-top transform scale-0 bg-gray-600 dark:bg-gray-800 group-hover:scale-100 min-w-32">
                                                         {page.links.map(
                                                             (page, index) => {
                                                                 return (

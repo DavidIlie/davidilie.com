@@ -2,13 +2,10 @@ import { useQuery } from "react-query";
 import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import { Fade } from "react-awesome-reveal";
-import { FaSpotify } from "react-icons/fa";
 
 import CurrrentlyPlaying from "@modules/music/CurrentlyPlaying";
 import TopSongs from "@modules/music/TopSongs";
 import RecentSongs from "@modules/music/RecentSongs";
-
-import LinkButton from "@components/LinkButton";
 
 import { MusicData } from "@interfaces/MusicData";
 
@@ -24,7 +21,7 @@ function Music({ data, error }: MusicProps) {
             fetch(`https://davidilie.com/api/spotify/get-now-playing`).then(
                 (res) => res.json()
             ),
-        { refetchOnMount: true }
+        { refetchOnMount: true, refetchInterval: 5000 }
     );
 
     if (error || currentError) {
@@ -59,52 +56,47 @@ function Music({ data, error }: MusicProps) {
                         </span>
                         .
                     </h1>
-                    <div className="flex justify-center mb-6">
-                        <LinkButton
-                            link="https://open.spotify.com/user/e1lg6nepjzvt6rjhfey78hqan"
-                            Icon={FaSpotify}
-                            text="See my profile"
-                        />
-                    </div>
                 </Fade>
 
-                <Fade delay={1100} triggerOnce cascade>
-                    <div className="mb-5">
-                        <h1 className="text-4xl font-semibold text-center header-gradient">
-                            Currently Listening
-                        </h1>
-                        <div className="max-w-screen-sm p-2 mx-auto">
-                            <CurrrentlyPlaying song={currentlyPlaying} />
+                <div className="px-2">
+                    <Fade delay={1100} triggerOnce cascade>
+                        <div className="mb-5">
+                            <h1 className="text-4xl font-semibold text-center header-gradient">
+                                Currently Listening
+                            </h1>
+                            <div className="max-w-screen-sm p-2 mx-auto">
+                                <CurrrentlyPlaying song={currentlyPlaying} />
+                            </div>
                         </div>
-                    </div>
-                </Fade>
+                    </Fade>
 
-                <Fade delay={1200} triggerOnce cascade>
-                    <div className="mb-5">
-                        <h1 className="mb-3 text-4xl font-semibold text-center header-gradient">
-                            Recently Played Songs
-                        </h1>
-                        <div className="flex justify-center">
-                            <div className="grid grid-cols-1 gap-4 p-2 mx-auto xl:grid-cols-2 md:grid-cols-2">
-                                <RecentSongs
-                                    songs={data.recentlyPlayed.items}
-                                />
+                    <Fade delay={1200} triggerOnce cascade>
+                        <div className="mb-5">
+                            <h1 className="mb-3 text-4xl font-semibold text-center header-gradient">
+                                Recently Played Songs
+                            </h1>
+                            <div className="flex justify-center">
+                                <div className="grid grid-cols-1 gap-4 p-2 mx-auto xl:grid-cols-2 md:grid-cols-2">
+                                    <RecentSongs
+                                        songs={data.recentlyPlayed.items}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </Fade>
-                <Fade delay={1200} triggerOnce cascade>
-                    <>
-                        <h1 className="mb-3 text-4xl font-semibold text-center header-gradient">
-                            Top Played Songs
-                        </h1>
-                        <div className="flex justify-center">
-                            <div className="grid grid-cols-1 gap-4 p-2 mx-auto xl:grid-cols-2 md:grid-cols-2">
-                                <TopSongs songs={data.songs.items} />
+                    </Fade>
+                    <Fade delay={1200} triggerOnce cascade>
+                        <div className="mb-5">
+                            <h1 className="mb-3 text-4xl font-semibold text-center header-gradient">
+                                Top Played Songs
+                            </h1>
+                            <div className="flex justify-center">
+                                <div className="grid grid-cols-1 gap-4 p-2 mx-auto xl:grid-cols-2 md:grid-cols-2">
+                                    <TopSongs songs={data.songs.items} />
+                                </div>
                             </div>
                         </div>
-                    </>
-                </Fade>
+                    </Fade>
+                </div>
             </div>
         </>
     );
