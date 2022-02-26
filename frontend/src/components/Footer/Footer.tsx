@@ -73,7 +73,7 @@ export const Footer = () => {
                 </div>
 
                 <h1 className="mb-2 text-xl sm:mb-0">
-                    Copyright ©{" "}
+                    Powered by{" "}
                     <a
                         href="https://davidapps.dev"
                         target="_blank"
