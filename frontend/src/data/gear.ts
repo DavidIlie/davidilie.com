@@ -1,7 +1,6 @@
 import React from "react";
 
 import { FaDesktop, FaNetworkWired } from "react-icons/fa";
-import { FiSmartphone } from "react-icons/fi";
 import { AiOutlineLaptop } from "react-icons/ai";
 import { BiServer } from "react-icons/bi";
 import { SiReasonstudios } from "react-icons/si";
@@ -20,21 +19,29 @@ export interface DeviceProps {
 
 export const devices: DeviceProps[] = [
     {
-        icon: AiOutlineLaptop,
+        icon: FaDesktop,
         name: "Main Computer",
-        description: "Dell XPS 13 9310",
+        description: "Neptune",
         specs: [
             {
                 prefix: "CPU",
-                suffix: "Intel i7-1185G7",
+                suffix: "Intel i9-9900K",
             },
             {
                 prefix: "RAM",
-                suffix: "16GB LPDDR4X 4267Mhz",
+                suffix: "32GB DDR4 2666Mhz",
             },
             {
                 prefix: "SSD",
-                suffix: "KIOXIA 1TB NVME",
+                suffix: "Intel 500GB NVME",
+            },
+            {
+                prefix: "SSD1",
+                suffix: "Samsung 500GB NVME",
+            },
+            {
+                prefix: "HDD",
+                suffix: "3x Seagate 1TB",
             },
             {
                 prefix: "GPU",
@@ -42,15 +49,7 @@ export const devices: DeviceProps[] = [
             },
             {
                 prefix: "OS",
-                suffix: "Windows 11 21H1",
-            },
-            {
-                prefix: "OS2",
-                suffix: "Ubuntu 20.04",
-            },
-            {
-                prefix: "OS3",
-                suffix: "ChromeOS 96",
+                suffix: "Windows 10 21H2",
             },
         ],
     },
@@ -121,33 +120,33 @@ export const devices: DeviceProps[] = [
         ],
     },
     {
-        icon: FiSmartphone,
-        name: "Phone",
-        description: "David's Phone",
+        icon: AiOutlineLaptop,
+        name: "Main Laptop",
+        description: "Draco",
         specs: [
             {
-                prefix: "Model",
-                suffix: "Xiaomi Mi 10",
-            },
-            {
                 prefix: "CPU",
-                suffix: "Qualcomm Snapdragon 865",
+                suffix: "Intel i7-1185G7",
             },
             {
                 prefix: "RAM",
-                suffix: "16GB",
+                suffix: "16GB LPDDR4X 4267Mhz",
+            },
+            {
+                prefix: "SSD",
+                suffix: "KIOXIA 1TB NVME",
             },
             {
                 prefix: "GPU",
-                suffix: "Adreno 650",
-            },
-            {
-                prefix: "Storage",
-                suffix: "128GB Flash",
+                suffix: "Intel Iris Xe",
             },
             {
                 prefix: "OS",
-                suffix: "MIUI 12",
+                suffix: "Windows 10 21H2",
+            },
+            {
+                prefix: "OS2",
+                suffix: "ChromeOS 96",
             },
         ],
     },
@@ -209,37 +208,6 @@ export const infastructure: DeviceProps[] = [
             {
                 prefix: "Storage",
                 suffix: "1.5TB SSD Array",
-            },
-            {
-                prefix: "OS",
-                suffix: "Debian 11 (Proxmox VE 7)",
-            },
-        ],
-    },
-    {
-        icon: FaDesktop,
-        name: "Server",
-        description: "Neptune",
-        specs: [
-            {
-                prefix: "CPU",
-                suffix: "Intel i9-9900k",
-            },
-            {
-                prefix: "GPU",
-                suffix: "Nvidia GTX 1070 Ti",
-            },
-            {
-                prefix: "RAM",
-                suffix: "32GB DDR4 2666Mhz",
-            },
-            {
-                prefix: "SSD",
-                suffix: "2x Samsung 500GB NVME",
-            },
-            {
-                prefix: "HDD",
-                suffix: "3x Seagate 1TB SSHD",
             },
             {
                 prefix: "OS",
