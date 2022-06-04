@@ -64,7 +64,7 @@ export const devices: DeviceProps[] = [
             },
             {
                 prefix: "Monitor",
-                suffix: "2x LG 27QN600-B 1440p 75Hz",
+                suffix: "LG 27QN600-B 1440p 75Hz",
             },
             {
                 prefix: "Keyboard",
@@ -122,7 +122,7 @@ export const devices: DeviceProps[] = [
     {
         icon: AiOutlineLaptop,
         name: "Main Laptop",
-        description: "Draco",
+        description: "Dell XPS 13 9310",
         specs: [
             {
                 prefix: "CPU",
@@ -146,7 +146,7 @@ export const devices: DeviceProps[] = [
             },
             {
                 prefix: "OS2",
-                suffix: "ChromeOS 96",
+                suffix: "ChromeOS 100 Dev",
             },
         ],
     },
