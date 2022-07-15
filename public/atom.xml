@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://davidilie.com</id>
+    <title>The David Ones</title>
+    <updated>2021-10-03T00:00:00.000Z</updated>
+    <generator>https://github.com/davidilie/davidilie.com</generator>
+    <author>
+        <name>David Ilie</name>
+        <email>david@davidilie.com</email>
+        <uri>https://davidilie.com</uri>
+    </author>
+    <link rel="alternate" href="https://davidilie.com"/>
+    <link rel="self" href="https://davidilie.com/atom.xml"/>
+    <subtitle>A 15 year old aspiring web developer experimenting with programming by publishing my work on the web.</subtitle>
+    <logo>https://davidilie.com/images/png/me.png</logo>
+    <icon>https://davidilie.com/favicon.ico</icon>
+    <rights>All rights reserved 2022, David Ilie Apps Platform</rights>
+    <entry>
+        <title type="html"><![CDATA[My experience showcasing one of my projects on Reddit - and how my website's visits tripled.]]></title>
+        <id>https://davidilie.com/blog/my-experience-posting-to-reddit</id>
+        <link href="https://davidilie.com/blog/my-experience-posting-to-reddit"/>
+        <updated>2021-10-03T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A couple of months back, I created my own self-hosted dashboard as I didn't like the standard ones that were out there. On October 1st, I decided to post it on r/homelab, and something crazy happened...]]></summary>
+        <content type="html"><![CDATA[Reddit, r/selfhosted, Hacker News]]></content>
+        <author>
+            <name>David Ilie</name>
+            <email>david@davidilie.com</email>
+            <uri>https://davidilie.com</uri>
+        </author>
+        <contributor>
+            <name>David Ilie</name>
+            <email>david@davidilie.com</email>
+            <uri>https://davidilie.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Replace your weak home router, with pfSense!]]></title>
+        <id>https://davidilie.com/blog/replace-your-home-router-with-pfsense</id>
+        <link href="https://davidilie.com/blog/replace-your-home-router-with-pfsense"/>
+        <updated>2021-09-19T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Recently, I decided to switch from my standard cheap home router, to a custom virtual machine running pfSense on my server. This blog post will contain all the hurdles and issues that I went through, and how you can setup this up for yourself!]]></summary>
+        <content type="html"><![CDATA[Home Network, pfSense, Open Source]]></content>
+        <author>
+            <name>David Ilie</name>
+            <email>david@davidilie.com</email>
+            <uri>https://davidilie.com</uri>
+        </author>
+        <contributor>
+            <name>David Ilie</name>
+            <email>david@davidilie.com</email>
+            <uri>https://davidilie.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[How I persist live data in Next.js without waiting for async requests.]]></title>
+        <id>https://davidilie.com/blog/how-i-persist-live-data-across-my-nextjs-app</id>
+        <link href="https://davidilie.com/blog/how-i-persist-live-data-across-my-nextjs-app"/>
+        <updated>2021-09-11T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[While working on one of my projects, I came across a problem with fetching dynamic data from my API. The problem was that I didn't want to do the request on every render, just when I wanted it to be fetched. So I came up with a unique solution.]]></summary>
+        <content type="html"><![CDATA[Next.js, State Management, Web Development]]></content>
+        <author>
+            <name>David Ilie</name>
+            <email>david@davidilie.com</email>
+            <uri>https://davidilie.com</uri>
+        </author>
+        <contributor>
+            <name>David Ilie</name>
+            <email>david@davidilie.com</email>
+            <uri>https://davidilie.com</uri>
+        </contributor>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Welcome to my Blog! - The backstory, How it works, etc.]]></title>
+        <id>https://davidilie.com/blog/welcome-to-my-blog-and-how-it-works</id>
+        <link href="https://davidilie.com/blog/welcome-to-my-blog-and-how-it-works"/>
+        <updated>2021-06-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This is my first ever blog post on this website! On this blog post I completely document how the Blog post works, to the seeing how many views it has to storing the actual blog post in the first place. Worth a read!]]></summary>
+        <content type="html"><![CDATA[Blogging, Web Development, Next.JS, MDX]]></content>
+        <author>
+            <name>David Ilie</name>
+            <email>david@davidilie.com</email>
+            <uri>https://davidilie.com</uri>
+        </author>
+        <contributor>
+            <name>David Ilie</name>
+            <email>david@davidilie.com</email>
+            <uri>https://davidilie.com</uri>
+        </contributor>
+    </entry>
+</feed>
