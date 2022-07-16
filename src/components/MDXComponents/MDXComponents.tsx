@@ -234,13 +234,13 @@ export const WarningQuote = ({ children }: { children: JSX.Element }) => (
 );
 
 export const h1 = ({ children }: { children: any }) => (
-   <h1 className="mt-2 text-4xl font-extrabold text-black dark:text-white">
+   <h1 className="mt-4 text-4xl font-extrabold text-black dark:text-white">
       {children}
    </h1>
 );
 
 export const h2 = ({ children }: { children: any }) => (
-   <h2 className="mt-2 text-3xl font-extrabold text-black dark:text-white">
+   <h2 className="mt-4 text-3xl font-extrabold text-black dark:text-white">
       {children}
    </h2>
 );

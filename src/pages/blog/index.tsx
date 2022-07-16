@@ -30,13 +30,13 @@ const Blog: NextPage<{ posts: MDXProps[] }> = ({ posts }) => {
    return (
       <>
          <NextSeo title="Blog" />
-         <div className="flex items-center justify-center flex-grow py-12 space-y-8 sm:px-6 lg:px-8 lg:space-y-12">
+         <div className="flex items-center justify-center flex-grow py-12 sm:px-6 lg:px-8">
             <div className="container max-w-4xl mx-auto mt-32">
                <Fade direction="up" triggerOnce>
                   <h1 className="text-4xl font-bold text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl header-gradient">
                      The David Ones
                   </h1>
-                  <p className="px-6 mt-4 text-center md:text-section md:px-12">
+                  <p className="px-6 mt-4 text-center md:text-lg md:px-12">
                      I've been writing blog posts since 2020, mostly about my
                      random technologic encounters during my day-to-day life.
                      Currently there are {posts.length} blog post

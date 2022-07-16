@@ -15,7 +15,7 @@ const SignIn: NextPage = () => {
    return (
       <>
          <NextSeo title="Sign In" />
-         <div className="flex items-center justify-center flex-grow py-12 space-y-8 sm:px-6 lg:px-8 lg:space-y-12">
+         <div className="flex items-center justify-center flex-grow py-12 sm:px-6 lg:px-8">
             <div className="w-full sm:mx-auto sm:max-w-md">
                <div className="px-4 py-8 border-2 shadow dark:border-gray-700 dark:bg-gray-800 sm:px-10 sm:rounded-lg sm:border-r sm:border-l">
                   <Fade triggerOnce>

@@ -81,7 +81,7 @@ const BlogPost: NextPage<{ mdxSource: any; frontMatter: frontMatterProps }> = ({
                ],
             }}
          />
-         <div className="flex items-center justify-center flex-grow py-12 space-y-8 sm:px-6 lg:px-8 lg:space-y-12">
+         <div className="flex items-center justify-center flex-grow sm:px-6 lg:px-8">
             <div className="container max-w-3xl mx-auto mt-28">
                <div className="flex flex-wrap justify-start w-full px-3 mb-4">
                   {frontMatter.tags.map((tag, i) => (

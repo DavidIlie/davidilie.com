@@ -10,6 +10,8 @@ const Footer: React.FC = () => {
       "spotify.isPlaying",
    ]);
 
+   const SPOTIFY_ACCOUNT = `https://open.spotify.com/user/31ykyntuzozd4cpa62zraff2afxe`;
+
    return (
       <footer className="w-full pt-5 pb-5 text-black dark:text-white bg-slate-200 bg-opacity-40 dark:bg-slate-800 dark:bg-opacity-50">
          <div className="flex flex-wrap items-center justify-center mx-12 sm:justify-evenly">
@@ -44,7 +46,7 @@ const Footer: React.FC = () => {
                      </Tooltip>
                      <span className="mx-1"> - </span>
                      <a
-                        href="https://open.spotify.com/user/e1lg6nepjzvt6rjhfey78hqan"
+                        href={SPOTIFY_ACCOUNT}
                         target="_blank"
                         rel="noreferrer"
                         className="font-bold text-green-500 dark:text-green-700"
@@ -54,18 +56,14 @@ const Footer: React.FC = () => {
                   </>
                ) : (
                   <p className="flex">
-                     <a
-                        href="https://open.spotify.com/user/31ykyntuzozd4cpa62zraff2afxe"
-                        target="_blank"
-                        rel="noreferrer"
-                     >
+                     <a href={SPOTIFY_ACCOUNT} target="_blank" rel="noreferrer">
                         <FaSpotify className="mr-1 text-2xl text-green-500" />
                      </a>
                      {error ? "- There was an error" : "- Not Playing Anything"}
                   </p>
                )}
             </div>
-            <h1 className="mb-2 text-xl sm:mb-0">
+            <h1 className="mb-2 text-lg sm:mb-0">
                Powered by{" "}
                <a
                   href="https://davidapps.dev"

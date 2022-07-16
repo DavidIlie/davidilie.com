@@ -175,7 +175,7 @@ const About: React.FC = () => {
                      <h1 className="mb-5 text-2xl font-semibold">
                         Frontend Developer
                      </h1>
-                     <p className="text-section">
+                     <p className="text-lg">
                         I like bringing my ideas to{" "}
                         <span className="font-bold text-blue-700 dark:text-blue-500">
                            reality
@@ -191,18 +191,16 @@ const About: React.FC = () => {
                      <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Technologies I use:
                      </h1>
-                     <p className="text-section">
-                        React, Next.js, Tailwind CSS
-                     </p>
+                     <p className="text-lg">React, Next.js, Tailwind CSS</p>
                   </div>
                   <div className="text-center mb-7">
                      <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Tools I use:
                      </h1>
-                     <p className="text-section">Visual Studio Code</p>
-                     <p className="text-section">Figma</p>
-                     <p className="text-section">Adobe Illustrator</p>
-                     <p className="text-section">Pen & Paper</p>
+                     <p className="text-lg">Visual Studio Code</p>
+                     <p className="text-lg">Figma</p>
+                     <p className="text-lg">Adobe Illustrator</p>
+                     <p className="text-lg">Pen & Paper</p>
                   </div>
                </div>
                <div className="px-5 pt-10 border-b-2 xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 md:border-b-0 xl:border-b-0 border-fuchasia-600 dark:border-gray-600">
@@ -221,7 +219,7 @@ const About: React.FC = () => {
                      <h1 className="mb-5 text-2xl font-semibold">
                         Backend Developer
                      </h1>
-                     <p className="px-16 text-section">
+                     <p className="px-16 text-lg">
                         I value{" "}
                         <span className="font-bold text-blue-700 dark:text-blue-500">
                            fast
@@ -237,7 +235,7 @@ const About: React.FC = () => {
                      <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Technologies I use:
                      </h1>
-                     <p className="text-section">
+                     <p className="text-lg">
                         MongoDB, Express, GraphQL, NodeJS
                      </p>
                   </div>
@@ -245,10 +243,10 @@ const About: React.FC = () => {
                      <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Tools I use:
                      </h1>
-                     <p className="text-section">Visual Studio Code</p>
-                     <p className="text-section">MongoDB Compass</p>
-                     <p className="text-section">Postman</p>
-                     <p className="text-section">Windows Terminal</p>
+                     <p className="text-lg">Visual Studio Code</p>
+                     <p className="text-lg">MongoDB Compass</p>
+                     <p className="text-lg">Postman</p>
+                     <p className="text-lg">Windows Terminal</p>
                   </div>
                </div>
                <div className="px-5 pt-10 xl:w-1/3 xs:w-full">
@@ -272,7 +270,7 @@ const About: React.FC = () => {
                      >
                         Content Creator
                      </a>
-                     <p className="px-16 mt-5 text-section">
+                     <p className="px-16 mt-5 text-lg">
                         {!isLoading && data ? (
                            <span>
                               <span className="font-bold text-blue-700 dark:text-blue-500">
@@ -297,13 +295,13 @@ const About: React.FC = () => {
                      <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Software I use:
                      </h1>
-                     <p className="text-section">Adobe Premiere & Photoshop</p>
+                     <p className="text-lg">Adobe Premiere & Photoshop</p>
                   </div>
                   <div className="mb-4 text-center sm:mb-0">
                      <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Content I produce:
                      </h1>
-                     <p className="duration-200 text-section hover:text-blue-700 dark:hover:text-blue-500">
+                     <p className="text-lg duration-200 hover:text-blue-700 dark:hover:text-blue-500">
                         <a
                            href="https://www.youtube.com/channel/UC92hn9Y8WcY_5LribMDW8uA"
                            target="_blank"
@@ -312,7 +310,7 @@ const About: React.FC = () => {
                            David Ilie
                         </a>
                      </p>
-                     <p className="duration-200 text-section hover:text-blue-700 dark:hover:text-blue-500">
+                     <p className="text-lg duration-200 hover:text-blue-700 dark:hover:text-blue-500">
                         <a
                            href="https://www.youtube.com/channel/UCwfF_jZHkxF1Vxx5b8PlIGA"
                            target="_blank"
@@ -325,7 +323,7 @@ const About: React.FC = () => {
                         content="School projects, Personal Projects, etc."
                         placement="bottom"
                      >
-                        <p className="text-gray-800 cursor-pointer text-section dark:text-gray-200">
+                        <p className="text-lg text-gray-800 cursor-pointer dark:text-gray-200">
                            And much more...
                         </p>
                      </Tooltip>

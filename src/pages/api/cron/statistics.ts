@@ -28,7 +28,16 @@ const handler: NextApiHandler = async (req, res) => {
 
       const channel = process.env.STATISTICS_JOB_CHANNEL;
 
-      const stats = await createStatsObject(channel);
+      let stats;
+
+      try {
+         stats = await createStatsObject(channel);
+      } catch (error: any) {
+         return res
+            .status(500)
+            .json({ message: error.message || "Unknown Error" });
+      }
+
       await prisma.youTubeStatictic.upsert({
          where: { channel },
          create: { channel, ...stats },
