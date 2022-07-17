@@ -56,10 +56,10 @@ export const blogRouter = createRouter()
          slug: z.string(),
       }),
       async resolve({ ctx, input }) {
-         return ctx.prisma.post.findFirst({
-            where: { slug: input.slug },
-            include: { comments: true },
-         }).comments;
+         return ctx.prisma.comment.findMany({
+            where: { postSlug: input.slug },
+            include: { user: true },
+         });
       },
    })
    .mutation("addViews", {
@@ -127,7 +127,7 @@ export const blogRouter = createRouter()
             ctx.session!.user!.id !== comment.userId &&
             !ctx.session!.user!.isAdmin
          )
-            return new TRPCError({ code: "NOT_FOUND" });
+            return new TRPCError({ code: "FORBIDDEN" });
          await ctx.prisma.comment.delete({ where: { id: comment.id } });
          return;
       },

@@ -39,6 +39,7 @@
       "react-awesome-reveal": "^3.8.1",
       "react-dom": "17.0.2",
       "react-icons": "^4.4.0",
+      "react-linkify": "^1.0.0-alpha",
       "react-query": "^3.39.1",
       "reading-time": "^1.5.0",
       "remark-autolink-headings": "^7.0.1",

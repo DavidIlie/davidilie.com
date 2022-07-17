@@ -14,12 +14,13 @@ model Post {
 }
 
 model Comment {
-  id       String @id @default(uuid())
-  userId   String
-  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  postSlug String
-  post     Post   @relation(fields: [postSlug], references: [slug], onDelete: Cascade)
-  comment  String
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postSlug  String
+  post      Post     @relation(fields: [postSlug], references: [slug], onDelete: Cascade)
+  comment   String
+  createdAt DateTime @default(now())
 }
 
 model GitHubProject {

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { Formik, Form, Field } from "formik";
 import React, { useState } from "react";
@@ -16,6 +17,7 @@ import MDXComponents from "@/components/MDXComponents";
 import BlogTags from "@/components/BlogComponents/Tags";
 import ViewCounter from "@/components/BlogComponents/ViewCounter";
 import Button from "@/components/Button";
+import Linkify from "@/components/BlogComponents/Linkify";
 
 interface frontMatterProps {
    image: string;
@@ -91,7 +93,7 @@ const BlogPost: NextPage<{ mdxSource: any; frontMatter: frontMatterProps }> = ({
                <h1 className="px-4 text-4xl font-medium sm:text-5xl">
                   {frontMatter.title}
                </h1>
-               <div className="flex flex-wrap items-center justify-between w-full max-w-3xl px-3 mt-5 mb-5 border-b-2">
+               <div className="flex flex-wrap items-center justify-between w-full max-w-3xl px-3 mt-2 mb-5 border-b-2">
                   <div className="flex items-center">
                      <span className="inline-flex items-center justify-center py-2 text-xs font-bold leading-none rounded-md">
                         <Image
@@ -138,11 +140,13 @@ const BlogPost: NextPage<{ mdxSource: any; frontMatter: frontMatterProps }> = ({
                      placeholder="blur"
                   />
                </div>
-               <div className="w-full max-w-5xl px-2 mt-3 mb-10 blog-content">
+               <div className="w-full max-w-5xl px-2 mt-3 mb-5 blog-content">
                   <MDXRemote {...mdxSource} components={{ ...MDXComponents }} />
                </div>
-               <div className="px-4">
-                  <h1 className="text-4xl font-medium">What do you think?</h1>
+               <div className="px-4 mt-2 border-t-2">
+                  <h1 className="mt-4 text-4xl font-medium header-gradient">
+                     What do you think?
+                  </h1>
                   <div className="w-full p-6 my-4 border border-gray-200 rounded bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
                      <h5 className="text-lg font-semibold text-gray-900 dark:text-gray-100 md:text-xl">
                         Leave a comment
@@ -246,6 +250,86 @@ const BlogPost: NextPage<{ mdxSource: any; frontMatter: frontMatterProps }> = ({
                            </Formik>
                         )}
                      </div>
+                  </div>
+                  <div className="mt-6 mb-6">
+                     {blogComments.isLoading && !blogComments.data ? (
+                        <div>Loading...</div>
+                     ) : (
+                        blogComments.data?.map((comment, index) => (
+                           <div
+                              className={`flex gap-4 rounded-md border border-gray-200 bg-gray-50 py-4 px-4 dark:border-gray-700 dark:bg-gray-800 ${
+                                 index !== blogComments.data?.length - 1 &&
+                                 "mb-4"
+                              }`}
+                              key={index}
+                           >
+                              <img
+                                 src={comment.user.image || ""}
+                                 width={55}
+                                 height={24}
+                                 // blurDataURL={shimmer(10, 10)}
+                                 placeholder="blur"
+                                 className="object-cover rounded-full"
+                                 alt={`${comment.user.name}'s profile image`}
+                              />
+                              <div className="space-y-1">
+                                 <div className="w-full">
+                                    <Linkify>{comment.comment}</Linkify>
+                                 </div>
+                                 <div className="flex items-center space-x-2">
+                                    <Link href={`/profile/${comment.user?.id}`}>
+                                       <a className="text-sm text-gray-500 duration-150 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-500">
+                                          {comment.user.name}
+                                       </a>
+                                    </Link>
+                                    <span className="text-gray-800 dark:text-gray-200">
+                                       /
+                                    </span>
+                                    <p className="text-sm text-gray-400 dark:text-gray-300">
+                                       {format(
+                                          new Date(comment.createdAt),
+                                          "d MMM yyyy 'at' h:mm bb"
+                                       )}
+                                    </p>
+                                    {(comment.userId === data?.user?.id ||
+                                       data?.user?.isAdmin) &&
+                                    deleteComment.isError ? (
+                                       <>
+                                          <span className="text-gray-800 dark:text-gray-200">
+                                             /
+                                          </span>
+                                          <p className="text-sm text-red-600 dark:text-red-500">
+                                             Error deleting comment.
+                                          </p>
+                                       </>
+                                    ) : (
+                                       <>
+                                          <span className="text-gray-800 dark:text-gray-200">
+                                             /
+                                          </span>
+                                          <button
+                                             className="text-sm text-red-600 dark:text-red-500"
+                                             onDoubleClick={() =>
+                                                deleteComment.mutate(
+                                                   { id: comment.id },
+                                                   {
+                                                      onSuccess: () =>
+                                                         utils.invalidateQueries(
+                                                            ["blog.getComments"]
+                                                         ),
+                                                   }
+                                                )
+                                             }
+                                          >
+                                             Delete
+                                          </button>
+                                       </>
+                                    )}
+                                 </div>
+                              </div>
+                           </div>
+                        ))
+                     )}
                   </div>
                </div>
             </div>
