@@ -107,7 +107,7 @@ const NavBar: React.FC = () => {
                                           className={
                                              current
                                                 ? "pointer-events-none bg-gray-600 dark:bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium duration-200 cursor-not-allowed"
-                                                : "cursor-pointer cursor-pointertext-gray-900 dark:text-gray-200 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium duration-200"
+                                                : "cursor-pointer cursor-pointertext-gray-900 dark:text-gray-200 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-900 px-3 py-2 rounded-md text-sm font-medium duration-200"
                                           }
                                        >
                                           {page.name}
