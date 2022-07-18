@@ -13,6 +13,8 @@ import "tippy.js/animations/shift-away.css";
 import BackgroundPattern from "@/components/BackgroundPattern";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import useToggleTheme from "@/hooks/useToggleTheme";
+import { useHotkeys } from "@mantine/hooks";
 
 const MyApp: AppType = ({
    Component,
@@ -44,18 +46,28 @@ const MyApp: AppType = ({
             customDomain={"https://stats.davidilie.com"}
          >
             <ThemeProvider attribute="class">
-               <SessionProvider session={session}>
-                  <BackgroundPattern />
-                  <div className="flex flex-col min-h-screen pageBackground">
-                     <NavBar />
-                     <Component {...pageProps} />
-                     <Footer />
-                  </div>
-               </SessionProvider>
+               <ThemeWrapper>
+                  <SessionProvider session={session}>
+                     <BackgroundPattern />
+                     <div className="flex flex-col min-h-screen pageBackground">
+                        <NavBar />
+                        <Component {...pageProps} />
+                        <Footer />
+                     </div>
+                  </SessionProvider>
+               </ThemeWrapper>
             </ThemeProvider>
          </PlausibleProvider>
       </>
    );
+};
+
+const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({
+   children,
+}) => {
+   const updateTheme = useToggleTheme();
+   useHotkeys([["mod+shift+e", updateTheme]]);
+   return <>{children}</>;
 };
 
 const getBaseUrl = () => {
