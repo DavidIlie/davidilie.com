@@ -29,13 +29,7 @@ const PostCard: React.FC<MDXProps & { featured: boolean }> = ({
                   featured && "mt-11 rounded-tl-sm"
                } mx-3 cursor-pointer bg-gray-100 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl flex justify-center gap-4 transform flex-wrap md:flex-nowrap mb-4 md:px-3 md:py-2`}
             >
-               <h1
-                  className="z-10 absolute -top-9 -left-0.5 bg-blue-300 dark:bg-blue-600 text-blue-900 dark:text-blue-100 dark:bg-opacity-50 py-1 px-4 rounded-t font-semibold"
-                  style={{
-                     border:
-                        "2px solid rgba(29, 78, 216, var(--tw-border-opacity)",
-                  }}
-               >
+               <h1 className="z-10 absolute -top-9 -left-0.5 bg-blue-300 dark:bg-blue-600 text-blue-900 dark:text-blue-100 dark:bg-opacity-50 py-1 px-4 rounded-t font-semibold border-2 border-blue-200 dark:border-blue-500 ">
                   Featured Post
                </h1>
                <Image
