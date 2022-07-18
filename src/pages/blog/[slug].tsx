@@ -18,6 +18,7 @@ import BlogTags from "@/components/BlogComponents/Tags";
 import ViewCounter from "@/components/BlogComponents/ViewCounter";
 import Button from "@/components/Button";
 import Linkify from "@/components/BlogComponents/Linkify";
+import Tooltip from "@/components/Tooltip";
 
 interface frontMatterProps {
    image: string;
@@ -307,22 +308,29 @@ const BlogPost: NextPage<{ mdxSource: any; frontMatter: frontMatterProps }> = ({
                                           <span className="text-gray-800 dark:text-gray-200">
                                              /
                                           </span>
-                                          <button
-                                             className="text-sm text-red-600 dark:text-red-500"
-                                             onDoubleClick={() =>
-                                                deleteComment.mutate(
-                                                   { id: comment.id },
-                                                   {
-                                                      onSuccess: () =>
-                                                         utils.invalidateQueries(
-                                                            ["blog.getComments"]
-                                                         ),
-                                                   }
-                                                )
-                                             }
-                                          >
-                                             Delete
-                                          </button>
+                                          <Tooltip content="Double click to confirm">
+                                             <button
+                                                className="text-sm text-red-600 dark:text-red-500"
+                                                onDoubleClick={() =>
+                                                   !deleteComment.isLoading &&
+                                                   deleteComment.mutate(
+                                                      { id: comment.id },
+                                                      {
+                                                         onSuccess: () =>
+                                                            utils.invalidateQueries(
+                                                               [
+                                                                  "blog.getComments",
+                                                               ]
+                                                            ),
+                                                      }
+                                                   )
+                                                }
+                                             >
+                                                {deleteComment.isLoading
+                                                   ? "Deleting"
+                                                   : "Delete"}
+                                             </button>
+                                          </Tooltip>
                                        </>
                                     )}
                                  </div>
