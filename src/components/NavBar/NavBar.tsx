@@ -12,14 +12,8 @@ const pages = [
    { name: "Blog", url: "/blog" },
    { name: "Projects", url: "/projects" },
    { name: "Gear", url: "/gear" },
-   {
-      type: "dropdown",
-      name: "Other",
-      links: [
-         { name: "Music", url: "/music" },
-         { name: "Tools", url: "/tools" },
-      ],
-   },
+   { name: "Music", url: "/music" },
+   { name: "Tools", url: "/tools" },
 ];
 
 const NavBar: React.FC = () => {
@@ -98,24 +92,19 @@ const NavBar: React.FC = () => {
                      </div>
                      <div className="hidden md:block">
                         <div className="flex items-baseline gap-4 mt-6 ml-10">
-                           {pages.map((page, index) => {
-                              const current = pathname === page.url!;
-                              if (page.type !== "dropdown") {
-                                 return (
-                                    <Link href={page.url!} key={index}>
-                                       <a
-                                          className={
-                                             current
-                                                ? "pointer-events-none bg-gray-600 dark:bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium duration-200 cursor-not-allowed"
-                                                : "cursor-pointer cursor-pointertext-gray-900 dark:text-gray-200 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-900 px-3 py-2 rounded-md text-sm font-medium duration-200"
-                                          }
-                                       >
-                                          {page.name}
-                                       </a>
-                                    </Link>
-                                 );
-                              }
-                           })}
+                           {pages.map((page, index) => (
+                              <Link href={page.url!} key={index}>
+                                 <a
+                                    className={
+                                       pathname === page.url!
+                                          ? "pointer-events-none bg-gray-600 dark:bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium duration-200 cursor-not-allowed"
+                                          : "cursor-pointer cursor-pointertext-gray-900 dark:text-gray-200 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-900 px-3 py-2 rounded-md text-sm font-medium duration-200"
+                                    }
+                                 >
+                                    {page.name}
+                                 </a>
+                              </Link>
+                           ))}
                         </div>
                      </div>
                   </div>
@@ -175,43 +164,20 @@ const NavBar: React.FC = () => {
             {clickMobileMenu && (
                <div className="h-screen text-center bg-opacity-50 md:hidden">
                   <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                     {pages.map((page, index) => {
-                        const current = pathname === page.url;
-                        if (page.type !== "dropdown") {
-                           return (
-                              <Link href={page.url!} key={index}>
-                                 <a
-                                    onClick={() => setClickMobileMenu(false)}
-                                    className={
-                                       current
-                                          ? "bg-cyan-600 dark:bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
-                                          : "text-gray-800 dark:text-gray-300 hover:bg-cyan-800 dark:hover:bg-cyan-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
-                                    }
-                                 >
-                                    {page.name}
-                                 </a>
-                              </Link>
-                           );
-                        }
-                        if (page.type === "dropdown") {
-                           return page.links.map((page, index) => {
-                              return (
-                                 <Link href={page.url!} key={index}>
-                                    <a
-                                       onClick={() => setClickMobileMenu(false)}
-                                       className={
-                                          current
-                                             ? "bg-cyan-600 dark:bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
-                                             : "text-gray-800 dark:text-gray-300 hover:bg-cyan-800 dark:hover:bg-cyan-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
-                                       }
-                                    >
-                                       {page.name}
-                                    </a>
-                                 </Link>
-                              );
-                           });
-                        }
-                     })}
+                     {pages.map((page, index) => (
+                        <Link href={page.url!} key={index}>
+                           <a
+                              onClick={() => setClickMobileMenu(false)}
+                              className={
+                                 pathname === page.url
+                                    ? "bg-cyan-600 dark:bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+                                    : "text-gray-800 dark:text-gray-300 hover:bg-cyan-800 dark:hover:bg-cyan-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+                              }
+                           >
+                              {page.name}
+                           </a>
+                        </Link>
+                     ))}
                   </div>
                </div>
             )}
