@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
                      <a href={SPOTIFY_ACCOUNT} target="_blank" rel="noreferrer">
                         <FaSpotify className="mr-1 text-2xl text-green-500" />
                      </a>
-                     {error ? "- There was an error" : "- Not Playing Anything"}
+                     {error ? " There was an error" : " Not Playing Anything"}
                   </p>
                )}
             </div>
