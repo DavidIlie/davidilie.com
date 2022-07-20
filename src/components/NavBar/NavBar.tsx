@@ -13,7 +13,6 @@ const pages = [
    { name: "Projects", url: "/projects" },
    { name: "Gear", url: "/gear" },
    { name: "Music", url: "/music" },
-   { name: "Tools", url: "/tools" },
 ];
 
 const NavBar: React.FC = () => {
