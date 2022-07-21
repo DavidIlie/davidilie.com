@@ -15,6 +15,7 @@ const nextConfig = {
          "avatars.githubusercontent.com",
          "cdn.discordapp.com",
          "s3.davidapps.dev",
+         "i.scdn.co",
       ],
    },
 };

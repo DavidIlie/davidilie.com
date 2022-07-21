@@ -62,7 +62,7 @@ const getSpotifyData = async () => {
 
    return {
       artists: await responseArtists.json(),
-      recentlypLayed: await responseRecently.json(),
+      recentlyPlayed: await responseRecently.json(),
       songs: await responseTracks.json(),
    };
 };

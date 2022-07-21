@@ -75,7 +75,8 @@ const getBaseUrl = () => {
       return "";
    }
    if (process.browser) return "";
-   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+   if (process.env.NODE_ENV === "production")
+      return process.env.NEXT_PUBLIC_APP_URL;
 
    return `http://localhost:${process.env.PORT ?? 3000}`;
 };
@@ -86,7 +87,10 @@ export default withTRPC<AppRouter>({
       return {
          url,
          transformer: superjson,
+         headers: {
+            "x-ssr": "1",
+         },
       };
    },
-   ssr: false,
+   ssr: true,
 })(MyApp);

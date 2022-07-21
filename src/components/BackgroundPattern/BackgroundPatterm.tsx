@@ -105,7 +105,8 @@ const SVG = ({
    top,
    hiddenMobile = false,
 }: SVGProps): JSX.Element => {
-   const isMobileDevice = useMediaQuery("(max-device-width: 480px)");
+   // this bullshit doesn't work
+   const isMobileDevice = useMediaQuery("(max-device-width: 480px)", false);
 
    return (
       <svg
