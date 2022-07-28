@@ -30,8 +30,8 @@ const Music: NextPage = () => {
    return (
       <>
          <NextSeo title="Music" />
-         <div className="flex justify-center flex-grow sm:px-6 lg:px-8 mt-32">
-            <div className="container max-w-5xl mx-auto">
+         <div className="flex justify-center flex-grow sm:px-6 lg:px-8 mt-32 mb-12">
+            <div className="container max-w-8xl mx-auto">
                <Fade direction="up" triggerOnce cascade>
                   <h1 className="text-3xl font-bold text-center sm:text-6xl header-gradient">
                      Here is the music I listen to.
@@ -50,7 +50,7 @@ const Music: NextPage = () => {
                </Fade>
                <Fade delay={1100} triggerOnce cascade>
                   <div className="mb-5">
-                     <h1 className="text-4xl font-semibold text-center header-gradient pb-2">
+                     <h1 className="mb-3 sm:text-5xl text-3xl font-medium text-center header-gradient pb-2">
                         Currently Listening
                      </h1>
                      <div className="max-w-screen-sm sm:px-0 px-2 mx-auto">
@@ -67,22 +67,16 @@ const Music: NextPage = () => {
                   </div>
                </Fade>
                <Fade delay={1200} triggerOnce cascade>
-                  <div className="sm:flex items-center justify-evenly">
+                  <div className="sm:flex items-center justify-center gap-12">
                      <div>
-                        <h1 className="mb-3 sm:text-5xl text-3xl font-medium text-center header-gradient">
+                        <h1 className="mb-3 sm:text-5xl text-3xl font-medium text-center header-gradient pb-2">
                            Recently Played Songs
                         </h1>
                         <div className="flex justify-center">
-                           <div className="grid grid-cols-1 gap-4 p-2 mx-auto xl:grid-cols-2 md:grid-cols-2">
+                           <div className="grid gap-4 mx-auto">
                               {spotifyData.data?.recentlyPlayed.items.map(
-                                 (song: any, index: number) => (
-                                    // <SongCard
-                                    //    song={song.track}
-                                    //    key={index}
-                                    //    titleCard={false}
-                                    //    isPlaying={false}
-                                    // />
-                                    <></>
+                                 (song, index) => (
+                                    <SongCard song={song.track} key={index} />
                                  )
                               )}
                            </div>
@@ -93,16 +87,10 @@ const Music: NextPage = () => {
                            Top Played Songs
                         </h1>
                         <div className="flex justify-center">
-                           <div className="grid grid-cols-1 gap-4 p-2 mx-auto xl:grid-cols-2 md:grid-cols-2">
+                           <div className="grid gap-4 mx-auto">
                               {spotifyData.data?.songs.items.map(
-                                 (song: any, index: number) => (
-                                    // <SongCard
-                                    //    song={song.track}
-                                    //    key={index}
-                                    //    titleCard={false}
-                                    //    isPlaying={false}
-                                    // />
-                                    <></>
+                                 (song, index) => (
+                                    <SongCard song={song} key={index} />
                                  )
                               )}
                            </div>

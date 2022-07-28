@@ -23,7 +23,14 @@ export const spotifyRouter = createRouter()
             const albumImageUrl = song.item.album.images[0].url;
             const songUrl = song.item.external_urls.spotify;
 
-            return { album, albumImageUrl, artist, isPlaying, songUrl, title };
+            return {
+               album,
+               albumImageUrl,
+               artist,
+               isPlaying,
+               songUrl,
+               title,
+            } as any;
          } catch (_error) {
             return { isPlaying: false };
          }

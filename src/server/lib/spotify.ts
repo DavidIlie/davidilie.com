@@ -61,10 +61,108 @@ const getSpotifyData = async () => {
    });
 
    return {
-      artists: await responseArtists.json(),
-      recentlyPlayed: await responseRecently.json(),
-      songs: await responseTracks.json(),
+      artists: (await responseArtists.json()) as Artists,
+      recentlyPlayed: (await responseRecently.json()) as RecentlyPlayed,
+      songs: (await responseTracks.json()) as Songs,
    };
 };
+
+interface Image {
+   height: number;
+   width: number;
+   url: string;
+}
+
+export interface SongTrack {
+   songUrl?: string;
+   title?: string;
+   albumImageUrl?: string;
+   artist?: string | null;
+   album: {
+      album_type: "ALBUM" | any;
+      artists: Artist[];
+      available_markets: string[];
+      external_urls: { spotify: string };
+      href: string;
+      id: string;
+      images: Image[];
+      name: string;
+      release_date: string;
+      release_date_precision: "day" | "month" | "year" | any;
+      total_tracks: number;
+      type: "album" | any;
+      uri: string;
+   };
+   artists: Artist[];
+   available_markets: string[];
+   disc_number: number;
+   duration_ms: number;
+   explicit: boolean;
+   external_ids:
+      | {
+           isrc: string;
+        }
+      | Object;
+   external_urls: { spotify: string };
+   href: string;
+   id: string;
+   is_local: boolean;
+   name: string;
+   popularity: number;
+   preview_url: string;
+   track_number: number;
+   type: "track" | any;
+   uri: string;
+}
+
+interface Artists {
+   items: Artist[];
+   total: number;
+   limit: number;
+   offset: number;
+   href: string;
+   previous: any;
+   next: string;
+}
+
+interface Artist {
+   external_urls: { spotify: string };
+   followers: { href: string | null; total: number };
+   genres: string[];
+   href: string;
+   id: string;
+   images: Image[];
+   name: string;
+   popularity: number;
+   type: string;
+   uri: string;
+}
+
+interface RecentlyPlayed {
+   items: RecentlyPlayedItem[];
+   next: string;
+   cursors: {
+      after: string;
+      before: string;
+   };
+   limit: number;
+   href: string;
+}
+
+interface RecentlyPlayedItem {
+   track: SongTrack;
+   played_at: Date;
+   context: any;
+}
+
+interface Songs {
+   items: SongTrack[];
+   total: number;
+   limit: number;
+   offset: number;
+   previous: any;
+   href: string;
+   next: string;
+}
 
 export { getNowPlaying, getSpotifyData };

@@ -2,16 +2,17 @@ import React from "react";
 import Image from "next/image";
 
 import { shimmer } from "@/lib/shimmer";
+import { SongTrack } from "@/server/lib/spotify";
 
 const SongCard: React.FC<{
-   song: any;
-   titleCard: boolean;
-   isPlaying: boolean;
-}> = ({ song, titleCard, isPlaying }) => (
+   song: SongTrack;
+   titleCard?: boolean;
+   isPlaying?: boolean;
+}> = ({ song, titleCard = false, isPlaying = false }) => (
    <a
       target="_blank"
       rel="noreferrer"
-      href={song.songUrl}
+      href={song?.songUrl}
       className="h-full max-w-xl overflow-visible"
    >
       <div
@@ -33,10 +34,9 @@ const SongCard: React.FC<{
                blurDataURL={shimmer(1920, 1080)}
                placeholder="blur"
                src={
-                  song.albumImageUrl ||
-                  song.album.images
-                     .filter((image: any) => image.height > 109)
-                     .slice(-1)[0].url
+                  (titleCard
+                     ? song.albumImageUrl
+                     : song.album.images[0]!.url) as string
                }
             />
          </div>
@@ -47,7 +47,9 @@ const SongCard: React.FC<{
                }`}
             </p>
             <div className="flex flex-col w-full mt-2 text-gray-400">
-               <h1 className="line-clamp-1">Album • {song.album}</h1>
+               <h1 className="line-clamp-1">{`Album • ${
+                  titleCard ? song.album : song.album.name
+               }`}</h1>
                <p className="line-clamp-1">
                   Artist{song.artists?.length > 1 && `s`} •{` `}
                   {song.artist ||
