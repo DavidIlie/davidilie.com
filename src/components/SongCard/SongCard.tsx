@@ -40,8 +40,8 @@ const SongCard: React.FC<{
                }
             />
          </div>
-         <div className="flex flex-col max-w-full ml-5">
-            <p className="max-w-full text-2xl font-semibold line-clamp-2">
+         <div className="flex flex-col max-w-full ml-5 truncate">
+            <p className="max-w-full text-2xl font-semibold truncate">
                {`${song?.title || song?.name}${
                   titleCard && !isPlaying ? ` - Paused` : ``
                }`}

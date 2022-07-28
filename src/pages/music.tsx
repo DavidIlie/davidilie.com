@@ -33,10 +33,10 @@ const Music: NextPage = () => {
          <div className="flex justify-center flex-grow sm:px-6 lg:px-8 mt-32 mb-12">
             <div className="container max-w-8xl mx-auto">
                <Fade direction="up" triggerOnce cascade>
-                  <h1 className="text-3xl font-bold text-center sm:text-6xl header-gradient">
+                  <h1 className="text-4xl font-bold text-center sm:text-6xl header-gradient">
                      Here is the music I listen to.
                   </h1>
-                  <h1 className="mb-4 text-center sm:text-lg mt-2">
+                  <h1 className="mb-4 text-center text-lg mt-2">
                      I'm a little{" "}
                      <span className="font-semibold header-gradient">
                         random
@@ -67,7 +67,7 @@ const Music: NextPage = () => {
                   </div>
                </Fade>
                <Fade delay={1200} triggerOnce cascade>
-                  <div className="sm:flex items-center justify-center gap-12">
+                  <div className="sm:flex items-center justify-center gap-6 sm:px-0 px-2 mt-10">
                      <div>
                         <h1 className="mb-3 sm:text-5xl text-3xl font-medium text-center header-gradient pb-2">
                            Recently Played Songs
@@ -83,7 +83,7 @@ const Music: NextPage = () => {
                         </div>
                      </div>
                      <div>
-                        <h1 className="mb-3 sm:text-5xl text-3xl font-medium text-center header-gradient">
+                        <h1 className="mb-3 sm:text-5xl text-3xl font-medium text-center header-gradient pb-2">
                            Top Played Songs
                         </h1>
                         <div className="flex justify-center">
