@@ -2,8 +2,7 @@ import { TRPCError } from "@trpc/server";
 import { createRouter } from "./context";
 import { z } from "zod";
 
-import { doesPostExist, getAllFilesFrontMatter } from "@/lib/mdx";
-import { generateRssFeed } from "@/lib/generateRssFeed";
+import { doesPostExist } from "@/lib/mdx";
 
 export const blogRouter = createRouter()
    .query("getStats", {
