@@ -1,4 +1,5 @@
 import { withTRPC } from "@trpc/next";
+import { useEffect, useState } from "react";
 import type { AppRouter } from "../server/router";
 import type { AppType } from "next/dist/shared/lib/utils";
 import superjson from "superjson";
@@ -6,6 +7,7 @@ import { SessionProvider } from "next-auth/react";
 import PlausibleProvider from "next-plausible";
 import { DefaultSeo } from "next-seo";
 import { ThemeProvider } from "next-themes";
+import { useHotkeys } from "@mantine/hooks";
 
 import "../styles/globals.css";
 import "tippy.js/dist/tippy.css";
@@ -14,12 +16,29 @@ import BackgroundPattern from "@/components/BackgroundPattern";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import useToggleTheme from "@/hooks/useToggleTheme";
-import { useHotkeys } from "@mantine/hooks";
+import Loader from "@/components/Loader";
 
 const MyApp: AppType = ({
    Component,
    pageProps: { session, ...pageProps },
+   router,
 }) => {
+   const [loading, setLoading] = useState<boolean>(false);
+
+   useEffect(() => {
+      document.documentElement.lang = `en-US`;
+      const start = () => setLoading(true);
+      const end = () => setLoading(false);
+      router.events.on(`routeChangeStart`, start);
+      router.events.on(`routeChangeComplete`, end);
+      router.events.on(`routeChangeError`, end);
+      return () => {
+         router.events.off(`routeChangeStart`, start);
+         router.events.off(`routeChangeComplete`, end);
+         router.events.off(`routeChangeError`, end);
+      };
+   });
+
    return (
       <>
          <DefaultSeo
@@ -50,9 +69,15 @@ const MyApp: AppType = ({
                   <SessionProvider session={session}>
                      <BackgroundPattern />
                      <div className="flex flex-col min-h-screen pageBackground">
-                        <NavBar />
-                        <Component {...pageProps} />
-                        <Footer />
+                        {loading ? (
+                           <Loader />
+                        ) : (
+                           <>
+                              <NavBar />
+                              <Component {...pageProps} />
+                              <Footer />
+                           </>
+                        )}
                      </div>
                   </SessionProvider>
                </ThemeWrapper>

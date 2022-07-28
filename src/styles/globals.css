@@ -34,6 +34,57 @@ html[class="dark"] .footerBackground {
    transform: translateY(-4px);
 }
 
+.loading-loader {
+   border-radius: 50%;
+   position: relative;
+   margin: 50px;
+   display: inline-block;
+   height: 0;
+   width: 0;
+}
+
+.loading-loader span {
+   position: absolute;
+   display: block;
+   background-color: #0b9496;
+   height: 20px;
+   width: 20px;
+   border-radius: 50%;
+   top: -20px;
+   perspective: 100000px;
+}
+.loading-loader span:nth-child(1) {
+   left: 60px;
+   animation: bounce 1s cubic-bezier(0.04, 0.35, 0, 1) infinite;
+   animation-delay: 0s;
+}
+.loading-loader span:nth-child(2) {
+   left: 20px;
+   animation: bounce 1s cubic-bezier(0.04, 0.35, 0, 1) infinite;
+   animation-delay: 0.2s;
+}
+.loading-loader span:nth-child(3) {
+   left: -20px;
+   animation: bounce 1s cubic-bezier(0.04, 0.35, 0, 1) infinite;
+   animation-delay: 0.4s;
+}
+.loading-loader span:nth-child(4) {
+   left: -60px;
+   animation: bounce 1s cubic-bezier(0.04, 0.35, 0, 1) infinite;
+   animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+   0%,
+   75%,
+   100% {
+      transform: translateY(0px);
+   }
+   25% {
+      transform: translateY(-30px);
+   }
+}
+
 @keyframes UpDown {
    from {
       transform: rotate(0deg) translateY(0);
