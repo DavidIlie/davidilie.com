@@ -14,6 +14,8 @@ import PostCard from "@/components/BlogComponents/PostCard";
 const Blog: NextPage<{ posts: MDXProps[] }> = ({ posts }) => {
    const [filter, setFilter] = useState("");
 
+   if (!posts) return <div />;
+
    const filteredBlogPosts = posts
       .filter(
          (frontMatter: any) =>
@@ -27,6 +29,7 @@ const Blog: NextPage<{ posts: MDXProps[] }> = ({ posts }) => {
          );
       })
       .reverse();
+
    return (
       <>
          <NextSeo title="Blog" />
@@ -110,6 +113,7 @@ const Blog: NextPage<{ posts: MDXProps[] }> = ({ posts }) => {
 export const getStaticProps: GetStaticProps = async () => {
    await generateRssFeed();
    const posts = await getAllFilesFrontMatter();
+
    return { props: { posts } };
 };
 

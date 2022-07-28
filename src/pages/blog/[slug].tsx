@@ -44,6 +44,8 @@ const BlogPost: NextPage<{ mdxSource: any; frontMatter: frontMatterProps }> = ({
    const { data } = useSession();
    const [formSuccess, setFormSuccess] = useState(false);
 
+   if (!frontMatter) return <div />;
+
    const utils = trpc.useContext();
    const blogStats = trpc.useQuery([
       "blog.getStats",
