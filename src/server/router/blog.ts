@@ -124,7 +124,7 @@ export const blogRouter = createRouter()
          });
          if (!comment) return new TRPCError({ code: "NOT_FOUND" });
          if (
-            ctx.session!.user!.id !== comment.userId &&
+            ctx.session!.user!.id !== comment.userId ||
             !ctx.session!.user!.isAdmin
          )
             return new TRPCError({ code: "FORBIDDEN" });
