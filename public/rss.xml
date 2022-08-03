@@ -4,7 +4,7 @@
         <title>The David Ones</title>
         <link>https://davidilie.com</link>
         <description>A 15 year old aspiring web developer experimenting with programming by publishing my work on the web.</description>
-        <lastBuildDate>Sun, 03 Oct 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 03 Aug 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/davidilie/davidilie.com</generator>
         <image>
@@ -13,6 +13,16 @@
             <link>https://davidilie.com</link>
         </image>
         <copyright>All rights reserved 2022, David Ilie Apps Platform</copyright>
+        <item>
+            <title><![CDATA[Big changes to my website, what they are and why I did them.]]></title>
+            <link>https://davidilie.com/blog/website-stack-rewrite</link>
+            <guid>https://davidilie.com/blog/website-stack-rewrite</guid>
+            <pubDate>Wed, 03 Aug 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[I initially thought I didn't need to continue working on my website once I finished it, but it reached the point where I couldn't understand my old codebase properly to add new features, so I decided to rewrite the website to the best of my ability.]]></description>
+            <content:encoded><![CDATA[Next.js, Personal Website, T3 Stack]]></content:encoded>
+            <author>david@davidilie.com (David Ilie)</author>
+            <enclosure url="https://user-images.githubusercontent.com/47594764/182570851-dcc4c3e9-0e4d-4214-a86a-c4542ae5dfa4.png" length="0" type="image/png"/>
+        </item>
         <item>
             <title><![CDATA[My experience showcasing one of my projects on Reddit - and how my website's visits tripled.]]></title>
             <link>https://davidilie.com/blog/my-experience-posting-to-reddit</link>
@@ -38,13 +48,13 @@
             <link>https://davidilie.com/blog/how-i-persist-live-data-across-my-nextjs-app</link>
             <guid>https://davidilie.com/blog/how-i-persist-live-data-across-my-nextjs-app</guid>
             <pubDate>Sat, 11 Sep 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[While working on one of my projects, I came across a problem with fetching dynamic data from my API. The problem was that I didn't want to do the request on every render, just when I wanted it to be fetched. So I came up with a unique solution.]]></description>
+            <description><![CDATA[While working on one of my projects, I came across a problem with fetching dynamic data from my API. The problem was that I didn't want to do the request on every render, just when I wanted it to be fetched.]]></description>
             <content:encoded><![CDATA[Next.js, State Management, Web Development]]></content:encoded>
             <author>david@davidilie.com (David Ilie)</author>
             <enclosure url="https://user-images.githubusercontent.com/47594764/182562683-f2708069-2fda-4058-a020-05c553698ae7.png" length="0" type="image/png"/>
         </item>
         <item>
-            <title><![CDATA[Welcome to my Blog! - The backstory, How it works, etc.]]></title>
+            <title><![CDATA[(OUTDATED) Welcome to my Blog! - The backstory, How it works, etc.]]></title>
             <link>https://davidilie.com/blog/welcome-to-my-blog-and-how-it-works</link>
             <guid>https://davidilie.com/blog/welcome-to-my-blog-and-how-it-works</guid>
             <pubDate>Thu, 24 Jun 2021 00:00:00 GMT</pubDate>

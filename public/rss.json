@@ -11,6 +11,19 @@
     },
     "items": [
         {
+            "id": "https://davidilie.com/blog/website-stack-rewrite",
+            "content_html": "Next.js, Personal Website, T3 Stack",
+            "url": "https://davidilie.com/blog/website-stack-rewrite",
+            "title": "Big changes to my website, what they are and why I did them.",
+            "summary": "I initially thought I didn't need to continue working on my website once I finished it, but it reached the point where I couldn't understand my old codebase properly to add new features, so I decided to rewrite the website to the best of my ability.",
+            "image": "https://user-images.githubusercontent.com/47594764/182570851-dcc4c3e9-0e4d-4214-a86a-c4542ae5dfa4.png",
+            "date_modified": "2022-08-03T00:00:00.000Z",
+            "author": {
+                "name": "David Ilie",
+                "url": "https://davidilie.com"
+            }
+        },
+        {
             "id": "https://davidilie.com/blog/my-experience-posting-to-reddit",
             "content_html": "Reddit, r/selfhosted, Hacker News",
             "url": "https://davidilie.com/blog/my-experience-posting-to-reddit",
@@ -41,7 +54,7 @@
             "content_html": "Next.js, State Management, Web Development",
             "url": "https://davidilie.com/blog/how-i-persist-live-data-across-my-nextjs-app",
             "title": "How I persist live data in Next.js without waiting for async requests.",
-            "summary": "While working on one of my projects, I came across a problem with fetching dynamic data from my API. The problem was that I didn't want to do the request on every render, just when I wanted it to be fetched. So I came up with a unique solution.",
+            "summary": "While working on one of my projects, I came across a problem with fetching dynamic data from my API. The problem was that I didn't want to do the request on every render, just when I wanted it to be fetched.",
             "image": "https://user-images.githubusercontent.com/47594764/182562683-f2708069-2fda-4058-a020-05c553698ae7.png",
             "date_modified": "2021-09-11T00:00:00.000Z",
             "author": {
@@ -53,7 +66,7 @@
             "id": "https://davidilie.com/blog/welcome-to-my-blog-and-how-it-works",
             "content_html": "Blogging, Web Development, Next.JS, MDX",
             "url": "https://davidilie.com/blog/welcome-to-my-blog-and-how-it-works",
-            "title": "Welcome to my Blog! - The backstory, How it works, etc.",
+            "title": "(OUTDATED) Welcome to my Blog! - The backstory, How it works, etc.",
             "summary": "This is my first ever blog post on this website! On this blog post I completely document how the Blog post works, to the seeing how many views it has to storing the actual blog post in the first place. Worth a read!",
             "image": "https://user-images.githubusercontent.com/47594764/182563292-115cc4d7-eff5-415a-848e-7633772bd4e3.png",
             "date_modified": "2021-06-24T00:00:00.000Z",

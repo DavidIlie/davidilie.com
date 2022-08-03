@@ -88,7 +88,7 @@ const PostCard: React.FC<MDXProps & { featured: boolean }> = ({
    ) : (
       <Link href={`/blog/${slug}`} passHref>
          <a className="duration-200 hoverItem">
-            <div className="mb-6 duration-200 bg-gray-100 border-2 border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700 hoverItem">
+            <div className="mb-3 duration-200 bg-gray-100 border-2 border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700 hoverItem">
                <div className="md:flex-shrink-0">
                   <Image
                      src={image}
@@ -101,10 +101,10 @@ const PostCard: React.FC<MDXProps & { featured: boolean }> = ({
                   />
                </div>
                <div className="px-4 py-2 -mt-1.5 border-t-2 border-gray-700">
-                  <h2 className="text-2xl font-semibold tracking-normal">
+                  <h2 className="text-2xl font-semibold tracking-normal line-clamp-2 h-16">
                      {title}
                   </h2>
-                  <p className="mt-2 mb-3 text-gray-800 text-md dark:text-gray-200 truncate-2-lines">
+                  <p className="mt-2 mb-3 text-gray-800 text-md dark:text-gray-200 line-clamp-4">
                      {summary}
                   </p>
                   {tags &&

@@ -146,8 +146,8 @@ const BlogPost: NextPage<{ mdxSource: any; frontMatter: frontMatterProps }> = ({
                <div className="w-full max-w-5xl px-2 mt-3 mb-5 blog-content">
                   <MDXRemote {...mdxSource} components={{ ...MDXComponents }} />
                </div>
-               <div className="px-4 mt-2 border-t-2">
-                  <h1 className="mt-4 text-4xl font-medium header-gradient">
+               <div className="px-2 mt-2 border-t-2">
+                  <h1 className="mt-4 text-4xl font-medium header-gradient pb-2 -mb-1">
                      What do you think?
                   </h1>
                   <div className="w-full p-6 my-4 border border-gray-200 rounded bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
