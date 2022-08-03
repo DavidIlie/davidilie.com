@@ -91,7 +91,7 @@ const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({
    children,
 }) => {
    const updateTheme = useToggleTheme();
-   useHotkeys([["mod+shift+e", updateTheme]]);
+   useHotkeys([["mod+shift+x", updateTheme]]);
    return <>{children}</>;
 };
 

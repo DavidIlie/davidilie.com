@@ -13,13 +13,13 @@ const ThemeToggle: React.FC = () => {
          className="flex items-center w-full gap-1 group rounded-b-md"
          aria-label={
             theme === "dark"
-               ? "Toggle Light Mode (ctrl+shift+e)"
-               : "Toggle Dark Mode (ctrl+shift+e)"
+               ? "Toggle Light Mode (ctrl+shift+x)"
+               : "Toggle Dark Mode (ctrl+shift+x"
          }
          title={
             theme === "dark"
-               ? "Toggle Light Mode (ctrl+shift+e)"
-               : "Toggle Dark Mode (ctrl+shift+e)"
+               ? "Toggle Light Mode (ctrl+shift+x)"
+               : "Toggle Dark Mode (ctrl+shift+x)"
          }
          onClick={() => changeTheme()}
       >

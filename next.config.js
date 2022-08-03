@@ -14,7 +14,7 @@ const nextConfig = {
          "lh3.googleusercontent.com",
          "avatars.githubusercontent.com",
          "cdn.discordapp.com",
-         "s3.davidapps.dev",
+         "user-images.githubusercontent.com",
          "i.scdn.co",
       ],
    },
