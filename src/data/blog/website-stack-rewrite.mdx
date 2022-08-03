@@ -6,3 +6,27 @@ tags: ["Next.js", "Personal Website", "T3 Stack"]
 image: "https://user-images.githubusercontent.com/47594764/182570851-dcc4c3e9-0e4d-4214-a86a-c4542ae5dfa4.png"
 published: true
 ---
+
+# Intro
+
+Back when I wrote this website throughout the 2021 summer, The principle was more oriented to my previous "microservice" arhitecture instead of a more practical approach like now. I still find the idea interesting, but I personally think for a portfolio website it is not needed, and with `Next.js`'s amazing featureset, I can do everything that I need from the same `Next.js` app!
+
+This part year I've spent a lot of time experimenting with different/new approaches to creating web applications and I've made many projects which you can see on my [GitHub](https://github.com/davidilie).
+
+# The Old Design
+
+The project was structured as a <Definition term="monorepo" definition="A repository which contains more than one project"/> with these packages:
+
+-  `frontend` - `Next.js` frontend
+-  `agenda` - Background Services
+-  `identify` - Auth server for `agenda`
+-  `spotify` - Spotify statistics
+
+<InfoQuote>
+   This was back before I didn't know how to actually create a monorepo, so each
+   folder had its own "node_modules", etc...
+</InfoQuote>
+
+What's even more funny is that the entire project has been converted to Typescript except for the `agenda` microservice as even while I was coding it I didn't really understand how it worked so therefore i didn't want to touch it :)
+
+By having everything so seperate from each other, it was hard to keep everything synced with each other (Type Definitions, etc.) so I left most types for API responses as `any` which is never good for a _senior professional typescript mastermind_ like how I am now.
