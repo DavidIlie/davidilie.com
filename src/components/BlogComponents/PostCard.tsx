@@ -42,12 +42,12 @@ const PostCard: React.FC<MDXProps & { featured: boolean }> = ({
                   placeholder="blur"
                   objectFit="cover"
                />
-               <div className="py-1 md:max-w-sm md:px-0">
+               <div className="py-1 md:max-w-sm md:px-0 px-2">
                   {tags &&
                      tags.map((tag, i) => (
                         <Tags tag={tag} key={i.toString()} />
                      ))}
-                  <h1 className="mt-1 mb-1 font-semibold xl:text-2xl md:text-2xl text-section">
+                  <h1 className="mt-1 mb-1 font-semibold md:text-2xl text-xl text-section">
                      {title}
                   </h1>
                   <p className="text-gray-800 dark:text-gray-300">{summary}</p>

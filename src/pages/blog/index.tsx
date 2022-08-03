@@ -87,7 +87,7 @@ const Blog: NextPage<{ posts: MDXProps[] }> = ({ posts }) => {
                   </Fade>
                )}
                <Fade direction="up" triggerOnce cascade>
-                  <div className="grid grid-cols-1 gap-2 mt-5 sm:grid-cols-2 md:px-4">
+                  <div className="grid grid-cols-1 gap-2 mt-5 sm:grid-cols-2 px-4">
                      {filteredBlogPosts.map(
                         (frontMatter: any, index: number) => {
                            const featured = index === 0;
