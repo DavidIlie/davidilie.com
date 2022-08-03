@@ -143,7 +143,7 @@ const About: React.FC = () => {
                   First of all, who am I?
                </h1>
                <h1 className="mx-auto mb-32 text-lg sm:max-w-5xl">
-                  I'm a 15 year old software developer and full-time student,
+                  I'm a 16 year old software developer and full-time student,
                   and have been interested into computer science ever since I
                   was younger but never got into proper development until about
                   2 years ago. Software Engineering has always kept me motivated

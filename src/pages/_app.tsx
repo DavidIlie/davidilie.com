@@ -55,7 +55,7 @@ const MyApp: AppType = ({
                   },
                ],
             }}
-            description="A 15 year old aspiring web developer experimenting with programming by publishing my work on the web for others to see and use."
+            description="A 16 year old aspiring web developer experimenting with programming by publishing my work on the web for others to see and use."
          />
          <PlausibleProvider
             domain="davidilie.com"
