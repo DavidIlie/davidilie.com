@@ -149,12 +149,8 @@ export const infastructure: DeviceProps[] = [
             suffix: "Dell Poweredge R730",
          },
          {
-            prefix: "CPU1",
-            suffix: "Intel E5-2630 v4",
-         },
-         {
-            prefix: "CPU2",
-            suffix: "Intel E5-2630 v4",
+            prefix: "CPU",
+            suffix: "Intel E5-2630 v4 x2",
          },
          {
             prefix: "RAM",
@@ -180,12 +176,8 @@ export const infastructure: DeviceProps[] = [
             suffix: "HP Dl360e G8",
          },
          {
-            prefix: "CPU1",
-            suffix: "Intel E5-2470 v2",
-         },
-         {
-            prefix: "CPU2",
-            suffix: "Intel E5-2470 v2",
+            prefix: "CPU",
+            suffix: "Intel E5-2470 v2 x2",
          },
          {
             prefix: "RAM",
