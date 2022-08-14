@@ -87,13 +87,15 @@ model Comment {
 -  [`NextAuth.js`](https://next-auth.js.org/) - Easy authentication for Next.js
 
 ```tsx title="NextAuth.js provider"
-providers: [
-   GithubProvider({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-   }),
-   // ...and more providers
-],
+export const authOptions: NextAuthOptions = {
+   providers: [
+      GithubProvider({
+         clientId: process.env.GITHUB_ID,
+         clientSecret: process.env.GITHUB_SECRET,
+      }),
+      // ...and more providers, etc.
+   ],
+};
 ```
 
 ...and from experimenting with it on my own on smaller projects, I decided to rewrite my website using this Tech Stack.
