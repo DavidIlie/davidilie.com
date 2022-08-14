@@ -41,7 +41,7 @@ I recently discovered [the T3 Stack](create.t3.gg) which creates a `Next.js` app
 
 -  [`Typescript`](https://www.typescriptlang.org/) - Superior programming language
 
-```ts title="Typescript Type for Gear"
+```ts title="Typescript Type for Gear Page"
 export interface DeviceProps {
    icon: IconType;
    name: string;
@@ -101,3 +101,41 @@ export const authOptions: NextAuthOptions = {
 ...and from experimenting with it on my own on smaller projects, I decided to rewrite my website using this Tech Stack.
 
 From what I've also seen, the website has proved to be much faster and much more responsive compared to my previous approach and this is what I've wanted. The purpose of my website is to show how my best work would look like, and I've never been more happy regarding the quality of my website.
+
+# Change of Database
+
+Like I mentioned before, I used to use MongoDB, but now I switched to an <Definition term="SQL" definition="Structured Query Language"/> called `PostgreSQL`, I just like it much more because of how well it integrates with `Prisma` and the idea of using schemas/tables in Postgres instead of documents in Mongo.
+
+# Background Job Changes
+
+Before I used to use `agenda` to fetch my YouTube and GitHub statistics using a `cron` schedule, but as fun as interesting as that system is, I decided to change my approach.
+
+Each cron job has its own API route with its own security key, I then have a GitHub routine action which makes a request to the cron job with the security key, and if it is correct, it executes the code needed for the background job.
+
+```tsx title="Cron Job Example"
+const handler: NextApiHandler = async (req, res) => {
+   try {
+      const { secret } = req.query;
+
+      if (!secret || secret !== process.env.GITHUB_JOB_SECRET)
+         return res.status(401).json({ message: "haha no" });
+
+      // do job
+   } catch (error: any) {
+      console.log(error);
+      return res
+         .status(500)
+         .json({ message: error.message || "Unknown Error" });
+   }
+};
+```
+
+# Conclusion
+
+Otherwise I've mostly spent upgrading the website to match my current coding standards, aka using better principles for coding (both for react and/or typescript in general), etc.
+
+As for deployment, the plan in the future is to keep the website running on my Kubernetes Cluster, but since I am moving to study in the United Kingdom, and moving with my family to Romania, my servers hosting my cluster are currently offline, which is a shame. But until then, the plan is to host it all on the cloud.
+
+Thank you for reading this more technical blog post, make sure to check out my other posts while you're at it!
+
+Cheers!
