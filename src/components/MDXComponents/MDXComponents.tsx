@@ -103,7 +103,7 @@ export const CustomUnorderedList = ({
 }: {
    children: React.ReactNode;
 }): JSX.Element => {
-   return <ul className="mt-3 ml-5 font-medium list-disc">{children}</ul>;
+   return <ul className="mt-3 ml-5 list-disc">{children}</ul>;
 };
 
 export const CustomListItem = ({

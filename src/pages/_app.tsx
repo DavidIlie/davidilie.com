@@ -23,7 +23,7 @@ const MyApp: AppType = ({
    pageProps: { session, ...pageProps },
    router,
 }) => {
-   const [loading, setLoading] = useState<boolean>(false);
+   const [loading, setLoading] = useState(false);
 
    useEffect(() => {
       document.documentElement.lang = `en-US`;
