@@ -18,6 +18,10 @@ const nextConfig = {
          "i.scdn.co",
       ],
    },
+   experimental: {
+      outputStandalone: true,
+      concurrentFeatures: true,
+   },
 };
 
 module.exports = withPlugins([withPlausibleProxy, withMDX, nextConfig]);
