@@ -81,12 +81,15 @@ const NavBar: React.FC = () => {
                         {!clickMobileMenu ? (
                            <AnimatedTitle />
                         ) : (
-                           <h1
-                              className="mt-5 text-3xl font-semibold text-black cursor-pointer dark:text-white"
-                              onClick={() => push("/")}
-                           >
-                              David Ilie
-                           </h1>
+                           <Link href="/">
+                              <a
+                                 className={`mt-5 text-3xl font-semibold text-black cursor-pointer dark:text-white ${
+                                    pathname === "/" && "pointer-events-none"
+                                 }`}
+                              >
+                                 David Ilie
+                              </a>
+                           </Link>
                         )}
                      </div>
                      <div className="hidden md:block">
