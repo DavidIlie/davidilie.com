@@ -1,0 +1,17 @@
+name: agenda:build_and_deploy
+
+on:
+   push:
+      branches:
+         - version4
+  schedule:
+    - cron: '*/10 * * * *'
+
+jobs:
+   execute:
+      runs-on: ubuntu-latest
+      steps:
+         - uses: satak/webrequest-action@master
+           with:
+              url: https://davidilie.com/api/cron/github?secret= ${{ secrets.REPO_JOB_SECRET }}
+              method: GET
