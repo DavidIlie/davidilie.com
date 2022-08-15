@@ -82,26 +82,20 @@ const Blog: NextPage<{ posts: MDXProps[] }> = ({ posts }) => {
                   </Fade>
                )}
                {filteredBlogPosts[0] && (
-                  <Fade direction="up" triggerOnce>
-                     <PostCard {...filteredBlogPosts[0]} featured />
-                  </Fade>
+                  <div className="px-4">
+                     <Fade direction="up" triggerOnce>
+                        <PostCard {...filteredBlogPosts[0]} featured />
+                     </Fade>
+                  </div>
                )}
                <Fade direction="up" triggerOnce cascade>
-                  <div className="grid grid-cols-1 gap-2 mt-5 sm:grid-cols-2 px-4">
-                     {filteredBlogPosts.map(
-                        (frontMatter: any, index: number) => {
-                           const featured = index === 0;
-                           if (!featured) {
-                              return (
-                                 <PostCard
-                                    key={index}
-                                    {...frontMatter}
-                                    feature={false}
-                                 />
-                              );
-                           }
+                  <div className="grid grid-cols-1 gap-2 px-4 mt-5 sm:grid-cols-2">
+                     {filteredBlogPosts.map((frontMatter, index) => {
+                        const featured = index === 0;
+                        if (!featured) {
+                           return <PostCard key={index} {...frontMatter} />;
                         }
-                     )}
+                     })}
                   </div>
                </Fade>
             </div>
@@ -113,7 +107,6 @@ const Blog: NextPage<{ posts: MDXProps[] }> = ({ posts }) => {
 export const getStaticProps: GetStaticProps = async () => {
    await generateRssFeed();
    const posts = await getAllFilesFrontMatter();
-
    return { props: { posts } };
 };
 

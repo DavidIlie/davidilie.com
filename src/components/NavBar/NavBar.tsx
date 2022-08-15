@@ -95,8 +95,15 @@ const NavBar: React.FC = () => {
                               <Link href={page.url!} key={index}>
                                  <a
                                     className={
-                                       pathname === page.url!
-                                          ? "pointer-events-none bg-gray-600 dark:bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium duration-200 cursor-not-allowed"
+                                       pathname === page.url! ||
+                                       (isBlogPage && page.name === "Blog")
+                                          ? `${
+                                               !(
+                                                  isBlogPage &&
+                                                  page.name === "Blog"
+                                               ) &&
+                                               "pointer-events-none cursor-not-allowed"
+                                            } bg-gray-600 dark:bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium duration-200`
                                           : "cursor-pointer cursor-pointertext-gray-900 dark:text-gray-200 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-900 px-3 py-2 rounded-md text-sm font-medium duration-200"
                                     }
                                  >
@@ -168,8 +175,13 @@ const NavBar: React.FC = () => {
                            <a
                               onClick={() => setClickMobileMenu(false)}
                               className={
-                                 pathname === page.url
-                                    ? "bg-cyan-600 dark:bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
+                                 pathname === page.url! ||
+                                 (isBlogPage && page.name === "Blog")
+                                    ? `${
+                                         !(
+                                            isBlogPage && page.name === "Blog"
+                                         ) && "cursor-pointer"
+                                      } bg-cyan-600 dark:bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium`
                                     : "text-gray-800 dark:text-gray-300 hover:bg-cyan-800 dark:hover:bg-cyan-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium cursor-pointer"
                               }
                            >

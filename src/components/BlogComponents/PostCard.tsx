@@ -9,14 +9,14 @@ import { trpc } from "@/lib/trpc";
 import { shimmer } from "@/lib/shimmer";
 import Tags from "./Tags";
 
-const PostCard: React.FC<MDXProps & { featured: boolean }> = ({
+const PostCard: React.FC<MDXProps & { featured?: boolean }> = ({
    title,
    summary,
    slug,
    tags,
    publishedAt,
    image,
-   featured,
+   featured = false,
 }) => {
    const { data } = trpc.useQuery(["blog.getStats", { slug }]);
    const { width } = useViewportSize();
@@ -42,12 +42,12 @@ const PostCard: React.FC<MDXProps & { featured: boolean }> = ({
                   placeholder="blur"
                   objectFit="cover"
                />
-               <div className="py-1 md:max-w-sm md:px-0 px-2">
+               <div className="px-2 py-1 md:max-w-sm md:px-0">
                   {tags &&
                      tags.map((tag, i) => (
                         <Tags tag={tag} key={i.toString()} />
                      ))}
-                  <h1 className="mt-1 mb-1 font-semibold md:text-2xl text-xl text-section">
+                  <h1 className="mt-1 mb-1 text-xl font-semibold md:text-2xl text-section">
                      {title}
                   </h1>
                   <p className="text-gray-800 dark:text-gray-300">{summary}</p>
@@ -101,7 +101,7 @@ const PostCard: React.FC<MDXProps & { featured: boolean }> = ({
                   />
                </div>
                <div className="px-4 py-2 -mt-1.5 border-t-2 border-gray-700">
-                  <h2 className="text-2xl font-semibold tracking-normal line-clamp-2 h-16">
+                  <h2 className="h-16 text-2xl font-semibold tracking-normal line-clamp-2">
                      {title}
                   </h2>
                   <p className="mt-2 mb-3 text-gray-800 text-md dark:text-gray-200 line-clamp-4">
