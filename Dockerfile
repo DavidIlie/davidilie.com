@@ -9,6 +9,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+RUN yarn prisma generate
 RUN yarn build
 
 FROM node:16.13.0-alpine AS runner
