@@ -11,7 +11,9 @@ import { unstable_getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 
 const SignIn: NextPage = () => {
-   const { query } = useRouter();
+   const {
+      query: { returnUrl },
+   } = useRouter();
    return (
       <>
          <NextSeo title="Sign In" />
@@ -25,9 +27,8 @@ const SignIn: NextPage = () => {
                            onClick={() =>
                               signIn("github", {
                                  callbackUrl:
-                                    decodeURIComponent(
-                                       (query as any).returnUrl
-                                    ) || "/",
+                                    decodeURIComponent(returnUrl as string) ||
+                                    "/",
                               })
                            }
                         >
@@ -90,13 +91,15 @@ const PlatformButton: React.FC<{
    icon: IconType;
    platform: "google" | "discord";
 }> = (props) => {
-   const { query } = useRouter();
+   const {
+      query: { returnUrl },
+   } = useRouter();
    return (
       <button
          className="relative inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium duration-150 border rounded-md shadow-sm bg-gray-50 hover:bg-gray-100 dark:bg-opacity-50 dark:border-gray-700 dark:bg-dark-bg dark:hover:bg-opacity-100 dark:hover:text-gray-100"
          onClick={() =>
             signIn(props.platform, {
-               callbackUrl: decodeURIComponent((query as any).returnUrl) || "/",
+               callbackUrl: decodeURIComponent(returnUrl as string) || "/",
             })
          }
       >
