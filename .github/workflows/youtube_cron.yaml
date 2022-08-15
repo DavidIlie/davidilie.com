@@ -2,7 +2,7 @@ name: agenda:build_and_deploy
 
 on:
    schedule:
-      - cron: "0 * * * *"
+      - cron: "*/10 * * * *"
 
 jobs:
    execute:
