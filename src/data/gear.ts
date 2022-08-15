@@ -194,14 +194,37 @@ export const infastructure: DeviceProps[] = [
       ],
    },
    {
+      icon: BiServer,
+      name: "Server",
+      description: "Sulfur",
+      specs: [
+         {
+            prefix: "Model",
+            suffix: "HP DL160 G6",
+         },
+         {
+            prefix: "CPU",
+            suffix: "Intel Xeon L5640 x2",
+         },
+         {
+            prefix: "RAM",
+            suffix: "196GB DDR3 ECC",
+         },
+         {
+            prefix: "Storage",
+            suffix: "4TB HDD Array",
+         },
+         {
+            prefix: "OS",
+            suffix: "Debian 11 (Proxmox VE 7)",
+         },
+      ],
+   },
+   {
       icon: AiOutlineLaptop,
       name: "Server/Laptop",
       description: "Plasma",
       specs: [
-         {
-            prefix: "Model",
-            suffix: "Xiaomi Gaming",
-         },
          {
             prefix: "CPU",
             suffix: "Intel i7-8750H",
