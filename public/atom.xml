@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://davidilie.com</id>
     <title>The David Ones</title>
-    <updated>2022-08-03T00:00:00.000Z</updated>
+    <updated>2022-08-14T00:00:00.000Z</updated>
     <generator>https://github.com/davidilie/davidilie.com</generator>
     <author>
         <name>David Ilie</name>
@@ -19,7 +19,7 @@
         <title type="html"><![CDATA[Big changes to my website, what they are and why I did them.]]></title>
         <id>https://davidilie.com/blog/website-stack-rewrite</id>
         <link href="https://davidilie.com/blog/website-stack-rewrite"/>
-        <updated>2022-08-03T00:00:00.000Z</updated>
+        <updated>2022-08-14T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[I initially thought I didn't need to continue working on my website once I finished it, but it reached the point where I couldn't understand my old codebase properly to add new features, so I decided to rewrite the website to the best of my ability.]]></summary>
         <content type="html"><![CDATA[Next.js, Personal Website, T3 Stack]]></content>
         <author>

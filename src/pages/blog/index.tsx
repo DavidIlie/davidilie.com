@@ -45,7 +45,7 @@ const Blog: NextPage<{ posts: MDXProps[] }> = ({ posts }) => {
                      Currently there are {posts.length} blog post
                      {posts.length > 1 && "s"}.
                   </p>
-                  <div className="px-3 mt-4 mb-6">
+                  <div className="px-4 mt-4 mb-6">
                      <div>
                         {filter === "" ? (
                            <span className="absolute z-10 h-full py-3 pl-3 mt-1 text-base font-normal leading-snug bg-transparent">
@@ -82,7 +82,7 @@ const Blog: NextPage<{ posts: MDXProps[] }> = ({ posts }) => {
                   </Fade>
                )}
                {filteredBlogPosts[0] && (
-                  <div className="px-4">
+                  <div className="px-4 sm:px-1">
                      <Fade direction="up" triggerOnce>
                         <PostCard {...filteredBlogPosts[0]} featured />
                      </Fade>

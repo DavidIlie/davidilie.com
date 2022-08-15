@@ -4,7 +4,7 @@
         <title>The David Ones</title>
         <link>https://davidilie.com</link>
         <description>A 15 year old aspiring web developer experimenting with programming by publishing my work on the web.</description>
-        <lastBuildDate>Wed, 03 Aug 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 14 Aug 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/davidilie/davidilie.com</generator>
         <image>
@@ -17,7 +17,7 @@
             <title><![CDATA[Big changes to my website, what they are and why I did them.]]></title>
             <link>https://davidilie.com/blog/website-stack-rewrite</link>
             <guid>https://davidilie.com/blog/website-stack-rewrite</guid>
-            <pubDate>Wed, 03 Aug 2022 00:00:00 GMT</pubDate>
+            <pubDate>Sun, 14 Aug 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[I initially thought I didn't need to continue working on my website once I finished it, but it reached the point where I couldn't understand my old codebase properly to add new features, so I decided to rewrite the website to the best of my ability.]]></description>
             <content:encoded><![CDATA[Next.js, Personal Website, T3 Stack]]></content:encoded>
             <author>david@davidilie.com (David Ilie)</author>
