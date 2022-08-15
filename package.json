@@ -45,6 +45,7 @@
       "remark-autolink-headings": "^7.0.1",
       "remark-code-titles": "^0.1.2",
       "remark-slug": "^7.0.1",
+      "sharp": "^0.30.7",
       "superjson": "^1.9.1",
       "use-sound": "^4.0.1",
       "zod": "^3.17.3"
