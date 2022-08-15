@@ -25,11 +25,14 @@ const SignIn: NextPage = () => {
                         <button
                            className="relative inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium text-white duration-150 bg-blue-600 border border-blue-700 rounded-md shadow-sm dark:bg-blue-600 dark:border-blue-700 dark:hover:bg-blue-700 dark:hover:border-blue-800 hover:bg-blue-700 sm:py-6 sm:px-12 sm:text-2xl sm:font-semibold sm:rounded-lg"
                            onClick={() =>
-                              signIn("github", {
-                                 callbackUrl:
-                                    decodeURIComponent(returnUrl as string) ||
-                                    "/",
-                              })
+                              returnUrl
+                                 ? signIn("github", {
+                                      callbackUrl:
+                                         decodeURIComponent(
+                                            returnUrl as string
+                                         ) || "/",
+                                   })
+                                 : signIn("github")
                            }
                         >
                            <AiFillGithub />
@@ -98,9 +101,11 @@ const PlatformButton: React.FC<{
       <button
          className="relative inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium duration-150 border rounded-md shadow-sm bg-gray-50 hover:bg-gray-100 dark:bg-opacity-50 dark:border-gray-700 dark:bg-dark-bg dark:hover:bg-opacity-100 dark:hover:text-gray-100"
          onClick={() =>
-            signIn(props.platform, {
-               callbackUrl: decodeURIComponent(returnUrl as string) || "/",
-            })
+            returnUrl
+               ? signIn(props.platform, {
+                    callbackUrl: decodeURIComponent(returnUrl as string) || "/",
+                 })
+               : signIn(props.platform)
          }
       >
          <props.icon />
