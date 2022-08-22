@@ -12,7 +12,7 @@ export default function useToggleTheme() {
       },
    });
 
-   const updateTheme = () => {
+   const updateTheme: () => void = () => {
       resolvedTheme === "dark" ? setTheme("light") : setTheme("dark");
       resolvedTheme === "dark" ? play({ id: "on" }) : play({ id: "off" });
    };
