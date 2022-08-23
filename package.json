@@ -28,7 +28,7 @@
       "framer-motion": "^6.5.1",
       "gray-matter": "^4.0.3",
       "next": "12.2.0",
-      "next-auth": "^4.9.0",
+      "next-auth": "^4.10.3",
       "next-compose-plugins": "^2.2.1",
       "next-mdx-remote": "^3.0.8",
       "next-plausible": "^3.2.0",
