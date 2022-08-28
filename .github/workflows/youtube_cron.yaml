@@ -1,4 +1,4 @@
-name: agenda:build_and_deploy
+name: youtube_cron:build_and_deploy
 
 on:
    schedule:
@@ -10,5 +10,5 @@ jobs:
       steps:
          - uses: satak/webrequest-action@master
            with:
-              url: https://davidilie.com/api/cron/statistics?secret= ${{ secrets.YOUTUBE_JOB_SECRET }}
+              url: https://davidilie.com/api/cron/statistics?secret=${{ secrets.YOUTUBE_JOB_SECRET }}
               method: GET
