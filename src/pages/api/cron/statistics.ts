@@ -1,4 +1,6 @@
 import type { NextApiHandler } from "next";
+import webhook from "webhook-discord";
+const hook = new webhook.Webhook(process.env.DISCORD_WEBHOOK_URL);
 
 import { prisma } from "@/server/db/client";
 
@@ -43,6 +45,8 @@ const handler: NextApiHandler = async (req, res) => {
          create: { channel, ...stats },
          update: stats,
       });
+
+      hook.success("", "```" + JSON.stringify(stats) + "```");
 
       return res.json({ message: "ok" });
    } catch (error: any) {

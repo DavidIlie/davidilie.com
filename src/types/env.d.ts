@@ -19,6 +19,7 @@ declare global {
          STATISTICS_JOB_API_KEY: string;
          DISCORD_ID: string;
          DISCORD_SECRET: string;
+         DISCORD_WEBHOOK_URL: string;
       }
    }
 }

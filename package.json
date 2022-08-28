@@ -48,6 +48,7 @@
       "sharp": "^0.30.7",
       "superjson": "^1.9.1",
       "use-sound": "^4.0.1",
+      "webhook-discord": "^3.7.8",
       "zod": "^3.17.3"
    },
    "devDependencies": {

@@ -1,4 +1,6 @@
 import type { NextApiHandler } from "next";
+import webhook from "webhook-discord";
+const hook = new webhook.Webhook(process.env.DISCORD_WEBHOOK_URL);
 
 import { prisma } from "@/server/db/client";
 import { GitHubProject } from "@prisma/client";
@@ -36,6 +38,8 @@ const handler: NextApiHandler = async (req, res) => {
                })
          )
       );
+
+      hook.success("", "```Total Repos: " + response.length + "```");
 
       return res.json({ message: "ok" });
    } catch (error: any) {
