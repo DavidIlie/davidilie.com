@@ -59,12 +59,8 @@ const MyApp: AppType = ({
          />
          <PlausibleProvider
             domain="davidilie.com"
-            selfHosted
             trackOutboundLinks
-            // enabled={process.env.NODE_ENV === "production"}
-            // infastructure not working rn
-            enabled={false}
-            customDomain={"https://stats.davidilie.com"}
+            enabled={process.env.NODE_ENV === "production"}
          >
             <ThemeProvider attribute="class">
                <ThemeWrapper>
