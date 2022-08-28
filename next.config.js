@@ -1,5 +1,3 @@
-const withPlugins = require("next-compose-plugins");
-
 const { withPlausibleProxy } = require("next-plausible");
 const withMDX = require("@next/mdx")({
    extension: /\.mdx?$/,
@@ -24,4 +22,4 @@ const nextConfig = {
    },
 };
 
-module.exports = withPlugins([withPlausibleProxy, withMDX, nextConfig]);
+module.exports = withPlausibleProxy(withMDX)(nextConfig);
