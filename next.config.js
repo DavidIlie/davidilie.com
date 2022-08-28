@@ -16,6 +16,7 @@ const nextConfig = {
          "i.scdn.co",
       ],
    },
+   output: "standalone",
 };
 
 module.exports = withPlausibleProxy(withMDX)(nextConfig);
