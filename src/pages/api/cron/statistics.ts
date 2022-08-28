@@ -50,6 +50,7 @@ const handler: NextApiHandler = async (req, res) => {
 
       return res.json({ message: "ok" });
    } catch (error: any) {
+      hook.err("", "```" + JSON.stringify(error) + "```");
       return res
          .status(500)
          .json({ message: error.message || "Unknown Error" });
