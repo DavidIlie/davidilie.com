@@ -12,7 +12,7 @@ interface ProjectNoGitHub {
    language: string;
 }
 
-type Project = ProjectNoGitHub | ProjectGitHub;
+export type Project = ProjectNoGitHub | ProjectGitHub;
 
 const projects: Project[] = [
    {
