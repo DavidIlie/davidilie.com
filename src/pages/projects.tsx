@@ -35,7 +35,7 @@ const Projects: NextPage = () => {
                   </a>
                   .
                </p>
-               <div className="container grid max-w-6xl grid-cols-3 gap-4 mx-auto">
+               <div className="container grid max-w-6xl grid-cols-1 gap-4 px-2 mx-auto sm:px-0 xl:grid-cols-3 md:grid-cols-2">
                   {data
                      ?.sort(
                         (a, b) =>
