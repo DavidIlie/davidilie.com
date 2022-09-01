@@ -17,7 +17,6 @@ const PinnedProject: React.FC<{ project: Project; left: boolean }> = ({
          "getProjectByName",
          { name: project.name },
       ]);
-
       if (matches) {
          return (
             <ImageProject
@@ -39,7 +38,6 @@ const PinnedProject: React.FC<{ project: Project; left: boolean }> = ({
       }
    } else {
       let project = uncastedProject as ProjectGitHub;
-
       if (matches) {
          return <ImageProject isGitHub={false} project={project} left={left} />;
       } else {
