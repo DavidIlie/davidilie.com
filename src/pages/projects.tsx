@@ -6,6 +6,7 @@ import { trpc } from "@/lib/trpc";
 import projects from "@/data/projects";
 
 import SmallProject from "@/components/ProjectComponents/SmallProject";
+import PinnedProject from "@/components/ProjectComponents/PinnedProject";
 
 const Projects: NextPage = () => {
    const { data } = trpc.useQuery(["getProjects"]);
@@ -19,11 +20,18 @@ const Projects: NextPage = () => {
                   <h1 className="pb-2 text-4xl font-bold text-center sm:text-6xl header-gradient">
                      Projects
                   </h1>
+                  {projects.map((project, index) => (
+                     <PinnedProject
+                        project={project}
+                        left={index % 2 === 0}
+                        key={index}
+                     />
+                  ))}
                </Fade>
                <h1 className="pb-2 text-4xl font-bold text-center sm:text-6xl header-gradient">
                   Repositories
                </h1>
-               <p className="mt-2 mb-4 text-section">
+               <p className="mb-4 text-lg">
                   A list of all my public repositories on{" "}
                   <a
                      href="https://github.com/davidilie"

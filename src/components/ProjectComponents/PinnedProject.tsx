@@ -2,7 +2,7 @@ import * as React from "react";
 import type { Project } from "@/data/projects";
 import { useMediaQuery } from "@mantine/hooks";
 
-const Project: React.FC<{ project: Project; left: boolean }> = ({
+const PinnedProject: React.FC<{ project: Project; left: boolean }> = ({
    project,
    left,
 }) => {
@@ -13,4 +13,4 @@ const Project: React.FC<{ project: Project; left: boolean }> = ({
    return <div></div>;
 };
 
-export default Project;
+export default PinnedProject;
