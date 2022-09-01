@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useMediaQuery } from "@mantine/hooks";
+import { GitHubProject } from "@prisma/client";
 
 import { trpc } from "@/lib/trpc";
 import type { Project, ProjectGitHub } from "@/data/projects";
@@ -18,19 +19,53 @@ const PinnedProject: React.FC<{ project: Project; left: boolean }> = ({
       ]);
 
       if (matches) {
-         return <div></div>;
+         return (
+            <ImageProject
+               isGitHub={true}
+               project={project}
+               left={left}
+               repo={data}
+            />
+         );
       } else {
-         return <div></div>;
+         return (
+            <ResponsiveProject
+               isGitHub={true}
+               project={project}
+               left={left}
+               repo={data}
+            />
+         );
       }
    } else {
       let project = uncastedProject as ProjectGitHub;
 
       if (matches) {
-         return <div></div>;
+         return <ImageProject isGitHub={false} project={project} left={left} />;
       } else {
-         return <div></div>;
+         return (
+            <ResponsiveProject isGitHub={false} project={project} left={left} />
+         );
       }
    }
+};
+
+const ImageProject: React.FC<{
+   project: Project;
+   left: boolean;
+   isGitHub: boolean;
+   repo?: GitHubProject | null | undefined;
+}> = ({ project, left }) => {
+   return <div></div>;
+};
+
+const ResponsiveProject: React.FC<{
+   project: Project;
+   left: boolean;
+   isGitHub: boolean;
+   repo?: GitHubProject | null | undefined;
+}> = ({ project, left }) => {
+   return <div></div>;
 };
 
 export default PinnedProject;
