@@ -10,17 +10,27 @@ const PinnedProject: React.FC<{ project: Project; left: boolean }> = ({
 }) => {
    const matches = useMediaQuery("(min-width: 900px)", true);
 
-   if (matches && typeof (uncastedProject as any).repo_id === "string") {
+   if (typeof (uncastedProject as any).repo_id === "string") {
       let project = uncastedProject as ProjectGitHub;
       const { data } = trpc.useQuery([
          "getProjectByName",
          { name: project.name },
       ]);
 
-      return <div></div>;
-   }
+      if (matches) {
+         return <div></div>;
+      } else {
+         return <div></div>;
+      }
+   } else {
+      let project = uncastedProject as ProjectGitHub;
 
-   return <div></div>;
+      if (matches) {
+         return <div></div>;
+      } else {
+         return <div></div>;
+      }
+   }
 };
 
 export default PinnedProject;
