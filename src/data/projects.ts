@@ -1,11 +1,11 @@
-interface ProjectGitHub {
+export interface ProjectGitHub {
    repo_id: string;
    name: string;
    description: string;
    image: string;
 }
 
-interface ProjectNoGitHub {
+export interface ProjectNoGitHub {
    image: string;
    name: string;
    description: string;

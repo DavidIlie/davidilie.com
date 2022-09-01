@@ -1,6 +1,7 @@
-import { createRouter } from "./context";
 import superjson from "superjson";
+import { z } from "zod";
 
+import { createRouter } from "./context";
 import { blogRouter } from "./blog";
 import { spotifyRouter } from "./spotify";
 
@@ -16,6 +17,14 @@ export const appRouter = createRouter()
    .query("getProjects", {
       async resolve({ ctx }) {
          return ctx.prisma.gitHubProject.findMany();
+      },
+   })
+   .query("getProjectByName", {
+      input: z.object({ name: z.string() }),
+      async resolve({ ctx, input }) {
+         return ctx.prisma.gitHubProject.findFirst({
+            where: { name: input.name },
+         });
       },
    });
 
