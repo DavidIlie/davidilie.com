@@ -80,11 +80,17 @@ const ImageProject: React.FC<{
          </div>
          <div
             className={`absolute ${
-               left ? "xl:left-[-7%] left-0" : "xl:right-[-7%] right-0"
-            } top-[50%] bg-gray-800 w-[45%] max-w-[450px] p-5 rounded-xl text-left`}
+               left
+                  ? "xl:left-[-7%] left-0 text-left"
+                  : "xl:right-[-7%] right-0 text-right"
+            } top-[50%] bg-gray-800 w-[45%] max-w-[450px] p-5 rounded-xl`}
             style={{ transform: "translate(0, -50%)" }}
          >
-            <div className="flex items-center justify-between text-3xl">
+            <div
+               className={`flex ${
+                  !left && "flex-row-reverse"
+               } items-center justify-between text-3xl`}
+            >
                <h1 className="text-3xl font-bold">{project.name}</h1>
                <a href={isGitHub && !project.url ? repo?.url : project.url}>
                   <FiExternalLink className="font-semibold text-blue-500" />
