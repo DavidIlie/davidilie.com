@@ -16,10 +16,10 @@ const Music: NextPage = () => {
          <div className="flex items-center justify-center flex-grow sm:px-6 lg:px-8">
             <Fade direction="down">
                <div>
-                  <h1 className="max-w-3xl text-4xl font-medium text-center header-gradient lg:text-6xl pb-2">
+                  <h1 className="max-w-3xl pb-2 text-4xl font-medium text-center header-gradient lg:text-6xl">
                      There was an error fetching the data from Spotify.
                   </h1>
-                  <p className="text-2xl text-gray-500 text-center">
+                  <p className="text-2xl text-center text-gray-500">
                      Come back later!
                   </p>
                </div>
@@ -30,13 +30,13 @@ const Music: NextPage = () => {
    return (
       <>
          <NextSeo title="Music" />
-         <div className="flex justify-center flex-grow sm:px-6 lg:px-8 mt-32 mb-12">
-            <div className="container max-w-8xl mx-auto">
+         <div className="flex justify-center flex-grow mt-32 mb-12 sm:px-6 lg:px-8">
+            <div className="container mx-auto max-w-8xl">
                <Fade direction="up" triggerOnce cascade>
-                  <h1 className="text-4xl font-bold text-center sm:text-6xl header-gradient">
+                  <h1 className="mb-4 text-5xl font-bold text-center sm:mb-0 sm:text-6xl header-gradient">
                      Here is the music I listen to.
                   </h1>
-                  <h1 className="mb-4 text-center text-lg mt-2">
+                  <h1 className="hidden mt-2 mb-4 text-lg text-center sm:block">
                      I'm a little{" "}
                      <span className="font-semibold header-gradient">
                         random
@@ -50,10 +50,10 @@ const Music: NextPage = () => {
                </Fade>
                <Fade delay={1100} triggerOnce cascade>
                   <div className="mb-5">
-                     <h1 className="mb-3 sm:text-5xl text-3xl font-medium text-center header-gradient pb-2">
+                     <h1 className="pb-2 mb-3 text-3xl font-medium text-center sm:text-5xl header-gradient">
                         Currently Listening
                      </h1>
-                     <div className="max-w-screen-sm sm:px-0 px-2 mx-auto">
+                     <div className="max-w-screen-sm px-2 mx-auto sm:px-0">
                         {spotifyPlaying.data?.isPlaying ? (
                            <SongCard
                               song={spotifyPlaying.data}
@@ -67,9 +67,9 @@ const Music: NextPage = () => {
                   </div>
                </Fade>
                <Fade delay={1200} triggerOnce cascade>
-                  <div className="sm:flex items-center justify-center gap-6 sm:px-0 px-2 mt-10">
+                  <div className="items-center justify-center gap-6 px-2 mt-10 sm:flex sm:px-0">
                      <div>
-                        <h1 className="mb-3 sm:text-5xl text-3xl font-medium text-center header-gradient pb-2">
+                        <h1 className="pb-2 mb-3 text-3xl font-medium text-center sm:text-5xl header-gradient">
                            Recently Played Songs
                         </h1>
                         <div className="flex justify-center">
@@ -83,7 +83,7 @@ const Music: NextPage = () => {
                         </div>
                      </div>
                      <div>
-                        <h1 className="mb-3 sm:text-5xl text-3xl font-medium text-center header-gradient pb-2">
+                        <h1 className="pb-2 mb-3 text-3xl font-medium text-center sm:text-5xl header-gradient">
                            Top Played Songs
                         </h1>
                         <div className="flex justify-center">

@@ -92,7 +92,7 @@ const ImageProject: React.FC<{
                   !left && "flex-row-reverse"
                } items-center justify-between text-3xl`}
             >
-               <h1 className="text-3xl font-bold">{project.name}</h1>
+               <h1 className="font-bold">{project.name}</h1>
                <a href={isGitHub && !project.url ? repo?.url : project.url}>
                   <FiExternalLink className="font-semibold text-blue-500" />
                </a>
@@ -102,7 +102,7 @@ const ImageProject: React.FC<{
                   <BlogTags key={index} tag={tag} />
                ))}
             </div>
-            <p className="text-justify">{project.description}</p>
+            <p>{project.description}</p>
             {isGitHub && repo && (
                <p className="mt-0.5 -mb-2 italic text-gray-400">
                   Last updated{" "}
@@ -130,8 +130,52 @@ const ResponsiveProject: React.FC<{
    left: boolean;
    isGitHub: boolean;
    repo?: GitHubProject | null | undefined;
-}> = ({ project, left }) => {
-   return <div></div>;
+}> = ({ project, left, isGitHub, repo }) => {
+   return (
+      <div className="flex-col w-full my-8 bg-gray-800 border-2 border-gray-700 rounded-xl">
+         <div className="relative aspect-[16/9]">
+            <Image
+               src={project.image}
+               alt={`${project.name}'s photo`}
+               placeholder="blur"
+               blurDataURL={shimmer(1920, 1080)}
+               layout="fill"
+               className="rounded-xl"
+            />
+         </div>
+         <div className="px-3 py-2 text-left border-t-4 border-t-gray-700">
+            <div className="flex justify-between text-3xl">
+               <h1 className="text-3xl font-bold">{project.name}</h1>
+               <a href={isGitHub && !project.url ? repo?.url : project.url}>
+                  <FiExternalLink className="font-semibold text-blue-500" />
+               </a>
+            </div>
+            <div className="my-1">
+               {project.tags.map((tag, index) => (
+                  <BlogTags key={index} tag={tag} />
+               ))}
+            </div>
+            <p>{project.description}</p>
+            {isGitHub && repo && (
+               <p className="mt-0.5 italic text-gray-400">
+                  Last updated{" "}
+                  {formatDistance(new Date(repo.lastPush), Date.now(), {
+                     addSuffix: true,
+                  })}
+                  ,{" "}
+                  <a
+                     className="duration-150 hover:text-blue-500"
+                     href={repo.url}
+                     target="_blank"
+                     rel="noreferrer"
+                  >
+                     {repo.stars} star{repo.stars !== 1 && "s"}
+                  </a>
+               </p>
+            )}
+         </div>
+      </div>
+   );
 };
 
 export default PinnedProject;

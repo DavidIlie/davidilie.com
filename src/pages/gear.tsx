@@ -11,13 +11,13 @@ const Gear: NextPage = () => {
    return (
       <>
          <NextSeo title="Gear" />
-         <div className="flex justify-center flex-grow sm:px-6 lg:px-8 mt-32 mb-12">
+         <div className="flex justify-center flex-grow mt-32 mb-12 sm:px-6 lg:px-8">
             <div className="container max-w-3xl mx-auto">
                <Fade duration={750} direction="up" triggerOnce cascade>
-                  <h1 className="text-4xl font-bold text-center lg:text-5xl header-gradient pb-2">
+                  <h1 className="pb-2 text-5xl font-bold text-center lg:text-5xl header-gradient">
                      My Gear/Setup
                   </h1>
-                  <p className="px-5 mb-5 text-center text-lg">
+                  <p className="px-5 mb-5 text-lg text-center">
                      The expensive things...
                   </p>
                   <div className="flex flex-wrap gap-5">
@@ -25,10 +25,10 @@ const Gear: NextPage = () => {
                         return <Device device={device} key={index} />;
                      })}
                   </div>
-                  <h1 className="mt-5 text-4xl font-bold text-center lg:text-5xl header-gradient pb-2">
+                  <h1 className="pb-2 mt-5 text-5xl font-bold text-center lg:text-5xl header-gradient">
                      My Hosting Infastructure
                   </h1>
-                  <p className="px-5 mb-5 text-center text-lg">
+                  <p className="px-5 mb-5 text-lg text-center">
                      <a
                         href="https://davidapps.dev"
                         target="_blank"

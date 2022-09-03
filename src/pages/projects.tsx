@@ -15,8 +15,8 @@ const Projects: NextPage = () => {
       <>
          <NextSeo title="Projects" />
          <div className="flex justify-center flex-grow mt-32 mb-12 sm:px-6 lg:px-8">
-            <div className="text-center">
-               <h1 className="pb-2 -mb-6 text-4xl font-bold text-center sm:text-6xl header-gradient">
+            <div className="px-8 text-center sm:px-0 ">
+               <h1 className="pb-2 -mb-4 text-5xl font-bold text-center sm:-mb-6 sm:text-6xl header-gradient">
                   Projects
                </h1>
                {projects.map((project, index) => (
@@ -26,7 +26,7 @@ const Projects: NextPage = () => {
                      key={index}
                   />
                ))}
-               <h1 className="pb-2 mt-5 text-4xl font-bold text-center sm:text-6xl header-gradient">
+               <h1 className="pb-2 -mt-2 text-5xl font-bold text-center sm:mt-5 sm:text-6xl header-gradient">
                   Repositories
                </h1>
                <p className="mb-4 text-lg">

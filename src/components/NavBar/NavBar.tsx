@@ -77,13 +77,17 @@ const NavBar: React.FC = () => {
             <div className="px-8 pl-8 mx-auto -mt-1 max-w-7xl sm:px-6 sm:pl-8 lg:pl-8">
                <div className="flex items-center justify-between h-16 mb-2">
                   <div className="flex">
-                     <div className="flex-shrink-0">
+                     <div
+                        className={`${
+                           clickMobileMenu && "mt-[1.25rem]"
+                        } flex-shrink-0`}
+                     >
                         {!clickMobileMenu ? (
                            <AnimatedTitle />
                         ) : (
                            <Link href="/">
                               <a
-                                 className={`mt-5 text-3xl font-semibold text-black cursor-pointer dark:text-white ${
+                                 className={`text-3xl font-semibold text-black cursor-pointer dark:text-white ${
                                     pathname === "/" && "pointer-events-none"
                                  }`}
                               >

@@ -36,7 +36,7 @@ const Blog: NextPage<{ posts: MDXProps[] }> = ({ posts }) => {
          <div className="flex items-center justify-center flex-grow sm:px-6 lg:px-8">
             <div className="container max-w-4xl mx-auto mt-32 mb-12">
                <Fade direction="up" triggerOnce>
-                  <h1 className="text-4xl font-bold text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl header-gradient">
+                  <h1 className="text-5xl font-bold text-center 2xl:text-5xl xl:text-5xl md:text-5xl lg:text-5xl header-gradient">
                      The David Ones
                   </h1>
                   <p className="px-6 mt-4 text-center md:text-lg md:px-12">
