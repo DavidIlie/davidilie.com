@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useMediaQuery } from "@mantine/hooks";
 import { GitHubProject } from "@prisma/client";
 import { FiExternalLink } from "react-icons/fi";
+import { formatDistance } from "date-fns";
 
 import { trpc } from "@/lib/trpc";
 import { shimmer } from "@/lib/shimmer";
@@ -96,12 +97,29 @@ const ImageProject: React.FC<{
                   <FiExternalLink className="font-semibold text-blue-500" />
                </a>
             </div>
-            <div className="my-2">
+            <div className="my-1">
                {project.tags.map((tag, index) => (
                   <BlogTags key={index} tag={tag} />
                ))}
             </div>
-            <p>{project.description}</p>
+            <p className="text-justify">{project.description}</p>
+            {isGitHub && repo && (
+               <p className="mt-0.5 -mb-2 italic text-gray-400">
+                  Last updated{" "}
+                  {formatDistance(new Date(repo.lastPush), Date.now(), {
+                     addSuffix: true,
+                  })}
+                  ,{" "}
+                  <a
+                     className="duration-150 hover:text-blue-500"
+                     href={repo.url}
+                     target="_blank"
+                     rel="noreferrer"
+                  >
+                     {repo.stars} star{repo.stars !== 1 && "s"}
+                  </a>
+               </p>
+            )}
          </div>
       </div>
    );
