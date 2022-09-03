@@ -16,19 +16,17 @@ const Projects: NextPage = () => {
          <NextSeo title="Projects" />
          <div className="flex justify-center flex-grow mt-32 mb-12 sm:px-6 lg:px-8">
             <div className="text-center">
-               <Fade direction="up" triggerOnce cascade>
-                  <h1 className="pb-2 text-4xl font-bold text-center sm:text-6xl header-gradient">
-                     Projects
-                  </h1>
-                  {projects.map((project, index) => (
-                     <PinnedProject
-                        project={project}
-                        left={index % 2 === 0}
-                        key={index}
-                     />
-                  ))}
-               </Fade>
-               <h1 className="pb-2 text-4xl font-bold text-center sm:text-6xl header-gradient">
+               <h1 className="pb-2 -mb-6 text-4xl font-bold text-center sm:text-6xl header-gradient">
+                  Projects
+               </h1>
+               {projects.map((project, index) => (
+                  <PinnedProject
+                     project={project}
+                     left={index % 2 === 0}
+                     key={index}
+                  />
+               ))}
+               <h1 className="pb-2 mt-5 text-4xl font-bold text-center sm:text-6xl header-gradient">
                   Repositories
                </h1>
                <p className="mb-4 text-lg">

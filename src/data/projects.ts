@@ -3,6 +3,8 @@ export interface ProjectGitHub {
    name: string;
    description: string;
    image: string;
+   url?: string;
+   tags: string[];
 }
 
 export interface ProjectNoGitHub {
@@ -10,6 +12,8 @@ export interface ProjectNoGitHub {
    name: string;
    description: string;
    language: string;
+   url: string;
+   tags: string[];
 }
 
 export type Project = ProjectNoGitHub | ProjectGitHub;
@@ -20,7 +24,8 @@ const projects: Project[] = [
       name: "Personal Website",
       description:
          "I've always seen my website as a place where I can experiment with the different options that are available with Web Development. This website currently uses the T3 Stack, and from the enjoyment I've had coding this website, I will use this stack in the future.",
-      image: "https://user-images.githubusercontent.com/47594764/187702010-acb78b71-b0f2-4c33-a11b-d5ac4c78d77d.png",
+      image: "https://user-images.githubusercontent.com/47594764/188265778-074aec44-982d-4e7f-b3c5-207392779f2c.png",
+      tags: ["T3 Stack", "MDX", "Railway"],
    },
 ];
 
