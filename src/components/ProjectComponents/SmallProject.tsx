@@ -7,7 +7,7 @@ const SmallProject: React.FC<{ project: GitHubProject }> = ({ project }) => {
          href={project.url}
          target="_blank"
          rel="noreferrer"
-         className="w-full h-full max-w-md p-1 overflow-visible truncate"
+         className="w-full h-full p-1 overflow-visible truncate"
       >
          <div className="flex flex-col items-start justify-start p-3 pl-5 text-left truncate duration-200 bg-gray-100 border-2 border-gray-200 rounded-lg shadow-md cursor-pointer dark:bg-gray-800 dark:border-gray-700 hoverItem">
             <h1 className="mb-3 text-xl font-semibold truncate">
