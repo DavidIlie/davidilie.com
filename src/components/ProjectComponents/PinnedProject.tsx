@@ -84,7 +84,7 @@ const ImageProject: React.FC<{
                left
                   ? "xl:left-[-7%] left-0 text-left"
                   : "xl:right-[-7%] right-0 text-right"
-            } top-[50%] bg-gray-800 w-[45%] max-w-[450px] p-5 rounded-xl`}
+            } top-[50%] bg-gray-100 border-2 dark:border-gray-700 border-gray-200 dark:bg-gray-800 w-[45%] max-w-[450px] p-5 rounded-xl`}
             style={{ transform: "translate(0, -50%)" }}
          >
             <div
@@ -108,7 +108,7 @@ const ImageProject: React.FC<{
             </div>
             <p>{project.description}</p>
             {isGitHub && repo && (
-               <p className="mt-0.5 -mb-2 italic text-gray-400">
+               <p className="mt-0.5 -mb-2 italic text-gray-700 dark:text-gray-400">
                   Last updated{" "}
                   {formatDistance(new Date(repo.lastPush), Date.now(), {
                      addSuffix: true,
@@ -136,7 +136,7 @@ const ResponsiveProject: React.FC<{
    repo?: GitHubProject | null | undefined;
 }> = ({ project, left, isGitHub, repo }) => {
    return (
-      <div className="flex-col w-full my-8 bg-gray-800 border-2 border-gray-700 rounded-xl">
+      <div className="flex-col w-full my-8 bg-gray-100 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark: rounded-xl">
          <div className="relative aspect-[16/9]">
             <Image
                src={project.image}
@@ -144,10 +144,10 @@ const ResponsiveProject: React.FC<{
                placeholder="blur"
                blurDataURL={shimmer(1920, 1080)}
                layout="fill"
-               className="rounded-xl"
+               className="rounded-t-xl"
             />
          </div>
-         <div className="px-3 py-2 text-left border-t-4 border-t-gray-700">
+         <div className="px-3 py-2 text-left border-t-4 dark:border-t-gray-700 border-t-gray-400">
             <div className="flex justify-between text-3xl">
                <h1 className="text-3xl font-bold">{project.name}</h1>
                <a
@@ -165,7 +165,7 @@ const ResponsiveProject: React.FC<{
             </div>
             <p>{project.description}</p>
             {isGitHub && repo && (
-               <p className="mt-0.5 italic text-gray-400">
+               <p className="mt-0.5 italic text-gray-700 dark:text-gray-400">
                   Last updated{" "}
                   {formatDistance(new Date(repo.lastPush), Date.now(), {
                      addSuffix: true,
