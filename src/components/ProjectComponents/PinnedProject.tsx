@@ -101,7 +101,7 @@ const ImageProject: React.FC<{
                   <FiExternalLink className="font-semibold text-blue-500" />
                </a>
             </div>
-            <div className="my-1">
+            <div className={`my-1 ${!left && "-mr-2"}`}>
                {project.tags.map((tag, index) => (
                   <BlogTags key={index} tag={tag} />
                ))}
