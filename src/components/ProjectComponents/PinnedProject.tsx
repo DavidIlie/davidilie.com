@@ -93,7 +93,11 @@ const ImageProject: React.FC<{
                } items-center justify-between text-3xl`}
             >
                <h1 className="font-bold">{project.name}</h1>
-               <a href={isGitHub && !project.url ? repo?.url : project.url}>
+               <a
+                  href={isGitHub && !project.url ? repo?.url : project.url}
+                  target="_blank"
+                  rel="noreferrer"
+               >
                   <FiExternalLink className="font-semibold text-blue-500" />
                </a>
             </div>
@@ -146,7 +150,11 @@ const ResponsiveProject: React.FC<{
          <div className="px-3 py-2 text-left border-t-4 border-t-gray-700">
             <div className="flex justify-between text-3xl">
                <h1 className="text-3xl font-bold">{project.name}</h1>
-               <a href={isGitHub && !project.url ? repo?.url : project.url}>
+               <a
+                  href={isGitHub && !project.url ? repo?.url : project.url}
+                  target="_blank"
+                  rel="noreferrer"
+               >
                   <FiExternalLink className="font-semibold text-blue-500" />
                </a>
             </div>
