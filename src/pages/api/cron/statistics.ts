@@ -46,11 +46,11 @@ const handler: NextApiHandler = async (req, res) => {
          update: stats,
       });
 
-      hook.success("", "```" + JSON.stringify(stats) + "```");
+      hook.success("", "YouTube: ```" + JSON.stringify(stats) + "```");
 
       return res.json({ message: "ok" });
    } catch (error: any) {
-      hook.err("", "```" + JSON.stringify(error) + "```");
+      hook.err("Statistics Job", "```" + JSON.stringify(error) + "```");
       return res
          .status(500)
          .json({ message: error.message || "Unknown Error" });
