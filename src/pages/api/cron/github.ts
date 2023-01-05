@@ -8,7 +8,7 @@ import { GitHubProject } from "@prisma/client";
 const createProjectJSON = (repo: any): GitHubProject => ({
    name: repo.name,
    url: repo.html_url,
-   description: repo.description,
+   description: repo.description || "No description...",
    stars: repo.stargazers_count,
    issues: repo.open_issues,
    createdAt: repo.created_at,
