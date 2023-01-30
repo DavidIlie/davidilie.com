@@ -28,6 +28,7 @@ export const SocialIcon: React.FC<Partial<SocialIconProps>> = ({
                   target={newPage ? "_blank" : ""}
                   rel="noreferrer"
                   className="hover:text-blue-100 duration-250"
+                  aria-label={`Social link: ${tooltip}`}
                >
                   {children}
                </a>

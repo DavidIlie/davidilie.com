@@ -267,6 +267,7 @@ const About: React.FC = () => {
                         href="https://www.youtube.com/channel/UC92hn9Y8WcY_5LribMDW8uA"
                         target="_blank"
                         rel="noreferrer"
+                        aria-label="Content creator"
                      >
                         Content Creator
                      </a>
@@ -306,6 +307,7 @@ const About: React.FC = () => {
                            href="https://www.youtube.com/channel/UC92hn9Y8WcY_5LribMDW8uA"
                            target="_blank"
                            rel="noreferrer"
+                           aria-label="David Ilie"
                         >
                            David Ilie
                         </a>
@@ -315,6 +317,7 @@ const About: React.FC = () => {
                            href="https://www.youtube.com/channel/UCwfF_jZHkxF1Vxx5b8PlIGA"
                            target="_blank"
                            rel="noreferrer"
+                           aria-label="Albastru"
                         >
                            Albastru
                         </a>
