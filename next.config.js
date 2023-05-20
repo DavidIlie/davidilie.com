@@ -1,7 +1,4 @@
 const { withPlausibleProxy } = require("next-plausible");
-const withMDX = require("@next/mdx")({
-   extension: /\.mdx?$/,
-});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -19,4 +16,6 @@ const nextConfig = {
    output: "standalone",
 };
 
-module.exports = withPlausibleProxy(withMDX)(nextConfig);
+module.exports = withPlausibleProxy({
+   customDomain: "https://plausible.davidapps.dev",
+})(nextConfig);
