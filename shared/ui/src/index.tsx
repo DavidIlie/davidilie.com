@@ -1,3 +1,4 @@
 import "./styles.css";
 
-export * from "./Logo";
+export * from "./BackgroundPattern";
+export * from "./badtailwind";

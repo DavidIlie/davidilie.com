@@ -1,11 +1,5 @@
-import { Logo } from "ui";
-
 const Page = async () => {
-   return (
-      <>
-         <Logo />
-      </>
-   );
+   return <></>;
 };
 
 export default Page;
