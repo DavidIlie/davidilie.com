@@ -15,6 +15,8 @@
       "next-themes": "^0.2.1",
       "postcss": "8.4.23",
       "react": "18.2.0",
+      "react-awesome-reveal": "^4.2.3",
+      "react-icons": "^4.9.0",
       "tailwind": "workspace:*",
       "typescript": "5.0.4",
       "ui": "workspace:*"

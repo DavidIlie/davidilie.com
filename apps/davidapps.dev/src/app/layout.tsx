@@ -27,7 +27,7 @@ export default function RootLayout({
                <BackgroundPattern>
                   {children}
                   <Footer>
-                     <div className="flex items-center gap-2">
+                     <div className="flex items-center gap-2 mb-2 sm:mb-0">
                         <Link
                            href="/privacy-policy.html"
                            className="duration-150 hover:text-blue-500 "
