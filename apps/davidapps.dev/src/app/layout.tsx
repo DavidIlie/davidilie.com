@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 
 import { BackgroundPattern } from "ui";
 import { ThemeProvider } from "./components/ThemeProvider";
+import { Footer } from "./components/Footer";
 
 import "./globals.css";
 import "ui/styles.css";
@@ -22,7 +23,12 @@ export default function RootLayout({
       <html lang="en">
          <body className={inter.className}>
             <ThemeProvider>
-               <BackgroundPattern>{children}</BackgroundPattern>
+               <BackgroundPattern>
+                  {children}
+                  <Footer>
+                     <div className="invisible w-40" />
+                  </Footer>
+               </BackgroundPattern>
             </ThemeProvider>
          </body>
       </html>

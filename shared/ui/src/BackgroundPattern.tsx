@@ -2,9 +2,9 @@ import React from "react";
 
 import { colors } from "./lib/colors";
 
-export const BackgroundPattern: React.FC<{ children: React.ReactNode }> = ({
-   children,
-}) => {
+export const BackgroundPattern: React.FC<{
+   children: React.ReactNode | React.ReactNode[];
+}> = ({ children }) => {
    return (
       <div className="pageBackground">
          <Patterns />

@@ -17,6 +17,7 @@
       "postcss": "8.4.23",
       "prisma": "^4.14.1",
       "react": "18.2.0",
+      "react-icons": "^4.9.0",
       "tailwind": "workspace:*",
       "typescript": "5.0.4",
       "ui": "workspace:*"
