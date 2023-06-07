@@ -1,0 +1,26 @@
+{
+   "name": "davidapps.dev",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+      "dev": "next dev --port 3001",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+   },
+   "dependencies": {
+      "eslint": "8.41.0",
+      "eslint-config-next": "13.4.3",
+      "next": "13.4.3",
+      "postcss": "8.4.23",
+      "react": "18.2.0",
+      "tailwind": "workspace:*",
+      "typescript": "5.0.4",
+      "ui": "workspace:*"
+   },
+   "devDependencies": {
+      "@types/node": "20.2.3",
+      "@types/react": "18.2.6",
+      "@types/react-dom": "18.2.4"
+   }
+}
