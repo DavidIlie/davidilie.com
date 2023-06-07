@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import Link from "next/link";
 
 import { BackgroundPattern } from "ui";
 import { ThemeProvider } from "./components/ThemeProvider";
@@ -26,7 +27,21 @@ export default function RootLayout({
                <BackgroundPattern>
                   {children}
                   <Footer>
-                     <div className="invisible w-40" />
+                     <div className="flex items-center gap-2">
+                        <Link
+                           href="/privacy-policy.html"
+                           className="duration-150 hover:text-blue-500 "
+                        >
+                           Privacy Policy
+                        </Link>
+                        ·
+                        <Link
+                           href="/terms-of-service.html"
+                           className="duration-150 hover:text-blue-500 "
+                        >
+                           Terms of Service
+                        </Link>
+                     </div>
                   </Footer>
                </BackgroundPattern>
             </ThemeProvider>

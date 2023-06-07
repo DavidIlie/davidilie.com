@@ -29,6 +29,7 @@
    },
    "dependencies": {
       "@tippyjs/react": "^4.2.6",
+      "framer-motion": "^10.12.16",
       "react-icons": "^4.9.0",
       "tippy.js": "^6.3.7"
    }
