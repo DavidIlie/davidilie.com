@@ -16,55 +16,56 @@ const Header: React.FC = () => {
    }, []);
 
    return (
-      <div className="text-center">
+      <div className="flex items-center text-center">
          <div>
-            {" "}
-            <SplitText
-               //@ts-ignore
-               initial={{ y: "100%" }}
-               animate="visible"
-               className="text-3xl font-bold sm:text-5xl gradient-text"
-               variants={{
-                  //@ts-ignore
-                  visible: (i) => ({
-                     y: 0,
-                     transition: {
-                        delay: i * 0.15,
-                     },
-                  }),
-               }}
-            >
-               David Ilie Apps Platform
-            </SplitText>
-         </div>
-         <div>
-            {secondVisible ? (
+            <div>
                <SplitText
                   //@ts-ignore
                   initial={{ y: "100%" }}
                   animate="visible"
-                  className="text-xl font-medium"
+                  className="text-3xl font-bold sm:text-5xl gradient-text"
                   variants={{
                      //@ts-ignore
                      visible: (i) => ({
                         y: 0,
                         transition: {
-                           delay: i * 0.1,
+                           delay: i * 0.15,
                         },
                      }),
                   }}
                >
-                  My own personal CLOUD
+                  David Ilie Apps Platform
                </SplitText>
-            ) : (
-               <p className="h-9 insisible"></p>
-            )}
-         </div>
-         <Fade delay={750} duration={750}>
-            <div className="mt-[60%] flex w-full justify-center">
-               <ScrollDown />
             </div>
-         </Fade>
+            <div>
+               {secondVisible ? (
+                  <SplitText
+                     //@ts-ignore
+                     initial={{ y: "100%" }}
+                     animate="visible"
+                     className="text-xl font-medium"
+                     variants={{
+                        //@ts-ignore
+                        visible: (i) => ({
+                           y: 0,
+                           transition: {
+                              delay: i * 0.1,
+                           },
+                        }),
+                     }}
+                  >
+                     My own personal CLOUD
+                  </SplitText>
+               ) : (
+                  <p className="h-9 insisible"></p>
+               )}
+            </div>
+            <Fade delay={750} duration={750} triggerOnce>
+               <div className="flex justify-center w-full mt-6">
+                  <ScrollDown />
+               </div>
+            </Fade>
+         </div>
       </div>
    );
 };

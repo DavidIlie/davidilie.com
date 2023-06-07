@@ -9,5 +9,6 @@ export * from "./Footer";
 export * from "./Socials";
 export * from "./Tooltip";
 export * from "./SplitText";
+export * from "./ExternalLink";
 
 export * from "./lib/badtailwind";
