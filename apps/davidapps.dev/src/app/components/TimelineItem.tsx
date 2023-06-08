@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
 
+import type { IconType } from "react-icons";
 import { AiOutlineLink } from "react-icons/ai";
-import { IconType } from "react-icons";
+import { FaGithub } from "react-icons/fa";
 
 export type TimelineItemProps = {
    title: string;
@@ -22,11 +23,15 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
    const widthStyle = small ? "w-24 h-24" : "w-64 w-64";
 
    return (
-      <div className="relative flex gap-12">
-         <div className="absolute w-1 h-full bg-gray-300 left-[7.8rem]"></div>
-         <div className={`relative z-50 flex-shrink-0 ${small && "ml-20"}`}>
+      <div className="relative gap-12 sm:flex">
+         <div className="absolute w-1 h-full bg-gray-300 left-[7.8rem] sm:block hidden" />
+         <div
+            className={`relative z-50 flex-shrink-0 ${
+               small && "sm:ml-20"
+            } sm:mb-0 mb-6`}
+         >
             <div
-               className={`flex items-center justify-center ${widthStyle} bg-gray-600 p-1 rounded-full`}
+               className={`flex items-center justify-center mx-auto ${widthStyle} p-1 bg-gray-600 rounded-full`}
             >
                {typeof rest.image !== "string" ? (
                   <rest.image className="text-6xl" />
@@ -47,7 +52,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                   <span className="text-3xl font-medium gradient-text">
                      {title}
                   </span>
-                  <div className="absolute w-[105%] mx-auto ml-[-0.125rem] h-3 bg-blue-500/20 top-[1.25rem]" />
+                  <div className="absolute w-[102%] mx-auto ml-[-0.075rem] h-3 bg-blue-500/20 top-[1.25rem]" />
                </div>
                {link && (
                   <a
@@ -56,7 +61,11 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                      rel="noopener noreferrer"
                      className="mt-1 text-xl text-gray-400 duration-150 hover:text-gray-500"
                   >
-                     <AiOutlineLink />
+                     {link.includes("github.com") ? (
+                        <FaGithub className="ml-1" />
+                     ) : (
+                        <AiOutlineLink />
+                     )}
                   </a>
                )}
             </div>

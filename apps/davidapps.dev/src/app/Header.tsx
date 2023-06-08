@@ -43,7 +43,7 @@ const Header: React.FC = () => {
                      //@ts-ignore
                      initial={{ y: "100%" }}
                      animate="visible"
-                     className="text-xl font-medium"
+                     className="text-lg font-medium sm:text-xl"
                      variants={{
                         //@ts-ignore
                         visible: (i) => ({

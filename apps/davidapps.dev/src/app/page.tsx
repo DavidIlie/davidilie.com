@@ -12,16 +12,19 @@ const Page = () => {
          </div>
          <div className="flex justify-center w-full pb-12 border-t-2 border-gray-700">
             <div>
-               <div className="container relative flex flex-col max-w-3xl py-8 mx-auto space-y-20">
+               <div className="container relative flex flex-col max-w-3xl px-4 py-8 mx-auto space-y-10 sm:space-y-20 sm:px-0">
                   {items.map((item, index) => (
-                     <React.Fragment key={index}>
+                     <>
                         {index !== 0 && (
-                           <div className="absolute top-0 bottom-0 w-1 bg-gray-300 left-[7.8rem]"></div>
+                           <div className="absolute sm:block hidden z-0 top-0 bottom-0 w-1 bg-gray-300 left-[7.8rem]"></div>
                         )}
-                        <TimelineItem {...item} />
-                     </React.Fragment>
+                        <TimelineItem key={index} {...(item as any)} />
+                     </>
                   ))}
                </div>
+               <h1 className="mt-6 text-3xl font-medium text-center sm:text-5xl gradient-text">
+                  That's it...
+               </h1>
             </div>
          </div>
       </>
