@@ -8,7 +8,7 @@ export const ExternalLink: React.FC<{
          title={url}
          target="_blank"
          rel="noreferrer"
-         className="duration-150 cursor-pointer hover:text-blue-500"
+         className="duration-150 cursor-pointer dark:hover:text-blue-500 hover:text-blue-600"
       >
          {" "}
          {children}{" "}

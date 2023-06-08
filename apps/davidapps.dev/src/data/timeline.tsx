@@ -147,7 +147,7 @@ export const items: TimelineItemProps[] = [
                   YouTube Channel
                </ExternalLink>{" "}
                regarding my{" "}
-               <a className="text-blue-500 duration-150 cursor-pointer hover:text-blue-600">
+               <a className="text-blue-600 duration-150 cursor-pointer hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-600">
                   first couple clusters
                </a>
                .

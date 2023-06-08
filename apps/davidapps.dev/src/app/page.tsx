@@ -10,13 +10,13 @@ const Page = () => {
          <div className="flex items-center justify-center flex-grow min-h-screen px-4 text-center">
             <Header />
          </div>
-         <div className="flex justify-center w-full pb-12 border-t-2 border-gray-700">
+         <div className="flex justify-center w-full pb-12 border-t-2 border-gray-300 dark:border-gray-700">
             <div>
                <div className="container relative flex flex-col max-w-3xl px-4 py-8 mx-auto space-y-10 sm:space-y-20 sm:px-0">
                   {items.map((item, index) => (
                      <>
                         {index !== 0 && (
-                           <div className="absolute sm:block hidden z-0 top-0 bottom-0 w-1 bg-gray-300 left-[7.8rem]"></div>
+                           <div className="absolute sm:block hidden z-0 top-0 bottom-0 w-1 bg-gray-800 dark:bg-gray-300 left-[7.8rem]"></div>
                         )}
                         <TimelineItem key={index} {...(item as any)} />
                      </>
