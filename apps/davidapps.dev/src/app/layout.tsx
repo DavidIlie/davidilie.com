@@ -3,9 +3,9 @@ import Link from "next/link";
 
 import { BackgroundPattern } from "ui";
 
-import { ThemeProvider } from "./components/ThemeProvider";
-import { Footer } from "./components/Footer";
-import ThemeToggle from "./components/ThemeToggle";
+import { ThemeProvider } from "~/components/ThemeProvider";
+import { Footer } from "~/components/Footer";
+import ThemeToggle from "~/components/ThemeToggle";
 
 import "./globals.css";
 import "ui/styles.css";

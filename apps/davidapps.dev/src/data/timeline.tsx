@@ -1,5 +1,5 @@
 import { ExternalLink } from "ui";
-import { TimelineItemProps } from "~/app/components/TimelineItem";
+import { TimelineItemProps } from "~/components/TimelineItem";
 
 import { FaServer, FaGlobeEurope } from "react-icons/fa";
 import { SiProxmox, SiTruenas, SiHomeassistant } from "react-icons/si";

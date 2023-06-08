@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./Header";
-import TimelineItem from "./components/TimelineItem";
 
+import Header from "./Header";
+import TimelineItem from "~//components/TimelineItem";
 import { items } from "~/data/timeline";
 
 const Page = () => {
