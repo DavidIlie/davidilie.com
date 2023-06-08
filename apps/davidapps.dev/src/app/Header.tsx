@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Fade } from "react-awesome-reveal";
+import { Slide, Fade } from "react-awesome-reveal";
 
 import { SplitText } from "./components/SplitText";
 import ScrollDown from "./components/ScrollDown";
 
-const Header: React.FC = () => {
+const Header: React.FC<{ showSpain: boolean }> = ({ showSpain }) => {
    const [secondVisible, setSecondVisible] = useState<boolean>(false);
 
    useEffect(() => {
@@ -18,7 +18,14 @@ const Header: React.FC = () => {
    return (
       <div className="flex items-center text-center">
          <div>
-            <div>
+            <div className="relative">
+               {showSpain && (
+                  <Slide direction="right" triggerOnce delay={300}>
+                     <span className="absolute text-3xl -right-6 -top-4">
+                        🇪🇸
+                     </span>
+                  </Slide>
+               )}
                <SplitText
                   //@ts-ignore
                   initial={{ y: "100%" }}

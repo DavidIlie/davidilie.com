@@ -8,7 +8,7 @@ const Page = () => {
    return (
       <>
          <div className="flex items-center justify-center flex-grow min-h-screen px-4 text-center">
-            <Header />
+            <Header showSpain={process.env.SHOW_SPAIN === "true"} />
          </div>
          <div className="flex justify-center w-full pb-12 border-t-2 border-gray-300 dark:border-gray-700">
             <div>
