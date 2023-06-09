@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { BackgroundPattern } from "ui";
 import { ThemeProvider } from "~/components/ThemeProvider";
 import Footer from "~/components/Footer";
+import NavBar from "~/components/NavBar";
 
 import "./globals.css";
 import "ui/styles.css";
@@ -24,10 +25,12 @@ export default function RootLayout({
          <body className={inter.className}>
             <ThemeProvider>
                <BackgroundPattern>
+                  <NavBar />
                   {children}
                   <Footer />
                </BackgroundPattern>
             </ThemeProvider>
+            <div className="invisible rounded-md" />
          </body>
       </html>
    );

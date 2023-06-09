@@ -1,8 +1,32 @@
-import { ExternalLink } from "ui";
-import { TimelineItemProps } from "~/components/TimelineItem";
+import Image from "next/image";
 
 import { FaServer, FaGlobeEurope } from "react-icons/fa";
 import { SiProxmox, SiTruenas, SiHomeassistant } from "react-icons/si";
+
+import {
+   ExternalLink,
+   HoverCard,
+   HoverCardTrigger,
+   HoverCardContent,
+} from "ui";
+import { TimelineItemProps } from "~/components/TimelineItem";
+
+const HoverCardInformation: React.FC<{
+   name: string;
+   url: string;
+   description?: string;
+   width?: number;
+   height?: number;
+}> = ({ name, url, description, width = 500, height = 500 }) => (
+   <HoverCard>
+      <HoverCardTrigger>{name}</HoverCardTrigger>
+      <HoverCardContent>
+         <Image src={url} width={width} height={height} alt={name} />
+         <div className="w-full my-2 border-t" />
+         <p>{description ? description : name}</p>
+      </HoverCardContent>
+   </HoverCard>
+);
 
 export const items: TimelineItemProps[] = [
    {
@@ -26,18 +50,26 @@ export const items: TimelineItemProps[] = [
       description: (
          <p>
             Throughout the years I have been given access to old enterprise
-            server hardware, ranging from my very first
-            <ExternalLink url="https://www.serversdirect.co.uk/p/1039108/hpe-proliant-microserver-gen8-intel-celeron-g1610t-dual-core-.30ghz-mb-4-x-non-hotplug-">
-               HP Microserver G8
-            </ExternalLink>
+            server hardware, ranging from my very first{" "}
+            <HoverCardInformation
+               url="https://github.com/DavidIlie/davidilie.com/assets/47594764/086b9f1c-5567-471a-b92f-eec0918157ac"
+               name="HP Microserver Gen 8"
+               description="My initial PC, Home Server, and now NAS."
+            />{" "}
             (which I still actually use today) to a{" "}
-            <ExternalLink url="https://www.itcreations.com/hp/hpe-proliant-dl360e-gen8-server">
-               HP dl360e G8
-            </ExternalLink>
+            <HoverCardInformation
+               url="https://github.com/DavidIlie/davidilie.com/assets/47594764/9769f65f-59c5-40a2-87d5-f1d8cbdec267"
+               name="HP dl360e G8"
+               description="My first proper server and where I learnt the most."
+               height={200}
+            />{" "}
             server, to then using the cloud while moving, to now using my{" "}
-            <ExternalLink url="https://www.itcreations.com/hp/hpe-proliant-dl360e-gen8-server">
-               Dell R730
-            </ExternalLink>
+            <HoverCardInformation
+               url="https://github.com/DavidIlie/davidilie.com/assets/47594764/b4d6e38a-ba8c-4b90-8774-68060a189fe4"
+               name="Dell R730"
+               description="My current and most powerful server. Filled with hardware 🙏🏻"
+               height={100}
+            />
             , which uses the HBA card from my Gen 8 server and drive bays from a
             handed down HP Gen 6 Server.
          </p>

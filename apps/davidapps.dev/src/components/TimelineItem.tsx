@@ -46,7 +46,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                )}
             </div>
          </div>
-         <div className="px-4 py-2 bg-gray-200 border-2 border-gray-300 rounded-md dark:border-gray-700 dark:bg-gray-800">
+         <div className="px-4 py-2 border-2 border-gray-100 rounded-md bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
             <div className="flex flex-row items-center gap-2 mb-1">
                <div className="relative">
                   <span className="text-3xl font-medium gradient-text">
@@ -69,7 +69,9 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
                   </a>
                )}
             </div>
-            <p className="text-gray-900 dark:text-gray-200">{description}</p>
+            <div className="text-gray-900 dark:text-gray-200">
+               {description}
+            </div>
          </div>
       </div>
    );

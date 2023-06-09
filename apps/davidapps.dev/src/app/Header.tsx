@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { Slide, Fade } from "react-awesome-reveal";
+import { SplitText } from "ui";
 
-import { SplitText } from "~/components/SplitText";
 import ScrollDown from "~/components/ScrollDown";
 
 const Header: React.FC<{ showSpain: boolean }> = ({ showSpain }) => {

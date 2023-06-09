@@ -3,6 +3,9 @@ import "./styles.css";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/shift-away.css";
 
+export * from "./ui/dropdown-menu";
+export * from "./ui/hover-card";
+
 export * from "./BackgroundPattern";
 export * from "./Footer";
 

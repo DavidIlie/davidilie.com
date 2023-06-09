@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes animatedUnderline {
+   0% {
+      stroke-dashoffset: 850;
+   }
+   100% {
+      stroke-dashoffset: 0;
+   }
+}
+
+.animated-underline {
+   stroke-dasharray: 850;
+   stroke-dashoffset: 850;
+   animation: animatedUnderline cubic-bezier(0.51, 0, 0.71, 0.98) 1.4s forwards;
+}
+
+.underlineDash {
+   transform: translateY(5px);
+}
