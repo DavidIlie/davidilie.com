@@ -6,6 +6,7 @@
       "target": "es5",
       "lib": ["dom", "dom.iterable", "esnext"],
       "allowJs": true,
+      "checkJs": true,
       "skipLibCheck": true,
       "strict": false,
       "forceConsistentCasingInFileNames": true,
@@ -19,8 +20,7 @@
       "baseUrl": ".",
       "paths": {
          "~/*": ["./src/*"]
-      },
-      "plugins": [{ "name": "next" }]
+      }
    },
    "exclude": [],
    "include": [

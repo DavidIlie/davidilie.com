@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google";
 
 import { BackgroundPattern } from "ui";
+
 import { ThemeProvider } from "~/components/ThemeProvider";
-import Footer from "~/components/Footer";
 import NavBar from "~/components/NavBar";
 
 import "./globals.css";
@@ -15,10 +15,12 @@ export const metadata = {
    description: "Personal Portfolio",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
    children,
+   footer,
 }: {
    children: React.ReactNode;
+   footer: React.ReactNode;
 }) {
    return (
       <html lang="en">
@@ -27,7 +29,7 @@ export default function RootLayout({
                <BackgroundPattern>
                   <NavBar />
                   {children}
-                  <Footer />
+                  {footer}
                </BackgroundPattern>
             </ThemeProvider>
             <div className="invisible rounded-md" />

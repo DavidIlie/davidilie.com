@@ -51,7 +51,7 @@ const NavBar: React.FC = () => {
             clickMobileMenu ? "bg-cyan-900/50" : "bg-opacity-30"
          } ${
             !top &&
-            "backdrop-filter backdrop-blur-lg bg-cyan-100 dark:bg-cyan-900 bg-opacity-50 dark:bg-opacity-10 hover:bg-opacity-60 hover:bg-cyan-50 dark:hover:bg-opacity-20 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.3)] shadow-black"
+            "backdrop-filter backdrop-blur-lg bg-blue-100/50 dark:bg-cyan-900/10 hover:bg-blue-100/100 dark:hover:bg-cyan-900/50 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.3)] shadow-black"
          }`}
       >
          {isBlogPage && (

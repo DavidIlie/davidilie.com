@@ -15,3 +15,4 @@ export * from "./SplitText";
 export * from "./ExternalLink";
 
 export * from "./lib/badtailwind";
+export * from "./lib/shimmer";
