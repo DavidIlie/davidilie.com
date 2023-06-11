@@ -9,13 +9,37 @@ datasource db {
 }
 
 model Post {
-    id        String   @id @default(uuid())
-    text      String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  slug     String    @id
+  views    Int       @default(0)
+  comments Comment[]
+}
 
-    createdBy   User   @relation(fields: [createdById], references: [id])
-    createdById String
+model Comment {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postSlug  String
+  post      Post     @relation(fields: [postSlug], references: [slug], onDelete: Cascade)
+  comment   String
+  createdAt DateTime @default(now())
+}
+
+model GitHubProject {
+  name        String   @id
+  createdAt   DateTime
+  lastPush    DateTime
+  description String
+  issues      Int
+  language    String?
+  stars       Int
+  url         String
+}
+
+model YouTubeStatictic {
+  channel     String @id
+  subscribers Int
+  views       Int
+  videos      Int
 }
 
 model Account {
@@ -52,7 +76,9 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
-    posts         Post[]
+    isAdmin       Boolean   @default(false)
+    comments      Comment[]
+    canComment    Boolean   @default(true)
 }
 
 model VerificationToken {
