@@ -20,6 +20,11 @@ export const env = createEnv({
       DISCORD_CLIENT_ID: z.string(),
       DISCORD_CLIENT_SECRET: z.string(),
       DISCORD_WEBHOOK_URL: z.string(),
+      GITHUB_JOB_SECRET: z.string(),
+      GITHUB_JOB_USERNAME: z.string(),
+      STATISTICS_JOB_SECRET: z.string(),
+      STATISTICS_JOB_CHANNEL: z.string(),
+      STATISTICS_JOB_API_KEY: z.string(),
    },
    client: {
       NEXT_PUBLIC_APP_URL: z.string().url(),
@@ -40,6 +45,11 @@ export const env = createEnv({
       SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN,
       NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
       DISCORD_WEBHOOK_URL: process.env.DISCORD_WEBHOOK_URL,
+      GITHUB_JOB_SECRET: process.env.GITHUB_JOB_SECRET,
+      GITHUB_JOB_USERNAME: process.env.GITHUB_JOB_USERNAME,
+      STATISTICS_JOB_SECRET: process.env.STATISTICS_JOB_SECRET,
+      STATISTICS_JOB_CHANNEL: process.env.STATISTICS_JOB_CHANNEL,
+      STATISTICS_JOB_API_KEY: process.env.STATISTICS_JOB_API_KEY,
    },
    skipValidation: !!process.env.SKIP_ENV_VALIDATION,
 });

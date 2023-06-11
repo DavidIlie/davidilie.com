@@ -5,8 +5,11 @@ import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
 
 import { Tooltip, shimmer } from "ui";
+import { RouterOutputs } from "~/trpc/shared";
 
-const About: React.FC = () => {
+const About: React.FC<{ stats: RouterOutputs["statistics"]["data"] }> = ({
+   stats,
+}) => {
    return (
       <>
          <div className="px-10 pt-12 pb-32 text-left text-white bg-blue-600 dark:bg-blue-800 dark:text-gray-100 sm:text-center">
@@ -149,7 +152,20 @@ const About: React.FC = () => {
                         Content Creator
                      </a>
                      <p className="px-16 mt-5 text-lg">
-                        <span>Loading...</span>
+                        <span>
+                           <span className="font-bold text-blue-700 dark:text-blue-500">
+                              {BigInt(stats.subscribers).toString()}
+                           </span>{" "}
+                           Subscribers,{" "}
+                           <span className="font-bold text-blue-700 dark:text-blue-500">
+                              {BigInt(stats.views).toString()}
+                           </span>{" "}
+                           Views, and{" "}
+                           <span className="font-bold text-blue-700 dark:text-blue-500">
+                              {BigInt(stats.videos).toString()}
+                           </span>{" "}
+                           Videos
+                        </span>
                      </p>
                   </div>
                   <div className="mb-10 text-center">
@@ -171,6 +187,7 @@ const About: React.FC = () => {
                      >
                         David Ilie
                      </a>
+                     <br />
                      <a
                         className="text-lg duration-200 hover:text-blue-700 dark:hover:text-blue-500"
                         href="https://www.youtube.com/channel/UCwfF_jZHkxF1Vxx5b8PlIGA"
