@@ -23,8 +23,8 @@ const ResponsiveProject: React.FC<{
                alt={`${project.name}'s photo`}
                placeholder="blur"
                blurDataURL={shimmer(1920, 1080)}
-               layout="fill"
-               className="rounded-t-xl"
+               className="object-cover rounded-t-xl"
+               fill={true}
             />
          </div>
          <div className="px-3 py-2 text-left border-t-4 dark:border-t-gray-700 border-t-gray-400">

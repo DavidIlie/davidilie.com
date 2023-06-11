@@ -30,8 +30,8 @@ const ImageProject: React.FC<{
                      alt={`${project.name}'s photo`}
                      placeholder="blur"
                      blurDataURL={shimmer(1920, 1080)}
-                     layout="fill"
-                     className="rounded-xl"
+                     className="object-cover rounded-xl"
+                     fill={true}
                   />
                </div>
             </div>
