@@ -8,12 +8,13 @@ export * from "./ui/hover-card";
 
 export * from "./BackgroundPattern";
 export * from "./Footer";
-export * from "./LoadingSpinner";
 
 export * from "./Socials";
 export * from "./Tooltip";
 export * from "./SplitText";
 export * from "./ExternalLink";
+export * from "./LoadingSpinner";
+export * from "./Tags";
 
 export * from "./lib/badtailwind";
 export * from "./lib/shimmer";
