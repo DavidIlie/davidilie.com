@@ -14,19 +14,21 @@ const About: React.FC = () => {
                <h1 className="mb-5 text-4xl font-semibold text-center md:text-5xl sm:text-4xl">
                   First of all, who am I?
                </h1>
-               <h1 className="mx-auto mb-32 text-lg sm:max-w-5xl">
-                  I'm a 16 year old software developer and full-time student,
-                  and have been interested into computer science ever since I
-                  was younger but never got into proper development until about
-                  2 years ago. Software Engineering has always kept me motivated
-                  throughout the years which is why I want to pursue this "dream
-                  job" in the future. For a while I've found myself looking into
-                  how any given piece of technology works, but until recently
-                  I've never found myself actually creating something of my own.
-                  The goal of this website is to express my{" "}
-                  <span className="font-semibold">"experiments"</span> to the
-                  public, while getting feedback in the process.
-               </h1>
+               <p className="mx-auto mb-32 text-lg sm:max-w-5xl">
+                  I am an ambitious 16-year-old software developer and dedicated
+                  full-time student. My passion for computer science has been
+                  with me since childhood, and it wasn't until about two years
+                  ago that I fully immersed myself in the world of proper
+                  development. The presence of Software Engineering has
+                  continuously fueled my motivation, driving me to pursue it as
+                  my ultimate "dream job". While I have always been curious
+                  about how technology functions, it is only recently that I
+                  have begun to create projects of my own. This website serves
+                  as a platform to share my{" "}
+                  <span className="font-medium">experiments</span> with the
+                  public and gather valuable feedback in the process. Join me on
+                  this exciting journey of innovation and self-discovery.
+               </p>
             </Fade>
          </div>
          <Fade direction="up" triggerOnce>
@@ -41,12 +43,13 @@ const About: React.FC = () => {
                         placeholder="blur"
                         width="250"
                         height="250"
+                        title="Frontend Developer"
                      />
                   </div>
                   <div className="mb-10 text-center">
-                     <h1 className="mb-5 text-2xl font-semibold">
+                     <h2 className="mb-5 text-2xl font-semibold">
                         Frontend Developer
-                     </h1>
+                     </h2>
                      <p className="text-lg">
                         I like bringing my ideas to{" "}
                         <span className="font-bold text-blue-700 dark:text-blue-500">
@@ -60,15 +63,15 @@ const About: React.FC = () => {
                      </p>
                   </div>
                   <div className="mb-10 text-center">
-                     <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
+                     <h3 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Technologies I use:
-                     </h1>
+                     </h3>
                      <p className="text-lg">React, Next.js, Tailwind CSS</p>
                   </div>
                   <div className="text-center mb-7">
-                     <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
+                     <h4 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Tools I use:
-                     </h1>
+                     </h4>
                      <p className="text-lg">Visual Studio Code</p>
                      <p className="text-lg">Figma</p>
                      <p className="text-lg">Adobe Illustrator</p>
@@ -85,12 +88,13 @@ const About: React.FC = () => {
                         placeholder="blur"
                         width="250"
                         height="250"
+                        title="Backend Developer"
                      />
                   </div>
                   <div className="mb-10 text-center">
-                     <h1 className="mb-5 text-2xl font-semibold">
+                     <h2 className="mb-5 text-2xl font-semibold">
                         Backend Developer
-                     </h1>
+                     </h2>
                      <p className="px-16 text-lg">
                         I value{" "}
                         <span className="font-bold text-blue-700 dark:text-blue-500">
@@ -104,17 +108,17 @@ const About: React.FC = () => {
                      </p>
                   </div>
                   <div className="mb-10 text-center">
-                     <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
+                     <h3 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Technologies I use:
-                     </h1>
+                     </h3>
                      <p className="text-lg">
                         tRPC, S3, Prisma, SQL, WebSockets
                      </p>
                   </div>
                   <div className="text-center mb-7">
-                     <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
+                     <h4 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Tools I use:
-                     </h1>
+                     </h4>
                      <p className="text-lg">Visual Studio Code</p>
                      <p className="text-lg">Windows Terminal</p>
                      <p className="text-lg">iTerm 2</p>
@@ -131,6 +135,7 @@ const About: React.FC = () => {
                         placeholder="blur"
                         width="250"
                         height="250"
+                        title="Content Creator"
                      />
                   </div>
                   <div className="mb-10 text-center">
@@ -148,35 +153,33 @@ const About: React.FC = () => {
                      </p>
                   </div>
                   <div className="mb-10 text-center">
-                     <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
+                     <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Software I use:
-                     </h1>
+                     </h2>
                      <p className="text-lg">Adobe Premiere & Photoshop</p>
                   </div>
                   <div className="mb-4 text-center sm:mb-0">
-                     <h1 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
+                     <h3 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Content I produce:
-                     </h1>
-                     <p className="text-lg duration-200 hover:text-blue-700 dark:hover:text-blue-500">
-                        <a
-                           href="https://www.youtube.com/channel/UC92hn9Y8WcY_5LribMDW8uA"
-                           target="_blank"
-                           rel="noreferrer"
-                           aria-label="David Ilie"
-                        >
-                           David Ilie
-                        </a>
-                     </p>
-                     <p className="text-lg duration-200 hover:text-blue-700 dark:hover:text-blue-500">
-                        <a
-                           href="https://www.youtube.com/channel/UCwfF_jZHkxF1Vxx5b8PlIGA"
-                           target="_blank"
-                           rel="noreferrer"
-                           aria-label="Albastru"
-                        >
-                           Albastru
-                        </a>
-                     </p>
+                     </h3>
+                     <a
+                        className="text-lg duration-200 hover:text-blue-700 dark:hover:text-blue-500"
+                        href="https://www.youtube.com/channel/UC92hn9Y8WcY_5LribMDW8uA"
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label="David Ilie"
+                     >
+                        David Ilie
+                     </a>
+                     <a
+                        className="text-lg duration-200 hover:text-blue-700 dark:hover:text-blue-500"
+                        href="https://www.youtube.com/channel/UCwfF_jZHkxF1Vxx5b8PlIGA"
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label="Albastru"
+                     >
+                        Albastru
+                     </a>
                      <Tooltip
                         content="School projects, Personal Projects, etc."
                         placement="bottom"

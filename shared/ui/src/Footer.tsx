@@ -9,7 +9,7 @@ export const Footer: React.FC<{ children: React.ReactNode }> = ({
       <footer className="w-full pt-5 pb-5 text-black dark:text-white bg-slate-200 bg-opacity-40 dark:bg-slate-800 dark:bg-opacity-50">
          <div className="flex flex-wrap items-center justify-center mx-12 sm:justify-evenly">
             {children}
-            <h1 className="mb-2 text-lg sm:mb-0">
+            <p className="mb-2 text-lg sm:mb-0">
                Powered by{" "}
                <a
                   href="https://davidapps.dev"
@@ -19,10 +19,8 @@ export const Footer: React.FC<{ children: React.ReactNode }> = ({
                >
                   David Ilie Apps Platform
                </a>
-            </h1>
-            <div>
-               <Socials font="1.5" />
-            </div>
+            </p>
+            <Socials font="1.5" />
          </div>
       </footer>
    );

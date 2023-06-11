@@ -134,6 +134,9 @@ importers:
       ui:
         specifier: workspace:*
         version: link:../../shared/ui
+      webhook-discord:
+        specifier: ^3.7.8
+        version: 3.7.8
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -184,6 +187,9 @@ importers:
       lucide-react:
         specifier: ^0.241.0
         version: 0.241.0(react@18.2.0)
+      next-themes:
+        specifier: ^0.2.1
+        version: 0.2.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
       react-icons:
         specifier: ^4.9.0
         version: 4.9.0(react@18.2.0)
@@ -8538,6 +8544,11 @@ packages:
       - supports-color
     dev: false
 
+  /snekfetch@3.6.4:
+    resolution: {integrity: sha512-NjxjITIj04Ffqid5lqr7XdgwM7X61c/Dns073Ly170bPQHLm6jkmelye/eglS++1nfTWktpP6Y2bFXjdPlQqdw==}
+    deprecated: use node-fetch instead
+    dev: false
+
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -9378,6 +9389,12 @@ packages:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
     dependencies:
       defaults: 1.0.4
+    dev: false
+
+  /webhook-discord@3.7.8:
+    resolution: {integrity: sha512-IDEvKmu83SIAPZD0efpEXj3ZEm+X8Q68iRuKEKtyXlGN9S9lVtdL7cp4I0AXqTapVj+eh+Wby7y9DaxP01Yk2g==}
+    dependencies:
+      snekfetch: 3.6.4
     dev: false
 
   /webidl-conversions@3.0.1:

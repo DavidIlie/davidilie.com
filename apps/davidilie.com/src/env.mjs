@@ -19,6 +19,7 @@ export const env = createEnv({
       SPOTIFY_REFRESH_TOKEN: z.optional(z.string()),
       DISCORD_CLIENT_ID: z.string(),
       DISCORD_CLIENT_SECRET: z.string(),
+      DISCORD_WEBHOOK_URL: z.string(),
    },
    client: {
       NEXT_PUBLIC_APP_URL: z.string().url(),
@@ -38,6 +39,7 @@ export const env = createEnv({
       SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
       SPOTIFY_REFRESH_TOKEN: process.env.SPOTIFY_REFRESH_TOKEN,
       NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
+      DISCORD_WEBHOOK_URL: process.env.DISCORD_WEBHOOK_URL,
    },
    skipValidation: !!process.env.SKIP_ENV_VALIDATION,
 });

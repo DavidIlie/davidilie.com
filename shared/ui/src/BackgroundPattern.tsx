@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { useTheme } from "next-themes";
 
 import { colors } from "./lib/colors";
 
@@ -92,7 +95,8 @@ type SVGProps = {
 };
 
 const GetColor = () => {
-   if (true) {
+   const { resolvedTheme } = useTheme();
+   if (resolvedTheme === "dark") {
       return [`100`, `200`, `300`, `400`, `500`];
    } else {
       return [`500`, `600`, `700`, `800`, `900`];

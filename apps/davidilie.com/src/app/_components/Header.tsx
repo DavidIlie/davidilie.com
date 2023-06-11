@@ -6,8 +6,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Socials, SplitText } from "ui";
 
 const Header: React.FC = () => {
-   const [secondVisible, setSecondVisible] = useState<boolean>(false);
-   const [thirdVisible, setThirdVisible] = useState<boolean>(false);
+   const [secondVisible, setSecondVisible] = useState(false);
+   const [thirdVisible, setThirdVisible] = useState(false);
    const [name, setName] = useState("I'm David Ilie");
 
    useEffect(() => {
