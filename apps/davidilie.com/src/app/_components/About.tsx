@@ -7,7 +7,7 @@ import { Fade } from "react-awesome-reveal";
 import { Tooltip, shimmer } from "ui";
 import { RouterOutputs } from "~/trpc/shared";
 
-const About: React.FC<{ stats: RouterOutputs["statistics"]["data"] }> = ({
+const About: React.FC<{ stats: RouterOutputs["job"]["statistics"] }> = ({
    stats,
 }) => {
    return (

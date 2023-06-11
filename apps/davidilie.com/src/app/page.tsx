@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const Page = async () => {
-   const stats = await api.statistics.data.query();
+   const stats = await api.job.statistics.query();
    return (
       <>
          <Header />

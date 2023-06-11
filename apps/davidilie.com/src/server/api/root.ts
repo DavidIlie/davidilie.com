@@ -1,11 +1,11 @@
 import { createTRPCRouter } from "~/server/api/trpc";
 
 import { spotifyRouter } from "./routers/spotify";
-import { statisticsRouter } from "./routers/statistics";
+import { jobRouter } from "./routers/jobs";
 
 export const appRouter = createTRPCRouter({
    spotify: spotifyRouter,
-   statistics: statisticsRouter,
+   job: jobRouter,
 });
 
 export type AppRouter = typeof appRouter;
