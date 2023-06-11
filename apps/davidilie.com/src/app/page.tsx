@@ -4,6 +4,7 @@ import { prisma } from "~/server/db";
 
 import Header from "./_components/Header";
 import About from "./_components/About";
+import TopProject from "./_components/TopProject";
 
 export const metadata: Metadata = {
    title: "Home",
@@ -15,6 +16,7 @@ const Page = async () => {
       <>
          <Header />
          <About stats={stats} />
+         <TopProject />
       </>
    );
 };

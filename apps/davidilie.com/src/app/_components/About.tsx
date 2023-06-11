@@ -33,8 +33,8 @@ const About: React.FC<{ stats: YouTubeStatistic }> = ({ stats }) => {
             </Fade>
          </div>
          <Fade direction="up" triggerOnce>
-            <div className="mb-16 flex flex-wrap max-w-sm mx-auto mt-[-14rem] bg-white shadow-xl dark:bg-gray-800 dark:text-gray-200 rounded-2xl md:max-w-6xl md:flex-nowrap justify-evenly">
-               <div className="px-5 pt-10 border-b-2 xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 2xl:border-b-0 md:border-b-0 xl:border-b-0 border-fuchasia-600 dark:border-gray-600">
+            <div className="mb-10 flex flex-wrap max-w-[27rem] mx-auto mt-[-14rem] bg-white shadow-xl dark:bg-gray-800 dark:text-gray-200 rounded-2xl md:max-w-6xl md:flex-nowrap justify-evenly">
+               <div className="px-5 pt-10 border-b-2 xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 2xl:border-b-0 md:border-b-0 xl:border-b-0 dark:border-gray-600">
                   <div className="flex justify-center mb-3">
                      <Image
                         src="/static/frontend.svg"
@@ -79,7 +79,7 @@ const About: React.FC<{ stats: YouTubeStatistic }> = ({ stats }) => {
                      <p className="text-lg">Pen & Paper</p>
                   </div>
                </div>
-               <div className="px-5 pt-10 border-b-2 xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 md:border-b-0 xl:border-b-0 border-fuchasia-600 dark:border-gray-600">
+               <div className="px-5 pt-10 border-b-2 xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 md:border-b-0 xl:border-b-0 dark:border-gray-600">
                   <div className="flex justify-center mb-3">
                      <Image
                         src="/static/backend.svg"
