@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Slide } from "react-awesome-reveal";
 
 import projects from "~/data/projects";
@@ -15,6 +16,14 @@ const TopProject: React.FC = () => (
                Top Project
             </h1>
             <div className="absolute sm:w-[22%] w-[48%] mx-auto sm:ml-[-0.075rem] ml-[0.25rem] h-6 bg-blue-500/20 top-[1.3rem]" />
+         </div>
+         <div className="flex justify-center -mb-4">
+            <Link
+               className="text-lg duration-150 hover:text-blue-500"
+               href="/projects"
+            >
+               See all my projects...
+            </Link>
          </div>
          <ResponsiveProjectWrapper
             isGitHub={false}
