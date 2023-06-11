@@ -30,7 +30,7 @@ const projects: Project[] = [
       repo_id: "reddam-pokemon-go",
       name: "Reddam House Go!",
       description:
-         "Head of Middle School asked me to develop a mobile game for Year 5 students at Reddam House Berkshire, introducing them to the school's middle/senior section. Using a simplified schematic, I developed an app where students find randomly selected rooms within a time limit. Fastest completion time or discovering all rooms won the game.",
+         "The Head of Middle School asked me to develop a mobile game for Year 5 students at Reddam House Berkshire, introducing them to the school's middle/senior section. Using a simplified schematic, I developed an app where students find randomly selected rooms within a time limit. Fastest completion time or discovering all rooms won the game.",
       image: "https://github.com/DavidIlie/davidilie.com/assets/47594764/2b268847-3f94-4792-be90-a39335feb0db",
       tags: ["React Native", "Web Sockets", "Game"],
    },
