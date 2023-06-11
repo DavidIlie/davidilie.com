@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Inter } from "next/font/google";
 
 import { BackgroundPattern } from "ui";
@@ -6,6 +7,7 @@ import { env } from "~/env.mjs";
 
 import { ThemeProvider } from "~/components/ThemeProvider";
 import NavBar from "~/components/NavBar";
+import Footer, { FooterLoader } from "~/components/Footer";
 
 import "./globals.css";
 import "ui/styles.css";
@@ -51,10 +53,8 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
    children,
-   footer,
 }: {
    children: React.ReactNode;
-   footer: React.ReactNode;
 }) {
    return (
       <html lang="en">
@@ -63,7 +63,11 @@ export default async function RootLayout({
                <BackgroundPattern>
                   <NavBar />
                   {children}
-                  {footer}
+                  <Suspense fallback={<FooterLoader />}>
+                     {/*
+                  // @ts-expect-error Server Component*/}
+                     <Footer />
+                  </Suspense>
                </BackgroundPattern>
             </ThemeProvider>
          </body>

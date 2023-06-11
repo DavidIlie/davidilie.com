@@ -8,6 +8,7 @@ export * from "./ui/hover-card";
 
 export * from "./BackgroundPattern";
 export * from "./Footer";
+export * from "./LoadingSpinner";
 
 export * from "./Socials";
 export * from "./Tooltip";

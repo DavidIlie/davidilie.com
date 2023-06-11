@@ -31,7 +31,7 @@ export const GET = async (req: NextRequest) => {
          videos: await youtubeQuery("videoCount"),
       };
 
-      await prisma.youTubeStatictic.upsert({
+      await prisma.youTubeStatistic.upsert({
          where: { channel: env.STATISTICS_JOB_CHANNEL },
          create: { channel: env.STATISTICS_JOB_CHANNEL, ...stats },
          update: stats,

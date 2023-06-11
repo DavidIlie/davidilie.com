@@ -1,15 +1,12 @@
-"use client";
-
 import React from "react";
 import { FaSpotify } from "react-icons/fa";
 
 import { Tooltip, Footer as UIFooter } from "ui";
 import { SPOTIFY_ACCOUNT } from "~/lib/constants";
-import { RouterOutputs } from "~/trpc/shared";
+import { getPlayingStateAndSong } from "~/server/lib/spotify";
 
-const Footer: React.FC<{ data: RouterOutputs["spotify"]["getFooterData"] }> = ({
-   data,
-}) => {
+const Footer = async () => {
+   const data = await getPlayingStateAndSong();
    return (
       <UIFooter>
          <div className="flex items-center mb-2 justify-evenly sm:mb-0">
@@ -35,6 +32,21 @@ const Footer: React.FC<{ data: RouterOutputs["spotify"]["getFooterData"] }> = ({
             ) : (
                <p className="font-semibold">Currently Paused</p>
             )}
+         </div>
+      </UIFooter>
+   );
+};
+
+export const FooterLoader = () => {
+   return (
+      <UIFooter>
+         <div className="flex items-center mb-2 justify-evenly sm:mb-0">
+            <p className="flex">
+               <a href={SPOTIFY_ACCOUNT} target="_blank" rel="noreferrer">
+                  <FaSpotify className="mr-1 text-2xl text-green-500" />
+               </a>
+               Loading Spotify
+            </p>
          </div>
       </UIFooter>
    );

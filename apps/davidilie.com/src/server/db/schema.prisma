@@ -35,7 +35,7 @@ model GitHubProject {
   url         String
 }
 
-model YouTubeStatictic {
+model YouTubeStatistic {
   channel     String @id
   subscribers Int
   views       Int

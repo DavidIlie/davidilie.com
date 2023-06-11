@@ -5,11 +5,9 @@ import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
 
 import { Tooltip, shimmer } from "ui";
-import { RouterOutputs } from "~/trpc/shared";
+import { YouTubeStatistic } from "@prisma/client";
 
-const About: React.FC<{ stats: RouterOutputs["job"]["statistics"] }> = ({
-   stats,
-}) => {
+const About: React.FC<{ stats: YouTubeStatistic }> = ({ stats }) => {
    return (
       <>
          <div className="px-10 pt-12 pb-32 text-left text-white bg-blue-600 dark:bg-blue-800 dark:text-gray-100 sm:text-center">

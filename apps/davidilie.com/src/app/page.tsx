@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { api } from "~/trpc/server";
+import { prisma } from "~/server/db";
 
 import Header from "./_components/Header";
 import About from "./_components/About";
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const Page = async () => {
-   const stats = await api.job.statistics.query();
+   const stats = await prisma.youTubeStatistic.findFirst();
    return (
       <>
          <Header />
