@@ -35,7 +35,7 @@ const PostCard = async (props: Type) => {
                props.featured && "mt-14 hidden rounded-tl-sm sm:block"
             } hoverItem mx-3 mb-4 flex transform cursor-pointer flex-row justify-center gap-4 rounded-xl border-2 border-gray-200 bg-gray-100 duration-150 dark:border-gray-700 dark:bg-gray-800 md:px-3 md:py-2`}
          >
-            <h1 className="absolute -top-9 -left-0.5 z-10 rounded-t border-2 border-blue-200 bg-blue-300 py-1 px-4 font-semibold text-blue-900 dark:border-blue-700 dark:bg-blue-600 dark:bg-opacity-50 dark:text-blue-100">
+            <h1 className="absolute -left-0.5 -top-9 z-10 rounded-t border-2 border-blue-200 bg-blue-300 px-4 py-1 font-semibold text-blue-900 dark:border-blue-700 dark:bg-blue-600 dark:bg-opacity-50 dark:text-blue-100">
                Featured Post
             </h1>
             <div className="flex gap-2">
@@ -52,7 +52,7 @@ const PostCard = async (props: Type) => {
                   {props.tags.map((tag, index) => (
                      <Tags tag={tag} key={index} />
                   ))}
-                  <h1 className="text-section mt-1 mb-1 text-xl font-semibold md:text-2xl">
+                  <h1 className="text-section mb-1 mt-1 text-xl font-semibold md:text-2xl">
                      {props.title}
                   </h1>
                   <p className="text-gray-800 dark:text-gray-300">
@@ -81,16 +81,16 @@ const PostCard = async (props: Type) => {
                />
             </div>
             <div className="-mt-0.5 border-t-2 border-gray-700 px-4 py-2">
-               <h2 className="h-16 text-2xl font-semibold tracking-normal line-clamp-2">
+               <h2 className="line-clamp-2 h-16 text-2xl font-semibold tracking-normal">
                   {props.title}
                </h2>
-               <p className="text-md mt-2 mb-3 text-gray-800 line-clamp-5 dark:text-gray-200">
+               <p className="text-md mb-3 mt-2 line-clamp-5 text-gray-800 dark:text-gray-200">
                   {props.summary}
                </p>
                {props.tags.map((tag, index) => (
                   <Tags tag={tag} key={index} />
                ))}
-               <div className="mt-1 mb-1 mr-1 flex items-center">
+               <div className="mb-1 mr-1 mt-1 flex items-center">
                   <span className="text-sm text-gray-800 dark:text-gray-400">
                      {postMeta}
                   </span>
