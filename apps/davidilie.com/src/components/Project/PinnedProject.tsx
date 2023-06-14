@@ -1,7 +1,7 @@
 import React from "react";
 
-import type { Project, ProjectGitHub } from "~/data/projects";
 import { prisma } from "~/server/db";
+import type { Project, ProjectGitHub } from "~/data/projects";
 
 import ResponsiveProjectWrapper from "./ResponsiveProjectWrapper";
 

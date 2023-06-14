@@ -11,7 +11,7 @@ export const BackgroundPattern: React.FC<{
    return (
       <div className="pageBackground">
          <Patterns />
-         <div className="flex flex-col min-h-screen">{children}</div>
+         <div className="flex min-h-screen flex-col">{children}</div>
       </div>
    );
 };
@@ -150,7 +150,7 @@ const UpDown = ({ children, type }: UpDownProps): JSX.Element => {
                : type === `slow`
                ? `UpDownSlowAnimation`
                : `UpDownAnimation`
-         } overflow-hidden absolute top-0 left-0 right-0 bottom-0`}
+         } absolute top-0 left-0 right-0 bottom-0 overflow-hidden`}
          style={{ zIndex: -500 }}
       >
          {children}

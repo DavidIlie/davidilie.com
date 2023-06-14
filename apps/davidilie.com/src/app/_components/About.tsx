@@ -2,18 +2,19 @@
 
 import React from "react";
 import Image from "next/image";
+import { YouTubeStatistic } from "@prisma/client";
 import { Fade } from "react-awesome-reveal";
 
-import { Tooltip } from "@david/ui";
-import { YouTubeStatistic } from "@prisma/client";
 import { shimmer } from "~/lib/shimmer";
+
+import { Tooltip } from "@david/ui";
 
 const About = ({ stats }: { stats: YouTubeStatistic }) => {
    return (
       <>
-         <div className="px-10 pt-12 pb-32 text-left text-white bg-blue-600 dark:bg-blue-800 dark:text-gray-100 sm:text-center">
+         <div className="bg-blue-600 px-10 pt-12 pb-32 text-left text-white dark:bg-blue-800 dark:text-gray-100 sm:text-center">
             <Fade direction="left" triggerOnce cascade>
-               <h1 className="mb-5 text-4xl font-semibold text-center md:text-5xl sm:text-4xl">
+               <h1 className="mb-5 text-center text-4xl font-semibold sm:text-4xl md:text-5xl">
                   First of all, who am I?
                </h1>
                <p className="mx-auto mb-32 text-lg sm:max-w-5xl">
@@ -34,13 +35,13 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
             </Fade>
          </div>
          <Fade direction="up" triggerOnce>
-            <div className="mb-10 flex flex-wrap max-w-[27rem] mx-auto mt-[-14rem] bg-white shadow-xl dark:bg-gray-800 dark:text-gray-200 rounded-2xl md:max-w-6xl md:flex-nowrap justify-evenly">
-               <div className="px-5 pt-10 border-b-2 xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 2xl:border-b-0 md:border-b-0 xl:border-b-0 dark:border-gray-600">
-                  <div className="flex justify-center mb-3">
+            <div className="mx-auto mb-10 mt-[-14rem] flex max-w-[27rem] flex-wrap justify-evenly rounded-2xl bg-white shadow-xl dark:bg-gray-800 dark:text-gray-200 md:max-w-6xl md:flex-nowrap">
+               <div className="xs:w-full border-b-2 px-5 pt-10 dark:border-gray-600 md:border-r-2 md:border-b-0 xl:w-1/3 xl:border-r-2 xl:border-b-0 2xl:border-r-2 2xl:border-b-0">
+                  <div className="mb-3 flex justify-center">
                      <Image
                         src="/static/frontend.svg"
                         alt="Frontend Developer"
-                        className="w-24 h-24 animate-wiggle"
+                        className="animate-wiggle h-24 w-24"
                         blurDataURL={shimmer(1920, 1080)}
                         placeholder="blur"
                         width="250"
@@ -70,7 +71,7 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
                      </h3>
                      <p className="text-lg">React, Next.js, Tailwind CSS</p>
                   </div>
-                  <div className="text-center mb-7">
+                  <div className="mb-7 text-center">
                      <h4 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Tools I use:
                      </h4>
@@ -80,12 +81,12 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
                      <p className="text-lg">Pen & Paper</p>
                   </div>
                </div>
-               <div className="px-5 pt-10 border-b-2 xl:w-1/3 xs:w-full 2xl:border-r-2 xl:border-r-2 md:border-r-2 md:border-b-0 xl:border-b-0 dark:border-gray-600">
-                  <div className="flex justify-center mb-3">
+               <div className="xs:w-full border-b-2 px-5 pt-10 dark:border-gray-600 md:border-r-2 md:border-b-0 xl:w-1/3 xl:border-r-2 xl:border-b-0 2xl:border-r-2">
+                  <div className="mb-3 flex justify-center">
                      <Image
                         src="/static/backend.svg"
                         alt="Backend Developer"
-                        className="w-24 h-24 animate-pulse"
+                        className="h-24 w-24 animate-pulse"
                         blurDataURL={shimmer(1920, 1080)}
                         placeholder="blur"
                         width="250"
@@ -117,7 +118,7 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
                         tRPC, S3, Prisma, SQL, WebSockets
                      </p>
                   </div>
-                  <div className="text-center mb-7">
+                  <div className="mb-7 text-center">
                      <h4 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Tools I use:
                      </h4>
@@ -127,12 +128,12 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
                      <p className="text-lg">GitHub</p>
                   </div>
                </div>
-               <div className="px-5 pt-10 xl:w-1/3 xs:w-full">
-                  <div className="flex justify-center mb-3">
+               <div className="xs:w-full px-5 pt-10 xl:w-1/3">
+                  <div className="mb-3 flex justify-center">
                      <Image
                         src="/static/contentcreator.svg"
                         alt="Content Creator"
-                        className="w-24 h-24 animate-bounce-up"
+                        className="animate-bounce-up h-24 w-24"
                         blurDataURL={shimmer(1920, 1080)}
                         placeholder="blur"
                         width="250"
@@ -150,7 +151,7 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
                      >
                         Content Creator
                      </a>
-                     <p className="px-16 mt-5 text-lg">
+                     <p className="mt-5 px-16 text-lg">
                         <span>
                            <span className="font-bold text-blue-700 dark:text-blue-500">
                               {BigInt(stats.subscribers).toString()}
@@ -200,7 +201,7 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
                         content="School projects, Personal Projects, etc."
                         placement="bottom"
                      >
-                        <p className="text-lg text-gray-800 cursor-pointer dark:text-gray-200">
+                        <p className="cursor-pointer text-lg text-gray-800 dark:text-gray-200">
                            And much more...
                         </p>
                      </Tooltip>

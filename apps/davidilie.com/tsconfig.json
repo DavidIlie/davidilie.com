@@ -1,32 +1,28 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "noImplicitAny": false,
-    "paths": {
-      "~/*": [
-        "./src/*"
+   "extends": "../../tsconfig.json",
+   "compilerOptions": {
+      "baseUrl": ".",
+      "noImplicitAny": false,
+      "paths": {
+         "~/*": ["./src/*"],
+         "contentlayer/generated": ["./.contentlayer/generated"]
+      },
+      "plugins": [
+         {
+            "name": "next"
+         }
       ],
-      "contentlayer/generated": [
-        "./.contentlayer/generated"
-      ]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "strictNullChecks": true,
-    "incremental": true
-  },
-  "exclude": [],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.cjs",
-    "**/*.mjs",
-    ".next/types/**/*.ts",
-    ".contentlayer/generated"
-  ]
+      "strictNullChecks": true,
+      "incremental": true
+   },
+   "exclude": [],
+   "include": [
+      "next-env.d.ts",
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.cjs",
+      "**/*.mjs",
+      ".next/types/**/*.ts",
+      ".contentlayer/generated"
+   ]
 }

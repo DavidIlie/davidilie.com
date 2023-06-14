@@ -2,14 +2,14 @@
 
 import React from "react";
 import Image from "next/image";
+import { GitHubProject } from "@prisma/client";
 import { formatDistance } from "date-fns";
-
 import { FiExternalLink } from "react-icons/fi";
 
-import { Tags } from "@david/ui";
-import { GitHubProject } from "@prisma/client";
-import { ProjectGitHub } from "~/data/projects";
 import { shimmer } from "~/lib/shimmer";
+import { ProjectGitHub } from "~/data/projects";
+
+import { Tags } from "@david/ui";
 
 const ResponsiveProject = ({
    project,
@@ -21,18 +21,18 @@ const ResponsiveProject = ({
    repo?: GitHubProject | null | undefined;
 }) => {
    return (
-      <div className="flex-col w-full my-8 bg-gray-100 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark: rounded-xl">
+      <div className="dark: my-8 w-full flex-col rounded-xl border-2 border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-gray-800">
          <div className="relative aspect-[16/9]">
             <Image
                src={project.image}
                alt={`${project.name}'s photo`}
                placeholder="blur"
                blurDataURL={shimmer(1920, 1080)}
-               className="object-cover rounded-t-xl"
+               className="rounded-t-xl object-cover"
                fill={true}
             />
          </div>
-         <div className="px-3 py-2 text-left border-t-4 dark:border-t-gray-700 border-t-gray-400">
+         <div className="border-t-4 border-t-gray-400 px-3 py-2 text-left dark:border-t-gray-700">
             <div className="flex justify-between text-3xl">
                <h1 className="text-3xl font-bold">{project.name}</h1>
                <a

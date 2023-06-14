@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-has-content */
 import * as React from "react";
-import Link from "next/link";
 import Image, { ImageProps } from "next/image";
+import Link from "next/link";
 import { useMDXComponent } from "next-contentlayer/hooks";
+
 import { shimmer } from "~/lib/shimmer";
 
 const CustomLink = (props) => {
@@ -26,7 +27,7 @@ const CustomLink = (props) => {
 
 export const CustomImage = ({ alt, ...props }: ImageProps): JSX.Element => {
    return (
-      <div className="flex-col justify-center w-full -mt-4">
+      <div className="-mt-4 w-full flex-col justify-center">
          <div className="flex justify-center">
             <Image
                alt={alt}
@@ -35,7 +36,7 @@ export const CustomImage = ({ alt, ...props }: ImageProps): JSX.Element => {
                blurDataURL={shimmer(1920, 1080)}
             />
          </div>
-         <h1 className="-mt-5 text-sm font-normal text-center text-gray-700 dark:text-gray-300">
+         <h1 className="-mt-5 text-center text-sm font-normal text-gray-700 dark:text-gray-300">
             {alt}
          </h1>
       </div>
@@ -44,9 +45,9 @@ export const CustomImage = ({ alt, ...props }: ImageProps): JSX.Element => {
 
 const Callout = (props) => {
    return (
-      <div className="flex px-4 py-2 my-4 border rounded-lg bg-neutral-100 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800">
-         <div className="flex items-center w-4 mr-3 text-xl">{props.emoji}</div>
-         <div className={`w-full callout ${props.italic && "italic"}`}>
+      <div className="my-4 flex rounded-lg border border-neutral-200 bg-neutral-100 px-4 py-2 dark:border-neutral-800 dark:bg-neutral-900">
+         <div className="mr-3 flex w-4 items-center text-xl">{props.emoji}</div>
+         <div className={`callout w-full ${props.italic && "italic"}`}>
             {props.children}
          </div>
       </div>
@@ -89,7 +90,7 @@ export function Mdx({ code }: MdxProps) {
    const Component = useMDXComponent(code);
 
    return (
-      <article className="prose prose-quoteless prose-neutral dark:prose-invert">
+      <article className="prose-quoteless prose prose-neutral dark:prose-invert">
          <Component components={{ ...components }} />
       </article>
    );

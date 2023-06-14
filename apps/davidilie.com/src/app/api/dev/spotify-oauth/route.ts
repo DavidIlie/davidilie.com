@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 import type { NextRequest } from "next/server";
-import { env } from "~/env.mjs";
 
 import { genSpotifyAuthHeaders } from "~/server/lib/spotify";
+import { env } from "~/env.mjs";
 
 export const GET = async (req: NextRequest) => {
    if (process.env.NODE_ENV !== "development")
@@ -14,7 +14,7 @@ export const GET = async (req: NextRequest) => {
 
    if (!code)
       return redirect(
-         `https://accounts.spotify.com/authorize?response_type=code&client_id=${process.env.SPOTIFY_CLIENT_ID}&scope=user-read-playback-position%20user-library-read%20user-top-read%20user-read-recently-played%20user-read-playback-state%20user-read-currently-playing&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fdev%2Fspotify-oauth`
+         `https://accounts.spotify.com/authorize?response_type=code&client_id=${process.env.SPOTIFY_CLIENT_ID}&scope=user-read-playback-position%20user-library-read%20user-top-read%20user-read-recently-played%20user-read-playback-state%20user-read-currently-playing&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fdev%2Fspotify-oauth`,
       );
 
    const r = await fetch(`https://accounts.spotify.com/api/token`, {

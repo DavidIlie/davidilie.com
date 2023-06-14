@@ -6,8 +6,8 @@ export const Footer: React.FC<{ children: React.ReactNode }> = ({
    children,
 }) => {
    return (
-      <footer className="w-full pt-5 pb-5 text-black dark:text-white bg-slate-200 bg-opacity-40 dark:bg-slate-800 dark:bg-opacity-50">
-         <div className="flex flex-wrap items-center justify-center mx-12 sm:justify-evenly">
+      <footer className="w-full bg-slate-200 bg-opacity-40 pt-5 pb-5 text-black dark:bg-slate-800 dark:bg-opacity-50 dark:text-white">
+         <div className="mx-12 flex flex-wrap items-center justify-center sm:justify-evenly">
             {children}
             <p className="mb-2 text-lg sm:mb-0">
                Powered by{" "}

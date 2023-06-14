@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Socials, SplitText } from "@david/ui";
@@ -45,7 +45,7 @@ const Header: React.FC = () => {
    };
 
    return (
-      <div className="flex items-center justify-center flex-grow min-h-screen px-4 text-center">
+      <div className="flex min-h-screen flex-grow items-center justify-center px-4 text-center">
          <div className="mt-5">
             <AnimatePresence>
                <div className="h-10 text-center">
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
                         //@ts-ignore
                         initial={{ y: "100%" }}
                         animate="visible"
-                        className="visible font-semibold text-7xl gradient-text"
+                        className="gradient-text visible text-7xl font-semibold"
                         variants={{
                            //@ts-ignore
                            visible: (i) => ({
@@ -89,7 +89,7 @@ const Header: React.FC = () => {
                         {name}
                      </SplitText>
                   ) : (
-                     <h1 className="invisible font-semibold text-7xl">
+                     <h1 className="invisible text-7xl font-semibold">
                         {name}
                      </h1>
                   )}

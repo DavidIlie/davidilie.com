@@ -1,14 +1,14 @@
 import type { NextRequest } from "next/server";
-
+import { Octokit } from "@octokit/rest";
+import { GitHubProject } from "@prisma/client";
 import webhook from "webhook-discord";
+
+import { prisma } from "~/server/db";
+import { env } from "~/env.mjs";
+
 const hook = new webhook.Webhook(env.DISCORD_WEBHOOK_URL);
 
-import { Octokit } from "@octokit/rest";
 const octokit = new Octokit();
-
-import { GitHubProject } from "@prisma/client";
-import { env } from "~/env.mjs";
-import { prisma } from "~/server/db";
 
 const createProjectJSON = (repo: any): GitHubProject => ({
    name: repo.name,
@@ -42,24 +42,24 @@ export const GET = async (req: NextRequest) => {
                   where: { name: project.name },
                   create: createProjectJSON(project),
                   update: createProjectJSON(project),
-               })
-         )
+               }),
+         ),
       );
 
       hook.success(
          `GitHub Job ${env.NODE_ENV === "development" ? " (DEV)" : ""}`,
-         "```Total Repos: " + response.length + "```"
+         "```Total Repos: " + response.length + "```",
       );
 
       return new Response(JSON.stringify({ message: "ok" }));
    } catch (error: any) {
       hook.err(
          `GitHub Job ${env.NODE_ENV === "development" ? " (DEV)" : ""}`,
-         "```" + JSON.stringify(error) + "```"
+         "```" + JSON.stringify(error) + "```",
       );
       return new Response(
          JSON.stringify({ message: error.message || "Unknown Error" }),
-         { status: 500 }
+         { status: 500 },
       );
    }
 };

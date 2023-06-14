@@ -2,14 +2,14 @@
 
 import React from "react";
 import Image from "next/image";
+import { GitHubProject } from "@prisma/client";
 import { formatDistance } from "date-fns";
-
 import { FiExternalLink } from "react-icons/fi";
 
-import { Tags } from "@david/ui";
-import { GitHubProject } from "@prisma/client";
-import { ProjectGitHub } from "~/data/projects";
 import { shimmer } from "~/lib/shimmer";
+import { ProjectGitHub } from "~/data/projects";
+
+import { Tags } from "@david/ui";
 
 const ImageProject = ({
    project,
@@ -25,7 +25,7 @@ const ImageProject = ({
    return (
       <div className="relative my-12">
          <div
-            className={`relative max-w-[83%] border-2 border-gray-700 rounded-xl ${
+            className={`relative max-w-[83%] rounded-xl border-2 border-gray-700 ${
                left ? "ml-auto" : "ml-0"
             }`}
          >
@@ -36,7 +36,7 @@ const ImageProject = ({
                      alt={`${project.name}'s photo`}
                      placeholder="blur"
                      blurDataURL={shimmer(1920, 1080)}
-                     className="object-cover rounded-xl"
+                     className="rounded-xl object-cover"
                      fill={true}
                   />
                </div>
@@ -45,9 +45,9 @@ const ImageProject = ({
          <div
             className={`absolute ${
                left
-                  ? "xl:left-[-7%] left-0 text-left"
-                  : "xl:right-[-7%] right-0 text-right"
-            } top-[50%] bg-gray-100 border-2 dark:border-gray-700 border-gray-200 dark:bg-gray-800 w-[45%] max-w-[450px] p-5 rounded-xl`}
+                  ? "left-0 text-left xl:left-[-7%]"
+                  : "right-0 text-right xl:right-[-7%]"
+            } top-[50%] w-[45%] max-w-[450px] rounded-xl border-2 border-gray-200 bg-gray-100 p-5 dark:border-gray-700 dark:bg-gray-800`}
             style={{ transform: "translate(0, -50%)" }}
          >
             <div

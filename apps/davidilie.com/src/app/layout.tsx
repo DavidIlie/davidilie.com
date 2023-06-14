@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { Suspense } from "react";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { BackgroundPattern } from "@david/ui";
 import { env } from "~/env.mjs";
 
-import { ThemeProvider } from "~/components/ThemeProvider";
-import NavBar from "~/components/NavBar";
+import { BackgroundPattern } from "@david/ui";
+
 import Footer, { FooterLoader } from "~/components/Footer";
+import NavBar from "~/components/NavBar";
+import { ThemeProvider } from "~/components/ThemeProvider";
 
 import "./globals.css";
 import "@david/ui/styles.css";

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-
-import { prisma } from "~/server/db";
 import { YouTubeStatistic } from "@prisma/client";
 
-import Header from "./_components/Header";
+import { prisma } from "~/server/db";
+
 import About from "./_components/About";
+import Header from "./_components/Header";
 import TopProject from "./_components/TopProject";
 
 export const metadata: Metadata = {

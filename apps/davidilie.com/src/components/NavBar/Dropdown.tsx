@@ -1,14 +1,14 @@
 import React from "react";
-import { FiSettings } from "react-icons/fi";
 import { useTheme } from "next-themes";
+import { FiSettings } from "react-icons/fi";
 
 import {
    DropdownMenu,
    DropdownMenuContent,
+   DropdownMenuItem,
    DropdownMenuLabel,
    DropdownMenuSeparator,
    DropdownMenuTrigger,
-   DropdownMenuItem,
 } from "@david/ui";
 
 const Dropdown: React.FC = () => {
@@ -17,9 +17,9 @@ const Dropdown: React.FC = () => {
       <>
          <DropdownMenu>
             <DropdownMenuTrigger>
-               <div className="p-2 transition duration-100 ease-in-out bg-gray-200 rounded cursor-pointer hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700">
+               <div className="cursor-pointer rounded bg-gray-200 p-2 transition duration-100 ease-in-out hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700">
                   <FiSettings
-                     className="w-6 h-6 text-gray-500 rounded-full cursor-pointer dark:text-gray-400"
+                     className="h-6 w-6 cursor-pointer rounded-full text-gray-500 dark:text-gray-400"
                      aria-label="Settings"
                      title="Settings"
                   />

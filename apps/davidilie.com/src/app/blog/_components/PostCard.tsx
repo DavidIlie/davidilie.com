@@ -1,13 +1,14 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import type { Blog } from "contentlayer/generated";
 import { formatDistance } from "date-fns";
 
-import { Tags } from "@david/ui";
-import { shimmer } from "~/lib/shimmer";
-import type { Blog } from "contentlayer/generated";
 import { prisma } from "~/server/db";
 import { insertPostInDbIfNotExist } from "~/server/lib/insertPostInDbIfNotExist";
+import { shimmer } from "~/lib/shimmer";
+
+import { Tags } from "@david/ui";
 
 type Type = Blog & { featured?: boolean };
 
@@ -31,16 +32,16 @@ const PostCard = async (props: Type) => {
       <Link href={`/blog/${props.slug}`}>
          <div
             className={`hidden ${
-               props.featured && "mt-14 rounded-tl-sm sm:block hidden"
-            } flex flex-row justify-center gap-4 mx-3 mb-4 transform bg-gray-100 border-2 border-gray-200 cursor-pointer dark:bg-gray-800 dark:border-gray-700 rounded-xl md:px-3 md:py-2 hoverItem duration-150`}
+               props.featured && "mt-14 hidden rounded-tl-sm sm:block"
+            } hoverItem mx-3 mb-4 flex transform cursor-pointer flex-row justify-center gap-4 rounded-xl border-2 border-gray-200 bg-gray-100 duration-150 dark:border-gray-700 dark:bg-gray-800 md:px-3 md:py-2`}
          >
-            <h1 className="z-10 absolute -top-9 -left-0.5 bg-blue-300 dark:bg-blue-600 text-blue-900 dark:text-blue-100 dark:bg-opacity-50 py-1 px-4 rounded-t font-semibold border-2 border-blue-200 dark:border-blue-700">
+            <h1 className="absolute -top-9 -left-0.5 z-10 rounded-t border-2 border-blue-200 bg-blue-300 py-1 px-4 font-semibold text-blue-900 dark:border-blue-700 dark:bg-blue-600 dark:bg-opacity-50 dark:text-blue-100">
                Featured Post
             </h1>
             <div className="flex gap-2">
                <Image
                   alt={props.title}
-                  className="object-cover rounded shadow-xl"
+                  className="rounded object-cover shadow-xl"
                   src={(props.structuredData as any).image}
                   blurDataURL={shimmer(1920, 1080)}
                   placeholder="blur"
@@ -51,13 +52,13 @@ const PostCard = async (props: Type) => {
                   {props.tags.map((tag, index) => (
                      <Tags tag={tag} key={index} />
                   ))}
-                  <h1 className="mt-1 mb-1 text-xl font-semibold md:text-2xl text-section">
+                  <h1 className="text-section mt-1 mb-1 text-xl font-semibold md:text-2xl">
                      {props.title}
                   </h1>
                   <p className="text-gray-800 dark:text-gray-300">
                      {props.summary}
                   </p>
-                  <h1 className="text-gray-800 dark:text-gray-400 mt-0.5 text-sm">
+                  <h1 className="mt-0.5 text-sm text-gray-800 dark:text-gray-400">
                      {postMeta}
                   </h1>
                </div>
@@ -66,7 +67,7 @@ const PostCard = async (props: Type) => {
          <div
             className={`${
                props.featured && "sm:hidden"
-            } mb-3 duration-200 bg-gray-100 border-2 border-gray-200 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700 hoverItem`}
+            } hoverItem mb-3 rounded-lg border-2 border-gray-200 bg-gray-100 shadow-2xl duration-200 dark:border-gray-700 dark:bg-gray-800`}
          >
             <div className="md:flex-shrink-0">
                <Image
@@ -76,20 +77,20 @@ const PostCard = async (props: Type) => {
                   height={300}
                   blurDataURL={shimmer(1920, 1080)}
                   placeholder="blur"
-                  className="object-cover rounded-lg rounded-b-none"
+                  className="rounded-lg rounded-b-none object-cover"
                />
             </div>
-            <div className="px-4 py-2 -mt-0.5 border-t-2 border-gray-700">
+            <div className="-mt-0.5 border-t-2 border-gray-700 px-4 py-2">
                <h2 className="h-16 text-2xl font-semibold tracking-normal line-clamp-2">
                   {props.title}
                </h2>
-               <p className="mt-2 mb-3 text-gray-800 text-md dark:text-gray-200 line-clamp-5">
+               <p className="text-md mt-2 mb-3 text-gray-800 line-clamp-5 dark:text-gray-200">
                   {props.summary}
                </p>
                {props.tags.map((tag, index) => (
                   <Tags tag={tag} key={index} />
                ))}
-               <div className="flex items-center mt-1 mb-1 mr-1">
+               <div className="mt-1 mb-1 mr-1 flex items-center">
                   <span className="text-sm text-gray-800 dark:text-gray-400">
                      {postMeta}
                   </span>

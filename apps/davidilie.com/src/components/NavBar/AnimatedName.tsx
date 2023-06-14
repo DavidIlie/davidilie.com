@@ -1,5 +1,5 @@
-import Link from "next/link";
 import React, { useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const AnimatedName: React.FC = () => {
@@ -14,13 +14,13 @@ const AnimatedName: React.FC = () => {
       >
          <Link
             href="/"
-            className={`text-3xl font-semibold text-black cursor-pointer dark:text-white ${
+            className={`cursor-pointer text-3xl font-semibold text-black dark:text-white ${
                pathname === "/" && "pointer-events-none"
             }`}
          >
             David Ilie
             <svg
-               className={`stroke-current text-blue-500 absolute ${
+               className={`absolute stroke-current text-blue-500 ${
                   isHover && "underlineDash"
                }`}
                xmlns="http://www.w3.org/2000/svg"

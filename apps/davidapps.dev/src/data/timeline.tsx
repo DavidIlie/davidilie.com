@@ -1,14 +1,14 @@
 import Image from "next/image";
-
-import { FaServer, FaGlobeEurope } from "react-icons/fa";
-import { SiProxmox, SiTruenas, SiHomeassistant } from "react-icons/si";
+import { FaGlobeEurope, FaServer } from "react-icons/fa";
+import { SiHomeassistant, SiProxmox, SiTruenas } from "react-icons/si";
 
 import {
    ExternalLink,
    HoverCard,
-   HoverCardTrigger,
    HoverCardContent,
+   HoverCardTrigger,
 } from "@david/ui";
+
 import { TimelineItemProps } from "~/components/TimelineItem";
 
 const HoverCardInformation: React.FC<{
@@ -22,7 +22,7 @@ const HoverCardInformation: React.FC<{
       <HoverCardTrigger>{name}</HoverCardTrigger>
       <HoverCardContent>
          <Image src={url} width={width} height={height} alt={name} />
-         <div className="w-full my-2 border-t" />
+         <div className="my-2 w-full border-t" />
          <p>{description ? description : name}</p>
       </HoverCardContent>
    </HoverCard>
@@ -143,7 +143,7 @@ export const items: TimelineItemProps[] = [
                and it has gone through many varations but I&apos;ve been
                sticking with TrueNAS and I&apos;ve been really enjoying it. I
                initially began when only the{" "}
-               <span className="px-1 font-mono text-yellow-500 rounded-md bg-yellow-500/10">
+               <span className="rounded-md bg-yellow-500/10 px-1 font-mono text-yellow-500">
                   core
                </span>{" "}
                variant.

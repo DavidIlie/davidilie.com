@@ -1,15 +1,16 @@
 import React from "react";
 import { FaSpotify } from "react-icons/fa";
 
-import { Tooltip, Footer as UIFooter } from "@david/ui";
-import { SPOTIFY_ACCOUNT } from "~/lib/constants";
 import { getPlayingStateAndSong } from "~/server/lib/spotify";
+import { SPOTIFY_ACCOUNT } from "~/lib/constants";
+
+import { Tooltip, Footer as UIFooter } from "@david/ui";
 
 const Footer = async () => {
    const data = await getPlayingStateAndSong();
    return (
       <UIFooter>
-         <div className="flex items-center mb-2 sm:mb-0 max-w-[16rem] sm:w-48 ">
+         <div className="mb-2 flex max-w-[16rem] items-center sm:mb-0 sm:w-48 ">
             <div className="flex">
                <div className="mr-1 text-2xl text-green-600 dark:text-green-500">
                   <Tooltip
@@ -30,7 +31,7 @@ const Footer = async () => {
                         rel="noreferrer"
                         className="font-semibold"
                      >
-                        <h1 className="truncate max-w-[16rem] sm:w-48 text-ellipsis">
+                        <h1 className="max-w-[16rem] truncate text-ellipsis sm:w-48">
                            {data.title}
                         </h1>
                      </a>
@@ -47,7 +48,7 @@ const Footer = async () => {
 export const FooterLoader = () => {
    return (
       <UIFooter>
-         <div className="flex max-w-[16rem] sm:w-48 mb-2 sm:mb-0">
+         <div className="mb-2 flex max-w-[16rem] sm:mb-0 sm:w-48">
             <a href={SPOTIFY_ACCOUNT} target="_blank" rel="noreferrer">
                <FaSpotify className="mr-1 text-2xl text-green-500" />
             </a>

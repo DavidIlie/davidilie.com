@@ -1,16 +1,16 @@
 import type { NextRequest } from "next/server";
-
-import { env } from "~/env.mjs";
-import { prisma } from "~/server/db";
-
 import webhook from "webhook-discord";
+
+import { prisma } from "~/server/db";
+import { env } from "~/env.mjs";
+
 const hook = new webhook.Webhook(env.DISCORD_WEBHOOK_URL);
 
 const youtubeQuery = async (
-   item: "subscriberCount" | "viewCount" | "videoCount"
+   item: "subscriberCount" | "viewCount" | "videoCount",
 ): Promise<number> => {
    const r = await fetch(
-      `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${env.STATISTICS_JOB_CHANNEL}&fields=items/statistics/${item}&key=${env.STATISTICS_JOB_API_KEY}`
+      `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${env.STATISTICS_JOB_CHANNEL}&fields=items/statistics/${item}&key=${env.STATISTICS_JOB_API_KEY}`,
    );
    const response = await r.json();
    return parseInt(response.items[0].statistics[item] as string);
@@ -43,11 +43,11 @@ export const GET = async (req: NextRequest) => {
    } catch (error: any) {
       hook.err(
          `Statistics Job ${env.NODE_ENV === "development" ? " (DEV)" : ""}`,
-         "```" + JSON.stringify(error) + "```"
+         "```" + JSON.stringify(error) + "```",
       );
       return new Response(
          JSON.stringify({ message: error.message || "Unknown Error" }),
-         { status: 500 }
+         { status: 500 },
       );
    }
 };

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 
-import { ExternalLink } from "@david/ui";
 import { prisma } from "~/server/db";
 import projects from "~/data/projects";
 
-import SmallProject from "~/components/Project/SmallProject";
+import { ExternalLink } from "@david/ui";
+
 import PinnedProject from "~/components/Project/PinnedProject";
+import SmallProject from "~/components/Project/SmallProject";
 
 export const metadata: Metadata = {
    title: "Projects",
@@ -16,7 +17,7 @@ const Page = async () => {
 
    return (
       <>
-         <h1 className="pb-2 -mb-4 text-5xl font-bold text-center sm:-mb-6 sm:text-6xl gradient-text">
+         <h1 className="gradient-text -mb-4 pb-2 text-center text-5xl font-bold sm:-mb-6 sm:text-6xl">
             Projects
          </h1>
          {projects.map((project, index) => (
@@ -27,7 +28,7 @@ const Page = async () => {
                key={index}
             />
          ))}
-         <h1 className="pb-2 -mt-2 text-5xl font-bold text-center sm:mt-5 sm:text-6xl gradient-text">
+         <h1 className="gradient-text -mt-2 pb-2 text-center text-5xl font-bold sm:mt-5 sm:text-6xl">
             Repositories
          </h1>
          <p className="mb-4 text-lg">
@@ -36,12 +37,12 @@ const Page = async () => {
                GitHub.
             </ExternalLink>
          </p>
-         <div className="container grid max-w-6xl grid-cols-1 gap-4 px-2 mx-auto sm:px-0 xl:grid-cols-3 md:grid-cols-2">
+         <div className="container mx-auto grid max-w-6xl grid-cols-1 gap-4 px-2 sm:px-0 md:grid-cols-2 xl:grid-cols-3">
             {githubProjects
                ?.sort(
                   (a, b) =>
                      new Date(a.lastPush).getTime() -
-                     new Date(b.lastPush).getTime()
+                     new Date(b.lastPush).getTime(),
                )
                .reverse()
                .map((project) => (

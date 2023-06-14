@@ -1,5 +1,5 @@
-import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
+import { ImageResponse } from "@vercel/og";
 
 import { env } from "~/env.mjs";
 
@@ -40,6 +40,6 @@ export const GET = (req: NextRequest) => {
       {
          width: 1920,
          height: 1080,
-      }
+      },
    );
 };

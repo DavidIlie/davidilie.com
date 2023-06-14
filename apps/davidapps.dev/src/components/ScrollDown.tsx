@@ -13,7 +13,7 @@ const ScrollDown: React.FC = () => {
 
    return (
       <div
-         className={`flex flex-col items-center justify-center h-16 w-32 cursor-pointer transform transition-transform duration-300 ${
+         className={`flex h-16 w-32 transform cursor-pointer flex-col items-center justify-center transition-transform duration-300 ${
             isHovered ? "rotate-180" : ""
          }`}
          onMouseEnter={handleHover}
@@ -35,7 +35,7 @@ const ScrollDown: React.FC = () => {
             />
          </svg>
          <span
-            className={`text-gray-400 mt-1 transition-opacity duration-300 ${
+            className={`mt-1 text-gray-400 transition-opacity duration-300 ${
                isHovered ? "opacity-0" : "opacity-100"
             }`}
          >

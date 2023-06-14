@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import Balancer from "react-wrap-balancer";
 import { notFound } from "next/navigation";
-
 import { allBlogs } from "contentlayer/generated";
-import { env } from "~/env.mjs";
-import { insertPostInDbIfNotExist } from "~/server/lib/insertPostInDbIfNotExist";
+import Balancer from "react-wrap-balancer";
+
 import { prisma } from "~/server/db";
+import { insertPostInDbIfNotExist } from "~/server/lib/insertPostInDbIfNotExist";
+import { env } from "~/env.mjs";
 
 import { Tags } from "@david/ui";
+
 import { Mdx } from "~/app/blog/_components/mdx";
 
 export function generateStaticParams() {
@@ -81,21 +82,21 @@ const Page = async ({ params }: { params: { slug: string } }) => {
          {post.tags.map((tag, index) => (
             <Tags tag={tag} key={index} />
          ))}
-         <h1 className="font-bold text-3xl max-w-[650px] mt-1 gradient-text">
+         <h1 className="gradient-text mt-1 max-w-[650px] text-3xl font-bold">
             <Balancer>{post.title}</Balancer>
          </h1>
-         <div className="grid grid-cols-[auto_1fr_auto] items-center mt-2 mb-6 font-mono text-sm max-w-[650px]">
-            <div className="px-2 py-1 tracking-tighter rounded-md bg-neutral-100 dark:bg-gray-800">
+         <div className="mt-2 mb-6 grid max-w-[650px] grid-cols-[auto_1fr_auto] items-center font-mono text-sm">
+            <div className="rounded-md bg-neutral-100 px-2 py-1 tracking-tighter dark:bg-gray-800">
                {post.publishedAt}
             </div>
-            <div className="h-[0.2em] bg-neutral-100 dark:bg-gray-700 mx-2" />
+            <div className="mx-2 h-[0.2em] bg-neutral-100 dark:bg-gray-700" />
             <h1 className="font-mono text-sm tracking-tighter text-neutral-500 dark:text-neutral-300">
                {postDb.views} view{postDb.views !== 1 ? "s" : ""}
             </h1>
          </div>
          <Mdx code={post.body.code} />
-         <div className="mt-4 mb-6 border-t-2 max-w-[650px] pt-4 border-neutral-100 dark:border-gray-700 ">
-            <h1 className="py-1 text-3xl font-bold sm:text-5xl gradient-text">
+         <div className="mt-4 mb-6 max-w-[650px] border-t-2 border-neutral-100 pt-4 dark:border-gray-700 ">
+            <h1 className="gradient-text py-1 text-3xl font-bold sm:text-5xl">
                What do you think?
             </h1>
             <p>TBD</p>

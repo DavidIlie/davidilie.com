@@ -2,10 +2,10 @@
 
 import {
    FaDiscord,
-   FaYoutube,
-   FaTwitter,
-   FaTwitch,
    FaGithub,
+   FaTwitch,
+   FaTwitter,
+   FaYoutube,
 } from "react-icons/fa";
 
 import { Tooltip } from "./Tooltip";
@@ -16,7 +16,7 @@ export const Socials: React.FC<{
 }> = ({ font, invisible = false }) => {
    return (
       <div
-         className={`mt-2 text-black dark:text-white flex gap-8 justify-center ${
+         className={`mt-2 flex justify-center gap-8 text-black dark:text-white ${
             invisible ? "invisible" : "visible"
          }`}
       >
@@ -78,7 +78,7 @@ export const SocialIcon: React.FC<
                   href={link}
                   target={newPage ? "_blank" : ""}
                   rel="noreferrer"
-                  className="hover:text-blue-100 duration-250"
+                  className="duration-250 hover:text-blue-100"
                   aria-label={`Social link: ${tooltip}`}
                >
                   {children}

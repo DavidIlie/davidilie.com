@@ -1,5 +1,4 @@
 import React from "react";
-
 import { GitHubProject } from "@prisma/client";
 
 const SmallProject: React.FC<{ project: GitHubProject }> = ({ project }) => {
@@ -8,20 +7,20 @@ const SmallProject: React.FC<{ project: GitHubProject }> = ({ project }) => {
          href={project.url}
          target="_blank"
          rel="noreferrer"
-         className="w-full h-full p-1 overflow-visible truncate"
+         className="h-full w-full overflow-visible truncate p-1"
       >
-         <div className="flex flex-col items-start justify-start p-3 pl-5 text-left truncate duration-200 bg-gray-100 border-2 border-gray-200 rounded-lg shadow-md cursor-pointer dark:bg-gray-800 dark:border-gray-700 hoverItem">
-            <h1 className="mb-3 text-xl font-semibold truncate">
+         <div className="hoverItem flex cursor-pointer flex-col items-start justify-start truncate rounded-lg border-2 border-gray-200 bg-gray-100 p-3 pl-5 text-left shadow-md duration-200 dark:border-gray-700 dark:bg-gray-800">
+            <h1 className="mb-3 truncate text-xl font-semibold">
                {project.name}
 
                {project.language ? (
-                  <span className="inline-flex items-center justify-center px-2 py-1 ml-2 mr-2 text-xs font-bold leading-none text-green-100 bg-green-600 rounded-md">
+                  <span className="ml-2 mr-2 inline-flex items-center justify-center rounded-md bg-green-600 px-2 py-1 text-xs font-bold leading-none text-green-100">
                      {project.language}
                   </span>
                ) : null}
             </h1>
             <h1
-               className="max-w-full text-gray-400 truncate"
+               className="max-w-full truncate text-gray-400"
                style={{ justifySelf: "center" }}
             >
                {project.description}

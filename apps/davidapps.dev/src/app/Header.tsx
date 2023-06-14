@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Slide, Fade } from "react-awesome-reveal";
+import React, { useEffect, useState } from "react";
+import { Fade, Slide } from "react-awesome-reveal";
 
 import { SplitText } from "@david/ui";
 
@@ -22,7 +22,7 @@ const Header: React.FC<{ showSpain: boolean }> = ({ showSpain }) => {
             <div className="relative">
                {showSpain && (
                   <Slide direction="right" triggerOnce delay={300}>
-                     <span className="absolute text-3xl -right-6 -top-4">
+                     <span className="absolute -right-6 -top-4 text-3xl">
                         🇪🇸
                      </span>
                   </Slide>
@@ -31,7 +31,7 @@ const Header: React.FC<{ showSpain: boolean }> = ({ showSpain }) => {
                   //@ts-ignore
                   initial={{ y: "100%" }}
                   animate="visible"
-                  className="text-3xl font-bold sm:text-5xl gradient-text"
+                  className="gradient-text text-3xl font-bold sm:text-5xl"
                   variants={{
                      //@ts-ignore
                      visible: (i) => ({
@@ -65,11 +65,11 @@ const Header: React.FC<{ showSpain: boolean }> = ({ showSpain }) => {
                      My own personal CLOUD
                   </SplitText>
                ) : (
-                  <p className="h-9 insisible"></p>
+                  <p className="insisible h-9"></p>
                )}
             </div>
             <Fade delay={750} duration={750} triggerOnce>
-               <div className="flex justify-center w-full mt-6">
+               <div className="mt-6 flex w-full justify-center">
                   <ScrollDown />
                </div>
             </Fade>
