@@ -8,7 +8,7 @@ import {
    HoverCard,
    HoverCardTrigger,
    HoverCardContent,
-} from "ui";
+} from "@david/ui";
 import { TimelineItemProps } from "~/components/TimelineItem";
 
 const HoverCardInformation: React.FC<{
@@ -100,8 +100,8 @@ export const items: TimelineItemProps[] = [
                <li>2x500GB NVME SSDS from Intel and Samsung for VMs</li>
                <li>2x500GB Sata SSDs in ZFS Raid 1 for OS</li>
                <li>
-                  8x500GB Sata SSDs via Dell's PERC HBA (4 in ZFS for more VMs,
-                  4 for Kubernetes)
+                  8x500GB Sata SSDs via Dell&apos;s PERC HBA (4 in ZFS for more
+                  VMs, 4 for Kubernetes)
                </li>
                <li>Sata controller with 2x500GB Sata SSDS from NAS cache</li>
                <li>
@@ -109,9 +109,9 @@ export const items: TimelineItemProps[] = [
                   P420i HBA controller.
                </li>
             </ul>
-            That's a lot of overkill hardware but my server is composed of
-            hardware/servers/computers that I've had laying around and it was
-            better to put it all in one.
+            That&apos;s a lot of overkill hardware but my server is composed of
+            hardware/servers/computers that I&apos;ve had laying around and it
+            was better to put it all in one.
          </div>
       ),
       image: "/server.gif",
@@ -124,9 +124,10 @@ export const items: TimelineItemProps[] = [
             hypervisor for the sole reason of <strong>reliability</strong>. I
             know it can withstand long amounts of uptime and has the best VM
             performance. I used to use its LXC container feature but not
-            anymore, you'll see why as you continue reading. I am using a RAID 1
-            for my bootdrive as the only problems I've had are with the drives
-            themselves so I want ultimate realibility while I am away.
+            anymore, you&apos;ll see why as you continue reading. I am using a
+            RAID 1 for my bootdrive as the only problems I&apos;ve had are with
+            the drives themselves so I want ultimate realibility while I am
+            away.
          </p>
       ),
       image: SiProxmox,
@@ -138,10 +139,10 @@ export const items: TimelineItemProps[] = [
       description: (
          <>
             <p>
-               I've always had some sort of NAS running for me and family and it
-               has gone through many varations but I've been sticking with
-               TrueNAS and I've been really enjoying it. I initially began when
-               only the{" "}
+               I&apos;ve always had some sort of NAS running for me and family
+               and it has gone through many varations but I&apos;ve been
+               sticking with TrueNAS and I&apos;ve been really enjoying it. I
+               initially began when only the{" "}
                <span className="px-1 font-mono text-yellow-500 rounded-md bg-yellow-500/10">
                   core
                </span>{" "}
@@ -173,16 +174,12 @@ export const items: TimelineItemProps[] = [
             <p>
                Some people might consider Kubernetes as an abstraction or a
                waste of resources but in my opinion I like it because of how fun
-               & interesting it is to configure and maintain. I've posted a
+               & interesting it is to configure and maintain. I&apos;ve posted a
                video on my{" "}
                <ExternalLink url="https://www.youtube.com/channel/UC92hn9Y8WcY_5LribMDW8uA">
                   YouTube Channel
                </ExternalLink>{" "}
-               regarding my{" "}
-               <a className="text-blue-600 duration-150 cursor-pointer hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-600">
-                  first couple clusters
-               </a>
-               .
+               regarding my first couple clusters.
             </p>
             <br />
             <p>
@@ -190,14 +187,14 @@ export const items: TimelineItemProps[] = [
                through code using
                <ExternalLink url="https://fluxcd.io/">Flux</ExternalLink>which
                makes it better than my previous Rancher based installations
-               which I wouldn't rememember what I did to get it running, making
-               it really difficult to redeploy. Thanks to the{" "}
+               which I wouldn&apos;t rememember what I did to get it running,
+               making it really difficult to redeploy. Thanks to the{" "}
                <ExternalLink url="https://k8s-at-home.com/">
                   k8s-at-home
                </ExternalLink>{" "}
-               and typically it's not recommended to use the same server for all
-               my worker and master nodes, but that is why I have different
-               types of disks for each one for good IOPS.
+               and typically it&apos;s not recommended to use the same server
+               for all my worker and master nodes, but that is why I have
+               different types of disks for each one for good IOPS.
             </p>
          </>
       ),
@@ -209,7 +206,7 @@ export const items: TimelineItemProps[] = [
       description: (
          <>
             <p>
-               I've recently had the ability to discover Home Assistant and
+               I&apos;ve recently had the ability to discover Home Assistant and
                automation at my two homes. I like how well it is integrated with
                my computer and also Apple Homekit.
             </p>

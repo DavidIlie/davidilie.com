@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { prisma } from "~/server/db";
+import { YouTubeStatistic } from "@prisma/client";
 
 import Header from "./_components/Header";
 import About from "./_components/About";
@@ -11,7 +12,8 @@ export const metadata: Metadata = {
 };
 
 const Page = async () => {
-   const stats = await prisma.youTubeStatistic.findFirst();
+   const stats =
+      (await prisma.youTubeStatistic.findFirst()) as YouTubeStatistic;
    return (
       <>
          <Header />

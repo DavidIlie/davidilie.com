@@ -1,34 +1,32 @@
 {
-   "display": "Next.js",
-   "extends": "../../tsconfig.json",
-   "compilerOptions": {
-      "plugins": [{ "name": "next" }],
-      "target": "es5",
-      "lib": ["dom", "dom.iterable", "esnext"],
-      "allowJs": true,
-      "checkJs": true,
-      "skipLibCheck": true,
-      "strict": false,
-      "forceConsistentCasingInFileNames": true,
-      "noEmit": true,
-      "incremental": true,
-      "esModuleInterop": true,
-      "module": "esnext",
-      "resolveJsonModule": true,
-      "isolatedModules": true,
-      "jsx": "preserve",
-      "baseUrl": ".",
-      "paths": {
-         "~/*": ["./src/*"]
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noImplicitAny": false,
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ],
+      "contentlayer/generated": [
+        "./.contentlayer/generated"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
       }
-   },
-   "exclude": [],
-   "include": [
-      "next-env.d.ts",
-      "**/*.ts",
-      "**/*.tsx",
-      "**/*.cjs",
-      "**/*.mjs",
-      ".next/types/**/*.ts"
-   ]
+    ],
+    "strictNullChecks": true,
+    "incremental": true
+  },
+  "exclude": [],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.mjs",
+    ".next/types/**/*.ts",
+    ".contentlayer/generated"
+  ]
 }

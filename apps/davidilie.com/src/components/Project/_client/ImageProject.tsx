@@ -6,16 +6,22 @@ import { formatDistance } from "date-fns";
 
 import { FiExternalLink } from "react-icons/fi";
 
-import { shimmer, Tags } from "ui";
+import { Tags } from "@david/ui";
 import { GitHubProject } from "@prisma/client";
 import { ProjectGitHub } from "~/data/projects";
+import { shimmer } from "~/lib/shimmer";
 
-const ImageProject: React.FC<{
+const ImageProject = ({
+   project,
+   left,
+   isGitHub,
+   repo,
+}: {
    project: ProjectGitHub;
    left: boolean;
    isGitHub: boolean;
    repo?: GitHubProject | null | undefined;
-}> = ({ project, left, isGitHub, repo }) => {
+}) => {
    return (
       <div className="relative my-12">
          <div

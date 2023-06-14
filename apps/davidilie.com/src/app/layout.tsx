@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Inter } from "next/font/google";
 
-import { BackgroundPattern } from "ui";
+import { BackgroundPattern } from "@david/ui";
 import { env } from "~/env.mjs";
 
 import { ThemeProvider } from "~/components/ThemeProvider";
@@ -10,7 +10,7 @@ import NavBar from "~/components/NavBar";
 import Footer, { FooterLoader } from "~/components/Footer";
 
 import "./globals.css";
-import "ui/styles.css";
+import "@david/ui/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
    },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
    children,
 }: {
    children: React.ReactNode;

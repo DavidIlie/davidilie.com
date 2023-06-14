@@ -1,6 +1,8 @@
-const client_id = process.env.SPOTIFY_CLIENT_ID;
-const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
-const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
+import { env } from "~/env.mjs";
+
+const client_id = env.SPOTIFY_CLIENT_ID;
+const client_secret = env.SPOTIFY_CLIENT_SECRET;
+const refresh_token = env.SPOTIFY_REFRESH_TOKEN;
 
 export const genSpotifyAuthHeaders = btoa(`${client_id}:${client_secret}`);
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
@@ -10,6 +12,7 @@ const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
 const getAccessToken = async () => {
+   if (!refresh_token) throw new Error("no refresh token");
    const response = await fetch(TOKEN_ENDPOINT, {
       method: `POST`,
       headers: {
@@ -22,7 +25,7 @@ const getAccessToken = async () => {
       }),
    });
 
-   return (await response.json()) as any as { access_token: string };
+   return (await response.json()) as { access_token: string };
 };
 
 const getNowPlaying = async () => {
@@ -85,8 +88,9 @@ export const getPlayingStateAndSong = async (): Promise<{
 
       const isPlaying = song.is_playing;
       const title = song.item.name;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       const artist = song.item.artists
-         .map((artist: any) => artist.name)
+         ?.map((artist) => artist.name as string)
          .join(", ");
       const album = song.item.album.name;
       const albumImageUrl = song.item.album.images[0].url;
@@ -142,7 +146,7 @@ export interface SongTrack {
       | {
            isrc: string;
         }
-      | Object;
+      | object;
    external_urls: { spotify: string };
    href: string;
    id: string;

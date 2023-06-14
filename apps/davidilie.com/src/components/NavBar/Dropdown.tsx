@@ -9,7 +9,7 @@ import {
    DropdownMenuSeparator,
    DropdownMenuTrigger,
    DropdownMenuItem,
-} from "ui";
+} from "@david/ui";
 
 const Dropdown: React.FC = () => {
    const { resolvedTheme, setTheme } = useTheme();

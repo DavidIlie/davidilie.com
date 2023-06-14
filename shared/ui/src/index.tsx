@@ -17,4 +17,3 @@ export * from "./LoadingSpinner";
 export * from "./Tags";
 
 export * from "./lib/badtailwind";
-export * from "./lib/shimmer";

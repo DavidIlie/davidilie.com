@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useMediaQuery } from "@mantine/hooks";
+
 import ImageProject from "./_client/ImageProject";
 import ResponsiveProject from "./_client/ResponsiveProject";
 

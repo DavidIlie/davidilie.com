@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import Link from "next/link";
 
-import { BackgroundPattern, Footer } from "ui";
+import { BackgroundPattern, Footer } from "@david/ui";
 
 import { ThemeProvider } from "~/components/ThemeProvider";
 import ThemeToggle from "~/components/ThemeToggle";

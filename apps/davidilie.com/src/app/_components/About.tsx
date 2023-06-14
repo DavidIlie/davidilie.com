@@ -4,10 +4,11 @@ import React from "react";
 import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
 
-import { Tooltip, shimmer } from "ui";
+import { Tooltip } from "@david/ui";
 import { YouTubeStatistic } from "@prisma/client";
+import { shimmer } from "~/lib/shimmer";
 
-const About: React.FC<{ stats: YouTubeStatistic }> = ({ stats }) => {
+const About = ({ stats }: { stats: YouTubeStatistic }) => {
    return (
       <>
          <div className="px-10 pt-12 pb-32 text-left text-white bg-blue-600 dark:bg-blue-800 dark:text-gray-100 sm:text-center">
@@ -18,14 +19,14 @@ const About: React.FC<{ stats: YouTubeStatistic }> = ({ stats }) => {
                <p className="mx-auto mb-32 text-lg sm:max-w-5xl">
                   I am an ambitious 16-year-old software developer and dedicated
                   full-time student. My passion for computer science has been
-                  with me since childhood, and it wasn't until about two years
-                  ago that I fully immersed myself in the world of proper
+                  with me since childhood, and it wasn&apos;t until about two
+                  years ago that I fully immersed myself in the world of proper
                   development. The presence of Software Engineering has
                   continuously fueled my motivation, driving me to pursue it as
-                  my ultimate "dream job". While I have always been curious
-                  about how technology functions, it is only recently that I
-                  have begun to create projects of my own. This website serves
-                  as a platform to share my{" "}
+                  my ultimate &quot;dream job&quot;. While I have always been
+                  curious about how technology functions, it is only recently
+                  that I have begun to create projects of my own. This website
+                  serves as a platform to share my{" "}
                   <span className="font-medium">experiments</span> with the
                   public and gather valuable feedback in the process. Join me on
                   this exciting journey of innovation and self-discovery.

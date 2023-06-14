@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { ExternalLink } from "ui";
+import { ExternalLink } from "@david/ui";
 import { prisma } from "~/server/db";
 import projects from "~/data/projects";
 

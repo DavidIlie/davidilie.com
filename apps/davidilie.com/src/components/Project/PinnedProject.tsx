@@ -13,7 +13,7 @@ const PinnedProject = async ({
    left: boolean;
 }) => {
    if (typeof (uncastedProject as any).repo_id === "string") {
-      let project = uncastedProject as ProjectGitHub;
+      const project = uncastedProject as ProjectGitHub;
       const data = await prisma.gitHubProject.findFirst({
          where: { name: project.repo_id },
       });
@@ -26,11 +26,10 @@ const PinnedProject = async ({
          />
       );
    } else {
-      let project = uncastedProject as ProjectGitHub;
       return (
          <ResponsiveProjectWrapper
             isGitHub={false}
-            project={project}
+            project={uncastedProject as ProjectGitHub}
             left={left}
          />
       );

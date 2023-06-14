@@ -2,15 +2,17 @@
    "private": true,
    "scripts": {
       "build": "turbo run build",
-      "dev": "turbo run dev",
-      "lint": "turbo run lint",
-      "format": "prettier --write \"**/*.{ts,tsx,md}\""
-   },
-   "devDependencies": {
-      "eslint": "^7.32.0",
-      "prettier": "^2.5.1",
-      "turbo": "^1.9.7"
+      "dev": "FORCE_COLOR=1 turbo dev --parallel",
+      "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
+      "lint": "turbo lint && manypkg check",
+      "lint:fix": "turbo lint:fix && manypkg fix",
+      "type-check": "turbo type-check"
    },
    "packageManager": "pnpm@7.15.0",
-   "name": "davidilie-platform"
+   "name": "davidilie-platform",
+   "dependencies": {
+      "@manypkg/cli": "^0.21.0",
+      "prettier": "^2.5.1",
+      "turbo": "^1.9.7"
+   }
 }

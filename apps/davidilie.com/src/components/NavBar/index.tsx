@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useParams } from "next/navigation";
 import Link from "next/link";
 
 import useScrollPosition from "~/hooks/useScrollPosition";
@@ -19,10 +19,11 @@ const pages = [
 const NavBar: React.FC = () => {
    const { y, max } = useScrollPosition();
    const pathname = usePathname();
+   const params = useParams();
 
    const [width, setWidth] = useState<number>(0);
 
-   const isBlogPage = pathname === "/blog/[slug]";
+   const isBlogPage = params.slug;
 
    useEffect(() => {
       if (isBlogPage) {
@@ -48,10 +49,8 @@ const NavBar: React.FC = () => {
    return (
       <nav
          className={`w-full fixed duration-300 z-50 backdrop-filter backdrop-blur-lg pb-4 ${
-            clickMobileMenu ? "bg-cyan-900/50" : "bg-opacity-30"
-         } ${
             !top &&
-            "backdrop-filter backdrop-blur-lg bg-blue-100/50 dark:bg-cyan-900/10 hover:bg-blue-100/100 dark:hover:bg-cyan-900/50 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.3)] shadow-black"
+            "backdrop-filter backdrop-blur-lg bg-blue-100/50 dark:bg-cyan-900/10 hover:bg-blue-100/100 dark:hover:bg-cyan-900/30 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.3)] shadow-black"
          }`}
       >
          {isBlogPage && (
@@ -72,8 +71,7 @@ const NavBar: React.FC = () => {
          )}
          <div
             className={`${
-               clickMobileMenu &&
-               "bg-white dark:bg-gray-800 bg-opacity-40 dark:bg-opacity-40"
+               clickMobileMenu && "bg-white/40 dark:bg-gray-800/50"
             }`}
          >
             <div className="px-8 pl-8 mx-auto -mt-1 max-w-7xl sm:px-6 sm:pl-8 lg:pl-8">
@@ -101,10 +99,10 @@ const NavBar: React.FC = () => {
                         <div className="flex items-baseline gap-4 mt-6 ml-10">
                            {pages.map((page, index) => (
                               <Link
-                                 href={page.url!}
+                                 href={page.url}
                                  key={index}
                                  className={
-                                    pathname === page.url! ||
+                                    pathname === page.url ||
                                     (isBlogPage && page.name === "Blog")
                                        ? `${
                                             !(
@@ -180,11 +178,11 @@ const NavBar: React.FC = () => {
                   <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                      {pages.map((page, index) => (
                         <Link
-                           href={page.url!}
+                           href={page.url}
                            key={index}
                            onClick={() => setClickMobileMenu(false)}
                            className={
-                              pathname === page.url! ||
+                              pathname === page.url ||
                               (isBlogPage && page.name === "Blog")
                                  ? `${
                                       !(isBlogPage && page.name === "Blog") &&

@@ -13,7 +13,7 @@ const youtubeQuery = async (
       `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${env.STATISTICS_JOB_CHANNEL}&fields=items/statistics/${item}&key=${env.STATISTICS_JOB_API_KEY}`
    );
    const response = await r.json();
-   return parseInt(response.items[0].statistics[item]);
+   return parseInt(response.items[0].statistics[item] as string);
 };
 
 export const GET = async (req: NextRequest) => {
@@ -40,7 +40,7 @@ export const GET = async (req: NextRequest) => {
       hook.success("", "YouTube: ```" + JSON.stringify(stats) + "```");
 
       return new Response(JSON.stringify({ message: "ok" }));
-   } catch (error) {
+   } catch (error: any) {
       hook.err(
          `Statistics Job ${env.NODE_ENV === "development" ? " (DEV)" : ""}`,
          "```" + JSON.stringify(error) + "```"

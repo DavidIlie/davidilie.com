@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import type { NextRequest } from "next/server";
+import { env } from "~/env.mjs";
 
 import { genSpotifyAuthHeaders } from "~/server/lib/spotify";
 
@@ -25,10 +26,10 @@ export const GET = async (req: NextRequest) => {
       },
       body: new URLSearchParams({
          grant_type: "authorization_code",
-         code: code as string,
+         code: code,
          redirect_uri: "http://localhost:3000/api/dev/spotify-oauth",
-         client_id: process.env.SPOTIFY_CLIENT_ID,
-         secret_id: process.env.SPOTIFY_SECRET_ID,
+         client_id: env.SPOTIFY_CLIENT_ID,
+         secret_id: env.SPOTIFY_CLIENT_SECRET,
       }),
    });
 

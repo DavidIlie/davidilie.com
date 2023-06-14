@@ -1,4 +1,4 @@
-const sharedConfig = require("tailwind/tailwind.config.js");
+const sharedConfig = require("@david/tailwind-config/tailwind.config.js");
 
 module.exports = {
    //    prefix: "ui-",

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { Socials, SplitText } from "ui";
+import { Socials, SplitText } from "@david/ui";
 
 const Header: React.FC = () => {
    const [secondVisible, setSecondVisible] = useState(false);

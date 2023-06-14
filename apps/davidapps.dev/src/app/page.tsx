@@ -4,7 +4,7 @@ import Header from "./Header";
 import TimelineItem from "~/components/TimelineItem";
 import { items } from "~/data/timeline";
 
-const Page = async () => {
+const Page = () => {
    return (
       <>
          <div className="flex items-center justify-center flex-grow min-h-screen px-4 text-center">
@@ -23,7 +23,7 @@ const Page = async () => {
                   ))}
                </div>
                <h1 className="mt-6 text-3xl font-medium text-center sm:text-5xl gradient-text">
-                  That's it...
+                  That&apos;s it...
                </h1>
             </div>
          </div>

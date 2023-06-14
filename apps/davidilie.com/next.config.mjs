@@ -1,3 +1,5 @@
+import { withContentlayer } from "next-contentlayer";
+
 import "./src/env.mjs";
 
 /** @type {import('next').NextConfig} */
@@ -12,6 +14,10 @@ const nextConfig = {
             protocol: "https",
             hostname: "github.com",
          },
+         {
+            protocol: "https",
+            hostname: "github-readme-stats.vercel.app",
+         },
       ],
    },
    experimental: {
@@ -19,6 +25,13 @@ const nextConfig = {
    },
    transpilePackages: ["ui", "tailwind"],
    output: "standalone",
+   webpack: (config) => {
+      config.infrastructureLogging = {
+         level: "error",
+      };
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+      return config;
+   },
 };
 
-export default nextConfig;
+export default withContentlayer(nextConfig);

@@ -6,15 +6,20 @@ import { formatDistance } from "date-fns";
 
 import { FiExternalLink } from "react-icons/fi";
 
-import { shimmer, Tags } from "ui";
+import { Tags } from "@david/ui";
 import { GitHubProject } from "@prisma/client";
 import { ProjectGitHub } from "~/data/projects";
+import { shimmer } from "~/lib/shimmer";
 
-const ResponsiveProject: React.FC<{
+const ResponsiveProject = ({
+   project,
+   isGitHub,
+   repo,
+}: {
    project: ProjectGitHub;
    isGitHub: boolean;
    repo?: GitHubProject | null | undefined;
-}> = ({ project, isGitHub, repo }) => {
+}) => {
    return (
       <div className="flex-col w-full my-8 bg-gray-100 border-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark: rounded-xl">
          <div className="relative aspect-[16/9]">
