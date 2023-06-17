@@ -7,7 +7,7 @@ import { ThemeProvider } from "~/components/ThemeProvider";
 import ThemeToggle from "~/components/ThemeToggle";
 
 import "./globals.css";
-import "ui/styles.css";
+import "@david/ui/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 

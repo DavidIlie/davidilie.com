@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -23,7 +27,7 @@ importers:
         specifier: ^1.9.7
         version: 1.9.7
 
-  apps/davidapps.dev:
+  apps/davidapps:
     dependencies:
       '@david/ui':
         specifier: 0.1.0
@@ -72,7 +76,7 @@ importers:
         specifier: 8.42.0
         version: 8.42.0
 
-  apps/davidilie.com:
+  apps/personal-website:
     dependencies:
       '@david/ui':
         specifier: 0.1.0
