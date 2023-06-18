@@ -17,21 +17,33 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
                <h1 className="mb-5 text-center text-4xl font-semibold sm:text-4xl md:text-5xl">
                   First of all, who am I?
                </h1>
-               <p className="mx-auto mb-32 text-lg sm:max-w-5xl">
-                  I am an ambitious 16-year-old software developer and dedicated
-                  full-time student. My passion for computer science has been
-                  with me since childhood, and it wasn&apos;t until about two
-                  years ago that I fully immersed myself in the world of proper
-                  development. The presence of Software Engineering has
-                  continuously fueled my motivation, driving me to pursue it as
-                  my ultimate &quot;dream job&quot;. While I have always been
-                  curious about how technology functions, it is only recently
-                  that I have begun to create projects of my own. This website
-                  serves as a platform to share my{" "}
-                  <span className="font-medium">experiments</span> with the
-                  public and gather valuable feedback in the process. Join me on
-                  this exciting journey of innovation and self-discovery.
-               </p>
+               <div className="mx-auto mb-32 gap-6 text-lg sm:flex sm:max-w-6xl">
+                  <p className="text-justify">
+                     I am an ambitious 16-year-old software developer and
+                     dedicated full-time student. My passion for computer
+                     science has been with me since childhood, and it
+                     wasn&apos;t until about two years ago that I fully immersed
+                     myself in the world of proper development. The presence of
+                     Software Engineering has continuously fueled my motivation,
+                     driving me to pursue it as my ultimate &quot;dream
+                     job&quot;. While I have always been curious about how
+                     technology functions, it is only recently that I have begun
+                     to create projects of my own. This website serves as a
+                     platform to share my{" "}
+                     <span className="font-medium">experiments</span> with the
+                     public and gather valuable feedback in the process. Join me
+                     on this exciting journey of innovation and self-discovery.
+                  </p>
+                  <Image
+                     src="/static/me.png"
+                     alt="Me"
+                     width={200}
+                     height={200}
+                     className="hidden rounded-full sm:block"
+                     blurDataURL={shimmer(150, 150)}
+                     placeholder="blur"
+                  />
+               </div>
             </Fade>
          </div>
          <Fade direction="up" triggerOnce>
@@ -41,11 +53,11 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
                      <Image
                         src="/static/frontend.svg"
                         alt="Frontend Developer"
-                        className="animate-wiggle h-24 w-24"
-                        blurDataURL={shimmer(1920, 1080)}
+                        className="h-24 w-24 animate-wiggle"
+                        blurDataURL={shimmer(250, 250)}
                         placeholder="blur"
-                        width="250"
-                        height="250"
+                        width={250}
+                        height={250}
                         title="Frontend Developer"
                      />
                   </div>
@@ -87,10 +99,10 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
                         src="/static/backend.svg"
                         alt="Backend Developer"
                         className="h-24 w-24 animate-pulse"
-                        blurDataURL={shimmer(1920, 1080)}
+                        blurDataURL={shimmer(250, 250)}
                         placeholder="blur"
-                        width="250"
-                        height="250"
+                        width={250}
+                        height={250}
                         title="Backend Developer"
                      />
                   </div>
@@ -133,11 +145,11 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
                      <Image
                         src="/static/contentcreator.svg"
                         alt="Content Creator"
-                        className="animate-bounce-up h-24 w-24"
-                        blurDataURL={shimmer(1920, 1080)}
+                        className="h-24 w-24 animate-bounce-up"
+                        blurDataURL={shimmer(250, 250)}
                         placeholder="blur"
-                        width="250"
-                        height="250"
+                        width={250}
+                        height={250}
                         title="Content Creator"
                      />
                   </div>
