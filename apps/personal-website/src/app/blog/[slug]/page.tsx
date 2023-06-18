@@ -11,7 +11,7 @@ import { env } from "~/env.mjs";
 
 import { Button, Tags } from "@david/ui";
 
-import { Mdx } from "~/app/blog/_components/mdx";
+import { Mdx } from "../_components/mdx";
 import Comments from "./_components/Comments";
 import ViewCounter from "./_components/ViewCounter";
 
