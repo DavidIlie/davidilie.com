@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allBlogs } from "contentlayer/generated";
+import { AiOutlineUser } from "react-icons/ai";
 import Balancer from "react-wrap-balancer";
 
-import { prisma } from "~/server/db";
+import { getServerAuthSession } from "~/server/auth";
 import { insertPostInDbIfNotExist } from "~/server/lib/insertPostInDbIfNotExist";
 import { env } from "~/env.mjs";
 
-import { Tags } from "@david/ui";
+import { Button, Tags } from "@david/ui";
 
 import { Mdx } from "~/app/blog/_components/mdx";
+import Comments from "./_components/Comments";
 import ViewCounter from "./_components/ViewCounter";
 
 export function generateStaticParams() {
@@ -67,9 +70,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
 
    await insertPostInDbIfNotExist(params.slug);
 
-   const comments = await prisma.comment.findMany({
-      where: { postSlug: params.slug },
-   });
+   const session = await getServerAuthSession();
 
    return (
       <section>
@@ -96,7 +97,39 @@ const Page = async ({ params }: { params: { slug: string } }) => {
             <h1 className="gradient-text py-1 text-3xl font-bold sm:text-5xl">
                What do you think?
             </h1>
-            <p>TBD</p>
+            <div className="my-4 w-full rounded border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800">
+               <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 md:text-xl">
+                  Leave a comment
+               </h2>
+               <p className="my-1 text-gray-800 dark:text-gray-200">
+                  Share your opinion regarding this post for other people to
+                  see.
+               </p>
+               <div className="mt-2">
+                  {!session ? (
+                     <Button asChild variant="secondary">
+                        <Link
+                           href={`/sign-in?returnUrl=${encodeURIComponent(
+                              `/blog/${post.slug}`,
+                           )}`}
+                           className="flex items-center gap-2"
+                        >
+                           <AiOutlineUser />
+                           Sign In
+                        </Link>
+                     </Button>
+                  ) : !session.user.canComment ? (
+                     <p className="font-semibold text-red-500">
+                        You are currently restricted from commenting.
+                     </p>
+                  ) : (
+                     <div />
+                  )}
+               </div>
+            </div>
+            {/*
+               // @ts-expect-error Server Component*/}
+            <Comments slug={post.slug} />
          </div>
       </section>
    );

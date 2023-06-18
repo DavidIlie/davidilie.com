@@ -12,7 +12,7 @@ import { Tooltip } from "@david/ui";
 const About = ({ stats }: { stats: YouTubeStatistic }) => {
    return (
       <>
-         <div className="bg-blue-600 px-10 pt-12 pb-32 text-left text-white dark:bg-blue-800 dark:text-gray-100 sm:text-center">
+         <div className="bg-blue-600 px-10 pb-32 pt-12 text-left text-white dark:bg-blue-800 dark:text-gray-100 sm:text-center">
             <Fade direction="left" triggerOnce cascade>
                <h1 className="mb-5 text-center text-4xl font-semibold sm:text-4xl md:text-5xl">
                   First of all, who am I?
@@ -36,7 +36,7 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
          </div>
          <Fade direction="up" triggerOnce>
             <div className="mx-auto mb-10 mt-[-14rem] flex max-w-[27rem] flex-wrap justify-evenly rounded-2xl bg-white shadow-xl dark:bg-gray-800 dark:text-gray-200 md:max-w-6xl md:flex-nowrap">
-               <div className="xs:w-full border-b-2 px-5 pt-10 dark:border-gray-600 md:border-r-2 md:border-b-0 xl:w-1/3 xl:border-r-2 xl:border-b-0 2xl:border-r-2 2xl:border-b-0">
+               <div className="xs:w-full border-b-2 px-5 pt-10 dark:border-gray-600 md:border-b-0 md:border-r-2 xl:w-1/3 xl:border-b-0 xl:border-r-2 2xl:border-b-0 2xl:border-r-2">
                   <div className="mb-3 flex justify-center">
                      <Image
                         src="/static/frontend.svg"
@@ -81,7 +81,7 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
                      <p className="text-lg">Pen & Paper</p>
                   </div>
                </div>
-               <div className="xs:w-full border-b-2 px-5 pt-10 dark:border-gray-600 md:border-r-2 md:border-b-0 xl:w-1/3 xl:border-r-2 xl:border-b-0 2xl:border-r-2">
+               <div className="xs:w-full border-b-2 px-5 pt-10 dark:border-gray-600 md:border-b-0 md:border-r-2 xl:w-1/3 xl:border-b-0 xl:border-r-2 2xl:border-r-2">
                   <div className="mb-3 flex justify-center">
                      <Image
                         src="/static/backend.svg"

@@ -12,6 +12,7 @@ declare module "next-auth" {
    interface Session extends DefaultSession {
       user: {
          id: string;
+         canComment: boolean;
       } & DefaultSession["user"];
    }
 }
@@ -23,6 +24,7 @@ export const authOptions: NextAuthOptions = {
          user: {
             ...session.user,
             id: user.id,
+            canComment: (user as any).canComment,
          },
       }),
    },

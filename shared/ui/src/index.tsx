@@ -4,6 +4,7 @@ import "tippy.js/animations/shift-away.css";
 
 export * from "./ui/dropdown-menu";
 export * from "./ui/hover-card";
+export * from "./ui/button";
 
 export * from "./BackgroundPattern";
 export * from "./Footer";
