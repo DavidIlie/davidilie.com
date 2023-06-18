@@ -8,7 +8,7 @@ import { BackgroundPattern } from "@david/ui";
 
 import Footer, { FooterLoader } from "~/components/Footer";
 import NavBar from "~/components/NavBar";
-import { ThemeProvider } from "~/components/ThemeProvider";
+import { Providers } from "~/components/Providers";
 
 import "./globals.css";
 import "@david/ui/styles.css";
@@ -60,7 +60,7 @@ export default function RootLayout({
    return (
       <html lang="en">
          <body className={inter.className}>
-            <ThemeProvider>
+            <Providers>
                <BackgroundPattern>
                   <NavBar />
                   {children}
@@ -70,7 +70,7 @@ export default function RootLayout({
                      <Footer />
                   </Suspense>
                </BackgroundPattern>
-            </ThemeProvider>
+            </Providers>
          </body>
       </html>
    );

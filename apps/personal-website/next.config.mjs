@@ -16,7 +16,15 @@ const nextConfig = {
          },
          {
             protocol: "https",
-            hostname: "github-readme-stats.vercel.app",
+            hostname: "i.scdn.co",
+         },
+         {
+            protocol: "https",
+            hostname: "cdn.discordapp.com",
+         },
+         {
+            protocol: "https",
+            hostname: "lh3.googleusercontent.com",
          },
       ],
    },
