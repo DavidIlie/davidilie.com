@@ -15,7 +15,8 @@ import "@david/ui/styles.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const SEO_DESCRIPTION = "Personal Portfolio";
+const SEO_DESCRIPTION =
+   "A 16 year old aspiring web developer experimenting with programming by publishing my work on the web for others to see and use.";
 
 export const metadata: Metadata = {
    metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
