@@ -34,7 +34,7 @@ const Comments = async ({ slug }: { slug: string }) => {
             className="rounded-full"
             alt={`${comment.user.name}'s profile image`}
          />
-         <div className="">
+         <div>
             <div className="w-full">
                <Linkify>{comment.comment}</Linkify>
             </div>
