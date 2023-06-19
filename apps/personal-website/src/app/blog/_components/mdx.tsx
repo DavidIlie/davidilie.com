@@ -54,6 +54,27 @@ const Callout = (props) => {
    );
 };
 
+export const YouTubeVideo = ({
+   url,
+   width = 560,
+   height = 312,
+}: {
+   url: string;
+   width?: number;
+   height?: number;
+}) => (
+   <div className="flex justify-center">
+      <iframe
+         width={width}
+         height={height}
+         src={url}
+         title="YouTube video player"
+         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+         allowFullScreen
+      />
+   </div>
+);
+
 export const GitHubRepository = ({
    username = "DavidIlie",
    repo,
@@ -78,6 +99,7 @@ export const GitHubRepository = ({
 const components = {
    Image: CustomImage,
    GitHubRepository,
+   YouTubeVideo,
    a: CustomLink,
    Callout,
 };

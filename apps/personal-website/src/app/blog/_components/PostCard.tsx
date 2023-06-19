@@ -69,17 +69,15 @@ const PostCard = async (props: Type) => {
                props.featured && "sm:hidden"
             } hoverItem mb-3 rounded-lg border-2 border-gray-200 bg-gray-100 shadow-2xl duration-200 dark:border-gray-700 dark:bg-gray-800`}
          >
-            <div className="md:flex-shrink-0">
-               <Image
-                  src={(props.structuredData as any).image}
-                  alt={props.title}
-                  width={500}
-                  height={300}
-                  blurDataURL={shimmer(1920, 1080)}
-                  placeholder="blur"
-                  className="rounded-lg rounded-b-none object-cover"
-               />
-            </div>
+            <Image
+               src={(props.structuredData as any).image}
+               alt={props.title}
+               width={500}
+               height={300}
+               blurDataURL={shimmer(1920, 1080)}
+               placeholder="blur"
+               className="rounded-lg rounded-b-none"
+            />
             <div className="-mt-0.5 border-t-2 border-gray-700 px-4 py-2">
                <h2 className="line-clamp-2 h-16 text-2xl font-semibold tracking-normal">
                   {props.title}

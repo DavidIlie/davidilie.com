@@ -13,8 +13,6 @@ const pages = [
    { name: "Home", url: "/" },
    { name: "Blog", url: "/blog" },
    { name: "Projects", url: "/projects" },
-   { name: "Gear", url: "/gear" },
-   { name: "Music", url: "/music" },
 ];
 
 const NavBar: React.FC = () => {
@@ -97,7 +95,7 @@ const NavBar: React.FC = () => {
                         )}
                      </div>
                      <div className="hidden sm:block">
-                        <div className="mt-6 ml-10 flex items-baseline gap-4">
+                        <div className="ml-10 mt-6 flex items-baseline gap-4">
                            {pages.map((page, index) => (
                               <Link
                                  href={page.url}
@@ -121,12 +119,12 @@ const NavBar: React.FC = () => {
                         </div>
                      </div>
                   </div>
-                  <div className="mt-8 ml-10 hidden space-x-4 sm:block">
+                  <div className="ml-10 mt-8 hidden space-x-4 sm:block">
                      <Dropdown />
                   </div>
                   <div className="block sm:hidden">
-                     <div className="mt-6 -mr-2 flex items-center md:hidden">
-                        <div className="mt-1.5 mr-5">
+                     <div className="-mr-2 mt-6 flex items-center md:hidden">
+                        <div className="mr-5 mt-1.5">
                            <Dropdown />
                         </div>
                         <button
@@ -176,7 +174,7 @@ const NavBar: React.FC = () => {
             </div>
             {clickMobileMenu && (
                <div className="h-screen text-center md:hidden">
-                  <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+                  <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                      {pages.map((page, index) => (
                         <Link
                            href={page.url}

@@ -50,8 +50,8 @@ const Comments = async ({ slug }: { slug: string }) => {
                      "d MMM yyyy 'at' h:mm bb",
                   )}
                </p>
-               {(comment.userId === session.user?.id ||
-                  session.user?.isAdmin) && <CommentDelete id={comment.id} />}
+               {(comment.userId === session?.user?.id ||
+                  session?.user?.isAdmin) && <CommentDelete id={comment.id} />}
             </div>
          </div>
       </div>

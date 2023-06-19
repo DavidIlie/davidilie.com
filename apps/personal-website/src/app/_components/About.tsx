@@ -18,7 +18,7 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
                   First of all, who am I?
                </h1>
                <div className="mx-auto mb-32 gap-6 text-lg sm:flex sm:max-w-6xl">
-                  <p className="text-justify">
+                  <p className="sm:text-justify">
                      I am an ambitious 16-year-old software developer and
                      dedicated full-time student. My passion for computer
                      science has been with me since childhood, and it

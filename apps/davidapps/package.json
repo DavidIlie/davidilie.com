@@ -10,7 +10,7 @@
    },
    "dependencies": {
       "@david/ui": "0.1.0",
-      "next": "13.4.5",
+      "next": "13.4.6",
       "next-themes": "^0.2.1",
       "postcss": "8.4.23",
       "react": "18.2.0",
