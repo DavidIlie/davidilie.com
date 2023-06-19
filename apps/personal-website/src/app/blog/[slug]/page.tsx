@@ -12,6 +12,7 @@ import { env } from "~/env.mjs";
 import { Button, Tags } from "@david/ui";
 
 import { Mdx } from "../_components/mdx";
+import CommentForm from "./_components/CommentForm";
 import Comments from "./_components/Comments";
 import ViewCounter from "./_components/ViewCounter";
 
@@ -84,7 +85,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
             <Balancer>{post.title}</Balancer>
          </h1>
          <div className="mb-6 mt-2 grid max-w-[650px] grid-cols-[auto_1fr_auto] items-center font-mono text-sm">
-            <div className="rounded-md bg-neutral-100 px-2 py-1 tracking-tighter dark:bg-gray-800">
+            <div className="px-2 py-1 tracking-tighter rounded-md bg-neutral-100 dark:bg-gray-800">
                {post.publishedAt}
             </div>
             <div className="mx-2 h-[0.2em] bg-neutral-100 dark:bg-gray-700" />
@@ -94,10 +95,10 @@ const Page = async ({ params }: { params: { slug: string } }) => {
          </div>
          <Mdx code={post.body.code} />
          <div className="mb-6 mt-4 max-w-[650px] border-t-2 border-neutral-100 pt-4 dark:border-gray-700 ">
-            <h1 className="gradient-text py-1 text-3xl font-bold sm:text-5xl">
+            <h1 className="py-1 text-3xl font-bold gradient-text sm:text-5xl">
                What do you think?
             </h1>
-            <div className="my-4 w-full rounded border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800">
+            <div className="w-full p-6 my-4 border border-gray-200 rounded bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
                <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 md:text-xl">
                   Leave a comment
                </h2>
@@ -123,7 +124,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
                         You are currently restricted from commenting.
                      </p>
                   ) : (
-                     <div />
+                     <CommentForm slug={post.slug} />
                   )}
                </div>
             </div>
