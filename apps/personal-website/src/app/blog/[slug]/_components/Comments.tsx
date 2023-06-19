@@ -1,12 +1,18 @@
 import Image from "next/image";
 import { format } from "date-fns";
+import { Session } from "next-auth";
 
+import { getServerAuthSession } from "~/server/auth";
 import { prisma } from "~/server/db";
 import { shimmer } from "~/lib/shimmer";
 
 import { Linkify } from "@david/ui";
 
+import CommentDelete from "./CommentDelete";
+
 const Comments = async ({ slug }: { slug: string }) => {
+   const session = (await getServerAuthSession()) as Session;
+
    const comments = await prisma.comment.findMany({
       where: { postSlug: slug },
       include: { user: true },
@@ -44,6 +50,8 @@ const Comments = async ({ slug }: { slug: string }) => {
                      "d MMM yyyy 'at' h:mm bb",
                   )}
                </p>
+               {(comment.userId === session.user?.id ||
+                  session.user?.isAdmin) && <CommentDelete id={comment.id} />}
             </div>
          </div>
       </div>

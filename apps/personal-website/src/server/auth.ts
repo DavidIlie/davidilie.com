@@ -13,6 +13,7 @@ declare module "next-auth" {
       user: {
          id: string;
          canComment: boolean;
+         isAdmin: boolean;
       } & DefaultSession["user"];
    }
 }
@@ -25,6 +26,7 @@ export const authOptions: NextAuthOptions = {
             ...session.user,
             id: user.id,
             canComment: (user as any).canComment,
+            isAdmin: (user as any).isAdmin,
          },
       }),
    },
