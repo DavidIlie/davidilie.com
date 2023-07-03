@@ -2,7 +2,7 @@ name: portfolio:davidapps-dev
 on:
    push:
       branches:
-         - master
+         - version5
       paths:
          - "apps/davidapps/**"
          - "shared/**"

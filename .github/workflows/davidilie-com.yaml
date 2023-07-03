@@ -2,7 +2,7 @@ name: portfolio:davidilie
 on:
    push:
       branches:
-         - master
+         - version5
       paths:
          - "apps/personal-website/**"
          - "shared/**"
