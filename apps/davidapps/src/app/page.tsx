@@ -17,7 +17,7 @@ const Page = () => {
                   {items.map((item, index) => (
                      <div key={index}>
                         {index !== 0 && (
-                           <div className="absolute top-0 bottom-0 left-[7.8rem] z-0 hidden w-1 bg-gray-800 dark:bg-gray-300 sm:block"></div>
+                           <div className="absolute bottom-0 left-[8.8rem] top-0 z-0 hidden w-1 bg-gray-800 dark:bg-gray-300 sm:block"></div>
                         )}
                         <TimelineItem {...(item as any)} />
                      </div>
