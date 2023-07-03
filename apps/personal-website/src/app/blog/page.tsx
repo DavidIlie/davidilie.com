@@ -7,17 +7,15 @@ export const metadata: Metadata = {
    title: "Blog",
 };
 
-export const dynamic = "force-dynamic";
-
 const Page = () => {
    const featuredPost = allBlogs[0] as Blog;
    return (
-      <div className="flex flex-grow items-center justify-center sm:px-6 lg:px-8">
-         <div className="container mx-auto mb-12 mt-32 max-w-4xl">
-            <h1 className="gradient-text text-center text-5xl font-bold">
+      <div className="flex items-center justify-center flex-grow sm:px-6 lg:px-8">
+         <div className="container max-w-4xl mx-auto mt-32 mb-12">
+            <h1 className="text-5xl font-bold text-center gradient-text">
                The David Ones
             </h1>
-            <p className="mb-6 mt-4 px-6 text-center sm:mb-0 md:px-12 md:text-lg">
+            <p className="px-6 mt-4 mb-6 text-center sm:mb-0 md:px-12 md:text-lg">
                I&apos;ve been writing blog posts since 2020, mostly about my
                random technologic encounters during my day-to-day life.
                Currently there are {allBlogs.length} blog post

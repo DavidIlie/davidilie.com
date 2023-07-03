@@ -86,7 +86,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
             </div>
             <div className="mx-2 h-[0.2em] bg-neutral-100 dark:bg-gray-700" />
             <h1 className="font-mono text-sm tracking-tighter text-neutral-500 dark:text-neutral-300">
-               <ViewCounter slug={params.slug} trackView />
+               <ViewCounter trackView />
             </h1>
          </div>
          <Mdx code={post.body.code} />

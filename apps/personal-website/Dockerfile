@@ -25,6 +25,9 @@ COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
 
 ENV SKIP_ENV_VALIDATION=1
+WORKDIR /app/apps/personal-website
+RUN npx prisma generate
+WORKDIR /app
 RUN turbo build --filter=personal-website...
 
 FROM node:18-alpine AS runner

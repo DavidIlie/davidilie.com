@@ -12,7 +12,7 @@ import { Tooltip } from "@david/ui";
 const About = ({ stats }: { stats: YouTubeStatistic }) => {
    return (
       <>
-         <div className="bg-blue-600 px-10 pb-32 pt-12 text-left text-white dark:bg-blue-800 dark:text-gray-100 sm:text-center">
+         <div className="bg-blue-600 px-10 pt-12 pb-32 text-left text-white dark:bg-blue-800 dark:text-gray-100 sm:text-center">
             <Fade direction="left" triggerOnce cascade>
                <h1 className="mb-5 text-center text-4xl font-semibold sm:text-4xl md:text-5xl">
                   First of all, who am I?

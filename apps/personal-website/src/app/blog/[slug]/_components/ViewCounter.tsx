@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 "use client";
 
 import { useEffect } from "react";
+import { useParams } from "next/navigation";
 import useSWR from "swr";
 
 type PostView = {
@@ -12,17 +14,12 @@ async function fetcher<JSON = any>(
    init?: RequestInit,
 ): Promise<JSON> {
    const res = await fetch(input, init);
-   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
    return res.json();
 }
 
-export default function ViewCounter({
-   slug,
-   trackView,
-}: {
-   slug: string;
-   trackView: boolean;
-}) {
+export default function ViewCounter({ trackView }: { trackView: boolean }) {
+   const params = useParams();
+   const { slug } = params as { slug: string };
    const { data } = useSWR<PostView>(`/api/views/${slug}`, fetcher);
    const views = (data && data.total) || 0;
 
@@ -40,8 +37,7 @@ export default function ViewCounter({
             void registerView();
          }
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [slug]);
+   }, [slug, trackView]);
 
    return (
       <p className="font-mono text-sm tracking-tighter text-neutral-500">

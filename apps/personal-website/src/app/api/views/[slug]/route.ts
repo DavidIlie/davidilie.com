@@ -24,9 +24,6 @@ export const GET = async (
    return new Response(JSON.stringify({ total: post.views }));
 };
 
-// TODO:
-// use rate limit with redis but then make it attach to logged
-// in session (if there is one) too with rate limit
 export const POST = async (
    _req: NextRequest,
    { params }: { params: { slug: string } },

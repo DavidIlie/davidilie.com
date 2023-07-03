@@ -79,10 +79,10 @@ const PostCard = async (props: Type) => {
                className="rounded-lg rounded-b-none"
             />
             <div className="-mt-0.5 border-t-2 border-gray-700 px-4 py-2">
-               <h2 className="line-clamp-2 h-16 text-2xl font-semibold tracking-normal">
+               <h2 className="h-16 text-2xl font-semibold tracking-normal line-clamp-2">
                   {props.title}
                </h2>
-               <p className="text-md mb-3 mt-2 line-clamp-5 text-gray-800 dark:text-gray-200">
+               <p className="text-md mb-3 mt-2 text-gray-800 line-clamp-5 dark:text-gray-200">
                   {props.summary}
                </p>
                {props.tags.map((tag, index) => (
