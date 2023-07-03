@@ -1,21 +1,18 @@
 import React, { Suspense } from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { allBlogs } from "contentlayer/generated";
-import { AiOutlineUser } from "react-icons/ai";
 import Balancer from "react-wrap-balancer";
 
-import { getServerAuthSession } from "~/server/auth";
 import { insertPostInDbIfNotExist } from "~/server/lib/insertPostInDbIfNotExist";
 import { env } from "~/env.mjs";
 
-import { Button, Tags } from "@david/ui";
+import { Tags } from "@david/ui";
 
 import { Mdx } from "../_components/mdx";
-import CommentForm from "./_components/CommentForm";
 import Comments from "./_components/Comments";
 import ViewCounter from "./_components/ViewCounter";
+import Interactions from "./interactions";
 
 export function generateStaticParams() {
    return allBlogs.map((post) => ({
@@ -72,8 +69,6 @@ const Page = async ({ params }: { params: { slug: string } }) => {
 
    await insertPostInDbIfNotExist(params.slug);
 
-   const session = await getServerAuthSession();
-
    return (
       <section>
          <script type="application/ld+json">
@@ -108,25 +103,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
                   see.
                </p>
                <div className="mt-2">
-                  {!session ? (
-                     <Button asChild variant="secondary">
-                        <Link
-                           href={`/sign-in?returnUrl=${encodeURIComponent(
-                              `/blog/${post.slug}`,
-                           )}`}
-                           className="flex items-center gap-2"
-                        >
-                           <AiOutlineUser />
-                           Sign In
-                        </Link>
-                     </Button>
-                  ) : !session.user.canComment ? (
-                     <p className="font-semibold text-red-500">
-                        You are currently restricted from commenting.
-                     </p>
-                  ) : (
-                     <CommentForm slug={post.slug} />
-                  )}
+                  <Interactions />
                </div>
             </div>
             <Suspense fallback={<div>Loading...</div>}>

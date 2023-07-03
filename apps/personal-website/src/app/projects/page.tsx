@@ -8,6 +8,8 @@ import { ExternalLink } from "@david/ui";
 import PinnedProject from "~/components/Project/PinnedProject";
 import SmallProject from "~/components/Project/SmallProject";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
    title: "Projects",
 };

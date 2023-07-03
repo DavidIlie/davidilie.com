@@ -50,8 +50,5 @@
       "@types/react": "18.2.6",
       "@types/react-dom": "18.2.4",
       "eslint": "8.42.0"
-   },
-   "prisma": {
-      "schema": "src/server/db/schema.prisma"
    }
 }

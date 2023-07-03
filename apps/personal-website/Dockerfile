@@ -24,6 +24,7 @@ RUN pnpm install
 COPY --from=builder /app/out/full/ .
 COPY turbo.json turbo.json
 
+ENV SKIP_ENV_VALIDATION=1
 RUN turbo build --filter=personal-website...
 
 FROM node:18-alpine AS runner

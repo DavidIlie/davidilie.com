@@ -1,5 +1,6 @@
 "use client";
 
+import { useParams } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -16,7 +17,10 @@ import {
 
 import { commentSchema } from "~/schema";
 
-const CommentForm = ({ slug }: { slug: string }) => {
+const CommentForm = () => {
+   const params = useParams();
+   const { slug } = params;
+
    const form = useForm<z.infer<typeof commentSchema>>({
       resolver: zodResolver(commentSchema),
       defaultValues: {

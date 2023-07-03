@@ -7,6 +7,8 @@ export const metadata: Metadata = {
    title: "Blog",
 };
 
+export const dynamic = "force-dynamic";
+
 const Page = () => {
    const featuredPost = allBlogs[0] as Blog;
    return (
