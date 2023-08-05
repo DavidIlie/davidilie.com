@@ -7,6 +7,8 @@ import { env } from "~/env.mjs";
 
 const hook = new webhook.Webhook(env.DISCORD_WEBHOOK_URL);
 
+export const dynamic = "force-dynamic";
+
 const createProjectJSON = (repo: any): GitHubProject => ({
    name: repo.name,
    url: repo.html_url,
