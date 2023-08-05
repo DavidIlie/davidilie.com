@@ -1,4 +1,4 @@
-import type { NextApiHandler } from "next";
+import type { NextRequest } from "next/server";
 import { GitHubProject } from "@prisma/client";
 import webhook from "webhook-discord";
 
@@ -16,14 +16,16 @@ const createProjectJSON = (repo: any): GitHubProject => ({
    language: repo.language,
 });
 
-const handler: NextApiHandler = async (req, res) => {
+export const GET = async (req: NextRequest) => {
    const hook = new webhook.Webhook(env.DISCORD_WEBHOOK_URL);
 
    try {
-      const { secret } = req.query;
+      const secret = req.nextUrl.searchParams.get("secret");
 
-      if (!secret || secret !== process.env.GITHUB_JOB_SECRET)
-         return res.status(401).json({ message: "haha no" });
+      if (!secret || secret !== env.GITHUB_JOB_SECRET)
+         return new Response(JSON.stringify({ message: "haha no" }), {
+            status: 400,
+         });
 
       const r = await fetch(
          `https://api.github.com/users/${env.GITHUB_JOB_USERNAME}/repos`,
@@ -46,16 +48,15 @@ const handler: NextApiHandler = async (req, res) => {
          "```Total Repos: " + response.length + "```",
       );
 
-      return res.json({ message: "ok" });
+      return new Response(JSON.stringify({ message: "ok" }));
    } catch (error: any) {
       hook.err(
          `GitHub Job ${env.NODE_ENV === "development" ? " (DEV)" : ""}`,
          "```" + JSON.stringify(error) + "```",
       );
-      return res
-         .status(500)
-         .json({ message: error.message || "Unknown Error" });
+      return new Response(
+         JSON.stringify({ message: error.message || "Unknown Error" }),
+         { status: 500 },
+      );
    }
 };
-
-export default handler;
