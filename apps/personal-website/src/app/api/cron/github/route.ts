@@ -5,10 +5,6 @@ import webhook from "webhook-discord";
 import { prisma } from "~/server/db";
 import { env } from "~/env.mjs";
 
-const hook = new webhook.Webhook(env.DISCORD_WEBHOOK_URL);
-
-export const dynamic = "force-dynamic";
-
 const createProjectJSON = (repo: any): GitHubProject => ({
    name: repo.name,
    url: repo.html_url,
@@ -21,6 +17,8 @@ const createProjectJSON = (repo: any): GitHubProject => ({
 });
 
 export const GET = async (req: NextRequest) => {
+   const hook = new webhook.Webhook(env.DISCORD_WEBHOOK_URL);
+
    try {
       const secret = req.nextUrl.searchParams.get("secret");
 
