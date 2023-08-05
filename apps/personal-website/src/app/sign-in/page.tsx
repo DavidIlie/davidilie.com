@@ -9,7 +9,7 @@ import { FaDiscord } from "react-icons/fa";
 
 const Page = () => {
    const params = useSearchParams();
-   const returnUrl = params.get("returnUrl");
+   const returnUrl = params?.get("returnUrl");
 
    return (
       <Fade triggerOnce>
@@ -60,7 +60,7 @@ const PlatformButton = (props: {
    platform: "google" | "discord";
 }) => {
    const params = useSearchParams();
-   const returnUrl = params.get("returnUrl");
+   const returnUrl = params?.get("returnUrl");
 
    return (
       <button
