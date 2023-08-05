@@ -22,7 +22,7 @@ const NavBar: React.FC = () => {
 
    const [width, setWidth] = useState<number>(0);
 
-   const isBlogPage = params.slug;
+   const isBlogPage = params?.slug;
 
    useEffect(() => {
       if (isBlogPage) {
