@@ -1,5 +1,4 @@
 import type { NextRequest } from "next/server";
-import { Octokit } from "@octokit/rest";
 import { GitHubProject } from "@prisma/client";
 import webhook from "webhook-discord";
 
@@ -7,8 +6,6 @@ import { prisma } from "~/server/db";
 import { env } from "~/env.mjs";
 
 const hook = new webhook.Webhook(env.DISCORD_WEBHOOK_URL);
-
-const octokit = new Octokit();
 
 const createProjectJSON = (repo: any): GitHubProject => ({
    name: repo.name,
@@ -30,10 +27,10 @@ export const GET = async (req: NextRequest) => {
             status: 400,
          });
 
-      const repos = await octokit.rest.repos.listForUser({
-         username: env.GITHUB_JOB_USERNAME,
-      });
-      const response = repos.data;
+      const r = await fetch(
+         `https://api.github.com/users/${env.GITHUB_JOB_USERNAME}/repos`,
+      );
+      const response = (await r.json()) as any[];
 
       await Promise.all(
          response.map(
