@@ -11,8 +11,6 @@ import { Tags } from "@david/ui";
 import { Mdx } from "../_components/mdx";
 import ViewCounter from "./_components/ViewCounter";
 
-export const dynamic = "force-dynamic";
-
 export function generateStaticParams() {
    return allBlogs.map((post) => ({
       slug: post.slug,
@@ -34,8 +32,8 @@ export function generateMetadata({ params }): Metadata {
    } = post;
 
    const ogImage = image
-      ? `${env.NEXT_PUBLIC_APP_URL}${image}`
-      : `${env.NEXT_PUBLIC_APP_URL}/api/og?title=${title}`;
+      ? `https://davidilie.com${image}`
+      : `https://davidilie.com/api/og?title=${title}`;
 
    return {
       title,
@@ -45,7 +43,7 @@ export function generateMetadata({ params }): Metadata {
          description,
          type: "article",
          publishedTime,
-         url: `${env.NEXT_PUBLIC_APP_URL}/blog/${slug}`,
+         url: `https://davidilie.com/blog/${slug}`,
          images: [
             {
                url: ogImage,
