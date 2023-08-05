@@ -19,7 +19,7 @@ const About = ({ stats }: { stats: YouTubeStatistic }) => {
                </h1>
                <div className="mx-auto mb-32 gap-6 text-lg sm:flex sm:max-w-6xl">
                   <p className="sm:text-justify">
-                     I am an ambitious 16-year-old software developer and
+                     I am an ambitious 17-year-old software developer and
                      dedicated full-time student. My passion for computer
                      science has been with me since childhood, and it
                      wasn&apos;t until about two years ago that I fully immersed

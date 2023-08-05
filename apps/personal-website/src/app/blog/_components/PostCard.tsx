@@ -14,9 +14,7 @@ type Type = Blog & { featured?: boolean };
 
 const PostCard = async (props: Type) => {
    await insertPostInDbIfNotExist(props.slug);
-   const comments = await prisma.comment.count({
-      where: { postSlug: props.slug },
-   });
+
    const post = (await prisma.post.findFirst({
       where: { slug: props.slug },
       select: { views: true },
@@ -24,9 +22,7 @@ const PostCard = async (props: Type) => {
 
    const postMeta = `${formatDistance(new Date(props.publishedAt), new Date(), {
       addSuffix: true,
-   })} ${post.views} view${post.views !== 1 ? "s" : ""} • ${comments} comment${
-      comments !== 1 ? "s" : ""
-   }`;
+   })} ${post.views}, view${post.views !== 1 ? "s" : ""}`;
 
    return (
       <Link href={`/blog/${props.slug}`}>

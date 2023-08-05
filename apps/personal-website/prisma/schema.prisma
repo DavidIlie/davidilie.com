@@ -1,6 +1,5 @@
 generator client {
     provider        = "prisma-client-js"
-    previewFeatures = ["jsonProtocol"]
 }
 
 datasource db {
@@ -11,17 +10,6 @@ datasource db {
 model Post {
   slug     String    @id
   views    Int       @default(0)
-  comments Comment[]
-}
-
-model Comment {
-  id        String   @id @default(uuid())
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  postSlug  String
-  post      Post     @relation(fields: [postSlug], references: [slug], onDelete: Cascade)
-  comment   String
-  createdAt DateTime @default(now())
 }
 
 model GitHubProject {
@@ -77,8 +65,6 @@ model User {
     accounts      Account[]
     sessions      Session[]
     isAdmin       Boolean   @default(false)
-    comments      Comment[]
-    canComment    Boolean   @default(true)
 }
 
 model VerificationToken {

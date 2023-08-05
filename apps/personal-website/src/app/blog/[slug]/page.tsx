@@ -1,18 +1,17 @@
-import React, { Suspense } from "react";
+import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { allBlogs } from "contentlayer/generated";
 import Balancer from "react-wrap-balancer";
 
-import { insertPostInDbIfNotExist } from "~/server/lib/insertPostInDbIfNotExist";
 import { env } from "~/env.mjs";
 
 import { Tags } from "@david/ui";
 
 import { Mdx } from "../_components/mdx";
-import Comments from "./_components/Comments";
 import ViewCounter from "./_components/ViewCounter";
-import Interactions from "./interactions";
+
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
    return allBlogs.map((post) => ({
@@ -62,18 +61,13 @@ export function generateMetadata({ params }): Metadata {
    };
 }
 
-const Page = async ({ params }: { params: { slug: string } }) => {
+const Page = ({ params }: { params: { slug: string } }) => {
    const post = allBlogs.find((post) => post.slug === params.slug);
 
    if (!post) return notFound();
 
-   await insertPostInDbIfNotExist(params.slug);
-
    return (
       <section>
-         <script type="application/ld+json">
-            {JSON.stringify(post.structuredData)}
-         </script>
          {post.tags.map((tag, index) => (
             <Tags tag={tag} key={index} />
          ))}
@@ -90,28 +84,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
             </h1>
          </div>
          <Mdx code={post.body.code} />
-         <div className="mb-6 mt-4 max-w-[650px] border-t-2 border-neutral-100 pt-4 dark:border-gray-700 ">
-            <h1 className="gradient-text py-1 text-3xl font-bold sm:text-5xl">
-               What do you think?
-            </h1>
-            <div className="my-4 w-full rounded border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800">
-               <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 md:text-xl">
-                  Leave a comment
-               </h2>
-               <p className="my-1 text-gray-800 dark:text-gray-200">
-                  Share your opinion regarding this post for other people to
-                  see.
-               </p>
-               <div className="mt-2">
-                  <Interactions />
-               </div>
-            </div>
-            <Suspense fallback={<div>Loading...</div>}>
-               {/*
-                  // @ts-expect-error Server Component*/}
-               <Comments slug={post.slug} />
-            </Suspense>
-         </div>
+         <div className="my-4" />
       </section>
    );
 };

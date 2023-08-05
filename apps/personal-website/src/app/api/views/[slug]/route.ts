@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import { prisma } from "~/server/db";
 import { insertPostInDbIfNotExist } from "~/server/lib/insertPostInDbIfNotExist";
@@ -8,9 +8,7 @@ export const GET = async (
    { params }: { params: { slug: string } },
 ) => {
    if (!params.slug)
-      return new Response(JSON.stringify({ message: "no slug" }), {
-         status: 404,
-      });
+      return NextResponse.json({ message: "no slug" }, { status: 404 });
 
    await insertPostInDbIfNotExist(params.slug);
 
@@ -21,7 +19,7 @@ export const GET = async (
 
    if (!post) throw new Error("this is impossible");
 
-   return new Response(JSON.stringify({ total: post.views }));
+   return NextResponse.json({ total: post.views });
 };
 
 export const POST = async (
@@ -29,9 +27,7 @@ export const POST = async (
    { params }: { params: { slug: string } },
 ) => {
    if (!params.slug)
-      return new Response(JSON.stringify({ message: "no slug" }), {
-         status: 404,
-      });
+      return NextResponse.json({ message: "no slug" }, { status: 404 });
 
    await insertPostInDbIfNotExist(params.slug);
 
@@ -46,5 +42,5 @@ export const POST = async (
       data: { views: post.views + 1 },
    });
 
-   return new Response(JSON.stringify({ total: post.views + 1 }));
+   return NextResponse.json({ total: post.views + 1 });
 };
