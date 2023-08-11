@@ -1,4 +1,4 @@
-import type { NextRequest } from "next/server";
+import { NextApiHandler } from "next";
 import webhook from "webhook-discord";
 
 import { prisma } from "~/server/db";
@@ -14,16 +14,14 @@ const youtubeQuery = async (
    return parseInt(response.items[0].statistics[item] as string);
 };
 
-export const GET = async (req: NextRequest) => {
+const handler: NextApiHandler = async (req, res) => {
    const hook = new webhook.Webhook(env.DISCORD_WEBHOOK_URL);
 
    try {
-      const secret = req.nextUrl.searchParams.get("secret");
+      const { secret } = req.query;
 
       if (!secret || secret !== env.STATISTICS_JOB_SECRET)
-         return new Response(JSON.stringify({ message: "haha no" }), {
-            status: 400,
-         });
+         return res.status(400).json({ message: "haha no" });
 
       const stats = {
          subscribers: await youtubeQuery("subscriberCount"),
@@ -39,15 +37,16 @@ export const GET = async (req: NextRequest) => {
 
       hook.success("", "YouTube: ```" + JSON.stringify(stats) + "```");
 
-      return new Response(JSON.stringify({ message: "ok" }));
+      return res.json({ message: "ok" });
    } catch (error: any) {
       hook.err(
          `Statistics Job ${env.NODE_ENV === "development" ? " (DEV)" : ""}`,
          "```" + JSON.stringify(error) + "```",
       );
-      return new Response(
-         JSON.stringify({ message: error.message || "Unknown Error" }),
-         { status: 500 },
-      );
+      return res
+         .status(500)
+         .json({ message: error.message || "Unknown Error" });
    }
 };
+
+export default handler;
