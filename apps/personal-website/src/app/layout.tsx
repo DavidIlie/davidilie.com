@@ -2,8 +2,6 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { env } from "~/env.mjs";
-
 import { BackgroundPattern } from "@david/ui";
 
 import Footer, { FooterLoader } from "~/components/Footer";
@@ -19,9 +17,9 @@ const SEO_DESCRIPTION =
    "A 16 year old aspiring web developer experimenting with programming by publishing my work on the web for others to see and use.";
 
 export const metadata: Metadata = {
-   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
+   metadataBase: new URL("https://davidilie.com"),
    alternates: {
-      canonical: env.NEXT_PUBLIC_APP_URL,
+      canonical: "https://davidilie.com",
    },
    title: {
       template: "%s | David Ilie",
@@ -39,7 +37,7 @@ export const metadata: Metadata = {
    },
    keywords: ["Personal Website", "CV", "Portoflio", "Next.js", "tRPC"],
    openGraph: {
-      url: env.NEXT_PUBLIC_APP_URL,
+      url: "https://davidilie.com",
       title: "David Ilie",
       type: "website",
       siteName: "David Ilie",

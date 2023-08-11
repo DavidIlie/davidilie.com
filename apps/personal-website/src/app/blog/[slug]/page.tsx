@@ -4,8 +4,6 @@ import { notFound } from "next/navigation";
 import { allBlogs } from "contentlayer/generated";
 import Balancer from "react-wrap-balancer";
 
-import { env } from "~/env.mjs";
-
 import { Tags } from "@david/ui";
 
 import { Mdx } from "../_components/mdx";
