@@ -63,7 +63,7 @@ export const YouTubeVideo = ({
    width?: number;
    height?: number;
 }) => (
-   <div className="flex justify-center">
+   <div className="mb-8 flex justify-center">
       <iframe
          width={width}
          height={height}

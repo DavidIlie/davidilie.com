@@ -44,7 +44,7 @@ Before I talk about the solution, you first need to understand the stack I used 
 
 I mentioned in one of my previous blog posts that I love [Next.js](https://nextjs.org), which one of its main features is that it uses SSR by default; allowing me to use `getServerSideProps` to make requests before the page actually loads, preventing the need for nested if statements checking if my `isLoggedIn` requests have gone through (see example above).
 
-```tsx title="getServerSideProps method"
+```tsx
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
    const user = await loginCheckAndGetUser(req, res);
    return {
@@ -57,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
 I also have a `getInitialProps` function running on `_app.tsx` which fetches the settings for my website:
 
-```tsx title="_app.tsx getInitialProps method"
+```tsx
 App.getInitialProps = async () => {
    const settingsRequest = await fetch(`${process.env.API_URL}/api/settings`);
    const settingsResponse = await settingsRequest.json();
@@ -79,13 +79,13 @@ That's when I started looking into other, more _basic_, state management librari
 
 First you need to install [zustand](https://github.com/pmndrs/zustand):
 
-```bash title="Terminal"
+```bash
 yarn add zustand
 ```
 
 Afterwards you can create a "store" for your data:
 
-```ts title="Custom Zustand Store"
+```ts
 import { SettingsType } from "@sharex-server/common";
 import create from "zustand";
 
@@ -123,7 +123,7 @@ const [finishedDataCheck, setFinishedDataCheck] = useState<boolean>(false);
 
 Then we create a check to not return any JSX if finishedDataCheck is false:
 
-```tsx title="Not render JSX if data is not loaded"
+```tsx
 if (!finishedSettingsCheck) {
    return null;
 }
@@ -131,7 +131,7 @@ if (!finishedSettingsCheck) {
 
 Afterwards we create a useEffect hook which complies with the 3 points I mentioned earlier:
 
-```tsx title="Example useEffect hook"
+```tsx
 const { settings, updateSettings } = useSettingsStore((s) => s);
 const { user, updateUser } = useUserStore();
 
@@ -152,7 +152,7 @@ useEffect(() => {
 
 With that done, we can now create a custom hook which we can use in any page, **any time**:
 
-```ts title="Custom Hook for the zustand store"
+```ts
 import { useSettingsStore } from "@global-stores/useSettingsStore";
 
 export default function useSettings() {
@@ -166,7 +166,7 @@ export default function useSettings() {
 
 Now, any time I want, I can use this hook to fetch my data and I won't need any `isLoading` if statements or risk it being undefined (unless the server is offline :p)
 
-```ts title="Example"
+```ts
 const settings = useSettings();
 ```
 
@@ -176,13 +176,13 @@ One of my goals was to also be able to update the data whenever I want, and then
 
 Take a look at this function, I first import the store (without the hook) so that I have access to the update function:
 
-```tsx title="Example"
+```tsx
 const { user, updateUser } = useUserStore();
 ```
 
 Now, we can actually use the function:
 
-```tsx title="Real Example"
+```tsx
 onSubmit={async (data, { setSubmitting }) => {
     setSubmitting(true);
 

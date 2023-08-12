@@ -1,0 +1,257 @@
+---
+title: "Smart air conditioners are too DUMB, so I hacked them to work in my smart home!"
+publishedAt: "2023-08-11"
+summary: "I wanted to upgrade the old-fashioned air conditioners, so I embarked on a journey of exploration. Converting complex code proved tough, but with some creative ideas and AI assistance, I managed to succeed."
+tags:
+   - Home Assistant
+   - Tuya
+   - Homekit
+---
+
+# Video
+
+This blog is an adaptation of my YouTube script which you can find the video of below:
+
+<YouTubeVideo url="https://www.youtube.com/embed/A8ICsEnGfkg" />
+
+# The first adventure
+
+The adventure initially began when the air conditioner my parents bought for my office, from the company TCL, contained a smart controller which you could only use with an app called TCLHome. After doing some googling I found that there is no Home Assistant or similar integration and that it’s all powered by their proprietary app.
+
+I was stuck for a few hours because since it’s a mobile only app, I couldn’t easily monitor what it was doing so I could implement it myself as an integration. Until it came to me that I could download the app on an emulator and run it through a Man In The Middle proxy, which from its name acts in between the client and the server and shows me what requests are being made from the phone when I use the app which is exactly like a browser dev tool.
+
+<Callout emoji="🤔">
+   Only issue was I had to use a very old android emulator which still supported
+   basic proxies like these.
+</Callout>
+
+It was so interesting to see how other applications structure their requests and then send them to a specific server.
+
+## How the TCLHome app works
+
+The way the TCLHome app works, is that you first authenticate with a username and password to get an access token, you then use that access token to authenticate to another API to get a “Saas Token” (I don’t know why it’s named like that) from a refresh token endpoint.
+
+```ts
+const password = crypto
+    .createHash("md5")
+    .update(env.TCL_PASSWORD)
+    .digest("hex");
+
+const loginR = await fetch(
+    `https://pa.account.tcl.com/account/login?clientId=${CLIENT_ID}`,
+    {
+        method: "POST",
+        body: JSON.stringify({
+            equipment: 2,
+            password: password,
+            osType: 1,
+            username: env.TCL_USERNAME,
+            clientVersion: "4.8.1",
+            osVersion: "6.0",
+            deviceModel: "AndroidAndroid SDK built for x86",
+            captchaRule: 2,
+            channel: "app",
+        }),
+        headers: {
+            th_platform: "android",
+            th_version: "4.8.1",
+            th_appbulid: "830",
+            "user-agent": "Android",
+            "content-type": "application/json; charset=UTF-8",
+        },
+        compress: true,
+    }
+);
+return (await loginR.json()) as UserLoginResponse;
+```
+
+```ts
+const refreshR = await fetch(
+   "https://prod-eu.aws.tcljd.com/v3/auth/refresh_tokens",
+   {
+      method: "POST",
+      compress: true,
+      body: JSON.stringify({
+         userId: username,
+         ssoToken: accessToken,
+         appId,
+      }),
+      headers: {
+         "user-agent": "Android",
+         "content-type": "application/json; charset=UTF-8",
+         "accept-encoding": "gzip, deflate, br",
+      },
+   },
+);
+
+const refreshResponse = (await refreshR.json()) as RefreshTokensResponse;
+const saasToken = refreshResponse.data.saasToken;
+
+await db.update({ saasToken: saasToken });
+
+req["data"] = db.value;
+```
+
+<Callout italic>
+   With that token achieved I imagined it would be same as before copying the
+   request headers and appending the new token but it my excitement grew short.
+   There was some sort of checksum that was being calculated on the application
+   and then sent to the application.
+</Callout>
+
+# What will ya do with a drunken sailor' 🏴‍☠️
+
+-  **APK Decompilation**: The APK file of the TCLHome app was decompiled using [Vineflower](https://github.com/Vineflower/vineflower), which partially converted the Smali code to Java. While the decompiled code was limited, it provided valuable insights into the inner workings of the app.
+-  **Smali to Java Conversion with ChatGPT**: I used ChatGPT to assist in converting Smali code into Java. This allowed me to understand the function responsible for generating the hash token required for API requests.
+-  **Code Conversion to Typescript**: The extracted Java code was then converted to TypeScript to align with the API server which hopefully I will rewrite to a pure Home Assistant integration one day
+-  **API Interaction**: We implemented functions to generate the required tokens, calculate the hash, and make authenticated requests to the TCLHome API. The result was successful retrieval of data, including the live power state of TCL air conditioners.
+
+Below you can see the function I use to get the power state:
+
+```ts
+const timestamp: string = String(Date.now());
+const nonce: string = Math.random().toString(36).substring(2);
+const sign = calculateMD5HashBytes(timestamp + nonce + saasToken);
+
+const { country } = db.value as { country: string };
+
+const r = await fetch("https://prod-eu.aws.tcljd.com/v3/user/get_things", {
+    method: "POST",
+    headers: {
+        platform: "android",
+        appversion: "5.4.1",
+        thomeversion: "4.8.1",
+        accesstoken: saasToken,
+        countrycode: country,
+        "accept-language": "en",
+        timestamp,
+        nonce,
+        sign,
+        "user-agent": "Android",
+        "content-type": "application/json; charset=UTF-8",
+        "accept-encoding": "gzip, deflate, br",
+    },
+    body: JSON.stringify({}),
+});
+
+const response = await r.json();
+
+if (r.status !== 200) return { error: response };
+
+return {
+    on:
+        parseInt(response.data[0].identifiers[0].value) === 1
+        ? "true"
+        : "false",
+};
+```
+
+<Callout emoji="🙏">someone hire me!!!</Callout>
+
+I thought I could go more and try and control the air conditioner and I might do that in a future video, but all I know as of now is that it uses some more attributes from a previous request I made to authenticate itself to AWS and then to an MQTT server which I can’t snoop because it detects a proxy, so this is way out of my league.
+
+## Not all hope is lost!
+
+One temporary solution I found was from the manual, TCLHome allows me to add the Air Conditioners to Google Assistant, allowing me to first of all have full control from the Google Home app but that would’ve been the same experience as just having the TCLHome app as I’m an Apple user and don’t have Google powered devices in my home except for televisions. However through a double entendre Home Assistant supports talking to Google Assistant. So I just used the Home Assistant API to communicate to Google Assistant to turn my air conditioner on and off. Once I created the API and deployed it to my Home Kubernetes cluster and then I created a simple switch in Home Assistant to be able to turn it on and off from its web interface, Siri and Google Assistant.
+
+```ts
+const r = await fetch(
+    `${env.HASS_URL}/api/services/google_assistant_sdk/send_text_command`,
+    {
+    method: "POST",
+    headers: {
+        Authorization: `Bearer ${env.HASS_API_TOKEN}`,
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ command: "Turn airco off" }),
+    }
+);
+
+if (r.status === 200) return res.json({ message: "ok" });
+
+return res.json({ message: "problem" });
+```
+
+You can check out the repository below to see my findings and to assist if you'd like to.
+
+<GitHubRepository repo="tcl-home-ac" />
+
+That was the hardest from a logical and research point of view step to implementing my air conditioners into Home Assistant, my next challenge was the standalone air conditioners in the Living Room and Bedroom. As a test alongside other products that i’ll show in later videos, I purchased a cheap “Tuya Smart Home IR” device from Aliexpress which essentially acts as a remote for the air conditioner and can also control other things like a TV at the same time.
+
+<Image
+   src="/content/hacking-air-conditioners/tuya-box.jpg"
+   width={1920}
+   height={1080}
+   alt="The box that I purchased to use."
+/>
+
+## Tuya Rant
+
+<Callout italic>
+   Tuya is a Chinese artificial intelligence and internet of things platform as
+   a service provider
+</Callout>
+
+Which basically means that people who produce cheap things like this can use Tuya’s server to integrate their products and they don’t have to worry about their own, making Tuya the most popular platform for cheap Aliexpress smart devices. To the naked eye it sounds like a compelling deal, since it’s so popular it should have integrations with everything, well yes and no.
+
+<Image
+   src="/content/hacking-air-conditioners/air-conditioner-downstairs.jpg"
+   width={1920}
+   height={1080}
+   alt="The air conditioner in the living room."
+/>
+
+Since there are so many different products offered by Tuya, not all of them work right out of the box outside the Tuya platform. Of course Tuya themselves have created an integration for Home Assistant but it reports my air conditioner as unsupported as I read online before buying. I still bought it because I wanted to make this video more interesting, and in fact after looking at Tuya’s API it’s extremely easy to control the IR remote once you add it to the application and also to the developer portal and if you where to look in the documentation. But overall I recommended you stay away from Tuya unless you do very detailed research about the EXACT model you are buying or are as nerdy as me.
+
+My next challenge was learning how to make a Home Assistant integration for the air conditioner.
+
+## Creating the Home Assistant Integration
+
+Obviously looking at it now, I should have just read the documentation, but initially I felt lucky and told ChatGPT what I knew and asked it to do it for me. It… tried, but ultimately it ended up putting me in a lot of confused states where I was asking more questions than I could even get answers for.
+
+```python
+# These are the most important API-related functions
+async def get_status(self):
+    url = f"/v2.0/infrareds/{self.ir_remote_device_id}/remotes/{self.thermostat_device_id}/ac/status"
+    _LOGGER.info(url)
+    try:
+        data = await self.hass.async_add_executor_job(self.openapi.get, url)
+        if data.get("success"):
+            _LOGGER.info(pformat("GET_STATUS " + str(data.get("result"))))
+            return data.get("result")
+    except Exception as e:
+        _LOGGER.error(f"Error fetching status: {e}")
+    return None
+
+async def send_command(self, code, value):
+    url = f"/v2.0/infrareds/{self.ir_remote_device_id}/air-conditioners/{self.thermostat_device_id}/command"
+    _LOGGER.info(url)
+    try:
+        _LOGGER.info(pformat("SEND_COMMAND_CODE_THEN_VAL " + code + " " + value))
+        data = await self.hass.async_add_executor_job(
+            self.openapi.post,
+            url,
+            {
+                "code": code,
+                "value": value,
+            },
+        )
+        _LOGGER.info(pformat("SEND_COMMAND_END " + str(data)))
+        return data
+    except Exception as e:
+        _LOGGER.error(f"Error sending command: {e}")
+        return False
+```
+
+Don’t get me wrong, combining the initial code with my knowledge of Python and the docs on hand allowed me to slowly get it working in Home Assistant and then asking it to help me about different problems I had along the way.
+
+<Image
+   src="/content/hacking-air-conditioners/apple-home.jpg"
+   width={1920}
+   height={1080}
+   alt="Apple home where you can also see the AC."
+/>
+
+Now I can see both the air conditioner in my office which I can turn on and off, and a complete controllable air conditioner in the living room on the Home Assistant web page, apple home which is through siri and Google Assistant. I was so pleased when my Apple Home started to get more and more full of devices all running on my little Raspberry Pi. As for the third air conditioner, i’m not sure yet, but I do have some things I want to say.
+
+##

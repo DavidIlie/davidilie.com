@@ -22,7 +22,7 @@ const PostCard = async (props: Type) => {
 
    const postMeta = `${formatDistance(new Date(props.publishedAt), new Date(), {
       addSuffix: true,
-   })} ${post.views}, view${post.views !== 1 ? "s" : ""}`;
+   })}, ${post.views} view${post.views !== 1 ? "s" : ""}`;
 
    return (
       <Link href={`/blog/${props.slug}`}>
