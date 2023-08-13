@@ -11,8 +11,6 @@ export const metadata: Metadata = {
    title: "Home",
 };
 
-export const dynamic = "force-dynamic";
-
 const Page = async () => {
    const stats =
       (await prisma.youTubeStatistic.findFirst()) as YouTubeStatistic;
