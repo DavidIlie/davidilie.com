@@ -11,7 +11,7 @@
    },
    "dependencies": {
       "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
-      "@t3-oss/env-nextjs": "^0.6.0",
+      "@t3-oss/env-nextjs": "^0.6.1",
       "@types/node": "20.5.0",
       "@types/prettier": "^3.0.0",
       "@types/react": "18.2.20",

@@ -18,7 +18,7 @@ export const env = createEnv({
    client: {
       NEXT_PUBLIC_APP_URL: z.string().url(),
    },
-   runtimeEnv: {
+   experimental__runtimeEnv: {
       NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
    },
    skipValidation: !!process.env.SKIP_ENV_VALIDATION,
