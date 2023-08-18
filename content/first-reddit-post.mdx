@@ -1,0 +1,208 @@
+---
+title: "My experience showcasing one of my projects on Reddit, and tripling my visits."
+publishedAt: "2021-10-03"
+summary: "A couple of months back, I created my own self-hosted dashboard as I didn't like the standard ones that were out there. On October 1st, I decided to post it on r/homelab, and something crazy happened..."
+image: https://user-images.githubusercontent.com/47594764/182563515-9d0c90f7-ec73-4139-9016-e9d91e84636d.png
+tags:
+   - Reddit
+   - r/selfhosted
+   - Hacker News
+---
+
+# Prologue
+
+As of June 11th 2023, I mainly work on maintaining these projects:
+
+-  [davidilie.com](https://github.com/davidilie/davidilie.com) - This website you are reading this post from.
+-  [personal-dashboard](https://github.com/davidilie/personal-dashboard) - Personal dashboard containing my services and the news.
+-  [home-cluster](https://github.com/davidilie/home-cluster) - Infastrure-as-code repository for my home Kubernetes cluster.
+
+I would greatly appreciate it if you check out all these projects ([and all my others](https://github.com/davidilie)) and star them!
+
+I might make a unique blog posts regarding each project but for now I want to tell you about `personal-dashboard`, and how showcasing this project to Reddit gave a "boost" to my projects.
+
+# What is personal-dashboard?
+
+Like most Homelab-ers, we like to keep track of all the services we host at home through bookmarks in our browser or a dashboard.
+
+Frankly, there are already many different dashboards that I could've chosen from but all of them had their quirks and I reached the same conlcusion I always reach in occassions like these:
+
+<Callout emoji="🤔" italic>
+   I'll just make my own! I mean, it can't be that hard, right?
+</Callout>
+
+Jokes aside, I created the `v1` of this dashboard in July and just started using it in my day-to-day workloads, and it worked great!
+
+After I got it working, I decided to take a month-long break to work on [sharex-upload-server](https://github.com/davidilie/sharex-upload-server). Once that project slowed down, I decided to re-visit the month-old codebase and start working on it again. Like most developers, month-old code can be considered obselete by some people (including myself) so I rewrote most of the logic to my highest standard.
+
+# Posting to Reddit
+
+On my way to school I mainly browse Reddit on my phone, and that time I was browsing through [r/selfhosted](https://reddit.com/r/selfhosted) and discovered an interesting section called "Personal Dashboard", and what I saw amazed me:
+
+Most of the dashboards were either [Homer](https://github.com/bastienwirtz/homer) or [Heimdall](https://github.com/linuxserver/Heimdall)
+
+<Callout emoji="🖥️">
+   Both of them are great dashboards that I have used in the past.
+</Callout>
+
+But my amazement revoled around the fact that many people post their own dashboard, but the only uniqueness of all these posts are the services that they run, not the software itself. This is where an idea sprung up in my head:
+
+<Callout emoji="🤔" italic>
+   What if I post my own dashboard, it might get more attention due to its
+   uniqueness!
+</Callout>
+
+... and that is what I did! That night, I quickly wrote up my first ever (**proper**) reddit post which contained a video showing my dashboard in action, and a short paragraph containing the backstory in the comments.
+
+<Image
+   src="/content/first-reddit-post/self-hosted-comment.png"
+   width={924}
+   height={343}
+/>
+
+With that done, I went to bed, hoping to get around 50 upvotes and a couple of comments. But little did I know, those values were multipled by two throughout the next 24 hours...
+
+# 300 upvotes! What?
+
+That's exactly my reaction when I opened my phone, that day I was at the very top of [r/selfhosted](https://reddit.com/r/selfhosted)!
+
+I also started looking at the comments, and I'll let you see them for yourself. Here are some highlights:
+
+<Callout emoji="🤯" italic>
+   15 years? God damn, good job. - MagellanCl
+</Callout>
+
+<Callout emoji="🙄" italic>
+   Well I'm 23 and a graduated software developer. I'm jealous of your skills.
+   Very nice work there. - lililomgo
+</Callout>
+
+<Callout emoji="🚀" italic>
+   David, you are going to go very far in software engineering. Keep tinkering,
+   building, and learnign! - rgthree
+</Callout>
+
+And many more... I really enjoyed reading all your comments, it was a good way to start my day!
+
+# Next up, my GitHub profile
+
+Before this, I had a pretty generic GitHub profile. A couple of stars here and there throughout my projects and a couple of followers. Pretty generic.
+
+Now, let's take a look at my 4 projects that I mentioned earlier, after 24 hours.
+
+<Image
+   src="/content/first-reddit-post/pinned-repos.png"
+   width={923}
+   height={269}
+   alt="My pinned projects."
+/>
+
+68 stars?! That's insanse! I never thought people would access the repository and my GitHub profile. The other interesting part is that my other projects started getting stars as well, which sprung a high smile on my face :)
+
+In addition, my GitHub profile starting getting some new followers which overall made by GitHub profile grow **alot**.
+
+# Website analytics
+
+In my opinion, seeing analytics is one of the most interesting parts of web development. As it can allow you to the most visisted places of your page and also see the parts you might need to improve.
+
+When I built my website, I discovered [Plausible Analytics](https://plausible.io/) which is by default a paid software, but it's free to use if you can self-host it yourself, so I spinned up a virtual machine and followed their `docker-compose` guide:
+
+<GitHubRepository username="plausible" repo="hosting" />
+
+<Callout emoji="🙏🏻">
+   I've now created my own deployment of Plausible on my [home
+   cluster](https://github.com/DavidIlie/home-cluster/tree/main/kubernetes/apps/default/plausible/app)
+</Callout>
+
+To then integrate it in any `Next.js` application, you can install the [next-plausible](https://www.npmjs.com/package/next-plausible) package and then add this JSX code to your `_app.tsx`:
+
+```tsx title="Plausible _app.tsx example"
+<PlausibleProvider
+   domain="davidilie.com"
+   selfHosted
+   trackOutboundLinks
+   enabled={true}
+   customDomain={"https://stats.davidilie.com"}
+>
+   *page content*
+</PlausibleProvider>
+```
+
+In that same information comment, I included a link to my website as well, so some people decided to visit my website as well. Let's take a look...
+
+<Image
+   src="/content/first-reddit-post/plausible_website_stats.png"
+   width={400}
+   height={115}
+   className="mx-auto"
+   alt="The amount of unique visits in the last 24 hours."
+/>
+
+I never thought a basic portfolio website would recieve so many visits! Let's take a closer look.
+
+<Image
+   src="/content/first-reddit-post/more_stats_plausible.png"
+   width={1452}
+   height={321}
+   alt="The statistics from October 1st to 3rd."
+/>
+
+Initially, I thought that all these visitors would only be looking at my website for a couple of seconds, but I was completely wrong! 5+ minutes is extremely good for a basic portfolio website!
+
+# I am on hacker news!
+
+Plausible also allows me to see from which pages some requests come from:
+
+<Image
+   src="/content/first-reddit-post/visited_pages_plausible.png"
+   width={1436}
+   height={970}
+   alt="The visits from October 1st to 3rd."
+/>
+
+That's when I noticed that [Hacker News](https://news.ycombinator.com/item?id=28728640) is my third source of visits between those 3 days. I never expected for someone to post my [pfSense post](https://davidilie.com/blog/replace-your-home-router-with-pfsense) there, and for people to click it as well!
+
+<Callout italic>
+   Pretty interesting article, especially for a 15 year old. I ran across his
+   site while perusing /r/selfhosted and saw his custom dashboard he made. -
+   mattr47
+</Callout>
+
+# What's next?
+
+Many people commented that they would like to see a customizable version which anyone can self-host, as currently it's restricted to only my pinned services.
+
+<Callout italic>
+   Already looking forward to it being customizable! - This seems to really fill
+   the gap. - 2relativ
+</Callout>
+
+I've started work on a new update for the dashboard and once it's done I'll update this post with what happens. You can check out the repo here:
+
+<GitHubRepository repo="personal-dashboard" />
+
+# The mistakes
+
+Quickly after the post was published, some comments started to flow in regarding keeping my domains for my services public:
+
+<Callout emoji="🤓" italic>
+   Be careful with those public domains. Ensure they’re secure, and I’m not sure
+   I’d recommend posting them publicly on Reddit. - Azurnear
+</Callout>
+
+<Callout emoji="🤓" italic>
+   But please (as the others pointed out), be careful with the exposed domains
+   :) - dougmaitelli
+</Callout>
+
+To combat this I mentioned that I am using [Authelia](https://github.com/authelia/authelia) to protect most of my services on the internet. To see how you can set this up for yourself, check out my [guide here](https://github.com/DavidIlie/kubernetes-setup/tree/master/8%20-%20authelia).
+
+# Conclusion
+
+Overall this weekend was really fun, at one point I could refresh the page and get one or two more upvotes each refresh. As I am writing this now, the increase in upvotes has become much slower and will become more slower in the future.
+
+When I would post something like this again, I'll make sure to be careful next time I do this so that I won't risk my services or other stuff.
+
+Hope you enjoyed this different kind of post, have a good rest of your day!
+
+Cheers!

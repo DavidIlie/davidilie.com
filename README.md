@@ -1,3 +1,1 @@
-# davidilie.com
-
-v4 of personal website
+# version 6

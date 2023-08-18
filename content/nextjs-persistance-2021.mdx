@@ -1,0 +1,221 @@
+---
+title: "How I persist live data in Next.js without waiting for async requests."
+publishedAt: "2021-09-11"
+summary: "While working on one of my projects, I came across a problem with fetching dynamic data from my API. The problem was that I didn't want to do the request on every render, just when I wanted it to be fetched."
+image: "https://user-images.githubusercontent.com/47594764/182562683-f2708069-2fda-4058-a020-05c553698ae7.png"
+tags:
+   - Next.js
+   - State Management
+   - Web Development
+---
+
+# The problem
+
+While working on one of my projects ([sharex-upload-server](https://github.com/davidilie/sharex-upload-server)) I came across a problem with fetching data such as settings from my backend. The problem was that I didn't want to do the request on **every** request, just in the moments where I wanted it to be fetched (such as updating the profile or force-reload).
+
+Furthermore, if you have a deep component structure, and need to fetch the same data in more than one component, you would essentially be making the same request many times in the same page to access the data (I know props are a thing, but it's annoying to persist in a deep-component structure).
+
+```tsx title="Example"
+const { isLoading, data: isLoggedIn } = useQuery("/api/user");
+
+return isLoading ? <Loader /> : <Website />;
+
+// this would need to be repeated for every component which would need this data
+```
+
+It's also common practice that you should cut down on requests as much as possible. To keep a stable performance both in the frontend and backend. So I knew that I had to find a better solution to solve this problem.
+
+# The Stack
+
+Before I talk about the solution, you first need to understand the stack I used to build this project:
+
+-  Express.js Server
+   -  Typescript
+   -  TypeORM
+   -  MongoDB
+-  Next.js Frontend
+   -  Typescript
+   -  Tailwind CSS
+   -  react-query
+
+<Callout>This is now going to be my go-to stack for future projects :)</Callout>
+
+# The old system
+
+I mentioned in one of my previous blog posts that I love [Next.js](https://nextjs.org), which one of its main features is that it uses SSR by default; allowing me to use `getServerSideProps` to make requests before the page actually loads, preventing the need for nested if statements checking if my `isLoggedIn` requests have gone through (see example above).
+
+```tsx
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+   const user = await loginCheckAndGetUser(req, res);
+   return {
+      props: user,
+   };
+};
+```
+
+(I still use this system for every page today, but I **only** check if the user is not logged in, nothing else)
+
+I also have a `getInitialProps` function running on `_app.tsx` which fetches the settings for my website:
+
+```tsx
+App.getInitialProps = async () => {
+   const settingsRequest = await fetch(`${process.env.API_URL}/api/settings`);
+   const settingsResponse = await settingsRequest.json();
+
+   return { settings: settingsResponse };
+};
+```
+
+The problem with this was that in order to get the settings returned to a component such as my navigation bar, I would need to nest the data through props which complicated my component structure too much, so I knew I had to find a better approach to this...
+
+# The new system
+
+I initially thought I could implement a system using React Context but I quickly came to the conclusion that React Context is too complicated to do something as simple as this.
+
+That's when I started looking into other, more _basic_, state management libraries which is when I discovered [zustand](https://github.com/pmndrs/zustand) which is a very intuitive state management library which let's me do exactly what I want:
+
+-  Define my state once and then set it whenever I want
+-  Be able to update it whenever I want
+
+First you need to install [zustand](https://github.com/pmndrs/zustand):
+
+```bash
+yarn add zustand
+```
+
+Afterwards you can create a "store" for your data:
+
+```ts
+import { SettingsType } from "@sharex-server/common";
+import create from "zustand";
+
+type Store = {
+   settings: SettingsType;
+   updateSettings: (settings: SettingsType) => void;
+};
+
+export const useSettingsStore = create<Store>((set) => ({
+   settings: {} as SettingsType,
+   updateSettings(settings: SettingsType) {
+      set((state) => ({
+         ...state,
+         settings: settings,
+      }));
+   },
+}));
+```
+
+<Callout>
+   Notice how I created a updateSettings function, we will use this later.
+</Callout>
+
+Afterwards we need to add some custom code in the `_app.tsx` to do the following:
+
+-  Prevent loading any JSX before all the data in our stores is defined
+-  Make data fetch on load via useEffect
+-  Make data only refetch when the page is force-reloaded
+
+To do that, we first define a local state to check if all the data has been loaded:
+
+```tsx
+const [finishedDataCheck, setFinishedDataCheck] = useState<boolean>(false);
+```
+
+Then we create a check to not return any JSX if finishedDataCheck is false:
+
+```tsx
+if (!finishedSettingsCheck) {
+   return null;
+}
+```
+
+Afterwards we create a useEffect hook which complies with the 3 points I mentioned earlier:
+
+```tsx
+const { settings, updateSettings } = useSettingsStore((s) => s);
+const { user, updateUser } = useUserStore();
+
+useEffect(() => {
+   if (performance.navigation.type != 1) {
+      if (settings.name && user.name) return setFinishedDataCheck(true);
+   }
+   const getData = async () => {
+      const settings = await getSettingsData();
+      const user = await getUserData();
+      updateSettings(settings);
+      updateUser(user);
+      setFinishedDataCheck(true);
+   };
+   getData();
+}, []);
+```
+
+With that done, we can now create a custom hook which we can use in any page, **any time**:
+
+```ts
+import { useSettingsStore } from "@global-stores/useSettingsStore";
+
+export default function useSettings() {
+   const settings = useSettingsStore((s) => s.settings);
+
+   return settings;
+}
+```
+
+# Using it in components
+
+Now, any time I want, I can use this hook to fetch my data and I won't need any `isLoading` if statements or risk it being undefined (unless the server is offline :p)
+
+```ts
+const settings = useSettings();
+```
+
+## Updating the store with new data
+
+One of my goals was to also be able to update the data whenever I want, and then have the information updated everywhere around the page. Courtesy of the `updateSettings` function this is really easy.
+
+Take a look at this function, I first import the store (without the hook) so that I have access to the update function:
+
+```tsx
+const { user, updateUser } = useUserStore();
+```
+
+Now, we can actually use the function:
+
+```tsx
+onSubmit={async (data, { setSubmitting }) => {
+    setSubmitting(true);
+
+    try {
+        const r = await axios.post(
+            `${api_url}/api/user/profile`,
+            data
+        );
+        const response = await r.data;
+
+        if (r.status === 200) {
+            toast.success("Updated successfully!");
+            updateUser(response);
+            setSubmitting(true);
+        } else {
+            toast.error(response.message);
+        }
+    } catch (error: any) {
+        toast.error(error.message);
+    }
+}}
+```
+
+This is part of a formik form which send a post request containing the updated data to my server, and then updates the store via the `updateUser` function.
+
+# Conclusion
+
+Nice! I finally got this system working and it can actually be used in other projects in the future and removes the bottleneck of useless server requests, `isLoading` statements everywhere, etc.
+
+Hope this guide/rant has been helpful, if you want to check out the rest of the code for this project, here it is below.
+
+<GitHubRepository repo="sharex-upload-server" />
+
+Anyways, have a good rest of your day!
+
+Cheers!

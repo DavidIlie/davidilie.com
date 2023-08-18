@@ -1,0 +1,175 @@
+---
+title: "Replace your weak home router, with pfSense!"
+publishedAt: "2021-09-19"
+summary: "Recently, I decided to switch from my standard cheap home router, to a custom virtual machine running pfSense on my server. This blog post will contain all the hurdles and issues that I went through, and how you can setup this up for yourself!"
+image: "https://github.com/DavidIlie/davidilie.com/assets/47594764/abca51a7-7433-47ac-bc36-dc8a9499b369"
+tags:
+   - Home Network
+   - pfSense
+   - Security
+---
+
+# Video version
+
+This blog post is actually a modified script of the video on my [youtube](https://www.youtube.com/channel/UC92hn9Y8WcY_5LribMDW8uA) channel. If you don't want to read the post, you can watch the video here:
+
+<YouTubeVideo url="https://www.youtube.com/embed/NwNfNV2neVc" />
+
+# Introduction
+
+The internet, some of us use it for consuming content, some of us use it for basic business duties and then people such as myself provide services for the other two by means of programming. Nonetheless, technology has empowered us with the opportunity to have access to the internet at our fingertips, and to the comfort of our homes via our montly subscription to access the internet.
+
+Okay okay, no more cheesy introductions. Let’s get straight to the point. I’m pretty sure you’ve all seen this little guy around your house somewhere.
+
+<Image
+   src="/content/replace-your-home-router-with-pfsense/ont-router.jpg"
+   alt="The standard home-router."
+   width={800}
+   height={800}
+/>
+
+The proper term for these guys is an ONT/Router which most of the time means:
+
+-  It act as a modem (allowing you to connect your network to the outer-world via a fiber-optic-cable)
+-  It act as a router (allowing you to connect home devices to your network and let them communicate with each other)
+-  Finally, it provides a Wi-Fi access point to you and your family.
+
+For most people this device would be great, and it is! That’s why so many ISPs prefer to give one of these multipurpose devices instead of 3 different devices.
+
+# The Idea
+
+However, if you’re more technical, and have 3 servers in your attic, it can get really annoying that some of the options on your router's interface (such as preferred DNS servers, etc) are blocked by default to prevent you from bricking your entire home network, which I’ve done in the past.
+
+<Image
+   src="/content/replace-your-home-router-with-pfsense/home-cluster.png"
+   alt="My home infastructure."
+   width={1295}
+   height={410}
+/>
+
+# The problem
+
+For the past month now, I’ve been having issues with my internet connection where it would work fine for a couple of days, and then randomly would just stop working. And I mean completely, dead. Sometimes I would be able to load one web page but then have to wait an obscene amount of time for the page to load, but most of the time it just times out. The last time it happened, I managed to run some tests in my network and saw that for every 10 packets that would be sent out from my router, 5 of them would be lost, which means a 50% packet loss!
+
+Obviously I was annoyed and every time this happened, I would ring up my ISP, and here is what they would say most of the time:
+
+<Callout italic>
+   "Unfortunately sir, there is a major problem with our line in your area.
+   Please wait a couple of hours and it should come back."
+</Callout>
+
+In those cases I just waited it out and then, low and behold, my internet would come back! However, I was working on my computer and this problem happened again, I thought it might have been another outage, so I decided to call them to check:
+
+<Callout italic>
+   "Currently there are no reported outages in your area, I will have to run
+   some more tests but it looks like the latency is too high and most requests
+   time out."
+</Callout>
+
+Latency is the problem?! I knew it. I ran some tests and saw that there was a 50% packet loss which must mean there is a problem with my router, or the system on the other end, as later in the call they clarified that the fiber connection is stable.
+
+## Monitoring the problem
+
+About 7 days ago, I set up a simple raspberry pi with a couple of docker containers monitoring my internet connection by running a speedtest every 30 minutes, and then displaying it in a nice Grafana dashboard, and this is where I saw the real problem.
+
+<Image
+   src="/content/replace-your-home-router-with-pfsense/monitoring-pi.png"
+   alt="Custom Grafana dashboard with metrics."
+   width={806}
+   height={683}
+/>
+
+Looking at these two points, we can see that there are moments where my speed goes relatively lower than normal. In addition, I looked at my router's metrics and thought about this:
+
+What if my router is running out of resources because:
+
+-  30 Wi-Fi Clients
+-  40 Wired Devices
+
+Considering this, a basic home network wouldn't have this many devices flowing through it, so I knew the problem might be that the router is too weak to handle all of this load, and I do have about 150GB of ram and 16 cores lying around unused in my server…
+
+<Callout emoji="🤔">
+   Okay, a router doesn’t really need that much resources but this did give me
+   an idea. My current router is like a pet, it's restricted by default, really
+   simple, and a lot of maintenance is required when something goes wrong.
+   However, if I build the router myself, and use highly documented software, I
+   can freely configure any part of the router to my needs, and have it be part
+   of my cattle infrastructure.
+</Callout>
+
+# The new system
+
+When I bought Nucleus, I specifically made sure that 2 of the 4 ethernet ports in the server can be passed through to a virtual machine, and I already have a pfsense virtual machine created from a couple of months back.
+
+<Image
+   src="/content/replace-your-home-router-with-pfsense/iommu-pci-device.png"
+   alt="IOMMU passthrough in Proxmox."
+   width={432}
+   height={201}
+/>
+
+# Prerequisites
+
+There are two _well-known_ ways to accomplish a setup like this:
+
+-  Connect fiber-optic cable directly to the VM
+-  Change router to bridge mode to connect to VM (This is the one I will talk about)
+
+<Callout>
+   Bridge mode disables the built-in router and Wi-Fi portions and only leaves
+   the modem, exposing the connection to any ethernet port on the router which
+   can be plugged in to another router.
+</Callout>
+
+Getting a router into bridge mode can be relatively differnet so I won't tell you how to do it. But if you can't see it in your router's web page or you can't modifiy it, you can call your ISP like I did.
+
+In my case, they immediately put my router in bridge mode, meaning I lost access to the internet.
+
+# Connecting the WAN and LAN ports
+
+When my ISP routed my fiber cable a year ago, they decided to put it under my desk, which is not very useful when my server is in my attic. Thankfully, I already had an ethernet cable going up there for my servers so I decided to re-use that one.
+
+<Image
+   src="/content/replace-your-home-router-with-pfsense/server-wan-lan.jpg"
+   alt="My WAN and LAN cables connected to my server."
+   width={1448}
+   height={1086}
+/>
+
+Yes, my servers are sitting on a box. Don't make fun of me!
+
+Then you need to connect the LAN cable to your main switch so that other clients can connect to pfSense's LAN.
+
+<Image
+   src="/content/replace-your-home-router-with-pfsense/home-switch.jpg"
+   alt={`My "main" switch connecting my home to the internet.`}
+   width={1448}
+   height={1086}
+/>
+
+With that done, we can then pass through those two ports to the virtual machine and start the VM!
+
+# Configuring the Virtual Machine
+
+There is not much that I can show you as it would
+
+-  Show private information about my server
+-  Every setup is different!
+   -  My configuration might not work for you!
+
+Because of this, I recommend you to follow some tutorials online to get your router configured. I recommend this video below by [NetworkChuck](https://www.youtube.com/c/NetworkChuck) as it clearly shows how to configure pfSense to your needs.
+
+<YouTubeVideo url="https://www.youtube.com/embed/lUzSsX4T4WQ" />
+
+# Conclusion
+
+By fully taking control of your router, it enables more capabilities than what you had before (granted, there are now risks of bricking your internet). Here are some key things I did to my pfSense install to protect my home network
+
+-  You can change default DNS servers to anything you want (like Pi-Hole)
+-  You can install custom plugins
+   -  Run your own VPN instead of running it inside your network
+-  You can add custom firewalls is required for things like port forwarding
+
+and so much more...
+
+Anyways, hope you enjoyed this blog post. I also will start making blog posts for every single video that I post, so that you can have a readable version of my video.
