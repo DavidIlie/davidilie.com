@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 
 import { BackgroundPattern } from "~/components/background-pattern";
+import NavBar from "~/components/navbar";
 import { ThemeProvider } from "~/components/theme-provider";
 
 const graphik = localFont({
@@ -83,10 +84,13 @@ export default function RootLayout({
    children: React.ReactNode;
 }) {
    return (
-      <html lang="en">
-         <body className={`text-black dark:text-white ${graphik.variable}`}>
+      <html lang="en" suppressHydrationWarning>
+         <body className={`pageBackground dark:text-white ${graphik.variable}`}>
             <ThemeProvider>
-               <BackgroundPattern>{children}</BackgroundPattern>
+               <BackgroundPattern>
+                  <NavBar />
+                  {children}
+               </BackgroundPattern>
             </ThemeProvider>
          </body>
       </html>
