@@ -3,13 +3,14 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
 import useScrollPosition from "~/hooks/use-scroll-position";
 import { Button } from "../ui/button";
 import AnimatedName from "./animated-name";
-import Dropdown from "./dropdown";
+import ThemeDropdown from "./theme-dropdown";
 
 const pages = [
    { name: "Home", url: "/" },
@@ -77,7 +78,7 @@ const NavBar: React.FC = () => {
          >
             <div className="mx-auto -mt-1 max-w-7xl px-8 pl-8 sm:px-6 sm:pl-8 lg:pl-8">
                <div className="mb-2 flex h-16 items-center justify-between">
-                  <div className="flex">
+                  <div className="mt-6 flex items-center gap-10">
                      <div
                         className={`${
                            clickMobileMenu && "mt-[1.25rem]"
@@ -96,80 +97,44 @@ const NavBar: React.FC = () => {
                            </Link>
                         )}
                      </div>
-                     <div className="hidden sm:block">
-                        <div className="ml-10 mt-6 flex items-baseline gap-4">
-                           {pages.map((page, index) => {
-                              const selected =
-                                 pathname === page.url ||
-                                 ((isBlogPage &&
-                                    page.name === "Blog") as boolean);
-                              return (
-                                 <Link
-                                    href={page.url}
-                                    key={index}
-                                    className={cn(
-                                       selected && "pointer-events-none",
-                                    )}
+                     <div className="hidden gap-3 sm:flex">
+                        {pages.map((page, index) => {
+                           const selected =
+                              pathname === page.url ||
+                              ((isBlogPage && page.name === "Blog") as boolean);
+                           return (
+                              <Link
+                                 href={page.url}
+                                 key={index}
+                                 className={cn(
+                                    selected && "pointer-events-none",
+                                 )}
+                              >
+                                 <Button
+                                    variant={selected ? "secondary" : "link"}
+                                    disabled={selected}
                                  >
-                                    <Button
-                                       variant={selected ? "secondary" : "link"}
-                                       disabled={selected}
-                                    >
-                                       {page.name}
-                                    </Button>
-                                 </Link>
-                              );
-                           })}
-                        </div>
+                                    {page.name}
+                                 </Button>
+                              </Link>
+                           );
+                        })}
                      </div>
                   </div>
                   <div className="ml-10 mt-8 hidden space-x-4 sm:block">
-                     <Dropdown />
+                     <ThemeDropdown />
                   </div>
                   <div className="block sm:hidden">
-                     <div className="-mr-2 mt-6 flex items-center md:hidden">
-                        <Dropdown />
-                        <button
-                           type="button"
-                           className="inline-flex items-center justify-center rounded-md bg-gray-200 p-2 text-gray-500 hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                     <div className="-mr-2 mt-6 flex items-center gap-2 md:hidden">
+                        <ThemeDropdown />
+                        <Button
                            onClick={() => {
                               setClickMobileMenu(!clickMobileMenu);
                            }}
+                           variant="secondary"
                         >
-                           {clickMobileMenu ? (
-                              <svg
-                                 className="block h-6 w-6"
-                                 xmlns="http://www.w3.org/2000/svg"
-                                 fill="none"
-                                 viewBox="0 0 24 24"
-                                 stroke="currentColor"
-                                 aria-hidden="true"
-                              >
-                                 <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M6 18L18 6M6 6l12 12"
-                                 />
-                              </svg>
-                           ) : (
-                              <svg
-                                 className="block h-6 w-6"
-                                 xmlns="http://www.w3.org/2000/svg"
-                                 fill="none"
-                                 viewBox="0 0 24 24"
-                                 stroke="currentColor"
-                                 aria-hidden="true"
-                              >
-                                 <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                 />
-                              </svg>
-                           )}
-                        </button>
+                           {clickMobileMenu ? <X /> : <Menu />}
+                        </Button>
                      </div>
                   </div>
                </div>

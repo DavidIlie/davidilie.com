@@ -10,7 +10,7 @@ import {
 } from "~/components/ui/dropdown-menu";
 import { Button } from "../ui/button";
 
-const Dropdown: React.FC = () => {
+const ThemeDropdown: React.FC = () => {
    const { setTheme } = useTheme();
 
    return (
@@ -37,4 +37,4 @@ const Dropdown: React.FC = () => {
    );
 };
 
-export default Dropdown;
+export default ThemeDropdown;

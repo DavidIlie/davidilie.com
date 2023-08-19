@@ -10,7 +10,7 @@ const AnimatedName: React.FC = () => {
 
    return (
       <div
-         className="relative mt-5 cursor-pointer"
+         className="relative cursor-pointer"
          onMouseEnter={() => setHover(true)}
          onMouseLeave={() => setHover(false)}
       >
