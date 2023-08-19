@@ -85,7 +85,7 @@ export default function RootLayout({
 }) {
    return (
       <html lang="en" suppressHydrationWarning>
-         <body className={`pageBackground dark:text-white ${graphik.variable}`}>
+         <body className={`text-white dark:text-black ${graphik.variable}`}>
             <ThemeProvider>
                <BackgroundPattern>
                   <NavBar />

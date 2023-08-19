@@ -7,6 +7,7 @@ import { useParams, usePathname } from "next/navigation";
 import { cn } from "~/lib/utils";
 
 import useScrollPosition from "~/hooks/use-scroll-position";
+import { Button } from "../ui/button";
 import AnimatedName from "./animated-name";
 import Dropdown from "./dropdown";
 
@@ -97,27 +98,28 @@ const NavBar: React.FC = () => {
                      </div>
                      <div className="hidden sm:block">
                         <div className="ml-10 mt-6 flex items-baseline gap-4">
-                           {pages.map((page, index) => (
-                              <Link
-                                 href={page.url}
-                                 key={index}
-                                 className={cn(
-                                    isBlogPage &&
-                                       page.name !== "Blog" &&
-                                       "pointer-events-none cursor-not-allowed",
-                                    (pathname === page.url ||
-                                       (isBlogPage && page.name === "Blog")) &&
-                                       "rounded-md bg-gray-600 px-3 py-2 text-sm font-medium text-white duration-200 dark:bg-gray-800",
-                                    !(
-                                       pathname === page.url ||
-                                       (isBlogPage && page.name === "Blog")
-                                    ) &&
-                                       "cursor-pointer rounded-md px-3 py-2 text-sm font-medium text-gray-900 duration-200 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-900 dark:hover:text-white",
-                                 )}
-                              >
-                                 {page.name}
-                              </Link>
-                           ))}
+                           {pages.map((page, index) => {
+                              const selected =
+                                 pathname === page.url ||
+                                 ((isBlogPage &&
+                                    page.name === "Blog") as boolean);
+                              return (
+                                 <Link
+                                    href={page.url}
+                                    key={index}
+                                    className={cn(
+                                       selected && "pointer-events-none",
+                                    )}
+                                 >
+                                    <Button
+                                       variant={selected ? "secondary" : "link"}
+                                       disabled={selected}
+                                    >
+                                       {page.name}
+                                    </Button>
+                                 </Link>
+                              );
+                           })}
                         </div>
                      </div>
                   </div>
@@ -126,9 +128,7 @@ const NavBar: React.FC = () => {
                   </div>
                   <div className="block sm:hidden">
                      <div className="-mr-2 mt-6 flex items-center md:hidden">
-                        <div className="mr-5 mt-1.5">
-                           <Dropdown />
-                        </div>
+                        <Dropdown />
                         <button
                            type="button"
                            className="inline-flex items-center justify-center rounded-md bg-gray-200 p-2 text-gray-500 hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
