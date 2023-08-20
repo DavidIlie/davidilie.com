@@ -1,5 +1,11 @@
+import Header from "./header";
+
 const Home = () => {
-   return <div className="h-screen"></div>;
+   return (
+      <>
+         <Header />
+      </>
+   );
 };
 
 export default Home;

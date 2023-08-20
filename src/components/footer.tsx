@@ -68,7 +68,7 @@ export const SPOTIFY_ACCOUNT = `https://open.spotify.com/user/31cqr3zpmgfnn3b2mg
 const SpotifySuspense: React.FC = () => {
    const [data] = api.spotify.playingStateAndSong.useSuspenseQuery();
    return (
-      <div className="mb-2 flex gap-2 sm:mb-0 sm:w-1/3">
+      <div className="mb-2 flex gap-1 sm:mb-0 sm:w-1/3">
          <TooltipProvider>
             <Tooltip>
                <TooltipTrigger asChild>

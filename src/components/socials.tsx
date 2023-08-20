@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Twitter, X, Youtube } from "lucide-react";
+import { Disc, Github, Twitter, Youtube } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
@@ -19,7 +19,7 @@ export const Socials: React.FC<{
    return (
       <div
          className={cn(
-            `mt-2 flex items-center gap-6 text-black dark:text-white ${
+            `mt-2 flex items-center gap-8 text-black dark:text-white ${
                invisible ? "invisible" : "visible"
             }`,
             className,
@@ -30,23 +30,17 @@ export const Socials: React.FC<{
             newPage
             link="https://github.com/davidilie"
          >
-            <Github
-               className="mb-1"
-               size={font !== undefined ? `${font}em` : "1.75em"}
-            />
+            <Github size={font !== undefined ? `${font}em` : "1.75em"} />
          </SocialIcon>
          <SocialIcon tooltip="albastru#0922" notLink>
-            <X size={font !== undefined ? `${font}em` : "1.75em"} />
+            <Disc size={font !== undefined ? `${font}em` : "1.75em"} />
          </SocialIcon>
          <SocialIcon
             tooltip="David Ilie"
             newPage
             link="https://www.youtube.com/channel/UC92hn9Y8WcY_5LribMDW8uA"
          >
-            <Youtube
-               className="mb-1"
-               size={font !== undefined ? `${font}em` : "1.75em"}
-            />
+            <Youtube size={font !== undefined ? `${font}em` : "1.75em"} />
          </SocialIcon>
          <SocialIcon
             tooltip="MrDavidIlie"
