@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 
 import { BackgroundPattern } from "~/components/background-pattern";
+import Footer from "~/components/footer";
 import NavBar from "~/components/navbar";
 import { ThemeProvider } from "~/components/theme-provider";
 
@@ -90,6 +91,7 @@ export default function RootLayout({
                <BackgroundPattern>
                   <NavBar />
                   {children}
+                  <Footer />
                </BackgroundPattern>
             </ThemeProvider>
          </body>
