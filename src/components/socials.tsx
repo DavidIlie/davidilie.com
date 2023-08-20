@@ -69,34 +69,32 @@ export const SocialIcon: React.FC<
    }>
 > = ({ children, tooltip, newPage, link, notLink }) => {
    return (
-      <div className="cursor-pointer">
-         <TooltipProvider>
-            <Tooltip>
-               <TooltipTrigger>
-                  {!notLink ? (
-                     <a
-                        href={link}
-                        target={newPage ? "_blank" : ""}
-                        rel="noreferrer"
-                        className="duration-250 hover:text-blue-100"
-                        aria-label={`Social link: ${tooltip}`}
-                     >
-                        {children}
-                     </a>
-                  ) : (
-                     <span
-                        className="duration-250 hover:text-blue-100"
-                        //    onClick={() => clipboard.copy(tooltip)}
-                     >
-                        {children}
-                     </span>
-                  )}
-               </TooltipTrigger>
-               <TooltipContent>
-                  <p>{tooltip}</p>
-               </TooltipContent>
-            </Tooltip>
-         </TooltipProvider>
-      </div>
+      <TooltipProvider>
+         <Tooltip>
+            <TooltipTrigger className="cursor-pointer">
+               {!notLink ? (
+                  <a
+                     href={link}
+                     target={newPage ? "_blank" : ""}
+                     rel="noreferrer"
+                     className="duration-250 hover:text-blue-100"
+                     aria-label={`Social link: ${tooltip}`}
+                  >
+                     {children}
+                  </a>
+               ) : (
+                  <span
+                     className="duration-250 hover:text-blue-100"
+                     //    onClick={() => clipboard.copy(tooltip)}
+                  >
+                     {children}
+                  </span>
+               )}
+            </TooltipTrigger>
+            <TooltipContent>
+               <p>{tooltip}</p>
+            </TooltipContent>
+         </Tooltip>
+      </TooltipProvider>
    );
 };

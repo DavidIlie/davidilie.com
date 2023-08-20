@@ -6,7 +6,7 @@ import localFont from "next/font/local";
 import { BackgroundPattern } from "~/components/background-pattern";
 import Footer from "~/components/footer";
 import NavBar from "~/components/navbar";
-import { ThemeProvider } from "~/components/theme-provider";
+import Providers from "./providers";
 
 const graphik = localFont({
    src: [
@@ -87,13 +87,13 @@ export default function RootLayout({
    return (
       <html lang="en" suppressHydrationWarning>
          <body className={`text-white dark:text-black ${graphik.variable}`}>
-            <ThemeProvider>
+            <Providers>
                <BackgroundPattern>
                   <NavBar />
                   {children}
                   <Footer />
                </BackgroundPattern>
-            </ThemeProvider>
+            </Providers>
          </body>
       </html>
    );
