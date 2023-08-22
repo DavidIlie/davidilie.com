@@ -7,11 +7,6 @@ export const GET = async (req: NextRequest) => {
    const { searchParams } = req.nextUrl;
    const postTitle = searchParams.get("title");
 
-   const font = fetch(
-      new URL("../../public/fonts/Graphik-Regular.ttf", import.meta.url),
-   ).then((res) => res.arrayBuffer());
-   const fontData = await font;
-
    return new ImageResponse(
       (
          <div
@@ -31,7 +26,6 @@ export const GET = async (req: NextRequest) => {
                   marginLeft: 260,
                   marginRight: 260,
                   display: "flex",
-                  fontFamily: "Geraphik",
                   fontSize: 100,
                   fontStyle: "normal",
                   color: "white",
@@ -46,13 +40,6 @@ export const GET = async (req: NextRequest) => {
       {
          width: 1920,
          height: 1080,
-         fonts: [
-            {
-               name: "Geraphik",
-               data: fontData,
-               style: "normal",
-            },
-         ],
       },
    );
 };
