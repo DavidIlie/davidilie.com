@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  slug     String    @id
+  views    Int       @default(0)
+
+  @@index(slug)
+}
+
+model GitHubProject {
+  name        String   @id
+  createdAt   DateTime
+  lastPush    DateTime
+  description String
+  issues      Int
+  language    String?
+  stars       Int
+  url         String
+
+  @@index(name)
+}
+
+model YouTubeStatistic {
+  channel     String @id
+  subscribers Int
+  views       Int
+  videos      Int
+
+  @@index(channel)
+}
