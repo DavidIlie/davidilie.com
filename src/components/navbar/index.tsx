@@ -23,9 +23,9 @@ const NavBar: React.FC = () => {
    const pathname = usePathname();
    const params = useParams();
 
-   const [width, setWidth] = useState<number>(0);
+   const [width, setWidth] = useState(0);
 
-   const isBlogPage = params?.slug;
+   const isBlogPage = !!params?.slug;
 
    useEffect(() => {
       if (isBlogPage) {
@@ -99,9 +99,7 @@ const NavBar: React.FC = () => {
                      </div>
                      <div className="hidden gap-3 sm:flex">
                         {pages.map((page, index) => {
-                           const selected =
-                              pathname === page.url ||
-                              ((isBlogPage && page.name === "Blog") as boolean);
+                           const selected = pathname === page.url;
                            return (
                               <Link
                                  href={page.url}
@@ -148,8 +146,7 @@ const NavBar: React.FC = () => {
                            key={index}
                            onClick={() => setClickMobileMenu(false)}
                            className={
-                              pathname === page.url ||
-                              (isBlogPage && page.name === "Blog")
+                              pathname === page.url
                                  ? `${
                                       !(isBlogPage && page.name === "Blog") &&
                                       "cursor-pointer"

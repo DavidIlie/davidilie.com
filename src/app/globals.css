@@ -18,6 +18,10 @@ html[class="dark"] .pageBackground {
    -webkit-text-fill-color: transparent;
 }
 
+.hoverItem:hover {
+   transform: translateY(-4px);
+}
+
 @layer base {
    :root {
       --background: 0 0% 100%;

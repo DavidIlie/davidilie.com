@@ -2,10 +2,14 @@ import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
+import { prisma } from "../db";
+
 interface CreateContextOptions {}
 
 const createInnerTRPCContext = (opts: CreateContextOptions) => {
-   return {};
+   return {
+      prisma: prisma,
+   };
 };
 
 export const createTRPCContext = async (opts: { req?: Request }) => {
