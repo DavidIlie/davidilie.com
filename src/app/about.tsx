@@ -7,6 +7,13 @@ import { Fade } from "react-awesome-reveal";
 import { api } from "~/lib/api";
 import { shimmer } from "~/lib/shimmer";
 
+import {
+   Tooltip,
+   TooltipContent,
+   TooltipProvider,
+   TooltipTrigger,
+} from "~/components/ui/tooltip";
+
 const About: React.FC = () => {
    return (
       <>
@@ -196,14 +203,19 @@ const About: React.FC = () => {
                      >
                         Albastru
                      </a>
-                     {/* <Tooltip
-                        content="School projects, Personal Projects, etc."
-                        placement="bottom"
-                     >
-                        <p className="cursor-pointer text-lg text-gray-800 dark:text-gray-200">
-                           And much more...
-                        </p>
-                     </Tooltip> */}
+                     <br />
+                     <TooltipProvider>
+                        <Tooltip>
+                           <TooltipTrigger>
+                              <p className="cursor-pointer text-lg text-gray-800 dark:text-gray-200">
+                                 And much more...
+                              </p>
+                           </TooltipTrigger>
+                           <TooltipContent>
+                              School projects, Personal Projects, etc.
+                           </TooltipContent>
+                        </Tooltip>
+                     </TooltipProvider>
                   </div>
                </div>
             </div>
