@@ -35,6 +35,7 @@
       "lucide-react": "^0.268.0",
       "next": "13.4.9",
       "next-contentlayer": "^0.3.4",
+      "next-plausible": "^3.11.1",
       "next-themes": "^0.2.1",
       "postcss": "8.4.28",
       "prisma": "^5.2.0",

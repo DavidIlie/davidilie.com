@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
 import { loggerLink, unstable_httpBatchStreamLink } from "@trpc/client";
+import PlausibleProvider from "next-plausible";
 import { ThemeProvider } from "next-themes";
 import superjson from "superjson";
 
@@ -54,16 +55,24 @@ const Providers: React.FC<{
    );
 
    return (
-      <ThemeProvider attribute="class">
-         <api.Provider client={trpcClient} queryClient={queryClient}>
-            <QueryClientProvider client={queryClient}>
-               <ReactQueryStreamedHydration transformer={superjson}>
-                  {props.children}
-               </ReactQueryStreamedHydration>
-               <ReactQueryDevtools initialIsOpen={false} />
-            </QueryClientProvider>
-         </api.Provider>
-      </ThemeProvider>
+      <PlausibleProvider
+         domain="davidilie.com"
+         trackOutboundLinks
+         enabled={process.env.NODE_ENV === "production"}
+         selfHosted
+         customDomain="https://plausible.davidapps.dev"
+      >
+         <ThemeProvider attribute="class">
+            <api.Provider client={trpcClient} queryClient={queryClient}>
+               <QueryClientProvider client={queryClient}>
+                  <ReactQueryStreamedHydration transformer={superjson}>
+                     {props.children}
+                  </ReactQueryStreamedHydration>
+                  <ReactQueryDevtools initialIsOpen={false} />
+               </QueryClientProvider>
+            </api.Provider>
+         </ThemeProvider>
+      </PlausibleProvider>
    );
 };
 
