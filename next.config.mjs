@@ -1,3 +1,4 @@
+import { withPlugins } from "next-compose-plugins";
 import { withContentlayer } from "next-contentlayer";
 import { withPlausibleProxy } from "next-plausible";
 
@@ -38,4 +39,4 @@ const nextConfig = {
    output: "standalone",
 };
 
-export default withPlausibleProxy(withContentlayer(nextConfig));
+export default withPlugins([withContentlayer, withPlausibleProxy], nextConfig);
