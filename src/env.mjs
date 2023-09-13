@@ -8,7 +8,6 @@ export const env = createEnv({
       SPOTIFY_CLIENT_ID: z.string(),
       SPOTIFY_CLIENT_SECRET: z.string(),
       SPOTIFY_REFRESH_TOKEN: z.optional(z.string()),
-      DISCORD_WEBHOOK_URL: z.string(),
       GITHUB_JOB_SECRET: z.string(),
       GITHUB_JOB_USERNAME: z.string(),
       STATISTICS_JOB_SECRET: z.string(),
