@@ -38,4 +38,4 @@ const nextConfig = {
    output: "standalone",
 };
 
-export default withContentlayer(withPlausibleProxy(nextConfig));
+export default withPlausibleProxy(withContentlayer(nextConfig));
