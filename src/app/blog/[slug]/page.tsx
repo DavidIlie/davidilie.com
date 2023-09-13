@@ -34,7 +34,7 @@ export function generateMetadata({
 
    const ogImage = image
       ? `https://davidilie.com${image}`
-      : `https://davidilie.com/api/og?title=${title}`;
+      : `https://davidilie.com/og?title=${title}`;
 
    return {
       title,
