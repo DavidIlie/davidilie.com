@@ -1,0 +1,14 @@
+name: github_cron:build_and_deploy
+
+on:
+   schedule:
+      - cron: "0 * * * *"
+
+jobs:
+   execute:
+      runs-on: ubuntu-latest
+      steps:
+         - uses: satak/webrequest-action@master
+           with:
+              url: https://davidilie.com/api/cron/github?secret=${{ secrets.REPO_JOB_SECRET }}
+              method: GET
