@@ -10,6 +10,7 @@ WORKDIR /home/node/app
 COPY . .
 
 RUN pnpm install
+ENV NEXT_PUBLIC_APP_URL "https://davidilie.com"
 RUN SKIP_ENV_VALIDATION=true pnpm build
 
 FROM mitchpash/pnpm AS runner

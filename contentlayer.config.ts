@@ -8,22 +8,23 @@ import remarkGfm from "remark-gfm";
 const computedFields = {
    slug: {
       type: "string",
-      resolve: (doc) => `${doc._raw.flattenedPath}`,
+      resolve: (doc: any) => `${doc._raw.flattenedPath}`,
    },
    slugAsParams: {
       type: "string",
-      resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+      resolve: (doc: any) =>
+         doc._raw.flattenedPath.split("/").slice(1).join("/"),
    },
    structuredData: {
       type: "json",
-      resolve: (doc) => ({
+      resolve: (doc: any) => ({
          "@context": "https://schema.org",
          "@type": "BlogPosting",
          headline: doc.title,
          datePublished: doc.publishedAt,
          dateModified: doc.publishedAt,
          description: doc.summary,
-         image: doc.image ? `${doc.image}` : `/api/og?title=${doc.title}`,
+         image: doc.image ? `${doc.image}` : `/og?title=${doc.title}`,
          url: `https://davidilie.com/blog/${doc._raw.flattenedPath}`,
          author: {
             "@type": "Person",
@@ -74,15 +75,15 @@ export default makeSource({
             rehypePrettyCode,
             {
                theme: "one-dark-pro",
-               onVisitLine(node) {
+               onVisitLine(node: any) {
                   if (node.children.length === 0) {
                      node.children = [{ type: "text", value: " " }];
                   }
                },
-               onVisitHighlightedLine(node) {
+               onVisitHighlightedLine(node: any) {
                   node.properties.className.push("line--highlighted");
                },
-               onVisitHighlightedWord(node) {
+               onVisitHighlightedWord(node: any) {
                   node.properties.className = ["word--highlighted"];
                },
             },

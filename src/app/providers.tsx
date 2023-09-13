@@ -13,9 +13,8 @@ import { api } from "~/lib/api";
 
 const getBaseUrl = () => {
    if (typeof window !== "undefined") return "";
-   if (env.VERCEL_URL) return env.VERCEL_URL;
-
-   return `http://localhost:${env.PORT}`;
+   if (env.NEXT_PUBLIC_APP_URL) return env.NEXT_PUBLIC_APP_URL;
+   return `http://localhost:3000`;
 };
 
 const Providers: React.FC<{

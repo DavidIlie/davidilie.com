@@ -8,6 +8,8 @@ import Footer from "~/components/footer";
 import NavBar from "~/components/navbar";
 import Providers from "./providers";
 
+export const dynamic = "force-dynamic";
+
 const graphik = localFont({
    src: [
       {
