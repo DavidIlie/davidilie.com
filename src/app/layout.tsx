@@ -87,7 +87,7 @@ export default function RootLayout({
    children: React.ReactNode;
 }) {
    return (
-      <html lang="en" suppressHydrationWarning>
+      <html lang="en">
          <body className={`text-black dark:text-white ${graphik.variable}`}>
             <Providers>
                <BackgroundPattern>
