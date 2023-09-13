@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React from "react";
 import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
 
@@ -15,6 +15,8 @@ import {
 } from "~/components/ui/tooltip";
 
 const About: React.FC = () => {
+   const { data, isLoading } = api.cron.statistics.useQuery();
+
    return (
       <>
          <div className="bg-blue-600 px-10 pb-32 pt-12 text-left text-white dark:bg-blue-800 dark:text-gray-100 sm:text-center">
@@ -169,9 +171,23 @@ const About: React.FC = () => {
                         Content Creator
                      </a>
                      <p className="mt-5 px-16 text-lg">
-                        <Suspense fallback={<span>Loading...</span>}>
-                           <Statistics />
-                        </Suspense>
+                        {!data && isLoading && <span>Loading...</span>}
+                        {data && (
+                           <span>
+                              <span className="font-bold text-blue-700 dark:text-blue-500">
+                                 {BigInt(data.subscribers).toString()}
+                              </span>{" "}
+                              Subscribers,{" "}
+                              <span className="font-bold text-blue-700 dark:text-blue-500">
+                                 {BigInt(data.views).toString()}
+                              </span>{" "}
+                              Views, and{" "}
+                              <span className="font-bold text-blue-700 dark:text-blue-500">
+                                 {BigInt(data.videos).toString()}
+                              </span>{" "}
+                              Videos
+                           </span>
+                        )}
                      </p>
                   </div>
                   <div className="mb-10 text-center">
@@ -221,27 +237,6 @@ const About: React.FC = () => {
             </div>
          </Fade>
       </>
-   );
-};
-
-const Statistics: React.FC = () => {
-   const [stats] = api.cron.statistics.useSuspenseQuery();
-
-   return (
-      <span>
-         <span className="font-bold text-blue-700 dark:text-blue-500">
-            {BigInt(stats.subscribers).toString()}
-         </span>{" "}
-         Subscribers,{" "}
-         <span className="font-bold text-blue-700 dark:text-blue-500">
-            {BigInt(stats.views).toString()}
-         </span>{" "}
-         Views, and{" "}
-         <span className="font-bold text-blue-700 dark:text-blue-500">
-            {BigInt(stats.videos).toString()}
-         </span>{" "}
-         Videos
-      </span>
    );
 };
 
