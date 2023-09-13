@@ -51,8 +51,8 @@ const About: React.FC = () => {
                </div>
             </Fade>
          </div>
-         <Fade direction="up" triggerOnce>
-            <div className="mx-auto mb-10 mt-[-14rem] flex max-w-[27rem] flex-wrap justify-evenly rounded-2xl bg-white shadow-xl dark:bg-gray-800 dark:text-gray-200 md:max-w-6xl md:flex-nowrap">
+         <Fade direction="up" triggerOnce cascade className="mx-4">
+            <div className="mx-auto mb-10 mt-[-14rem] flex max-w-[25rem] flex-wrap justify-evenly rounded-2xl bg-white shadow-xl dark:bg-gray-800 dark:text-gray-200 md:max-w-6xl md:flex-nowrap">
                <div className="xs:w-full border-b-2 px-5 pt-10 dark:border-gray-600 md:border-b-0 md:border-r-2 xl:w-1/3 xl:border-b-0 xl:border-r-2 2xl:border-b-0 2xl:border-r-2">
                   <div className="mb-3 flex justify-center">
                      <Image
