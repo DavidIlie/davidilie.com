@@ -1,6 +1,4 @@
-import { withPlugins } from "next-compose-plugins";
 import { withContentlayer } from "next-contentlayer";
-import { withPlausibleProxy } from "next-plausible";
 
 import "./src/env.mjs";
 
@@ -39,4 +37,4 @@ const nextConfig = {
    output: "standalone",
 };
 
-export default withPlugins([withContentlayer, withPlausibleProxy], nextConfig);
+export default withContentlayer(nextConfig);
