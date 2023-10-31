@@ -3,12 +3,15 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache openssl1.1-compat-dev
 WORKDIR /home/node/app
 COPY pnpm-lock.yaml .npmr[c] ./
 
 RUN pnpm fetch
 
 FROM node:20-slim AS builder
+RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache openssl1.1-compat-dev
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
