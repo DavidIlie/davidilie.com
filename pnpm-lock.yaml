@@ -55,7 +55,7 @@ dependencies:
     version: 0.5.20
   autoprefixer:
     specifier: 10.4.15
-    version: 10.4.15(postcss@8.4.28)
+    version: 10.4.15(postcss@8.4.31)
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -87,8 +87,8 @@ dependencies:
     specifier: ^0.2.1
     version: 0.2.1(next@14.0.1)(react-dom@18.2.0)(react@18.2.0)
   postcss:
-    specifier: 8.4.28
-    version: 8.4.28
+    specifier: 8.4.31
+    version: 8.4.31
   prisma:
     specifier: ^5.2.0
     version: 5.2.0
@@ -583,6 +583,7 @@ packages:
 
   /@emotion/memoize@0.7.4:
     resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2460,7 +2461,7 @@ packages:
       has-symbols: 1.0.3
     dev: true
 
-  /autoprefixer@10.4.15(postcss@8.4.28):
+  /autoprefixer@10.4.15(postcss@8.4.31):
     resolution: {integrity: sha512-KCuPB8ZCIqFdA4HwKXsvz7j6gvSDNhDP7WnUjBleRkKjPdvCmHFuQ77ocavI8FT6NdvlBnE2UFr2H4Mycn8Vew==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -2472,7 +2473,7 @@ packages:
       fraction.js: 4.3.6
       normalize-range: 0.1.2
       picocolors: 1.0.0
-      postcss: 8.4.28
+      postcss: 8.4.31
       postcss-value-parser: 4.2.0
     dev: false
 
