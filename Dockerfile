@@ -1,4 +1,4 @@
-FROM node:20-slim AS deps
+FROM node:20-alpine AS deps
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
@@ -9,7 +9,7 @@ COPY pnpm-lock.yaml .npmr[c] ./
 
 RUN pnpm fetch
 
-FROM node:20-slim AS builder
+FROM node:20-alpine AS builder
 RUN apk add --no-cache libc6-compat
 RUN apk add --no-cache openssl1.1-compat-dev
 ENV PNPM_HOME="/pnpm"
@@ -23,9 +23,7 @@ ENV NEXT_PUBLIC_APP_URL "https://davidilie.com"
 RUN SKIP_ENV_VALIDATION=true pnpm build
 
 FROM node:20-slim AS runner
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+
 WORKDIR /home/node/app
 
 ENV NODE_ENV production
