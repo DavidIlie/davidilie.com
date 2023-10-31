@@ -22,7 +22,7 @@ RUN pnpm install
 ENV NEXT_PUBLIC_APP_URL "https://davidilie.com"
 RUN SKIP_ENV_VALIDATION=true pnpm build
 
-FROM node:20-slim AS runner
+FROM node:20-alpine AS runner
 
 WORKDIR /home/node/app
 
