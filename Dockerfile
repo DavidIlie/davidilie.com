@@ -1,11 +1,17 @@
-FROM mitchpash/pnpm AS deps
+FROM node:20-slim AS deps
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 RUN apk add --no-cache libc6-compat
 WORKDIR /home/node/app
 COPY pnpm-lock.yaml .npmr[c] ./
 
 RUN pnpm fetch
 
-FROM mitchpash/pnpm AS builder
+FROM node:20-slim AS builder
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 WORKDIR /home/node/app
 COPY . .
 
@@ -13,7 +19,10 @@ RUN pnpm install
 ENV NEXT_PUBLIC_APP_URL "https://davidilie.com"
 RUN SKIP_ENV_VALIDATION=true pnpm build
 
-FROM mitchpash/pnpm AS runner
+FROM node:20-slim AS runner
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 WORKDIR /home/node/app
 
 ENV NODE_ENV production
