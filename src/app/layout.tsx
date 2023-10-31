@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 
 import { BackgroundPattern } from "~/components/background-pattern";
@@ -30,6 +30,10 @@ const graphik = localFont({
 const SEO_DESCRIPTION =
    "A 17 year old aspiring web developer experimenting with programming by publishing my work on the web for others to see and use.";
 
+export const viewport: Viewport = {
+   colorScheme: "dark light",
+};
+
 export const metadata: Metadata = {
    metadataBase: new URL("https://davidilie.com"),
    alternates: {
@@ -43,7 +47,6 @@ export const metadata: Metadata = {
    creator: "David Ilie",
    publisher: "David Ilie",
    description: SEO_DESCRIPTION,
-   colorScheme: "dark light",
    formatDetection: {
       email: false,
       address: false,
