@@ -59,6 +59,10 @@ export const Blog = defineDocumentType(() => ({
          of: { type: "string" },
          required: true,
       },
+      published: {
+         type: "boolean",
+         required: false,
+      },
    },
    //@ts-ignore
    computedFields,

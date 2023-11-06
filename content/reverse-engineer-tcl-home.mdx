@@ -1,0 +1,174 @@
+---
+title: "Reverse Engineering my Air Conditioner's Smart Features to control it from Home Assistant"
+publishedAt: "2023-11-2"
+summary: "I've been working hard for the past few months to automate several aspects of my home in Spain, such as lights and plug sockets but I had to do something very interesting regarding my Air Conditioners..."
+tags:
+   - Reverse Engineering
+   - TCL Home
+   - Home Assistant
+published: false
+---
+
+This blog post is an adaptaion and part of my YouTube video that I created regarding this topic. Check it out below:
+
+<YouTubeVideo url="https://www.youtube.com/embed/A8ICsEnGfkg" />
+
+# Introduction
+
+My parents have bought a new house in Spain and with that comes the sudden idea to try and make a traditional house in the beautiful east of Spain as smart as possible before returning to school in the UK.
+
+Throughout the years making a house _"smart"_ or in reality digitizing manual aspects of a house has become more easier than ever. To, for example, automate a light switch you need two things.
+
+-  A light switch which supports a communication protocol, such as Wi-Fi or something analog like Zigbee or ZWave (I use ZigBee)
+-  A server which is capable of communicating with such device
+
+That's it! With an operating system such as Home Assistant OS you can immediately get it running to exact how you'd like it (including Apple Homekit and Siri and so on!)
+
+<Callout emoji="🙄">
+   This is all fun and games until one device that you purchase doesn't
+   completely function in your environment and from then you have to get the
+   gloves out and get working to implement it properly and have it work in your
+   smart home.
+</Callout>
+
+# My Air Conditioners
+
+My house came equipped with two traditional remote-powered air conditioners in the living room and my parent’s bedroom. Obviously since I am a nerd and stay in my office all day we got one installed.
+
+This blog post will be scoped around the TCL Air Conditioner regarding a very interesting feature that it contains compared to my other air conditioners...
+
+<Image
+   src="/content/reverse-engineer-tcl-home/tcl-home-website.png"
+   alt="TCL Home Website"
+   width={2940}
+   height={1146}
+/>
+
+...and that is the ability that it can connect to my Wi-Fi network and be controlled from its app called "TCL Home" which is a very intiutive app making it easy to add TCL products and control them. Another key feature of TCL Home is its ability to be integrated into Google Assistant and Amazon Alexa (keep this in mind for later)
+
+I was very intruiged to see if this Air Conditioner would work in Home Assistant, but after it was purchased and installed I couldn't find anything promising that it would work directly into Home Assistant or with another platform like Tuya.
+
+<Callout italic emoji="🔥">
+   but at least I got to enjoy the cool air in my office compared to the 30
+   degrees outside!!
+</Callout>
+
+# Let's begin hacking!
+
+I was stuck on this for a few days, as I would imagine any regular customer/homelabber would be when something like this is not supported. This is a **mobile app** and therefore it is more complicated than usual to inspect the incomming and outgoing requests to see what it was doing...
+
+But not for me! It came to me that I could download the app on an emulator and run it through a Man In The Middle proxy running on my computer. It intercepts every single incoming request and then monitors and displays it to me and then I can look through each individual one of them. Basically it acts as Chrome Dev Tools which I am pretty sure every web developer is familiar with.
+
+<Image
+   src="/content/reverse-engineer-tcl-home/mitm-proxy.png"
+   alt="MITM proxy inspectting requests from the TCL Home Mobile App"
+   width={2234}
+   height={1158}
+/>
+
+It was so interesting to see how other applications function and what requests are made, how they’re structured, what information comes back. As a web developer, this is heaven to me, and even though I am used to browser dev tools, it just feels different for applications cause I think everyone has wanted to make a mobile app at some point.
+
+# How does the TCL Home App work?
+
+It first authenticates with a username and password which is how you have the main authorization token to use throughout the app.
+
+<Image
+   src="/content/reverse-engineer-tcl-home/tcl-login.png"
+   alt="The request it sends to TCL to authorize itself to the TCL API."
+   width={2234}
+   height={1158}
+/>
+
+To start accessing other endpoints, you authenticate to another refresh token endpoint which aside from a bunch of other tokens you get something called a “Saas Token”. Which is what we’re going to use for later.
+
+```json
+{
+   "code": 0,
+   "message": "SUCCESS",
+   "data": {
+      "saasToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.##.GjSHkzJdNZ0876J7ZSO7JOXOFOUz9Nf3nXqhFh_GvCgItZD27407Q6-##",
+      "cognitoId": "##",
+      "cognitoToken": "##",
+      "mqttEndpoint": "##"
+   }
+}
+```
+
+With the token achieved I thought it was going to be extremely easy. I would just have to append the “Saas Token” to the request and that’s it, everything else I just copy it from what the Android client did.
+
+```typescript
+const r = await fetch("https://prod-eu.aws.tcljd.com/v3/user/get_things", {
+   method: "POST",
+   headers: {
+      platform: "android",
+      appversion: "5.4.1",
+      thomeversion: "4.8.1",
+      accesstoken: saasToken,
+      countrycode: country,
+      "accept-language": "en",
+      timestamp: "asudnuaisbdiausbdiasd",
+      nonce: "aisubdaisdbiausdbiabsdiuasd",
+      sign: "aisubdaubsdiuasbdiasbdiuasd",
+      "user-agent": "Android",
+      "content-type": "application/json; charset=UTF-8",
+      "accept-encoding": "gzip, deflate, br",
+   },
+   body: JSON.stringify({}),
+});
+```
+
+<Callout italic emoji="😃">
+   Haha, if it was only going to be that easy.
+</Callout>
+
+From what I could tell one of the request headers is a checksum. Which meant that if I want to get this working I’m going to need to calculate it myself. And me as a basic web developer, I’ve never had to calculate a checksum before so I was stuck on this for hours on end.
+
+# Checksum... More like Checkmate!
+
+Til I thought of something I’m not sure that is is completely allowed, but hey. You only live once!
+
+**At the end of the day this comes down to free use and I don’t plan making any money out of this video or out of this project.**
+
+So what I did is I got the APK file from a standard APK website and then ran a project I found on GitHub called Vineflower:
+
+<GitHubRepository username="vineflower" repo="vineflower" />
+
+This tried to do as much as it could to convert the Smali code for the Dalvik Virtual Machine _(which is usually executed directly on an Android Client)_ into Java for me to understand.
+
+<Image
+   src="/content/reverse-engineer-tcl-home/smali-vs-java.png"
+   alt="Smali Code vs Pure Java Code (decompiled)"
+   width={1678}
+   height={1158}
+/>
+
+With the _partial_ decompiled source code present I needed to identify where the request to get the device information is executed from. After using some search tools and looking through the code I managed to find what I was looking for.
+
+However, to my luck, that **EXACT** function that composed the request was not successfully decompiled from Smali to Java. This is what it looked like:
+
+```java
+@NonNull
+@Override
+public Response intercept(@NonNull Interceptor.Chain param1) throws IOException {
+   // $VF: Couldn't be decompiled
+   // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+   //
+   // Bytecode:
+   // 000: aload 1
+   // 001: invokeinterface okhttp3/Interceptor$Chain.request ()Lokhttp3/Request; 1
+   // 006: astore 3
+   // 007: getstatic com/tcl/bmnetwork/interceptor/IotApiInterceptor.IOT_BASE_URL Ljava/lang/String;
+   // 00a: ifnonnull 030
+   // 00d: getstatic com/tcl/bmnetwork/interceptor/IotApiInterceptor.urlSetLock Ljava/lang/Object;
+   // 010: astore 2
+   // and so on...
+}
+```
+
+I needed to figure out a way where I can convert this Smali code into Java so I could at least understand the fundamentals of it...
+
+## AI, AI and AI
+
+You know who could do something like this? Good old ChatGPT.
+
+Giving it a simple prompt to convert the code into Java worked like an absolute breeze.

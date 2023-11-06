@@ -70,7 +70,7 @@ const Page = ({ params }: { params: { slug: string } }) => {
          {post.tags.map((tag, index) => (
             <Tags tag={tag} key={index} />
          ))}
-         <h1 className="gradient-text mt-1 max-w-[650px] text-3xl font-bold">
+         <h1 className="gradient-text mt-1 max-w-[650px] text-3xl font-bold ">
             <Balancer>{post.title}</Balancer>
          </h1>
          <div className="mb-6 mt-2 grid max-w-[650px] grid-cols-[auto_1fr_auto] items-center font-mono text-sm">

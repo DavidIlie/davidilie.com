@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+   position: relative;
+}
+
 html[class="dark"] .pageBackground {
    background: rgba(26, 33, 42, 0.8);
 }
