@@ -1,17 +1,20 @@
 import { Metadata } from "next";
 import { allBlogs, Blog } from "contentlayer/generated";
 
+import { env } from "~/env.mjs";
+
 import PostCard from "./post-card";
 
 export const metadata: Metadata = {
    title: "Blog",
 };
 
-const Page = () => {
+const Page = async () => {
    const posts =
-      process.env.NODE_ENV === "production"
-         ? allBlogs.filter((s) => !s.published)
+      env.NODE_ENV === "production"
+         ? allBlogs.filter((s) => s.published)
          : allBlogs;
+
    const featuredPost = posts[0] as Blog;
    return (
       <div className="flex flex-grow items-center justify-center">

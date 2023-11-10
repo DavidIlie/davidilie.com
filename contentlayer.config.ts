@@ -61,7 +61,7 @@ export const Blog = defineDocumentType(() => ({
       },
       published: {
          type: "boolean",
-         required: false,
+         required: true,
       },
    },
    //@ts-ignore
