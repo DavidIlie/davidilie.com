@@ -36,8 +36,8 @@ dependencies:
     specifier: ^4.32.6
     version: 4.32.6(@tanstack/react-query@4.32.6)(react-dom@18.2.0)(react@18.2.0)
   '@tanstack/react-query-next-experimental':
-    specifier: 5.5.0
-    version: 5.5.0(@tanstack/react-query@4.32.6)(next@14.0.4)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 5.18.0
+    version: 5.18.0(@tanstack/react-query@4.32.6)(next@14.0.4)(react@18.2.0)
   '@trpc/client':
     specifier: ^10.43.0
     version: 10.43.0(@trpc/server@10.43.0)
@@ -583,6 +583,7 @@ packages:
 
   /@emotion/memoize@0.7.4:
     resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -2051,18 +2052,16 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /@tanstack/react-query-next-experimental@5.5.0(@tanstack/react-query@4.32.6)(next@14.0.4)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-EgpAaUbjvMkkZbzyedprfNzmCpLVmiWv/utsgQS37KtBDkdikXfDdpsdsh+XbGl8GJrVNpQdGKemjdSiKVg0Rw==}
+  /@tanstack/react-query-next-experimental@5.18.0(@tanstack/react-query@4.32.6)(next@14.0.4)(react@18.2.0):
+    resolution: {integrity: sha512-8xrk+UjXE38MC5pOG3ztdoobXXzFaIXnQ6a1UfLdZCVkXDzt3RbHchpf/ESTjYmKYL5ohJNVO2by19ZMlzjPSQ==}
     peerDependencies:
-      '@tanstack/react-query': ^5.4.3
+      '@tanstack/react-query': ^5.18.0
       next: ^13 || ^14
       react: ^18.0.0
-      react-dom: ^18.0.0
     dependencies:
       '@tanstack/react-query': 4.32.6(react-dom@18.2.0)(react@18.2.0)
       next: 14.0.4(@babel/core@7.22.17)(@opentelemetry/api@1.5.0)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@tanstack/react-query@4.32.6(react-dom@18.2.0)(react@18.2.0):
