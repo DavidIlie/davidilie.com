@@ -33,14 +33,22 @@
       "date-fns": "^2.30.0",
       "framer-motion": "^10.16.0",
       "lucide-react": "^0.268.0",
+<<<<<<< HEAD
       "next": "14.2.1",
+=======
+      "next": "14.0.4",
+>>>>>>> 335cb6f43ebe56f288615371eee8d868e735c104
       "next-contentlayer": "^0.3.4",
       "next-plausible": "^3.11.1",
       "next-themes": "^0.2.1",
       "postcss": "8.4.28",
       "prisma": "^5.5.2",
       "react": "18.2.0",
+<<<<<<< HEAD
       "react-awesome-reveal": "^4.2.8",
+=======
+      "react-awesome-reveal": "^4.2.7",
+>>>>>>> 335cb6f43ebe56f288615371eee8d868e735c104
       "react-dom": "18.2.0",
       "react-wrap-balancer": "^1.1.0",
       "rehype-autolink-headings": "^6.1.1",
