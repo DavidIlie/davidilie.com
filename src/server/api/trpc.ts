@@ -12,9 +12,7 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
    };
 };
 
-export const createTRPCContext = async (opts: { req?: Request }) => {
-   const source = opts.req?.headers.get("x-trpc-source") ?? "unknown";
-   console.log(">>> tRPC Request from", source);
+export const createTRPCContext = async () => {
    return createInnerTRPCContext({});
 };
 
@@ -31,6 +29,8 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
       };
    },
 });
+
+export const createCallerFactory = t.createCallerFactory;
 
 export const createTRPCRouter = t.router;
 

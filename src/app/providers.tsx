@@ -18,36 +18,38 @@ const getBaseUrl = () => {
    return `http://localhost:3000`;
 };
 
+const createQueryClient = () => new QueryClient();
+
+let clientQueryClientSingleton: QueryClient | undefined = undefined;
+const getQueryClient = () => {
+   if (typeof window === "undefined") {
+      return createQueryClient();
+   } else {
+      return (clientQueryClientSingleton ??= createQueryClient());
+   }
+};
+
 const Providers: React.FC<{
    children: React.ReactNode;
    headers?: Headers;
 }> = (props) => {
-   const [queryClient] = useState(
-      () =>
-         new QueryClient({
-            defaultOptions: {
-               queries: {
-                  staleTime: 5 * 1000,
-               },
-            },
-         }),
-   );
+   const queryClient = getQueryClient();
 
    const [trpcClient] = useState(() =>
       api.createClient({
          transformer: superjson,
          links: [
             loggerLink({
-               enabled: (opts) =>
+               enabled: (op) =>
                   process.env.NODE_ENV === "development" ||
-                  (opts.direction === "down" && opts.result instanceof Error),
+                  (op.direction === "down" && op.result instanceof Error),
             }),
             unstable_httpBatchStreamLink({
-               url: `${getBaseUrl()}/api/trpc`,
-               headers() {
-                  const headers = new Map(props.headers);
+               url: getBaseUrl() + "/api/trpc",
+               async headers() {
+                  const headers = new Headers();
                   headers.set("x-trpc-source", "nextjs-react");
-                  return Object.fromEntries(headers);
+                  return headers;
                },
             }),
          ],
