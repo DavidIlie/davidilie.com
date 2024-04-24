@@ -30,7 +30,7 @@ const ImageProject = ({
             }`}
          >
             <div className="container w-full">
-               <div className="aspect-[16/9]">
+               <div className="aspect-video">
                   <Image
                      src={project.image}
                      alt={`${project.name}'s photo`}

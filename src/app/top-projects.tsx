@@ -9,7 +9,7 @@ import projects from "~/data/projects";
 import ResponsiveProjectWrapper from "~/components/project/wrapper";
 
 const TopProject: React.FC = () => (
-   <div className="container max-w-6xl">
+   <div className="container max-w-5xl">
       <Slide cascade triggerOnce duration={500}>
          <div className="relative flex w-full justify-center">
             <h1 className="gradient-text p-1 text-4xl font-medium sm:text-5xl">

@@ -50,23 +50,23 @@ const getSpotifyData = async () => {
    } as RequestInit;
 
    const rTracks = await fetch(TOP_TRACKS_ENDPOINT, standardBody);
-   const responseTracks = (await rTracks.json()) as Artists;
+   const responseTracks = (await rTracks.json()) as Songs;
 
    const rArtists = await fetch(TOP_ARTISTS_ENDPOINT, standardBody);
-   const responseArtists = (await rArtists.json()) as RecentlyPlayed;
+   const responseArtists = (await rArtists.json()) as Artists;
 
    const rRecently = await fetch(RECENTLY_PLAYED_ENDPOINT, standardBody);
-   const responseRecently = (await rRecently.json()) as Songs;
+   const responseRecently = (await rRecently.json()) as RecentlyPlayed;
 
    return {
-      artists: responseTracks,
-      recentlyPlayed: responseArtists,
-      songs: responseRecently,
+      artists: responseArtists,
+      recentlyPlayed: responseRecently,
+      songs: responseTracks,
    };
 };
 
 export const getPlayingStateAndSong = async (): Promise<{
-   album?: Album;
+   album?: string;
    albumImageUrl?: string;
    artist?: string;
    isPlaying: boolean;
