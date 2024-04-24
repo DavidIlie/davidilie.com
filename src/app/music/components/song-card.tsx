@@ -18,7 +18,7 @@ const SongCard: React.FC<{
       >
          <div className="flex items-center">
             <img
-               alt="Album cover"
+               alt={`Album cover for ${song.album.name}`}
                className="w-18 h-18 rounded-md"
                height="110"
                src={song.album.image}
