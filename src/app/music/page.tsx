@@ -23,7 +23,7 @@ const Page = async () => {
             <Section title="Top Artists">
                <div className="grid grid-cols-3 items-center gap-4">
                   {data.artists.items.map((s) => (
-                     <ArtistCard artist={s} />
+                     <ArtistCard artist={s} key={s.id} />
                   ))}
                </div>
             </Section>
@@ -34,6 +34,7 @@ const Page = async () => {
                <div className="space-y-6">
                   {data.songs.items.map((s) => (
                      <SongCard
+                        key={s.id}
                         song={{
                            name: s.name,
                            album: {
@@ -53,6 +54,7 @@ const Page = async () => {
                <div className="space-y-6">
                   {data.recentlyPlayed.items.map((s) => (
                      <SongCard
+                        key={s.track.id}
                         song={{
                            name: s.track.name,
                            album: {
