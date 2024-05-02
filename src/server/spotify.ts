@@ -23,6 +23,7 @@ const getAccessToken = async () => {
          grant_type: `refresh_token`,
          refresh_token,
       }),
+      cache: "no-cache",
    });
 
    return (await response.json()) as { access_token: string };
