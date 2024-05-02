@@ -27,6 +27,7 @@ export const GET = async (req: NextRequest) => {
 
       const r = await fetch(
          `https://api.github.com/users/${env.GITHUB_JOB_USERNAME}/repos`,
+         { cache: "no-cache" },
       );
       const response = (await r.json()) as any[];
 

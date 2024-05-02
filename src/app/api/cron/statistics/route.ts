@@ -9,6 +9,7 @@ const youtubeQuery = async (
 ): Promise<number> => {
    const r = await fetch(
       `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${env.STATISTICS_JOB_CHANNEL}&fields=items/statistics/${item}&key=${env.STATISTICS_JOB_API_KEY}`,
+      { cache: "no-cache" },
    );
    const response = await r.json();
    return parseInt(response.items[0].statistics[item] as string);
