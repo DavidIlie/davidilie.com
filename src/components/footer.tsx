@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
    );
 };
 
-export const SPOTIFY_ACCOUNT = `https://open.spotify.com/user/31cqr3zpmgfnn3b2mgcnmzwbevcq`;
+export const SPOTIFY_ACCOUNT = `https://open.spotify.com/user/31up3s2w6xieifum25jf6h4e4efa`;
 
 const SpotifySuspense: React.FC = () => {
    const [data] = api.spotify.playingStateAndSong.useSuspenseQuery();
