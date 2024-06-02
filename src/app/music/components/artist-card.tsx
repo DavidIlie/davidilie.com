@@ -11,7 +11,7 @@ const ArtistCard: React.FC<{ artist: Artist }> = ({ artist }) => {
          href={artist.external_urls.spotify}
       >
          <div className="absolute inset-0 h-[9.2rem] rounded-2xl bg-black/50">
-            <h1 className="flex h-full items-center justify-center text-xl font-medium">
+            <h1 className="flex h-full items-center justify-center text-xl font-medium text-white">
                {artist.name}
             </h1>
          </div>
