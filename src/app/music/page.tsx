@@ -21,7 +21,7 @@ const Page = async () => {
          </h1>
          <div className="grid w-full grid-cols-1 justify-evenly gap-4 sm:grid-cols-2">
             <Section title="Top Artists">
-               <div className="grid grid-cols-3 items-center gap-4">
+               <div className="grid grid-cols-3 gap-4">
                   {data.artists.items.map((s) => (
                      <ArtistCard artist={s} key={s.id} />
                   ))}
