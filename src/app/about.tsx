@@ -15,6 +15,18 @@ import {
 } from "~/components/ui/tooltip";
 
 const About: React.FC = () => {
+   const age =
+      new Date().getFullYear() -
+      new Date("2006-07-31").getFullYear() -
+      (new Date() <
+      new Date(
+         new Date().getFullYear(),
+         new Date("2006-07-31").getMonth(),
+         new Date("2006-07-31").getDate(),
+      )
+         ? 1
+         : 0);
+
    return (
       <>
          <div className="bg-blue-600 px-10 pb-32 pt-12 text-left text-white dark:bg-blue-800 dark:text-gray-100 sm:text-center">
@@ -24,7 +36,7 @@ const About: React.FC = () => {
                </h1>
                <div className="mx-auto mb-32 gap-6 text-lg sm:flex sm:max-w-6xl">
                   <p className="sm:text-justify">
-                     I am an ambitious 17-year-old software developer and
+                     I am an ambitious {age}-year-old software developer and
                      dedicated full-time student. My passion for computer
                      science has been with me since childhood, and it
                      wasn&apos;t until about two years ago that I fully immersed

@@ -32,7 +32,7 @@ export const Socials: React.FC<{
          >
             <Github size={font !== undefined ? `${font}em` : "1.75em"} />
          </SocialIcon>
-         <SocialIcon tooltip="albastru#0922" notLink>
+         <SocialIcon tooltip="mralbastru" notLink>
             <Disc size={font !== undefined ? `${font}em` : "1.75em"} />
          </SocialIcon>
          <SocialIcon
