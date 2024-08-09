@@ -1,4 +1,4 @@
-name: github_cron:build_and_deploy
+name: github_cron:update
 
 on:
    schedule:
