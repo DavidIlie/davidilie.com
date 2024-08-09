@@ -1,6 +1,6 @@
 "use client";
 
-import { Disc, Github, Twitter, Youtube } from "lucide-react";
+import { Github, Linkedin, Twitter, Youtube } from "lucide-react";
 
 import { cn } from "~/lib/utils";
 
@@ -32,8 +32,12 @@ export const Socials: React.FC<{
          >
             <Github size={font !== undefined ? `${font}em` : "1.75em"} />
          </SocialIcon>
-         <SocialIcon tooltip="mralbastru" notLink>
-            <Disc size={font !== undefined ? `${font}em` : "1.75em"} />
+         <SocialIcon
+            tooltip="David-Alexandru Ilie"
+            newPage
+            link="https://linkedin.com/in/davidilie"
+         >
+            <Linkedin size={font !== undefined ? `${font}em` : "1.75em"} />
          </SocialIcon>
          <SocialIcon
             tooltip="David Ilie"
