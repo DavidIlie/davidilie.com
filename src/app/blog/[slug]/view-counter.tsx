@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useParams } from "next/navigation";
 
-import { api } from "~/lib/api";
+import { api } from "~/trpc/react";
 
 export default function ViewCounter({ trackView }: { trackView: boolean }) {
    const params = useParams();

@@ -10,6 +10,7 @@ export const env = createEnv({
       SPOTIFY_REFRESH_TOKEN: z.optional(z.string()),
       GITHUB_JOB_SECRET: z.string(),
       GITHUB_JOB_USERNAME: z.string(),
+      GITHUB_JOB_API_KEY: z.string(),
       STATISTICS_JOB_SECRET: z.string(),
       STATISTICS_JOB_CHANNEL: z.string(),
       STATISTICS_JOB_API_KEY: z.string(),

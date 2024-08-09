@@ -1,8 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 
-import { servercaller } from "~/lib/api-server";
-
+import { api } from "~/trpc/server";
 import ArtistCard from "./components/artist-card";
 import CurrentlyPlaying from "./components/currently-playing";
 import SongCard from "./components/song-card";
@@ -12,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const Page = async () => {
-   const data = await servercaller.spotify.data();
+   const data = await api.spotify.data();
 
    return (
       <div className="space-y-6">

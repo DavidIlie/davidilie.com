@@ -1,7 +1,7 @@
 import { blogRouter } from "./router/blog";
 import { cronRouter } from "./router/cron";
 import { spotifyRouter } from "./router/spotify";
-import { createTRPCRouter } from "./trpc";
+import { createCallerFactory, createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
    spotify: spotifyRouter,
@@ -10,3 +10,5 @@ export const appRouter = createTRPCRouter({
 });
 
 export type AppRouter = typeof appRouter;
+
+export const createCaller = createCallerFactory(appRouter);

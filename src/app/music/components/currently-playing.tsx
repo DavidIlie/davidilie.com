@@ -2,8 +2,7 @@
 
 import React from "react";
 
-import { api } from "~/lib/api";
-
+import { api } from "~/trpc/react";
 import SongCard from "./song-card";
 
 const CurrentlyPlaying: React.FC = () => {

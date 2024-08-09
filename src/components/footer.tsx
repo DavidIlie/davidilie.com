@@ -3,14 +3,13 @@
 import React, { Suspense } from "react";
 import { Music, Pause } from "lucide-react";
 
-import { api } from "~/lib/api";
-
 import {
    Tooltip,
    TooltipContent,
    TooltipProvider,
    TooltipTrigger,
 } from "~/components/ui/tooltip";
+import { api } from "~/trpc/react";
 import ExternalLink from "./external-link";
 import { Socials } from "./socials";
 

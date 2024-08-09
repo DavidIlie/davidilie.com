@@ -4,7 +4,6 @@ import React, { Suspense } from "react";
 import Image from "next/image";
 import { Fade } from "react-awesome-reveal";
 
-import { api } from "~/lib/api";
 import { shimmer } from "~/lib/shimmer";
 
 import {
@@ -13,6 +12,7 @@ import {
    TooltipProvider,
    TooltipTrigger,
 } from "~/components/ui/tooltip";
+import { api } from "~/trpc/react";
 
 const About: React.FC = () => {
    const age =
