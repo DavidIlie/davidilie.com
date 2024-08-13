@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Suspense } from "react";
+import { usePathname } from "next/navigation";
 import { Music, Pause } from "lucide-react";
 
 import {
@@ -14,35 +15,19 @@ import ExternalLink from "./external-link";
 import { Socials } from "./socials";
 
 const Footer: React.FC = () => {
+   const pathname = usePathname();
+   const isMusicPage = pathname.includes("/music-hidden");
+
    return (
       <footer className="w-full bg-slate-200 bg-opacity-40 pb-5 pt-5 text-black dark:bg-slate-800 dark:bg-opacity-50 dark:text-white">
          <div className="flex flex-col items-center sm:mx-32 sm:flex-row sm:justify-evenly">
-            <Suspense
-               fallback={
-                  <div className="mb-2 sm:mb-0 sm:w-1/3">
-                     Built with{" "}
-                     <ExternalLink
-                        className="font-bold"
-                        url="https://nextjs.org"
-                     >
-                        Next.js
-                     </ExternalLink>
-                     ,{" "}
-                     <ExternalLink className="font-bold" url="https://trpc.io">
-                        tRPC
-                     </ExternalLink>{" "}
-                     and{" "}
-                     <ExternalLink
-                        className="font-bold"
-                        url="https://tailwindcss.com"
-                     >
-                        Tailwind
-                     </ExternalLink>
-                  </div>
-               }
-            >
-               <SpotifySuspense />
-            </Suspense>
+            {isMusicPage ? (
+               <Suspense fallback={<BuiltInfo />}>
+                  <SpotifySuspense />
+               </Suspense>
+            ) : (
+               <BuiltInfo />
+            )}
             <h2 className="mb-2 text-center text-[1.2rem] sm:mb-0 sm:w-1/3">
                Powered by{" "}
                <a
@@ -62,10 +47,30 @@ const Footer: React.FC = () => {
    );
 };
 
+const BuiltInfo = () => {
+   return (
+      <div className="mb-2 sm:mb-0 sm:w-1/3">
+         Built with{" "}
+         <ExternalLink className="font-bold" url="https://nextjs.org">
+            Next.js
+         </ExternalLink>
+         ,{" "}
+         <ExternalLink className="font-bold" url="https://trpc.io">
+            tRPC
+         </ExternalLink>{" "}
+         and{" "}
+         <ExternalLink className="font-bold" url="https://tailwindcss.com">
+            Tailwind
+         </ExternalLink>
+      </div>
+   );
+};
+
 export const SPOTIFY_ACCOUNT = `https://open.spotify.com/user/31up3s2w6xieifum25jf6h4e4efa`;
 
 const SpotifySuspense: React.FC = () => {
    const [data] = api.spotify.playingStateAndSong.useSuspenseQuery();
+
    return (
       <div className="mb-2 flex gap-1 sm:mb-0 sm:w-1/3">
          <TooltipProvider>
