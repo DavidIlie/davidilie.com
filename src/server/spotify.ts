@@ -56,7 +56,7 @@ const getSpotifyData = async () => {
    const get = await prisma.cachedSpotifyStats.findFirst();
    if (get) {
       const hasNotBeenTenMinutes =
-         new Date().getTime() - get.date.getTime() < 10 * 60 * 1000;
+         new Date().getTime() - get.date.getTime() < 5 * 60 * 1000;
       if (hasNotBeenTenMinutes) {
          const parsed = JSON.parse(get.json as any);
          return { ...parsed, rate: true, rateDate: get.date } as Response;
