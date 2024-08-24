@@ -16,24 +16,26 @@ const Page = async () => {
 
    return (
       <div className="space-y-6">
-         <h1 className="gradient-text pb-2 text-center text-5xl font-bold sm:-mb-6 sm:text-6xl">
-            Music
-         </h1>
-         {data.rate && (
-            <p className="gradient-text text-sm font-medium">
-               {data.just ? (
-                  <>Last Updated: Just Now</>
-               ) : (
-                  <>
-                     Last Updated:{" "}
-                     {formatDistance(data.rateDate!, new Date(), {
-                        addSuffix: true,
-                     })}
-                     {data.crashed ? ` (crashed)` : ""}
-                  </>
-               )}
-            </p>
-         )}
+         <div>
+            <h1 className="gradient-text pb-2 text-center text-5xl font-bold sm:text-6xl">
+               Music
+            </h1>
+            {data.rate && (
+               <p className="gradient-text text-sm font-medium">
+                  {data.just ? (
+                     <>Last Updated: Just Now</>
+                  ) : (
+                     <>
+                        Last Updated:{" "}
+                        {formatDistance(data.rateDate!, new Date(), {
+                           addSuffix: true,
+                        })}
+                        {data.crashed ? ` (crashed)` : ""}
+                     </>
+                  )}
+               </p>
+            )}
+         </div>
          <div className="grid w-full grid-cols-1 justify-evenly gap-4 sm:grid-cols-2">
             <Section title="Top Artists">
                <div className="grid grid-cols-3 gap-4">
@@ -42,7 +44,7 @@ const Page = async () => {
                   ))}
                </div>
             </Section>
-            <Section title="Currently Playing">
+            <Section title="Currently Playing (live)">
                <CurrentlyPlaying />
             </Section>
             <Section title="Top Played Songs">
