@@ -2,6 +2,7 @@
 "use client";
 
 import React from "react";
+import { formatDistance } from "date-fns";
 
 const SongCard: React.FC<{
    song: {
@@ -9,6 +10,7 @@ const SongCard: React.FC<{
       album: { name: string; image: string };
       artist: { name: string };
       url: string;
+      date?: Date;
    };
 }> = ({ song }) => {
    return (
@@ -36,6 +38,14 @@ const SongCard: React.FC<{
                <p className="truncate text-sm opacity-70">
                   Artist • {song.artist.name}
                </p>
+               {song.date && (
+                  <p className="truncate text-sm opacity-70">
+                     Played{" "}
+                     {formatDistance(new Date(song.date), new Date(), {
+                        addSuffix: true,
+                     })}
+                  </p>
+               )}
             </div>
          </div>
       </a>

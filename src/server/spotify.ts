@@ -1,5 +1,7 @@
 import { env } from "~/env.mjs";
 
+import { prisma } from "./db";
+
 const client_id = env.SPOTIFY_CLIENT_ID;
 const client_secret = env.SPOTIFY_CLIENT_SECRET;
 const refresh_token = env.SPOTIFY_REFRESH_TOKEN;
@@ -40,7 +42,27 @@ const getNowPlaying = async () => {
    });
 };
 
+type Response = {
+   artists: Artists;
+   recentlyPlayed: RecentlyPlayed;
+   songs: Songs;
+   rate?: boolean;
+   rateDate?: Date;
+   crashed?: boolean;
+   just?: boolean;
+};
+
 const getSpotifyData = async () => {
+   const get = await prisma.cachedSpotifyStats.findFirst();
+   if (get) {
+      const hasNotBeenTenMinutes =
+         new Date().getTime() - get.date.getTime() < 1 * 60 * 1000;
+      if (hasNotBeenTenMinutes) {
+         const parsed = JSON.parse(get.json as any);
+         return { ...parsed, rate: true, rateDate: get.date } as Response;
+      }
+   }
+
    const { access_token } = await getAccessToken();
 
    const standardBody = {
@@ -50,20 +72,47 @@ const getSpotifyData = async () => {
       cache: "no-cache",
    } as RequestInit;
 
-   const rTracks = await fetch(TOP_TRACKS_ENDPOINT, standardBody);
-   const responseTracks = (await rTracks.json()) as Songs;
+   try {
+      console.log("MAKING SPOTIFY REQUEST\n\n");
+      const rTracks = await fetch(TOP_TRACKS_ENDPOINT, standardBody);
+      const responseTracks = (await rTracks.json()) as Songs;
 
-   const rArtists = await fetch(TOP_ARTISTS_ENDPOINT, standardBody);
-   const responseArtists = (await rArtists.json()) as Artists;
+      const rArtists = await fetch(TOP_ARTISTS_ENDPOINT, standardBody);
+      const responseArtists = (await rArtists.json()) as Artists;
 
-   const rRecently = await fetch(RECENTLY_PLAYED_ENDPOINT, standardBody);
-   const responseRecently = (await rRecently.json()) as RecentlyPlayed;
+      const rRecently = await fetch(RECENTLY_PLAYED_ENDPOINT, standardBody);
+      const responseRecently = (await rRecently.json()) as RecentlyPlayed;
 
-   return {
-      artists: responseArtists,
-      recentlyPlayed: responseRecently,
-      songs: responseTracks,
-   };
+      const response = {
+         artists: responseArtists,
+         recentlyPlayed: responseRecently,
+         songs: responseTracks,
+      };
+
+      if (get) {
+         await prisma.cachedSpotifyStats.delete({ where: { id: get.id } });
+      }
+
+      await prisma.cachedSpotifyStats.create({
+         data: { json: JSON.stringify(response) },
+      });
+
+      return { ...response, rate: true, just: true } as Response;
+   } catch (error) {
+      console.error("SPOTIFY FETCH FAILED");
+
+      if (get) {
+         const parsed = JSON.parse(get.json as any);
+         return {
+            ...parsed,
+            rate: true,
+            rateDate: get.date,
+            crashed: true,
+         } as Response;
+      }
+
+      throw new Error("cannot get data");
+   }
 };
 
 export const getPlayingStateAndSong = async (): Promise<{

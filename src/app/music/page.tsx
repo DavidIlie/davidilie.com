@@ -1,5 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
+import { formatDistance } from "date-fns";
 
 import { api } from "~/trpc/server";
 import ArtistCard from "./components/artist-card";
@@ -18,6 +19,21 @@ const Page = async () => {
          <h1 className="gradient-text pb-2 text-center text-5xl font-bold sm:-mb-6 sm:text-6xl">
             Music
          </h1>
+         {data.rate && (
+            <p className="gradient-text text-sm font-medium">
+               {data.just ? (
+                  <>Last Updated: Just Now</>
+               ) : (
+                  <>
+                     Last Updated:{" "}
+                     {formatDistance(data.rateDate!, new Date(), {
+                        addSuffix: true,
+                     })}
+                     {data.crashed ? ` (crashed)` : ""}
+                  </>
+               )}
+            </p>
+         )}
          <div className="grid w-full grid-cols-1 justify-evenly gap-4 sm:grid-cols-2">
             <Section title="Top Artists">
                <div className="grid grid-cols-3 gap-4">
@@ -64,6 +80,7 @@ const Page = async () => {
                               name: s.track.artists[0].name,
                            },
                            url: s.track.external_urls.spotify,
+                           date: s.played_at,
                         }}
                      />
                   ))}

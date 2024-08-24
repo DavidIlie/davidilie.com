@@ -36,3 +36,13 @@ model YouTubeStatistic {
 
   @@index(channel)
 }
+
+model CachedSpotifyStats {
+  id String @id @default(uuid())
+
+  json Json
+
+  date DateTime @default(now())
+
+  @@index(id)
+}
