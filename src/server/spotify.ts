@@ -97,6 +97,16 @@ const getSpotifyData = async () => {
          data: { json: JSON.stringify(response) },
       });
 
+      await fetch(env.WEBHOOK_URL, {
+         method: "POST",
+         headers: {
+            "Content-Type": "application/json",
+         },
+         body: JSON.stringify({
+            content: "Someone triggered a spotify update request!",
+         }),
+      });
+
       return { ...response, rate: true, just: true } as Response;
    } catch (error) {
       console.error("SPOTIFY FETCH FAILED");
