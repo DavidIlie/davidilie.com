@@ -44,7 +44,7 @@ const Page = async () => {
                   ))}
                </div>
             </Section>
-            <Section title="Currently Playing (live)">
+            <Section title="Currently Playing">
                <CurrentlyPlaying />
             </Section>
             <Section title="Top Played Songs">
