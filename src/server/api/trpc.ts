@@ -16,7 +16,6 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
 };
 
 export const createTRPCContext = async (headers: Headers) => {
-   console.log(headers);
    return createInnerTRPCContext({ headers });
 };
 
