@@ -4,16 +4,20 @@ import { ZodError } from "zod";
 
 import { prisma } from "../db";
 
-interface CreateContextOptions {}
+interface CreateContextOptions {
+   headers: Headers;
+}
 
 const createInnerTRPCContext = (opts: CreateContextOptions) => {
    return {
       prisma: prisma,
+      ...opts,
    };
 };
 
-export const createTRPCContext = async () => {
-   return createInnerTRPCContext({});
+export const createTRPCContext = async (headers: Headers) => {
+   console.log(headers);
+   return createInnerTRPCContext({ headers });
 };
 
 const t = initTRPC.context<typeof createTRPCContext>().create({

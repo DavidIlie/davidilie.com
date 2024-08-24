@@ -12,7 +12,7 @@ const createContext = cache(() => {
    const heads = new Headers(headers());
    heads.set("x-trpc-source", "rsc");
 
-   return createTRPCContext();
+   return createTRPCContext(heads);
 });
 
 const getQueryClient = cache(createQueryClient);

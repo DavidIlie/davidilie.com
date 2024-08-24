@@ -1,3 +1,5 @@
+import { headers } from "next/headers";
+
 import { env } from "~/env.mjs";
 
 import { prisma } from "./db";
@@ -96,17 +98,6 @@ const getSpotifyData = async () => {
       await prisma.cachedSpotifyStats.create({
          data: { json: JSON.stringify(response) },
       });
-
-      if (env.NODE_ENV === "production")
-         await fetch(env.WEBHOOK_URL, {
-            method: "POST",
-            headers: {
-               "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-               content: "Someone triggered a spotify update request!",
-            }),
-         });
 
       return { ...response, rate: true, just: true } as Response;
    } catch (error) {

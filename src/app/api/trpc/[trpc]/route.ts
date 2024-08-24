@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import { NextRequest } from "next/server";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
@@ -23,7 +24,7 @@ const handler = async (req: NextRequest) => {
       endpoint: "/api/trpc",
       router: appRouter,
       req,
-      createContext: () => createTRPCContext(),
+      createContext: () => createTRPCContext(headers()),
       onError({ error, path }) {
          console.error(`>>> tRPC Error on '${path}'`, error);
       },
