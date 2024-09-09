@@ -17,7 +17,6 @@ const Providers: React.FC<{
          trackOutboundLinks
          enabled={process.env.NODE_ENV === "production"}
          selfHosted
-         customDomain="https://plausible.davidapps.dev"
       >
          <ThemeProvider attribute="class">
             <TRPCReactProvider>
