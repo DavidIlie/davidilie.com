@@ -1,4 +1,5 @@
 import { withContentlayer } from "next-contentlayer";
+import { withPlausibleProxy } from "next-plausible";
 
 import "./src/env.mjs";
 
@@ -37,4 +38,8 @@ const nextConfig = {
    output: "standalone",
 };
 
-export default withContentlayer(nextConfig);
+export default withContentlayer(
+   withPlausibleProxy({
+      customDomain: "https://plausible.davidapps.dev",
+   })(nextConfig),
+);
