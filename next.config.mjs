@@ -40,6 +40,6 @@ const nextConfig = {
 
 export default withContentlayer(
    withPlausibleProxy({
-      customDomain: "https://plausible.davidapps.dev",
+      customDomain: "http://plausible.default.svc.cluster.local:8000",
    })(nextConfig),
 );
