@@ -28,7 +28,7 @@ const graphik = localFont({
 });
 
 const SEO_DESCRIPTION =
-   "A 17 year old aspiring web developer experimenting with programming by publishing my work on the web for others to see and use.";
+   "An 18 year old aspiring web developer experimenting with programming by publishing my work on the web for others to see and use.";
 
 export const viewport: Viewport = {
    colorScheme: "dark light",
