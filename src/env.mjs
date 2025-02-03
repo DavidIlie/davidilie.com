@@ -15,6 +15,7 @@ export const env = createEnv({
       STATISTICS_JOB_CHANNEL: z.string(),
       STATISTICS_JOB_API_KEY: z.string(),
       WEBHOOK_URL: z.string(),
+      PLAUSIBLE_URL: z.string().url(),
    },
    client: {
       NEXT_PUBLIC_APP_URL: z.string().url(),

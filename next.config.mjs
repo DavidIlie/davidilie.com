@@ -3,6 +3,8 @@ import { withPlausibleProxy } from "next-plausible";
 
 import "./src/env.mjs";
 
+import { env } from "./src/env.mjs";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
    images: {
@@ -40,6 +42,6 @@ const nextConfig = {
 
 export default withContentlayer(
    withPlausibleProxy({
-      customDomain: "http://plausible.default.svc.cluster.local:8000",
+      customDomain: env.PLAUSIBLE_URL,
    })(nextConfig),
 );

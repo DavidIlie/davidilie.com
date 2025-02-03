@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import { initTRPC } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
@@ -15,8 +16,8 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
    };
 };
 
-export const createTRPCContext = async (headers: Headers) => {
-   return createInnerTRPCContext({ headers });
+export const createTRPCContext = async (opts: { headers: Headers }) => {
+   return createInnerTRPCContext({ headers: opts.headers });
 };
 
 const t = initTRPC.context<typeof createTRPCContext>().create({

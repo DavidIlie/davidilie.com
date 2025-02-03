@@ -1,21 +1,24 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 
 import projects from "~/data/projects";
 
 import ExternalLink from "~/components/external-link";
 import PinnedProject from "~/components/project/pinned-project";
-import SmallProject from "~/components/project/small-project";
-import { prisma } from "~/server/db";
+import { api, HydrateClient } from "~/trpc/server";
+import { ClientProjectGitHub } from "./client";
+import LoadingSpinner from "./loading";
 
 export const metadata: Metadata = {
    title: "Projects",
 };
 
 const Page = async () => {
-   const githubProjects = await prisma.gitHubProject.findMany();
+   void api.cron.github.prefetch();
+   void api.spotify.playingStateAndSong.prefetch();
 
    return (
-      <>
+      <HydrateClient>
          <h1 className="gradient-text -mb-4 pb-2 text-center text-5xl font-bold sm:-mb-6 sm:text-6xl">
             Projects
          </h1>
@@ -35,19 +38,10 @@ const Page = async () => {
                GitHub.
             </ExternalLink>
          </p>
-         <div className="container mx-auto grid max-w-6xl grid-cols-1 gap-4 px-2 sm:px-0 md:grid-cols-2 xl:grid-cols-3">
-            {githubProjects
-               ?.sort(
-                  (a, b) =>
-                     new Date(a.lastPush).getTime() -
-                     new Date(b.lastPush).getTime(),
-               )
-               .reverse()
-               .map((project) => (
-                  <SmallProject project={project} key={project.name} />
-               ))}
-         </div>
-      </>
+         <Suspense fallback={<LoadingSpinner />}>
+            <ClientProjectGitHub />
+         </Suspense>
+      </HydrateClient>
    );
 };
 

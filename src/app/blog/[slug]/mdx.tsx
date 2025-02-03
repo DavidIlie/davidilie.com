@@ -1,3 +1,5 @@
+"use client";
+
 /* eslint-disable @next/next/no-img-element */
 import * as React from "react";
 import Image, { ImageProps } from "next/image";
@@ -24,7 +26,7 @@ const CustomLink = (props: any) => {
    return <a target="_blank" rel="noopener noreferrer" {...props} />;
 };
 
-export const CustomImage = ({ alt, ...props }: ImageProps): JSX.Element => {
+export const CustomImage = ({ alt, ...props }: ImageProps) => {
    return (
       <div className="my-2 -mt-4 w-full flex-col justify-center">
          <div className="flex justify-center">

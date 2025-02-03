@@ -8,8 +8,8 @@ import { api } from "~/trpc/react";
 export default function ViewCounter({ trackView }: { trackView: boolean }) {
    const params = useParams();
    const { slug } = params as { slug: string };
-   const data = api.blog.get.useQuery({ slug });
-   const views = (data && data.data?.views) || 0;
+   const [data] = api.blog.get.useSuspenseQuery({ slug });
+   const views = (data && data.views) || 0;
 
    const mutation = api.blog.change.useMutation();
 
