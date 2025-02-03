@@ -9,12 +9,7 @@ const Providers: React.FC<{
    headers?: Headers;
 }> = (props) => {
    return (
-      <PlausibleProvider
-         domain="davidilie.com"
-         trackOutboundLinks
-         enabled={process.env.NODE_ENV === "production"}
-         selfHosted
-      >
+      <PlausibleProvider domain="davidilie.com" trackOutboundLinks selfHosted>
          <ThemeProvider attribute="class">{props.children}</ThemeProvider>
       </PlausibleProvider>
    );

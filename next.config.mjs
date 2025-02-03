@@ -3,8 +3,6 @@ import { withPlausibleProxy } from "next-plausible";
 
 import "./src/env.mjs";
 
-import { env } from "./src/env.mjs";
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
    images: {
@@ -42,6 +40,6 @@ const nextConfig = {
 
 export default withContentlayer(
    withPlausibleProxy({
-      customDomain: env.PLAUSIBLE_URL,
+      customDomain: "https://plausible.davidapps.dev",
    })(nextConfig),
 );
