@@ -2,10 +2,15 @@ import "./globals.css";
 
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { headers } from "next/headers";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+import { env } from "~/env.mjs";
 
 import { BackgroundPattern } from "~/components/background-pattern";
 import Footer from "~/components/footer";
 import NavBar from "~/components/navbar";
+import { TRPCReactProvider } from "~/trpc/react";
 import Providers from "./providers";
 
 export const dynamic = "force-dynamic";
@@ -84,21 +89,29 @@ export const metadata: Metadata = {
    },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
    children,
 }: {
    children: React.ReactNode;
 }) {
+   const headersList = await headers();
+   const proto = headersList.get("x-forwarded-proto");
+   const url =
+      `${proto}://${headersList.get("host")}` || env.NEXT_PUBLIC_APP_URL;
+
    return (
       <html lang="en" suppressHydrationWarning>
          <body className={`text-black dark:text-white ${graphik.variable}`}>
-            <Providers>
-               <BackgroundPattern>
-                  <NavBar />
-                  {children}
-                  <Footer />
-               </BackgroundPattern>
-            </Providers>
+            <TRPCReactProvider baseUrl={url}>
+               <Providers>
+                  <BackgroundPattern>
+                     <NavBar />
+                     {children}
+                     <Footer />
+                  </BackgroundPattern>
+               </Providers>
+               <ReactQueryDevtools initialIsOpen={false} />
+            </TRPCReactProvider>
          </body>
       </html>
    );
