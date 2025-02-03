@@ -1,27 +1,34 @@
-FROM node:20-alpine AS deps
+ARG NODE_VERSION=20.11
+
+FROM node:${NODE_VERSION}-alpine AS base
+
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
+RUN corepack prepare pnpm@10.0.0 --activate
 RUN apk add --no-cache libc6-compat
 WORKDIR /home/node/app
 COPY pnpm-lock.yaml .npmr[c] ./
 
 RUN pnpm fetch
 
-FROM node:20-alpine AS builder
+FROM node:${NODE_VERSION}-alpine AS builder
 RUN apk add --no-cache libc6-compat
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
+RUN corepack prepare pnpm@10.0.0 --activate
 WORKDIR /home/node/app
 COPY . .
 
 RUN corepack enable
+RUN corepack prepare pnpm@10.0.0 --activate
 RUN pnpm install
 ENV NEXT_PUBLIC_APP_URL "https://davidilie.com"
+RUN npx prisma generate
 RUN SKIP_ENV_VALIDATION=true pnpm build
 
-FROM node:20-alpine AS runner
+FROM node:${NODE_VERSION}-alpine AS runner
 
 WORKDIR /home/node/app
 

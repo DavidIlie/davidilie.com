@@ -116,7 +116,7 @@ const SVG = ({
    left,
    top,
    hiddenMobile = false,
-}: SVGProps): JSX.Element => {
+}: SVGProps) => {
    return (
       <svg
          fill={stroke ? `none` : `currentColor`}
@@ -143,15 +143,15 @@ interface UpDownProps {
    type: "normal" | "wide" | "slow";
 }
 
-const UpDown = ({ children, type }: UpDownProps): JSX.Element => {
+const UpDown = ({ children, type }: UpDownProps) => {
    return (
       <div
          className={`${
             type === `wide`
                ? `UpDownWideAnimation`
                : type === `slow`
-               ? `UpDownSlowAnimation`
-               : `UpDownAnimation`
+                 ? `UpDownSlowAnimation`
+                 : `UpDownAnimation`
          } absolute bottom-0 left-0 right-0 top-0 overflow-hidden`}
          style={{ zIndex: -500 }}
       >
