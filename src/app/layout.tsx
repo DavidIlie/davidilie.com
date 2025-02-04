@@ -107,12 +107,7 @@ export default async function RootLayout({
                domain="davidilie.com"
                trackOutboundLinks
                selfHosted
-               scriptProps={{
-                  src: "/js/script.js",
-                  //@ts-ignore
-                  "data-api": "/api/event",
-                  nonce: "test",
-               }}
+               enabled={true}
             />
          </head>
          <body className={`text-black dark:text-white ${graphik.variable}`}>
