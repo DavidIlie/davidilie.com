@@ -9,7 +9,12 @@ const Providers: React.FC<{
    headers?: Headers;
 }> = (props) => {
    return (
-      <PlausibleProvider domain="davidilie.com" trackOutboundLinks selfHosted>
+      <PlausibleProvider
+         domain="davidilie.com"
+         trackOutboundLinks
+         selfHosted
+         customDomain="https://plausible.davidhome.ro"
+      >
          <ThemeProvider attribute="class">{props.children}</ThemeProvider>
       </PlausibleProvider>
    );
