@@ -107,7 +107,6 @@ export default async function RootLayout({
                domain="davidilie.com"
                trackOutboundLinks
                selfHosted
-               enabled={true}
             />
          </head>
          <body className={`text-black dark:text-white ${graphik.variable}`}>
