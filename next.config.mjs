@@ -3,8 +3,18 @@ import { withPlausibleProxy } from "next-plausible";
 
 import "./src/env.mjs";
 
+const PLAUSIBLE_DOMAIN = "https://plausible.davidhome.ro";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+   async rewrites() {
+      return [
+         {
+            source: "/js/script.js",
+            destination: `${PLAUSIBLE_DOMAIN}/js/script.outbound-links.js`,
+         },
+      ];
+   },
    images: {
       remotePatterns: [
          {
@@ -40,8 +50,6 @@ const nextConfig = {
 
 export default withContentlayer(
    withPlausibleProxy({
-      customDomain: "https://plausible.davidhome.ro",
-      subdirectory: "observability",
-      scriptName: "davidhome",
+      customDomain: `${PLAUSIBLE_DOMAIN}`,
    })(nextConfig),
 );

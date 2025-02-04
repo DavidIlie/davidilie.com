@@ -13,7 +13,6 @@ import { BackgroundPattern } from "~/components/background-pattern";
 import Footer from "~/components/footer";
 import NavBar from "~/components/navbar";
 import { TRPCReactProvider } from "~/trpc/react";
-import Providers from "./providers";
 
 export const dynamic = "force-dynamic";
 
@@ -108,6 +107,12 @@ export default async function RootLayout({
                domain="davidilie.com"
                trackOutboundLinks
                selfHosted
+               scriptProps={{
+                  src: "/js/script.js",
+                  //@ts-ignore
+                  "data-api": "/api/event",
+                  nonce: "test",
+               }}
             />
          </head>
          <body className={`text-black dark:text-white ${graphik.variable}`}>
