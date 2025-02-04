@@ -4,6 +4,8 @@ import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { headers } from "next/headers";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import PlausibleProvider from "next-plausible";
+import { ThemeProvider } from "next-themes";
 
 import { env } from "~/env.mjs";
 
@@ -101,15 +103,22 @@ export default async function RootLayout({
 
    return (
       <html lang="en" suppressHydrationWarning>
+         <head>
+            <PlausibleProvider
+               domain="davidilie.com"
+               trackOutboundLinks
+               selfHosted
+            />
+         </head>
          <body className={`text-black dark:text-white ${graphik.variable}`}>
             <TRPCReactProvider baseUrl={url}>
-               <Providers>
+               <ThemeProvider attribute="class">
                   <BackgroundPattern>
                      <NavBar />
                      {children}
                      <Footer />
                   </BackgroundPattern>
-               </Providers>
+               </ThemeProvider>
                <ReactQueryDevtools initialIsOpen={false} />
             </TRPCReactProvider>
          </body>

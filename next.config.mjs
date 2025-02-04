@@ -40,6 +40,8 @@ const nextConfig = {
 
 export default withContentlayer(
    withPlausibleProxy({
-      customDomain: "http://192.168.100.18:8000",
+      customDomain: "https://plausible.davidhome.ro",
+      subdirectory: "observability",
+      scriptName: "davidhome",
    })(nextConfig),
 );
