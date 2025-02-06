@@ -1,10 +1,23 @@
 import { withContentlayer } from "next-contentlayer";
-import { withPlausibleProxy } from "next-plausible";
 
 import "./src/env.mjs";
 
+const PLAUSIBLE_DOMAIN = "https://plausible.davidapps.dev";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+   async rewrites() {
+      return [
+         {
+            source: "/js/script.js",
+            destination: `${PLAUSIBLE_DOMAIN}/js/script.js`,
+         },
+         {
+            source: "/api/event",
+            destination: `${PLAUSIBLE_DOMAIN}/api/event`,
+         },
+      ];
+   },
    images: {
       remotePatterns: [
          {
@@ -38,10 +51,4 @@ const nextConfig = {
    output: "standalone",
 };
 
-export default withContentlayer(
-   withPlausibleProxy({
-      customDomain: "https://plausible.davidapps.dev",
-      scriptName: "script",
-      subdirectory: "observability",
-   })(nextConfig),
-);
+export default withContentlayer(nextConfig);
