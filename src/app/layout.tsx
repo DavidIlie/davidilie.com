@@ -100,8 +100,6 @@ export default async function RootLayout({
    const url =
       `${proto}://${headersList.get("host")}` || env.NEXT_PUBLIC_APP_URL;
 
-   console.log(headersList.get("X-forwarded-for"));
-
    return (
       <html lang="en" suppressHydrationWarning>
          <head>
