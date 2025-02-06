@@ -40,7 +40,7 @@ const nextConfig = {
 
 export default withContentlayer(
    withPlausibleProxy({
-      customDomain: "https://plausible.davidhome.ro",
+      customDomain: "https://plausible.davidapps.dev",
       scriptName: "script",
       subdirectory: "observability",
    })(nextConfig),

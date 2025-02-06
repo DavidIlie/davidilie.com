@@ -103,11 +103,7 @@ export default async function RootLayout({
    return (
       <html lang="en" suppressHydrationWarning>
          <head>
-            <PlausibleProvider
-               domain="davidilie.com"
-               trackOutboundLinks
-               selfHosted
-            />
+            <PlausibleProvider domain="davidilie.com" trackOutboundLinks />
          </head>
          <body className={`text-black dark:text-white ${graphik.variable}`}>
             <TRPCReactProvider baseUrl={url}>
