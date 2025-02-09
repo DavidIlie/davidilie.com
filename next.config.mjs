@@ -2,19 +2,13 @@ import { withContentlayer } from "next-contentlayer";
 
 import "./src/env.mjs";
 
-const PLAUSIBLE_DOMAIN = "https://plausible.davidapps.dev";
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
    async rewrites() {
       return [
          {
             source: "/js/script.js",
-            destination: `${PLAUSIBLE_DOMAIN}/js/script.js`,
-         },
-         {
-            source: "/api/event",
-            destination: `${PLAUSIBLE_DOMAIN}/api/event`,
+            destination: `https://plausible.davidapps.dev/js/script.outbound-links.js`,
          },
       ];
    },

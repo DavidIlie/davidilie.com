@@ -106,8 +106,11 @@ export default async function RootLayout({
             <PlausibleProvider
                domain="davidilie.com"
                trackOutboundLinks
+               selfHosted
                scriptProps={{
                   src: "/js/script.js",
+                  //@ts-expect-error stupid
+                  "data-api": "https://e.davidhome.ro/api/event",
                }}
             />
          </head>
