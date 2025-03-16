@@ -34,8 +34,8 @@ export const SpotifyClientPage = () => {
          <div className="grid w-full grid-cols-1 justify-evenly gap-4 sm:grid-cols-2">
             <Section title="Top Artists">
                <div className="grid grid-cols-3 gap-4">
-                  {data.artists.items.map((s) => (
-                     <ArtistCard artist={s} key={s.id} />
+                  {data.artists.items.map((s, index) => (
+                     <ArtistCard artist={s} key={index} />
                   ))}
                </div>
             </Section>
@@ -44,9 +44,9 @@ export const SpotifyClientPage = () => {
             </Section>
             <Section title="Top Played Songs">
                <div className="space-y-6">
-                  {data.songs.items.map((s) => (
+                  {data.songs.items.map((s, index) => (
                      <SongCard
-                        key={s.id}
+                        key={index}
                         song={{
                            name: s.name,
                            album: {
@@ -64,9 +64,9 @@ export const SpotifyClientPage = () => {
             </Section>
             <Section title="Recently Played">
                <div className="space-y-6">
-                  {data.recentlyPlayed.items.map((s) => (
+                  {data.recentlyPlayed.items.map((s, index) => (
                      <SongCard
-                        key={s.track.id}
+                        key={index}
                         song={{
                            name: s.track.name,
                            album: {
