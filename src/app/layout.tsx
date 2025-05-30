@@ -10,6 +10,7 @@ import { ThemeProvider } from "next-themes";
 import { env } from "~/env.mjs";
 
 import { BackgroundPattern } from "~/components/background-pattern";
+import { CallToAction } from "~/components/call-to-action";
 import Footer from "~/components/footer";
 import NavBar from "~/components/navbar";
 import { TRPCReactProvider } from "~/trpc/react";
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
    publisher: "David Ilie",
    description: SEO_DESCRIPTION,
    formatDetection: {
-      email: false,
+      email: true,
       address: false,
       telephone: false,
    },
@@ -120,6 +121,7 @@ export default async function RootLayout({
                   <BackgroundPattern>
                      <NavBar />
                      {children}
+                     <CallToAction />
                      <Footer />
                   </BackgroundPattern>
                </ThemeProvider>

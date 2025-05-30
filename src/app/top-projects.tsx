@@ -7,6 +7,7 @@ import { Slide } from "react-awesome-reveal";
 import projects from "~/data/projects";
 
 import ResponsiveProjectWrapper from "~/components/project/wrapper";
+import { Button } from "~/components/ui/button";
 
 const TopProject: React.FC = () => (
    <div className="container max-w-5xl">
@@ -17,13 +18,10 @@ const TopProject: React.FC = () => (
             </h1>
             <div className="absolute top-[1.3rem] mx-auto ml-[0.25rem] h-6 w-[48%] bg-blue-500/20 sm:ml-[-0.075rem] sm:w-[22%]" />
          </div>
-         <div className="-mb-6 flex justify-center">
-            <Link
-               className="text-lg duration-150 hover:text-blue-500"
-               href="/projects"
-            >
-               See all my projects...
-            </Link>
+         <div className="-mb-6 mt-2 flex justify-center">
+            <Button asChild variant="ghost">
+               <Link href="/projects">See all my projects</Link>
+            </Button>
          </div>
          <ResponsiveProjectWrapper
             isGitHub={false}

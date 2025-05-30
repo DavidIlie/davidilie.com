@@ -2,10 +2,13 @@
 
 import React, { Suspense } from "react";
 import Image from "next/image";
+import Link from "next/link";
+//@ts-ignore
 import { Fade } from "react-awesome-reveal";
 
 import { shimmer } from "~/lib/shimmer";
 
+import { ServicesButtons } from "~/components/call-to-action";
 import {
    Tooltip,
    TooltipContent,
@@ -13,6 +16,7 @@ import {
    TooltipTrigger,
 } from "~/components/ui/tooltip";
 import { api } from "~/trpc/react";
+import MePhoto from "../../public/static/me.jpeg";
 
 const About: React.FC = () => {
    const age =
@@ -29,12 +33,12 @@ const About: React.FC = () => {
 
    return (
       <>
-         <div className="bg-blue-600 px-10 pb-32 pt-12 text-left text-white dark:bg-blue-800 dark:text-gray-100 sm:text-center">
+         <div className="mb-32 bg-blue-600 px-10 pb-32 pt-12 text-left text-white dark:bg-blue-800 dark:text-gray-100 sm:text-center">
             <Fade direction="left" triggerOnce cascade>
                <h1 className="mb-5 text-center text-4xl font-semibold sm:text-4xl md:text-5xl">
                   First of all, who am I?
                </h1>
-               <div className="mx-auto mb-32 gap-6 text-lg sm:flex sm:max-w-6xl">
+               <div className="mx-auto gap-6 text-lg sm:flex sm:max-w-6xl">
                   <p className="sm:text-justify">
                      I am an ambitious {age}-year-old software developer and
                      dedicated full-time student. My passion for computer
@@ -52,7 +56,7 @@ const About: React.FC = () => {
                      on this exciting journey of innovation and self-discovery.
                   </p>
                   <Image
-                     src="/static/me.png"
+                     src={MePhoto}
                      alt="Me"
                      width={200}
                      height={200}
@@ -61,6 +65,8 @@ const About: React.FC = () => {
                      placeholder="blur"
                   />
                </div>
+
+               <ServicesButtons />
             </Fade>
          </div>
          <Fade direction="up" triggerOnce cascade className="mx-4">
@@ -104,9 +110,11 @@ const About: React.FC = () => {
                      <h4 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Tools I use:
                      </h4>
-                     <p className="text-lg">Visual Studio Code</p>
-                     <p className="text-lg">Figma</p>
-                     <p className="text-lg">Adobe Illustrator</p>
+                     <p className="text-lg">
+                        AI Tools{" "}
+                        <span className="text-muted-foreground">(Cursor)</span>
+                     </p>
+                     <p className="text-lg">Adobe Photoshop</p>
                      <p className="text-lg">Pen & Paper</p>
                   </div>
                </div>
@@ -128,11 +136,11 @@ const About: React.FC = () => {
                         Backend Developer
                      </h2>
                      <p className="px-16 text-lg">
-                        I value{" "}
+                        I build{" "}
                         <span className="font-bold text-blue-700 dark:text-blue-500">
                            fast
                         </span>{" "}
-                        API calls and{" "}
+                        APIs and{" "}
                         <span className="font-bold text-blue-700 dark:text-blue-500">
                            efficent
                         </span>{" "}
@@ -143,18 +151,25 @@ const About: React.FC = () => {
                      <h3 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Technologies I use:
                      </h3>
-                     <p className="text-lg">
-                        tRPC, S3, Prisma, SQL, WebSockets
-                     </p>
+                     <p className="text-lg">tRPC, Kubernetes, S3, Prisma</p>
                   </div>
                   <div className="mb-7 text-center">
                      <h4 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
                         Tools I use:
                      </h4>
-                     <p className="text-lg">Visual Studio Code</p>
-                     <p className="text-lg">Windows Terminal</p>
+                     <p className="text-lg">
+                        AI Tools{" "}
+                        <span className="text-muted-foreground">(Cursor)</span>
+                     </p>
+                     <Link
+                        href="https://plausible.io"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-lg duration-150 hover:text-blue-500"
+                     >
+                        Plausible Analytics
+                     </Link>
                      <p className="text-lg">iTerm 2</p>
-                     <p className="text-lg">GitHub</p>
                   </div>
                </div>
                <div className="xs:w-full px-5 pt-10 xl:w-1/3">
