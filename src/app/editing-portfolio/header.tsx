@@ -39,8 +39,8 @@ const Header: React.FC = () => {
       });
    };
    return (
-      <div className="relative mt-10 flex min-h-[80vh] flex-grow items-center justify-center px-4 text-center sm:mt-24">
-         <div className="mx-auto mt-5 max-w-5xl">
+      <div className="relative mt-32 flex min-h-[80vh] flex-grow items-center justify-center px-4 text-center sm:mt-24">
+         <div className="mx-auto mt-5 sm:max-w-5xl">
             <div className="relative">
                <AnimatePresence>
                   <div className="mb-6">
@@ -48,7 +48,7 @@ const Header: React.FC = () => {
                         //@ts-ignore
                         initial={{ y: "100%" }}
                         animate="visible"
-                        className="text-2xl font-medium text-gray-600 dark:text-gray-300 md:text-3xl"
+                        className="text-xl font-medium text-gray-600 dark:text-gray-300 md:text-3xl"
                         variants={{
                            //@ts-ignore
                            visible: (i: number) => ({
@@ -70,7 +70,7 @@ const Header: React.FC = () => {
                            //@ts-ignore
                            initial={{ y: "100%" }}
                            animate="visible"
-                           className="gradient-text text-6xl font-bold tracking-tight md:text-8xl"
+                           className="gradient-text text-4xl font-bold tracking-tight md:text-8xl"
                            variants={{
                               //@ts-ignore
                               visible: (i: number) => ({
@@ -106,7 +106,7 @@ const Header: React.FC = () => {
                                  </span>
                                  .
                               </p>
-                              <p className="text-lg text-gray-500 dark:text-gray-400">
+                              <p className="text-base text-gray-500 dark:text-gray-400">
                                  Fast delivery • Professional quality •
                                  Europe-based
                               </p>
@@ -147,7 +147,7 @@ const Header: React.FC = () => {
                transition={{ delay: 0.6, duration: 0.8 }}
             >
                <div
-                  className="flex cursor-pointer flex-col items-center text-gray-400 transition-colors duration-300 hover:text-blue-500 dark:text-gray-500"
+                  className="mb-4 flex cursor-pointer flex-col items-center text-gray-400 transition-colors duration-300 hover:text-blue-500 dark:text-gray-500 sm:mb-0"
                   onClick={scrollDown}
                >
                   <p className="mb-3 text-sm font-medium tracking-wide">

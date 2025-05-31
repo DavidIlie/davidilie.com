@@ -140,7 +140,7 @@ const About: React.FC = () => {
                         <span className="font-bold text-blue-700 dark:text-blue-500">
                            fast
                         </span>{" "}
-                        APIs and{" "}
+                        APIs and write{" "}
                         <span className="font-bold text-blue-700 dark:text-blue-500">
                            efficent
                         </span>{" "}
