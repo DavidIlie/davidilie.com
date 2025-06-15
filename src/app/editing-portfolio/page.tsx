@@ -387,7 +387,7 @@ const EditingPortfolioPage = () => {
                         </span>
                      </div>
                      <Button asChild size="lg">
-                        <Link href="/">🌐 Explore My Development Work</Link>
+                        <Link href="/developer-portfolio">🌐 Explore My Development Work</Link>
                      </Button>
                   </div>
                </div>
