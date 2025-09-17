@@ -15,7 +15,7 @@ export const GET = async (req: NextRequest) => {
 
    if (!code)
       return redirect(
-         `https://accounts.spotify.com/authorize?response_type=code&client_id=${process.env.SPOTIFY_CLIENT_ID}&scope=user-read-playback-position%20user-library-read%20user-top-read%20user-read-recently-played%20user-read-playback-state%20user-read-currently-playing&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fdev%2Fspotify-oauth`,
+         `https://accounts.spotify.com/authorize?response_type=code&client_id=${process.env.SPOTIFY_CLIENT_ID}&scope=user-read-playback-position%20user-library-read%20user-top-read%20user-read-recently-played%20user-read-playback-state%20user-read-currently-playing&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000%2Fapi%2Fdev%2Fspotify-oauth`,
       );
 
    const r = await fetch(`https://accounts.spotify.com/api/token`, {
@@ -28,7 +28,7 @@ export const GET = async (req: NextRequest) => {
       body: new URLSearchParams({
          grant_type: "authorization_code",
          code: code,
-         redirect_uri: "http://localhost:3000/api/dev/spotify-oauth",
+         redirect_uri: "http://127.0.0.1:3000/api/dev/spotify-oauth",
          client_id: env.SPOTIFY_CLIENT_ID,
          secret_id: env.SPOTIFY_CLIENT_SECRET,
       }),

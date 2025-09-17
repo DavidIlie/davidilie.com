@@ -60,7 +60,7 @@ const BuiltInfo = () => {
    );
 };
 
-export const SPOTIFY_ACCOUNT = `https://open.spotify.com/user/31wx4lhukr6jca4j6zicvvggryfq`;
+export const SPOTIFY_ACCOUNT = `https://open.spotify.com/user/312tjs5nlu2gipgpp3kj77y6xm2m`;
 
 const SpotifySuspense: React.FC = () => {
    const [data] = api.spotify.playingStateAndSong.useSuspenseQuery();
