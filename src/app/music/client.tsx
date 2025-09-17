@@ -15,6 +15,7 @@ export const SpotifyClientPage = () => {
             <h1 className="gradient-text pb-2 text-center text-5xl font-bold sm:text-6xl">
                Music
             </h1>
+            <p>finally using my personal email, bye gamsgo</p>
             {data.rate && (
                <p className="gradient-text text-sm font-medium">
                   {data.just ? (
