@@ -111,7 +111,7 @@ export default async function RootLayout({
                scriptProps={{
                   src: "/js/script.js",
                   //@ts-expect-error stupid
-                  "data-api": "https://e.davidhome.ro/api/event",
+                  "data-api": "https://e.dave.tips/api/event",
                }}
             />
          </head>
