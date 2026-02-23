@@ -41,11 +41,11 @@ const NavBar: React.FC = () => {
 
    useEffect(() => {
       const scrollHandler = () => {
-         window.pageYOffset > 10 ? setTop(false) : setTop(true);
+         setTop(window.scrollY <= 10);
       };
-      window.addEventListener("scroll", scrollHandler);
+      window.addEventListener("scroll", scrollHandler, { passive: true });
       return () => window.removeEventListener("scroll", scrollHandler);
-   }, [top]);
+   }, []);
 
    const [clickMobileMenu, setClickMobileMenu] = useState<boolean>(false);
 

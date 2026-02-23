@@ -36,12 +36,10 @@ const Page = async () => {
                <PostCard {...featuredPost} featured />
                <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2 sm:px-2.5">
                   {posts
-                     .sort((a, b) => {
-                        if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
-                           return -1;
-                        }
-                        return 1;
-                     })
+                     .toSorted((a, b) =>
+                        new Date(b.publishedAt).getTime() -
+                        new Date(a.publishedAt).getTime()
+                     )
                      .filter((s) => s.slug !== featuredPost.slug)
                      .map((post) => (
                         <PostCard {...post} key={post.slug} />

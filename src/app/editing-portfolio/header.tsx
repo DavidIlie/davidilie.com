@@ -127,7 +127,7 @@ const Header: React.FC = () => {
                         className="bg-blue-600 px-8 py-3 text-lg text-white hover:bg-blue-700"
                      >
                         <Link href="mailto:david@davidilie.com">
-                           ✉️ Get a Quote
+                           Get a Quote
                         </Link>
                      </Button>
                      <Button
@@ -136,7 +136,7 @@ const Header: React.FC = () => {
                         variant="outline"
                         className="border-2 border-blue-600 px-8 py-3 text-lg text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20"
                      >
-                        <Link href="#portfolio">🎬 See My Work</Link>
+                        <Link href="#portfolio">See My Work</Link>
                      </Button>
                   </div>
                </motion.div>

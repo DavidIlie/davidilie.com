@@ -11,7 +11,7 @@ const refresh_token = env.SPOTIFY_REFRESH_TOKEN;
 export const genSpotifyAuthHeaders = btoa(`${client_id}:${client_secret}`);
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
 const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10`;
-const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=3`;
+const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=6`;
 const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played?limit=10`;
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
@@ -76,14 +76,17 @@ const getSpotifyData = async () => {
 
    try {
       console.log("MAKING SPOTIFY REQUEST\n\n");
-      const rTracks = await fetch(TOP_TRACKS_ENDPOINT, standardBody);
-      const responseTracks = (await rTracks.json()) as Songs;
-
-      const rArtists = await fetch(TOP_ARTISTS_ENDPOINT, standardBody);
-      const responseArtists = (await rArtists.json()) as Artists;
-
-      const rRecently = await fetch(RECENTLY_PLAYED_ENDPOINT, standardBody);
-      const responseRecently = (await rRecently.json()) as RecentlyPlayed;
+      const [rTracks, rArtists, rRecently] = await Promise.all([
+         fetch(TOP_TRACKS_ENDPOINT, standardBody),
+         fetch(TOP_ARTISTS_ENDPOINT, standardBody),
+         fetch(RECENTLY_PLAYED_ENDPOINT, standardBody),
+      ]);
+      const [responseTracks, responseArtists, responseRecently] =
+         (await Promise.all([
+            rTracks.json(),
+            rArtists.json(),
+            rRecently.json(),
+         ])) as [Songs, Artists, RecentlyPlayed];
 
       const response = {
          artists: responseArtists,

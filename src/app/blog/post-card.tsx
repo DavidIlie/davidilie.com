@@ -26,18 +26,19 @@ const PostCard = async (props: Type) => {
 
    return (
       <Link href={`/blog/${props.slug}`}>
+         {/* Desktop featured layout */}
          <div
             className={`hidden ${
                props.featured && "mt-14 hidden rounded-tl-sm sm:block"
-            } hoverItem mx-3 mb-4 flex transform cursor-pointer flex-row justify-center gap-4 rounded-xl border-2 border-gray-200 bg-gray-100 duration-150 dark:border-gray-700 dark:bg-gray-800 md:px-3 md:py-2`}
+            } mx-3 mb-4 flex transform cursor-pointer flex-row justify-center gap-4 rounded-xl border border-gray-200/80 bg-white/60 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600 md:px-3 md:py-2`}
          >
-            <h1 className="absolute -left-0.5 -top-9 z-10 rounded-t border-2 border-blue-200 bg-blue-300 px-4 py-1 font-semibold text-blue-900 dark:border-blue-700 dark:bg-blue-600 dark:bg-opacity-50 dark:text-blue-100">
+            <h1 className="absolute -left-0.5 -top-9 z-10 rounded-t border border-blue-200/60 bg-blue-50/80 px-4 py-1 text-sm font-medium text-blue-700 dark:border-blue-800/40 dark:bg-blue-950/30 dark:text-blue-300">
                Featured Post
             </h1>
             <div className="flex gap-2">
                <Image
                   alt={props.title}
-                  className="rounded object-cover shadow-xl"
+                  className="rounded-lg object-cover"
                   src={(props.structuredData as any).image}
                   blurDataURL={shimmer(1920, 1080)}
                   placeholder="blur"
@@ -51,19 +52,20 @@ const PostCard = async (props: Type) => {
                   <h1 className="text-section mb-1 mt-1 text-xl font-semibold md:text-2xl">
                      {props.title}
                   </h1>
-                  <p className="text-gray-800 dark:text-gray-300">
+                  <p className="text-gray-600 dark:text-gray-400">
                      {props.summary}
                   </p>
-                  <h1 className="mt-0.5 text-sm text-gray-800 dark:text-gray-400">
+                  <h1 className="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
                      {postMeta}
                   </h1>
                </div>
             </div>
          </div>
+         {/* Mobile / regular card layout */}
          <div
             className={`${
                props.featured && "sm:hidden"
-            } hoverItem mb-3 rounded-lg border-2 border-gray-200 bg-gray-100 shadow-2xl duration-200 dark:border-gray-700 dark:bg-gray-800`}
+            } group overflow-hidden rounded-xl border border-gray-200/80 bg-white/60 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600`}
          >
             <Image
                src={(props.structuredData as any).image}
@@ -72,20 +74,20 @@ const PostCard = async (props: Type) => {
                height={300}
                blurDataURL={shimmer(1920, 1080)}
                placeholder="blur"
-               className="rounded-lg rounded-b-none"
+               className="w-full rounded-t-xl object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             />
-            <div className="-mt-0.5 border-t-2 border-gray-700 px-4 py-2">
-               <h2 className="line-clamp-2 h-16 text-2xl font-semibold tracking-normal">
+            <div className="border-t border-gray-200/80 px-4 py-3 dark:border-gray-700/50">
+               <h2 className="line-clamp-2 h-14 text-lg font-semibold leading-snug tracking-normal sm:text-xl">
                   {props.title}
                </h2>
-               <p className="text-md mb-3 mt-2 line-clamp-5 text-gray-800 dark:text-gray-200">
+               <p className="mb-3 mt-2 line-clamp-3 text-sm text-gray-600 dark:text-gray-400">
                   {props.summary}
                </p>
                {props.tags.map((tag, index) => (
                   <Tags tag={tag} key={index} />
                ))}
                <div className="mb-1 mr-1 mt-1 flex items-center">
-                  <span className="text-sm text-gray-800 dark:text-gray-400">
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
                      {postMeta}
                   </span>
                </div>

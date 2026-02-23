@@ -70,8 +70,8 @@ const About: React.FC = () => {
             </Fade>
          </div>
          <Fade direction="up" triggerOnce cascade className="mx-4">
-            <div className="mx-auto mb-10 mt-[-14rem] flex max-w-[25rem] flex-wrap justify-evenly rounded-2xl bg-white shadow-xl dark:bg-gray-800 dark:text-gray-200 md:max-w-6xl md:flex-nowrap">
-               <div className="xs:w-full border-b-2 px-5 pt-10 dark:border-gray-600 md:border-b-0 md:border-r-2 xl:w-1/3 xl:border-b-0 xl:border-r-2 2xl:border-b-0 2xl:border-r-2">
+            <div className="mx-auto mb-10 mt-[-14rem] flex max-w-[25rem] flex-wrap justify-evenly rounded-2xl border border-gray-200/80 bg-white/80 backdrop-blur-sm dark:border-gray-700/50 dark:bg-gray-800/80 dark:text-gray-200 md:max-w-6xl md:flex-nowrap">
+               <div className="xs:w-full border-b border-gray-200/80 px-5 pt-10 dark:border-gray-700/50 md:border-b-0 md:border-r xl:w-1/3 xl:border-b-0 xl:border-r 2xl:border-b-0 2xl:border-r">
                   <div className="mb-3 flex justify-center">
                      <Image
                         src="/static/frontend.svg"
@@ -118,7 +118,7 @@ const About: React.FC = () => {
                      <p className="text-lg">Pen & Paper</p>
                   </div>
                </div>
-               <div className="xs:w-full border-b-2 px-5 pt-10 dark:border-gray-600 md:border-b-0 md:border-r-2 xl:w-1/3 xl:border-b-0 xl:border-r-2 2xl:border-r-2">
+               <div className="xs:w-full border-b border-gray-200/80 px-5 pt-10 dark:border-gray-700/50 md:border-b-0 md:border-r xl:w-1/3 xl:border-b-0 xl:border-r 2xl:border-r">
                   <div className="mb-3 flex justify-center">
                      <Image
                         src="/static/backend.svg"
@@ -135,7 +135,7 @@ const About: React.FC = () => {
                      <h2 className="mb-5 text-2xl font-semibold">
                         Backend Developer
                      </h2>
-                     <p className="px-16 text-lg">
+                     <p className="px-4 text-lg sm:px-16">
                         I build{" "}
                         <span className="font-bold text-blue-700 dark:text-blue-500">
                            fast
@@ -195,7 +195,7 @@ const About: React.FC = () => {
                      >
                         Content Creator
                      </a>
-                     <p className="mt-5 px-16 text-lg">
+                     <p className="mt-5 px-4 text-lg sm:px-16">
                         <Suspense fallback={<span>Loading...</span>}>
                            <Statistics />
                         </Suspense>

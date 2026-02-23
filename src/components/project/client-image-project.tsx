@@ -25,7 +25,7 @@ const ImageProject = ({
    return (
       <div className="relative my-12">
          <div
-            className={`relative max-w-[83%] rounded-xl border-2 border-gray-700 ${
+            className={`relative max-w-[83%] overflow-hidden rounded-xl border border-gray-200/80 dark:border-gray-700/50 ${
                left ? "ml-auto" : "ml-0"
             }`}
          >
@@ -47,7 +47,7 @@ const ImageProject = ({
                left
                   ? "left-0 text-left xl:left-[-7%]"
                   : "right-0 text-right xl:right-[-7%]"
-            } top-[50%] w-[45%] max-w-[450px] rounded-xl border-2 border-gray-200 bg-gray-100 p-5 dark:border-gray-700 dark:bg-gray-800`}
+            } top-[50%] w-[45%] max-w-[450px] rounded-xl border border-gray-200/80 bg-white/80 p-5 backdrop-blur-sm dark:border-gray-700/50 dark:bg-gray-800/80`}
             style={{ transform: "translate(0, -50%)" }}
          >
             <div

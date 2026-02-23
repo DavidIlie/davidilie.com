@@ -19,6 +19,14 @@ export type Project = ProjectNoGitHub | ProjectGitHub;
 
 const projects: Project[] = [
    {
+      name: "MBRetrofit Tools",
+      description:
+         "A comprehensive suite of tools for Mercedes-Benz car retrofitting and diagnostics. Features vehicle lookup, coding browser, DLM flash tools, and DoIP communication — built as a monorepo with Next.js, tRPC, and Electron.",
+      image: "/static/mbretrofit-tools.png",
+      url: "https://mbretrofit.tools",
+      tags: ["T3 Stack", "Electron", "Monorepo", "Mercedes-Benz"],
+   },
+   {
       name: "KCA News",
       description:
          "This Content Management Website empowers students to share thoughts and enhance language skills via articles at King's College Alicante. Created on the request of the English Department's head, it maintains a consistent corporate style. With 110+ registered accounts and 120+ articles, the platform fosters a thriving English-focused community, bringing joy to both teachers and students.",

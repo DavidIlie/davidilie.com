@@ -21,7 +21,7 @@ const ResponsiveProject = ({
    repo?: GitHubProject | null | undefined;
 }) => {
    return (
-      <div className="dark: my-8 w-full flex-col rounded-xl border-2 border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-gray-800">
+      <div className="my-8 w-full flex-col overflow-hidden rounded-xl border border-gray-200/80 bg-white/60 dark:border-gray-700/50 dark:bg-gray-800/40">
          <div className="relative aspect-[16/9]">
             <Image
                src={project.image}
@@ -32,7 +32,7 @@ const ResponsiveProject = ({
                fill={true}
             />
          </div>
-         <div className="border-t-4 border-t-gray-400 px-3 py-2 text-left dark:border-t-gray-700">
+         <div className="border-t border-gray-200/80 px-4 py-3 text-left dark:border-gray-700/50">
             <div className="flex justify-between text-3xl">
                <h1 className="text-3xl font-bold">{project.name}</h1>
                <a

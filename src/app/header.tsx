@@ -19,21 +19,13 @@ const Header: React.FC = () => {
          }, 500);
       }, 500);
 
-      const width = window.innerWidth;
-      if (width > 500) {
-         setName("I'm David Ilie");
-      } else {
-         setName("I'm David");
-      }
-
-      window.addEventListener("resize", () => {
-         const width = window.innerWidth;
-         if (width > 500) {
-            setName("I'm David Ilie");
-         } else {
-            setName("I'm David");
-         }
-      });
+      const handleResize = () => {
+         const w = window.innerWidth;
+         setName(w > 500 ? "I'm David Ilie" : "I'm David");
+      };
+      handleResize();
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
    }, []);
    const fadeIn = {
       hidden: { opacity: 0 },
@@ -46,7 +38,7 @@ const Header: React.FC = () => {
    };
 
    return (
-      <div className="flex min-h-screen flex-grow items-center justify-center px-4 text-center">
+      <div className="relative flex min-h-screen flex-grow items-center justify-center px-4 text-center">
          <div className="mt-5">
             <AnimatePresence>
                <div className="h-10 text-center">
@@ -76,7 +68,7 @@ const Header: React.FC = () => {
                         //@ts-ignore
                         initial={{ y: "100%" }}
                         animate="visible"
-                        className="gradient-text visible text-7xl font-semibold"
+                        className="gradient-text visible text-5xl font-semibold sm:text-7xl"
                         variants={{
                            //@ts-ignore
                            visible: (i) => ({
@@ -90,7 +82,7 @@ const Header: React.FC = () => {
                         {name}
                      </SplitText>
                   ) : (
-                     <h1 className="invisible text-7xl font-semibold">
+                     <h1 className="invisible text-5xl font-semibold sm:text-7xl">
                         {name}
                      </h1>
                   )}
@@ -120,6 +112,35 @@ const Header: React.FC = () => {
                </div>
             </AnimatePresence>
          </div>
+         <AnimatePresence>
+            {thirdVisible && (
+               <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+               >
+                  <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+                     <div className="flex flex-col items-center text-gray-400 dark:text-gray-500">
+                        <span className="mb-2 text-[10px] font-medium uppercase tracking-widest">
+                           Scroll
+                        </span>
+                        <motion.div
+                           animate={{ y: [0, 6, 0] }}
+                           transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                           }}
+                        >
+                           <div className="flex h-6 w-4 items-start justify-center rounded-full border-2 border-current pt-1">
+                              <div className="h-1 w-1 rounded-full bg-current" />
+                           </div>
+                        </motion.div>
+                     </div>
+                  </div>
+               </motion.div>
+            )}
+         </AnimatePresence>
       </div>
    );
 };

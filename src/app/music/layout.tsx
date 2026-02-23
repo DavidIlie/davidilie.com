@@ -1,11 +1,11 @@
-export default function RootLayout({
+export default function MusicLayout({
    children,
 }: {
    children: React.ReactNode;
 }) {
    return (
-      <div className="mx-auto mb-12 mt-24 flex max-w-5xl flex-grow justify-center sm:px-6 lg:px-8">
-         <div className="px-4 text-center sm:px-0">{children}</div>
+      <div className="mx-auto mb-16 mt-28 max-w-5xl px-4 sm:mt-24 sm:px-6 lg:px-8">
+         {children}
       </div>
    );
 }
