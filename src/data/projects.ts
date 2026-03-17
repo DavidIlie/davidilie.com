@@ -19,6 +19,15 @@ export type Project = ProjectNoGitHub | ProjectGitHub;
 
 const projects: Project[] = [
    {
+      repo_id: "plexo",
+      name: "Plexo",
+      description:
+         "A personal media dashboard for your Plex library. Tracks movies, TV shows, watch history, and viewing patterns in one self-hosted interface — built with Next.js, tRPC, shadcn/ui, and Recharts.",
+      image: "/static/plexo.png",
+      url: "https://plexo.davidhome.ro",
+      tags: ["Next.js", "tRPC", "Self-Hosted", "Plex"],
+   },
+   {
       name: "MBRetrofit Tools",
       description:
          "A comprehensive suite of tools for Mercedes-Benz car retrofitting and diagnostics. Features vehicle lookup, coding browser, DLM flash tools, and DoIP communication — built as a monorepo with Next.js, tRPC, and Electron.",

@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { formatDistance } from "date-fns";
-import { Clock, Headphones, TrendingUp, Users } from "lucide-react";
+import { Clock, Headphones, Monitor, TrendingUp, Users } from "lucide-react";
 
 import { SPOTIFY_ACCOUNT } from "~/components/footer";
 import { api } from "~/trpc/react";
@@ -157,6 +157,36 @@ export const SpotifyClientPage = () => {
                   ))}
                </div>
             </div>
+         </div>
+
+         {/* Plexo teaser */}
+         <div
+            className="animate-fade-in-up"
+            style={{ animationDelay: "0.4s" }}
+         >
+            <a
+               href="https://plexo.davidhome.ro"
+               target="_blank"
+               rel="noreferrer"
+               className="group relative flex items-center justify-between overflow-hidden rounded-xl border border-orange-500/20 bg-gradient-to-r from-orange-500/10 via-amber-500/10 to-orange-500/10 p-5 transition-all hover:border-orange-500/40 hover:shadow-lg hover:shadow-orange-500/5 sm:p-6"
+            >
+               <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-500/15 text-orange-500 transition-colors group-hover:bg-orange-500/25 sm:h-12 sm:w-12">
+                     <Monitor className="h-5 w-5 sm:h-6 sm:w-6" />
+                  </div>
+                  <div>
+                     <p className="text-sm font-semibold text-gray-800 dark:text-gray-100 sm:text-base">
+                        Wanna see what I watch?
+                     </p>
+                     <p className="text-xs text-gray-500 dark:text-gray-400 sm:text-sm">
+                        Check out my Plex dashboard on Plexo
+                     </p>
+                  </div>
+               </div>
+               <span className="text-sm text-orange-500 transition-transform group-hover:translate-x-1 sm:text-base">
+                  &rarr;
+               </span>
+            </a>
          </div>
       </div>
    );
