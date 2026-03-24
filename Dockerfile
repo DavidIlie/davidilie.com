@@ -25,6 +25,7 @@ RUN corepack enable
 RUN corepack prepare pnpm@10.0.0 --activate
 RUN pnpm install
 ENV NEXT_PUBLIC_APP_URL="https://davidilie.com"
+ENV DATABASE_URL="postgresql://dummy:dummy@localhost:5432/dummy"
 RUN npx prisma generate
 RUN SKIP_ENV_VALIDATION=true pnpm build
 
