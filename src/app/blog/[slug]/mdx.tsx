@@ -32,15 +32,16 @@ const CustomLink = (props: any) => {
    return <a target="_blank" rel="noopener noreferrer" {...props} />;
 };
 
-export const CustomImage = ({ alt, ...props }: ImageProps) => {
+export const CustomImage = ({ alt = "", ...props }: ImageProps) => {
    return (
       <div className="my-2 -mt-4 w-full flex-col justify-center">
          <div className="flex justify-center">
             <Image
-               alt={alt}
                {...props}
+               alt={alt}
                placeholder="blur"
                blurDataURL={shimmer(1920, 1080)}
+               style={{ width: "auto", height: "auto", ...props.style }}
             />
          </div>
          <h1 className="-mt-5 text-center text-sm font-normal text-gray-700 dark:text-gray-300">
@@ -54,7 +55,7 @@ const Callout = (props: any) => {
    return (
       <div className="my-4 flex rounded-lg border border-neutral-200 bg-neutral-100 px-4 py-2 dark:border-neutral-800 dark:bg-neutral-900">
          <div className="mr-3 flex w-4 items-center text-xl">{props.emoji}</div>
-         <div className={`callout w-full ${props.italic && "italic"}`}>
+         <div className={`callout w-full ${props.italic ? "italic" : ""}`}>
             {props.children}
          </div>
       </div>

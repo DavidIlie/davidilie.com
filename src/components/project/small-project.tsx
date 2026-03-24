@@ -1,5 +1,25 @@
+"use client";
+
 import React from "react";
+import { formatDistance } from "date-fns";
+import { GitFork, Star } from "lucide-react";
 import { GitHubProject } from "../../../generated/prisma/client";
+
+const langColors: Record<string, string> = {
+   TypeScript: "#3178c6",
+   JavaScript: "#f1e05a",
+   Python: "#3572a5",
+   Shell: "#89e051",
+   Rust: "#dea584",
+   Go: "#00add8",
+   Java: "#b07219",
+   CSS: "#563d7c",
+   HTML: "#e34c26",
+   Dockerfile: "#384d54",
+   Lua: "#000080",
+   C: "#555555",
+   "C++": "#f34b7d",
+};
 
 const SmallProject: React.FC<{ project: GitHubProject }> = ({ project }) => {
    return (
@@ -7,24 +27,42 @@ const SmallProject: React.FC<{ project: GitHubProject }> = ({ project }) => {
          href={project.url}
          target="_blank"
          rel="noreferrer"
-         className="h-full w-full overflow-visible truncate p-1"
+         className="group flex flex-col rounded-xl border border-gray-200/60 bg-white/50 p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300/80 hover:bg-white/80 hover:shadow-lg hover:shadow-black/5 dark:border-gray-700/40 dark:bg-gray-800/30 dark:hover:border-gray-600/60 dark:hover:bg-gray-800/60 dark:hover:shadow-black/20"
       >
-         <div className="flex cursor-pointer flex-col items-start justify-start truncate rounded-xl border border-gray-200/80 bg-white/60 p-3 pl-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600">
-            <h1 className="mb-3 truncate text-xl font-semibold">
+         <div className="mb-2 flex items-start justify-between gap-2">
+            <h3 className="truncate text-[0.95rem] font-semibold text-gray-900 group-hover:text-blue-600 dark:text-gray-100 dark:group-hover:text-blue-400">
                {project.name}
+            </h3>
+            {project.stars > 0 && (
+               <span className="flex flex-shrink-0 items-center gap-1 text-xs text-amber-600 dark:text-amber-400">
+                  <Star className="h-3 w-3 fill-current" />
+                  {project.stars}
+               </span>
+            )}
+         </div>
 
-               {project.language ? (
-                  <span className="ml-2 mr-2 inline-flex items-center justify-center rounded-full border border-green-200 bg-green-50 px-2 py-0.5 text-xs font-medium leading-none text-green-700 dark:border-green-800 dark:bg-green-900/30 dark:text-green-400">
-                     {project.language}
-                  </span>
-               ) : null}
-            </h1>
-            <h1
-               className="max-w-full truncate text-gray-400"
-               style={{ justifySelf: "center" }}
-            >
-               {project.description}
-            </h1>
+         <p className="mb-3 line-clamp-2 flex-1 text-left text-[0.8rem] leading-relaxed text-gray-500 dark:text-gray-400">
+            {project.description || "No description"}
+         </p>
+
+         <div className="flex items-center gap-3 text-xs text-gray-400 dark:text-gray-500">
+            {project.language && (
+               <span className="flex items-center gap-1.5">
+                  <span
+                     className="h-2.5 w-2.5 rounded-full"
+                     style={{
+                        backgroundColor:
+                           langColors[project.language] ?? "#8b8b8b",
+                     }}
+                  />
+                  {project.language}
+               </span>
+            )}
+            <span className="ml-auto" suppressHydrationWarning>
+               {formatDistance(new Date(project.lastPush), new Date(), {
+                  addSuffix: true,
+               })}
+            </span>
          </div>
       </a>
    );

@@ -30,6 +30,7 @@ const ResponsiveProject = ({
                blurDataURL={shimmer(1920, 1080)}
                className="rounded-t-xl object-cover"
                fill={true}
+               sizes="100vw"
             />
          </div>
          <div className="border-t border-gray-200/80 px-4 py-3 text-left dark:border-gray-700/50">
@@ -50,9 +51,9 @@ const ResponsiveProject = ({
             </div>
             <p>{project.description}</p>
             {isGitHub && repo && (
-               <p className="mt-0.5 italic text-gray-700 dark:text-gray-400">
+               <p className="mt-0.5 italic text-gray-700 dark:text-gray-400" suppressHydrationWarning>
                   Last updated{" "}
-                  {formatDistance(new Date(repo.lastPush), Date.now(), {
+                  {formatDistance(new Date(repo.lastPush), new Date(), {
                      addSuffix: true,
                   })}
                   ,{" "}

@@ -20,6 +20,11 @@ const nextConfig = {
       ];
    },
    images: {
+      localPatterns: [
+         {
+            pathname: "/**",
+         },
+      ],
       remotePatterns: [
          {
             protocol: "https",

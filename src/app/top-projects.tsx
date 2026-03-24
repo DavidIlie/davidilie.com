@@ -2,16 +2,16 @@
 
 import React from "react";
 import Link from "next/link";
-import { Slide } from "react-awesome-reveal";
 
 import projects from "~/data/projects";
 
+import { Reveal } from "~/components/reveal";
 import ResponsiveProjectWrapper from "~/components/project/wrapper";
 import { Button } from "~/components/ui/button";
 
 const TopProject: React.FC = () => (
    <div className="container max-w-5xl">
-      <Slide cascade triggerOnce duration={500}>
+      <Reveal cascade triggerOnce duration={500} direction="up">
          <div className="relative flex w-full justify-center">
             <h1 className="gradient-text p-1 text-4xl font-medium sm:text-5xl">
                Top Project
@@ -28,7 +28,7 @@ const TopProject: React.FC = () => (
             project={projects[0]}
             left={true}
          />
-      </Slide>
+      </Reveal>
    </div>
 );
 

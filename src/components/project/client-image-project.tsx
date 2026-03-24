@@ -29,8 +29,8 @@ const ImageProject = ({
                left ? "ml-auto" : "ml-0"
             }`}
          >
-            <div className="container w-full">
-               <div className="aspect-video">
+            <div className="w-full">
+               <div className="relative aspect-video">
                   <Image
                      src={project.image}
                      alt={`${project.name}'s photo`}
@@ -38,6 +38,7 @@ const ImageProject = ({
                      blurDataURL={shimmer(1920, 1080)}
                      className="rounded-xl object-cover"
                      fill={true}
+                     sizes="83vw"
                   />
                </div>
             </div>
@@ -52,7 +53,7 @@ const ImageProject = ({
          >
             <div
                className={`flex ${
-                  !left && "flex-row-reverse"
+                  !left ? "flex-row-reverse" : ""
                } items-center justify-between text-3xl`}
             >
                <h1 className="font-bold">{project.name}</h1>
@@ -64,16 +65,16 @@ const ImageProject = ({
                   <Link className="font-semibold text-blue-500" />
                </a>
             </div>
-            <div className={`my-1 ${!left && "-mr-2"}`}>
+            <div className={`my-1 ${!left ? "-mr-2" : ""}`}>
                {project.tags.map((tag, index) => (
                   <Tags key={index} tag={tag} />
                ))}
             </div>
             <p>{project.description}</p>
             {isGitHub && repo && (
-               <p className="-mb-2 mt-0.5 italic text-gray-700 dark:text-gray-400">
+               <p className="-mb-2 mt-0.5 italic text-gray-700 dark:text-gray-400" suppressHydrationWarning>
                   Last updated{" "}
-                  {formatDistance(new Date(repo.lastPush), Date.now(), {
+                  {formatDistance(new Date(repo.lastPush), new Date(), {
                      addSuffix: true,
                   })}
                   ,{" "}

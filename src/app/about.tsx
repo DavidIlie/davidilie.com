@@ -3,8 +3,7 @@
 import React, { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-//@ts-ignore
-import { Fade } from "react-awesome-reveal";
+import { Reveal } from "~/components/reveal";
 
 import { shimmer } from "~/lib/shimmer";
 
@@ -34,7 +33,7 @@ const About: React.FC = () => {
    return (
       <>
          <div className="mb-32 bg-blue-600 px-10 pb-32 pt-12 text-left text-white dark:bg-blue-800 dark:text-gray-100 sm:text-center">
-            <Fade direction="left" triggerOnce cascade>
+            <Reveal direction="left" triggerOnce cascade>
                <h1 className="mb-5 text-center text-4xl font-semibold sm:text-4xl md:text-5xl">
                   First of all, who am I?
                </h1>
@@ -67,9 +66,9 @@ const About: React.FC = () => {
                </div>
 
                <ServicesButtons />
-            </Fade>
+            </Reveal>
          </div>
-         <Fade direction="up" triggerOnce cascade className="mx-4">
+         <Reveal direction="up" triggerOnce cascade className="mx-4">
             <div className="mx-auto mb-10 mt-[-14rem] flex max-w-[25rem] flex-wrap justify-evenly rounded-2xl border border-gray-200/80 bg-white/80 backdrop-blur-xs dark:border-gray-700/50 dark:bg-gray-800/80 dark:text-gray-200 md:max-w-6xl md:flex-nowrap">
                <div className="xs:w-full border-b border-gray-200/80 px-5 pt-10 dark:border-gray-700/50 md:border-b-0 md:border-r xl:w-1/3 xl:border-b-0 xl:border-r 2xl:border-b-0 2xl:border-r">
                   <div className="mb-3 flex justify-center">
@@ -246,7 +245,7 @@ const About: React.FC = () => {
                   </div>
                </div>
             </div>
-         </Fade>
+         </Reveal>
       </>
    );
 };

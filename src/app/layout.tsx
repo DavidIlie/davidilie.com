@@ -120,7 +120,7 @@ export default async function RootLayout({
                <ThemeProvider attribute="class">
                   <BackgroundPattern>
                      <NavBar />
-                     {children}
+                     <main className="flex flex-1 flex-col">{children}</main>
                      <CallToAction />
                      <Footer />
                   </BackgroundPattern>

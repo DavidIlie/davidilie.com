@@ -2,7 +2,6 @@ import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blogs } from "#velite";
-import Balancer from "react-wrap-balancer";
 
 import { Tags } from "~/components/tag";
 import { api, HydrateClient } from "~/trpc/server";
@@ -78,8 +77,8 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             {post.tags.map((tag, index) => (
                <Tags tag={tag} key={index} />
             ))}
-            <h1 className="gradient-text mt-1 text-3xl font-bold ">
-               <Balancer>{post.title}</Balancer>
+            <h1 className="gradient-text mt-1 text-3xl font-bold" style={{ textWrap: "balance" }}>
+               {post.title}
             </h1>
             <div className="mb-6 mt-2 grid grid-cols-[auto_1fr_auto] items-center font-mono text-sm">
                <div className="rounded-md bg-neutral-100 px-2 py-1 tracking-tighter dark:bg-gray-800">

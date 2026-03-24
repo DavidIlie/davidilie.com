@@ -32,7 +32,7 @@ export const ServicesButtons: React.FC = () => {
 export const CallToAction: React.FC = () => {
    return (
       <div className="border-t border-gray-200/80 bg-secondary dark:border-gray-700/50 dark:bg-gray-800/20">
-         <div className="container max-w-4xl px-6 py-16">
+         <div className="container max-w-4xl px-6 py-12">
             <div className="space-y-6 text-center">
                <div className="relative flex w-full items-center justify-center">
                   <h1 className="gradient-text p-1 text-4xl font-medium sm:text-5xl">

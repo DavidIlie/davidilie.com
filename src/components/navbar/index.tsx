@@ -52,8 +52,9 @@ const NavBar: React.FC = () => {
    return (
       <nav
          className={`fixed z-50 w-full pb-4 backdrop-blur-lg backdrop-filter duration-300 ${
-            !top &&
-            "bg-blue-100/50 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.3)] shadow-black backdrop-blur-lg backdrop-filter hover:bg-blue-100/100 dark:bg-cyan-900/10 dark:hover:bg-cyan-900/30"
+            !top
+               ? "bg-blue-100/50 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.3)] shadow-black hover:bg-blue-100/100 dark:bg-cyan-900/10 dark:hover:bg-cyan-900/30"
+               : ""
          }`}
       >
          {isBlogPage && (
@@ -63,19 +64,18 @@ const NavBar: React.FC = () => {
                      <div
                         style={{
                            width: `${width}%`,
+                           backgroundColor: width >= 100 ? "#22c55e" : "#1d4ed8",
                         }}
                         className={`flex flex-col justify-center whitespace-nowrap text-center text-black shadow-none dark:text-white ${
-                           width > 99 && "duration-200"
-                        } bg-${width >= 100 ? "green-500" : "blue-700"}`}
+                           width > 99 ? "duration-200" : ""
+                        }`}
                      ></div>
                   </div>
                </div>
             </div>
          )}
          <div
-            className={`${
-               clickMobileMenu && "bg-white/40 dark:bg-gray-800/50"
-            }`}
+            className={clickMobileMenu ? "bg-white/40 dark:bg-gray-800/50" : ""}
          >
             <div className="mx-auto -mt-1 max-w-7xl px-8 pl-8 sm:px-6 sm:pl-8 lg:pl-8">
                <div className="mb-2 flex h-16 items-center justify-between">
@@ -87,7 +87,7 @@ const NavBar: React.FC = () => {
                            <Link
                               href="/"
                               className={`cursor-pointer text-3xl font-semibold text-black dark:text-white ${
-                                 pathname === "/" && "pointer-events-none"
+                                 pathname === "/" ? "pointer-events-none" : ""
                               }`}
                            >
                               David Ilie
@@ -96,7 +96,10 @@ const NavBar: React.FC = () => {
                      </div>
                      <div className="hidden gap-3 sm:flex">
                         {pages.map((page, index) => {
-                           const selected = pathname === page.url;
+                           const selected =
+                              page.url === "/"
+                                 ? pathname === "/"
+                                 : pathname.startsWith(page.url);
                            return (
                               <Link
                                  href={page.url}
@@ -143,10 +146,11 @@ const NavBar: React.FC = () => {
                            key={index}
                            onClick={() => setClickMobileMenu(false)}
                            className={
-                              pathname === page.url
+                              (page.url === "/" ? pathname === "/" : pathname.startsWith(page.url))
                                  ? `${
-                                      !(isBlogPage && page.name === "Blog") &&
-                                      "cursor-pointer"
+                                      !(isBlogPage && page.name === "Blog")
+                                         ? "cursor-pointer"
+                                         : ""
                                    } block rounded-md bg-cyan-600 px-3 py-2 text-base font-medium text-white dark:bg-gray-900`
                                  : "block cursor-pointer rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-cyan-800 hover:text-white dark:text-gray-300 dark:hover:bg-cyan-900"
                            }

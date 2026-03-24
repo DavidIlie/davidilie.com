@@ -31,24 +31,24 @@ const PostCard = async (props: Type) => {
       <Link href={`/blog/${props.slug}`}>
          {/* Desktop featured layout */}
          <div
-            className={`hidden ${
-               props.featured && "mt-14 hidden rounded-tl-sm sm:block"
-            } mx-3 mb-4 flex transform cursor-pointer flex-row justify-center gap-4 rounded-xl border border-gray-200/80 bg-white/60 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600 md:px-3 md:py-2`}
+            className={`${
+               props.featured ? "relative mt-14 hidden sm:flex" : "hidden"
+            } mx-3 mb-4 transform cursor-pointer flex-row justify-center gap-4 rounded-xl border border-gray-200/80 bg-white/60 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600 md:px-3 md:py-2`}
          >
             <h1 className="absolute -left-0.5 -top-9 z-10 rounded-t border border-blue-200/60 bg-blue-50/80 px-4 py-1 text-sm font-medium text-blue-700 dark:border-blue-800/40 dark:bg-blue-950/30 dark:text-blue-300">
                Featured Post
             </h1>
-            <div className="flex gap-2">
+            <div className="flex items-center gap-4">
                <Image
                   alt={props.title}
-                  className="rounded-lg object-cover"
+                  className="max-w-[50%] flex-shrink-0 rounded-lg object-cover"
                   src={getPostImage(props)}
                   blurDataURL={shimmer(1920, 1080)}
                   placeholder="blur"
                   height={180}
                   width={400}
                />
-               <div className="px-2 py-1 md:max-w-sm md:px-0">
+               <div className="flex-1 px-2 py-1 md:px-0">
                   {props.tags.map((tag, index) => (
                      <Tags tag={tag} key={index} />
                   ))}
@@ -67,7 +67,7 @@ const PostCard = async (props: Type) => {
          {/* Mobile / regular card layout */}
          <div
             className={`${
-               props.featured && "sm:hidden"
+               props.featured ? "sm:hidden" : ""
             } group overflow-hidden rounded-xl border border-gray-200/80 bg-white/60 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600`}
          >
             <Image

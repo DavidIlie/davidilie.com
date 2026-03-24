@@ -9,7 +9,6 @@
       "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore"
    },
    "dependencies": {
-      "@emotion/react": "^11.14.0",
       "@mantine/hooks": "^8.3.18",
       "@prisma/adapter-pg": "^7.5.0",
       "@prisma/client": "^7.5.0",
@@ -39,11 +38,9 @@
       "postcss": "^8.5.8",
       "prisma": "^7.5.0",
       "react": "19.2.4",
-      "react-awesome-reveal": "^4.3.1",
       "react-dom": "19.2.4",
       "react-globe.gl": "^2.37.0",
       "react-lite-youtube-embed": "^3.5.1",
-      "react-wrap-balancer": "^1.1.1",
       "rehype-autolink-headings": "^7.1.0",
       "rehype-pretty-code": "^0.14.3",
       "rehype-slug": "^6.0.0",
