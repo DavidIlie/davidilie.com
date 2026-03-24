@@ -39,5 +39,3 @@ next-env.d.ts
 # velite
 .velite
 
-# prisma generated client
-generated/prisma

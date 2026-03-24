@@ -3,7 +3,7 @@
 import React from "react";
 import { formatDistance } from "date-fns";
 import { GitFork, Star } from "lucide-react";
-import { GitHubProject } from "../../../generated/prisma/client";
+import { GitHubProject } from "@prisma/client";
 
 const langColors: Record<string, string> = {
    TypeScript: "#3178c6",

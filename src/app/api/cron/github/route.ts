@@ -1,5 +1,5 @@
 import type { NextRequest } from "next/server";
-import { GitHubProject } from "../../../../../generated/prisma/client";
+import { GitHubProject } from "@prisma/client";
 
 import { env } from "~/env.mjs";
 
