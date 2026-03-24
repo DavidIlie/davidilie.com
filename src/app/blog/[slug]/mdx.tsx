@@ -4,9 +4,15 @@
 import * as React from "react";
 import Image, { ImageProps } from "next/image";
 import Link from "next/link";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import * as runtime from "react/jsx-runtime";
 
 import { shimmer } from "~/lib/shimmer";
+
+// Evaluates build-time compiled MDX from velite (trusted content, not user input)
+const useMDXComponent = (code: string) => {
+   const fn = new Function(code); // eslint-disable-line no-new-func
+   return fn({ ...runtime }).default;
+};
 
 const CustomLink = (props: any) => {
    const href = props.href as string;

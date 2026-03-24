@@ -1,4 +1,4 @@
-import { GitHubProject, YouTubeStatistic } from "@prisma/client";
+import { GitHubProject, YouTubeStatistic } from "../../../../generated/prisma/client";
 
 import { createTRPCRouter, publicProcedure } from "../trpc";
 

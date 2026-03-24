@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { allBlogs } from "contentlayer/generated";
+import { blogs } from "#velite";
 import Balancer from "react-wrap-balancer";
 
 import { Tags } from "~/components/tag";
@@ -10,7 +10,7 @@ import { Mdx } from "./mdx";
 import ViewCounter from "./view-counter";
 
 export function generateStaticParams() {
-   return allBlogs.map((post) => ({
+   return blogs.map((post) => ({
       slug: post.slug,
    }));
 }
@@ -22,7 +22,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
    const awaitedParams = await params;
 
-   const post = allBlogs.find((post) => post.slug === awaitedParams.slug);
+   const post = blogs.find((post) => post.slug === awaitedParams.slug);
    if (!post) {
       return { title: "not found" };
    }
@@ -65,7 +65,7 @@ export async function generateMetadata({
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
    const awaitedParams = await params;
-   const post = allBlogs.find((post) => post.slug === awaitedParams.slug);
+   const post = blogs.find((post) => post.slug === awaitedParams.slug);
 
    if (!post) return notFound();
 
@@ -98,7 +98,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
                   </h1>
                </Suspense>
             </div>
-            <Mdx code={post.body.code} />
+            <Mdx code={post.body} />
             <div className="my-4" />
          </section>
       </HydrateClient>

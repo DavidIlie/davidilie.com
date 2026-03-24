@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { GitHubProject } from "@prisma/client";
+import { GitHubProject } from "../../../generated/prisma/client";
 import { formatDistance } from "date-fns";
 import { Link } from "lucide-react";
 
@@ -47,7 +47,7 @@ const ImageProject = ({
                left
                   ? "left-0 text-left xl:left-[-7%]"
                   : "right-0 text-right xl:right-[-7%]"
-            } top-[50%] w-[45%] max-w-[450px] rounded-xl border border-gray-200/80 bg-white/80 p-5 backdrop-blur-sm dark:border-gray-700/50 dark:bg-gray-800/80`}
+            } top-[50%] w-[45%] max-w-[450px] rounded-xl border border-gray-200/80 bg-white/80 p-5 backdrop-blur-xs dark:border-gray-700/50 dark:bg-gray-800/80`}
             style={{ transform: "translate(0, -50%)" }}
          >
             <div

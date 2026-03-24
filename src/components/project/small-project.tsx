@@ -1,5 +1,5 @@
 import React from "react";
-import { GitHubProject } from "@prisma/client";
+import { GitHubProject } from "../../../generated/prisma/client";
 
 const SmallProject: React.FC<{ project: GitHubProject }> = ({ project }) => {
    return (

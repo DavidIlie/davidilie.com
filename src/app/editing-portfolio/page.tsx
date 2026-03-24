@@ -148,7 +148,7 @@ const EditingPortfolioPage = () => {
                ].map((item, i) => (
                   <div
                      key={i}
-                     className="animate-fade-in-up rounded-xl border border-gray-200/80 bg-white/60 p-6 transition-all duration-200 hover:border-gray-300 hover:shadow-sm dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600"
+                     className="animate-fade-in-up rounded-xl border border-gray-200/80 bg-white/60 p-6 transition-all duration-200 hover:border-gray-300 hover:shadow-xs dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600"
                      style={{ animationDelay: `${i * 0.08}s` }}
                   >
                      <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100 text-gray-600 dark:bg-gray-700/80 dark:text-gray-400">

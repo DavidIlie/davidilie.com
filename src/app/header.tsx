@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 
 import { Socials } from "~/components/socials";
 import { SplitText } from "../components/split-text";
@@ -129,7 +129,7 @@ const Header: React.FC = () => {
                            transition={{
                               duration: 2,
                               repeat: Infinity,
-                              ease: "easeInOut",
+                              ease: "easeInOut" as const,
                            }}
                         >
                            <div className="flex h-6 w-4 items-start justify-center rounded-full border-2 border-current pt-1">

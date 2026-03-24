@@ -70,7 +70,7 @@ const About: React.FC = () => {
             </Fade>
          </div>
          <Fade direction="up" triggerOnce cascade className="mx-4">
-            <div className="mx-auto mb-10 mt-[-14rem] flex max-w-[25rem] flex-wrap justify-evenly rounded-2xl border border-gray-200/80 bg-white/80 backdrop-blur-sm dark:border-gray-700/50 dark:bg-gray-800/80 dark:text-gray-200 md:max-w-6xl md:flex-nowrap">
+            <div className="mx-auto mb-10 mt-[-14rem] flex max-w-[25rem] flex-wrap justify-evenly rounded-2xl border border-gray-200/80 bg-white/80 backdrop-blur-xs dark:border-gray-700/50 dark:bg-gray-800/80 dark:text-gray-200 md:max-w-6xl md:flex-nowrap">
                <div className="xs:w-full border-b border-gray-200/80 px-5 pt-10 dark:border-gray-700/50 md:border-b-0 md:border-r xl:w-1/3 xl:border-b-0 xl:border-r 2xl:border-b-0 2xl:border-r">
                   <div className="mb-3 flex justify-center">
                      <Image

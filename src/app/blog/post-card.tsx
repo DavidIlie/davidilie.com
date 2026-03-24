@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import type { Blog } from "contentlayer/generated";
+import type { Blog } from "#velite";
 import { formatDistance } from "date-fns";
 
 import { shimmer } from "~/lib/shimmer";
@@ -11,6 +11,9 @@ import { insertPostInDbIfNotExist } from "~/server/blog";
 import { prisma } from "~/server/db";
 
 type Type = Blog & { featured?: boolean };
+
+const getPostImage = (props: Type) =>
+   props.image ?? `/og?title=${encodeURIComponent(props.title)}`;
 
 const PostCard = async (props: Type) => {
    await insertPostInDbIfNotExist(props.slug);
@@ -39,7 +42,7 @@ const PostCard = async (props: Type) => {
                <Image
                   alt={props.title}
                   className="rounded-lg object-cover"
-                  src={(props.structuredData as any).image}
+                  src={getPostImage(props)}
                   blurDataURL={shimmer(1920, 1080)}
                   placeholder="blur"
                   height={180}
@@ -68,7 +71,7 @@ const PostCard = async (props: Type) => {
             } group overflow-hidden rounded-xl border border-gray-200/80 bg-white/60 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600`}
          >
             <Image
-               src={(props.structuredData as any).image}
+               src={getPostImage(props)}
                alt={props.title}
                width={500}
                height={300}

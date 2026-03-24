@@ -28,7 +28,7 @@ const SongCard: React.FC<{
          )}
          <Image
             alt={`${song.album.name}`}
-            className="h-11 w-11 flex-shrink-0 rounded-lg object-cover shadow-sm transition-transform duration-200 group-hover:scale-105 sm:h-12 sm:w-12"
+            className="h-11 w-11 flex-shrink-0 rounded-lg object-cover shadow-xs transition-transform duration-200 group-hover:scale-105 sm:h-12 sm:w-12"
             height={48}
             width={48}
             src={song.album.image}

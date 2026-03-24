@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 
 import { SplitText } from "~/components/split-text";
 import { Button } from "~/components/ui/button";
@@ -27,7 +27,7 @@ const Header: React.FC = () => {
          y: 0,
          transition: {
             duration: 0.6,
-            ease: "easeOut",
+            ease: "easeOut" as const,
          },
       },
    };
@@ -160,7 +160,7 @@ const Header: React.FC = () => {
                         transition={{
                            duration: 2,
                            repeat: Infinity,
-                           ease: "easeInOut",
+                           ease: "easeInOut" as const,
                         }}
                      >
                         <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-current">

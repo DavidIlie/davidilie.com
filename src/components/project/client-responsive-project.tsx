@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { GitHubProject } from "@prisma/client";
+import { GitHubProject } from "../../../generated/prisma/client";
 import { formatDistance } from "date-fns";
 import { Link } from "lucide-react";
 

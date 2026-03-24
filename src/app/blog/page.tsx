@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { allBlogs, Blog } from "contentlayer/generated";
+import { blogs, type Blog } from "#velite";
 
 import { env } from "~/env.mjs";
 
@@ -15,8 +15,8 @@ const Page = async () => {
 
    const posts =
       env.NODE_ENV === "production"
-         ? allBlogs.filter((s) => s.published)
-         : allBlogs;
+         ? blogs.filter((s) => s.published)
+         : blogs;
 
    const featuredPost = posts[0] as Blog;
 

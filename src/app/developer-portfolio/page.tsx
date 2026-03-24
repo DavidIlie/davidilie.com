@@ -175,7 +175,7 @@ const DeveloperPortfolio = () => {
                {techStack.map((tech, i) => (
                   <div
                      key={i}
-                     className="animate-fade-in-up flex items-center gap-4 rounded-xl border border-gray-200/80 bg-white/60 p-4 transition-all duration-200 hover:border-gray-300 hover:shadow-sm dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600"
+                     className="animate-fade-in-up flex items-center gap-4 rounded-xl border border-gray-200/80 bg-white/60 p-4 transition-all duration-200 hover:border-gray-300 hover:shadow-xs dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600"
                      style={{ animationDelay: `${i * 0.05}s` }}
                   >
                      <div className="flex-shrink-0">{tech.icon}</div>
@@ -340,7 +340,7 @@ const PricingCard = ({
    <div
       className={`animate-fade-in-up relative rounded-2xl border p-8 transition-all duration-200 ${
          featured
-            ? "border-blue-300/60 bg-blue-50/40 shadow-sm dark:border-blue-700/40 dark:bg-blue-950/20"
+            ? "border-blue-300/60 bg-blue-50/40 shadow-xs dark:border-blue-700/40 dark:bg-blue-950/20"
             : "border-gray-200/80 bg-white/60 dark:border-gray-700/50 dark:bg-gray-800/40"
       }`}
    >

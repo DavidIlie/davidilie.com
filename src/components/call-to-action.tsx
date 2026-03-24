@@ -50,7 +50,7 @@ export const CallToAction: React.FC = () => {
                </div>
                <ServicesButtons />
                <div className="pt-8">
-                  <div className="mx-auto max-w-md rounded-2xl border border-gray-200/80 bg-white/60 p-6 backdrop-blur-sm dark:border-gray-700/50 dark:bg-gray-800/40">
+                  <div className="mx-auto max-w-md rounded-2xl border border-gray-200/80 bg-white/60 p-6 backdrop-blur-xs dark:border-gray-700/50 dark:bg-gray-800/40">
                      <p className="mb-3 text-sm font-medium text-gray-600 dark:text-gray-400">
                         Or you can contact me at:
                      </p>
