@@ -32,33 +32,35 @@ const PostCard = async (props: Type) => {
          {/* Desktop featured layout */}
          <div
             className={`${
-               props.featured ? "relative mt-14 hidden sm:flex" : "hidden"
-            } mx-3 mb-4 transform cursor-pointer flex-row justify-center gap-4 rounded-xl border border-gray-200/80 bg-white/60 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600 md:px-3 md:py-2`}
+               props.featured ? "relative mt-10 hidden sm:block" : "hidden"
+            } mx-3 mb-2`}
          >
-            <h1 className="absolute -left-0.5 -top-9 z-10 rounded-t border border-blue-200/60 bg-blue-50/80 px-4 py-1 text-sm font-medium text-blue-700 dark:border-blue-800/40 dark:bg-blue-950/30 dark:text-blue-300">
+            <h1 className="absolute -left-0.5 -top-8 z-10 rounded-t border border-blue-200/60 bg-blue-50/80 px-4 py-1 text-sm font-medium text-blue-700 dark:border-blue-800/40 dark:bg-blue-950/30 dark:text-blue-300">
                Featured Post
             </h1>
-            <div className="flex items-center gap-4">
+            <div className="flex cursor-pointer items-stretch overflow-hidden rounded-xl border border-border/80 bg-card/60 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md">
                <Image
                   alt={props.title}
-                  className="max-w-[50%] flex-shrink-0 rounded-lg object-cover"
+                  className="w-[45%] flex-shrink-0 object-cover"
                   src={getPostImage(props)}
                   blurDataURL={shimmer(1920, 1080)}
                   placeholder="blur"
-                  height={180}
-                  width={400}
+                  height={300}
+                  width={500}
                />
-               <div className="flex-1 px-2 py-1 md:px-0">
-                  {props.tags.map((tag, index) => (
-                     <Tags tag={tag} key={index} />
-                  ))}
+               <div className="flex-1 px-5 py-4">
+                  <div className="flex flex-wrap">
+                     {props.tags.map((tag, index) => (
+                        <Tags tag={tag} key={index} />
+                     ))}
+                  </div>
                   <h1 className="text-section mb-1 mt-1 text-xl font-semibold md:text-2xl">
                      {props.title}
                   </h1>
-                  <p className="text-gray-600 dark:text-gray-400">
+                  <p className="text-muted-foreground">
                      {props.summary}
                   </p>
-                  <h1 className="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
+                  <h1 className="mt-0.5 text-sm text-muted-foreground">
                      {postMeta}
                   </h1>
                </div>
@@ -68,7 +70,7 @@ const PostCard = async (props: Type) => {
          <div
             className={`${
                props.featured ? "sm:hidden" : ""
-            } group overflow-hidden rounded-xl border border-gray-200/80 bg-white/60 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600`}
+            } group overflow-hidden rounded-xl border border-border/80 bg-card/60 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md`}
          >
             <Image
                src={getPostImage(props)}
@@ -79,18 +81,18 @@ const PostCard = async (props: Type) => {
                placeholder="blur"
                className="w-full rounded-t-xl object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             />
-            <div className="border-t border-gray-200/80 px-4 py-3 dark:border-gray-700/50">
+            <div className="border-t border-border/80 px-4 py-3">
                <h2 className="line-clamp-2 h-14 text-lg font-semibold leading-snug tracking-normal sm:text-xl">
                   {props.title}
                </h2>
-               <p className="mb-3 mt-2 line-clamp-3 text-sm text-gray-600 dark:text-gray-400">
+               <p className="mb-3 mt-2 line-clamp-3 text-sm text-muted-foreground">
                   {props.summary}
                </p>
                {props.tags.map((tag, index) => (
                   <Tags tag={tag} key={index} />
                ))}
                <div className="mb-1 mr-1 mt-1 flex items-center">
-                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                  <span className="text-xs text-muted-foreground">
                      {postMeta}
                   </span>
                </div>

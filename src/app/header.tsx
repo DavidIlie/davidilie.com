@@ -68,7 +68,7 @@ const Header: React.FC = () => {
                         //@ts-ignore
                         initial={{ y: "100%" }}
                         animate="visible"
-                        className="gradient-text visible text-5xl font-semibold sm:text-7xl"
+                        className="visible text-5xl font-semibold text-brand sm:text-7xl"
                         variants={{
                            //@ts-ignore
                            visible: (i) => ({
@@ -120,7 +120,7 @@ const Header: React.FC = () => {
                   transition={{ delay: 0.5, duration: 0.8 }}
                >
                   <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-                     <div className="flex flex-col items-center text-gray-400 dark:text-gray-500">
+                     <div className="flex flex-col items-center text-muted-foreground">
                         <span className="mb-2 text-[10px] font-medium uppercase tracking-widest">
                            Scroll
                         </span>

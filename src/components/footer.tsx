@@ -15,8 +15,8 @@ import { Socials } from "./socials";
 
 const Footer: React.FC = () => {
    return (
-      <footer className="w-full bg-slate-200 bg-opacity-40 pb-5 pt-5 text-black dark:bg-slate-800 dark:bg-opacity-50 dark:text-white">
-         <div className="flex flex-col items-center px-4 sm:mx-32 sm:flex-row sm:justify-evenly sm:px-0">
+      <footer className="w-full bg-muted/50 pb-5 pt-5 text-foreground">
+         <div className="mx-auto flex max-w-6xl flex-col items-center px-4 sm:flex-row sm:justify-evenly">
             <div className="mb-2 sm:mb-0 sm:w-1/3">
                <Suspense fallback={<BuiltInfo />}>
                   <SpotifySuspense />
@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
                   href="https://davidapps.dev"
                   target="_blank"
                   rel="noreferrer"
-                  className="font-medium duration-150 hover:text-blue-500"
+                  className="font-medium duration-150 hover:text-brand"
                >
                   David Ilie Apps Platform
                </a>

@@ -34,8 +34,8 @@ const CustomLink = (props: any) => {
 
 export const CustomImage = ({ alt = "", ...props }: ImageProps) => {
    return (
-      <div className="my-2 -mt-4 w-full flex-col justify-center">
-         <div className="flex justify-center">
+      <figure className="my-6">
+         <div className="flex justify-center overflow-hidden rounded-xl border border-border/60">
             <Image
                {...props}
                alt={alt}
@@ -44,18 +44,20 @@ export const CustomImage = ({ alt = "", ...props }: ImageProps) => {
                style={{ width: "auto", height: "auto", ...props.style }}
             />
          </div>
-         <h1 className="-mt-5 text-center text-sm font-normal text-gray-700 dark:text-gray-300">
-            {alt}
-         </h1>
-      </div>
+         {alt && (
+            <figcaption className="mt-2 text-center text-sm text-muted-foreground">
+               {alt}
+            </figcaption>
+         )}
+      </figure>
    );
 };
 
 const Callout = (props: any) => {
    return (
-      <div className="my-4 flex rounded-lg border border-neutral-200 bg-neutral-100 px-4 py-2 dark:border-neutral-800 dark:bg-neutral-900">
-         <div className="mr-3 flex w-4 items-center text-xl">{props.emoji}</div>
-         <div className={`callout w-full ${props.italic ? "italic" : ""}`}>
+      <div className="my-5 flex items-start gap-3 rounded-xl border border-brand/20 bg-brand-muted/50 px-4 py-3">
+         <span className="mt-0.5 text-lg leading-none">{props.emoji}</span>
+         <div className={`min-w-0 flex-1 text-sm ${props.italic ? "italic" : ""}`}>
             {props.children}
          </div>
       </div>
@@ -71,15 +73,18 @@ export const YouTubeVideo = ({
    width?: number;
    height?: number;
 }) => (
-   <div className="mb-8 flex justify-center">
-      <iframe
-         width={width}
-         height={height}
-         src={url}
-         title="YouTube video player"
-         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-         allowFullScreen
-      />
+   <div className="my-6 flex justify-center">
+      <div className="w-full max-w-2xl overflow-hidden rounded-xl border border-border/60">
+         <iframe
+            width={width}
+            height={height}
+            src={url}
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="aspect-video w-full"
+         />
+      </div>
    </div>
 );
 
@@ -90,18 +95,19 @@ export const GitHubRepository = ({
    username?: string;
    repo: string;
 }) => (
-   <span className="flex justify-center pb-3">
+   <div className="my-4 flex justify-center">
       <a
          href={`https://github.com/${username}/${repo}`}
          target="_blank"
          rel="noreferrer"
+         className="overflow-hidden rounded-xl transition-transform duration-200 hover:scale-[1.02]"
       >
          <img
             alt="GitHub Stats"
             src={`https://github-readme-stats.vercel.app/api/pin/?username=${username}&repo=${repo}&title_color=fff&icon_color=79ff97&text_color=9f9f9f&bg_color=151515`}
          />
       </a>
-   </span>
+   </div>
 );
 
 const components = {
@@ -120,7 +126,7 @@ export function Mdx({ code }: MdxProps) {
    const Component = useMDXComponent(code);
 
    return (
-      <article className="prose-quoteless prose prose-neutral max-w-full dark:prose-invert">
+      <article className="prose prose-neutral max-w-full dark:prose-invert prose-headings:font-display prose-headings:tracking-tight prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-p:leading-relaxed prose-a:text-brand prose-a:no-underline hover:prose-a:underline prose-blockquote:not-italic prose-blockquote:rounded-lg prose-blockquote:border-0 prose-blockquote:bg-secondary prose-blockquote:px-4 prose-blockquote:py-3 prose-code:before:content-none prose-code:after:content-none prose-img:my-4 prose-img:rounded-xl">
          <Component components={{ ...components }} />
       </article>
    );

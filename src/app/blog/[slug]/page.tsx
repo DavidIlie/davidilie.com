@@ -77,22 +77,22 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             {post.tags.map((tag, index) => (
                <Tags tag={tag} key={index} />
             ))}
-            <h1 className="gradient-text mt-1 text-3xl font-bold" style={{ textWrap: "balance" }}>
+            <h1 className="mt-1 text-3xl font-bold text-brand" style={{ textWrap: "balance" }}>
                {post.title}
             </h1>
             <div className="mb-6 mt-2 grid grid-cols-[auto_1fr_auto] items-center font-mono text-sm">
-               <div className="rounded-md bg-neutral-100 px-2 py-1 tracking-tighter dark:bg-gray-800">
+               <div className="rounded-md bg-muted px-2 py-1 tracking-tighter">
                   {post.publishedAt}
                </div>
-               <div className="mx-2 h-[0.2em] bg-neutral-100 dark:bg-gray-700" />
+               <div className="mx-2 h-[0.2em] bg-border" />
                <Suspense
                   fallback={
-                     <div className="font-mono text-sm tracking-tighter text-neutral-500 dark:text-neutral-300">
+                     <div className="font-mono text-sm tracking-tighter text-muted-foreground">
                         ...
                      </div>
                   }
                >
-                  <h1 className="font-mono text-sm tracking-tighter text-neutral-500 dark:text-neutral-300">
+                  <h1 className="font-mono text-sm tracking-tighter text-muted-foreground">
                      <ViewCounter trackView />
                   </h1>
                </Suspense>

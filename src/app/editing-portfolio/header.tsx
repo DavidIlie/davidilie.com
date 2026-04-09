@@ -48,7 +48,7 @@ const Header: React.FC = () => {
                         //@ts-ignore
                         initial={{ y: "100%" }}
                         animate="visible"
-                        className="text-xl font-medium text-gray-600 dark:text-gray-300 md:text-3xl"
+                        className="text-xl font-medium text-muted-foreground md:text-3xl"
                         variants={{
                            //@ts-ignore
                            visible: (i: number) => ({
@@ -70,7 +70,7 @@ const Header: React.FC = () => {
                            //@ts-ignore
                            initial={{ y: "100%" }}
                            animate="visible"
-                           className="gradient-text text-4xl font-bold tracking-tight md:text-8xl"
+                           className="text-brand text-4xl font-bold tracking-tight md:text-8xl"
                            variants={{
                               //@ts-ignore
                               visible: (i: number) => ({
@@ -94,19 +94,19 @@ const Header: React.FC = () => {
                            initial="hidden"
                            animate="show"
                         >
-                           <div className="mx-auto max-w-3xl text-xl text-gray-600 dark:text-gray-300 md:text-2xl">
+                           <div className="mx-auto max-w-3xl text-xl text-muted-foreground md:text-2xl">
                               <p className="mb-4 leading-relaxed">
-                                 <span className="font-semibold text-blue-600 dark:text-blue-400">
+                                 <span className="font-semibold text-brand">
                                     7+ years
                                  </span>{" "}
                                  of crafting videos that captivate. Trusted by
                                  creators with{" "}
-                                 <span className="font-bold text-blue-600 dark:text-blue-400">
+                                 <span className="font-bold text-brand">
                                     millions of subscribers
                                  </span>
                                  .
                               </p>
-                              <p className="text-base text-gray-500 dark:text-gray-400">
+                              <p className="text-base text-muted-foreground">
                                  Fast delivery • Professional quality •
                                  Europe-based
                               </p>
@@ -124,7 +124,7 @@ const Header: React.FC = () => {
                      <Button
                         asChild
                         size="lg"
-                        className="bg-blue-600 px-8 py-3 text-lg text-white hover:bg-blue-700"
+                        className="bg-brand px-8 py-3 text-lg text-brand-foreground hover:bg-brand/90"
                      >
                         <Link href="mailto:david@davidilie.com">
                            Get a Quote
@@ -134,7 +134,7 @@ const Header: React.FC = () => {
                         asChild
                         size="lg"
                         variant="outline"
-                        className="border-2 border-blue-600 px-8 py-3 text-lg text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                        className="border-2 border-brand px-8 py-3 text-lg text-brand hover:bg-brand-muted"
                      >
                         <Link href="#portfolio">See My Work</Link>
                      </Button>
@@ -147,14 +147,14 @@ const Header: React.FC = () => {
                transition={{ delay: 0.6, duration: 0.8 }}
             >
                <div
-                  className="mb-4 flex cursor-pointer flex-col items-center text-gray-400 transition-colors duration-300 hover:text-blue-500 dark:text-gray-500 sm:mb-0"
+                  className="mb-4 flex cursor-pointer flex-col items-center text-muted-foreground transition-colors duration-300 hover:text-brand sm:mb-0"
                   onClick={scrollDown}
                >
                   <p className="mb-3 text-sm font-medium tracking-wide">
                      DISCOVER MORE
                   </p>
                   <div className="flex flex-col items-center">
-                     <div className="mb-2 h-8 w-0.5 bg-gradient-to-b from-gray-300 to-transparent dark:from-gray-600"></div>
+                     <div className="mb-2 h-8 w-0.5 bg-gradient-to-b from-border to-transparent"></div>
                      <motion.div
                         animate={{ y: [0, 8, 0] }}
                         transition={{
@@ -172,9 +172,9 @@ const Header: React.FC = () => {
             </motion.div>
          </div>
          <div className="pointer-events-none absolute inset-0 overflow-hidden">
-            <div className="absolute left-10 top-20 h-32 w-32 rounded-full bg-blue-500/5 blur-xl"></div>
-            <div className="absolute bottom-20 right-20 h-48 w-48 rounded-full bg-purple-500/5 blur-xl"></div>
-            <div className="absolute left-1/4 top-1/2 h-24 w-24 rounded-full bg-cyan-500/5 blur-lg"></div>
+            <div className="absolute left-10 top-20 h-32 w-32 rounded-full bg-brand/5 blur-xl"></div>
+            <div className="absolute bottom-20 right-20 h-48 w-48 rounded-full bg-brand/5 blur-xl"></div>
+            <div className="absolute left-1/4 top-1/2 h-24 w-24 rounded-full bg-brand/5 blur-lg"></div>
          </div>
       </div>
    );

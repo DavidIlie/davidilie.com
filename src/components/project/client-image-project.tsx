@@ -25,7 +25,7 @@ const ImageProject = ({
    return (
       <div className="relative my-12">
          <div
-            className={`relative max-w-[83%] overflow-hidden rounded-xl border border-gray-200/80 dark:border-gray-700/50 ${
+            className={`relative max-w-[83%] overflow-hidden rounded-xl border border-border/80 ${
                left ? "ml-auto" : "ml-0"
             }`}
          >
@@ -48,7 +48,7 @@ const ImageProject = ({
                left
                   ? "left-0 text-left xl:left-[-7%]"
                   : "right-0 text-right xl:right-[-7%]"
-            } top-[50%] w-[45%] max-w-[450px] rounded-xl border border-gray-200/80 bg-white/80 p-5 backdrop-blur-xs dark:border-gray-700/50 dark:bg-gray-800/80`}
+            } top-[50%] w-[45%] max-w-[450px] rounded-xl border border-border/80 bg-card/80 p-5 backdrop-blur-xs`}
             style={{ transform: "translate(0, -50%)" }}
          >
             <div
@@ -62,7 +62,7 @@ const ImageProject = ({
                   target="_blank"
                   rel="noreferrer"
                >
-                  <Link className="font-semibold text-blue-500" />
+                  <Link className="font-semibold text-brand" />
                </a>
             </div>
             <div className={`my-1 ${!left ? "-mr-2" : ""}`}>
@@ -72,14 +72,14 @@ const ImageProject = ({
             </div>
             <p>{project.description}</p>
             {isGitHub && repo && (
-               <p className="-mb-2 mt-0.5 italic text-gray-700 dark:text-gray-400" suppressHydrationWarning>
+               <p className="-mb-2 mt-0.5 italic text-muted-foreground" suppressHydrationWarning>
                   Last updated{" "}
                   {formatDistance(new Date(repo.lastPush), new Date(), {
                      addSuffix: true,
                   })}
                   ,{" "}
                   <a
-                     className="duration-150 hover:text-blue-500"
+                     className="duration-150 hover:text-brand"
                      href={repo.url}
                      target="_blank"
                      rel="noreferrer"

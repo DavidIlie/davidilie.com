@@ -27,10 +27,10 @@ const SmallProject: React.FC<{ project: GitHubProject }> = ({ project }) => {
          href={project.url}
          target="_blank"
          rel="noreferrer"
-         className="group flex flex-col rounded-xl border border-gray-200/60 bg-white/50 p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300/80 hover:bg-white/80 hover:shadow-lg hover:shadow-black/5 dark:border-gray-700/40 dark:bg-gray-800/30 dark:hover:border-gray-600/60 dark:hover:bg-gray-800/60 dark:hover:shadow-black/20"
+         className="group flex flex-col rounded-xl border border-border/60 bg-card/50 p-4 transition-all duration-200 hover:-translate-y-0.5 hover:border-border/80 hover:bg-card/80 hover:shadow-lg hover:shadow-foreground/5"
       >
          <div className="mb-2 flex items-start justify-between gap-2">
-            <h3 className="truncate text-[0.95rem] font-semibold text-gray-900 group-hover:text-blue-600 dark:text-gray-100 dark:group-hover:text-blue-400">
+            <h3 className="truncate text-[0.95rem] font-semibold text-foreground group-hover:text-brand">
                {project.name}
             </h3>
             {project.stars > 0 && (
@@ -41,11 +41,11 @@ const SmallProject: React.FC<{ project: GitHubProject }> = ({ project }) => {
             )}
          </div>
 
-         <p className="mb-3 line-clamp-2 flex-1 text-left text-[0.8rem] leading-relaxed text-gray-500 dark:text-gray-400">
+         <p className="mb-3 line-clamp-2 flex-1 text-left text-[0.8rem] leading-relaxed text-muted-foreground">
             {project.description || "No description"}
          </p>
 
-         <div className="flex items-center gap-3 text-xs text-gray-400 dark:text-gray-500">
+         <div className="flex items-center gap-3 text-xs text-muted-foreground">
             {project.language && (
                <span className="flex items-center gap-1.5">
                   <span

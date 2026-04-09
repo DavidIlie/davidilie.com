@@ -24,17 +24,17 @@ const Page = async () => {
       <HydrateClient>
          <div className="flex flex-grow items-center justify-center">
             <div className="container mx-auto mb-12 mt-32 max-w-4xl">
-               <h1 className="gradient-text text-center text-5xl font-bold">
+               <h1 className="text-center text-5xl font-bold text-brand">
                   The David Ones
                </h1>
-               <p className="mb-6 mt-4 px-2 text-center sm:mb-0 md:px-12 md:text-lg">
+               <p className="mb-6 mt-4 px-2 text-center text-muted-foreground sm:mb-0 md:px-12 md:text-lg">
                   I&apos;ve been writing blog posts since 2020, mostly about my
                   random technologic encounters during my day-to-day life.
                   Currently there are {posts.length} blog post
                   {posts.length > 1 && "s"}.
                </p>
                <PostCard {...featuredPost} featured />
-               <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2 sm:px-2.5">
+               <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:px-2.5">
                   {posts
                      .toSorted((a, b) =>
                         new Date(b.publishedAt).getTime() -

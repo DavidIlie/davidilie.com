@@ -1,7 +1,7 @@
 import "./globals.css";
 
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
+import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import { headers } from "next/headers";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import PlausibleProvider from "next-plausible";
@@ -17,20 +17,15 @@ import { TRPCReactProvider } from "~/trpc/react";
 
 export const dynamic = "force-dynamic";
 
-const graphik = localFont({
-   src: [
-      {
-         path: "../../public/fonts/Graphik-Regular.ttf",
-         weight: "400",
-         style: "normal",
-      },
-      {
-         path: "../../public/fonts/Graphik-Medium.ttf",
-         weight: "600",
-         style: "bold",
-      },
-   ],
-   variable: "--font-graphik",
+const bricolage = Bricolage_Grotesque({
+   subsets: ["latin"],
+   variable: "--font-bricolage",
+   display: "swap",
+});
+
+const figtree = Figtree({
+   subsets: ["latin"],
+   variable: "--font-figtree",
    display: "swap",
 });
 
@@ -102,7 +97,11 @@ export default async function RootLayout({
       `${proto}://${headersList.get("host")}` || env.NEXT_PUBLIC_APP_URL;
 
    return (
-      <html lang="en" suppressHydrationWarning>
+      <html
+         lang="en"
+         suppressHydrationWarning
+         className={`${bricolage.variable} ${figtree.variable}`}
+      >
          <head>
             <PlausibleProvider
                domain="davidilie.com"
@@ -115,7 +114,7 @@ export default async function RootLayout({
                }}
             />
          </head>
-         <body className={`text-black dark:text-white ${graphik.variable}`}>
+         <body className="text-foreground">
             <TRPCReactProvider baseUrl={url}>
                <ThemeProvider attribute="class">
                   <BackgroundPattern>

@@ -42,7 +42,7 @@ export const Socials: React.FC<{
    return (
       <div
          className={cn(
-            `mt-2 flex items-center gap-8 text-black dark:text-white ${
+            `mt-2 flex items-center gap-8 text-foreground ${
                invisible ? "invisible" : "visible"
             }`,
             className,
@@ -98,13 +98,13 @@ export const SocialIcon: React.FC<
                      href={link}
                      target={newPage ? "_blank" : ""}
                      rel="noreferrer"
-                     className="duration-250 hover:text-blue-100"
+                     className="duration-250 hover:text-brand"
                      aria-label={`Social link: ${tooltip}`}
                   >
                      {children}
                   </a>
                ) : (
-                  <span className="duration-250 hover:text-blue-100">
+                  <span className="duration-250 hover:text-brand">
                      {children}
                   </span>
                )}

@@ -58,8 +58,8 @@ const techStack = [
    },
    {
       icon: (
-         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700">
-            <BarChart3 className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
+            <BarChart3 className="h-5 w-5 text-foreground" />
          </div>
       ),
       name: "Plausible Analytics",
@@ -75,21 +75,21 @@ const DeveloperPortfolio = () => {
             <div className="mx-auto mt-24 max-w-6xl px-4 sm:mt-0">
                <div className="grid items-center gap-12 lg:grid-cols-2">
                   <div className="animate-fade-in-up">
-                     <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-blue-50/80 px-4 py-1.5 dark:border-blue-800/40 dark:bg-blue-950/30">
+                     <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-muted px-4 py-1.5">
                         <span className="relative flex h-2 w-2">
-                           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
-                           <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500" />
+                           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
+                           <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
                         </span>
-                        <span className="text-sm font-medium text-blue-700 dark:text-blue-300">
+                        <span className="text-sm font-medium text-brand">
                            Available for projects
                         </span>
                      </div>
                      <h1 className="mb-6 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
                         Launch Your Website
                         <br />
-                        <span className="gradient-text">in 1 Week</span>
+                        <span className="text-brand">in 1 Week</span>
                      </h1>
-                     <p className="mb-8 max-w-xl text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                     <p className="mb-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
                         Turn your idea into a live website customers can use.
                         Fast execution, zero compromises on quality.
                      </p>
@@ -97,7 +97,7 @@ const DeveloperPortfolio = () => {
                         <Button
                            asChild
                            size="lg"
-                           className="bg-blue-600 px-6 text-white hover:bg-blue-700"
+                           className="bg-brand px-6 text-brand-foreground hover:bg-brand/90"
                         >
                            <Link href="mailto:david@davidilie.com">
                               Book My Spot
@@ -108,7 +108,6 @@ const DeveloperPortfolio = () => {
                            asChild
                            size="lg"
                            variant="outline"
-                           className="dark:border-gray-700 dark:text-gray-200"
                         >
                            <Link href="#pricing">View Pricing</Link>
                         </Button>
@@ -145,14 +144,14 @@ const DeveloperPortfolio = () => {
                ].map((item, i) => (
                   <div
                      key={i}
-                     className="animate-fade-in-up group rounded-xl border border-gray-200/80 bg-white/60 p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600"
+                     className="animate-fade-in-up group rounded-xl border border-border/80 bg-card/60 p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md"
                      style={{ animationDelay: `${0.1 + i * 0.1}s` }}
                   >
-                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 text-gray-600 transition-colors group-hover:bg-blue-50 group-hover:text-blue-600 dark:bg-gray-700/80 dark:text-gray-400 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400">
+                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-muted-foreground transition-colors group-hover:bg-brand-muted group-hover:text-brand">
                         {item.icon}
                      </div>
                      <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
-                     <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                     <p className="text-sm leading-relaxed text-muted-foreground">
                         {item.desc}
                      </p>
                   </div>
@@ -165,9 +164,9 @@ const DeveloperPortfolio = () => {
             <div className="mb-10 text-center">
                <h2 className="mb-3 text-3xl font-bold md:text-4xl">
                   Built with{" "}
-                  <span className="gradient-text">Modern Tech</span>
+                  <span className="text-brand">Modern Tech</span>
                </h2>
-               <p className="text-gray-600 dark:text-gray-400">
+               <p className="text-muted-foreground">
                   Industry-standard tools for quality and scalability
                </p>
             </div>
@@ -175,13 +174,13 @@ const DeveloperPortfolio = () => {
                {techStack.map((tech, i) => (
                   <div
                      key={i}
-                     className="animate-fade-in-up flex items-center gap-4 rounded-xl border border-gray-200/80 bg-white/60 p-4 transition-all duration-200 hover:border-gray-300 hover:shadow-xs dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600"
+                     className="animate-fade-in-up flex items-center gap-4 rounded-xl border border-border/80 bg-card/60 p-4 transition-all duration-200 hover:border-border hover:shadow-xs"
                      style={{ animationDelay: `${i * 0.05}s` }}
                   >
                      <div className="flex-shrink-0">{tech.icon}</div>
                      <div>
                         <h3 className="font-semibold">{tech.name}</h3>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-sm text-muted-foreground">
                            {tech.desc}
                         </p>
                      </div>
@@ -192,18 +191,18 @@ const DeveloperPortfolio = () => {
 
          {/* Testimonial */}
          <section className="mx-auto max-w-6xl px-4 py-20">
-            <div className="animate-fade-in-up rounded-2xl border border-gray-200/80 bg-gradient-to-br from-gray-50 via-white to-gray-50/50 p-8 dark:border-gray-700/50 dark:from-gray-800/60 dark:via-gray-900/40 dark:to-gray-800/30 sm:p-12">
+            <div className="animate-fade-in-up rounded-2xl border border-border/80 bg-gradient-to-br from-muted via-card to-muted/50 p-8 sm:p-12">
                <div className="mx-auto max-w-3xl text-center">
-                  <div className="mb-6 font-serif text-5xl text-gray-300 dark:text-gray-600">
+                  <div className="mb-6 font-serif text-5xl text-muted-foreground/40">
                      &ldquo;
                   </div>
-                  <blockquote className="mb-8 text-xl font-medium leading-relaxed text-gray-800 dark:text-gray-200 sm:text-2xl">
+                  <blockquote className="mb-8 text-xl font-medium leading-relaxed text-foreground sm:text-2xl">
                      I have never worked with someone who understands and
                      executes exactly what I want, I am impressed.
                   </blockquote>
                   <div>
                      <div className="font-semibold">Alex</div>
-                     <div className="text-sm text-gray-500 dark:text-gray-400">
+                     <div className="text-sm text-muted-foreground">
                         Mercedes Engineer
                      </div>
                   </div>
@@ -216,10 +215,10 @@ const DeveloperPortfolio = () => {
             <div className="mb-12 text-center">
                <h2 className="mb-3 text-3xl font-bold md:text-4xl">
                   Simple,{" "}
-                  <span className="gradient-text">Transparent</span>{" "}
+                  <span className="text-brand">Transparent</span>{" "}
                   Pricing
                </h2>
-               <p className="text-gray-600 dark:text-gray-400">
+               <p className="text-muted-foreground">
                   Choose the plan that fits your project
                </p>
             </div>
@@ -281,32 +280,32 @@ const DeveloperPortfolio = () => {
          {/* Guarantees */}
          <section className="mx-auto max-w-4xl px-4 py-20">
             <div className="grid gap-6 md:grid-cols-2">
-               <div className="animate-fade-in-up flex items-start gap-4 rounded-xl border border-gray-200/80 bg-white/60 p-6 dark:border-gray-700/50 dark:bg-gray-800/40">
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400">
+               <div className="animate-fade-in-up flex items-start gap-4 rounded-xl border border-border/80 bg-card/60 p-6">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
                      <Clock className="h-5 w-5" />
                   </div>
                   <div>
                      <h3 className="mb-1 font-semibold">
                         1-Week Delivery Guarantee
                      </h3>
-                     <p className="text-sm text-gray-600 dark:text-gray-400">
+                     <p className="text-sm text-muted-foreground">
                         Delivery guaranteed in 1 week or your money back. No
                         exceptions.
                      </p>
                   </div>
                </div>
                <div
-                  className="animate-fade-in-up flex items-start gap-4 rounded-xl border border-gray-200/80 bg-white/60 p-6 dark:border-gray-700/50 dark:bg-gray-800/40"
+                  className="animate-fade-in-up flex items-start gap-4 rounded-xl border border-border/80 bg-card/60 p-6"
                   style={{ animationDelay: "0.1s" }}
                >
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-brand-muted text-brand">
                      <Code2 className="h-5 w-5" />
                   </div>
                   <div>
                      <h3 className="mb-1 font-semibold">
                         Source Code Included
                      </h3>
-                     <p className="text-sm text-gray-600 dark:text-gray-400">
+                     <p className="text-sm text-muted-foreground">
                         You own 100% of the source code and all assets. Full
                         repository access.
                      </p>
@@ -340,28 +339,28 @@ const PricingCard = ({
    <div
       className={`animate-fade-in-up relative rounded-2xl border p-8 transition-all duration-200 ${
          featured
-            ? "border-blue-300/60 bg-blue-50/40 shadow-xs dark:border-blue-700/40 dark:bg-blue-950/20"
-            : "border-gray-200/80 bg-white/60 dark:border-gray-700/50 dark:bg-gray-800/40"
+            ? "border-brand/30 bg-brand-muted/50 shadow-xs"
+            : "border-border/80 bg-card/60"
       }`}
    >
       {featured && (
          <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-            <span className="rounded-full bg-blue-600 px-4 py-1 text-xs font-medium text-white">
+            <span className="rounded-full bg-brand px-4 py-1 text-xs font-medium text-brand-foreground">
                Popular
             </span>
          </div>
       )}
       <div className="mb-6 text-center">
-         <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+         <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
             {title}
          </h3>
          <div className="mb-1 text-4xl font-bold">{price}</div>
          {subtitle && (
-            <div className="text-sm text-gray-500 dark:text-gray-400">
+            <div className="text-sm text-muted-foreground">
                {subtitle}
             </div>
          )}
-         <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">
+         <p className="mt-3 text-sm text-muted-foreground">
             {description}
          </p>
       </div>
@@ -377,7 +376,7 @@ const PricingCard = ({
          asChild
          className={`w-full ${
             featured
-               ? "bg-blue-600 text-white hover:bg-blue-700"
+               ? "bg-brand text-brand-foreground hover:bg-brand/90"
                : ""
          }`}
          variant={featured ? "default" : "outline"}

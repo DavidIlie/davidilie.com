@@ -16,16 +16,16 @@ const CurrentlyPlaying: React.FC = () => {
             href={SPOTIFY_ACCOUNT}
             target="_blank"
             rel="noreferrer"
-            className="group flex items-center gap-4 rounded-2xl border border-gray-200 bg-gray-100/80 p-5 transition-all duration-300 hover:border-gray-300 hover:shadow-lg dark:border-gray-700/50 dark:bg-gray-800/50 dark:hover:border-gray-600 sm:p-6"
+            className="group flex items-center gap-4 rounded-2xl border border-border bg-muted/80 p-5 transition-all duration-300 hover:border-border hover:shadow-lg sm:p-6"
          >
-            <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-gray-200 dark:bg-gray-700 sm:h-20 sm:w-20">
-               <Music className="h-6 w-6 text-gray-400 dark:text-gray-500 sm:h-8 sm:w-8" />
+            <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-muted sm:h-20 sm:w-20">
+               <Music className="h-6 w-6 text-muted-foreground sm:h-8 sm:w-8" />
             </div>
             <div>
-               <p className="text-sm font-medium text-gray-400 dark:text-gray-500">
+               <p className="text-sm font-medium text-muted-foreground">
                   Not currently listening
                </p>
-               <p className="mt-0.5 text-xs text-gray-400/70 dark:text-gray-600">
+               <p className="mt-0.5 text-xs text-muted-foreground/60">
                   Check back later
                </p>
             </div>

@@ -43,14 +43,14 @@ export const SpotifyClientPage = () => {
                   Spotify
                </a>
             </div>
-            <h1 className="gradient-text pb-1 text-center text-4xl font-bold sm:text-5xl md:text-6xl">
+            <h1 className="pb-1 text-center text-4xl font-bold text-brand sm:text-5xl md:text-6xl">
                Music
             </h1>
-            <p className="mx-auto max-w-md text-center text-sm text-gray-500 dark:text-gray-400 sm:text-base">
+            <p className="mx-auto max-w-md text-center text-sm text-muted-foreground sm:text-base">
                A look at what I&apos;ve been listening to lately
             </p>
             {data.rate && (
-               <p className="text-center text-[11px] text-gray-400/80 dark:text-gray-600">
+               <p className="text-center text-[11px] text-muted-foreground/60">
                   {data.just ? (
                      <>Updated just now</>
                   ) : (
@@ -86,7 +86,7 @@ export const SpotifyClientPage = () => {
                   {topGenres.map((genre) => (
                      <span
                         key={genre}
-                        className="rounded-full border border-gray-200 bg-gray-100/80 px-3 py-1.5 text-xs font-medium capitalize text-gray-700 transition-colors hover:border-blue-300 hover:bg-blue-50 dark:border-gray-700 dark:bg-gray-800/80 dark:text-gray-300 dark:hover:border-blue-700 dark:hover:bg-blue-900/20 sm:text-sm"
+                        className="rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-medium capitalize text-secondary-foreground transition-colors hover:border-brand/30 hover:bg-brand-muted sm:text-sm"
                      >
                         {genre}
                      </span>
@@ -175,10 +175,10 @@ export const SpotifyClientPage = () => {
                      <Monitor className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
                   <div>
-                     <p className="text-sm font-semibold text-gray-800 dark:text-gray-100 sm:text-base">
+                     <p className="text-sm font-semibold text-foreground sm:text-base">
                         Wanna see what I watch?
                      </p>
-                     <p className="text-xs text-gray-500 dark:text-gray-400 sm:text-sm">
+                     <p className="text-xs text-muted-foreground sm:text-sm">
                         Check out my Plex dashboard on Plexo
                      </p>
                   </div>
@@ -201,8 +201,8 @@ const SectionHeader = ({
 }) => {
    return (
       <div className="mb-4 flex items-center gap-2 text-left">
-         <span className="text-gray-400 dark:text-gray-500">{icon}</span>
-         <h2 className="text-lg font-semibold tracking-tight text-gray-800 dark:text-gray-200 sm:text-xl">
+         <span className="text-muted-foreground">{icon}</span>
+         <h2 className="text-lg font-semibold tracking-tight text-foreground sm:text-xl">
             {title}
          </h2>
       </div>

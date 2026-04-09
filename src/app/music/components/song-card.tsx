@@ -19,10 +19,10 @@ const SongCard: React.FC<{
          href={song.url}
          target="_blank"
          rel="noreferrer"
-         className="group flex w-full items-center gap-3 rounded-xl border border-gray-200/80 bg-white/60 p-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600 dark:hover:shadow-lg dark:hover:shadow-black/20 sm:gap-4 sm:p-3"
+         className="group flex w-full items-center gap-3 rounded-xl border border-border/80 bg-card/60 p-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md sm:gap-4 sm:p-3"
       >
          {rank !== undefined && (
-            <span className="min-w-[1.25rem] text-center text-sm font-bold tabular-nums text-gray-300 dark:text-gray-600 sm:min-w-[1.5rem] sm:text-base">
+            <span className="min-w-[1.25rem] text-center text-sm font-bold tabular-nums text-muted-foreground/40 sm:min-w-[1.5rem] sm:text-base">
                {rank}
             </span>
          )}
@@ -37,10 +37,10 @@ const SongCard: React.FC<{
             <h3 className="truncate text-sm font-semibold leading-tight sm:text-base">
                {song.name}
             </h3>
-            <p className="truncate text-xs text-gray-500 dark:text-gray-400 sm:text-sm">
+            <p className="truncate text-xs text-muted-foreground sm:text-sm">
                {song.artist.name}
                {song.date && (
-                  <span className="text-gray-400 dark:text-gray-600">
+                  <span className="text-muted-foreground/60">
                      {" · "}
                      {formatDistance(new Date(song.date), new Date(), {
                         addSuffix: true,

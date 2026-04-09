@@ -69,8 +69,8 @@ const About: React.FC = () => {
             </Reveal>
          </div>
          <Reveal direction="up" triggerOnce cascade className="mx-4">
-            <div className="mx-auto mb-10 mt-[-14rem] flex max-w-[25rem] flex-wrap justify-evenly rounded-2xl border border-gray-200/80 bg-white/80 backdrop-blur-xs dark:border-gray-700/50 dark:bg-gray-800/80 dark:text-gray-200 md:max-w-6xl md:flex-nowrap">
-               <div className="xs:w-full border-b border-gray-200/80 px-5 pt-10 dark:border-gray-700/50 md:border-b-0 md:border-r xl:w-1/3 xl:border-b-0 xl:border-r 2xl:border-b-0 2xl:border-r">
+            <div className="mx-auto mb-10 mt-[-14rem] flex max-w-[25rem] flex-wrap justify-evenly rounded-2xl border border-border/80 bg-card/80 backdrop-blur-xs md:max-w-6xl md:flex-nowrap">
+               <div className="xs:w-full border-b border-border/80 px-5 pt-10 md:border-b-0 md:border-r xl:w-1/3 xl:border-b-0 xl:border-r 2xl:border-b-0 2xl:border-r">
                   <div className="mb-3 flex justify-center">
                      <Image
                         src="/static/frontend.svg"
@@ -89,24 +89,24 @@ const About: React.FC = () => {
                      </h2>
                      <p className="text-lg">
                         I like bringing my ideas to{" "}
-                        <span className="font-bold text-blue-700 dark:text-blue-500">
+                        <span className="font-bold text-brand">
                            reality
                         </span>
                         , by producing simple but powerful{" "}
-                        <span className="font-bold text-blue-700 dark:text-blue-500">
+                        <span className="font-bold text-brand">
                            code
                         </span>
                         .
                      </p>
                   </div>
                   <div className="mb-10 text-center">
-                     <h3 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
+                     <h3 className="text-2xl font-semibold text-brand">
                         Technologies I use:
                      </h3>
                      <p className="text-lg">React, Next.js, Tailwind CSS</p>
                   </div>
                   <div className="mb-7 text-center">
-                     <h4 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
+                     <h4 className="text-2xl font-semibold text-brand">
                         Tools I use:
                      </h4>
                      <p className="text-lg">
@@ -117,7 +117,7 @@ const About: React.FC = () => {
                      <p className="text-lg">Pen & Paper</p>
                   </div>
                </div>
-               <div className="xs:w-full border-b border-gray-200/80 px-5 pt-10 dark:border-gray-700/50 md:border-b-0 md:border-r xl:w-1/3 xl:border-b-0 xl:border-r 2xl:border-r">
+               <div className="xs:w-full border-b border-border/80 px-5 pt-10 md:border-b-0 md:border-r xl:w-1/3 xl:border-b-0 xl:border-r 2xl:border-r">
                   <div className="mb-3 flex justify-center">
                      <Image
                         src="/static/backend.svg"
@@ -136,24 +136,24 @@ const About: React.FC = () => {
                      </h2>
                      <p className="px-4 text-lg sm:px-16">
                         I build{" "}
-                        <span className="font-bold text-blue-700 dark:text-blue-500">
+                        <span className="font-bold text-brand">
                            fast
                         </span>{" "}
                         APIs and write{" "}
-                        <span className="font-bold text-blue-700 dark:text-blue-500">
+                        <span className="font-bold text-brand">
                            efficent
                         </span>{" "}
                         code.
                      </p>
                   </div>
                   <div className="mb-10 text-center">
-                     <h3 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
+                     <h3 className="text-2xl font-semibold text-brand">
                         Technologies I use:
                      </h3>
                      <p className="text-lg">tRPC, Kubernetes, S3, Prisma</p>
                   </div>
                   <div className="mb-7 text-center">
-                     <h4 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
+                     <h4 className="text-2xl font-semibold text-brand">
                         Tools I use:
                      </h4>
                      <p className="text-lg">
@@ -164,7 +164,7 @@ const About: React.FC = () => {
                         href="https://plausible.io"
                         target="_blank"
                         rel="noreferrer"
-                        className="text-lg duration-150 hover:text-blue-500"
+                        className="text-lg duration-150 hover:text-brand"
                      >
                         Plausible Analytics
                      </Link>
@@ -186,7 +186,7 @@ const About: React.FC = () => {
                   </div>
                   <div className="mb-10 text-center">
                      <a
-                        className="text-2xl font-semibold duration-150 hover:text-blue-500"
+                        className="text-2xl font-semibold duration-150 hover:text-brand"
                         href="https://www.youtube.com/channel/UC92hn9Y8WcY_5LribMDW8uA"
                         target="_blank"
                         rel="noreferrer"
@@ -201,17 +201,17 @@ const About: React.FC = () => {
                      </p>
                   </div>
                   <div className="mb-10 text-center">
-                     <h2 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
+                     <h2 className="text-2xl font-semibold text-brand">
                         Software I use:
                      </h2>
                      <p className="text-lg">Adobe Premiere & Photoshop</p>
                   </div>
                   <div className="mb-4 text-center sm:mb-0">
-                     <h3 className="text-2xl font-semibold text-blue-700 dark:text-blue-500">
+                     <h3 className="text-2xl font-semibold text-brand">
                         Content I produce:
                      </h3>
                      <a
-                        className="text-lg duration-200 hover:text-blue-700 dark:hover:text-blue-500"
+                        className="text-lg duration-200 hover:text-brand"
                         href="https://www.youtube.com/channel/UC92hn9Y8WcY_5LribMDW8uA"
                         target="_blank"
                         rel="noreferrer"
@@ -221,7 +221,7 @@ const About: React.FC = () => {
                      </a>
                      <br />
                      <a
-                        className="text-lg duration-200 hover:text-blue-700 dark:hover:text-blue-500"
+                        className="text-lg duration-200 hover:text-brand"
                         href="https://www.youtube.com/channel/UCwfF_jZHkxF1Vxx5b8PlIGA"
                         target="_blank"
                         rel="noreferrer"
@@ -233,7 +233,7 @@ const About: React.FC = () => {
                      <TooltipProvider>
                         <Tooltip>
                            <TooltipTrigger>
-                              <p className="cursor-pointer text-lg text-gray-800 dark:text-gray-200">
+                              <p className="cursor-pointer text-lg text-muted-foreground">
                                  And much more...
                               </p>
                            </TooltipTrigger>
@@ -255,15 +255,15 @@ const Statistics: React.FC = () => {
 
    return (
       <span>
-         <span className="font-bold text-blue-700 dark:text-blue-500">
+         <span className="font-bold text-brand">
             {BigInt(stats.subscribers).toString()}
          </span>{" "}
          Subscribers,{" "}
-         <span className="font-bold text-blue-700 dark:text-blue-500">
+         <span className="font-bold text-brand">
             {BigInt(stats.views).toString()}
          </span>{" "}
          Views, and{" "}
-         <span className="font-bold text-blue-700 dark:text-blue-500">
+         <span className="font-bold text-brand">
             {BigInt(stats.videos).toString()}
          </span>{" "}
          Videos

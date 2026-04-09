@@ -31,28 +31,37 @@
    --input: hsl(0 0% 89.8%);
    --ring: hsl(0 0% 3.9%);
    --radius: 0.5rem;
+
+   /* Brand accent — blue */
+   --brand: hsl(217 91% 60%);
+   --brand-foreground: hsl(0 0% 98%);
+   --brand-muted: hsl(214 95% 93%);
 }
 
 .dark {
-   --background: hsl(0 0% 3.9%);
-   --foreground: hsl(0 0% 98%);
-   --card: hsl(0 0% 3.9%);
-   --card-foreground: hsl(0 0% 98%);
-   --popover: hsl(0 0% 3.9%);
-   --popover-foreground: hsl(0 0% 98%);
-   --primary: hsl(0 0% 98%);
-   --primary-foreground: hsl(0 0% 9%);
-   --secondary: hsl(0 0% 14.9%);
-   --secondary-foreground: hsl(0 0% 98%);
-   --muted: hsl(0 0% 14.9%);
-   --muted-foreground: hsl(0 0% 63.9%);
-   --accent: hsl(0 0% 14.9%);
-   --accent-foreground: hsl(0 0% 98%);
+   --background: hsl(215 28% 7%);
+   --foreground: hsl(210 20% 96%);
+   --card: hsl(215 25% 9%);
+   --card-foreground: hsl(210 20% 96%);
+   --popover: hsl(215 25% 9%);
+   --popover-foreground: hsl(210 20% 96%);
+   --primary: hsl(210 20% 96%);
+   --primary-foreground: hsl(215 28% 7%);
+   --secondary: hsl(215 20% 14%);
+   --secondary-foreground: hsl(210 20% 96%);
+   --muted: hsl(215 20% 14%);
+   --muted-foreground: hsl(215 10% 60%);
+   --accent: hsl(215 20% 14%);
+   --accent-foreground: hsl(210 20% 96%);
    --destructive: hsl(0 62.8% 30.6%);
-   --destructive-foreground: hsl(0 0% 98%);
-   --border: hsl(0 0% 14.9%);
-   --input: hsl(0 0% 14.9%);
-   --ring: hsl(0 0% 83.1%);
+   --destructive-foreground: hsl(210 20% 96%);
+   --border: hsl(215 18% 16%);
+   --input: hsl(215 18% 16%);
+   --ring: hsl(210 10% 80%);
+
+   --brand: hsl(217 91% 65%);
+   --brand-foreground: hsl(0 0% 98%);
+   --brand-muted: hsl(217 91% 15%);
 }
 
 @theme inline {
@@ -76,50 +85,51 @@
    --color-input: var(--input);
    --color-ring: var(--ring);
 
+   /* Brand accent */
+   --color-brand: var(--brand);
+   --color-brand-foreground: var(--brand-foreground);
+   --color-brand-muted: var(--brand-muted);
+
    --radius-lg: var(--radius);
    --radius-md: calc(var(--radius) - 2px);
    --radius-sm: calc(var(--radius) - 4px);
+
+   /* Typography */
+   --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
 
    --animate-accordion-down: accordion-down 0.2s ease-out;
    --animate-accordion-up: accordion-up 0.2s ease-out;
 }
 
 @keyframes accordion-down {
-   from {
-      height: 0;
-   }
-   to {
-      height: var(--radix-accordion-content-height);
-   }
+   from { height: 0; }
+   to { height: var(--radix-accordion-content-height); }
 }
 
 @keyframes accordion-up {
-   from {
-      height: var(--radix-accordion-content-height);
-   }
-   to {
-      height: 0;
-   }
+   from { height: var(--radix-accordion-content-height); }
+   to { height: 0; }
+}
+
+html {
+   background-color: var(--background);
 }
 
 body {
    position: relative;
 }
 
-html[class="dark"] .pageBackground {
-   background: rgba(26, 33, 42, 0.8);
+h1, h2, h3 {
+   font-family: var(--font-display);
 }
 
 .pageBackground {
    background: rgba(255, 255, 255, 0.8);
 }
 
-.gradient-text {
-   background-clip: text;
-   -webkit-text-fill-color: transparent;
-   background: -webkit-linear-gradient(rgb(43, 172, 144), rgb(0, 102, 255));
-   -webkit-background-clip: text;
-   -webkit-text-fill-color: transparent;
+html.dark .pageBackground {
+   background: rgba(26, 33, 42, 0.8);
 }
 
 .hoverItem:hover {
@@ -127,64 +137,35 @@ html[class="dark"] .pageBackground {
 }
 
 @keyframes bounce {
-   0%,
-   75%,
-   100% {
-      transform: translateY(0px);
-   }
-   25% {
-      transform: translateY(-30px);
-   }
+   0%, 75%, 100% { transform: translateY(0px); }
+   25% { transform: translateY(-30px); }
 }
 
 @keyframes UpDown {
-   from {
-      transform: rotate(0deg) translateY(0);
-   }
-   to {
-      transform: rotate(20deg) translateY(50px);
-   }
+   from { transform: rotate(0deg) translateY(0); }
+   to { transform: rotate(20deg) translateY(50px); }
 }
+
 @keyframes UpDownWide {
-   from {
-      transform: rotate(0deg) translateY(0);
-   }
-   to {
-      transform: rotate(12deg) translateY(300px);
-   }
+   from { transform: rotate(0deg) translateY(0); }
+   to { transform: rotate(12deg) translateY(300px); }
 }
 
 .UpDownAnimation > svg {
-   animation-name: UpDown;
-   animation-duration: 4s;
-   animation-timing-function: ease-in-out;
-   animation-direction: alternate;
-   animation-iteration-count: infinite;
+   animation: UpDown 4s ease-in-out alternate infinite;
 }
 
 .UpDownSlowAnimation > svg {
-   animation-name: UpDown;
-   animation-duration: 11s;
-   animation-timing-function: ease-in-out;
-   animation-direction: alternate;
-   animation-iteration-count: infinite;
+   animation: UpDown 11s ease-in-out alternate infinite;
 }
 
 .UpDownWideAnimation > svg {
-   animation-name: UpDownWide;
-   animation-duration: 10s;
-   animation-timing-function: ease-in-out;
-   animation-direction: alternate;
-   animation-iteration-count: infinite;
+   animation: UpDownWide 10s ease-in-out alternate infinite;
 }
 
 @keyframes animatedUnderline {
-   0% {
-      stroke-dashoffset: 850;
-   }
-   100% {
-      stroke-dashoffset: 0;
-   }
+   0% { stroke-dashoffset: 850; }
+   100% { stroke-dashoffset: 0; }
 }
 
 .animated-underline {
@@ -198,13 +179,8 @@ html[class="dark"] .pageBackground {
 }
 
 @keyframes musicPulse {
-   0%,
-   100% {
-      transform: scaleY(0.4);
-   }
-   50% {
-      transform: scaleY(1);
-   }
+   0%, 100% { transform: scaleY(0.4); }
+   50% { transform: scaleY(1); }
 }
 
 .music-bar {
@@ -228,4 +204,120 @@ html[class="dark"] .pageBackground {
 .animate-fade-in-up {
    animation: fadeInUp 0.5s ease-out forwards;
    opacity: 0;
+}
+
+/* GitHub README rendering */
+.github-readme g-emoji img,
+.github-readme img[alt]:is([src*="emoji"], [src*="githubusercontent"][src*="assets"]):not([width]) {
+   display: inline;
+   height: 1.2em;
+   width: 1.2em;
+   vertical-align: text-bottom;
+   margin: 0;
+   border-radius: 0;
+}
+
+.github-readme img {
+   max-width: 100%;
+   height: auto;
+   border-radius: 0.5rem;
+}
+
+.github-readme a {
+   word-break: break-word;
+}
+
+.github-readme table {
+   display: block;
+   overflow-x: auto;
+}
+
+.github-readme pre {
+   overflow-x: auto;
+}
+
+/* Code blocks — VS Code window style */
+figure[data-rehype-pretty-code-figure] {
+   position: relative;
+   margin: 1.5rem 0 !important;
+   padding: 0 !important;
+   border-radius: 0.75rem;
+   overflow: hidden;
+   background: hsl(220 13% 18%);
+   border: 1px solid hsl(215 18% 22%);
+}
+
+figure[data-rehype-pretty-code-figure]::before {
+   content: "";
+   display: block;
+   height: 38px;
+   padding: 0 14px;
+   background: hsl(220 13% 15%);
+   border-bottom: 1px solid hsl(215 18% 22%);
+   background-image:
+      radial-gradient(circle, #ff5f57 5px, transparent 5px),
+      radial-gradient(circle, #febc2e 5px, transparent 5px),
+      radial-gradient(circle, #28c840 5px, transparent 5px);
+   background-size: 10px 10px;
+   background-position: 14px center, 30px center, 46px center;
+   background-repeat: no-repeat;
+}
+
+figure[data-rehype-pretty-code-figure]:has(figcaption)::before {
+   display: none;
+}
+
+figure[data-rehype-pretty-code-figure] figcaption[data-rehype-pretty-code-title] {
+   display: flex;
+   align-items: center;
+   height: 38px;
+   margin: 0 !important;
+   padding: 0 14px 0 68px;
+   background: hsl(220 13% 15%);
+   border-bottom: 1px solid hsl(215 18% 22%);
+   font-size: 0.8rem;
+   color: hsl(215 10% 55%);
+   background-image:
+      radial-gradient(circle, #ff5f57 5px, transparent 5px),
+      radial-gradient(circle, #febc2e 5px, transparent 5px),
+      radial-gradient(circle, #28c840 5px, transparent 5px);
+   background-size: 10px 10px;
+   background-position: 14px center, 30px center, 46px center;
+   background-repeat: no-repeat;
+}
+
+figure[data-rehype-pretty-code-figure] pre {
+   margin: 0 !important;
+   border: 0 !important;
+   border-radius: 0 !important;
+   background: transparent !important;
+   padding: 0.75rem 1rem !important;
+}
+
+figure[data-rehype-pretty-code-figure] code {
+   font-size: 0.85rem;
+   line-height: 1.7;
+}
+
+figure[data-rehype-pretty-code-figure] .line--highlighted {
+   background: hsl(217 91% 60% / 0.1);
+   border-left: 2px solid hsl(217 91% 60%);
+   margin-left: -1rem;
+   padding-left: calc(1rem - 2px);
+   margin-right: -1rem;
+   padding-right: 1rem;
+}
+
+figure[data-rehype-pretty-code-figure] .word--highlighted {
+   background: hsl(217 91% 60% / 0.15);
+   padding: 0.15rem 0.25rem;
+   border-radius: 0.25rem;
+}
+
+/* Inline code (not inside pre) */
+:not(pre) > code[data-theme] {
+   background: var(--secondary) !important;
+   padding: 0.15rem 0.4rem;
+   border-radius: 0.375rem;
+   font-size: 0.85em;
 }

@@ -36,9 +36,9 @@ const EditingPortfolioPage = () => {
          <div className="mx-auto mb-20 max-w-6xl px-4">
             <div className="mb-10 text-center">
                <h2 className="mb-3 text-3xl font-bold md:text-4xl">
-                  Why <span className="gradient-text">Work With Me</span>?
+                  Why <span className="text-brand">Work With Me</span>?
                </h2>
-               <p className="text-gray-600 dark:text-gray-400">
+               <p className="text-muted-foreground">
                   I don&apos;t just edit videos &ndash; I craft experiences
                </p>
             </div>
@@ -68,14 +68,14 @@ const EditingPortfolioPage = () => {
                ].map((item, i) => (
                   <div
                      key={i}
-                     className="animate-fade-in-up group rounded-xl border border-gray-200/80 bg-white/60 p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600"
+                     className="animate-fade-in-up group rounded-xl border border-border/80 bg-card/60 p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md"
                      style={{ animationDelay: `${i * 0.1}s` }}
                   >
-                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 text-gray-600 transition-colors group-hover:bg-blue-50 group-hover:text-blue-600 dark:bg-gray-700/80 dark:text-gray-400 dark:group-hover:bg-blue-900/30 dark:group-hover:text-blue-400">
+                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-muted-foreground transition-colors group-hover:bg-brand-muted group-hover:text-brand">
                         {item.icon}
                      </div>
                      <h3 className="mb-2 font-semibold">{item.title}</h3>
-                     <p className="text-sm text-gray-600 dark:text-gray-400">
+                     <p className="text-sm text-muted-foreground">
                         {item.desc}
                      </p>
                   </div>
@@ -83,7 +83,7 @@ const EditingPortfolioPage = () => {
             </div>
 
             {/* Software */}
-            <div className="animate-fade-in-up rounded-xl border border-gray-200/80 bg-white/60 p-6 dark:border-gray-700/50 dark:bg-gray-800/40 sm:p-8">
+            <div className="animate-fade-in-up rounded-xl border border-border/80 bg-card/60 p-6 sm:p-8">
                <h3 className="mb-6 text-center text-lg font-semibold">
                   Software I Master
                </h3>
@@ -108,13 +108,13 @@ const EditingPortfolioPage = () => {
                   ].map((sw, i) => (
                      <div key={i} className="flex flex-col items-center gap-2">
                         {sw.icon}
-                        <span className="text-sm text-gray-500 dark:text-gray-400">
+                        <span className="text-sm text-muted-foreground">
                            {sw.name}
                         </span>
                      </div>
                   ))}
                </div>
-               <p className="mt-5 text-center text-sm text-gray-400 dark:text-gray-500">
+               <p className="mt-5 text-center text-sm text-muted-foreground">
                   + More professional tools for complete video production
                </p>
             </div>
@@ -125,7 +125,7 @@ const EditingPortfolioPage = () => {
             <div className="mb-10 text-center">
                <h2 className="mb-3 text-3xl font-bold md:text-4xl">
                   Content I{" "}
-                  <span className="gradient-text">Edit</span>
+                  <span className="text-brand">Edit</span>
                </h2>
             </div>
             <div className="mb-8 grid gap-4 md:grid-cols-3">
@@ -148,14 +148,14 @@ const EditingPortfolioPage = () => {
                ].map((item, i) => (
                   <div
                      key={i}
-                     className="animate-fade-in-up rounded-xl border border-gray-200/80 bg-white/60 p-6 transition-all duration-200 hover:border-gray-300 hover:shadow-xs dark:border-gray-700/50 dark:bg-gray-800/40 dark:hover:border-gray-600"
+                     className="animate-fade-in-up rounded-xl border border-border/80 bg-card/60 p-6 transition-all duration-200 hover:border-border hover:shadow-xs"
                      style={{ animationDelay: `${i * 0.08}s` }}
                   >
-                     <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100 text-gray-600 dark:bg-gray-700/80 dark:text-gray-400">
+                     <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-muted text-muted-foreground">
                         {item.icon}
                      </div>
                      <h3 className="mb-2 font-semibold">{item.title}</h3>
-                     <p className="text-sm text-gray-600 dark:text-gray-400">
+                     <p className="text-sm text-muted-foreground">
                         {item.desc}
                      </p>
                   </div>
@@ -163,25 +163,25 @@ const EditingPortfolioPage = () => {
             </div>
 
             {/* CTA */}
-            <div className="animate-fade-in-up rounded-2xl border border-gray-200/80 bg-gradient-to-br from-gray-50 via-white to-gray-50/50 p-8 text-center dark:border-gray-700/50 dark:from-gray-800/60 dark:via-gray-900/40 dark:to-gray-800/30">
+            <div className="animate-fade-in-up rounded-2xl border border-border/80 bg-gradient-to-br from-muted via-card to-muted/50 p-8 text-center">
                <h3 className="mb-2 text-xl font-semibold">
                   Ready to Get Started?
                </h3>
-               <p className="mb-6 text-gray-600 dark:text-gray-400">
+               <p className="mb-6 text-muted-foreground">
                   Pricing depends on your specific needs &ndash; let&apos;s
                   chat!
                </p>
                <Button
                   asChild
                   size="lg"
-                  className="bg-blue-600 text-white hover:bg-blue-700"
+                  className="bg-brand text-brand-foreground hover:bg-brand/90"
                >
                   <Link href="mailto:david@davidilie.com">
                      Send me an email
                      <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                </Button>
-               <p className="mt-4 text-sm text-gray-400 dark:text-gray-500">
+               <p className="mt-4 text-sm text-muted-foreground">
                   We&apos;ll schedule a call to discuss your project, timeline,
                   and pricing
                </p>
@@ -193,9 +193,9 @@ const EditingPortfolioPage = () => {
             <div className="mb-12 text-center">
                <h2 className="mb-3 text-3xl font-bold md:text-4xl">
                   My Work &{" "}
-                  <span className="gradient-text">Collaborations</span>
+                  <span className="text-brand">Collaborations</span>
                </h2>
-               <p className="text-gray-600 dark:text-gray-400">
+               <p className="text-muted-foreground">
                   From personal content to major creators
                </p>
             </div>
@@ -207,7 +207,7 @@ const EditingPortfolioPage = () => {
                      <h3 className="mb-3 text-xl font-bold sm:text-2xl">
                         My Personal YouTube Channel
                      </h3>
-                     <p className="mb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                     <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                         My personal YouTube channel where I script, record, and
                         edit my own tech and development content. These videos
                         consistently get 10K+ views and showcase my full video
@@ -225,7 +225,7 @@ const EditingPortfolioPage = () => {
                         </ExternalLink>
                      </Button>
                   </div>
-                  <div className="overflow-hidden rounded-xl border border-gray-200/80 dark:border-gray-700/50">
+                  <div className="overflow-hidden rounded-xl border border-border/80">
                      <LiteYouTubeEmbed
                         id="5z28BLe0NUE"
                         title="David Ilie YouTube Video"
@@ -241,11 +241,11 @@ const EditingPortfolioPage = () => {
                         <h3 className="text-xl font-bold sm:text-2xl">
                            Chief Pat
                         </h3>
-                        <span className="rounded-full border border-gray-200 bg-gray-100/80 px-2.5 py-0.5 text-xs font-medium text-gray-600 dark:border-gray-700 dark:bg-gray-800/80 dark:text-gray-400">
+                        <span className="rounded-full border border-border bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground">
                            2.4M+ Subscribers
                         </span>
                      </div>
-                     <p className="mb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                     <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                         I&apos;ve had the privilege of editing videos for Chief
                         Pat, one of the biggest Clash of Clans content creators.
                         Working with such a massive channel has given me
@@ -262,14 +262,14 @@ const EditingPortfolioPage = () => {
                         </ExternalLink>
                      </Button>
                   </div>
-                  <div className="flex h-56 items-center justify-center rounded-xl border border-gray-200/80 bg-gray-50 dark:border-gray-700/50 dark:bg-gray-800/40 md:order-1 md:h-64">
+                  <div className="flex h-56 items-center justify-center rounded-xl border border-border/80 bg-muted md:order-1 md:h-64">
                      <div className="text-center">
                         <Image
                            src={ChiefPatLogo}
                            alt="Chief Pat Logo"
                            className="mx-auto mb-3 h-20 w-20 rounded-full"
                         />
-                        <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                        <p className="text-sm font-medium text-muted-foreground">
                            Chief Pat
                         </p>
                      </div>
@@ -282,10 +282,10 @@ const EditingPortfolioPage = () => {
                      <h3 className="mb-1 text-xl font-bold sm:text-2xl">
                         Kuhrawn
                      </h3>
-                     <p className="mb-3 text-sm text-gray-500 dark:text-gray-400">
+                     <p className="mb-3 text-sm text-muted-foreground">
                         Built from the ground up
                      </p>
-                     <p className="mb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                     <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                         Kuhrawn is a good friend whose channel I&apos;ve helped
                         start from the very beginning. I&apos;ve edited all of
                         his videos and been part of the entire creative process
@@ -303,7 +303,7 @@ const EditingPortfolioPage = () => {
                         </ExternalLink>
                      </Button>
                   </div>
-                  <div className="overflow-hidden rounded-xl border border-gray-200/80 dark:border-gray-700/50">
+                  <div className="overflow-hidden rounded-xl border border-border/80">
                      <LiteYouTubeEmbed
                         id="PuMlLnkT8Ns"
                         title="Kuhrawn YouTube Video"
@@ -317,10 +317,10 @@ const EditingPortfolioPage = () => {
                      <h3 className="mb-1 text-xl font-bold sm:text-2xl">
                         MBRetrofit Tools
                      </h3>
-                     <p className="mb-3 text-sm text-gray-500 dark:text-gray-400">
+                     <p className="mb-3 text-sm text-muted-foreground">
                         Product Demo
                      </p>
-                     <p className="mb-4 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                     <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                         A product demo video I produced for MBRetrofit Tools,
                         showcasing the platform&apos;s capabilities for
                         Mercedes-Benz car retrofitting and diagnostics.
@@ -331,7 +331,7 @@ const EditingPortfolioPage = () => {
                         <Tag>Full Production</Tag>
                      </div>
                   </div>
-                  <div className="overflow-hidden rounded-xl border border-gray-200/80 dark:border-gray-700/50 md:order-1">
+                  <div className="overflow-hidden rounded-xl border border-border/80 md:order-1">
                      <LiteYouTubeEmbed
                         id="Su7s8Y_ABi8"
                         title="MBRetrofit Tools Demo"
@@ -346,13 +346,13 @@ const EditingPortfolioPage = () => {
             <div className="mb-10 text-center">
                <h2 className="mb-3 text-3xl font-bold md:text-4xl">
                   More Than Just an{" "}
-                  <span className="gradient-text">Editor</span>
+                  <span className="text-brand">Editor</span>
                </h2>
             </div>
-            <div className="animate-fade-in-up rounded-2xl border border-gray-200/80 bg-gradient-to-br from-gray-50 via-white to-gray-50/50 p-8 dark:border-gray-700/50 dark:from-gray-800/60 dark:via-gray-900/40 dark:to-gray-800/30 sm:p-10">
-               <p className="mb-6 text-center text-lg text-gray-600 dark:text-gray-400">
+            <div className="animate-fade-in-up rounded-2xl border border-border/80 bg-gradient-to-br from-muted via-card to-muted/50 p-8 sm:p-10">
+               <p className="mb-6 text-center text-lg text-muted-foreground">
                   I&apos;m also a{" "}
-                  <span className="font-semibold text-blue-600 dark:text-blue-400">
+                  <span className="font-semibold text-brand">
                      full-stack developer
                   </span>{" "}
                   who built this entire website from scratch. This isn&apos;t
@@ -381,7 +381,7 @@ const EditingPortfolioPage = () => {
 };
 
 const Tag = ({ children }: { children: React.ReactNode }) => (
-   <span className="rounded-full border border-gray-200 bg-gray-100/80 px-3 py-1 text-xs font-medium text-gray-600 dark:border-gray-700 dark:bg-gray-800/80 dark:text-gray-300">
+   <span className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
       {children}
    </span>
 );

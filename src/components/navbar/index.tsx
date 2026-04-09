@@ -53,7 +53,7 @@ const NavBar: React.FC = () => {
       <nav
          className={`fixed z-50 w-full pb-4 backdrop-blur-lg backdrop-filter duration-300 ${
             !top
-               ? "bg-blue-100/50 shadow-[0_20px_60px_-35px_rgba(0,0,0,0.3)] shadow-black hover:bg-blue-100/100 dark:bg-cyan-900/10 dark:hover:bg-cyan-900/30"
+               ? "bg-card/60 shadow-sm hover:bg-card/80"
                : ""
          }`}
       >
@@ -64,9 +64,9 @@ const NavBar: React.FC = () => {
                      <div
                         style={{
                            width: `${width}%`,
-                           backgroundColor: width >= 100 ? "#22c55e" : "#1d4ed8",
+                           backgroundColor: "var(--brand)",
                         }}
-                        className={`flex flex-col justify-center whitespace-nowrap text-center text-black shadow-none dark:text-white ${
+                        className={`flex flex-col justify-center whitespace-nowrap text-center shadow-none ${
                            width > 99 ? "duration-200" : ""
                         }`}
                      ></div>
@@ -75,7 +75,7 @@ const NavBar: React.FC = () => {
             </div>
          )}
          <div
-            className={clickMobileMenu ? "bg-white/40 dark:bg-gray-800/50" : ""}
+            className={clickMobileMenu ? "bg-card/50" : ""}
          >
             <div className="mx-auto -mt-1 max-w-7xl px-8 pl-8 sm:px-6 sm:pl-8 lg:pl-8">
                <div className="mb-2 flex h-16 items-center justify-between">
@@ -86,7 +86,7 @@ const NavBar: React.FC = () => {
                         ) : (
                            <Link
                               href="/"
-                              className={`cursor-pointer text-3xl font-semibold text-black dark:text-white ${
+                              className={`cursor-pointer text-3xl font-semibold text-foreground ${
                                  pathname === "/" ? "pointer-events-none" : ""
                               }`}
                            >
@@ -96,21 +96,22 @@ const NavBar: React.FC = () => {
                      </div>
                      <div className="hidden gap-3 sm:flex">
                         {pages.map((page, index) => {
-                           const selected =
+                           const isActive =
                               page.url === "/"
                                  ? pathname === "/"
                                  : pathname.startsWith(page.url);
+                           const isExact = pathname === page.url;
                            return (
                               <Link
                                  href={page.url}
                                  key={index}
                                  className={cn(
-                                    selected && "pointer-events-none",
+                                    isExact && "pointer-events-none",
                                  )}
                               >
                                  <Button
-                                    variant={selected ? "secondary" : "link"}
-                                    disabled={selected}
+                                    variant={isActive ? "secondary" : "link"}
+                                    disabled={isExact}
                                  >
                                     {page.name}
                                  </Button>
@@ -138,7 +139,7 @@ const NavBar: React.FC = () => {
                </div>
             </div>
             {clickMobileMenu && (
-               <div className="h-screen text-center md:hidden">
+               <div className="min-h-[50vh] text-center md:hidden">
                   <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                      {pages.map((page, index) => (
                         <Link
@@ -151,8 +152,8 @@ const NavBar: React.FC = () => {
                                       !(isBlogPage && page.name === "Blog")
                                          ? "cursor-pointer"
                                          : ""
-                                   } block rounded-md bg-cyan-600 px-3 py-2 text-base font-medium text-white dark:bg-gray-900`
-                                 : "block cursor-pointer rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-cyan-800 hover:text-white dark:text-gray-300 dark:hover:bg-cyan-900"
+                                   } block rounded-md bg-brand px-3 py-2 text-base font-medium text-brand-foreground`
+                                 : "block cursor-pointer rounded-md px-3 py-2 text-base font-medium text-muted-foreground hover:bg-brand/80 hover:text-brand-foreground"
                            }
                         >
                            {page.name}

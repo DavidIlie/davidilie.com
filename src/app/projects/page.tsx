@@ -18,7 +18,7 @@ const Page = async () => {
 
    return (
       <HydrateClient>
-         <h1 className="gradient-text -mb-4 pb-2 text-center text-5xl font-bold sm:-mb-6 sm:text-6xl">
+         <h1 className="-mb-4 pb-2 text-center text-5xl font-bold text-brand sm:-mb-6 sm:text-6xl">
             Projects
          </h1>
          {projects.map((project, index) => (
@@ -30,10 +30,10 @@ const Page = async () => {
          ))}
 
          <div className="mt-8 sm:mt-12">
-            <h2 className="gradient-text pb-2 text-center text-4xl font-bold sm:text-5xl">
+            <h2 className="pb-2 text-center text-4xl font-bold text-brand sm:text-5xl">
                Repositories
             </h2>
-            <p className="mb-6 text-center text-sm text-gray-500 dark:text-gray-400">
+            <p className="mb-6 text-center text-sm text-muted-foreground">
                All my public repositories on GitHub
             </p>
             <Suspense fallback={<LoadingSpinner />}>

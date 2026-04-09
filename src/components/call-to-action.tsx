@@ -11,7 +11,7 @@ export const ServicesButtons: React.FC = () => {
             <Button
                variant="outline"
                size="lg"
-               className="w-full rounded-xl border border-gray-200/80 bg-white/60 px-8 py-3 font-semibold text-gray-900 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:text-gray-200 dark:hover:border-gray-600 sm:w-auto"
+               className="w-full rounded-xl border border-border/80 bg-card/60 px-8 py-3 font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md sm:w-auto"
             >
                Editing Portfolio
             </Button>
@@ -20,7 +20,7 @@ export const ServicesButtons: React.FC = () => {
             <Button
                variant="outline"
                size="lg"
-               className="w-full rounded-xl border border-gray-200/80 bg-white/60 px-8 py-3 font-semibold text-gray-900 transition-all duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md dark:border-gray-700/50 dark:bg-gray-800/40 dark:text-gray-200 dark:hover:border-gray-600 sm:w-auto"
+               className="w-full rounded-xl border border-border/80 bg-card/60 px-8 py-3 font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md sm:w-auto"
             >
                Developer Portfolio
             </Button>
@@ -31,32 +31,29 @@ export const ServicesButtons: React.FC = () => {
 
 export const CallToAction: React.FC = () => {
    return (
-      <div className="border-t border-gray-200/80 bg-secondary dark:border-gray-700/50 dark:bg-gray-800/20">
+      <div className="border-t border-border/80 bg-blue-50/40 dark:bg-blue-950/20">
          <div className="container max-w-4xl px-6 py-12">
             <div className="space-y-6 text-center">
-               <div className="relative flex w-full items-center justify-center">
-                  <h1 className="gradient-text p-1 text-4xl font-medium sm:text-5xl">
-                     I&apos;d love to work with you!
-                  </h1>
-                  <div className="absolute top-[1.6rem] mx-auto ml-[0.25rem] hidden h-6 bg-blue-500/20 sm:block sm:ml-[-0.075rem] sm:w-[65%]" />
-               </div>
+               <h1 className="p-1 text-4xl font-medium text-brand sm:text-5xl">
+                  I&apos;d love to work with you!
+               </h1>
                <div className="mx-auto max-w-2xl space-y-4">
-                  <p className="text-xl font-medium text-gray-700 dark:text-gray-300 sm:text-2xl">
+                  <p className="text-xl font-medium text-muted-foreground sm:text-2xl">
                      Check out the portfolios below to see what I can do for you
                   </p>
-                  <p className="text-lg text-gray-600 dark:text-gray-400">
+                  <p className="text-lg text-muted-foreground">
                      Or send me an email so we can chat about your project
                   </p>
                </div>
                <ServicesButtons />
                <div className="pt-8">
-                  <div className="mx-auto max-w-md rounded-2xl border border-gray-200/80 bg-white/60 p-6 backdrop-blur-xs dark:border-gray-700/50 dark:bg-gray-800/40">
-                     <p className="mb-3 text-sm font-medium text-gray-600 dark:text-gray-400">
+                  <div className="mx-auto max-w-md rounded-2xl border border-border/80 bg-card/60 p-6 backdrop-blur-xs">
+                     <p className="mb-3 text-sm font-medium text-muted-foreground">
                         Or you can contact me at:
                      </p>
                      <ExternalLink
                         url="mailto:david@davidilie.com"
-                        className="inline-flex items-center gap-2 text-xl font-semibold text-blue-600 transition-colors duration-200 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                        className="inline-flex items-center gap-2 text-xl font-semibold text-brand transition-colors duration-200 hover:text-brand/80"
                      >
                         david@davidilie.com
                      </ExternalLink>

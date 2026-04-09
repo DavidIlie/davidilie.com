@@ -12,7 +12,7 @@ const ExternalLink: React.FC<{
          target="_blank"
          rel="noreferrer"
          className={cn(
-            `cursor-pointer duration-150 hover:text-blue-600 dark:hover:text-blue-500`,
+            `cursor-pointer duration-150 hover:text-brand`,
             className,
          )}
       >

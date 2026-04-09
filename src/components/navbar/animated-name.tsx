@@ -16,13 +16,13 @@ const AnimatedName: React.FC = () => {
       >
          <Link
             href="/"
-            className={`cursor-pointer text-3xl font-semibold text-black dark:text-white ${
+            className={`cursor-pointer text-3xl font-semibold text-foreground ${
                pathname === "/" ? "pointer-events-none" : ""
             }`}
          >
             David Ilie
             <svg
-               className={`absolute stroke-current text-blue-500 ${
+               className={`absolute stroke-current text-brand ${
                   isHover ? "underlineDash" : ""
                }`}
                xmlns="http://www.w3.org/2000/svg"
