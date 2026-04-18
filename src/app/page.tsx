@@ -20,7 +20,7 @@ const Home = async () => {
                   updated hourly
                </h2>
                <p className="mx-auto max-w-xl text-muted-foreground">
-                  Every green square is a day I pushed something. It&apos;s
+                  Every blue square is a day I pushed something. It&apos;s
                   the only stat that really matters.
                </p>
             </div>

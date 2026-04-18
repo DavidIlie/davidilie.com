@@ -46,7 +46,7 @@ const Page = async () => {
             <div className="mb-8 text-center">
                <h2 className="mb-3 text-3xl font-semibold sm:text-4xl">
                   And one{" "}
-                  <span className="text-brand">green square</span> per
+                  <span className="text-brand">blue square</span> per
                   push
                </h2>
                <p className="mx-auto max-w-xl text-muted-foreground">
