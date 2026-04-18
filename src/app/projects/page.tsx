@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 
 import projects from "~/data/projects";
 
+import { GitHubGraphServer } from "~/components/github-graph-server";
 import PinnedProject from "~/components/project/pinned-project";
 import { api, HydrateClient } from "~/trpc/server";
 import { ClientProjectGitHub } from "./client";
@@ -40,6 +41,20 @@ const Page = async () => {
                <ClientProjectGitHub />
             </Suspense>
          </div>
+
+         <section className="mx-auto mt-16 mb-8 w-full max-w-[110rem] px-4 sm:mt-20 sm:px-8 lg:px-16">
+            <div className="mb-8 text-center">
+               <h2 className="mb-3 text-3xl font-semibold sm:text-4xl">
+                  And one{" "}
+                  <span className="text-brand">green square</span> per
+                  push
+               </h2>
+               <p className="mx-auto max-w-xl text-muted-foreground">
+                  The repo list is the what. This is the cadence.
+               </p>
+            </div>
+            <GitHubGraphServer />
+         </section>
       </HydrateClient>
    );
 };

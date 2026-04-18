@@ -39,3 +39,16 @@ next-env.d.ts
 # velite
 .velite
 
+# playwright MCP snapshots
+.playwright-mcp/
+
+# package manager — pnpm only
+package-lock.json
+yarn.lock
+
+# research/design artifacts at repo root
+/blog-full.png
+/codeblock-fixed.png
+/leerob_*.png
+/theo_*.png
+

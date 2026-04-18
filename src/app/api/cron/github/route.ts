@@ -36,8 +36,6 @@ export const GET = async (req: NextRequest) => {
       );
       const response = (await r.json()) as any[];
 
-      console.log(response);
-
       await Promise.all(
          response.map(
             async (project) =>

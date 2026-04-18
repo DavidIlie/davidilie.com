@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
    title: "Video Editing Portfolio",
    description:
-      "Professional video editing services with 7+ years of experience. I've worked with creators who have millions of subscribers, delivering fast turnaround times and professional quality. Specializing in YouTube content, gaming videos, tech reviews, and video essays.",
+      "I edit for Chief Pat (2.4M subs), built Kuhrawn's channel from zero, and cut my own YouTube videos. 7 years in Premiere and After Effects. Send the footage.",
    keywords: [
       "video editing",
       "YouTube editor",
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
    ],
    openGraph: {
       url: "https://davidilie.com/editing-portfolio",
-      title: "Professional Video Editing Services | David Ilie",
+      title: "Video editing for people who care about retention | David Ilie",
       description:
-         "7+ years of video editing experience. Trusted by creators with millions of subscribers. Fast delivery, unlimited revisions, and professional quality guaranteed.",
+         "I edit for Chief Pat (2.4M subs). Built Kuhrawn's channel from zero. Cut my own videos too. 7 years in. Send the footage.",
       type: "website",
       siteName: "David Ilie",
       locale: "en-US",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
    },
    twitter: {
       card: "summary_large_image",
-      title: "Professional Video Editing Services | David Ilie",
+      title: "Video editing for people who care about retention | David Ilie",
       description:
-         "7+ years editing for creators with millions of subscribers. Fast delivery, professional quality, Europe-based editor.",
+         "I edit for Chief Pat (2.4M subs). Built Kuhrawn's from zero. 7 years in Premiere + AE. Europe, fast replies.",
       site: "@MrDavidIlie",
       creator: "@MrDavidIlie",
       images: ["/static/editing-portfolio-og.png"],

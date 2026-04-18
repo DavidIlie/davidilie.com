@@ -75,7 +75,6 @@ const getSpotifyData = async () => {
    } as RequestInit;
 
    try {
-      console.log("MAKING SPOTIFY REQUEST\n\n");
       const [rTracks, rArtists, rRecently] = await Promise.all([
          fetch(TOP_TRACKS_ENDPOINT, standardBody),
          fetch(TOP_ARTISTS_ENDPOINT, standardBody),

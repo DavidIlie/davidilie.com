@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
    title: "Developer Portfolio",
    description:
-      "Launch your website in 1 week. Professional web development with modern technologies. From simple websites to complex web applications - fast execution, zero compromises on quality.",
+      "Your website, live in 7 days. Agencies want 3 months. I'm one person who ships — email Monday, live Sunday, code in your GitHub.",
    keywords: [
       "web developer",
       "Next.js developer",
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
    ],
    openGraph: {
       url: "https://davidilie.com/developer-portfolio",
-      title: "Professional Web Development Services | David Ilie",
+      title: "Your website, live in 7 days | David Ilie",
       description:
-         "Launch your website in 1 week. Modern web development with React, Next.js, and TypeScript. Fast execution, professional quality, full source code ownership.",
+         "Agencies want 3 months. I'm one person who ships — email Monday, live Sunday, repo in your GitHub on day seven.",
       type: "website",
       siteName: "David Ilie",
       locale: "en-US",
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
    },
    twitter: {
       card: "summary_large_image",
-      title: "Professional Web Development Services | David Ilie",
+      title: "Your website, live in 7 days | David Ilie",
       description:
-         "Launch your website in 1 week. Modern web development with React, Next.js, and TypeScript.",
+         "Agencies want 3 months. I ship in a week. Repo in your GitHub on day seven.",
       site: "@MrDavidIlie",
       creator: "@MrDavidIlie",
       images: ["/static/developer-portfolio-og.png"],
