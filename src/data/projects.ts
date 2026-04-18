@@ -36,28 +36,12 @@ const projects: Project[] = [
       tags: ["Next.js", "tRPC", "Self-Hosted", "Plex"],
    },
    {
-      name: "MBRetrofit Tools",
-      description:
-         "A comprehensive suite of tools for Mercedes-Benz car retrofitting and diagnostics. Features vehicle lookup, coding browser, DLM flash tools, and DoIP communication — built as a monorepo with Next.js, tRPC, and Electron.",
-      image: "/static/mbretrofit-tools.png",
-      url: "https://mbretrofit.tools",
-      tags: ["T3 Stack", "Electron", "Monorepo", "Mercedes-Benz"],
-   },
-   {
       name: "KCA News",
       description:
          "This Content Management Website empowers students to share thoughts and enhance language skills via articles at King's College Alicante. Created on the request of the English Department's head, it maintains a consistent corporate style. With 110+ registered accounts and 120+ articles, the platform fosters a thriving English-focused community, bringing joy to both teachers and students.",
       image: "/static/kca-news.gif",
       tags: ["T3 Stack", "Markdown", "Vercel"],
       url: "https://kcanews.org",
-   },
-   {
-      repo_id: "reddam-pokemon-go",
-      name: "Reddam House Go!",
-      description:
-         "The Head of Middle School asked me to develop a mobile game for Year 5 students at Reddam House Berkshire, introducing them to the school's middle/senior section. Using a simplified schematic, I developed an app where students find randomly selected rooms within a time limit. Fastest completion time or discovering all rooms won the game.",
-      image: "https://github.com/DavidIlie/davidilie.com/assets/47594764/2b268847-3f94-4792-be90-a39335feb0db",
-      tags: ["React Native", "Web Sockets", "Game"],
    },
    {
       repo_id: "davidilie.com",
