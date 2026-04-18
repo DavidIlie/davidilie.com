@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { Check, Code2, Eye, Mail, Rocket, Sparkles } from "lucide-react";
 import {
    AnimatePresence,
    motion,
@@ -8,14 +9,6 @@ import {
    useReducedMotion,
    type Variants,
 } from "motion/react";
-import {
-   Check,
-   Code2,
-   Eye,
-   Mail,
-   Rocket,
-   Sparkles,
-} from "lucide-react";
 
 const ease = [0.23, 1, 0.32, 1] as const;
 
@@ -143,7 +136,7 @@ export const Timeline = () => {
                            />
                            <span className="flex flex-col">
                               <span
-                                 className={`font-mono text-[0.65rem] uppercase tracking-wider ${
+                                 className={`font-mono text-[0.65rem] tracking-wider uppercase ${
                                     isActive
                                        ? "text-brand"
                                        : "text-muted-foreground/70"
@@ -172,7 +165,7 @@ export const Timeline = () => {
                                  duration: paused ? 0 : AUTOPLAY_MS / 1000,
                                  ease: "linear",
                               }}
-                              className="absolute bottom-1 left-2 right-2 h-0.5 origin-left rounded-full bg-brand/60"
+                              className="absolute right-2 bottom-1 left-2 h-0.5 origin-left rounded-full bg-brand/60"
                            />
                         )}
                         <span className="sr-only">
@@ -196,10 +189,10 @@ export const Timeline = () => {
                      exit={{ opacity: 0, y: -8, filter: "blur(6px)" }}
                      transition={{ duration: 0.35, ease }}
                   >
-                     <div className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-brand">
+                     <div className="mb-4 font-mono text-xs tracking-[0.2em] text-brand uppercase">
                         {day.label} &middot; {day.day}
                      </div>
-                     <h3 className="mb-5 text-3xl font-bold leading-[1.05] sm:text-4xl md:text-[2.75rem]">
+                     <h3 className="mb-5 text-3xl leading-[1.05] font-bold sm:text-4xl md:text-[2.75rem]">
                         {day.title}
                      </h3>
                      <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -210,7 +203,7 @@ export const Timeline = () => {
             </div>
 
             {/* Visual */}
-            <div className="relative flex min-h-[380px] items-center justify-center overflow-hidden border-t border-border/60 bg-gradient-to-br from-muted/40 via-background/60 to-muted/20 p-8 sm:min-h-[440px] sm:p-10 md:border-l md:border-t-0">
+            <div className="relative flex min-h-[380px] items-center justify-center overflow-hidden border-t border-border/60 bg-gradient-to-br from-muted/40 via-background/60 to-muted/20 p-8 sm:min-h-[440px] sm:p-10 md:border-t-0 md:border-l">
                <AnimatePresence mode="wait" initial={false}>
                   {touched && (
                      <motion.div
@@ -299,7 +292,7 @@ const EmailVisual = () => (
                initial={{ width: 0 }}
                animate={{ width: "auto" }}
                transition={{ delay: 1.1, duration: 0.6, ease }}
-               className="inline-flex items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-md bg-brand-muted px-2.5 py-1 text-[0.7rem] font-medium text-brand"
+               className="inline-flex items-center gap-1.5 overflow-hidden rounded-md bg-brand-muted px-2.5 py-1 text-[0.7rem] font-medium whitespace-nowrap text-brand"
             >
                <motion.span
                   initial={{ scale: 0 }}
@@ -366,7 +359,7 @@ const CommitVisual = () => (
 const StagingVisual = () => (
    <WindowChrome>
       <div className="bg-background/60 p-3">
-         <div className="mb-3 flex items-center gap-2 rounded-md border border-border/60 bg-muted/50 px-2.5 py-1.5 text-[0.65rem] font-mono text-muted-foreground">
+         <div className="mb-3 flex items-center gap-2 rounded-md border border-border/60 bg-muted/50 px-2.5 py-1.5 font-mono text-[0.65rem] text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-brand" />
             <span>
                yoursite.<span className="text-brand">davidapps.dev</span>
@@ -509,7 +502,7 @@ const ShipVisual = () => (
          initial={{ opacity: 0, y: 10 }}
          animate={{ opacity: 1, y: 0 }}
          transition={{ delay: 0.5, duration: 0.4, ease }}
-         className="absolute -bottom-12 inline-flex items-center gap-1.5 rounded-full border border-brand/30 bg-brand-muted px-3 py-1 text-[0.7rem] font-mono uppercase tracking-wider text-brand"
+         className="absolute -bottom-12 inline-flex items-center gap-1.5 rounded-full border border-brand/30 bg-brand-muted px-3 py-1 font-mono text-[0.7rem] tracking-wider text-brand uppercase"
       >
          <span className="h-1.5 w-1.5 rounded-full bg-brand" />
          Live in prod

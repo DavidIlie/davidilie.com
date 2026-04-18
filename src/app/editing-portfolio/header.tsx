@@ -33,11 +33,8 @@ const Header: React.FC = () => {
    return (
       <section className="relative flex min-h-[85vh] flex-grow items-center justify-center overflow-hidden px-4 text-center">
          {/* Ambient glow */}
-         <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-         >
-            <div className="absolute left-1/2 top-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/10 blur-[120px]" />
+         <div aria-hidden className="pointer-events-none absolute inset-0">
+            <div className="absolute top-1/2 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/10 blur-[120px]" />
          </div>
 
          <motion.div
@@ -48,14 +45,14 @@ const Header: React.FC = () => {
          >
             <motion.p
                variants={item}
-               className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground sm:text-sm"
+               className="mb-8 font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase sm:text-sm"
             >
                Your viewers stop watching at 0:15
             </motion.p>
 
             <motion.h1
                variants={item}
-               className="mb-8 text-5xl font-bold leading-[0.95] tracking-tight sm:text-7xl md:text-8xl"
+               className="mb-8 text-5xl leading-[0.95] font-bold tracking-tight sm:text-7xl md:text-8xl"
             >
                Let&apos;s fix
                <br />

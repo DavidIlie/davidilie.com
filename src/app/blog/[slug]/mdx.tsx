@@ -2,9 +2,9 @@
 
 /* eslint-disable @next/next/no-img-element */
 import * as React from "react";
+import * as runtime from "react/jsx-runtime";
 import Image, { ImageProps } from "next/image";
 import Link from "next/link";
-import * as runtime from "react/jsx-runtime";
 
 import { shimmer } from "~/lib/shimmer";
 
@@ -57,7 +57,9 @@ const Callout = (props: any) => {
    return (
       <div className="my-5 flex items-start gap-3 rounded-xl border border-brand/20 bg-brand-muted/50 px-4 py-3">
          <span className="mt-0.5 text-lg leading-none">{props.emoji}</span>
-         <div className={`min-w-0 flex-1 text-sm ${props.italic ? "italic" : ""}`}>
+         <div
+            className={`min-w-0 flex-1 text-sm ${props.italic ? "italic" : ""}`}
+         >
             {props.children}
          </div>
       </div>
@@ -126,7 +128,7 @@ export function Mdx({ code }: MdxProps) {
    const Component = useMDXComponent(code);
 
    return (
-      <article className="prose prose-neutral max-w-full dark:prose-invert prose-headings:font-display prose-headings:tracking-tight prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-p:leading-relaxed prose-a:text-brand prose-a:no-underline hover:prose-a:underline prose-blockquote:not-italic prose-blockquote:rounded-lg prose-blockquote:border-0 prose-blockquote:bg-secondary prose-blockquote:px-4 prose-blockquote:py-3 prose-code:before:content-none prose-code:after:content-none prose-img:my-4 prose-img:rounded-xl">
+      <article className="prose max-w-full prose-neutral dark:prose-invert prose-headings:font-display prose-headings:tracking-tight prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-p:leading-relaxed prose-a:text-brand prose-a:no-underline hover:prose-a:underline prose-blockquote:rounded-lg prose-blockquote:border-0 prose-blockquote:bg-secondary prose-blockquote:px-4 prose-blockquote:py-3 prose-blockquote:not-italic prose-code:before:content-none prose-code:after:content-none prose-img:my-4 prose-img:rounded-xl">
          <Component components={{ ...components }} />
       </article>
    );

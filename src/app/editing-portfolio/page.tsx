@@ -3,13 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-   ArrowRight,
-   FileText,
-   Monitor,
-   Smartphone,
-} from "lucide-react";
+import { ArrowRight, FileText, Monitor, Smartphone } from "lucide-react";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
+
 import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 
 import ExternalLink from "~/components/external-link";
@@ -87,12 +83,12 @@ const EditingPortfolioPage = () => {
                         feel but can&apos;t name.
                      </li>
                      <li>
-                        Usually under a week. Revisions until you&apos;re
-                        happy, not until the invoice runs out.
+                        Usually under a week. Revisions until you&apos;re happy,
+                        not until the invoice runs out.
                      </li>
                      <li>
-                        I script, shoot, and edit my own videos. I know what
-                        the retention graph looks like from both sides.
+                        I script, shoot, and edit my own videos. I know what the
+                        retention graph looks like from both sides.
                      </li>
                   </ul>
                </div>
@@ -103,8 +99,7 @@ const EditingPortfolioPage = () => {
          <div className="mx-auto mb-20 max-w-6xl px-4" id="portfolio">
             <div className="mb-12 text-center">
                <h2 className="mb-3 text-3xl font-bold md:text-4xl">
-                  The{" "}
-                  <span className="text-brand">receipts</span>
+                  The <span className="text-brand">receipts</span>
                </h2>
                <p className="text-muted-foreground">
                   Channels I&apos;ve edited for. Watch something.
@@ -208,8 +203,8 @@ const EditingPortfolioPage = () => {
                      </div>
                      <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                         Tech and dev content I script, shoot, and edit alone.
-                        It&apos;s the whole stack in one person &mdash; which
-                        is where I learned what a retention graph is actually
+                        It&apos;s the whole stack in one person &mdash; which is
+                        where I learned what a retention graph is actually
                         telling you.
                      </p>
                      <div className="mb-4 flex flex-wrap gap-2">
@@ -247,8 +242,8 @@ const EditingPortfolioPage = () => {
                      <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                         Demo video for a Mercedes-Benz retrofitting platform.
                         Scripted, shot, edited, delivered &mdash; which is the
-                        one-person version of what an agency would bill you
-                        $15K for.
+                        one-person version of what an agency would bill you $15K
+                        for.
                      </p>
                      <div className="mb-4 flex flex-wrap gap-2">
                         <Tag>Product demo</Tag>
@@ -270,8 +265,7 @@ const EditingPortfolioPage = () => {
          <div className="mx-auto mb-20 max-w-6xl px-4" id="turnaround">
             <div className="mb-10 text-center">
                <h2 className="mb-3 text-3xl font-bold md:text-4xl">
-                  Pick a{" "}
-                  <span className="text-brand">turnaround</span>
+                  Pick a <span className="text-brand">turnaround</span>
                </h2>
                <p className="mx-auto max-w-xl text-muted-foreground">
                   Click a tier. The timeline rebuilds itself &mdash; that&apos;s
@@ -285,8 +279,7 @@ const EditingPortfolioPage = () => {
          <div className="mx-auto mb-20 max-w-6xl px-4">
             <div className="mb-10 text-center">
                <h2 className="mb-3 text-3xl font-bold md:text-4xl">
-                  What I{" "}
-                  <span className="text-brand">cut</span>
+                  What I <span className="text-brand">cut</span>
                </h2>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
@@ -328,9 +321,7 @@ const EditingPortfolioPage = () => {
          <div className="mx-auto mb-20 max-w-6xl px-4">
             <div className="animate-fade-in-up rounded-2xl border border-border/80 bg-card/40 p-6 sm:p-8">
                <div className="mb-6 text-center">
-                  <h3 className="mb-1 text-lg font-semibold">
-                     The toolkit
-                  </h3>
+                  <h3 className="mb-1 text-lg font-semibold">The toolkit</h3>
                   <p className="text-sm text-muted-foreground">
                      7 years of muscle memory in each of these
                   </p>
@@ -354,10 +345,7 @@ const EditingPortfolioPage = () => {
                         name: "Illustrator",
                      },
                   ].map((sw, i) => (
-                     <div
-                        key={i}
-                        className="flex flex-col items-center gap-2"
-                     >
+                     <div key={i} className="flex flex-col items-center gap-2">
                         {sw.icon}
                         <span className="text-xs text-muted-foreground">
                            {sw.name}
@@ -386,23 +374,23 @@ const EditingPortfolioPage = () => {
                </div>
                <div className="space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
                   <p>
-                     I&apos;ve been editing since I was 11. My first client
-                     paid me $15 for a CS:GO frag movie. It&apos;s been
-                     upwards from there &mdash; a channel with 2.4M subs, a
-                     few friends&apos; channels I built alongside them, a
-                     Mercedes engineer who needed a product demo.
+                     I&apos;ve been editing since I was 11. My first client paid
+                     me $15 for a CS:GO frag movie. It&apos;s been upwards from
+                     there &mdash; a channel with 2.4M subs, a few friends&apos;
+                     channels I built alongside them, a Mercedes engineer who
+                     needed a product demo.
                   </p>
                   <p>
                      The reason I keep getting hired back is I run a YouTube
-                     channel of my own. I know what it feels like to check
-                     the retention graph at 3am and see people swipe away at
-                     0:22. I cut like someone who&apos;s been punched in the
-                     retention graph.
+                     channel of my own. I know what it feels like to check the
+                     retention graph at 3am and see people swipe away at 0:22. I
+                     cut like someone who&apos;s been punched in the retention
+                     graph.
                   </p>
                   <p>
-                     If that&apos;s what your channel needs, send the
-                     footage. If you just want a competent cut, there are
-                     cheaper editors on Fiverr &mdash; genuinely, no shade.
+                     If that&apos;s what your channel needs, send the footage.
+                     If you just want a competent cut, there are cheaper editors
+                     on Fiverr &mdash; genuinely, no shade.
                   </p>
                </div>
                <div className="mt-6 flex flex-wrap gap-2 text-xs text-muted-foreground">
@@ -423,8 +411,7 @@ const EditingPortfolioPage = () => {
          <div className="mx-auto mb-20 w-full max-w-[90rem] px-4 sm:px-8 lg:px-16">
             <div className="mb-10 text-center">
                <h2 className="mb-3 text-3xl font-bold md:text-4xl">
-                  Before you{" "}
-                  <span className="text-brand">email me</span>
+                  Before you <span className="text-brand">email me</span>
                </h2>
             </div>
             <div className="space-y-3">
@@ -484,9 +471,8 @@ const EditingPortfolioPage = () => {
                      Send the footage.
                   </h3>
                   <p className="mx-auto mb-6 max-w-xl text-muted-foreground">
-                     Quote depends on length, complexity, and how fast you
-                     need it. One email tells me most of what I need to price
-                     it.
+                     Quote depends on length, complexity, and how fast you need
+                     it. One email tells me most of what I need to price it.
                   </p>
                   <Button
                      asChild
@@ -515,10 +501,10 @@ const EditingPortfolioPage = () => {
                      </h3>
                      <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                         This site is mine. Every line of it. That matters if
-                        you&apos;re editing tech content &mdash; product
-                        demos, SaaS intros, dev tutorials &mdash; because I
-                        actually understand what you&apos;re demoing. Most
-                        editors don&apos;t.
+                        you&apos;re editing tech content &mdash; product demos,
+                        SaaS intros, dev tutorials &mdash; because I actually
+                        understand what you&apos;re demoing. Most editors
+                        don&apos;t.
                      </p>
                      <div className="mb-5 flex flex-wrap gap-2">
                         <Tag>React &amp; Next.js</Tag>
@@ -545,13 +531,7 @@ const Tag = ({ children }: { children: React.ReactNode }) => (
    </span>
 );
 
-const Stat = ({
-   value,
-   label,
-}: {
-   value: string;
-   label: string;
-}) => (
+const Stat = ({ value, label }: { value: string; label: string }) => (
    <div className="bg-card/60 px-6 py-6 text-center">
       <div className="text-3xl font-bold tracking-tight text-brand sm:text-4xl">
          {value}

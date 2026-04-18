@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
+import { GitHubProject } from "@prisma/client";
 import { formatDistance } from "date-fns";
 import { GitFork, Star } from "lucide-react";
-import { GitHubProject } from "@prisma/client";
 
 const langColors: Record<string, string> = {
    TypeScript: "#3178c6",

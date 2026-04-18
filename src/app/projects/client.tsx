@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { GitHubProject } from "@prisma/client";
 import { formatDistance } from "date-fns";
 import {
    ArrowDownWideNarrow,
@@ -13,7 +14,6 @@ import {
    X,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
-import { GitHubProject } from "@prisma/client";
 
 import { Button } from "~/components/ui/button";
 import { api } from "~/trpc/react";
@@ -41,8 +41,9 @@ export const ClientProjectGitHub = () => {
    const [search, setSearch] = useState("");
    const [sortBy, setSortBy] = useState<SortKey>("stars");
    const [langFilter, setLangFilter] = useState<string | null>(null);
-   const [selectedProject, setSelectedProject] =
-      useState<GitHubProject | null>(null);
+   const [selectedProject, setSelectedProject] = useState<GitHubProject | null>(
+      null,
+   );
    const [readmeContent, setReadmeContent] = useState<string | null>(null);
    const [readmeLoading, setReadmeLoading] = useState(false);
 
@@ -76,8 +77,7 @@ export const ClientProjectGitHub = () => {
          if (sortBy === "stars") return b.stars - a.stars;
          if (sortBy === "lastPush")
             return (
-               new Date(b.lastPush).getTime() -
-               new Date(a.lastPush).getTime()
+               new Date(b.lastPush).getTime() - new Date(a.lastPush).getTime()
             );
          return a.name.localeCompare(b.name);
       });
@@ -150,13 +150,13 @@ export const ClientProjectGitHub = () => {
             </div>
             <div className="flex items-center gap-2">
                <div className="relative">
-                  <Search className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
+                  <Search className="absolute top-1/2 left-2.5 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
                   <input
                      type="text"
                      placeholder="Search..."
                      value={search}
                      onChange={(e) => setSearch(e.target.value)}
-                     className="w-40 rounded-lg border border-border bg-card/60 py-1.5 pl-8 pr-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none sm:w-48"
+                     className="w-40 rounded-lg border border-border bg-card/60 py-1.5 pr-3 pl-8 text-sm text-foreground placeholder:text-muted-foreground focus:border-brand focus:outline-none sm:w-48"
                   />
                </div>
                <div className="flex gap-0.5 rounded-lg border border-border bg-card/60 p-0.5">
@@ -242,8 +242,7 @@ export const ClientProjectGitHub = () => {
                               className="h-2.5 w-2.5 rounded-full"
                               style={{
                                  backgroundColor:
-                                    langColors[project.language] ??
-                                    "#8b8b8b",
+                                    langColors[project.language] ?? "#8b8b8b",
                               }}
                            />
                            {project.language}
@@ -310,8 +309,7 @@ export const ClientProjectGitHub = () => {
                               )}
                            </div>
                            <p className="mt-0.5 text-sm text-muted-foreground">
-                              {selectedProject.description ||
-                                 "No description"}
+                              {selectedProject.description || "No description"}
                            </p>
                            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
                               {selectedProject.language && (

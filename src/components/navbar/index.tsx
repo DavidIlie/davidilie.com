@@ -52,9 +52,7 @@ const NavBar: React.FC = () => {
    return (
       <nav
          className={`fixed z-50 w-full pb-4 backdrop-blur-lg backdrop-filter duration-300 ${
-            !top
-               ? "bg-card/60 shadow-sm hover:bg-card/80"
-               : ""
+            !top ? "bg-card/60 shadow-sm hover:bg-card/80" : ""
          }`}
       >
          {isBlogPage && (
@@ -66,7 +64,7 @@ const NavBar: React.FC = () => {
                            width: `${width}%`,
                            backgroundColor: "var(--brand)",
                         }}
-                        className={`flex flex-col justify-center whitespace-nowrap text-center shadow-none ${
+                        className={`flex flex-col justify-center text-center whitespace-nowrap shadow-none ${
                            width > 99 ? "duration-200" : ""
                         }`}
                      ></div>
@@ -74,9 +72,7 @@ const NavBar: React.FC = () => {
                </div>
             </div>
          )}
-         <div
-            className={clickMobileMenu ? "bg-card/50" : ""}
-         >
+         <div className={clickMobileMenu ? "bg-card/50" : ""}>
             <div className="mx-auto -mt-1 max-w-7xl px-8 pl-8 sm:px-6 sm:pl-8 lg:pl-8">
                <div className="mb-2 flex h-16 items-center justify-between">
                   <div className="mt-6 flex items-center gap-10">
@@ -120,11 +116,11 @@ const NavBar: React.FC = () => {
                         })}
                      </div>
                   </div>
-                  <div className="ml-10 mt-8 hidden space-x-4 sm:block">
+                  <div className="mt-8 ml-10 hidden space-x-4 sm:block">
                      <ThemeDropdown />
                   </div>
                   <div className="block sm:hidden">
-                     <div className="-mr-2 mt-6 flex items-center gap-2 md:hidden">
+                     <div className="mt-6 -mr-2 flex items-center gap-2 md:hidden">
                         <ThemeDropdown />
                         <Button
                            onClick={() => {
@@ -140,14 +136,18 @@ const NavBar: React.FC = () => {
             </div>
             {clickMobileMenu && (
                <div className="min-h-[50vh] text-center md:hidden">
-                  <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                  <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
                      {pages.map((page, index) => (
                         <Link
                            href={page.url}
                            key={index}
                            onClick={() => setClickMobileMenu(false)}
                            className={
-                              (page.url === "/" ? pathname === "/" : pathname.startsWith(page.url))
+                              (
+                                 page.url === "/"
+                                    ? pathname === "/"
+                                    : pathname.startsWith(page.url)
+                              )
                                  ? `${
                                       !(isBlogPage && page.name === "Blog")
                                          ? "cursor-pointer"

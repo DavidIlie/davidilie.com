@@ -9,27 +9,25 @@ export const BackgroundPattern: React.FC<{
    return (
       <div className="pageBackground">
          <Patterns />
-         <div className="flex min-h-screen flex-col">
-            {children}
-         </div>
+         <div className="flex min-h-screen flex-col">{children}</div>
       </div>
    );
 };
 
 // Palette of HSL colors for decorative SVGs
 const palette = [
-   [0, 72, 51],    // red
-   [25, 95, 53],   // orange
-   [38, 92, 50],   // amber
-   [48, 96, 53],   // yellow
-   [84, 81, 44],   // lime
-   [142, 71, 45],  // green
-   [160, 84, 39],  // emerald
-   [173, 80, 40],  // teal
-   [189, 94, 43],  // cyan
-   [199, 89, 48],  // sky
-   [217, 91, 60],  // blue
-   [239, 84, 67],  // indigo
+   [0, 72, 51], // red
+   [25, 95, 53], // orange
+   [38, 92, 50], // amber
+   [48, 96, 53], // yellow
+   [84, 81, 44], // lime
+   [142, 71, 45], // green
+   [160, 84, 39], // emerald
+   [173, 80, 40], // teal
+   [189, 94, 43], // cyan
+   [199, 89, 48], // sky
+   [217, 91, 60], // blue
+   [239, 84, 67], // indigo
 ];
 
 const hashPosition = (left: string, top: string) => {
@@ -63,20 +61,76 @@ const Patterns = React.memo(() => {
    return (
       <>
          <UpDown type="normal">
-            <SVG icon="triangle" width={48} stroke left="10%" top="20%" isDark={isDark} />
-            <SVG icon="hexa" width={48} stroke left="60%" top="70%" isDark={isDark} />
+            <SVG
+               icon="triangle"
+               width={48}
+               stroke
+               left="10%"
+               top="20%"
+               isDark={isDark}
+            />
+            <SVG
+               icon="hexa"
+               width={48}
+               stroke
+               left="60%"
+               top="70%"
+               isDark={isDark}
+            />
             <SVG icon="box" width={6} left="60%" top="15%" isDark={isDark} />
          </UpDown>
          <UpDown type="wide">
-            <SVG icon="triangle" width={24} stroke left="65%" top="8%" isDark={isDark} />
-            <SVG icon="triangle" width={12} stroke left="90%" top="50%" isDark={isDark} />
-            <SVG icon="triangle" width={16} stroke left="30%" top="65%" isDark={isDark} />
+            <SVG
+               icon="triangle"
+               width={24}
+               stroke
+               left="65%"
+               top="8%"
+               isDark={isDark}
+            />
+            <SVG
+               icon="triangle"
+               width={12}
+               stroke
+               left="90%"
+               top="50%"
+               isDark={isDark}
+            />
+            <SVG
+               icon="triangle"
+               width={16}
+               stroke
+               left="30%"
+               top="65%"
+               isDark={isDark}
+            />
          </UpDown>
          <UpDown type="slow">
-            <SVG icon="circle" width={20} hiddenMobile left="85%" top="25%" isDark={isDark} />
-            <SVG icon="circle" hiddenMobile stroke width={24} left="5%" top="70%" isDark={isDark} />
+            <SVG
+               icon="circle"
+               width={20}
+               hiddenMobile
+               left="85%"
+               top="25%"
+               isDark={isDark}
+            />
+            <SVG
+               icon="circle"
+               hiddenMobile
+               stroke
+               width={24}
+               left="5%"
+               top="70%"
+               isDark={isDark}
+            />
             <SVG icon="circle" width={6} left="4%" top="20%" isDark={isDark} />
-            <SVG icon="circle" width={12} left="50%" top="60%" isDark={isDark} />
+            <SVG
+               icon="circle"
+               width={12}
+               left="50%"
+               top="60%"
+               isDark={isDark}
+            />
          </UpDown>
       </>
    );
@@ -175,7 +229,7 @@ const UpDown = ({ children, type }: UpDownProps) => {
                : type === "slow"
                  ? "UpDownSlowAnimation"
                  : "UpDownAnimation"
-         } absolute bottom-0 left-0 right-0 top-0 overflow-hidden`}
+         } absolute top-0 right-0 bottom-0 left-0 overflow-hidden`}
          style={{ zIndex: -500 }}
       >
          {children}

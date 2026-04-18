@@ -22,7 +22,7 @@ const SongCard: React.FC<{
          className="group flex w-full items-center gap-3 rounded-xl border border-border/80 bg-card/60 p-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md sm:gap-4 sm:p-3"
       >
          {rank !== undefined && (
-            <span className="min-w-[1.25rem] text-center text-sm font-bold tabular-nums text-muted-foreground/40 sm:min-w-[1.5rem] sm:text-base">
+            <span className="min-w-[1.25rem] text-center text-sm font-bold text-muted-foreground/40 tabular-nums sm:min-w-[1.5rem] sm:text-base">
                {rank}
             </span>
          )}
@@ -34,7 +34,7 @@ const SongCard: React.FC<{
             src={song.album.image}
          />
          <div className="min-w-0 flex-1">
-            <h3 className="truncate text-sm font-semibold leading-tight sm:text-base">
+            <h3 className="truncate text-sm leading-tight font-semibold sm:text-base">
                {song.name}
             </h3>
             <p className="truncate text-xs text-muted-foreground sm:text-sm">

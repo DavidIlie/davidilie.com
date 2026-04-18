@@ -117,7 +117,8 @@ export async function fetchContributions(): Promise<ContributionData | null> {
             };
          };
       };
-      const cal = json.data?.user?.contributionsCollection?.contributionCalendar;
+      const cal =
+         json.data?.user?.contributionsCollection?.contributionCalendar;
       if (!cal) return null;
       const weeks: ContributionWeek[] = cal.weeks.map((w) => ({
          days: w.contributionDays.map((d) => ({

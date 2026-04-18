@@ -8,7 +8,7 @@ export const Tags: React.FC<{
 }> = ({ tag, className }) => {
    return (
       <span
-         className={`mr-2 mb-1 inline-flex items-center justify-center rounded-md bg-secondary px-2 py-1.5 text-xs font-medium leading-none text-secondary-foreground ${className ?? ""}`}
+         className={`mr-2 mb-1 inline-flex items-center justify-center rounded-md bg-secondary px-2 py-1.5 text-xs leading-none font-medium text-secondary-foreground ${className ?? ""}`}
       >
          {tag}
       </span>

@@ -3,11 +3,11 @@
 import React, { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Reveal } from "~/components/reveal";
 
 import { shimmer } from "~/lib/shimmer";
 
 import { ServicesButtons } from "~/components/call-to-action";
+import { Reveal } from "~/components/reveal";
 import {
    Tooltip,
    TooltipContent,
@@ -32,7 +32,7 @@ const About: React.FC = () => {
 
    return (
       <>
-         <div className="mb-32 bg-blue-600 px-10 pb-32 pt-12 text-left text-white dark:bg-blue-800 dark:text-gray-100 sm:text-center">
+         <div className="mb-32 bg-blue-600 px-10 pt-12 pb-32 text-left text-white sm:text-center dark:bg-blue-800 dark:text-gray-100">
             <Reveal direction="left" triggerOnce cascade>
                <h1 className="mb-5 text-center text-4xl font-semibold sm:text-4xl md:text-5xl">
                   First of all, who am I?
@@ -69,8 +69,8 @@ const About: React.FC = () => {
             </Reveal>
          </div>
          <Reveal direction="up" triggerOnce cascade className="mx-4">
-            <div className="mx-auto mb-10 mt-[-14rem] flex max-w-[25rem] flex-wrap justify-evenly rounded-2xl border border-border/80 bg-card/80 backdrop-blur-xs md:max-w-6xl md:flex-nowrap">
-               <div className="xs:w-full border-b border-border/80 px-5 pt-10 md:border-b-0 md:border-r xl:w-1/3 xl:border-b-0 xl:border-r 2xl:border-b-0 2xl:border-r">
+            <div className="mx-auto mt-[-14rem] mb-10 flex max-w-[25rem] flex-wrap justify-evenly rounded-2xl border border-border/80 bg-card/80 backdrop-blur-xs md:max-w-6xl md:flex-nowrap">
+               <div className="xs:w-full border-b border-border/80 px-5 pt-10 md:border-r md:border-b-0 xl:w-1/3 xl:border-r xl:border-b-0 2xl:border-r 2xl:border-b-0">
                   <div className="mb-3 flex justify-center">
                      <Image
                         src="/static/frontend.svg"
@@ -89,14 +89,9 @@ const About: React.FC = () => {
                      </h2>
                      <p className="text-lg">
                         I like bringing my ideas to{" "}
-                        <span className="font-bold text-brand">
-                           reality
-                        </span>
-                        , by producing simple but powerful{" "}
-                        <span className="font-bold text-brand">
-                           code
-                        </span>
-                        .
+                        <span className="font-bold text-brand">reality</span>,
+                        by producing simple but powerful{" "}
+                        <span className="font-bold text-brand">code</span>.
                      </p>
                   </div>
                   <div className="mb-10 text-center">
@@ -117,7 +112,7 @@ const About: React.FC = () => {
                      <p className="text-lg">Pen & Paper</p>
                   </div>
                </div>
-               <div className="xs:w-full border-b border-border/80 px-5 pt-10 md:border-b-0 md:border-r xl:w-1/3 xl:border-b-0 xl:border-r 2xl:border-r">
+               <div className="xs:w-full border-b border-border/80 px-5 pt-10 md:border-r md:border-b-0 xl:w-1/3 xl:border-r xl:border-b-0 2xl:border-r">
                   <div className="mb-3 flex justify-center">
                      <Image
                         src="/static/backend.svg"
@@ -136,13 +131,9 @@ const About: React.FC = () => {
                      </h2>
                      <p className="px-4 text-lg sm:px-16">
                         I build{" "}
-                        <span className="font-bold text-brand">
-                           fast
-                        </span>{" "}
-                        APIs and write{" "}
-                        <span className="font-bold text-brand">
-                           efficent
-                        </span>{" "}
+                        <span className="font-bold text-brand">fast</span> APIs
+                        and write{" "}
+                        <span className="font-bold text-brand">efficent</span>{" "}
                         code.
                      </p>
                   </div>

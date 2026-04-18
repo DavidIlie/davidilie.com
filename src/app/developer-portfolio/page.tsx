@@ -87,15 +87,15 @@ const DeveloperPortfolio = () => {
                            2 spots open this month
                         </span>
                      </div>
-                     <h1 className="mb-6 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+                     <h1 className="mb-6 text-4xl leading-tight font-bold md:text-5xl lg:text-6xl">
                         Your website.
                         <br />
                         <span className="text-brand">Live in 7 days.</span>
                      </h1>
                      <p className="mb-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
                         Agencies want 3 months and $15K. Upwork freelancers
-                        ghost you. I&apos;m one person who ships &mdash;
-                        email Monday, live Sunday, code in your GitHub.
+                        ghost you. I&apos;m one person who ships &mdash; email
+                        Monday, live Sunday, code in your GitHub.
                      </p>
                      <div className="flex flex-col gap-3 sm:flex-row">
                         <Button
@@ -114,8 +114,8 @@ const DeveloperPortfolio = () => {
                      </div>
                      <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
                         <span className="flex items-center gap-1.5">
-                           <Check className="h-3.5 w-3.5 text-brand" />
-                           6 years running this exact site
+                           <Check className="h-3.5 w-3.5 text-brand" />6 years
+                           running this exact site
                         </span>
                         <span className="flex items-center gap-1.5">
                            <Check className="h-3.5 w-3.5 text-brand" />
@@ -136,8 +136,7 @@ const DeveloperPortfolio = () => {
          <section className="mx-auto max-w-5xl px-4 py-20">
             <div className="mb-10 text-center">
                <h2 className="mb-3 text-3xl font-bold md:text-4xl">
-                  Hiring a dev,{" "}
-                  <span className="text-brand">normally</span>
+                  Hiring a dev, <span className="text-brand">normally</span>
                </h2>
                <p className="text-muted-foreground">
                   Here&apos;s the 12 weeks you were about to sign up for.
@@ -247,7 +246,7 @@ const DeveloperPortfolio = () => {
                   <div className="mb-6 font-serif text-5xl leading-none text-muted-foreground/40">
                      &ldquo;
                   </div>
-                  <blockquote className="mb-8 text-xl font-medium leading-relaxed text-foreground sm:text-2xl">
+                  <blockquote className="mb-8 text-xl leading-relaxed font-medium text-foreground sm:text-2xl">
                      I have never worked with someone who understands and
                      executes exactly what I want. I&apos;m impressed.
                   </blockquote>
@@ -269,8 +268,8 @@ const DeveloperPortfolio = () => {
                   <span className="text-brand">for myself</span>
                </h2>
                <p className="mx-auto max-w-xl text-muted-foreground">
-                  Boring technology. Proven. The exact tools powering the
-                  site you&apos;re on right now.
+                  Boring technology. Proven. The exact tools powering the site
+                  you&apos;re on right now.
                </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -293,14 +292,10 @@ const DeveloperPortfolio = () => {
          </section>
 
          {/* Interactive timeline */}
-         <section
-            id="timeline"
-            className="mx-auto max-w-6xl px-4 py-20"
-         >
+         <section id="timeline" className="mx-auto max-w-6xl px-4 py-20">
             <div className="mb-10 text-center">
                <h2 className="mb-3 text-3xl font-bold md:text-4xl">
-                  A week with me,{" "}
-                  <span className="text-brand">day by day</span>
+                  A week with me, <span className="text-brand">day by day</span>
                </h2>
                <p className="mx-auto max-w-xl text-muted-foreground">
                   Click a day. Or don&apos;t &mdash; it&apos;ll advance on its
@@ -328,22 +323,22 @@ const DeveloperPortfolio = () => {
                </div>
                <div className="space-y-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
                   <p>
-                     I&apos;ve been shipping websites since I was 12. I run
-                     this site solo, built it from nothing six years ago,
-                     and I still rewrite pieces of it when I get bored.
-                     It&apos;s part portfolio, part testing ground, part
-                     stubborn refusal to use someone else&apos;s template.
+                     I&apos;ve been shipping websites since I was 12. I run this
+                     site solo, built it from nothing six years ago, and I still
+                     rewrite pieces of it when I get bored. It&apos;s part
+                     portfolio, part testing ground, part stubborn refusal to
+                     use someone else&apos;s template.
                   </p>
                   <p>
-                     When you hire me, you get me. Not a junior I offloaded
-                     the work to. Not a Slack channel with four account
-                     managers. The same person replying to your email is the
-                     one pushing commits at 2am.
+                     When you hire me, you get me. Not a junior I offloaded the
+                     work to. Not a Slack channel with four account managers.
+                     The same person replying to your email is the one pushing
+                     commits at 2am.
                   </p>
                   <p>
-                     If that sounds like your kind of thing, send me an
-                     email. If it doesn&apos;t, no hard feelings &mdash; an
-                     agency will absolutely love you.
+                     If that sounds like your kind of thing, send me an email.
+                     If it doesn&apos;t, no hard feelings &mdash; an agency will
+                     absolutely love you.
                   </p>
                </div>
                <div className="mt-6 flex flex-wrap gap-2 text-xs text-muted-foreground">
@@ -367,12 +362,11 @@ const DeveloperPortfolio = () => {
                   Less than an agency&apos;s invoice for Week 3
                </div>
                <h2 className="mb-3 text-3xl font-bold md:text-4xl">
-                  Pick a{" "}
-                  <span className="text-brand">number</span>
+                  Pick a <span className="text-brand">number</span>
                </h2>
                <p className="text-muted-foreground">
-                  One price, paid once. No subscription. No surprise invoice
-                  in month four.
+                  One price, paid once. No subscription. No surprise invoice in
+                  month four.
                </p>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
@@ -456,8 +450,8 @@ const DeveloperPortfolio = () => {
                         Repo in your GitHub on day seven
                      </h3>
                      <p className="text-sm text-muted-foreground">
-                        100% of the code, all commits, all assets. You can
-                        fire me and host it elsewhere the next day.
+                        100% of the code, all commits, all assets. You can fire
+                        me and host it elsewhere the next day.
                      </p>
                   </div>
                </div>
@@ -472,8 +466,8 @@ const DeveloperPortfolio = () => {
                   <span className="text-brand">actually shipping</span>
                </h2>
                <p className="mx-auto max-w-xl text-muted-foreground">
-                  Pulled live from GitHub. If the squares go dark, feel free
-                  to call me lazy.
+                  Pulled live from GitHub. If the squares go dark, feel free to
+                  call me lazy.
                </p>
             </div>
             <GitHubGraphServer />
@@ -482,23 +476,22 @@ const DeveloperPortfolio = () => {
             <div className="mt-8 overflow-hidden rounded-2xl border border-border/80 bg-card/40">
                <div className="grid gap-0 md:grid-cols-[1fr_1.1fr]">
                   <div className="flex flex-col justify-center gap-4 p-6 sm:p-8 md:p-10">
-                     <div className="inline-flex w-fit items-center gap-2 rounded-full border border-brand/30 bg-brand-muted px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-brand">
+                     <div className="inline-flex w-fit items-center gap-2 rounded-full border border-brand/30 bg-brand-muted px-3 py-1 font-mono text-[0.65rem] tracking-[0.2em] text-brand uppercase">
                         <span className="relative flex h-1.5 w-1.5">
                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
                         </span>
                         Most recent build
                      </div>
-                     <h3 className="text-2xl font-bold leading-tight sm:text-3xl">
-                        I built{" "}
-                        <span className="text-brand">ZeroCut</span> in
+                     <h3 className="text-2xl leading-tight font-bold sm:text-3xl">
+                        I built <span className="text-brand">ZeroCut</span> in
                         exactly 1 week.
                      </h3>
                      <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
                         End to end. Landing page, Stripe, auth, dashboard,
                         donation flow, deploy. Seven days from empty repo to
-                        live URL. The commit history is right above this
-                        card if you don&apos;t believe me.
+                        live URL. The commit history is right above this card if
+                        you don&apos;t believe me.
                      </p>
                      <div className="flex flex-wrap gap-2">
                         <span className="rounded-full border border-border bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
@@ -523,7 +516,7 @@ const DeveloperPortfolio = () => {
                         </Link>
                      </div>
                   </div>
-                  <div className="relative aspect-[16/10] overflow-hidden border-t border-border/60 bg-muted/30 md:border-l md:border-t-0">
+                  <div className="relative aspect-[16/10] overflow-hidden border-t border-border/60 bg-muted/30 md:border-t-0 md:border-l">
                      <Image
                         src="/static/zerocut.png"
                         alt="ZeroCut — built in 7 days"
@@ -598,8 +591,8 @@ const DeveloperPortfolio = () => {
                </h3>
                <p className="mx-auto mb-6 max-w-xl text-muted-foreground">
                   Shoot me an email with two sentences about what you want.
-                  I&apos;ll reply with a price, a start date, and a question
-                  or two. If we&apos;re a fit, we&apos;re a fit.
+                  I&apos;ll reply with a price, a start date, and a question or
+                  two. If we&apos;re a fit, we&apos;re a fit.
                </p>
                <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
                   <Button
@@ -633,7 +626,7 @@ const Step = ({
 }) => (
    <li className="flex gap-3">
       <span
-         className={`mt-0.5 flex-shrink-0 font-mono text-xs font-semibold uppercase tracking-wider ${
+         className={`mt-0.5 flex-shrink-0 font-mono text-xs font-semibold tracking-wider uppercase ${
             brand ? "text-brand" : "text-muted-foreground/70"
          }`}
          style={{ minWidth: "3.75rem" }}
@@ -678,7 +671,7 @@ const PricingCard = ({
          </div>
       )}
       <div className="mb-6 text-center">
-         <h3 className="mb-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+         <h3 className="mb-2 text-sm font-semibold tracking-wider text-muted-foreground uppercase">
             {title}
          </h3>
          <div className="mb-1 text-4xl font-bold">{price}</div>
@@ -698,9 +691,7 @@ const PricingCard = ({
       <Button
          asChild
          className={`w-full ${
-            featured
-               ? "bg-brand text-brand-foreground hover:bg-brand/90"
-               : ""
+            featured ? "bg-brand text-brand-foreground hover:bg-brand/90" : ""
          }`}
          variant={featured ? "default" : "outline"}
       >

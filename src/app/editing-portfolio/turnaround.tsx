@@ -1,22 +1,6 @@
 "use client";
 
-import React, {
-   useEffect,
-   useMemo,
-   useRef,
-   useState,
-} from "react";
-import {
-   animate,
-   AnimatePresence,
-   motion,
-   useInView,
-   useMotionValue,
-   useMotionValueEvent,
-   useReducedMotion,
-   useTransform,
-   type Variants,
-} from "motion/react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
    Calendar,
    Clock,
@@ -28,6 +12,17 @@ import {
    Wand2,
    Zap,
 } from "lucide-react";
+import {
+   animate,
+   AnimatePresence,
+   motion,
+   useInView,
+   useMotionValue,
+   useMotionValueEvent,
+   useReducedMotion,
+   useTransform,
+   type Variants,
+} from "motion/react";
 
 const ease = [0.23, 1, 0.32, 1] as const;
 
@@ -83,7 +78,12 @@ const tiers: Tier[] = [
             { start: 0, width: 8, color: "bg-blue-500/70", label: "hook" },
             { start: 9, width: 6, color: "bg-purple-500/70", label: "B-roll" },
             { start: 16, width: 10, color: "bg-blue-500/70", label: "A-cam" },
-            { start: 27, width: 5, color: "bg-amber-500/70", label: "pack shot" },
+            {
+               start: 27,
+               width: 5,
+               color: "bg-amber-500/70",
+               label: "pack shot",
+            },
             { start: 33, width: 8, color: "bg-blue-500/70", label: "A-cam" },
             { start: 42, width: 6, color: "bg-purple-500/70", label: "B-roll" },
             { start: 49, width: 4, color: "bg-amber-500/70", label: "zoom" },
@@ -120,12 +120,32 @@ const tiers: Tier[] = [
             { start: 82, width: 10, color: "bg-brand/70", label: "end card" },
          ],
          v1: [
-            { start: 0, width: 14, color: "bg-blue-500/70", label: "cold open" },
-            { start: 15, width: 10, color: "bg-purple-500/70", label: "B-roll" },
+            {
+               start: 0,
+               width: 14,
+               color: "bg-blue-500/70",
+               label: "cold open",
+            },
+            {
+               start: 15,
+               width: 10,
+               color: "bg-purple-500/70",
+               label: "B-roll",
+            },
             { start: 26, width: 18, color: "bg-blue-500/70", label: "A-roll" },
-            { start: 45, width: 8, color: "bg-purple-500/70", label: "graphic" },
+            {
+               start: 45,
+               width: 8,
+               color: "bg-purple-500/70",
+               label: "graphic",
+            },
             { start: 54, width: 16, color: "bg-blue-500/70", label: "A-roll" },
-            { start: 71, width: 10, color: "bg-purple-500/70", label: "B-roll" },
+            {
+               start: 71,
+               width: 10,
+               color: "bg-purple-500/70",
+               label: "B-roll",
+            },
             { start: 82, width: 13, color: "bg-blue-500/70", label: "outro" },
          ],
          a1: [
@@ -154,15 +174,45 @@ const tiers: Tier[] = [
       tracks: {
          v2: [
             { start: 6, width: 24, color: "bg-brand/60", label: "title seq" },
-            { start: 54, width: 14, color: "bg-brand/60", label: "lower third" },
+            {
+               start: 54,
+               width: 14,
+               color: "bg-brand/60",
+               label: "lower third",
+            },
             { start: 78, width: 16, color: "bg-brand/60", label: "credits" },
          ],
          v1: [
-            { start: 0, width: 22, color: "bg-blue-500/70", label: "cold open" },
-            { start: 23, width: 16, color: "bg-purple-500/70", label: "archive" },
-            { start: 40, width: 20, color: "bg-blue-500/70", label: "interview" },
-            { start: 61, width: 14, color: "bg-purple-500/70", label: "B-roll" },
-            { start: 76, width: 20, color: "bg-blue-500/70", label: "voice-over" },
+            {
+               start: 0,
+               width: 22,
+               color: "bg-blue-500/70",
+               label: "cold open",
+            },
+            {
+               start: 23,
+               width: 16,
+               color: "bg-purple-500/70",
+               label: "archive",
+            },
+            {
+               start: 40,
+               width: 20,
+               color: "bg-blue-500/70",
+               label: "interview",
+            },
+            {
+               start: 61,
+               width: 14,
+               color: "bg-purple-500/70",
+               label: "B-roll",
+            },
+            {
+               start: 76,
+               width: 20,
+               color: "bg-blue-500/70",
+               label: "voice-over",
+            },
          ],
          a1: [{ start: 0, width: 96, color: "bg-emerald-500/60" }],
          a2: [
@@ -401,7 +451,7 @@ export function Turnaround() {
    );
 
    const activeClip =
-      activeClipIdx >= 0 ? tracks.v1[activeClipIdx] ?? null : null;
+      activeClipIdx >= 0 ? (tracks.v1[activeClipIdx] ?? null) : null;
    const scene = activeClip ? sceneMap[activeClip.label] : undefined;
    const sceneTitle = scene?.title ?? "PROGRAM";
    const sceneShot = scene?.shot ?? "Waiting on playhead…";
@@ -472,14 +522,14 @@ export function Turnaround() {
                   <span className="h-3 w-3 rounded-full bg-amber-400/90" />
                   <span className="h-3 w-3 rounded-full bg-emerald-500/90" />
                </div>
-               <div className="flex flex-1 items-center justify-center gap-4 font-mono text-[0.65rem] uppercase tracking-[0.15em] text-white/50">
+               <div className="flex flex-1 items-center justify-center gap-4 font-mono text-[0.65rem] tracking-[0.15em] text-white/50 uppercase">
                   <span className="hidden sm:inline">File</span>
                   <span className="hidden sm:inline">Edit</span>
                   <span className="hidden sm:inline">Clip</span>
                   <span>Sequence</span>
                   <span className="hidden sm:inline">Window</span>
                </div>
-               <div className="font-mono text-[0.65rem] uppercase tracking-[0.15em] text-white/40">
+               <div className="font-mono text-[0.65rem] tracking-[0.15em] text-white/40 uppercase">
                   {active.label}.prproj
                </div>
             </div>
@@ -488,7 +538,7 @@ export function Turnaround() {
             <div className="grid gap-px bg-white/5 md:grid-cols-[1.6fr_1fr]">
                {/* Program monitor — reacts to playhead */}
                <div className="relative aspect-video overflow-hidden bg-[#0d0d0d]">
-                  <div className="absolute left-3 top-3 z-10 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-white/40">
+                  <div className="absolute top-3 left-3 z-10 font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase">
                      Program
                   </div>
 
@@ -515,8 +565,8 @@ export function Turnaround() {
                                  backgroundSize: "3px 3px, 5px 5px",
                               }}
                            />
-                           <div className="absolute bottom-4 left-4 right-4">
-                              <div className="mb-1 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-brand">
+                           <div className="absolute right-4 bottom-4 left-4">
+                              <div className="mb-1 font-mono text-[0.65rem] tracking-[0.18em] text-brand uppercase">
                                  {sceneTitle}
                               </div>
                               <div className="text-sm font-medium text-white/90">
@@ -529,11 +579,11 @@ export function Turnaround() {
                            />
                            <div
                               aria-hidden
-                              className="absolute left-1/2 top-1/2 h-6 w-px -translate-x-1/2 -translate-y-1/2 bg-white/20"
+                              className="absolute top-1/2 left-1/2 h-6 w-px -translate-x-1/2 -translate-y-1/2 bg-white/20"
                            />
                            <div
                               aria-hidden
-                              className="absolute left-1/2 top-1/2 h-px w-6 -translate-x-1/2 -translate-y-1/2 bg-white/20"
+                              className="absolute top-1/2 left-1/2 h-px w-6 -translate-x-1/2 -translate-y-1/2 bg-white/20"
                            />
                         </motion.div>
                      )}
@@ -544,7 +594,7 @@ export function Turnaround() {
 
                {/* Bin */}
                <div className="bg-[#141414] p-4">
-                  <div className="mb-3 flex items-center justify-between font-mono text-[0.6rem] uppercase tracking-[0.18em] text-white/40">
+                  <div className="mb-3 flex items-center justify-between font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase">
                      <span>Project bin</span>
                      <span>{active.bin.length} items</span>
                   </div>
@@ -597,7 +647,7 @@ export function Turnaround() {
 
             {/* Timeline */}
             <div className="border-t border-white/5 bg-[#111] p-4 sm:p-5">
-               <div className="mb-3 flex items-center justify-between font-mono text-[0.6rem] uppercase tracking-[0.18em] text-white/40">
+               <div className="mb-3 flex items-center justify-between font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase">
                   <span>Timeline · {active.label.toUpperCase()}</span>
                   <span className="tabular-nums">
                      00:00 — {Math.floor(active.days * 3)}:00
@@ -640,7 +690,7 @@ export function Turnaround() {
                   />
 
                   {/* Playhead — driven by shared motion value */}
-                  <div className="pointer-events-none absolute inset-y-0 left-10 right-0">
+                  <div className="pointer-events-none absolute inset-y-0 right-0 left-10">
                      <motion.div
                         style={{ left: playheadLeft }}
                         className="absolute top-0 bottom-0 w-px bg-brand shadow-[0_0_12px_rgba(59,130,246,0.55)]"
@@ -658,7 +708,7 @@ export function Turnaround() {
          <div className="mt-6 rounded-2xl border border-border/80 bg-card/40 p-5 sm:p-6">
             <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
                <div>
-                  <div className="mb-1 flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-brand">
+                  <div className="mb-1 flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.2em] text-brand uppercase">
                      <MessageCircle className="h-3 w-3" />
                      Client says
                   </div>
@@ -694,7 +744,7 @@ export function Turnaround() {
                         <div className="mb-1.5 text-sm font-medium">
                            {fb.label}
                         </div>
-                        <div className="text-xs italic text-muted-foreground">
+                        <div className="text-xs text-muted-foreground italic">
                            &ldquo;{fb.quote}&rdquo;
                         </div>
                         {isApplied && (
@@ -703,7 +753,7 @@ export function Turnaround() {
                               animate={{ scaleX: 1 }}
                               transition={{ duration: 0.5, ease }}
                               style={{ transformOrigin: "left" }}
-                              className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand"
+                              className="absolute right-0 bottom-0 left-0 h-0.5 bg-brand"
                            />
                         )}
                      </button>
@@ -719,12 +769,12 @@ export function Turnaround() {
                   transition={{ duration: 0.35, ease }}
                   className="mt-4 flex items-center gap-2 rounded-lg border border-brand/20 bg-brand-muted/30 px-3 py-2 text-xs text-muted-foreground"
                >
-                  <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-brand">
+                  <span className="font-mono text-[0.6rem] tracking-[0.2em] text-brand uppercase">
                      Done
                   </span>
                   <span>
-                     Applied &ldquo;{lastFeedback.label}&rdquo; &middot; timeline
-                     rebuilt
+                     Applied &ldquo;{lastFeedback.label}&rdquo; &middot;
+                     timeline rebuilt
                   </span>
                </motion.div>
             )}
@@ -740,10 +790,10 @@ export function Turnaround() {
                   animate="show"
                   exit={{ opacity: 0, y: -6 }}
                >
-                  <div className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-brand">
+                  <div className="mb-2 font-mono text-xs tracking-[0.2em] text-brand uppercase">
                      {active.fit}
                   </div>
-                  <h3 className="mb-2 text-2xl font-bold leading-tight sm:text-3xl">
+                  <h3 className="mb-2 text-2xl leading-tight font-bold sm:text-3xl">
                      {active.title}
                   </h3>
                   <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -759,7 +809,7 @@ export function Turnaround() {
                transition={{ duration: 0.4, ease }}
                className="rounded-xl border border-border/80 bg-card/60 p-5"
             >
-               <div className="mb-4 flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+               <div className="mb-4 flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.2em] text-muted-foreground uppercase">
                   <Calendar className="h-3 w-3" />
                   <span>Deliverable lands</span>
                </div>
@@ -788,7 +838,7 @@ function LiveTimecode({ tc }: { tc: number }) {
    const mm = String(Math.floor(secs / 60)).padStart(2, "0");
    const ss = String(secs % 60).padStart(2, "0");
    return (
-      <div className="absolute right-3 top-3 z-10 rounded bg-black/70 px-2 py-0.5 font-mono text-[0.7rem] tabular-nums text-white/85">
+      <div className="absolute top-3 right-3 z-10 rounded bg-black/70 px-2 py-0.5 font-mono text-[0.7rem] text-white/85 tabular-nums">
          00:{mm}:{ss}:00
       </div>
    );
@@ -862,11 +912,9 @@ function TimelineRow({
                            }}
                         >
                            {waveform ? (
-                              <Waveform
-                                 tierId={`${tierId}-${trackKey}-${i}`}
-                              />
+                              <Waveform tierId={`${tierId}-${trackKey}-${i}`} />
                            ) : showLabel && clip.label ? (
-                              <span className="block truncate px-1.5 pt-0.5 font-mono text-[0.55rem] uppercase tracking-wide text-white/85">
+                              <span className="block truncate px-1.5 pt-0.5 font-mono text-[0.55rem] tracking-wide text-white/85 uppercase">
                                  {clip.label}
                               </span>
                            ) : null}

@@ -1,11 +1,7 @@
 "use client";
 
-import React, {
-   useEffect,
-   useMemo,
-   useRef,
-   useState,
-} from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Flame, GitCommit, Trophy } from "lucide-react";
 import {
    animate,
    motion,
@@ -14,7 +10,6 @@ import {
    useTransform,
    type Variants,
 } from "motion/react";
-import { Flame, GitCommit, Trophy } from "lucide-react";
 
 import type {
    ContributionData,
@@ -65,9 +60,7 @@ function CountUp({
    className?: string;
 }) {
    const count = useMotionValue(0);
-   const rounded = useTransform(count, (v) =>
-      Math.round(v).toLocaleString(),
-   );
+   const rounded = useTransform(count, (v) => Math.round(v).toLocaleString());
    useEffect(() => {
       if (!inView) return;
       const controls = animate(count, value, {
@@ -142,13 +135,13 @@ export function GitHubGraph({ data }: { data: ContributionData }) {
          {/* Decorative glow */}
          <div
             aria-hidden
-            className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand/10 blur-3xl"
+            className="pointer-events-none absolute -top-20 -right-20 h-64 w-64 rounded-full bg-brand/10 blur-3xl"
          />
 
          {/* Header */}
          <div className="relative mb-6 flex flex-wrap items-end justify-between gap-4">
             <div>
-               <div className="mb-1.5 flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
+               <div className="mb-1.5 flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.2em] text-muted-foreground uppercase">
                   <GitCommit className="h-3 w-3" />
                   <span>live from github</span>
                   <span className="inline-flex items-center gap-1">
@@ -262,9 +255,7 @@ export function GitHubGraph({ data }: { data: ContributionData }) {
                         }`}
                      >
                         {Array.from({ length: 7 }).map((_, di) => {
-                           const d = w.days.find(
-                              (x) => x.weekday === di,
-                           );
+                           const d = w.days.find((x) => x.weekday === di);
                            if (!d) {
                               return (
                                  <div
@@ -290,7 +281,7 @@ export function GitHubGraph({ data }: { data: ContributionData }) {
                                     stiffness: 400,
                                     damping: 18,
                                  }}
-                                 className={`aspect-square w-full rounded-[3px] outline-none ring-offset-card transition-colors focus-visible:ring-2 focus-visible:ring-brand ${levelClass[d.level]} ${
+                                 className={`aspect-square w-full rounded-[3px] ring-offset-card transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand ${levelClass[d.level]} ${
                                     isHot
                                        ? "ring-2 ring-brand ring-offset-2"
                                        : ""
@@ -319,9 +310,7 @@ export function GitHubGraph({ data }: { data: ContributionData }) {
                         {hover.count}
                      </span>
                      <span className="text-muted-foreground">
-                        {hover.count === 1
-                           ? "contribution"
-                           : "contributions"}{" "}
+                        {hover.count === 1 ? "contribution" : "contributions"}{" "}
                         on {formatDate(hover.date)}
                      </span>
                   </motion.div>
@@ -336,9 +325,7 @@ export function GitHubGraph({ data }: { data: ContributionData }) {
                      <span className="font-semibold text-foreground">
                         {data.busiestDay.count}
                      </span>
-                     <span>
-                        on {formatDate(data.busiestDay.date)}
-                     </span>
+                     <span>on {formatDate(data.busiestDay.date)}</span>
                   </motion.div>
                ) : null}
             </div>
@@ -380,7 +367,7 @@ function StatPill({
          <span className="text-brand">{icon}</span>
          <div className="flex items-baseline gap-1.5">
             <span className="text-sm font-semibold">{value}</span>
-            <span className="font-mono text-[0.6rem] uppercase tracking-wider text-muted-foreground">
+            <span className="font-mono text-[0.6rem] tracking-wider text-muted-foreground uppercase">
                {label}
             </span>
          </div>

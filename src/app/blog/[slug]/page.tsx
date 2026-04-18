@@ -77,10 +77,13 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
             {post.tags.map((tag, index) => (
                <Tags tag={tag} key={index} />
             ))}
-            <h1 className="mt-1 text-3xl font-bold text-brand" style={{ textWrap: "balance" }}>
+            <h1
+               className="mt-1 text-3xl font-bold text-brand"
+               style={{ textWrap: "balance" }}
+            >
                {post.title}
             </h1>
-            <div className="mb-6 mt-2 grid grid-cols-[auto_1fr_auto] items-center font-mono text-sm">
+            <div className="mt-2 mb-6 grid grid-cols-[auto_1fr_auto] items-center font-mono text-sm">
                <div className="rounded-md bg-muted px-2 py-1 tracking-tighter">
                   {post.publishedAt}
                </div>

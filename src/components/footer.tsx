@@ -15,7 +15,7 @@ import { Socials } from "./socials";
 
 const Footer: React.FC = () => {
    return (
-      <footer className="w-full bg-muted/50 pb-5 pt-5 text-foreground">
+      <footer className="w-full bg-muted/50 pt-5 pb-5 text-foreground">
          <div className="mx-auto flex max-w-6xl flex-col items-center px-4 sm:flex-row sm:justify-evenly">
             <div className="mb-2 sm:mb-0 sm:w-1/3">
                <Suspense fallback={<BuiltInfo />}>

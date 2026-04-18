@@ -39,7 +39,7 @@ const CurrentlyPlaying: React.FC = () => {
          rel="noreferrer"
          className="group relative flex items-center gap-4 overflow-hidden rounded-2xl border border-green-500/20 bg-gradient-to-r from-green-500/10 via-emerald-500/5 to-transparent p-5 transition-all duration-300 hover:border-green-500/40 hover:shadow-lg hover:shadow-green-500/5 sm:p-6"
       >
-         <div className="absolute right-4 top-3 flex items-end gap-[3px]">
+         <div className="absolute top-3 right-4 flex items-end gap-[3px]">
             <span
                className="music-bar h-3 bg-green-500"
                style={{ animationDuration: "0.8s" }}
@@ -61,7 +61,7 @@ const CurrentlyPlaying: React.FC = () => {
             className="h-16 w-16 flex-shrink-0 rounded-xl object-cover shadow-md transition-transform duration-300 group-hover:scale-105 sm:h-20 sm:w-20"
          />
          <div className="min-w-0 flex-1">
-            <p className="mb-1 text-xs font-medium uppercase tracking-wider text-green-600 dark:text-green-400">
+            <p className="mb-1 text-xs font-medium tracking-wider text-green-600 uppercase dark:text-green-400">
                Now Playing
             </p>
             <h3 className="truncate text-base font-bold sm:text-lg">

@@ -72,7 +72,10 @@ const ImageProject = ({
             </div>
             <p>{project.description}</p>
             {isGitHub && repo && (
-               <p className="-mb-2 mt-0.5 italic text-muted-foreground" suppressHydrationWarning>
+               <p
+                  className="mt-0.5 -mb-2 text-muted-foreground italic"
+                  suppressHydrationWarning
+               >
                   Last updated{" "}
                   {formatDistance(new Date(repo.lastPush), new Date(), {
                      addSuffix: true,

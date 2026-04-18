@@ -121,7 +121,7 @@ const Header: React.FC = () => {
                >
                   <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
                      <div className="flex flex-col items-center text-muted-foreground">
-                        <span className="mb-2 text-[10px] font-medium uppercase tracking-widest">
+                        <span className="mb-2 text-[10px] font-medium tracking-widest uppercase">
                            Scroll
                         </span>
                         <motion.div

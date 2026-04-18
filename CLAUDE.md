@@ -14,7 +14,7 @@ codebase describes itself. If a rule stops being true, delete it.
   `--legacy-peer-deps`. Dockerfile pins `pnpm@10.0.0` via corepack. If
   `package-lock.json` reappears, delete it.
 - **Do not add narration comments.** Ship the code. No "Actually, …" /
-  "Wait, …" / "User said …" blocks. Comments explain *why*.
+  "Wait, …" / "User said …" blocks. Comments explain _why_.
 - **Verify UI changes with Playwright, not grep.** Looking at classnames
   doesn't prove the pixel moved. Take a screenshot.
 - **Do not delete user-facing UI when refactoring** unless asked. Featured
@@ -55,7 +55,7 @@ codebase describes itself. If a rule stops being true, delete it.
   sources must be added to `remotePatterns`.
 - **Cron routes:** `src/app/api/cron/github/route.ts` and
   `src/app/api/cron/statistics/route.ts` are called by `.github/workflows/
-  *_cron.yaml` with `GITHUB_JOB_SECRET` / `STATISTICS_JOB_SECRET` auth.
+*_cron.yaml` with `GITHUB_JOB_SECRET` / `STATISTICS_JOB_SECRET` auth.
   Don't remove the auth check.
 
 ## Design tokens / UI

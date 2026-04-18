@@ -35,7 +35,7 @@ const PostCard = async (props: Type) => {
                props.featured ? "relative mt-10 hidden sm:block" : "hidden"
             } mx-3 mb-2`}
          >
-            <h1 className="absolute -left-0.5 -top-8 z-10 rounded-t border border-blue-200/60 bg-blue-50/80 px-4 py-1 text-sm font-medium text-blue-700 dark:border-blue-800/40 dark:bg-blue-950/30 dark:text-blue-300">
+            <h1 className="absolute -top-8 -left-0.5 z-10 rounded-t border border-blue-200/60 bg-blue-50/80 px-4 py-1 text-sm font-medium text-blue-700 dark:border-blue-800/40 dark:bg-blue-950/30 dark:text-blue-300">
                Featured Post
             </h1>
             <div className="flex cursor-pointer items-stretch overflow-hidden rounded-xl border border-border/80 bg-card/60 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:shadow-md">
@@ -54,12 +54,10 @@ const PostCard = async (props: Type) => {
                         <Tags tag={tag} key={index} />
                      ))}
                   </div>
-                  <h1 className="text-section mb-1 mt-1 text-xl font-semibold md:text-2xl">
+                  <h1 className="text-section mt-1 mb-1 text-xl font-semibold md:text-2xl">
                      {props.title}
                   </h1>
-                  <p className="text-muted-foreground">
-                     {props.summary}
-                  </p>
+                  <p className="text-muted-foreground">{props.summary}</p>
                   <h1 className="mt-0.5 text-sm text-muted-foreground">
                      {postMeta}
                   </h1>
@@ -82,16 +80,16 @@ const PostCard = async (props: Type) => {
                className="w-full rounded-t-xl object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             />
             <div className="border-t border-border/80 px-4 py-3">
-               <h2 className="line-clamp-2 h-14 text-lg font-semibold leading-snug tracking-normal sm:text-xl">
+               <h2 className="line-clamp-2 h-14 text-lg leading-snug font-semibold tracking-normal sm:text-xl">
                   {props.title}
                </h2>
-               <p className="mb-3 mt-2 line-clamp-3 text-sm text-muted-foreground">
+               <p className="mt-2 mb-3 line-clamp-3 text-sm text-muted-foreground">
                   {props.summary}
                </p>
                {props.tags.map((tag, index) => (
                   <Tags tag={tag} key={index} />
                ))}
-               <div className="mb-1 mr-1 mt-1 flex items-center">
+               <div className="mt-1 mr-1 mb-1 flex items-center">
                   <span className="text-xs text-muted-foreground">
                      {postMeta}
                   </span>

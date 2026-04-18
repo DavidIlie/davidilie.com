@@ -35,9 +35,13 @@ export const SpotifyClientPage = () => {
                   href={SPOTIFY_ACCOUNT}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-xs font-medium text-green-600 transition-colors hover:bg-green-500/20 dark:text-green-400 sm:text-sm"
+                  className="inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-xs font-medium text-green-600 transition-colors hover:bg-green-500/20 sm:text-sm dark:text-green-400"
                >
-                  <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4" viewBox="0 0 24 24" fill="currentColor">
+                  <svg
+                     className="h-3.5 w-3.5 sm:h-4 sm:w-4"
+                     viewBox="0 0 24 24"
+                     fill="currentColor"
+                  >
                      <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
                   </svg>
                   Spotify
@@ -67,11 +71,11 @@ export const SpotifyClientPage = () => {
          </div>
 
          {/* Currently Playing — full width */}
-         <div
-            className="animate-fade-in-up"
-            style={{ animationDelay: "0.1s" }}
-         >
-            <SectionHeader icon={<Headphones className="h-4 w-4" />} title="Currently Playing" />
+         <div className="animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+            <SectionHeader
+               icon={<Headphones className="h-4 w-4" />}
+               title="Currently Playing"
+            />
             <CurrentlyPlaying />
          </div>
 
@@ -81,12 +85,15 @@ export const SpotifyClientPage = () => {
                className="animate-fade-in-up"
                style={{ animationDelay: "0.15s" }}
             >
-               <SectionHeader icon={<TrendingUp className="h-4 w-4" />} title="Top Genres" />
+               <SectionHeader
+                  icon={<TrendingUp className="h-4 w-4" />}
+                  title="Top Genres"
+               />
                <div className="flex flex-wrap gap-2">
                   {topGenres.map((genre) => (
                      <span
                         key={genre}
-                        className="rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-medium capitalize text-secondary-foreground transition-colors hover:border-brand/30 hover:bg-brand-muted sm:text-sm"
+                        className="rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground capitalize transition-colors hover:border-brand/30 hover:bg-brand-muted sm:text-sm"
                      >
                         {genre}
                      </span>
@@ -96,11 +103,11 @@ export const SpotifyClientPage = () => {
          )}
 
          {/* Top Artists */}
-         <div
-            className="animate-fade-in-up"
-            style={{ animationDelay: "0.2s" }}
-         >
-            <SectionHeader icon={<Users className="h-4 w-4" />} title="Top Artists" />
+         <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+            <SectionHeader
+               icon={<Users className="h-4 w-4" />}
+               title="Top Artists"
+            />
             <div className="grid grid-cols-3 gap-2 sm:gap-3 md:grid-cols-6">
                {data.artists.items.map((s, index) => (
                   <ArtistCard artist={s} rank={index + 1} key={index} />
@@ -114,7 +121,10 @@ export const SpotifyClientPage = () => {
             style={{ animationDelay: "0.3s" }}
          >
             <div>
-               <SectionHeader icon={<TrendingUp className="h-4 w-4" />} title="Top Songs" />
+               <SectionHeader
+                  icon={<TrendingUp className="h-4 w-4" />}
+                  title="Top Songs"
+               />
                <div className="space-y-2.5">
                   {data.songs.items.map((s, index) => (
                      <SongCard
@@ -136,7 +146,10 @@ export const SpotifyClientPage = () => {
                </div>
             </div>
             <div>
-               <SectionHeader icon={<Clock className="h-4 w-4" />} title="Recently Played" />
+               <SectionHeader
+                  icon={<Clock className="h-4 w-4" />}
+                  title="Recently Played"
+               />
                <div className="space-y-2.5">
                   {data.recentlyPlayed.items.map((s, index) => (
                      <SongCard
@@ -160,10 +173,7 @@ export const SpotifyClientPage = () => {
          </div>
 
          {/* Plexo teaser */}
-         <div
-            className="animate-fade-in-up"
-            style={{ animationDelay: "0.4s" }}
-         >
+         <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
             <a
                href="https://plexo.davidhome.ro"
                target="_blank"

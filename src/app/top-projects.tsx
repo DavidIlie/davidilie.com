@@ -5,8 +5,8 @@ import Link from "next/link";
 
 import projects from "~/data/projects";
 
-import { Reveal } from "~/components/reveal";
 import ResponsiveProjectWrapper from "~/components/project/wrapper";
+import { Reveal } from "~/components/reveal";
 import { Button } from "~/components/ui/button";
 
 const TopProject: React.FC = () => (
@@ -17,7 +17,7 @@ const TopProject: React.FC = () => (
                Top Project
             </h1>
          </div>
-         <div className="-mb-6 mt-2 flex justify-center">
+         <div className="mt-2 -mb-6 flex justify-center">
             <Button asChild variant="ghost">
                <Link href="/projects">See all my projects</Link>
             </Button>
