@@ -5,6 +5,7 @@ import * as React from "react";
 import * as runtime from "react/jsx-runtime";
 import Image, { ImageProps } from "next/image";
 import Link from "next/link";
+import { X } from "lucide-react";
 
 import { shimmer } from "~/lib/shimmer";
 
@@ -33,23 +34,95 @@ const CustomLink = (props: any) => {
 };
 
 export const CustomImage = ({ alt = "", ...props }: ImageProps) => {
+   const [open, setOpen] = React.useState(false);
+
+   React.useEffect(() => {
+      if (!open) return;
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      const onKey = (e: KeyboardEvent) => {
+         if (e.key === "Escape") setOpen(false);
+      };
+      window.addEventListener("keydown", onKey);
+      return () => {
+         document.body.style.overflow = prevOverflow;
+         window.removeEventListener("keydown", onKey);
+      };
+   }, [open]);
+
    return (
       <figure className="my-6">
-         <div className="flex justify-center overflow-hidden rounded-xl border border-border/60">
+         <button
+            type="button"
+            onClick={() => setOpen(true)}
+            aria-label={alt ? `Zoom: ${alt}` : "Zoom image"}
+            className="block w-full cursor-zoom-in overflow-hidden rounded-xl border border-border/60 bg-muted/20 transition-opacity duration-200 hover:opacity-95 focus-visible:ring-2 focus-visible:ring-brand focus-visible:outline-none"
+         >
             <Image
                {...props}
                alt={alt}
                placeholder="blur"
                blurDataURL={shimmer(1920, 1080)}
-               style={{ width: "auto", height: "auto", ...props.style }}
+               sizes="(min-width: 1024px) 768px, 100vw"
+               className="h-auto w-full"
+               style={{ width: "100%", height: "auto", ...props.style }}
             />
-         </div>
+         </button>
          {alt && (
             <figcaption className="mt-2 text-center text-sm text-muted-foreground">
                {alt}
             </figcaption>
          )}
+         {open && (
+            <ImageLightbox
+               src={props.src as string}
+               alt={alt}
+               onClose={() => setOpen(false)}
+            />
+         )}
       </figure>
+   );
+};
+
+interface ImageLightboxProps {
+   src: string;
+   alt: string;
+   onClose: () => void;
+}
+
+const ImageLightbox = ({ src, alt, onClose }: ImageLightboxProps) => {
+   return (
+      <div
+         role="dialog"
+         aria-modal="true"
+         aria-label={alt || "Image preview"}
+         onClick={onClose}
+         className="fixed inset-0 z-50 flex items-center justify-center overscroll-contain bg-black/90 p-4 backdrop-blur-sm sm:p-8"
+      >
+         <button
+            type="button"
+            onClick={(e) => {
+               e.stopPropagation();
+               onClose();
+            }}
+            aria-label="Close"
+            className="fixed top-3 right-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/60 text-white backdrop-blur transition-colors duration-200 hover:bg-black/80 sm:top-4 sm:right-4"
+         >
+            <X className="h-5 w-5" />
+         </button>
+         <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative flex h-full max-h-[90vh] w-full max-w-6xl items-center justify-center"
+         >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+               src={src}
+               alt={alt}
+               className="max-h-full max-w-full rounded-lg object-contain shadow-2xl select-none"
+               draggable={false}
+            />
+         </div>
+      </div>
    );
 };
 
