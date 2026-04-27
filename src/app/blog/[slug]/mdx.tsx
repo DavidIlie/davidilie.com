@@ -6,8 +6,12 @@ import * as runtime from "react/jsx-runtime";
 import Image, { ImageProps } from "next/image";
 import Link from "next/link";
 import { X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 
 import { shimmer } from "~/lib/shimmer";
+
+// Emil's ease-out from CLAUDE.md
+const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 // Evaluates build-time compiled MDX from velite (trusted content, not user input)
 const useMDXComponent = (code: string) => {
@@ -73,13 +77,15 @@ export const CustomImage = ({ alt = "", ...props }: ImageProps) => {
                {alt}
             </figcaption>
          )}
-         {open && (
-            <ImageLightbox
-               src={props.src as string}
-               alt={alt}
-               onClose={() => setOpen(false)}
-            />
-         )}
+         <AnimatePresence>
+            {open && (
+               <ImageLightbox
+                  src={props.src as string}
+                  alt={alt}
+                  onClose={() => setOpen(false)}
+               />
+            )}
+         </AnimatePresence>
       </figure>
    );
 };
@@ -92,26 +98,37 @@ interface ImageLightboxProps {
 
 const ImageLightbox = ({ src, alt, onClose }: ImageLightboxProps) => {
    return (
-      <div
+      <motion.div
          role="dialog"
          aria-modal="true"
          aria-label={alt || "Image preview"}
          onClick={onClose}
-         className="fixed inset-0 z-50 flex items-center justify-center overscroll-contain bg-black/90 p-4 backdrop-blur-sm sm:p-8"
+         initial={{ opacity: 0 }}
+         animate={{ opacity: 1 }}
+         exit={{ opacity: 0 }}
+         transition={{ duration: 0.2, ease: EASE_OUT }}
+         className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center overscroll-contain bg-black/90 p-4 backdrop-blur-sm sm:p-8"
       >
-         <button
+         <motion.button
             type="button"
             onClick={(e) => {
                e.stopPropagation();
                onClose();
             }}
             aria-label="Close"
-            className="fixed top-3 right-3 z-10 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/60 text-white backdrop-blur transition-colors duration-200 hover:bg-black/80 sm:top-4 sm:right-4"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.2, ease: EASE_OUT, delay: 0.05 }}
+            className="fixed top-3 right-3 z-10 inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-black/60 text-white backdrop-blur transition-colors duration-200 hover:bg-black/80 sm:top-4 sm:right-4"
          >
             <X className="h-5 w-5" />
-         </button>
-         <div
-            onClick={(e) => e.stopPropagation()}
+         </motion.button>
+         <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.96 }}
+            transition={{ duration: 0.28, ease: EASE_OUT }}
             className="relative flex h-full max-h-[90vh] w-full max-w-6xl items-center justify-center"
          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -121,8 +138,8 @@ const ImageLightbox = ({ src, alt, onClose }: ImageLightboxProps) => {
                className="max-h-full max-w-full rounded-lg object-contain shadow-2xl select-none"
                draggable={false}
             />
-         </div>
-      </div>
+         </motion.div>
+      </motion.div>
    );
 };
 
