@@ -19,7 +19,7 @@ export const HomeHero: React.FC = () => {
    return (
       <section
          aria-labelledby="home-hero-name"
-         className="relative mx-auto w-full max-w-3xl px-6 pt-24 pb-12 sm:pt-32 sm:pb-16"
+         className="relative mx-auto w-full max-w-3xl px-6 pt-28 pb-20 sm:pt-36 sm:pb-28"
       >
          <div
             className="animate-fade-in-up flex items-center gap-4"
@@ -43,16 +43,16 @@ export const HomeHero: React.FC = () => {
                   David Ilie
                   <svg
                      aria-hidden
-                     className="pointer-events-none absolute -bottom-3 left-0 w-full stroke-current text-brand sm:-bottom-4"
+                     className="pointer-events-none absolute -bottom-2 left-1/2 -translate-x-1/2 stroke-current text-brand sm:-bottom-3"
                      xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 265 43"
                      fill="none"
-                     strokeWidth="6"
+                     strokeWidth="7"
                      strokeLinecap="round"
                      strokeLinejoin="round"
                      strokeMiterlimit="10"
                      preserveAspectRatio="none"
-                     style={{ height: "20px" }}
+                     style={{ height: "16px", width: "80%" }}
                   >
                      <path
                         className="animated-underline"

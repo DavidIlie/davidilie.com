@@ -42,7 +42,7 @@ export const Affiliations: React.FC = () => {
    return (
       <section
          aria-labelledby="affiliations-heading"
-         className="mx-auto w-full max-w-3xl px-6 py-10 sm:py-14"
+         className="mx-auto w-full max-w-3xl px-6 py-4 sm:py-6"
       >
          <SectionLabel className="mb-8" number="02">
             <span id="affiliations-heading">Stack &amp; receipts</span>

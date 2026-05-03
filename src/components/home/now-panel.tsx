@@ -148,7 +148,7 @@ export const NowPanel: React.FC<{
    return (
       <section
          aria-labelledby="now-panel-heading"
-         className="mx-auto w-full max-w-3xl px-6 py-10"
+         className="mx-auto w-full max-w-3xl px-6 py-4 sm:py-6"
       >
          <SectionLabel className="mb-5" number="01">
             <span id="now-panel-heading">Right now</span>

@@ -14,7 +14,7 @@ export const Founder: React.FC = () => {
    return (
       <section
          aria-labelledby="founder-heading"
-         className="mx-auto w-full max-w-3xl px-6 py-12"
+         className="mx-auto w-full max-w-3xl px-6 py-4 sm:py-6"
       >
          <SectionLabel className="mb-8" number="03">
             <span id="founder-heading">Hey, I&rsquo;m David</span>

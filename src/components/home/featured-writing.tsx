@@ -43,7 +43,7 @@ export const FeaturedWriting: React.FC = async () => {
    return (
       <section
          aria-labelledby="featured-writing-heading"
-         className="mx-auto w-full max-w-3xl px-6 py-12"
+         className="mx-auto w-full max-w-3xl px-6 py-4 sm:py-6"
       >
          <SectionLabel className="mb-6" number="06">
             <span id="featured-writing-heading">Most-read writing</span>

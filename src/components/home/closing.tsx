@@ -13,7 +13,7 @@ export const Closing: React.FC = () => {
    return (
       <section
          aria-labelledby="closing-heading"
-         className="mx-auto w-full max-w-3xl px-6 py-16 sm:py-20"
+         className="mx-auto w-full max-w-3xl px-6 py-4 pb-24 sm:py-6 sm:pb-32"
       >
          <SectionLabel className="mb-6" number="07">
             <span id="closing-heading">Get in touch</span>

@@ -10,7 +10,7 @@ export const Cadence: React.FC = () => {
    return (
       <section
          aria-labelledby="cadence-heading"
-         className="mx-auto w-full max-w-5xl px-6 py-12"
+         className="mx-auto w-full max-w-5xl px-6 py-4 sm:py-6"
       >
          <SectionLabel className="mb-6" number="05">
             <span id="cadence-heading">Cadence</span>

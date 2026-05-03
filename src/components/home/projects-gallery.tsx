@@ -19,7 +19,7 @@ export const ProjectsGallery: React.FC = () => {
    return (
       <section
          aria-labelledby="ships-heading"
-         className="mx-auto w-full max-w-5xl px-6 py-12"
+         className="mx-auto w-full max-w-5xl px-6 py-4 sm:py-6"
       >
          <SectionLabel className="mb-8" number="04">
             <span id="ships-heading">Recent ships</span>
