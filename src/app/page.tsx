@@ -44,7 +44,6 @@ const Home = async () => {
       <HydrateClient>
          <div className="relative isolate">
             <BranchDecor corner="top-right" />
-            <BranchDecor corner="bottom-left" />
 
             <HomeHero />
 

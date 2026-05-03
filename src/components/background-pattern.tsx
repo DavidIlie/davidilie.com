@@ -1,19 +1,14 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 
 export const BackgroundPattern: React.FC<{
    children: React.ReactNode | React.ReactNode[];
 }> = ({ children }) => {
-   const pathname = usePathname();
-   // Home owns its own decoration via <BranchDecor/>. Skip the floating
-   // triangle/hexagon pattern there so the hero reads cleanly.
-   const showPatterns = pathname !== "/";
    return (
       <div className="pageBackground">
-         {showPatterns ? <Patterns /> : null}
+         <Patterns />
          <div className="flex min-h-screen flex-col">{children}</div>
       </div>
    );
