@@ -74,30 +74,30 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
    return (
       <HydrateClient>
          <section>
-            {post.tags.map((tag, index) => (
-               <Tags tag={tag} key={index} />
-            ))}
-            <h1
-               className="mt-1 text-3xl font-bold text-brand"
-               style={{ textWrap: "balance" }}
-            >
+            <div className="flex flex-wrap">
+               {post.tags.map((tag, index) => (
+                  <Tags tag={tag} key={index} />
+               ))}
+            </div>
+            <h1 className="mt-2 font-display text-3xl leading-[1.1] font-semibold tracking-tight text-balance text-foreground sm:text-4xl">
                {post.title}
             </h1>
-            <div className="mt-2 mb-6 grid grid-cols-[auto_1fr_auto] items-center font-mono text-sm">
-               <div className="rounded-md bg-muted px-2 py-1 tracking-tighter">
+            <div className="mt-4 mb-8 flex items-center gap-3 text-sm text-muted-foreground">
+               <time
+                  dateTime={post.publishedAt}
+                  className="font-mono tracking-tighter tabular-nums"
+               >
                   {post.publishedAt}
-               </div>
-               <div className="mx-2 h-[0.2em] bg-border" />
+               </time>
+               <span aria-hidden className="size-1 rounded-full bg-border" />
                <Suspense
                   fallback={
-                     <div className="font-mono text-sm tracking-tighter text-muted-foreground">
-                        ...
-                     </div>
+                     <span className="font-mono text-sm tracking-tighter text-muted-foreground">
+                        ···
+                     </span>
                   }
                >
-                  <h1 className="font-mono text-sm tracking-tighter text-muted-foreground">
-                     <ViewCounter trackView />
-                  </h1>
+                  <ViewCounter trackView />
                </Suspense>
             </div>
             <Mdx code={post.body} />

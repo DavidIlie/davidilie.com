@@ -5,7 +5,7 @@ import * as React from "react";
 import * as runtime from "react/jsx-runtime";
 import Image, { ImageProps } from "next/image";
 import Link from "next/link";
-import { X } from "lucide-react";
+import { Info, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
 import { shimmer } from "~/lib/shimmer";
@@ -143,16 +143,40 @@ const ImageLightbox = ({ src, alt, onClose }: ImageLightboxProps) => {
    );
 };
 
-const Callout = (props: any) => {
+interface CalloutProps {
+   emoji?: string;
+   italic?: boolean;
+   children: React.ReactNode;
+}
+
+// `emoji` is preserved in MDX for legacy content but no longer rendered —
+// raw emoji glyphs read as decoration, not signal. Italic callouts become
+// pull-quotes; everything else becomes a note card with a single icon.
+const Callout = ({ italic, children }: CalloutProps) => {
+   if (italic) {
+      return (
+         <figure className="not-prose relative my-7 pr-2 pl-10">
+            <span
+               aria-hidden
+               className="pointer-events-none absolute -top-4 left-0 font-display text-[5rem] leading-none text-brand/40 select-none"
+            >
+               &ldquo;
+            </span>
+            <div className="text-[1.0625rem] leading-[1.7] text-foreground/85 italic [&>p]:m-0 [&>p+p]:mt-3">
+               {children}
+            </div>
+         </figure>
+      );
+   }
    return (
-      <div className="my-5 flex items-start gap-3 rounded-xl border border-brand/20 bg-brand-muted/50 px-4 py-3">
-         <span className="mt-0.5 text-lg leading-none">{props.emoji}</span>
-         <div
-            className={`min-w-0 flex-1 text-sm ${props.italic ? "italic" : ""}`}
-         >
-            {props.children}
+      <aside className="not-prose my-6 flex items-start gap-3.5 rounded-xl border border-border bg-secondary/50 px-4 py-3.5">
+         <span className="mt-0.5 inline-grid size-7 flex-shrink-0 place-items-center rounded-md bg-brand/10 text-brand ring-1 ring-brand/20">
+            <Info className="size-3.5" strokeWidth={2.5} aria-hidden />
+         </span>
+         <div className="min-w-0 flex-1 text-[0.95rem] leading-[1.65] text-foreground/90 [&_a]:font-medium [&_a]:text-brand [&_a]:underline-offset-2 hover:[&_a]:underline [&_code]:rounded-md [&_code]:bg-background/70 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:text-[0.875em] [&_code]:font-medium [&>p]:m-0 [&>p+p]:mt-2">
+            {children}
          </div>
-      </div>
+      </aside>
    );
 };
 

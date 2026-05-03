@@ -27,10 +27,10 @@ export default function ViewCounter({ trackView }: { trackView: boolean }) {
    }, [slug, trackView, mutation]);
 
    return (
-      <p className="font-mono text-sm tracking-tighter text-neutral-500">
+      <span className="font-mono text-sm tracking-tighter text-muted-foreground tabular-nums">
          {data
             ? `${views.toLocaleString()} view${views !== 1 ? "s" : ""}`
             : "​"}
-      </p>
+      </span>
    );
 }
