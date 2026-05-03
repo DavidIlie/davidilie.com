@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { blogs } from "#velite";
+import { formatDistanceToNowStrict } from "date-fns";
 import { ArrowRight } from "lucide-react";
 
 import { prisma } from "~/server/db";
@@ -43,29 +44,36 @@ export const FeaturedWriting: React.FC = async () => {
    return (
       <section
          aria-labelledby="featured-writing-heading"
-         className="mx-auto w-full max-w-3xl px-6 py-4 sm:py-6"
+         className="mx-auto w-full max-w-3xl px-6 py-10 sm:py-16"
       >
          <SectionLabel className="mb-6" number="06">
             <span id="featured-writing-heading">Most-read writing</span>
          </SectionLabel>
 
-         <ul className="space-y-1">
-            {ranked.map((post) => (
-               <li key={post.slug}>
-                  <Link
-                     href={`/blog/${post.slug}`}
-                     className="group flex items-baseline gap-3 rounded-md px-1 py-2 transition-colors hover:bg-muted/50"
-                  >
-                     <span className="flex-1 truncate text-base font-medium text-foreground transition-colors group-hover:text-brand sm:text-lg">
-                        {post.title}
-                     </span>
-                     <span aria-hidden className="dotted-leader" />
-                     <span className="tabnum text-xs text-muted-foreground sm:text-sm">
-                        {post.views.toLocaleString("en-US")} views
-                     </span>
-                  </Link>
-               </li>
-            ))}
+         <ul className="space-y-2">
+            {ranked.map((post) => {
+               const ago = formatDistanceToNowStrict(new Date(post.publishedAt), {
+                  addSuffix: true,
+               });
+               return (
+                  <li key={post.slug}>
+                     <Link
+                        href={`/blog/${post.slug}`}
+                        className="group flex flex-col gap-1 rounded-md px-1 py-2 transition-colors hover:bg-muted/50 sm:flex-row sm:items-baseline sm:gap-3"
+                     >
+                        <span className="min-w-0 truncate text-base font-medium text-foreground transition-colors group-hover:text-brand sm:text-lg">
+                           {post.title}
+                        </span>
+                        <span aria-hidden className="dotted-leader hidden sm:block" />
+                        <span className="flex shrink-0 items-center gap-1.5 tabnum text-xs text-muted-foreground sm:gap-2 sm:text-sm">
+                           <span>{ago}</span>
+                           <span aria-hidden className="h-3 w-px bg-border" />
+                           <span>{post.views.toLocaleString("en-US")} views</span>
+                        </span>
+                     </Link>
+                  </li>
+               );
+            })}
          </ul>
 
          <div className="mt-5 flex items-center justify-between text-sm text-muted-foreground">

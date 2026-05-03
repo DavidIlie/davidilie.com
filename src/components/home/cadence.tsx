@@ -10,13 +10,13 @@ export const Cadence: React.FC = () => {
    return (
       <section
          aria-labelledby="cadence-heading"
-         className="mx-auto w-full max-w-5xl px-6 py-4 sm:py-6"
+         className="mx-auto w-full max-w-5xl px-6 py-10 sm:py-16"
       >
          <SectionLabel className="mb-6" number="05">
             <span id="cadence-heading">Cadence</span>
          </SectionLabel>
          <p className="mb-6 max-w-xl text-sm text-muted-foreground">
-            One blue square per push. The only stat that really matters &mdash;
+            One blue square per push. The only stat that really matters,
             updated hourly from GitHub.
          </p>
          <GitHubGraphServer />

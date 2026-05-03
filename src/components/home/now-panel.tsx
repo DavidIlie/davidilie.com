@@ -58,22 +58,33 @@ export const NowPanel: React.FC<{
          key: "location",
          icon: <MapPin className="h-3.5 w-3.5" />,
          label: "Location",
-         value: "Bucharest, RO",
+         value: (
+            <span>
+               <span className="text-foreground">UK</span>
+               <span className="text-muted-foreground"> · Spain · Romania</span>
+            </span>
+         ),
       },
       {
          key: "cluster",
          icon: <Boxes className="h-3.5 w-3.5" />,
          label: "Cluster",
          value: (
-            <Link
-               href="https://github.com/davidilie/davidapps-cluster"
-               target="_blank"
-               rel="noreferrer"
-               className="text-foreground hover:text-brand"
-            >
-               <span className="font-mono">davidapps-cluster</span>
-               <span className="text-muted-foreground"> · talos linux</span>
-            </Link>
+            <span>
+               <Link
+                  href="https://github.com/davidilie/home-cluster"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-mono text-foreground hover:text-brand"
+               >
+                  home-cluster
+               </Link>
+               <span className="text-muted-foreground">
+                  {" · "}
+                  <span className="font-mono">davidapps-cluster</span>
+                  {" (private)"}
+               </span>
+            </span>
          ),
       },
       {
@@ -114,7 +125,7 @@ export const NowPanel: React.FC<{
                <span className="text-muted-foreground"> · github</span>
             </span>
          ) : (
-            <span className="text-muted-foreground">—</span>
+            <span className="text-muted-foreground">-</span>
          ),
          live: Boolean(lastPushLabel),
       },
@@ -126,7 +137,7 @@ export const NowPanel: React.FC<{
             <span className="tabnum">
                {typeof currentStreak === "number" && currentStreak > 0
                   ? `${currentStreak} day${currentStreak === 1 ? "" : "s"}`
-                  : "—"}
+                  : "-"}
             </span>
          ),
       },
@@ -148,7 +159,7 @@ export const NowPanel: React.FC<{
    return (
       <section
          aria-labelledby="now-panel-heading"
-         className="mx-auto w-full max-w-3xl px-6 py-4 sm:py-6"
+         className="mx-auto w-full max-w-3xl px-6 py-10 sm:py-16"
       >
          <SectionLabel className="mb-5" number="01">
             <span id="now-panel-heading">Right now</span>
@@ -173,12 +184,12 @@ export const NowPanel: React.FC<{
                      <span className="flex h-5 w-5 shrink-0 items-center justify-center text-muted-foreground">
                         {row.icon}
                      </span>
-                     <span className="w-24 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase sm:w-28 sm:text-[0.65rem]">
+                     <span className="w-20 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase sm:w-28 sm:text-[0.65rem]">
                         {row.label}
                      </span>
-                     <span aria-hidden className="dotted-leader" />
-                     <span className="ml-auto flex min-w-0 items-center gap-2">
-                        <span className="truncate text-right text-foreground">
+                     <span aria-hidden className="dotted-leader hidden sm:block" />
+                     <span className="ml-auto flex min-w-0 flex-1 items-center justify-end gap-2 sm:flex-none">
+                        <span className="min-w-0 text-right text-foreground sm:truncate">
                            {row.value}
                         </span>
                         {row.live ? (

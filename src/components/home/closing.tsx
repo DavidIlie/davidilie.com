@@ -25,7 +25,7 @@ export const Closing: React.FC = () => {
                and a start date by tomorrow.
             </p>
             <p className="text-muted-foreground">
-               If you want the full freelance pitch &mdash;{" "}
+               If you want the full freelance pitch:{" "}
                <Link
                   href="/developer-portfolio"
                   className="text-foreground underline-offset-4 hover:text-brand hover:underline"

@@ -14,7 +14,7 @@ export const Founder: React.FC = () => {
    return (
       <section
          aria-labelledby="founder-heading"
-         className="mx-auto w-full max-w-3xl px-6 py-4 sm:py-6"
+         className="mx-auto w-full max-w-3xl px-6 py-10 sm:py-16"
       >
          <SectionLabel className="mb-8" number="03">
             <span id="founder-heading">Hey, I&rsquo;m David</span>
@@ -35,35 +35,17 @@ export const Founder: React.FC = () => {
 
             <div className="space-y-5 text-base leading-relaxed text-foreground sm:text-lg">
                <p>
-                  I started shipping at twelve. My first paying client gave me{" "}
-                  <span className="tabnum">$15</span> for a CS:GO frag movie.
-                  The second was a teacher at school who needed a content
-                  management system, so I built one. The pattern stuck.
+                  I&rsquo;ve been curious about how computers work since I was a
+                  kid.
                </p>
                <p className="text-muted-foreground">
-                  I&rsquo;m twenty now. The cluster behind this site is the one
-                  I administer. The editor cutting my videos is the same person
-                  typing this. I&rsquo;d rather build the infrastructure than
-                  pay a vendor for it &mdash; and I&rsquo;d rather edit my own
-                  footage than hand it to someone who&rsquo;s never read a
-                  retention graph.
+                  Took it seriously around fifteen and somewhere along the way
+                  ended up doing a bit of everything: apps, video, a homelab,
+                  agents that help me ship. The breadth wasn&rsquo;t a plan, it
+                  just kept happening. This site is the open notebook, and
+                  whatever I&rsquo;m experimenting with usually lands here
+                  first.
                </p>
-
-               <div className="flex flex-wrap gap-2 pt-2">
-                  {[
-                     "Started at 12",
-                     "20 now",
-                     "Bucharest",
-                     "Edits & ships solo",
-                  ].map((tag) => (
-                     <span
-                        key={tag}
-                        className="inline-flex items-center rounded-full border border-border/60 bg-card/40 px-3 py-1 font-mono text-[0.7rem] tracking-wide text-muted-foreground"
-                     >
-                        {tag}
-                     </span>
-                  ))}
-               </div>
             </div>
          </div>
       </section>

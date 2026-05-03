@@ -13,9 +13,9 @@ export const CurrentlyShipping: React.FC = () => {
    return (
       <section
          aria-labelledby="currently-shipping-heading"
-         className="mx-auto w-full max-w-3xl px-6 py-12"
+         className="mx-auto w-full max-w-3xl px-6 py-10 sm:py-16"
       >
-         <SectionLabel className="mb-6" number="03">
+         <SectionLabel className="mb-6" number="04">
             <span id="currently-shipping-heading">Most recent ship</span>
          </SectionLabel>
 
@@ -25,17 +25,17 @@ export const CurrentlyShipping: React.FC = () => {
             rel="noreferrer"
             className="group block overflow-hidden rounded-2xl border border-border/70 bg-card/40 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/10"
          >
-            <div className="grid gap-0 sm:grid-cols-[1.05fr_1fr]">
-               <div className="relative aspect-[16/10] overflow-hidden bg-muted/30">
+            <div className="flex flex-col">
+               <div className="relative aspect-[16/9] overflow-hidden bg-muted/30">
                   <Image
                      src="/static/zerocut.png"
-                     alt="ZeroCut — donation platform for streamers"
+                     alt="ZeroCut donation platform for streamers"
                      fill
-                     className="object-cover"
-                     sizes="(max-width: 640px) 100vw, 50vw"
+                     className="object-cover object-top"
+                     sizes="(max-width: 768px) 100vw, 768px"
                   />
                </div>
-               <div className="flex flex-col justify-center gap-3 p-6 sm:p-7">
+               <div className="flex flex-col gap-3 p-6 sm:p-7">
                   <div className="flex items-center gap-2 font-mono text-[0.6rem] tracking-[0.2em] text-brand uppercase">
                      <span className="relative flex h-1.5 w-1.5">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />

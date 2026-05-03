@@ -21,7 +21,7 @@ const projects: Project[] = [
    {
       name: "ZeroCut",
       description:
-         "A donation platform for streamers — landing page, Stripe checkout, auth, creator dashboard, and live donation flow. Shipped end-to-end in seven days from empty repo to live URL. Built with Next.js, Prisma, and ClickHouse for event analytics.",
+         "A donation platform for streamers: landing page, Stripe checkout, auth, creator dashboard, and live donation flow. Shipped end-to-end in seven days from empty repo to live URL. Built with Next.js, Prisma, and ClickHouse for event analytics.",
       image: "/static/zerocut.png",
       url: "https://www.zerocut.gg",
       tags: ["Next.js", "Stripe", "ClickHouse", "Shipped in 7d"],
@@ -30,7 +30,7 @@ const projects: Project[] = [
       repo_id: "plexo",
       name: "Plexo",
       description:
-         "A personal media dashboard for your Plex library. Tracks movies, TV shows, watch history, and viewing patterns in one self-hosted interface — built with Next.js, tRPC, shadcn/ui, and Recharts.",
+         "A personal media dashboard for your Plex library. Tracks movies, TV shows, watch history, and viewing patterns in one self-hosted interface, built with Next.js, tRPC, shadcn/ui, and Recharts.",
       image: "/static/plexo.png",
       url: "https://plexo.davidhome.ro",
       tags: ["Next.js", "tRPC", "Self-Hosted", "Plex"],

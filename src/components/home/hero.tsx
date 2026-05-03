@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { ageWord } from "~/lib/age";
 import { shimmer } from "~/lib/shimmer";
 
 import { Socials } from "~/components/socials";
@@ -16,6 +17,7 @@ import MePhoto from "../../../public/static/me.jpeg";
  * inline-logo bio, Max Schmitt's stats row. No scroll-cue arrow.
  */
 export const HomeHero: React.FC = () => {
+   const age = ageWord();
    return (
       <section
          aria-labelledby="home-hero-name"
@@ -43,7 +45,7 @@ export const HomeHero: React.FC = () => {
                   David Ilie
                   <svg
                      aria-hidden
-                     className="pointer-events-none absolute -bottom-2 left-1/2 -translate-x-1/2 stroke-current text-brand sm:-bottom-3"
+                     className="pointer-events-none absolute -bottom-2 left-0 stroke-current text-brand sm:-bottom-3"
                      xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 265 43"
                      fill="none"
@@ -52,7 +54,7 @@ export const HomeHero: React.FC = () => {
                      strokeLinejoin="round"
                      strokeMiterlimit="10"
                      preserveAspectRatio="none"
-                     style={{ height: "16px", width: "80%" }}
+                     style={{ height: "12px", width: "55%" }}
                   >
                      <path
                         className="animated-underline"
@@ -60,39 +62,34 @@ export const HomeHero: React.FC = () => {
                      />
                   </svg>
                </h1>
-               <p className="mt-3 font-mono text-[0.7rem] tracking-[0.18em] text-muted-foreground uppercase">
-                  Programmer &middot; Editor &middot; Operator
+               <p className="mt-4 font-mono text-[0.7rem] tracking-[0.18em] text-muted-foreground uppercase">
+                  Programmer &middot; Editor &middot; Sysadmin
                </p>
             </div>
          </div>
 
          <div
-            className="animate-fade-in-up mt-10 space-y-5 text-lg leading-relaxed text-foreground sm:text-xl"
+            className="animate-fade-in-up mt-12 space-y-5 text-lg leading-relaxed text-foreground sm:text-xl"
             style={{ animationDelay: "120ms" }}
          >
             <p>
-               <span className="font-semibold">I write code, edit videos,</span>{" "}
-               run a Kubernetes homelab, and write my own{" "}
-               <Link
-                  href="https://www.anthropic.com/news/claude-code"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-foreground underline-offset-4 hover:text-brand hover:underline"
-               >
-                  Claude Code
-               </Link>{" "}
-               skills daily.
+               I&rsquo;m an ambitious{" "}
+               <span className="font-semibold">{age}-year-old</span>{" "}
+               software developer and full-time student. Curious about
+               computers since I was a kid, but only started shipping properly
+               a few years ago.
             </p>
             <p className="text-muted-foreground">
-               Twenty years old, six years on this URL, mostly shipping in
-               public. I&rsquo;d rather build the infrastructure than pay a
-               vendor for it &mdash; that includes the cluster behind this site,
-               the editor cutting my videos, and the agents helping me ship.
+               This site is the open notebook: a place to share my{" "}
+               <span className="font-medium text-foreground">experiments</span>,
+               from the Kubernetes cluster running it to the videos I edit and
+               the <span className="text-foreground">AI Skills</span> I write to
+               help me ship faster.
             </p>
          </div>
 
          <div
-            className="animate-fade-in-up mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground"
+            className="animate-fade-in-up mt-10 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-muted-foreground"
             style={{ animationDelay: "240ms" }}
          >
             <Link
@@ -106,15 +103,15 @@ export const HomeHero: React.FC = () => {
                Available for hire
             </Link>
             <span className="hidden h-3 w-px bg-border sm:inline-block" />
-            <span>Bucharest</span>
+            <span>UK &middot; Spain &middot; Romania</span>
             <span className="hidden h-3 w-px bg-border sm:inline-block" />
-            <span>shipping since 2020</span>
+            <span>shipping since 2018</span>
             <span className="hidden h-3 w-px bg-border sm:inline-block" />
             <span className="font-mono text-xs">k8s + next.js + ai</span>
          </div>
 
          <div
-            className="animate-fade-in-up mt-8"
+            className="animate-fade-in-up mt-10"
             style={{ animationDelay: "360ms" }}
          >
             <Socials font="1.25" className="!mt-0 justify-start gap-6" />
