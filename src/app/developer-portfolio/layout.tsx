@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
    title: "Developer Portfolio",
    description:
-      "Your website, live in 7 days. Agencies want 3 months. I'm one person who ships — email Monday, live Sunday, code in your GitHub.",
+      "Your website, live in 7 days. Agencies want 3 months. I'm one person who ships: email Monday, live Sunday, code in your GitHub.",
    keywords: [
       "web developer",
       "Next.js developer",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
       url: "https://davidilie.com/developer-portfolio",
       title: "Your website, live in 7 days | David Ilie",
       description:
-         "Agencies want 3 months. I'm one person who ships — email Monday, live Sunday, repo in your GitHub on day seven.",
+         "Agencies want 3 months. I'm one person who ships: email Monday, live Sunday, repo in your GitHub on day seven.",
       type: "website",
       siteName: "David Ilie",
       locale: "en-US",

@@ -62,7 +62,7 @@ const tiers: Tier[] = [
       tagline: "2 days",
       days: 2,
       title: "Short-form, yesterday.",
-      body: "For when your Reel needs to go up by Friday. Hook in the first frame, aggressive pacing, cuts every second or two. No creative back-and-forth — one pass, it ships.",
+      body: "For when your Reel needs to go up by Friday. Hook in the first frame, aggressive pacing, cuts every second or two. No creative back-and-forth: one pass, it ships.",
       fit: "Shorts, TikToks, Reels · under 90s",
       icon: <Flame className="h-4 w-4" />,
       mood: "from-rose-500/30 via-amber-400/20 to-brand/30",
@@ -650,7 +650,7 @@ export function Turnaround() {
                <div className="mb-3 flex items-center justify-between font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase">
                   <span>Timeline · {active.label.toUpperCase()}</span>
                   <span className="tabular-nums">
-                     00:00 — {Math.floor(active.days * 3)}:00
+                     00:00 → {Math.floor(active.days * 3)}:00
                   </span>
                </div>
 

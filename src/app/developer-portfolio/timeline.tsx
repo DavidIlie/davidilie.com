@@ -278,7 +278,7 @@ const EmailVisual = () => (
             variants={lineItem}
             className="text-xs leading-relaxed text-muted-foreground"
          >
-            Hey David — we need a landing page for our launch.
+            Hey David, we need a landing page for our launch.
          </motion.p>
          <motion.p
             variants={lineItem}

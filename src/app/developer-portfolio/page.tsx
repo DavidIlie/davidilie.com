@@ -48,7 +48,7 @@ const techStack = [
    {
       icon: <DockerIcon className="h-10 w-10" />,
       name: "Docker",
-      desc: "Host on Vercel, Fly, a VPS — same image.",
+      desc: "Host on Vercel, Fly, or a VPS. Same image.",
    },
    {
       icon: (
@@ -94,8 +94,8 @@ const DeveloperPortfolio = () => {
                      </h1>
                      <p className="mb-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
                         Agencies want 3 months and $15K. Upwork freelancers
-                        ghost you. I&apos;m one person who ships &mdash; email
-                        Monday, live Sunday, code in your GitHub.
+                        ghost you. I&apos;m one person who ships: email Monday,
+                        live Sunday, code in your GitHub.
                      </p>
                      <div className="flex flex-col gap-3 sm:flex-row">
                         <Button
@@ -207,7 +207,7 @@ const DeveloperPortfolio = () => {
                   {
                      icon: <Zap className="h-5 w-5" />,
                      title: "Seven days, door to door",
-                     desc: "No discovery phase. No 14-day kickoff call. Brief goes in Monday, site ships by Sunday — or your money back.",
+                     desc: "No discovery phase. No 14-day kickoff call. Brief goes in Monday, site ships by Sunday, or your money back.",
                   },
                   {
                      icon: <Shield className="h-5 w-5" />,
@@ -298,8 +298,7 @@ const DeveloperPortfolio = () => {
                   A week with me, <span className="text-brand">day by day</span>
                </h2>
                <p className="mx-auto max-w-xl text-muted-foreground">
-                  Click a day. Or don&apos;t &mdash; it&apos;ll advance on its
-                  own.
+                  Click a day. Or don&apos;t. It&apos;ll advance on its own.
                </p>
             </div>
             <Timeline />
@@ -337,7 +336,7 @@ const DeveloperPortfolio = () => {
                   </p>
                   <p>
                      If that sounds like your kind of thing, send me an email.
-                     If it doesn&apos;t, no hard feelings &mdash; an agency will
+                     If it doesn&apos;t, no hard feelings. An agency will
                      absolutely love you.
                   </p>
                </div>
@@ -519,7 +518,7 @@ const DeveloperPortfolio = () => {
                   <div className="relative aspect-[16/10] overflow-hidden border-t border-border/60 bg-muted/30 md:border-t-0 md:border-l">
                      <Image
                         src="/static/zerocut.png"
-                        alt="ZeroCut — built in 7 days"
+                        alt="ZeroCut built in 7 days"
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, 50vw"
@@ -541,19 +540,19 @@ const DeveloperPortfolio = () => {
                {[
                   {
                      q: "Seven days, really? What's the catch?",
-                     a: "No catch. I take on one project at a time. My stack is Next.js and Tailwind — I've shipped dozens of sites on it, so most of the week is your project, not me learning. If your scope is genuinely a two-month build, I'll tell you on day one.",
+                     a: "No catch. I take on one project at a time. My stack is Next.js and Tailwind. I've shipped dozens of sites on it, so most of the week is your project, not me learning. If your scope is genuinely a two-month build, I'll tell you on day one.",
                   },
                   {
                      q: "What if I want changes after launch?",
-                     a: "You own the repo, so any developer can pick it up. Most clients send me small change requests for months — I'll quote them per batch. No retainer, no monthly fee.",
+                     a: "You own the repo, so any developer can pick it up. Most clients send me small change requests for months. I'll quote them per batch. No retainer, no monthly fee.",
                   },
                   {
                      q: "Can you work with my designer / my existing Figma?",
-                     a: "Yes. Bring a Figma, a mood board, a Dribbble link, or just three sites you like. If you have nothing, I'll design it too — I've done it both ways.",
+                     a: "Yes. Bring a Figma, a mood board, a Dribbble link, or just three sites you like. If you have nothing, I'll design it too. I've done it both ways.",
                   },
                   {
                      q: "Do you do Shopify / Webflow / Wordpress?",
-                     a: "No. I build custom sites with real code. If your project is Shopify-shaped, an agency is cheaper and better for you — I'll say so.",
+                     a: "No. I build custom sites with real code. If your project is Shopify-shaped, an agency is cheaper and better for you. I'll say so.",
                   },
                   {
                      q: "What if I miss the feedback window and you ship something I hate?",

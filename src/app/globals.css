@@ -22,7 +22,7 @@
    --secondary: hsl(0 0% 96.1%);
    --secondary-foreground: hsl(0 0% 9%);
    --muted: hsl(0 0% 96.1%);
-   --muted-foreground: hsl(0 0% 45.1%);
+   --muted-foreground: hsl(0 0% 32%);
    --accent: hsl(0 0% 96.1%);
    --accent-foreground: hsl(0 0% 9%);
    --destructive: hsl(0 84.2% 60.2%);
@@ -39,9 +39,9 @@
 
    /* 4-tier text hierarchy (Brian Lovin pattern) — used for craft moments */
    --text-primary: hsl(0 0% 9%);
-   --text-secondary: hsl(0 0% 32%);
-   --text-tertiary: hsl(0 0% 50%);
-   --text-quaternary: hsl(0 0% 65%);
+   --text-secondary: hsl(0 0% 22%);
+   --text-tertiary: hsl(0 0% 38%);
+   --text-quaternary: hsl(0 0% 55%);
 
    /* 4pt spacing scale — semantic names, not pixel-named */
    --space-2xs: 0.25rem;
@@ -149,6 +149,15 @@ html {
 
 body {
    position: relative;
+   /* Light mode: subpixel antialiasing keeps text from looking thin/spindly on
+      bright backgrounds. Dark mode flips to grayscale to avoid colour fringing. */
+   -webkit-font-smoothing: subpixel-antialiased;
+   -moz-osx-font-smoothing: auto;
+}
+
+html.dark body {
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
 }
 
 h1,

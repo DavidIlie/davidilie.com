@@ -79,8 +79,8 @@ const EditingPortfolioPage = () => {
                         the video.
                      </li>
                      <li>
-                        B-roll, sound design, pacing &mdash; the parts people
-                        feel but can&apos;t name.
+                        B-roll, sound design, pacing: the parts people feel
+                        but can&apos;t name.
                      </li>
                      <li>
                         Usually under a week. Revisions until you&apos;re happy,
@@ -167,8 +167,7 @@ const EditingPortfolioPage = () => {
                      <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                         A friend&apos;s gaming channel I&apos;ve edited since
                         video one. Same editor, same voice, compounding over
-                        time &mdash; which is the only way a channel actually
-                        grows.
+                        time, which is the only way a channel actually grows.
                      </p>
                      <div className="mb-4 flex flex-wrap gap-2">
                         <Tag>Gaming</Tag>
@@ -203,7 +202,7 @@ const EditingPortfolioPage = () => {
                      </div>
                      <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                         Tech and dev content I script, shoot, and edit alone.
-                        It&apos;s the whole stack in one person &mdash; which is
+                        It&apos;s the whole stack in one person, which is
                         where I learned what a retention graph is actually
                         telling you.
                      </p>
@@ -241,9 +240,8 @@ const EditingPortfolioPage = () => {
                      </div>
                      <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                         Demo video for a Mercedes-Benz retrofitting platform.
-                        Scripted, shot, edited, delivered &mdash; which is the
-                        one-person version of what an agency would bill you $15K
-                        for.
+                        Scripted, shot, edited, delivered. The one-person
+                        version of what an agency would bill you $15K for.
                      </p>
                      <div className="mb-4 flex flex-wrap gap-2">
                         <Tag>Product demo</Tag>
@@ -268,8 +266,8 @@ const EditingPortfolioPage = () => {
                   Pick a <span className="text-brand">turnaround</span>
                </h2>
                <p className="mx-auto max-w-xl text-muted-foreground">
-                  Click a tier. The timeline rebuilds itself &mdash; that&apos;s
-                  roughly how the cut looks at each pace.
+                  Click a tier. The timeline rebuilds itself, roughly the way
+                  the cut looks at each pace.
                </p>
             </div>
             <Turnaround />
@@ -292,7 +290,7 @@ const EditingPortfolioPage = () => {
                   {
                      icon: <Monitor className="h-5 w-5" />,
                      title: "Long-form YouTube",
-                     desc: "Vlogs, tutorials, gaming. Pacing does 80% of the work — I cut the deadweight and sound-design the gaps.",
+                     desc: "Vlogs, tutorials, gaming. Pacing does 80% of the work. I cut the deadweight and sound-design the gaps.",
                   },
                   {
                      icon: <FileText className="h-5 w-5" />,
@@ -376,7 +374,7 @@ const EditingPortfolioPage = () => {
                   <p>
                      I&apos;ve been editing since I was 11. My first client paid
                      me $15 for a CS:GO frag movie. It&apos;s been upwards from
-                     there &mdash; a channel with 2.4M subs, a few friends&apos;
+                     there: a channel with 2.4M subs, a few friends&apos;
                      channels I built alongside them, a Mercedes engineer who
                      needed a product demo.
                   </p>
@@ -390,7 +388,7 @@ const EditingPortfolioPage = () => {
                   <p>
                      If that&apos;s what your channel needs, send the footage.
                      If you just want a competent cut, there are cheaper editors
-                     on Fiverr &mdash; genuinely, no shade.
+                     on Fiverr. Genuinely, no shade.
                   </p>
                </div>
                <div className="mt-6 flex flex-wrap gap-2 text-xs text-muted-foreground">
@@ -422,7 +420,7 @@ const EditingPortfolioPage = () => {
                   },
                   {
                      q: "How many revisions do I get?",
-                     a: "As many as we need to get it right. I'm not running a change-order racket — if the first cut missed the mark, I'll fix it. Within reason: if you ask me to re-structure the entire narrative three times, that's a new project.",
+                     a: "As many as we need to get it right. I'm not running a change-order racket. If the first cut missed the mark, I'll fix it. Within reason: if you ask me to re-structure the entire narrative three times, that's a new project.",
                   },
                   {
                      q: "What do you need from me to start?",
@@ -434,11 +432,11 @@ const EditingPortfolioPage = () => {
                   },
                   {
                      q: "Can I see your raw project files?",
-                     a: "For paid gigs, happy to share the .prproj on handoff. I don't sell tutorials or mentorship — I'd rather just cut your video.",
+                     a: "For paid gigs, happy to share the .prproj on handoff. I don't sell tutorials or mentorship. I'd rather just cut your video.",
                   },
                   {
                      q: "What if my channel is small?",
-                     a: "I worked with Kuhrawn when he had zero subscribers. If the content is good, the size doesn't really matter — I care about whether I'd enjoy cutting it.",
+                     a: "I worked with Kuhrawn when he had zero subscribers. If the content is good, the size doesn't really matter. I care about whether I'd enjoy cutting it.",
                   },
                ].map((faq, i) => (
                   <details
@@ -497,14 +495,13 @@ const EditingPortfolioPage = () => {
                <div className="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
                   <div>
                      <h3 className="mb-3 text-xl font-bold sm:text-2xl">
-                        One more thing &mdash; I also build the websites
+                        One more thing: I also build the websites
                      </h3>
                      <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                         This site is mine. Every line of it. That matters if
-                        you&apos;re editing tech content &mdash; product demos,
-                        SaaS intros, dev tutorials &mdash; because I actually
-                        understand what you&apos;re demoing. Most editors
-                        don&apos;t.
+                        you&apos;re editing tech content (product demos, SaaS
+                        intros, dev tutorials) because I actually understand
+                        what you&apos;re demoing. Most editors don&apos;t.
                      </p>
                      <div className="mb-5 flex flex-wrap gap-2">
                         <Tag>React &amp; Next.js</Tag>
