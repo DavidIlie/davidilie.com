@@ -144,14 +144,12 @@ const ImageLightbox = ({ src, alt, onClose }: ImageLightboxProps) => {
 };
 
 interface CalloutProps {
-   emoji?: string;
    italic?: boolean;
    children: React.ReactNode;
 }
 
-// `emoji` is preserved in MDX for legacy content but no longer rendered —
-// raw emoji glyphs read as decoration, not signal. Italic callouts become
-// pull-quotes; everything else becomes a note card with a single icon.
+// Italic callouts render as pull-quotes; everything else becomes a note
+// card with a single icon.
 const Callout = ({ italic, children }: CalloutProps) => {
    if (italic) {
       return (

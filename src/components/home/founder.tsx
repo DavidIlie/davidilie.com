@@ -6,9 +6,7 @@ import MePhoto from "../../../public/static/me.jpeg";
 import { SectionLabel } from "./section-label";
 
 /**
- * The "Hey, I'm David" beat — marclou's BELONGING moment. Bigger photo,
- * year-anchored origin story, breadth named in plain prose. Replaces the
- * juvenile "I am an ambitious 19-year-old" copy from the legacy /about.
+ * The "Hey, I'm David" beat. Photo + two-paragraph origin story.
  */
 export const Founder: React.FC = () => {
    return (

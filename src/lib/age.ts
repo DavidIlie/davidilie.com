@@ -4,7 +4,7 @@
  */
 const BIRTHDAY = new Date("2006-07-31");
 
-export function getAge(now: Date = new Date()): number {
+function getAge(now: Date = new Date()): number {
    const today = new Date(now);
    const beforeBirthday =
       today <
