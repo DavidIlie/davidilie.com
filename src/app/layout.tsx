@@ -10,6 +10,7 @@ import { ThemeProvider } from "next-themes";
 import { env } from "~/env.mjs";
 
 import { BackgroundPattern } from "~/components/background-pattern";
+import { ConditionalCTA } from "~/components/conditional-cta";
 import Footer from "~/components/footer";
 import NavBar from "~/components/navbar";
 import { TRPCReactProvider } from "~/trpc/react";
@@ -20,12 +21,14 @@ const bricolage = Bricolage_Grotesque({
    subsets: ["latin"],
    variable: "--font-bricolage",
    display: "swap",
+   weight: ["400", "500", "600", "700", "800"],
 });
 
 const figtree = Figtree({
    subsets: ["latin"],
    variable: "--font-figtree",
    display: "swap",
+   weight: ["400", "500", "600", "700"],
 });
 
 const SEO_DESCRIPTION =
@@ -119,6 +122,7 @@ export default async function RootLayout({
                   <BackgroundPattern>
                      <NavBar />
                      <main className="flex flex-1 flex-col">{children}</main>
+                     <ConditionalCTA />
                      <Footer />
                   </BackgroundPattern>
                </ThemeProvider>

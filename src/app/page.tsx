@@ -3,13 +3,13 @@ import { Suspense } from "react";
 import { Affiliations } from "~/components/home/affiliations";
 import { BranchDecor } from "~/components/home/branch-decor";
 import { Cadence } from "~/components/home/cadence";
-import { Closing } from "~/components/home/closing";
+import { CurrentlyShipping } from "~/components/home/currently-shipping";
 import { DottedSeparator } from "~/components/home/dotted-separator";
 import { FeaturedWriting } from "~/components/home/featured-writing";
 import { Founder } from "~/components/home/founder";
 import { HomeHero } from "~/components/home/hero";
+import { FadeUpInView } from "~/components/home/motion-in-view";
 import { NowPanel } from "~/components/home/now-panel";
-import { ProjectsGallery } from "~/components/home/projects-gallery";
 import { fetchContributions } from "~/server/github-contributions";
 import { api, HydrateClient } from "~/trpc/server";
 
@@ -52,29 +52,35 @@ const Home = async () => {
 
             <DottedSeparator />
 
-            <Affiliations />
+            <FadeUpInView>
+               <Affiliations />
+            </FadeUpInView>
 
             <DottedSeparator />
 
-            <Founder />
+            <FadeUpInView>
+               <Founder />
+            </FadeUpInView>
 
             <DottedSeparator />
 
-            <ProjectsGallery />
+            <FadeUpInView>
+               <CurrentlyShipping />
+            </FadeUpInView>
 
             <DottedSeparator />
 
-            <Cadence />
+            <FadeUpInView>
+               <Cadence />
+            </FadeUpInView>
 
             <DottedSeparator />
 
-            <Suspense fallback={<FeaturedWritingFallback />}>
-               <FeaturedWriting />
-            </Suspense>
-
-            <DottedSeparator />
-
-            <Closing />
+            <FadeUpInView>
+               <Suspense fallback={<FeaturedWritingFallback />}>
+                  <FeaturedWriting />
+               </Suspense>
+            </FadeUpInView>
          </div>
       </HydrateClient>
    );
