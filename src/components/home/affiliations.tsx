@@ -12,6 +12,7 @@ import { SectionLabel } from "./section-label";
 const KIND_ORDER: AffiliationKind[] = [
    "running-on",
    "built-with",
+   "editing-in",
    "authored",
    "shipping",
 ];

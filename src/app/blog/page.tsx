@@ -3,6 +3,7 @@ import { blogs, type Blog } from "#velite";
 
 import { env } from "~/env.mjs";
 
+import { prisma } from "~/server/db";
 import { api, HydrateClient } from "~/trpc/server";
 import PostCard from "./post-card";
 
@@ -18,12 +19,24 @@ const Page = async () => {
 
    const featuredPost = posts[0] as Blog;
 
+   // Total reads across all posts — honest social-proof line under the title.
+   let totalViews = 0;
+   try {
+      const rows = await prisma.post.findMany({
+         where: { slug: { in: posts.map((p) => p.slug) } },
+         select: { views: true },
+      });
+      totalViews = rows.reduce((sum, r) => sum + r.views, 0);
+   } catch (err) {
+      console.error("blog index: failed to read total views", err);
+   }
+
    return (
       <HydrateClient>
          <div className="flex flex-grow items-center justify-center">
-            <div className="container mx-auto mt-32 mb-12 max-w-4xl">
+            <div className="container mx-auto mt-24 mb-12 max-w-4xl px-6 sm:mt-32">
                <div className="flex flex-col items-center gap-3 text-center">
-                  <span className="inline-flex items-center gap-2 text-[0.7rem] font-medium tracking-[0.18em] text-muted-foreground uppercase">
+                  <span className="inline-flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.2em] text-muted-foreground uppercase">
                      <span
                         aria-hidden
                         className="h-px w-6 bg-gradient-to-r from-transparent to-border"
@@ -38,10 +51,26 @@ const Page = async () => {
                      The David Ones
                   </h1>
                   <p className="mt-1 max-w-2xl px-2 text-muted-foreground md:text-lg">
-                     I&apos;ve been writing blog posts since 2020, mostly about
-                     my random technologic encounters during my day-to-day life.
-                     Currently there are {posts.length} blog post
-                     {posts.length > 1 && "s"}.
+                     Blog posts since 2020, mostly about whatever broke last
+                     week or whichever rabbit hole I fell into.
+                     {posts.length > 0 && (
+                        <>
+                           {" "}
+                           <span className="tabnum text-foreground/80">
+                              {posts.length} posts
+                           </span>
+                           {totalViews > 0 && (
+                              <>
+                                 {" "}
+                                 &middot;{" "}
+                                 <span className="tabnum text-foreground/80">
+                                    {totalViews.toLocaleString("en-US")} reads
+                                 </span>
+                              </>
+                           )}
+                           .
+                        </>
+                     )}
                   </p>
                </div>
                <PostCard {...featuredPost} featured />

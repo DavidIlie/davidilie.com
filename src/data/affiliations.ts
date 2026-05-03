@@ -9,6 +9,7 @@
 export type AffiliationKind =
    | "running-on"
    | "built-with"
+   | "editing-in"
    | "authored"
    | "shipping";
 
@@ -21,6 +22,7 @@ export type Affiliation = {
 export const AFFILIATION_LABELS: Record<AffiliationKind, string> = {
    "running-on": "Running on",
    "built-with": "Built with",
+   "editing-in": "Editing in",
    authored: "Authored",
    shipping: "Currently shipping",
 };
@@ -37,12 +39,18 @@ export const affiliations: Affiliation[] = [
    { kind: "running-on", label: "Postgres" },
    { kind: "running-on", label: "Prometheus" },
 
-   // Built with — primary day-to-day stack
+   // Built with — primary code stack
    { kind: "built-with", label: "Next.js" },
    { kind: "built-with", label: "TypeScript" },
    { kind: "built-with", label: "Tailwind" },
    { kind: "built-with", label: "tRPC" },
    { kind: "built-with", label: "Prisma" },
+
+   // Editing in — yes the same person edits the videos
+   { kind: "editing-in", label: "Premiere Pro" },
+   { kind: "editing-in", label: "After Effects" },
+   { kind: "editing-in", label: "Photoshop" },
+   { kind: "editing-in", label: "Illustrator" },
 
    // Authored — original work
    {

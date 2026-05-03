@@ -2,12 +2,14 @@ import { Suspense } from "react";
 
 import { Affiliations } from "~/components/home/affiliations";
 import { BranchDecor } from "~/components/home/branch-decor";
+import { Cadence } from "~/components/home/cadence";
 import { Closing } from "~/components/home/closing";
-import { CurrentlyShipping } from "~/components/home/currently-shipping";
 import { DottedSeparator } from "~/components/home/dotted-separator";
 import { FeaturedWriting } from "~/components/home/featured-writing";
+import { Founder } from "~/components/home/founder";
 import { HomeHero } from "~/components/home/hero";
 import { NowPanel } from "~/components/home/now-panel";
+import { ProjectsGallery } from "~/components/home/projects-gallery";
 import { fetchContributions } from "~/server/github-contributions";
 import { api, HydrateClient } from "~/trpc/server";
 
@@ -54,7 +56,15 @@ const Home = async () => {
 
             <DottedSeparator />
 
-            <CurrentlyShipping />
+            <Founder />
+
+            <DottedSeparator />
+
+            <ProjectsGallery />
+
+            <DottedSeparator />
+
+            <Cadence />
 
             <DottedSeparator />
 

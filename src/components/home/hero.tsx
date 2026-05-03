@@ -43,15 +43,16 @@ export const HomeHero: React.FC = () => {
                   David Ilie
                   <svg
                      aria-hidden
-                     className="pointer-events-none absolute -bottom-3 -left-1 stroke-current text-brand sm:-bottom-4"
+                     className="pointer-events-none absolute -bottom-3 left-0 w-full stroke-current text-brand sm:-bottom-4"
                      xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 265 43"
                      fill="none"
-                     strokeWidth="5px"
+                     strokeWidth="6"
                      strokeLinecap="round"
                      strokeLinejoin="round"
                      strokeMiterlimit="10"
-                     style={{ height: "22px", width: "calc(100% + 18px)" }}
+                     preserveAspectRatio="none"
+                     style={{ height: "20px" }}
                   >
                      <path
                         className="animated-underline"
@@ -60,7 +61,7 @@ export const HomeHero: React.FC = () => {
                   </svg>
                </h1>
                <p className="mt-3 font-mono text-[0.7rem] tracking-[0.18em] text-muted-foreground uppercase">
-                  Backend &middot; Infra &middot; AI
+                  Programmer &middot; Editor &middot; Operator
                </p>
             </div>
          </div>
@@ -70,14 +71,8 @@ export const HomeHero: React.FC = () => {
             style={{ animationDelay: "120ms" }}
          >
             <p>
-               <span className="font-semibold">
-                  I run my own Kubernetes cluster
-               </span>{" "}
-               and build full products on top of it. Six years on this URL,
-               mostly in public.
-            </p>
-            <p className="text-muted-foreground">
-               Backend and infrastructure engineer in Bucharest. I write my own{" "}
+               <span className="font-semibold">I write code, edit videos,</span>{" "}
+               run a Kubernetes homelab, and write my own{" "}
                <Link
                   href="https://www.anthropic.com/news/claude-code"
                   target="_blank"
@@ -86,8 +81,13 @@ export const HomeHero: React.FC = () => {
                >
                   Claude Code
                </Link>{" "}
-               skills daily and would rather build infrastructure than pay a
-               vendor for it.
+               skills daily.
+            </p>
+            <p className="text-muted-foreground">
+               Twenty years old, six years on this URL, mostly shipping in
+               public. I&rsquo;d rather build the infrastructure than pay a
+               vendor for it &mdash; that includes the cluster behind this site,
+               the editor cutting my videos, and the agents helping me ship.
             </p>
          </div>
 

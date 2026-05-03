@@ -210,11 +210,12 @@ const SectionHeader = ({
    title: string;
 }) => {
    return (
-      <div className="mb-4 flex items-center gap-2 text-left">
+      <div className="mb-4 flex items-baseline gap-3">
          <span className="text-muted-foreground">{icon}</span>
-         <h2 className="text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+         <h2 className="font-mono text-[0.65rem] tracking-[0.2em] text-muted-foreground uppercase">
             {title}
          </h2>
+         <span aria-hidden className="dotted-leader" />
       </div>
    );
 };
