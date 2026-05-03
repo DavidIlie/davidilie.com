@@ -73,6 +73,7 @@ const Patterns = React.memo(() => {
                icon="hexa"
                width={48}
                stroke
+               hiddenMobile
                left="60%"
                top="70%"
                isDark={isDark}
@@ -92,6 +93,7 @@ const Patterns = React.memo(() => {
                icon="triangle"
                width={12}
                stroke
+               hiddenMobile
                left="90%"
                top="50%"
                isDark={isDark}

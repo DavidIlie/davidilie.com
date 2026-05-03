@@ -145,12 +145,10 @@
 
 html {
    background-color: var(--background);
-   overflow-x: clip;
 }
 
 body {
    position: relative;
-   overflow-x: clip;
    /* Light mode: subpixel antialiasing keeps text from looking thin/spindly on
       bright backgrounds. Dark mode flips to grayscale to avoid colour fringing. */
    -webkit-font-smoothing: subpixel-antialiased;
