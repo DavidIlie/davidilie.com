@@ -52,9 +52,12 @@ export const FeaturedWriting: React.FC = async () => {
 
          <ul className="space-y-2">
             {ranked.map((post) => {
-               const ago = formatDistanceToNowStrict(new Date(post.publishedAt), {
-                  addSuffix: true,
-               });
+               const ago = formatDistanceToNowStrict(
+                  new Date(post.publishedAt),
+                  {
+                     addSuffix: true,
+                  },
+               );
                return (
                   <li key={post.slug}>
                      <Link
@@ -64,11 +67,16 @@ export const FeaturedWriting: React.FC = async () => {
                         <span className="min-w-0 truncate text-base font-medium text-foreground transition-colors group-hover:text-brand sm:text-lg">
                            {post.title}
                         </span>
-                        <span aria-hidden className="dotted-leader hidden sm:block" />
-                        <span className="flex shrink-0 items-center gap-1.5 tabnum text-xs text-muted-foreground sm:gap-2 sm:text-sm">
+                        <span
+                           aria-hidden
+                           className="dotted-leader hidden sm:block"
+                        />
+                        <span className="tabnum flex shrink-0 items-center gap-1.5 text-xs text-muted-foreground sm:gap-2 sm:text-sm">
                            <span>{ago}</span>
                            <span aria-hidden className="h-3 w-px bg-border" />
-                           <span>{post.views.toLocaleString("en-US")} views</span>
+                           <span>
+                              {post.views.toLocaleString("en-US")} views
+                           </span>
                         </span>
                      </Link>
                   </li>

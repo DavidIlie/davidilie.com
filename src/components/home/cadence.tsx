@@ -16,8 +16,8 @@ export const Cadence: React.FC = () => {
             <span id="cadence-heading">Cadence</span>
          </SectionLabel>
          <p className="mb-6 max-w-xl text-sm text-muted-foreground">
-            One blue square per push. The only stat that really matters,
-            updated hourly from GitHub.
+            One blue square per push. The only stat that really matters, updated
+            hourly from GitHub.
          </p>
          <GitHubGraphServer />
       </section>

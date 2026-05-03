@@ -187,7 +187,10 @@ export const NowPanel: React.FC<{
                      <span className="w-20 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase sm:w-28 sm:text-[0.65rem]">
                         {row.label}
                      </span>
-                     <span aria-hidden className="dotted-leader hidden sm:block" />
+                     <span
+                        aria-hidden
+                        className="dotted-leader hidden sm:block"
+                     />
                      <span className="ml-auto flex min-w-0 flex-1 items-center justify-end gap-2 sm:flex-none">
                         <span className="min-w-0 text-right text-foreground sm:truncate">
                            {row.value}

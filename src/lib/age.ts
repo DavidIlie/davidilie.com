@@ -8,12 +8,10 @@ function getAge(now: Date = new Date()): number {
    const today = new Date(now);
    const beforeBirthday =
       today <
-      new Date(
-         today.getFullYear(),
-         BIRTHDAY.getMonth(),
-         BIRTHDAY.getDate(),
-      );
-   return today.getFullYear() - BIRTHDAY.getFullYear() - (beforeBirthday ? 1 : 0);
+      new Date(today.getFullYear(), BIRTHDAY.getMonth(), BIRTHDAY.getDate());
+   return (
+      today.getFullYear() - BIRTHDAY.getFullYear() - (beforeBirthday ? 1 : 0)
+   );
 }
 
 const SPELLED: Record<number, string> = {

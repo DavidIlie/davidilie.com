@@ -72,8 +72,8 @@ const Page = async () => {
                One blue square per push
             </h2>
             <p className="mb-6 max-w-xl text-sm text-muted-foreground">
-               The repo list is the what. This is the cadence, pulled live
-               from GitHub, updated hourly.
+               The repo list is the what. This is the cadence, pulled live from
+               GitHub, updated hourly.
             </p>
             <GitHubGraphServer />
          </section>

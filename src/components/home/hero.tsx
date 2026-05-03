@@ -74,10 +74,9 @@ export const HomeHero: React.FC = () => {
          >
             <p>
                I&rsquo;m an ambitious{" "}
-               <span className="font-semibold">{age}-year-old</span>{" "}
-               software developer and full-time student. Curious about
-               computers since I was a kid, but only started shipping properly
-               a few years ago.
+               <span className="font-semibold">{age}-year-old</span> software
+               developer and full-time student. Curious about computers since I
+               was a kid, but only started shipping properly a few years ago.
             </p>
             <p className="text-muted-foreground">
                This site is the open notebook: a place to share my{" "}
