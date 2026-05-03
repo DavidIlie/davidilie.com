@@ -10,7 +10,6 @@ import { ThemeProvider } from "next-themes";
 import { env } from "~/env.mjs";
 
 import { BackgroundPattern } from "~/components/background-pattern";
-import { CallToAction } from "~/components/call-to-action";
 import Footer from "~/components/footer";
 import NavBar from "~/components/navbar";
 import { TRPCReactProvider } from "~/trpc/react";
@@ -120,7 +119,6 @@ export default async function RootLayout({
                   <BackgroundPattern>
                      <NavBar />
                      <main className="flex flex-1 flex-col">{children}</main>
-                     <CallToAction />
                      <Footer />
                   </BackgroundPattern>
                </ThemeProvider>
