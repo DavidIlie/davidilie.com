@@ -145,10 +145,12 @@
 
 html {
    background-color: var(--background);
+   overflow-x: clip;
 }
 
 body {
    position: relative;
+   overflow-x: clip;
    /* Light mode: subpixel antialiasing keeps text from looking thin/spindly on
       bright backgrounds. Dark mode flips to grayscale to avoid colour fringing. */
    -webkit-font-smoothing: subpixel-antialiased;
@@ -269,6 +271,39 @@ html.dark .pageBackground {
 .animate-fade-in-up {
    animation: fadeInUp 0.5s ease-out forwards;
    opacity: 0;
+}
+
+/* Mobile nav overlay — full-screen drawer w/ staggered items.
+   Curve: Emil's strong ease-out. Duration under 300ms. */
+@keyframes navSheetIn {
+   from {
+      opacity: 0;
+      transform: translateY(-8px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+@keyframes navItemIn {
+   from {
+      opacity: 0;
+      transform: translateY(10px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+.nav-sheet {
+   animation: navSheetIn 220ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.nav-item {
+   opacity: 0;
+   animation: navItemIn 280ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
 
 /* GitHub README rendering */

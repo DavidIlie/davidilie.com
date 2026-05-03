@@ -79,8 +79,8 @@ const EditingPortfolioPage = () => {
                         the video.
                      </li>
                      <li>
-                        B-roll, sound design, pacing: the parts people feel
-                        but can&apos;t name.
+                        B-roll, sound design, pacing: the parts people feel but
+                        can&apos;t name.
                      </li>
                      <li>
                         Usually under a week. Revisions until you&apos;re happy,
@@ -202,9 +202,9 @@ const EditingPortfolioPage = () => {
                      </div>
                      <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
                         Tech and dev content I script, shoot, and edit alone.
-                        It&apos;s the whole stack in one person, which is
-                        where I learned what a retention graph is actually
-                        telling you.
+                        It&apos;s the whole stack in one person, which is where
+                        I learned what a retention graph is actually telling
+                        you.
                      </p>
                      <div className="mb-4 flex flex-wrap gap-2">
                         <Tag>Tech</Tag>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { formatDistance } from "date-fns";
 import { Clock, Headphones, Monitor, TrendingUp, Users } from "lucide-react";
 
@@ -10,8 +10,12 @@ import ArtistCard from "./components/artist-card";
 import CurrentlyPlaying from "./components/currently-playing";
 import SongCard from "./components/song-card";
 
+const MOBILE_LIMIT = 6;
+
 export const SpotifyClientPage = () => {
    const [data] = api.spotify.data.useSuspenseQuery();
+   const [songsExpanded, setSongsExpanded] = useState(false);
+   const [recentExpanded, setRecentExpanded] = useState(false);
 
    const topGenres = useMemo(() => {
       const genreCount: Record<string, number> = {};
@@ -126,24 +130,36 @@ export const SpotifyClientPage = () => {
                   title="Top Songs"
                />
                <div className="space-y-2.5">
-                  {data.songs.items.map((s, index) => (
-                     <SongCard
-                        key={index}
-                        rank={index + 1}
-                        song={{
-                           name: s.name,
-                           album: {
-                              image: s.album.images[0].url,
-                              name: s.album.name,
-                           },
-                           artist: {
-                              name: s.artists[0].name,
-                           },
-                           url: s.external_urls.spotify,
-                        }}
-                     />
-                  ))}
+                  {data.songs.items
+                     .slice(
+                        0,
+                        songsExpanded ? data.songs.items.length : MOBILE_LIMIT,
+                     )
+                     .map((s, index) => (
+                        <SongCard
+                           key={index}
+                           rank={index + 1}
+                           song={{
+                              name: s.name,
+                              album: {
+                                 image: s.album.images[0].url,
+                                 name: s.album.name,
+                              },
+                              artist: {
+                                 name: s.artists[0].name,
+                              },
+                              url: s.external_urls.spotify,
+                           }}
+                        />
+                     ))}
                </div>
+               {data.songs.items.length > MOBILE_LIMIT && (
+                  <ShowMoreButton
+                     expanded={songsExpanded}
+                     onToggle={() => setSongsExpanded((v) => !v)}
+                     remaining={data.songs.items.length - MOBILE_LIMIT}
+                  />
+               )}
             </div>
             <div>
                <SectionHeader
@@ -151,24 +167,38 @@ export const SpotifyClientPage = () => {
                   title="Recently Played"
                />
                <div className="space-y-2.5">
-                  {data.recentlyPlayed.items.map((s, index) => (
-                     <SongCard
-                        key={index}
-                        song={{
-                           name: s.track.name,
-                           album: {
-                              image: s.track.album.images[0].url,
-                              name: s.track.album.name,
-                           },
-                           artist: {
-                              name: s.track.artists[0].name,
-                           },
-                           url: s.track.external_urls.spotify,
-                           date: s.played_at,
-                        }}
-                     />
-                  ))}
+                  {data.recentlyPlayed.items
+                     .slice(
+                        0,
+                        recentExpanded
+                           ? data.recentlyPlayed.items.length
+                           : MOBILE_LIMIT,
+                     )
+                     .map((s, index) => (
+                        <SongCard
+                           key={index}
+                           song={{
+                              name: s.track.name,
+                              album: {
+                                 image: s.track.album.images[0].url,
+                                 name: s.track.album.name,
+                              },
+                              artist: {
+                                 name: s.track.artists[0].name,
+                              },
+                              url: s.track.external_urls.spotify,
+                              date: s.played_at,
+                           }}
+                        />
+                     ))}
                </div>
+               {data.recentlyPlayed.items.length > MOBILE_LIMIT && (
+                  <ShowMoreButton
+                     expanded={recentExpanded}
+                     onToggle={() => setRecentExpanded((v) => !v)}
+                     remaining={data.recentlyPlayed.items.length - MOBILE_LIMIT}
+                  />
+               )}
             </div>
          </div>
 
@@ -217,5 +247,25 @@ const SectionHeader = ({
          </h2>
          <span aria-hidden className="dotted-leader" />
       </div>
+   );
+};
+
+const ShowMoreButton = ({
+   expanded,
+   onToggle,
+   remaining,
+}: {
+   expanded: boolean;
+   onToggle: () => void;
+   remaining: number;
+}) => {
+   return (
+      <button
+         type="button"
+         onClick={onToggle}
+         className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl border border-dashed border-border/80 bg-card/30 px-4 py-2.5 font-mono text-[0.65rem] tracking-[0.2em] text-muted-foreground uppercase transition-colors hover:border-border hover:bg-card/60 hover:text-foreground active:scale-[0.99]"
+      >
+         {expanded ? "Show less" : `Show ${remaining} more`}
+      </button>
    );
 };

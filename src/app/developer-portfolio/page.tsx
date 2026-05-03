@@ -74,7 +74,7 @@ const DeveloperPortfolio = () => {
    return (
       <div className="mb-16">
          {/* Hero */}
-         <section className="relative flex min-h-[85vh] items-center overflow-hidden">
+         <section className="relative flex min-h-[60vh] items-center overflow-hidden md:min-h-[85vh]">
             <div className="mx-auto mt-24 max-w-6xl px-4 sm:mt-0">
                <div className="grid items-center gap-12 lg:grid-cols-2">
                   <div className="animate-fade-in-up">
