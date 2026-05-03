@@ -155,16 +155,16 @@ interface CalloutProps {
 const Callout = ({ italic, children }: CalloutProps) => {
    if (italic) {
       return (
-         <figure className="not-prose relative my-7 pr-2 pl-10">
+         <figure className="not-prose relative my-8 pl-10 sm:pl-12">
             <span
                aria-hidden
-               className="pointer-events-none absolute -top-4 left-0 font-display text-[5rem] leading-none text-brand/40 select-none"
+               className="pointer-events-none absolute -top-2 left-0 font-display text-[5.5rem] leading-none text-foreground/15 select-none"
             >
                &ldquo;
             </span>
-            <div className="text-[1.0625rem] leading-[1.7] text-foreground/85 italic [&>p]:m-0 [&>p+p]:mt-3">
+            <blockquote className="m-0 border-0 bg-transparent p-0 text-[1.0625rem] leading-[1.65] text-foreground/85 italic [&>p]:m-0 [&>p+p]:mt-3">
                {children}
-            </div>
+            </blockquote>
          </figure>
       );
    }
