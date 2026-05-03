@@ -16,8 +16,6 @@ export type Affiliation = {
    kind: AffiliationKind;
    label: string;
    href?: string;
-   /** Optional emoji or single-character glyph — used when no logo is wired. */
-   glyph?: string;
 };
 
 export const AFFILIATION_LABELS: Record<AffiliationKind, string> = {
@@ -33,40 +31,36 @@ export const affiliations: Affiliation[] = [
       kind: "running-on",
       label: "Kubernetes",
       href: "https://github.com/davidilie/davidapps-cluster",
-      glyph: "k8s",
    },
-   { kind: "running-on", label: "Talos Linux", glyph: "talos" },
-   { kind: "running-on", label: "Cilium", glyph: "cilium" },
-   { kind: "running-on", label: "Postgres", glyph: "pg" },
-   { kind: "running-on", label: "Prometheus", glyph: "prom" },
+   { kind: "running-on", label: "Talos Linux" },
+   { kind: "running-on", label: "Cilium" },
+   { kind: "running-on", label: "Postgres" },
+   { kind: "running-on", label: "Prometheus" },
 
    // Built with — primary day-to-day stack
-   { kind: "built-with", label: "Next.js", glyph: "next" },
-   { kind: "built-with", label: "TypeScript", glyph: "ts" },
-   { kind: "built-with", label: "Tailwind", glyph: "tw" },
-   { kind: "built-with", label: "tRPC", glyph: "trpc" },
-   { kind: "built-with", label: "Prisma", glyph: "prisma" },
+   { kind: "built-with", label: "Next.js" },
+   { kind: "built-with", label: "TypeScript" },
+   { kind: "built-with", label: "Tailwind" },
+   { kind: "built-with", label: "tRPC" },
+   { kind: "built-with", label: "Prisma" },
 
    // Authored — original work
    {
       kind: "authored",
       label: "ZeroCut",
       href: "https://www.zerocut.gg",
-      glyph: "zc",
    },
    {
       kind: "authored",
       label: "Plexo",
       href: "https://plexo.davidhome.ro",
-      glyph: "plx",
    },
-   { kind: "authored", label: "Caveman Code Review skill", glyph: "skill" },
-   { kind: "authored", label: "davidapps-cluster", glyph: "cluster" },
+   { kind: "authored", label: "Caveman Code Review skill" },
+   { kind: "authored", label: "davidapps-cluster" },
 
    // Currently shipping — what's getting commits this week
    {
       kind: "shipping",
       label: "davidilie.com 2026",
-      glyph: "site",
    },
 ];

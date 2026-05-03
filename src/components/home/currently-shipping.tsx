@@ -16,7 +16,7 @@ export const CurrentlyShipping: React.FC = () => {
          className="mx-auto w-full max-w-3xl px-6 py-12"
       >
          <SectionLabel className="mb-6" number="03">
-            <span id="currently-shipping-heading">Currently shipping</span>
+            <span id="currently-shipping-heading">Most recent ship</span>
          </SectionLabel>
 
          <Link

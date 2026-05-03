@@ -32,6 +32,12 @@ const Home = async () => {
    const contributions = await fetchContributions();
    const currentStreak = contributions?.currentStreak;
 
+   // Latest non-zero contribution day = effective "last push" date.
+   const lastPushAt = contributions?.weeks
+      .flatMap((w) => w.days)
+      .filter((d) => d.count > 0)
+      .at(-1)?.date;
+
    return (
       <HydrateClient>
          <div className="relative isolate">
@@ -40,7 +46,7 @@ const Home = async () => {
 
             <HomeHero />
 
-            <NowPanel currentStreak={currentStreak} />
+            <NowPanel currentStreak={currentStreak} lastPushAt={lastPushAt} />
 
             <DottedSeparator />
 

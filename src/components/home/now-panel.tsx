@@ -2,7 +2,16 @@
 
 import React from "react";
 import Link from "next/link";
-import { Cpu, Headphones, Pause, Sparkles, Wifi } from "lucide-react";
+import { formatDistanceToNowStrict } from "date-fns";
+import {
+   Boxes,
+   Flame,
+   GitCommit,
+   Headphones,
+   MapPin,
+   Pause,
+   Server,
+} from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 
 import { api } from "~/trpc/react";
@@ -11,46 +20,64 @@ import { SectionLabel } from "./section-label";
 const ease = [0.23, 1, 0.32, 1] as const;
 
 type Row = {
+   key: string;
    icon: React.ReactNode;
    label: string;
    value: React.ReactNode;
-   href?: string;
    live?: boolean;
 };
 
 /**
- * Live status panel — the flagship redesign feature.
+ * Live status panel.
  *
- * Six rows of micro-data: location, what's playing, last push, recent
- * agent run, current streak, cluster status. Each row has an icon, a
- * mono label, a value, and (where applicable) a pulsing live dot.
+ * Six rows of micro-data: location, cluster, what's playing, last push,
+ * current streak, deploy target. Every row resolves to real data — no
+ * hardcoded "fake live" values. The flame and headphones live-dots only
+ * appear when the underlying state is genuinely live.
  *
- * Where data is hardcoded for v1: cluster, agent run. Documented in the
- * proposal as season-2 work tied to a public read-only metrics endpoint
- * on the homelab cluster.
+ * Pattern adapted from jhey.dev (pixel-mono live panel) for an infra-AI
+ * engineer.
  */
 export const NowPanel: React.FC<{
    currentStreak?: number;
-}> = ({ currentStreak }) => {
+   /** ISO date string of the most recent contribution day. */
+   lastPushAt?: string;
+}> = ({ currentStreak, lastPushAt }) => {
    const reduceMotion = useReducedMotion();
    const playing = api.spotify.playingStateAndSong.useQuery(undefined, {
       staleTime: 60_000,
       refetchInterval: 60_000,
    }).data;
 
+   const lastPushLabel = lastPushAt
+      ? formatDistanceToNowStrict(new Date(lastPushAt), { addSuffix: true })
+      : null;
+
    const rows: Row[] = [
       {
-         icon: <span aria-hidden>📍</span>,
+         key: "location",
+         icon: <MapPin className="h-3.5 w-3.5" />,
          label: "Location",
          value: "Bucharest, RO",
       },
       {
-         icon: <Cpu className="h-3.5 w-3.5" />,
+         key: "cluster",
+         icon: <Boxes className="h-3.5 w-3.5" />,
          label: "Cluster",
-         value: "5 pods · 0 alerts",
-         live: true,
+         value: (
+            <Link
+               href="https://github.com/davidilie/davidapps-cluster"
+               target="_blank"
+               rel="noreferrer"
+               className="text-foreground hover:text-brand"
+            >
+               <span className="font-mono">davidapps-cluster</span>
+               <span className="text-muted-foreground"> · talos linux</span>
+            </Link>
+         ),
       },
       {
+         key: "now-playing",
          icon: playing?.isPlaying ? (
             <Headphones className="h-3.5 w-3.5" />
          ) : (
@@ -78,29 +105,35 @@ export const NowPanel: React.FC<{
          live: playing?.isPlaying,
       },
       {
-         icon: <Sparkles className="h-3.5 w-3.5" />,
-         label: "Last skill run",
-         value: (
+         key: "last-push",
+         icon: <GitCommit className="h-3.5 w-3.5" />,
+         label: "Last push",
+         value: lastPushLabel ? (
             <span>
-               <span className="font-mono">caveman-review</span>
-               <span className="text-muted-foreground"> · 6m ago</span>
+               <span className="text-foreground">{lastPushLabel}</span>
+               <span className="text-muted-foreground"> · github</span>
             </span>
+         ) : (
+            <span className="text-muted-foreground">—</span>
          ),
+         live: Boolean(lastPushLabel),
       },
       {
-         icon: <span aria-hidden>🔥</span>,
+         key: "streak",
+         icon: <Flame className="h-3.5 w-3.5" />,
          label: "Current streak",
          value: (
             <span className="tabnum">
-               {typeof currentStreak === "number"
+               {typeof currentStreak === "number" && currentStreak > 0
                   ? `${currentStreak} day${currentStreak === 1 ? "" : "s"}`
                   : "—"}
             </span>
          ),
       },
       {
-         icon: <Wifi className="h-3.5 w-3.5" />,
-         label: "Site",
+         key: "site",
+         icon: <Server className="h-3.5 w-3.5" />,
+         label: "This site",
          value: (
             <span>
                <span className="font-mono">version6</span>
@@ -124,7 +157,7 @@ export const NowPanel: React.FC<{
             <ul className="divide-y divide-border/60">
                {rows.map((row, i) => (
                   <motion.li
-                     key={row.label}
+                     key={row.key}
                      initial={
                         reduceMotion ? { opacity: 1 } : { opacity: 0, y: 6 }
                      }
@@ -140,19 +173,21 @@ export const NowPanel: React.FC<{
                      <span className="flex h-5 w-5 shrink-0 items-center justify-center text-muted-foreground">
                         {row.icon}
                      </span>
-                     <span className="w-32 shrink-0 font-mono text-[0.65rem] tracking-[0.18em] text-muted-foreground uppercase">
+                     <span className="w-24 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase sm:w-28 sm:text-[0.65rem]">
                         {row.label}
                      </span>
                      <span aria-hidden className="dotted-leader" />
-                     <span className="ml-auto truncate text-right text-foreground">
-                        {row.value}
-                     </span>
-                     {row.live ? (
-                        <span className="relative ml-2 flex h-1.5 w-1.5 shrink-0">
-                           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
-                           <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
+                     <span className="ml-auto flex min-w-0 items-center gap-2">
+                        <span className="truncate text-right text-foreground">
+                           {row.value}
                         </span>
-                     ) : null}
+                        {row.live ? (
+                           <span className="relative flex h-1.5 w-1.5 shrink-0">
+                              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
+                              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
+                           </span>
+                        ) : null}
+                     </span>
                   </motion.li>
                ))}
             </ul>

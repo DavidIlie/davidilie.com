@@ -23,10 +23,15 @@ export const BranchDecor: React.FC<{
          aria-hidden
          viewBox="0 0 320 320"
          className={cn(
-            "pointer-events-none absolute h-[260px] w-[260px] text-brand opacity-[0.07] sm:h-[360px] sm:w-[360px] dark:opacity-[0.12]",
+            "pointer-events-none absolute h-[260px] w-[260px] text-brand opacity-[var(--branch-decor-opacity)] sm:h-[360px] sm:w-[360px]",
             positionClass,
             className,
          )}
+         style={
+            {
+               "--branch-decor-opacity": "0.07",
+            } as React.CSSProperties
+         }
          fill="none"
          stroke="currentColor"
          strokeWidth="1"
