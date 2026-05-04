@@ -16,11 +16,24 @@ import {
    PhotoshopIcon,
    PremiereIcon,
 } from "~/components/ui/icons";
+import { api } from "~/trpc/react";
 import ChiefPatLogo from "../../../public/static/chief-pat-logo.jpg";
 import Header from "./header";
 import { Turnaround } from "./turnaround";
 
+const formatCount = (n: number): string => {
+   if (n >= 1_000_000)
+      return `${(n / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
+   if (n >= 1_000) return `${(n / 1_000).toFixed(1).replace(/\.0$/, "")}K`;
+   return `${n}`;
+};
+
 const EditingPortfolioPage = () => {
+   const ytStats = api.cron.statistics.useQuery(undefined, {
+      staleTime: 60 * 60_000,
+   }).data;
+   const viewsLabel = ytStats ? `${formatCount(ytStats.views)}+` : "10K+";
+
    return (
       <>
          <Header />
@@ -30,7 +43,7 @@ const EditingPortfolioPage = () => {
             <div className="animate-fade-in-up grid gap-px overflow-hidden rounded-2xl border border-border/80 bg-border/60 sm:grid-cols-4">
                <Stat value="7+" label="years editing" />
                <Stat value="2.4M" label="subs on biggest channel" />
-               <Stat value="10K+" label="views on my own videos" />
+               <Stat value={viewsLabel} label="views on my own videos" />
                <Stat value="< 7d" label="typical turnaround" />
             </div>
          </div>
@@ -196,8 +209,14 @@ const EditingPortfolioPage = () => {
                         <h3 className="text-xl font-bold sm:text-2xl">
                            My own channel
                         </h3>
-                        <span className="rounded-full border border-border bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground">
-                           10K+ views
+                        <span className="inline-flex items-center gap-1 rounded-full border border-border bg-secondary px-2.5 py-0.5 text-xs font-medium text-secondary-foreground">
+                           <span className="relative flex h-1.5 w-1.5">
+                              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
+                              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
+                           </span>
+                           {ytStats
+                              ? `${formatCount(ytStats.views)} views`
+                              : "10K+ views"}
                         </span>
                      </div>
                      <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
@@ -206,10 +225,26 @@ const EditingPortfolioPage = () => {
                         I learned what a retention graph is actually telling
                         you.
                      </p>
+                     <dl className="mb-4 grid grid-cols-3 gap-2 rounded-xl border border-border/80 bg-card/40 p-3 text-center">
+                        <ChannelStat
+                           value={
+                              ytStats ? formatCount(ytStats.subscribers) : "—"
+                           }
+                           label="subs"
+                        />
+                        <ChannelStat
+                           value={ytStats ? formatCount(ytStats.views) : "—"}
+                           label="views"
+                        />
+                        <ChannelStat
+                           value={ytStats ? `${ytStats.videos}` : "—"}
+                           label="videos"
+                        />
+                     </dl>
                      <div className="mb-4 flex flex-wrap gap-2">
                         <Tag>Tech</Tag>
                         <Tag>Solo production</Tag>
-                        <Tag>10K+ views</Tag>
+                        <Tag>YouTube live</Tag>
                      </div>
                      <Button asChild variant="outline" size="sm">
                         <ExternalLink url="https://www.youtube.com/@davidilie">
@@ -536,6 +571,17 @@ const Stat = ({ value, label }: { value: string; label: string }) => (
       <div className="mt-1 text-xs text-muted-foreground sm:text-sm">
          {label}
       </div>
+   </div>
+);
+
+const ChannelStat = ({ value, label }: { value: string; label: string }) => (
+   <div>
+      <dt className="text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase">
+         {label}
+      </dt>
+      <dd className="tabnum font-mono text-base font-semibold text-foreground">
+         {value}
+      </dd>
    </div>
 );
 

@@ -9,6 +9,7 @@ import {
    GitCommit,
    Headphones,
    MapPin,
+   MonitorPlay,
    Pause,
    Server,
 } from "lucide-react";
@@ -48,10 +49,20 @@ export const NowPanel: React.FC<{
       staleTime: 60_000,
       refetchInterval: 60_000,
    }).data;
+   const ytStats = api.cron.statistics.useQuery(undefined, {
+      staleTime: 60 * 60_000,
+   }).data;
 
    const lastPushLabel = lastPushAt
       ? formatDistanceToNowStrict(new Date(lastPushAt), { addSuffix: true })
       : null;
+
+   const formatCount = (n: number): string => {
+      if (n >= 1_000_000)
+         return `${(n / 1_000_000).toFixed(1).replace(/\.0$/, "")}M`;
+      if (n >= 1_000) return `${(n / 1_000).toFixed(1).replace(/\.0$/, "")}K`;
+      return `${n}`;
+   };
 
    const rows: Row[] = [
       {
@@ -139,6 +150,32 @@ export const NowPanel: React.FC<{
                   ? `${currentStreak} day${currentStreak === 1 ? "" : "s"}`
                   : "-"}
             </span>
+         ),
+      },
+      {
+         key: "youtube",
+         icon: <MonitorPlay className="h-3.5 w-3.5" />,
+         label: "YouTube",
+         value: ytStats ? (
+            <Link
+               href="https://www.youtube.com/@davidilie"
+               target="_blank"
+               rel="noreferrer"
+               className="text-foreground hover:text-brand"
+            >
+               <span className="tabnum">
+                  {formatCount(ytStats.subscribers)}
+               </span>
+               <span className="text-muted-foreground">
+                  {" subs · "}
+                  <span className="tabnum">{formatCount(ytStats.views)}</span>
+                  {" views · "}
+                  <span className="tabnum">{ytStats.videos}</span>
+                  {" videos"}
+               </span>
+            </Link>
+         ) : (
+            <span className="text-muted-foreground">-</span>
          ),
       },
       {

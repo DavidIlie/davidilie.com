@@ -30,6 +30,7 @@ const FeaturedWritingFallback = () => (
 
 const Home = async () => {
    void api.spotify.playingStateAndSong.prefetch();
+   void api.cron.statistics.prefetch();
 
    const contributions = await fetchContributions();
    const currentStreak = contributions?.currentStreak;
