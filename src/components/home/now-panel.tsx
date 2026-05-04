@@ -24,6 +24,7 @@ type Row = {
    key: string;
    icon: React.ReactNode;
    label: string;
+   labelHref?: string;
    value: React.ReactNode;
    live?: boolean;
 };
@@ -156,6 +157,7 @@ export const NowPanel: React.FC<{
          key: "youtube",
          icon: <MonitorPlay className="h-3.5 w-3.5" />,
          label: "YouTube",
+         labelHref: "https://www.youtube.com/@davidilie",
          value: ytStats ? (
             <Link
                href="https://www.youtube.com/@davidilie"
@@ -182,13 +184,19 @@ export const NowPanel: React.FC<{
          key: "site",
          icon: <Server className="h-3.5 w-3.5" />,
          label: "This site",
+         labelHref: "https://github.com/davidilie/davidilie.com",
          value: (
-            <span>
+            <Link
+               href="https://github.com/davidilie/davidilie.com"
+               target="_blank"
+               rel="noreferrer"
+               className="text-foreground hover:text-brand"
+            >
                <span className="font-mono">version6</span>
                <span className="text-muted-foreground">
                   {" · "}docker → ghcr → k8s
                </span>
-            </span>
+            </Link>
          ),
       },
    ];
@@ -221,9 +229,20 @@ export const NowPanel: React.FC<{
                      <span className="flex h-5 w-5 shrink-0 items-center justify-center text-muted-foreground">
                         {row.icon}
                      </span>
-                     <span className="w-20 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase sm:w-28 sm:text-[0.65rem]">
-                        {row.label}
-                     </span>
+                     {row.labelHref ? (
+                        <Link
+                           href={row.labelHref}
+                           target="_blank"
+                           rel="noreferrer"
+                           className="w-20 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase transition-colors hover:text-brand sm:w-28 sm:text-[0.65rem]"
+                        >
+                           {row.label}
+                        </Link>
+                     ) : (
+                        <span className="w-20 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase sm:w-28 sm:text-[0.65rem]">
+                           {row.label}
+                        </span>
+                     )}
                      <span
                         aria-hidden
                         className="dotted-leader hidden sm:block"
