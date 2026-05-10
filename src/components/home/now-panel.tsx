@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { formatDistanceToNowStrict } from "date-fns";
 import {
@@ -15,8 +16,102 @@ import {
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 
+import {
+   HoverCard,
+   HoverCardContent,
+   HoverCardTrigger,
+} from "~/components/ui/hover-card";
 import { api } from "~/trpc/react";
 import { SectionLabel } from "./section-label";
+
+const fmtTime = (ms: number): string => {
+   const total = Math.max(0, Math.floor(ms / 1000));
+   const m = Math.floor(total / 60);
+   const s = total % 60;
+   return `${m}:${s.toString().padStart(2, "0")}`;
+};
+
+const NowPlayingHoverCard: React.FC<{
+   title: string;
+   artist?: string;
+   album?: string;
+   albumImageUrl?: string;
+   progressMs?: number;
+   durationMs?: number;
+   fetchedAt?: number;
+}> = ({
+   title,
+   artist,
+   album,
+   albumImageUrl,
+   progressMs = 0,
+   durationMs = 0,
+   fetchedAt,
+}) => {
+   const [now, setNow] = React.useState(() => Date.now());
+   React.useEffect(() => {
+      const id = setInterval(() => setNow(Date.now()), 1000);
+      return () => clearInterval(id);
+   }, []);
+
+   const elapsed =
+      fetchedAt && durationMs
+         ? Math.min(durationMs, progressMs + (now - fetchedAt))
+         : progressMs;
+   const pct = durationMs ? Math.min(100, (elapsed / durationMs) * 100) : 0;
+
+   return (
+      <div>
+         <div className="flex gap-3">
+            {albumImageUrl ? (
+               <Image
+                  src={albumImageUrl}
+                  alt={album ?? ""}
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 shrink-0 rounded-md object-cover ring-1 ring-border/60"
+               />
+            ) : null}
+            <div className="flex min-w-0 flex-1 flex-col justify-center">
+               <span className="truncate text-sm font-medium text-foreground">
+                  {title}
+               </span>
+               {artist ? (
+                  <span className="truncate text-xs text-muted-foreground">
+                     {artist}
+                  </span>
+               ) : null}
+               {album ? (
+                  <span className="mt-1 truncate font-mono text-[0.6rem] tracking-[0.14em] text-muted-foreground/80 uppercase">
+                     {album}
+                  </span>
+               ) : null}
+            </div>
+         </div>
+         {durationMs ? (
+            <div className="mt-3">
+               <div
+                  className="h-1 w-full overflow-hidden rounded-full bg-border/60"
+                  role="progressbar"
+                  aria-valuenow={Math.round(pct)}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+               >
+                  <motion.div
+                     className="h-full rounded-full bg-brand"
+                     animate={{ width: `${pct}%` }}
+                     transition={{ ease: "linear", duration: 0.9 }}
+                  />
+               </div>
+               <div className="tabnum mt-1.5 flex justify-between font-mono text-[0.6rem] text-muted-foreground">
+                  <span>{fmtTime(elapsed)}</span>
+                  <span>{fmtTime(durationMs)}</span>
+               </div>
+            </div>
+         ) : null}
+      </div>
+   );
+};
 
 const ease = [0.23, 1, 0.32, 1] as const;
 
@@ -108,20 +203,35 @@ export const NowPanel: React.FC<{
          ),
          label: "Now playing",
          value: playing?.isPlaying ? (
-            <Link
-               href={playing.songUrl ?? "#"}
-               target="_blank"
-               rel="noreferrer"
-               className="text-foreground hover:text-brand"
-            >
-               {playing.title}
-               {playing.artist ? (
-                  <span className="text-muted-foreground">
-                     {" "}
-                     · {playing.artist}
-                  </span>
-               ) : null}
-            </Link>
+            <HoverCard openDelay={120} closeDelay={80}>
+               <HoverCardTrigger asChild>
+                  <Link
+                     href={playing.songUrl ?? "#"}
+                     target="_blank"
+                     rel="noreferrer"
+                     className="text-foreground hover:text-brand"
+                  >
+                     {playing.title}
+                     {playing.artist ? (
+                        <span className="text-muted-foreground">
+                           {" "}
+                           · {playing.artist}
+                        </span>
+                     ) : null}
+                  </Link>
+               </HoverCardTrigger>
+               <HoverCardContent side="top" align="end">
+                  <NowPlayingHoverCard
+                     title={playing.title ?? ""}
+                     artist={playing.artist}
+                     album={playing.album}
+                     albumImageUrl={playing.albumImageUrl}
+                     progressMs={playing.progressMs}
+                     durationMs={playing.durationMs}
+                     fetchedAt={playing.fetchedAt}
+                  />
+               </HoverCardContent>
+            </HoverCard>
          ) : (
             <span className="text-muted-foreground">silent right now</span>
          ),

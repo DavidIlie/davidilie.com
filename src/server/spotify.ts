@@ -126,6 +126,9 @@ export const getPlayingStateAndSong = async (): Promise<{
    isPlaying: boolean;
    songUrl?: string;
    title?: string;
+   progressMs?: number;
+   durationMs?: number;
+   fetchedAt?: number;
 }> => {
    try {
       const response = await getNowPlaying();
@@ -144,6 +147,12 @@ export const getPlayingStateAndSong = async (): Promise<{
       const album = song.item.album.name;
       const albumImageUrl = song.item.album.images[0].url;
       const songUrl = song.item.external_urls.spotify;
+      const progressMs =
+         typeof song.progress_ms === "number" ? song.progress_ms : undefined;
+      const durationMs =
+         typeof song.item.duration_ms === "number"
+            ? song.item.duration_ms
+            : undefined;
 
       return {
          album,
@@ -152,6 +161,9 @@ export const getPlayingStateAndSong = async (): Promise<{
          isPlaying,
          songUrl,
          title,
+         progressMs,
+         durationMs,
+         fetchedAt: Date.now(),
       };
    } catch (_error) {
       return { isPlaying: false };
