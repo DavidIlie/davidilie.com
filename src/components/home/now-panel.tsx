@@ -99,6 +99,7 @@ const NowPlayingHoverCard: React.FC<{
                >
                   <motion.div
                      className="h-full rounded-full bg-brand"
+                     initial={false}
                      animate={{ width: `${pct}%` }}
                      transition={{ ease: "linear", duration: 0.9 }}
                   />
