@@ -371,11 +371,12 @@ const DeveloperPortfolio = () => {
             <div className="grid gap-6 md:grid-cols-3">
                <PricingCard
                   title="Landing page"
-                  price="$499"
+                  price="$499*"
                   subtitle="one-time"
                   description="For showing up on Google, looking legit, and converting clicks."
                   features={[
                      "Up to 5 pages",
+                     "Frontend polish + responsive UI",
                      "Responsive, fast, SEO-ready",
                      "Contact form wired up",
                      "Analytics + basic tracking",
@@ -387,11 +388,12 @@ const DeveloperPortfolio = () => {
                />
                <PricingCard
                   title="Web app"
-                  price="$1,499"
+                  price="$1,499*"
                   subtitle="one-time"
                   description="A real product: auth, database, an admin, the whole thing."
                   features={[
                      "Everything in landing page",
+                     "Frontend skills included",
                      "User accounts + auth",
                      "Database + hosting configured",
                      "Admin dashboard",
@@ -405,10 +407,11 @@ const DeveloperPortfolio = () => {
                />
                <PricingCard
                   title="Something weirder"
-                  price="Let's talk"
+                  price="Let's talk*"
                   description="Scraping, integrations, AI features, migrations, anything off-menu."
                   features={[
                      "Custom feature work",
+                     "Frontend fixes + interface polish",
                      "Third-party integrations",
                      "AI / LLM features",
                      "Migrations + rescue projects",
@@ -687,6 +690,9 @@ const PricingCard = ({
             </li>
          ))}
       </ul>
+      <p className="mb-5 text-xs leading-relaxed text-muted-foreground">
+         * Standard pricing. Final pricing depends on project complexity.
+      </p>
       <Button
          asChild
          className={`w-full ${
