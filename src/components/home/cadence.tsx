@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { GitHubGraphServer } from "~/components/github-graph-server";
 import { SectionLabel } from "./section-label";
 
@@ -17,7 +19,16 @@ export const Cadence: React.FC = () => {
          </SectionLabel>
          <p className="mb-6 max-w-xl text-sm text-muted-foreground">
             One blue square per push. The only stat that really matters, updated
-            hourly from GitHub.
+            hourly from{" "}
+            <Link
+               href="https://github.com/davidilie"
+               target="_blank"
+               rel="noreferrer"
+               className="text-foreground transition-colors hover:text-brand"
+            >
+               GitHub
+            </Link>
+            .
          </p>
          <GitHubGraphServer />
       </section>
