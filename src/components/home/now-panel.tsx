@@ -250,7 +250,15 @@ export const NowPanel: React.FC<{
          value: lastPushLabel ? (
             <span>
                <span className="text-foreground">{lastPushLabel}</span>
-               <span className="text-muted-foreground"> · github</span>
+               <span className="text-muted-foreground"> · </span>
+               <Link
+                  href="https://github.com/davidilie"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-muted-foreground hover:text-brand"
+               >
+                  github
+               </Link>
             </span>
          ) : (
             <span className="text-muted-foreground">-</span>
