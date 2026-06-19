@@ -2,8 +2,8 @@ name: github_cron:update
 
 on:
    schedule:
-      # 3x/day during daytime hours (UTC): 08:00, 14:00, 20:00
-      - cron: "0 8,14,20 * * *"
+      # Hourly, on the hour (UTC).
+      - cron: "0 * * * *"
 
 jobs:
    execute:
