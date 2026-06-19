@@ -1,15 +1,19 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { blogs, type Blog } from "#velite";
 
 import { env } from "~/env.mjs";
+import { buildMetadata } from "~/lib/metadata";
 
 import { prisma } from "~/server/db";
 import { api, HydrateClient } from "~/trpc/server";
 import PostCard from "./post-card";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
    title: "Blog",
-};
+   description:
+      "Blog posts since 2020, mostly about whatever broke last week or whichever rabbit hole I fell into.",
+   path: "/blog",
+});
 
 const Page = async () => {
    void api.spotify.playingStateAndSong.prefetch();

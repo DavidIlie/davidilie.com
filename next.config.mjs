@@ -1,7 +1,13 @@
 import "./src/env.mjs";
 
-// Build velite content (works with Turbopack)
-const isDev = process.argv.includes("dev");
+// Build velite content (works with Turbopack).
+// Next 16 no longer puts the "dev" verb in `process.argv` for the long-lived
+// dev server, so the old `process.argv.includes("dev")` check was always false
+// and the watcher never started — content edits never regenerated `.velite`.
+// The reliable signal in Next 16 is `NODE_ENV` (development on `next dev`,
+// production on `next build`/`next start`). `build` stays argv-based so a plain
+// `next start` doesn't trigger an unnecessary rebuild of already-built content.
+const isDev = process.env.NODE_ENV === "development";
 const isBuild = process.argv.includes("build");
 if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
    process.env.VELITE_STARTED = "1";

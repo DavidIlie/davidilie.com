@@ -271,6 +271,89 @@ html.dark .pageBackground {
    opacity: 0;
 }
 
+/* Birthday celebration — full-page rain of confetti + emoji.
+   Each piece falls from above the viewport, drifts sideways, and spins.
+   Per-piece randomness comes through CSS vars set inline. */
+@keyframes confetti-fall {
+   0% {
+      transform: translate3d(0, -12vh, 0) rotate(0deg);
+      opacity: 0;
+   }
+   8% {
+      opacity: 1;
+   }
+   85% {
+      opacity: 1;
+   }
+   100% {
+      transform: translate3d(var(--drift, 0px), 112vh, 0) rotate(var(--spin, 360deg));
+      opacity: 0;
+   }
+}
+
+.confetti-piece {
+   position: absolute;
+   top: 0;
+   will-change: transform, opacity;
+   animation-name: confetti-fall;
+   animation-timing-function: linear;
+   animation-fill-mode: both;
+}
+
+/* Card that drops down from above into the center, sharpens from a blur,
+   holds briefly, then lifts back up out of view as the rain takes over. */
+@keyframes birthday-reveal {
+   0% {
+      opacity: 0;
+      transform: translateY(-72px) scale(0.92);
+      filter: blur(10px);
+   }
+   24% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+   }
+   72% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+   }
+   100% {
+      opacity: 0;
+      transform: translateY(-40px) scale(0.97);
+      filter: blur(6px);
+   }
+}
+
+.birthday-reveal {
+   animation: birthday-reveal 2.3s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes birthday-reveal-rm {
+   0% {
+      opacity: 0;
+   }
+   12% {
+      opacity: 1;
+   }
+   80% {
+      opacity: 1;
+   }
+   100% {
+      opacity: 0;
+   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+   .confetti-piece {
+      animation: none !important;
+      display: none !important;
+   }
+   .birthday-reveal {
+      animation: birthday-reveal-rm 4s ease forwards;
+   }
+}
+
 /* Mobile nav overlay — full-screen drawer w/ staggered items.
    Curve: Emil's strong ease-out. Duration under 300ms. */
 @keyframes navSheetIn {

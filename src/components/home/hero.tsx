@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ageWord } from "~/lib/age";
 import { shimmer } from "~/lib/shimmer";
 
-import { AgeBadge } from "~/components/home/age-badge";
+import { AgeBadge } from "~/components/home/birthday";
 import { Socials } from "~/components/socials";
 import MePhoto from "../../../public/static/me.jpeg";
 

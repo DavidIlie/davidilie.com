@@ -35,6 +35,14 @@ export function ageWord(now: Date = new Date()): string {
    return wordForNumber(getAge(now));
 }
 
+/** True when `now` falls on the birthday (month + day match, any year). */
+export function isBirthday(now: Date = new Date()): boolean {
+   return (
+      now.getMonth() === BIRTHDAY.getMonth() &&
+      now.getDate() === BIRTHDAY.getDate()
+   );
+}
+
 /** Midnight of the next birthday relative to `now` (year rolls forward). */
 export function nextBirthday(now: Date = new Date()): Date {
    const candidate = new Date(

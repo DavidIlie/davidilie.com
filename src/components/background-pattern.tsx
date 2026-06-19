@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@wrksz/themes/client";
 
 export const BackgroundPattern: React.FC<{
    children: React.ReactNode | React.ReactNode[];

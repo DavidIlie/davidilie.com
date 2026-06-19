@@ -1,6 +1,6 @@
 import React from "react";
+import { useTheme } from "@wrksz/themes/client";
 import { MoonIcon, SunIcon } from "lucide-react";
-import { useTheme } from "next-themes";
 
 import {
    DropdownMenu,

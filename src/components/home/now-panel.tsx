@@ -142,13 +142,18 @@ export const NowPanel: React.FC<{
    lastPushAt?: string;
 }> = ({ currentStreak, lastPushAt }) => {
    const reduceMotion = useReducedMotion();
-   const playing = api.spotify.playingStateAndSong.useQuery(undefined, {
-      staleTime: 60_000,
-      refetchInterval: 60_000,
-   }).data;
-   const ytStats = api.cron.statistics.useQuery(undefined, {
+
+   // Both queries are server-prefetched (see page.tsx) and streamed to the
+   // client. useSuspenseQuery makes the server suspend until the data resolves
+   // and stream the finished markup, so server HTML and client render match —
+   // no hydration mismatch. Requires a <Suspense> boundary around <NowPanel>.
+   const [playing] = api.spotify.playingStateAndSong.useSuspenseQuery(
+      undefined,
+      { staleTime: 60_000, refetchInterval: 60_000 },
+   );
+   const [ytStats] = api.cron.statistics.useSuspenseQuery(undefined, {
       staleTime: 60 * 60_000,
-   }).data;
+   });
 
    const lastPushLabel = lastPushAt
       ? formatDistanceToNowStrict(new Date(lastPushAt), { addSuffix: true })
@@ -376,3 +381,29 @@ export const NowPanel: React.FC<{
       </section>
    );
 };
+
+/** Skeleton shown by the <Suspense> boundary while NowPanel's data streams in. */
+export const NowPanelFallback: React.FC = () => (
+   <section
+      aria-labelledby="now-panel-heading"
+      className="mx-auto w-full max-w-3xl px-6 py-10 sm:py-16"
+   >
+      <SectionLabel className="mb-5" number="01">
+         <span id="now-panel-heading">Right now</span>
+      </SectionLabel>
+      <div className="overflow-hidden rounded-2xl border border-border/70 bg-card/40 backdrop-blur-xs">
+         <ul className="divide-y divide-border/60">
+            {Array.from({ length: 7 }).map((_, i) => (
+               <li
+                  key={i}
+                  className="flex items-center gap-3 px-4 py-3 sm:px-5"
+               >
+                  <span className="h-5 w-5 shrink-0 animate-pulse rounded bg-muted/60" />
+                  <span className="h-3 w-20 shrink-0 animate-pulse rounded bg-muted/60 sm:w-28" />
+                  <span className="ml-auto h-3 w-28 animate-pulse rounded bg-muted/60" />
+               </li>
+            ))}
+         </ul>
+      </div>
+   </section>
+);

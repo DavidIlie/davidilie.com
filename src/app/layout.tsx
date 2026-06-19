@@ -4,8 +4,8 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import { headers } from "next/headers";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ThemeProvider } from "@wrksz/themes/next";
 import PlausibleProvider from "next-plausible";
-import { ThemeProvider } from "next-themes";
 
 import { env } from "~/env.mjs";
 
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
       locale: "en-UK",
       images: [
          {
-            url: "/static/me.png",
+            url: "/static/me.jpeg",
             alt: "Profile Picture",
          },
       ],
@@ -117,17 +117,22 @@ export default async function RootLayout({
             />
          </head>
          <body className="text-foreground">
-            <TRPCReactProvider baseUrl={url}>
-               <ThemeProvider attribute="class">
+            <ThemeProvider
+               attribute="class"
+               defaultTheme="system"
+               enableSystem
+               storage="localStorage"
+            >
+               <TRPCReactProvider baseUrl={url}>
                   <BackgroundPattern>
                      <NavBar />
                      <main className="flex flex-1 flex-col">{children}</main>
                      <ConditionalCTA />
                      <Footer />
                   </BackgroundPattern>
-               </ThemeProvider>
-               <ReactQueryDevtools initialIsOpen={false} />
-            </TRPCReactProvider>
+                  <ReactQueryDevtools initialIsOpen={false} />
+               </TRPCReactProvider>
+            </ThemeProvider>
          </body>
       </html>
    );

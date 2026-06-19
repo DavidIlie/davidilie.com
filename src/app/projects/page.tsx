@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 
+import { buildMetadata } from "~/lib/metadata";
 import projects from "~/data/projects";
 
 import { GitHubGraphServer } from "~/components/github-graph-server";
@@ -9,9 +10,12 @@ import { api, HydrateClient } from "~/trpc/server";
 import { ClientProjectGitHub } from "./client";
 import LoadingSpinner from "./loading";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
    title: "Projects",
-};
+   description:
+      "Open-source repos, full products, things that shipped and things still cooking — plus every public GitHub repo and a live contribution graph.",
+   path: "/projects",
+});
 
 const Page = async () => {
    void api.cron.github.prefetch();

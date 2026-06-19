@@ -1,4 +1,7 @@
 import { Suspense } from "react";
+import type { Metadata } from "next";
+
+import { buildMetadata } from "~/lib/metadata";
 
 import { Affiliations } from "~/components/home/affiliations";
 import { BranchDecor } from "~/components/home/branch-decor";
@@ -9,9 +12,18 @@ import { FeaturedWriting } from "~/components/home/featured-writing";
 import { Founder } from "~/components/home/founder";
 import { HomeHero } from "~/components/home/hero";
 import { FadeUpInView } from "~/components/home/motion-in-view";
-import { NowPanel } from "~/components/home/now-panel";
+import { NowPanel, NowPanelFallback } from "~/components/home/now-panel";
 import { fetchContributions } from "~/server/github-contributions";
 import { api, HydrateClient } from "~/trpc/server";
+
+export const metadata: Metadata = buildMetadata({
+   title: "David Ilie",
+   absoluteTitle: true,
+   description:
+      "Programmer, editor, and sysadmin. My open notebook for shipping experiments — from the Kubernetes cluster running this site to the videos I edit and the AI skills I write to ship faster.",
+   path: "/",
+   image: "/static/me.jpeg",
+});
 
 const FeaturedWritingFallback = () => (
    <section className="mx-auto w-full max-w-3xl px-6 py-12">
@@ -48,7 +60,12 @@ const Home = async () => {
 
             <HomeHero />
 
-            <NowPanel currentStreak={currentStreak} lastPushAt={lastPushAt} />
+            <Suspense fallback={<NowPanelFallback />}>
+               <NowPanel
+                  currentStreak={currentStreak}
+                  lastPushAt={lastPushAt}
+               />
+            </Suspense>
 
             <DottedSeparator />
 

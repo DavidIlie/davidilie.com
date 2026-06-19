@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blogs } from "#velite";
 
+import { buildMetadata } from "~/lib/metadata";
+
 import { Tags } from "~/components/tag";
 import { api, HydrateClient } from "~/trpc/server";
 import { Mdx } from "./mdx";
@@ -26,40 +28,14 @@ export async function generateMetadata({
       return { title: "not found" };
    }
 
-   const {
-      title,
-      publishedAt: publishedTime,
-      summary: description,
-      image,
-      slug,
-   } = post;
-
-   const ogImage = image
-      ? `https://davidilie.com${image}`
-      : `https://davidilie.com/og?title=${title}`;
-
-   return {
-      title,
-      description,
-      openGraph: {
-         title,
-         description,
-         type: "article",
-         publishedTime,
-         url: `https://davidilie.com/blog/${slug}`,
-         images: [
-            {
-               url: ogImage,
-            },
-         ],
-      },
-      twitter: {
-         card: "summary_large_image",
-         title,
-         description,
-         images: [ogImage],
-      },
-   };
+   return buildMetadata({
+      title: post.title,
+      description: post.summary,
+      path: `/blog/${post.slug}`,
+      image: post.image,
+      type: "article",
+      publishedTime: post.publishedAt,
+   });
 }
 
 const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
