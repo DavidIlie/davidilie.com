@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ageWord } from "~/lib/age";
 import { shimmer } from "~/lib/shimmer";
 
+import { AgeBadge } from "~/components/home/age-badge";
 import { Socials } from "~/components/socials";
 import MePhoto from "../../../public/static/me.jpeg";
 
@@ -73,10 +74,9 @@ export const HomeHero: React.FC = () => {
             style={{ animationDelay: "120ms" }}
          >
             <p>
-               I&rsquo;m an ambitious{" "}
-               <span className="font-semibold">{age}-year-old</span> software
-               developer and full-time student. Curious about computers since I
-               was a kid, but only started shipping properly a few years ago.
+               I&rsquo;m an ambitious <AgeBadge age={age} /> software developer
+               and full-time student. Curious about computers since I was a kid,
+               but only started shipping properly a few years ago.
             </p>
             <p className="text-muted-foreground">
                This site is the open notebook: a place to share my{" "}

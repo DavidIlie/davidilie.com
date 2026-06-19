@@ -2,11 +2,11 @@
 title: "Reverse Engineering my Air Conditioner's Smart Features to control it from Home Assistant"
 publishedAt: "2023-11-2"
 summary: "I've been working hard for the past few months to automate several aspects of my home in Spain, such as lights and plug sockets but I had to do something very interesting regarding my Air Conditioners..."
+image: "https://github.com/user-attachments/assets/3cf4fce3-f787-4f33-959a-757147479e89"
 tags:
    - Reverse Engineering
    - TCL Home
    - Home Assistant
-published: true
 ---
 
 This blog post is an adaptaion and part of my YouTube video that I created regarding this topic. Check it out below:
@@ -125,7 +125,7 @@ From what I could tell one of the request headers is a checksum. Which meant tha
 
 Til I thought of something I’m not sure that is is completely allowed, but hey. You only live once!
 
-**At the end of the day this comes down to free use and I don’t plan making any money out of this video or out of this project.**
+**At the end of the day this comes down to free use and I don’t plan making any money out of this post or out of this project.**
 
 So what I did is I got the APK file from a standard APK website and then ran a project I found on GitHub called Vineflower:
 
@@ -220,7 +220,7 @@ The last thing I did was wrap all of this in a database. While I was testing I m
 
 # Not all hope is lost!
 
-Reading the state is one thing. I wanted to actually _control_ the thing, and that’s where I hit a wall (a wall I’ll properly climb in a future video).
+Reading the state is one thing. I wanted to actually _control_ the thing, and that’s where I hit a wall (a wall I’ll properly climb in a future post).
 
 To send commands, the app uses a few more values from an earlier request to authenticate itself to AWS, and from there to an MQTT server. The problem is that I can’t snoop on the MQTT traffic the way I did with everything else, because it detects the proxy and refuses to play along. That part is a bit out of my league for now.
 
@@ -228,7 +228,7 @@ To send commands, the app uses a few more values from an earlier request to auth
 
 So I went looking for a shortcut, and I found one in the last place a developer ever looks: the manual. TCL Home officially supports Google Assistant and Amazon Alexa. For my dad, who’s on Android, that’s great, he can just tell Google to turn the AC on. For me, an Apple person, that’s about as useful as the app I was trying to escape from in the first place.
 
-Except here’s the loophole. Home Assistant can talk to Google Assistant. And Google Assistant, as we just established, can talk to TCL Home. So I went through Google as a middleman, wired it up through the Home Assistant API, and deployed the whole thing to my shiny new Kubernetes cluster (yes, that’s another video coming very soon).
+Except here’s the loophole. Home Assistant can talk to Google Assistant. And Google Assistant, as we just established, can talk to TCL Home. So I went through Google as a middleman, wired it up through the Home Assistant API, and deployed the whole thing to my shiny new Kubernetes cluster.
 
 # It’s integrated!
 
@@ -245,7 +245,7 @@ The payoff is a plain on/off switch in Home Assistant for my office air conditio
 
 That was the hardest one from a logic and research point of view. Next up were the two standalone air conditioners in the living room and my parents’ bedroom.
 
-As a test, alongside a few other gadgets I’ll show off in later videos, I bought a cheap _“Tuya Smart Home IR”_ thing off Aliexpress. It’s basically an infrared blaster that pretends to be the remote, and it can control other IR stuff like the TV at the same time.
+As a test, alongside a few other gadgets I bought a cheap _“Tuya Smart Home IR”_ thing off Aliexpress. It’s basically an infrared blaster that pretends to be the remote, and it can control other IR stuff like the TV at the same time.
 
 <Image
    src="/content/reverse-engineer-tcl-home/tuya-ir-blaster.jpg"
@@ -274,7 +274,7 @@ On paper it’s a great deal, and honestly it mostly is, which is exactly why so
 
 Because there are _so_ many Tuya products, not all of them behave the same way once you step off the happy path, and integrating one into Home Assistant is very much off the happy path. Tuya do publish their own official integrations for Home Assistant, Homebridge, you name it, but the last time any of them got real attention was around 2021. When I added my air conditioner through the official Tuya integration, Home Assistant just told me it wasn’t supported.
 
-So why did I buy it? Partly for a fairly interesting video, and partly because I wanted to see if I could make it work myself in as little time as possible. And it turns out that if you can read Tuya’s API documentation, you can figure out exactly which routes you need. In my case there were only two that mattered: one to get the status of the air conditioner, and one to send it commands.
+So why did I buy it? Partly for a fairly interesting project, and partly because I wanted to see if I could make it work myself in as little time as possible. And it turns out that if you can read Tuya’s API documentation, you can figure out exactly which routes you need. In my case there were only two that mattered: one to get the status of the air conditioner, and one to send it commands.
 
 ```python
 # the connector handles all the request signing for me
@@ -295,8 +295,8 @@ That’s genuinely the whole integration. Two endpoints, the Tuya connector sign
 
 <Callout>
    My honest recommendation: stay far away from Tuya unless you already know
-   what you’re doing, or you’re a nerd like me who’s happy to poke at it until it
-   works perfectly.
+   what you’re doing, or you’re a nerd like me who’s happy to poke at it until
+   it works perfectly.
 </Callout>
 
 <GitHubRepository repo="tuya-smart-ir-ac" />
@@ -348,7 +348,7 @@ There’s also a lottery element to it. Some people on Reddit said their TCL air
 
 Zigbee devices, or anything sitting behind a hub, would also work. I just didn’t want more moving parts and more things that can fail for this particular job. (For lights and a bunch of other things, Zigbee is brilliant and I use it happily.)
 
-Which brings me back to the thing I keep saying: keep as much as possible in one place. Matter is the protocol every big company seems to be lining up behind, and what it promises looks genuinely good, but it’s a bit too early for this video. My HomePod Mini apparently uses it. Home Assistant tells me so, and that’s honestly about as much as I currently understand. I’ll dig into it properly once it’s more mature.
+Which brings me back to the thing I keep saying: keep as much as possible in one place. Matter is the protocol every big company seems to be lining up behind, and what it promises looks genuinely good. My HomePod Mini apparently uses it. Home Assistant tells me so, and that’s honestly about as much as I currently understand. I’ll dig into it properly once it’s more mature.
 
 The other route is an open API or plain LAN access, with someone in the community writing an integration on top, the way LocalTuya tries to for Tuya devices. That one, unfortunately, didn’t work for me either.
 
@@ -366,7 +366,7 @@ There’s the regular person, my parents, who isn’t especially techy. And ther
 
 Open the App Store, search _“smart home,”_ and you’ll drown. Tuya, TP-Link, Wiz, Philips, Samsung. Big names, small names, half of them Chinese factories, all shipping their own app that does pretty much the same thing. Make an account. Verify your email. Add your devices. Repeat until your phone has fifteen of them, like mine does.
 
-I think the smart home idea is genuinely brilliant. I just think it grew up too fast. There should be one central app, or at least a handful that each do one job well, one for lights, one for air conditioners, instead of a research project and a rant video every time you want to plug something in.
+I think the smart home idea is genuinely brilliant. I just think it grew up too fast. There should be one central app, or at least a handful that each do one job well, one for lights, one for air conditioners, instead of a research project and a rant every time you want to plug something in.
 
 # My overall opinion
 
@@ -374,7 +374,9 @@ Of everything I’ve done in this smart home so far, the air conditioners have b
 
 And yet, once the anger wore off (especially the Tuya integration, which nearly broke me), I genuinely had a lot of fun. So if you’ve got the time to tinker and you want your setup exactly your way, go for it. Buy the weird air conditioner, or any cursed smart device really, and bend it until it does what you want.
 
-I’m really happy to be making things again, and I’ve got a pile of plans for more videos before the summer’s out. Thanks for reading.
+I’m really happy to be making things again. Thanks for reading.
+
+Cheers!
 
 ---
 

@@ -14,12 +14,15 @@ export const metadata: Metadata = {
 const Page = async () => {
    void api.spotify.playingStateAndSong.prefetch();
 
-   const posts =
-      env.NODE_ENV === "production" ? blogs.filter((s) => s.published) : blogs;
+   const posts = (
+      env.NODE_ENV === "production" ? blogs.filter((s) => s.published) : blogs
+   ).toSorted(
+      (a, b) =>
+         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+   );
 
    const featuredPost = posts[0] as Blog;
 
-   // Total reads across all posts — honest social-proof line under the title.
    let totalViews = 0;
    try {
       const rows = await prisma.post.findMany({
@@ -75,16 +78,9 @@ const Page = async () => {
                </div>
                <PostCard {...featuredPost} featured />
                <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:px-2.5">
-                  {posts
-                     .toSorted(
-                        (a, b) =>
-                           new Date(b.publishedAt).getTime() -
-                           new Date(a.publishedAt).getTime(),
-                     )
-                     .filter((s) => s.slug !== featuredPost.slug)
-                     .map((post) => (
-                        <PostCard {...post} key={post.slug} />
-                     ))}
+                  {posts.slice(1).map((post) => (
+                     <PostCard {...post} key={post.slug} />
+                  ))}
                </div>
             </div>
          </div>

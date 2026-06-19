@@ -2,9 +2,9 @@
  * David's birthday: 31 July 2006. The age is recomputed on every render
  * so this is always correct without manual edits each year.
  */
-const BIRTHDAY = new Date("2006-07-31");
+export const BIRTHDAY = new Date("2006-07-31");
 
-function getAge(now: Date = new Date()): number {
+export function getAge(now: Date = new Date()): number {
    const today = new Date(now);
    const beforeBirthday =
       today <
@@ -25,8 +25,23 @@ const SPELLED: Record<number, string> = {
    25: "twenty-five",
 };
 
+/** Lower-case English word for a number, or the number string as fallback. */
+export function wordForNumber(n: number): string {
+   return SPELLED[n] ?? String(n);
+}
+
 /** Returns the lower-case English word for the age, or the number string. */
 export function ageWord(now: Date = new Date()): string {
-   const a = getAge(now);
-   return SPELLED[a] ?? String(a);
+   return wordForNumber(getAge(now));
+}
+
+/** Midnight of the next birthday relative to `now` (year rolls forward). */
+export function nextBirthday(now: Date = new Date()): Date {
+   const candidate = new Date(
+      now.getFullYear(),
+      BIRTHDAY.getMonth(),
+      BIRTHDAY.getDate(),
+   );
+   if (now >= candidate) candidate.setFullYear(candidate.getFullYear() + 1);
+   return candidate;
 }

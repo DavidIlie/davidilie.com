@@ -83,39 +83,45 @@ export const SpotifyClientPage = () => {
             <CurrentlyPlaying />
          </div>
 
-         {/* Top Genres */}
-         {topGenres.length > 0 && (
+         {/* Top Genres + Top Artists */}
+         <div className="grid gap-x-8 gap-y-10 md:grid-cols-5 md:items-start">
+            {topGenres.length > 0 && (
+               <div
+                  className="animate-fade-in-up md:col-span-2"
+                  style={{ animationDelay: "0.15s" }}
+               >
+                  <SectionHeader
+                     icon={<TrendingUp className="h-4 w-4" />}
+                     title="Top Genres"
+                  />
+                  <div className="flex flex-wrap gap-2">
+                     {topGenres.map((genre) => (
+                        <span
+                           key={genre}
+                           className="rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground capitalize transition-colors hover:border-brand/30 hover:bg-brand-muted sm:text-sm"
+                        >
+                           {genre}
+                        </span>
+                     ))}
+                  </div>
+               </div>
+            )}
+
             <div
-               className="animate-fade-in-up"
-               style={{ animationDelay: "0.15s" }}
+               className={`animate-fade-in-up ${
+                  topGenres.length > 0 ? "md:col-span-3" : "md:col-span-5"
+               }`}
+               style={{ animationDelay: "0.2s" }}
             >
                <SectionHeader
-                  icon={<TrendingUp className="h-4 w-4" />}
-                  title="Top Genres"
+                  icon={<Users className="h-4 w-4" />}
+                  title="Top Artists"
                />
-               <div className="flex flex-wrap gap-2">
-                  {topGenres.map((genre) => (
-                     <span
-                        key={genre}
-                        className="rounded-full border border-border bg-secondary px-3 py-1.5 text-xs font-medium text-secondary-foreground capitalize transition-colors hover:border-brand/30 hover:bg-brand-muted sm:text-sm"
-                     >
-                        {genre}
-                     </span>
+               <div className="grid grid-cols-3 gap-2 sm:gap-3">
+                  {data.artists.items.slice(0, 3).map((s, index) => (
+                     <ArtistCard artist={s} rank={index + 1} key={index} />
                   ))}
                </div>
-            </div>
-         )}
-
-         {/* Top Artists */}
-         <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            <SectionHeader
-               icon={<Users className="h-4 w-4" />}
-               title="Top Artists"
-            />
-            <div className="grid grid-cols-3 gap-2 sm:gap-3 md:grid-cols-6">
-               {data.artists.items.map((s, index) => (
-                  <ArtistCard artist={s} rank={index + 1} key={index} />
-               ))}
             </div>
          </div>
 
