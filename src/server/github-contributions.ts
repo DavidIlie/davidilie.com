@@ -18,6 +18,15 @@ const query = `
           }
         }
       }
+      repositories(
+        first: 1
+        ownerAffiliations: OWNER
+        orderBy: { field: PUSHED_AT, direction: DESC }
+      ) {
+        nodes {
+          pushedAt
+        }
+      }
     }
   }
 `;
@@ -48,6 +57,8 @@ export type ContributionData = {
    longestStreak: number;
    currentStreak: number;
    busiestDay: ContributionDay | null;
+   /** ISO timestamp of the most recent push to an owned repo (minute-precise). */
+   lastPushAt: string | null;
 };
 
 const computeStats = (weeks: ContributionWeek[]) => {
@@ -114,12 +125,17 @@ export async function fetchContributions(): Promise<ContributionData | null> {
                      }[];
                   };
                };
+               repositories?: {
+                  nodes: { pushedAt: string | null }[];
+               };
             };
          };
       };
       const cal =
          json.data?.user?.contributionsCollection?.contributionCalendar;
       if (!cal) return null;
+      const lastPushAt =
+         json.data?.user?.repositories?.nodes?.[0]?.pushedAt ?? null;
       const weeks: ContributionWeek[] = cal.weeks.map((w) => ({
          days: w.contributionDays.map((d) => ({
             date: d.date,
@@ -136,6 +152,7 @@ export async function fetchContributions(): Promise<ContributionData | null> {
          longestStreak: longest,
          currentStreak: current,
          busiestDay: busiest,
+         lastPushAt,
       };
    } catch (e) {
       console.error("contributions fetch failed", e);
