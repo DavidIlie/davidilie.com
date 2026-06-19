@@ -6,7 +6,7 @@ tags:
    - Reverse Engineering
    - TCL Home
    - Home Assistant
-published: false
+published: true
 ---
 
 This blog post is an adaptaion and part of my YouTube video that I created regarding this topic. Check it out below:
@@ -19,8 +19,8 @@ My parents have bought a new house in Spain and with that comes the sudden idea 
 
 Throughout the years making a house _"smart"_ or in reality digitizing manual aspects of a house has become more easier than ever. To, for example, automate a light switch you need two things.
 
--  A light switch which supports a communication protocol, such as Wi-Fi or something analog like Zigbee or ZWave (I use ZigBee)
--  A server which is capable of communicating with such device
+- A light switch which supports a communication protocol, such as Wi-Fi or something analog like Zigbee or ZWave (I use ZigBee)
+- A server which is capable of communicating with such device
 
 That's it! With an operating system such as Home Assistant OS you can immediately get it running to exact how you'd like it (including Apple Homekit and Siri and so on!)
 
@@ -117,9 +117,7 @@ const r = await fetch("https://prod-eu.aws.tcljd.com/v3/user/get_things", {
 });
 ```
 
-<Callout italic>
-   Haha, if it was only going to be that easy.
-</Callout>
+<Callout italic>Haha, if it was only going to be that easy.</Callout>
 
 From what I could tell one of the request headers is a checksum. Which meant that if I want to get this working I’m going to need to calculate it myself. And me as a basic web developer, I’ve never had to calculate a checksum before so I was stuck on this for hours on end.
 
@@ -172,3 +170,214 @@ I needed to figure out a way where I can convert this Smali code into Java so I 
 You know who could do something like this? Good old ChatGPT.
 
 Giving it a simple prompt to convert the code into Java worked like an absolute breeze.
+
+And it didn’t stop at the request builder. Sitting in the same class was the piece I actually cared about: the function that generates that cursed checksum and signs every request before it leaves the phone. Smali again, unreadable to me again, pasted into ChatGPT again, and converted without a single complaint.
+
+So now I had two chunks of Java. One that knew how to build the request, and one that knew how to sign it. Two pieces of a phone app that were never meant to leave the phone, sitting right there in my editor.
+
+# Hacked successfully!
+
+I spun up a tiny Java command line project, ran the signing code, and copied the hash it printed out. Then I pasted that hash into my TypeScript project, fired the request off to the TCL Home API… and there it was. The live state of my air conditioner, staring back at me from my own little API endpoint.
+
+<Image
+   src="/content/reverse-engineer-tcl-home/live-power-state.jpg"
+   alt="My own endpoint returning the air conditioner's live power state"
+   width={1920}
+   height={1080}
+/>
+
+I genuinely can’t recreate the feeling of seeing that for the first time. Hours of staring at obfuscated bytecode, and suddenly my own code was talking to an air conditioner across the room like it owned it.
+
+But I wasn’t happy with _how_ I got there. Copy-pasting a hash out of a separate Java project every single time isn’t a solution, it’s a hostage situation. So I sat down to convert the Java into TypeScript, line by line, by hand…
+
+…haha, no. Straight back to ChatGPT.
+
+And it worked. No Java, no copy-paste, just TypeScript pulling the live power state of my air conditioner directly from the TCL Home API. The funniest part? After all of that, the _“checksum”_ that had eaten days of my life turned out to be an MD5 hash of the timestamp, a random nonce, and the Saas Token, glued together and spat back out as hex:
+
+```typescript
+export const calculateMD5HashBytes = (input: string): string => {
+   const hash = crypto.createHash("md5").update(input).digest();
+   const hexChars: string[] = [];
+   for (let i = 0; i < hash.length; ++i) {
+      const byteValue = hash[i] & 255;
+      if (byteValue < 16) hexChars.push("0");
+      hexChars.push(byteValue.toString(16));
+   }
+   return hexChars.join("");
+};
+
+// every request gets signed with this
+const sign = calculateMD5HashBytes(timestamp + nonce + saasToken);
+```
+
+All that, for one MD5 and a bit of hex padding. I didn’t know whether to laugh or cry.
+
+The last thing I did was wrap all of this in a database. While I was testing I managed to rate limit myself into oblivion, so now I cache the authentication tokens instead of re-authenticating on every request. Grab them once, reuse them, stop poking TCL’s servers every two seconds.
+
+<Callout italic>Winner winner chicken dinner. Someone hire me!</Callout>
+
+<GitHubRepository repo="tcl-home-ac" />
+
+# Not all hope is lost!
+
+Reading the state is one thing. I wanted to actually _control_ the thing, and that’s where I hit a wall (a wall I’ll properly climb in a future video).
+
+To send commands, the app uses a few more values from an earlier request to authenticate itself to AWS, and from there to an MQTT server. The problem is that I can’t snoop on the MQTT traffic the way I did with everything else, because it detects the proxy and refuses to play along. That part is a bit out of my league for now.
+
+<Callout italic>Curse you, Amazon.</Callout>
+
+So I went looking for a shortcut, and I found one in the last place a developer ever looks: the manual. TCL Home officially supports Google Assistant and Amazon Alexa. For my dad, who’s on Android, that’s great, he can just tell Google to turn the AC on. For me, an Apple person, that’s about as useful as the app I was trying to escape from in the first place.
+
+Except here’s the loophole. Home Assistant can talk to Google Assistant. And Google Assistant, as we just established, can talk to TCL Home. So I went through Google as a middleman, wired it up through the Home Assistant API, and deployed the whole thing to my shiny new Kubernetes cluster (yes, that’s another video coming very soon).
+
+# It’s integrated!
+
+The payoff is a plain on/off switch in Home Assistant for my office air conditioner. I can flip it from the dashboard, from Apple Home, from Siri, and from Google Assistant. It’s held together with more duct tape than I’d like to admit, but it’s in.
+
+<Image
+   src="/content/reverse-engineer-tcl-home/homekit-control.jpg"
+   alt="Controlling the office air conditioner from my iPhone through Apple Home"
+   width={1920}
+   height={1080}
+/>
+
+# Time for the next AC
+
+That was the hardest one from a logic and research point of view. Next up were the two standalone air conditioners in the living room and my parents’ bedroom.
+
+As a test, alongside a few other gadgets I’ll show off in later videos, I bought a cheap _“Tuya Smart Home IR”_ thing off Aliexpress. It’s basically an infrared blaster that pretends to be the remote, and it can control other IR stuff like the TV at the same time.
+
+<Image
+   src="/content/reverse-engineer-tcl-home/tuya-ir-blaster.jpg"
+   alt="The cheap Tuya infrared blaster I bought off Aliexpress"
+   width={1920}
+   height={1080}
+/>
+
+# Now let me tell you about Tuya
+
+<Callout italic>
+   Tuya is a Chinese artificial intelligence and internet of things platform as
+   a service provider.
+</Callout>
+
+<Image
+   src="/content/reverse-engineer-tcl-home/tuya-wikipedia.jpg"
+   alt="Reading up on what Tuya actually is, mid-recording"
+   width={1920}
+   height={1080}
+/>
+
+In plain English: manufacturers don’t have to build and run their own servers for their smart products. They lean on Tuya’s cloud instead, so every no-name seller on Aliexpress can ship something that _just works_ without worrying about supporting it for years. The customer gets to worry about that part.
+
+On paper it’s a great deal, and honestly it mostly is, which is exactly why so many cheap Tuya products fly off Aliexpress. In practice it’s a bit of a yes and no.
+
+Because there are _so_ many Tuya products, not all of them behave the same way once you step off the happy path, and integrating one into Home Assistant is very much off the happy path. Tuya do publish their own official integrations for Home Assistant, Homebridge, you name it, but the last time any of them got real attention was around 2021. When I added my air conditioner through the official Tuya integration, Home Assistant just told me it wasn’t supported.
+
+So why did I buy it? Partly for a fairly interesting video, and partly because I wanted to see if I could make it work myself in as little time as possible. And it turns out that if you can read Tuya’s API documentation, you can figure out exactly which routes you need. In my case there were only two that mattered: one to get the status of the air conditioner, and one to send it commands.
+
+```python
+# the connector handles all the request signing for me
+openapi = TuyaOpenAPI("https://openapi.tuyaeu.com", access_id, access_secret)
+openapi.connect()
+
+# get the current state of the AC sitting behind the IR blaster
+openapi.get(f"/v2.0/infrareds/{remote_id}/remotes/{ac_id}/ac/status")
+
+# tell it what to do, e.g. turn the power on
+openapi.post(
+   f"/v2.0/infrareds/{remote_id}/air-conditioners/{ac_id}/command",
+   {"code": "power", "value": "1"},
+)
+```
+
+That’s genuinely the whole integration. Two endpoints, the Tuya connector signs the requests for me, and swapping the `code` and `value` (`power`, `temp`, `mode`, `wind`) is enough to drive everything the remote could.
+
+<Callout>
+   My honest recommendation: stay far away from Tuya unless you already know
+   what you’re doing, or you’re a nerd like me who’s happy to poke at it until it
+   works perfectly.
+</Callout>
+
+<GitHubRepository repo="tuya-smart-ir-ac" />
+
+# Creating a custom Home Assistant thermostat
+
+Talking to the API was only half of it. To actually use the thing properly, and to expose it to HomeKit, I needed a real Home Assistant integration.
+
+Looking back, I should have just read the docs. Instead I felt lucky, told ChatGPT everything I knew, and asked it to build the whole thing for me. To its credit, it tried. But it mostly left me more confused than when I started, asking more questions than I was getting answers.
+
+What did work was treating it as an assistant instead of a replacement. The code it gave me, plus a bit of my own Python and a lot of the Home Assistant docs, got me to a working prototype. And once I had that prototype, I could go back to ChatGPT with sharper questions, and that time it nailed them without a problem.
+
+That’s the takeaway I keep coming back to: don’t hand ChatGPT the entire problem and hope, like I did at first. Hand it the small, well-defined pieces and let it help you along the way.
+
+<Image
+   src="/content/reverse-engineer-tcl-home/home-assistant-thermostat.jpg"
+   alt="The finished thermostat, controllable from the Home Assistant dashboard"
+   width={1920}
+   height={1080}
+/>
+
+# Two integrated air conditioners!
+
+So here’s where I landed. I can see my office air conditioner (on and off) and a fully controllable living room air conditioner, all from the Home Assistant dashboard, from Apple Home, from Siri, and from Google Assistant.
+
+Watching Apple Home slowly fill up with devices, all of them running on a little Raspberry Pi in the corner, is stupidly satisfying. As for the third air conditioner? I’m not sure yet. But I’ve got some thoughts.
+
+<Image
+   src="/content/reverse-engineer-tcl-home/apple-home-devices.jpg"
+   alt="My office room in Apple Home, slowly filling up with devices"
+   width={1920}
+   height={1080}
+/>
+
+# Alternatives and solutions
+
+There are better ways to do all of this, and I know it.
+
+ESP32 boards running ESPHome drop straight into Home Assistant, and plenty of Reddit threads will tell you that’s the _“proper”_ way to go. They’re not wrong. But it still means buying an air conditioner and then having to flash a microcontroller before you can use it the way you wanted, which is exactly the kind of extra step I’m moaning about.
+
+<Image
+   src="/content/reverse-engineer-tcl-home/esphome.jpg"
+   alt="ESPHome, the more “proper” route I didn’t take"
+   width={1920}
+   height={1080}
+/>
+
+There’s also a lottery element to it. Some people on Reddit said their TCL air conditioners paired straight up with Tuya. Mine refused. I tried the Tuya app, Smart Life, the Life app, anything I could find, and only TCL Home worked. It really does come down to your exact unit.
+
+Zigbee devices, or anything sitting behind a hub, would also work. I just didn’t want more moving parts and more things that can fail for this particular job. (For lights and a bunch of other things, Zigbee is brilliant and I use it happily.)
+
+Which brings me back to the thing I keep saying: keep as much as possible in one place. Matter is the protocol every big company seems to be lining up behind, and what it promises looks genuinely good, but it’s a bit too early for this video. My HomePod Mini apparently uses it. Home Assistant tells me so, and that’s honestly about as much as I currently understand. I’ll dig into it properly once it’s more mature.
+
+The other route is an open API or plain LAN access, with someone in the community writing an integration on top, the way LocalTuya tries to for Tuya devices. That one, unfortunately, didn’t work for me either.
+
+When it does work, though, it’s lovely. My TP-Link Tapo lights and cameras have community Home Assistant integrations that talk over the local network with no cloud involved. They’re faster than round-tripping to a server, and they keep working even when the internet goes down.
+
+# The “end-user” perspective
+
+I put _“end-user”_ in the title to keep things broad, but really there are two kinds of us.
+
+There’s the regular person, my parents, who isn’t especially techy. And there’s the person like me. My parents do not want yet another app on their phone, with its own account, its own pairing dance, and possibly its own subscription down the line. And someone like me can lose entire days getting one device into Home Assistant.
+
+(I’ll be honest, I really should be spending those days on my A-levels and university applications. But at least now I’ve got something to put in my personal statement. This, apparently.)
+
+# The army of smart home apps
+
+Open the App Store, search _“smart home,”_ and you’ll drown. Tuya, TP-Link, Wiz, Philips, Samsung. Big names, small names, half of them Chinese factories, all shipping their own app that does pretty much the same thing. Make an account. Verify your email. Add your devices. Repeat until your phone has fifteen of them, like mine does.
+
+I think the smart home idea is genuinely brilliant. I just think it grew up too fast. There should be one central app, or at least a handful that each do one job well, one for lights, one for air conditioners, instead of a research project and a rant video every time you want to plug something in.
+
+# My overall opinion
+
+Of everything I’ve done in this smart home so far, the air conditioners have been the single most annoying part. Adding lights to my office was one click and they worked instantly. The ACs were days.
+
+And yet, once the anger wore off (especially the Tuya integration, which nearly broke me), I genuinely had a lot of fun. So if you’ve got the time to tinker and you want your setup exactly your way, go for it. Buy the weird air conditioner, or any cursed smart device really, and bend it until it does what you want.
+
+I’m really happy to be making things again, and I’ve got a pile of plans for more videos before the summer’s out. Thanks for reading.
+
+---
+
+_Update:_ since I first put this out, someone took my reverse-engineering work and built it into a proper, full Home Assistant integration for TCL air conditioners, which is genuinely the dream outcome I was rambling about at the very start. Exactly the _“someone create an extension or an integration for it”_ thing I kept wishing for. Go give it a look (and a star).
+
+<GitHubRepository username="nemesa" repo="ha-tcl-home-unofficial-integration" />
