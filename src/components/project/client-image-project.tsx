@@ -57,13 +57,15 @@ const ImageProject = ({
                } items-center justify-between text-3xl`}
             >
                <h1 className="font-bold">{project.name}</h1>
-               <a
-                  href={isGitHub && !project.url ? repo?.url : project.url}
-                  target="_blank"
-                  rel="noreferrer"
-               >
-                  <Link className="font-semibold text-brand" />
-               </a>
+               {(isGitHub && !project.url ? repo?.url : project.url) && (
+                  <a
+                     href={isGitHub && !project.url ? repo?.url : project.url}
+                     target="_blank"
+                     rel="noreferrer"
+                  >
+                     <Link className="font-semibold text-brand" />
+                  </a>
+               )}
             </div>
             <div className={`my-1 ${!left ? "-mr-2" : ""}`}>
                {project.tags.map((tag, index) => (
