@@ -73,7 +73,7 @@ const Page = async ({ params }: { params: Promise<{ slug: string }> }) => {
                      </span>
                   }
                >
-                  <ViewCounter trackView />
+                  <ViewCounter slug={post.slug} trackView />
                </Suspense>
             </div>
             <Mdx code={post.body} />
