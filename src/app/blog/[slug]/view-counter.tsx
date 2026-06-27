@@ -32,6 +32,10 @@ export default function ViewCounter({
          });
          trackedPlausibleSlugRef.current = slug;
       }
+   }, [slug, trackView, plausible]);
+
+   useEffect(() => {
+      if (!trackView) return;
 
       const key = `viewed-${slug}`;
       const hasTracked = localStorage.getItem(key);
@@ -39,7 +43,7 @@ export default function ViewCounter({
          localStorage.setItem(key, "true");
          mutation.mutate({ slug });
       }
-   }, [slug, trackView, plausible, mutation]);
+   }, [slug, trackView, mutation]);
 
    return (
       <span className="font-mono text-sm tracking-tighter text-muted-foreground tabular-nums">
