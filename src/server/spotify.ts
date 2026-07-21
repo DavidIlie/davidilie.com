@@ -30,7 +30,19 @@ const getAccessToken = async () => {
       cache: "no-cache",
    });
 
-   return (await response.json()) as { access_token: string };
+   const json = (await response.json()) as {
+      access_token?: string;
+      error?: string;
+      error_description?: string;
+   };
+
+   if (!response.ok || !json.access_token) {
+      throw new Error(
+         `spotify token refresh failed: ${json.error_description ?? json.error ?? response.status}`,
+      );
+   }
+
+   return json as { access_token: string };
 };
 
 const getNowPlaying = async () => {
@@ -54,13 +66,26 @@ type Response = {
    just?: boolean;
 };
 
+const isValidSpotifyData = (data: any): boolean =>
+   Array.isArray(data?.artists?.items) &&
+   Array.isArray(data?.songs?.items) &&
+   Array.isArray(data?.recentlyPlayed?.items);
+
+const emptySpotifyData = () =>
+   ({
+      artists: { items: [] },
+      songs: { items: [] },
+      recentlyPlayed: { items: [] },
+      crashed: true,
+   }) as unknown as Response;
+
 const getSpotifyData = async () => {
    const get = await prisma.cachedSpotifyStats.findFirst();
    if (get) {
       const hasNotBeenTenMinutes =
          new Date().getTime() - get.date.getTime() < 5 * 60 * 1000;
-      if (hasNotBeenTenMinutes) {
-         const parsed = JSON.parse(get.json as any);
+      const parsed = JSON.parse(get.json as any);
+      if (hasNotBeenTenMinutes && isValidSpotifyData(parsed)) {
          return { ...parsed, rate: true, rateDate: get.date } as Response;
       }
    }
@@ -93,6 +118,15 @@ const getSpotifyData = async () => {
          songs: responseTracks,
       };
 
+      if (
+         !rTracks.ok ||
+         !rArtists.ok ||
+         !rRecently.ok ||
+         !isValidSpotifyData(response)
+      ) {
+         throw new Error("spotify api returned an error response");
+      }
+
       if (get) {
          await prisma.cachedSpotifyStats.delete({ where: { id: get.id } });
       }
@@ -107,15 +141,17 @@ const getSpotifyData = async () => {
 
       if (get) {
          const parsed = JSON.parse(get.json as any);
-         return {
-            ...parsed,
-            rate: true,
-            rateDate: get.date,
-            crashed: true,
-         } as Response;
+         if (isValidSpotifyData(parsed)) {
+            return {
+               ...parsed,
+               rate: true,
+               rateDate: get.date,
+               crashed: true,
+            } as Response;
+         }
       }
 
-      throw new Error("cannot get data");
+      return emptySpotifyData();
    }
 };
 
