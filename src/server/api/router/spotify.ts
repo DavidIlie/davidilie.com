@@ -8,4 +8,11 @@ export const spotifyRouter = createTRPCRouter({
    data: publicProcedure.query(async ({ ctx }) => {
       return await getSpotifyData();
    }),
+   playingHistory: publicProcedure.query(async () => {
+      const data = await getSpotifyData();
+      return {
+         items: data.recentlyPlayed.items,
+         cachedAt: data.rateDate ?? new Date(),
+      };
+   }),
 });
