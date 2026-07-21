@@ -15,4 +15,11 @@ export const spotifyRouter = createTRPCRouter({
          cachedAt: data.rateDate ?? new Date(),
       };
    }),
+   topArtists: publicProcedure.query(async () => {
+      const data = await getSpotifyData();
+      return {
+         items: data.artists.items,
+         cachedAt: data.rateDate ?? new Date(),
+      };
+   }),
 });
