@@ -2,7 +2,7 @@
  * David's birthday: 31 July 2006. The age is recomputed on every render
  * so this is always correct without manual edits each year.
  */
-export const BIRTHDAY = new Date("2006-07-31");
+export const BIRTHDAY = new Date(2006, 6, 31);
 
 export function getAge(now: Date = new Date()): number {
    const today = new Date(now);
