@@ -40,9 +40,13 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
       createTRPCClient<AppRouter>({
          links: [
             loggerLink({
+               // Browser only: during prerender the footer's Spotify query is
+               // deliberately aborted by PPR (HANGING_PROMISE_REJECTION), and
+               // logging it floods every build with expected "errors".
                enabled: (op) =>
-                  process.env.NODE_ENV === "development" ||
-                  (op.direction === "down" && op.result instanceof Error),
+                  typeof window !== "undefined" &&
+                  (process.env.NODE_ENV === "development" ||
+                     (op.direction === "down" && op.result instanceof Error)),
             }),
             httpBatchStreamLink({
                transformer: SuperJSON,

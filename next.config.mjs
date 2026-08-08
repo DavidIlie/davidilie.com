@@ -23,6 +23,9 @@ const nextConfig = {
    experimental: {
       turbopackRustReactCompiler: true,
       useOffline: true,
+      // Prerender bail-outs (e.g. the footer's Spotify query postponing to
+      // request time) throw by design; don't let late logs flood the build.
+      hideLogsAfterAbort: true,
    },
    async rewrites() {
       return [
