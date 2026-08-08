@@ -1,14 +1,17 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
+import { connection } from "next/server";
 
 import { buildMetadata } from "~/lib/metadata";
 import projects from "~/data/projects";
 
 import { GitHubGraphServer } from "~/components/github-graph-server";
+import { GitHubGraphSkeleton } from "~/components/github-graph-skeleton";
 import PinnedProject from "~/components/project/pinned-project";
-import { api, HydrateClient } from "~/trpc/server";
+import { Skeleton } from "~/components/ui/skeleton";
+import { HydrateClient, prefetch, trpc } from "~/trpc/server";
 import { ClientProjectGitHub } from "./client";
-import LoadingSpinner from "./loading";
+import { RepoGridSkeleton } from "./repo-grid-skeleton";
 
 export const metadata: Metadata = buildMetadata({
    title: "Projects",
@@ -17,12 +20,21 @@ export const metadata: Metadata = buildMetadata({
    path: "/projects",
 });
 
-const Page = async () => {
-   void api.cron.github.prefetch();
-   void api.spotify.playingStateAndSong.prefetch();
-
+// HydrateClient lives here, not at page level: it dehydrates the query
+// client at render time, so it must render after the prefetch starts.
+const GitHubRepos = async () => {
+   await connection();
+   prefetch(trpc.cron.github.queryOptions());
    return (
       <HydrateClient>
+         <ClientProjectGitHub />
+      </HydrateClient>
+   );
+};
+
+const Page = () => {
+   return (
+      <>
          <section className="mx-auto w-full max-w-3xl px-6 pt-24 pb-8 sm:pt-32">
             <p className="mb-3 font-mono text-[0.65rem] tracking-[0.2em] text-muted-foreground uppercase">
                Everything I&rsquo;ve shipped
@@ -42,13 +54,27 @@ const Page = async () => {
                Pinned
             </p>
          </div>
-         {projects.map((project, index) => (
-            <PinnedProject
-               project={project}
-               left={index % 2 === 0}
-               key={index}
-            />
-         ))}
+         <Suspense
+            fallback={
+               <div className="mx-auto w-full max-w-5xl space-y-8 px-6">
+                  {[0, 1, 2].map((i) => (
+                     <Skeleton
+                        key={i}
+                        className="h-64 rounded-2xl border border-border/70"
+                        style={{ animationDelay: `${i * 80}ms` }}
+                     />
+                  ))}
+               </div>
+            }
+         >
+            {projects.map((project, index) => (
+               <PinnedProject
+                  project={project}
+                  left={index % 2 === 0}
+                  key={index}
+               />
+            ))}
+         </Suspense>
 
          <div className="mx-auto mt-16 w-full max-w-[110rem] px-4 sm:mt-20 sm:px-8 lg:px-16">
             <div className="mx-auto mb-6 max-w-3xl">
@@ -63,8 +89,8 @@ const Page = async () => {
                   to read the README inline.
                </p>
             </div>
-            <Suspense fallback={<LoadingSpinner />}>
-               <ClientProjectGitHub />
+            <Suspense fallback={<RepoGridSkeleton />}>
+               <GitHubRepos />
             </Suspense>
          </div>
 
@@ -79,9 +105,11 @@ const Page = async () => {
                The repo list is the what. This is the cadence, pulled live from
                GitHub, updated hourly.
             </p>
-            <GitHubGraphServer />
+            <Suspense fallback={<GitHubGraphSkeleton />}>
+               <GitHubGraphServer />
+            </Suspense>
          </section>
-      </HydrateClient>
+      </>
    );
 };
 

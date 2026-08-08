@@ -1,4 +1,5 @@
 import React from "react";
+import { connection } from "next/server";
 
 import type { Project, ProjectGitHub } from "~/data/projects";
 
@@ -14,6 +15,8 @@ const PinnedProject = async ({
 }) => {
    if (typeof (uncastedProject as any).repo_id === "string") {
       const project = uncastedProject as ProjectGitHub;
+      // Prisma is unreachable during the Docker build — defer to request time.
+      await connection();
       const data = await prisma.gitHubProject.findFirst({
          where: { name: project.repo_id },
       });

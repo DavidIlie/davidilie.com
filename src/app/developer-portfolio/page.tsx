@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 
 import { GitHubGraphServer } from "~/components/github-graph-server";
+import { GitHubGraphSkeleton } from "~/components/github-graph-skeleton";
 import { Button } from "~/components/ui/button";
 import {
    DockerIcon,
@@ -472,7 +473,9 @@ const DeveloperPortfolio = () => {
                   call me lazy.
                </p>
             </div>
-            <GitHubGraphServer />
+            <Suspense fallback={<GitHubGraphSkeleton />}>
+               <GitHubGraphServer />
+            </Suspense>
 
             {/* ZeroCut receipt card */}
             <div className="mt-8 overflow-hidden rounded-2xl border border-border/80 bg-card/40">

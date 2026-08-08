@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { connection } from "next/server";
 import { blogs } from "#velite";
 import { formatDistanceToNowStrict } from "date-fns";
 import { ArrowRight } from "lucide-react";
@@ -14,6 +15,9 @@ import { SectionLabel } from "./section-label";
  * order when the views table is unavailable (e.g. local dev without DB).
  */
 export const FeaturedWriting: React.FC = async () => {
+   // Prisma is unreachable during the Docker build — defer to request time.
+   await connection();
+
    const published = blogs.filter((b) => b.published);
    if (published.length === 0) return null;
 

@@ -24,6 +24,8 @@ import {
    type Variants,
 } from "motion/react";
 
+import { Skeleton } from "~/components/ui/skeleton";
+
 const ease = [0.23, 1, 0.32, 1] as const;
 
 type Clip = {
@@ -445,10 +447,11 @@ export function Turnaround() {
       }
    });
 
-   const deliveryDate = useMemo(
-      () => formatDelivery(active.days),
-      [active.days],
-   );
+   // Computed post-mount: the prerendered shell must not bake the build date.
+   const [deliveryDate, setDeliveryDate] = useState("");
+   useEffect(() => {
+      setDeliveryDate(formatDelivery(active.days));
+   }, [active.days]);
 
    const activeClip =
       activeClipIdx >= 0 ? (tracks.v1[activeClipIdx] ?? null) : null;
@@ -814,7 +817,11 @@ export function Turnaround() {
                   <span>Deliverable lands</span>
                </div>
                <div className="mb-1 text-2xl font-bold tabular-nums">
-                  {deliveryDate}
+                  {deliveryDate === "" ? (
+                     <Skeleton className="inline-block h-6 w-36 rounded align-middle" />
+                  ) : (
+                     deliveryDate
+                  )}
                </div>
                <div className="text-xs text-muted-foreground">
                   if you send footage today

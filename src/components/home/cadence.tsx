@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import Link from "next/link";
 
 import { GitHubGraphServer } from "~/components/github-graph-server";
+import { GitHubGraphSkeleton } from "~/components/github-graph-skeleton";
 import { SectionLabel } from "./section-label";
 
 /**
@@ -30,7 +32,9 @@ export const Cadence: React.FC = () => {
             </Link>
             .
          </p>
-         <GitHubGraphServer />
+         <Suspense fallback={<GitHubGraphSkeleton />}>
+            <GitHubGraphServer />
+         </Suspense>
       </section>
    );
 };

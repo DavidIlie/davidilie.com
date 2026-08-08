@@ -1,3 +1,4 @@
+import { cacheLife } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,8 +18,15 @@ import MePhoto from "../../../public/static/me.jpeg";
  * Pattern is a composite of: Lee Robinson's prose-first, Samuel Kraft's
  * inline-logo bio, Max Schmitt's stats row. No scroll-cue arrow.
  */
+// Age changes once a year but the static shell lives until the next deploy —
+// 'use cache' + daily revalidation keeps it fresh without going dynamic.
+async function CachedAgeBadge() {
+   "use cache";
+   cacheLife("days");
+   return <AgeBadge age={ageWord()} />;
+}
+
 export const HomeHero: React.FC = () => {
-   const age = ageWord();
    return (
       <section
          aria-labelledby="home-hero-name"
@@ -74,9 +82,9 @@ export const HomeHero: React.FC = () => {
             style={{ animationDelay: "120ms" }}
          >
             <p>
-               I&rsquo;m an ambitious <AgeBadge age={age} /> software developer
-               and full-time student. Curious about computers since I was a kid,
-               but only started shipping properly a few years ago.
+               I&rsquo;m an ambitious <CachedAgeBadge /> software developer and
+               full-time student. Curious about computers since I was a kid, but
+               only started shipping properly a few years ago.
             </p>
             <p className="text-muted-foreground">
                This site is the open notebook: a place to share my{" "}

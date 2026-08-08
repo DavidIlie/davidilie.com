@@ -1,12 +1,14 @@
-import React from "react";
+import React, { cache, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { connection } from "next/server";
 import type { Blog } from "#velite";
 import { formatDistance } from "date-fns";
 
 import { shimmer } from "~/lib/shimmer";
 
 import { Tags } from "~/components/tag";
+import { Skeleton } from "~/components/ui/skeleton";
 import { insertPostInDbIfNotExist } from "~/server/blog";
 import { prisma } from "~/server/db";
 
@@ -25,21 +27,52 @@ const FeaturedBadge = () => (
 const cardBase =
    "group relative overflow-hidden rounded-2xl border border-border/70 bg-card/60 transition-[transform,border-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:border-border hover:shadow-[0_12px_36px_-18px_rgb(0_0_0/0.35)] active:scale-[0.997]";
 
-const PostCard = async (props: Type) => {
-   await insertPostInDbIfNotExist(props.slug);
-
-   const post = (await prisma.post.findFirst({
-      where: { slug: props.slug },
+// Deduped per request: both card layouts render a ViewsMeta for the same slug.
+const getPostViews = cache(async (slug: string) => {
+   await insertPostInDbIfNotExist(slug);
+   const post = await prisma.post.findFirst({
+      where: { slug },
       select: { views: true },
-   })) as { views: number };
+   });
+   return post?.views ?? 0;
+});
 
-   const relativeDate = formatDistance(
-      new Date(props.publishedAt),
-      new Date(),
-      { addSuffix: true },
+// Prisma is unreachable during the Docker build, and the relative date
+// reads the current time — both must wait for a real request.
+const ViewsMeta = async ({
+   slug,
+   publishedAt,
+   variant,
+}: {
+   slug: string;
+   publishedAt: string;
+   variant: "featured" | "regular";
+}) => {
+   await connection();
+
+   const views = await getPostViews(slug);
+   const relativeDate = formatDistance(new Date(publishedAt), new Date(), {
+      addSuffix: true,
+   });
+   const viewsLabel = `${views} view${views !== 1 ? "s" : ""}`;
+
+   if (variant === "featured")
+      return (
+         <>
+            <time dateTime={publishedAt}>{relativeDate}</time>
+            <span aria-hidden className="size-1 rounded-full bg-border" />
+            <span>{viewsLabel}</span>
+         </>
+      );
+
+   return (
+      <span className="text-xs whitespace-nowrap text-muted-foreground">
+         {relativeDate} · {viewsLabel}
+      </span>
    );
-   const viewsLabel = `${post.views} view${post.views !== 1 ? "s" : ""}`;
+};
 
+const PostCard = (props: Type) => {
    return (
       <Link href={`/blog/${props.slug}`} aria-label={props.title}>
          {/* Desktop featured layout */}
@@ -73,9 +106,13 @@ const PostCard = async (props: Type) => {
                   {props.summary}
                </p>
                <div className="mt-auto flex items-center gap-2 pt-3 text-xs text-muted-foreground">
-                  <time dateTime={props.publishedAt}>{relativeDate}</time>
-                  <span aria-hidden className="size-1 rounded-full bg-border" />
-                  <span>{viewsLabel}</span>
+                  <Suspense fallback={<Skeleton className="h-3 w-24" />}>
+                     <ViewsMeta
+                        slug={props.slug}
+                        publishedAt={props.publishedAt}
+                        variant="featured"
+                     />
+                  </Suspense>
                </div>
             </div>
          </article>
@@ -109,9 +146,13 @@ const PostCard = async (props: Type) => {
                         <Tags tag={tag} key={index} />
                      ))}
                   </div>
-                  <span className="text-xs whitespace-nowrap text-muted-foreground">
-                     {relativeDate} · {viewsLabel}
-                  </span>
+                  <Suspense fallback={<Skeleton className="h-3 w-24" />}>
+                     <ViewsMeta
+                        slug={props.slug}
+                        publishedAt={props.publishedAt}
+                        variant="regular"
+                     />
+                  </Suspense>
                </div>
             </div>
          </article>
