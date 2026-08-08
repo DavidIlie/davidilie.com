@@ -74,7 +74,11 @@ const ViewsMeta = async ({
 
 const PostCard = (props: Type) => {
    return (
-      <Link href={`/blog/${props.slug}`} aria-label={props.title}>
+      <Link
+         href={`/blog/${props.slug}`}
+         prefetch={true}
+         aria-label={props.title}
+      >
          {/* Desktop featured layout */}
          <article
             className={`${

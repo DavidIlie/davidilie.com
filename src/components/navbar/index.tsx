@@ -117,6 +117,7 @@ const NavBar: React.FC = () => {
                            <Link
                               href={page.url}
                               key={index}
+                              prefetch={true}
                               className={cn(isExact && "pointer-events-none")}
                            >
                               <Button
@@ -172,6 +173,7 @@ const NavBar: React.FC = () => {
                         >
                            <Link
                               href={page.url}
+                              prefetch={true}
                               onClick={() => setOpen(false)}
                               className={cn(
                                  "flex items-baseline justify-between rounded-2xl px-4 py-4 font-display text-3xl font-semibold tracking-tight transition-colors",
