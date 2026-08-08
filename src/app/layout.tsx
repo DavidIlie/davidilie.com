@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import { Suspense } from "react";
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -10,6 +11,7 @@ import AppErrorBoundary from "~/components/app-error-boundary";
 import { BackgroundPattern } from "~/components/background-pattern";
 import { ConditionalCTA } from "~/components/conditional-cta";
 import Footer from "~/components/footer";
+import { FooterServer } from "~/components/footer-server";
 import NavBar from "~/components/navbar";
 import { OfflineBanner } from "~/components/offline-banner";
 import { TRPCReactProvider } from "~/trpc/react";
@@ -122,10 +124,14 @@ export default function RootLayout({
                         <AppErrorBoundary>{children}</AppErrorBoundary>
                      </main>
                      <ConditionalCTA />
-                     <Footer />
+                     <Suspense fallback={<Footer />}>
+                        <FooterServer />
+                     </Suspense>
                   </BackgroundPattern>
                   <OfflineBanner />
-                  <ReactQueryDevtools initialIsOpen={false} />
+                  {process.env.NODE_ENV === "development" && (
+                     <ReactQueryDevtools initialIsOpen={false} />
+                  )}
                </TRPCReactProvider>
             </ThemeProvider>
          </body>

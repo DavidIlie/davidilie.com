@@ -14,8 +14,9 @@ import {
    Star,
    X,
 } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 
+import { MotionProvider } from "~/components/motion";
 import { Button } from "~/components/ui/button";
 import { useTRPC } from "~/trpc/react";
 
@@ -139,7 +140,7 @@ export const ClientProjectGitHub = () => {
    ];
 
    return (
-      <>
+      <MotionProvider>
          {/* Stats + Search row */}
          <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
@@ -273,21 +274,21 @@ export const ClientProjectGitHub = () => {
          {/* Project Dialog */}
          <AnimatePresence>
             {selectedProject && (
-               <motion.div
+               <m.div
                   className="fixed inset-0 z-50 flex items-center justify-center p-4"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2 }}
                >
-                  <motion.div
+                  <m.div
                      className="fixed inset-0 bg-black/40 backdrop-blur-xs"
                      onClick={() => setSelectedProject(null)}
                      initial={{ opacity: 0 }}
                      animate={{ opacity: 1 }}
                      exit={{ opacity: 0 }}
                   />
-                  <motion.div
+                  <m.div
                      className="relative z-10 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-2xl"
                      initial={{ opacity: 0, scale: 0.95, y: 20 }}
                      animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -389,10 +390,10 @@ export const ClientProjectGitHub = () => {
                            </a>
                         </Button>
                      </div>
-                  </motion.div>
-               </motion.div>
+                  </m.div>
+               </m.div>
             )}
          </AnimatePresence>
-      </>
+      </MotionProvider>
    );
 };

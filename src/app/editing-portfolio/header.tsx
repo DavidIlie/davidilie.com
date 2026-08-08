@@ -2,8 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion, type Variants } from "motion/react";
+import { m, type Variants } from "motion/react";
 
+import { MotionProvider } from "~/components/motion";
 import { Button } from "~/components/ui/button";
 
 const ease = [0.23, 1, 0.32, 1] as const;
@@ -31,60 +32,62 @@ const item: Variants = {
 
 const Header: React.FC = () => {
    return (
-      <section className="relative flex min-h-[85vh] flex-grow items-center justify-center overflow-hidden px-4 text-center">
-         {/* Ambient glow */}
-         <div aria-hidden className="pointer-events-none absolute inset-0">
-            <div className="absolute top-1/2 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/10 blur-[120px]" />
-         </div>
+      <MotionProvider>
+         <section className="relative flex min-h-[85vh] flex-grow items-center justify-center overflow-hidden px-4 text-center">
+            {/* Ambient glow */}
+            <div aria-hidden className="pointer-events-none absolute inset-0">
+               <div className="absolute top-1/2 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/10 blur-[120px]" />
+            </div>
 
-         <motion.div
-            variants={container}
-            initial="hidden"
-            animate="show"
-            className="relative mx-auto max-w-4xl"
-         >
-            <motion.p
-               variants={item}
-               className="mb-8 font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase sm:text-sm"
+            <m.div
+               variants={container}
+               initial="hidden"
+               animate="show"
+               className="relative mx-auto max-w-4xl"
             >
-               Your viewers stop watching at 0:15
-            </motion.p>
-
-            <motion.h1
-               variants={item}
-               className="mb-8 text-5xl leading-[0.95] font-bold tracking-tight sm:text-7xl md:text-8xl"
-            >
-               Let&apos;s fix
-               <br />
-               <span className="text-brand">that.</span>
-            </motion.h1>
-
-            <motion.p
-               variants={item}
-               className="mx-auto mb-10 max-w-xl text-base text-muted-foreground sm:text-lg"
-            >
-               The best cuts are the ones nobody notices.
-            </motion.p>
-
-            <motion.div
-               variants={item}
-               className="flex flex-col justify-center gap-3 sm:flex-row"
-            >
-               <Button
-                  asChild
-                  size="lg"
-                  className="bg-brand px-7 text-brand-foreground hover:bg-brand/90"
+               <m.p
+                  variants={item}
+                  className="mb-8 font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase sm:text-sm"
                >
-                  <Link href="mailto:david@davidilie.com?subject=Editing%20project">
-                     Send the footage
-                  </Link>
-               </Button>
-               <Button asChild size="lg" variant="outline" className="px-7">
-                  <Link href="#portfolio">Watch the work first</Link>
-               </Button>
-            </motion.div>
-         </motion.div>
-      </section>
+                  Your viewers stop watching at 0:15
+               </m.p>
+
+               <m.h1
+                  variants={item}
+                  className="mb-8 text-5xl leading-[0.95] font-bold tracking-tight sm:text-7xl md:text-8xl"
+               >
+                  Let&apos;s fix
+                  <br />
+                  <span className="text-brand">that.</span>
+               </m.h1>
+
+               <m.p
+                  variants={item}
+                  className="mx-auto mb-10 max-w-xl text-base text-muted-foreground sm:text-lg"
+               >
+                  The best cuts are the ones nobody notices.
+               </m.p>
+
+               <m.div
+                  variants={item}
+                  className="flex flex-col justify-center gap-3 sm:flex-row"
+               >
+                  <Button
+                     asChild
+                     size="lg"
+                     className="bg-brand px-7 text-brand-foreground hover:bg-brand/90"
+                  >
+                     <Link href="mailto:david@davidilie.com?subject=Editing%20project">
+                        Send the footage
+                     </Link>
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="px-7">
+                     <Link href="#portfolio">Watch the work first</Link>
+                  </Button>
+               </m.div>
+            </m.div>
+         </section>
+      </MotionProvider>
    );
 };
 

@@ -15,7 +15,7 @@ import {
 import {
    animate,
    AnimatePresence,
-   motion,
+   m,
    useInView,
    useMotionValue,
    useMotionValueEvent,
@@ -24,6 +24,7 @@ import {
    type Variants,
 } from "motion/react";
 
+import { MotionProvider } from "~/components/motion";
 import { Skeleton } from "~/components/ui/skeleton";
 
 const ease = [0.23, 1, 0.32, 1] as const;
@@ -471,371 +472,375 @@ export function Turnaround() {
    };
 
    return (
-      <div ref={rootRef} className="relative">
-         {/* Tier picker */}
-         <div className="mb-6 flex flex-wrap justify-center gap-2">
-            {tiers.map((t) => {
-               const isActive = t.id === activeId;
-               return (
-                  <button
-                     key={t.id}
-                     type="button"
-                     onClick={() => setActiveId(t.id)}
-                     className={`relative flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
-                        isActive
-                           ? "border-brand/40 text-foreground"
-                           : "border-border/80 text-muted-foreground hover:text-foreground"
-                     }`}
-                  >
-                     {isActive && (
-                        <motion.span
-                           layoutId="turnaround-pill"
-                           className="absolute inset-0 rounded-full bg-brand-muted"
-                           transition={{
-                              type: "spring",
-                              stiffness: 380,
-                              damping: 32,
-                           }}
-                        />
-                     )}
-                     <span className="relative flex items-center gap-2">
-                        <span
-                           className={
-                              isActive ? "text-brand" : "text-muted-foreground"
-                           }
-                        >
-                           {t.icon}
-                        </span>
-                        <span>{t.label}</span>
-                        <span className="font-mono text-xs text-muted-foreground">
-                           {t.tagline}
-                        </span>
-                     </span>
-                  </button>
-               );
-            })}
-         </div>
-
-         {/* Premiere mock */}
-         <div className="overflow-hidden rounded-2xl border border-border/80 bg-[#161616] text-white shadow-2xl">
-            {/* Window chrome */}
-            <div className="flex items-center gap-3 border-b border-white/5 bg-[#1c1c1c] px-4 py-2.5">
-               <div className="flex gap-1.5">
-                  <span className="h-3 w-3 rounded-full bg-red-500/90" />
-                  <span className="h-3 w-3 rounded-full bg-amber-400/90" />
-                  <span className="h-3 w-3 rounded-full bg-emerald-500/90" />
-               </div>
-               <div className="flex flex-1 items-center justify-center gap-4 font-mono text-[0.65rem] tracking-[0.15em] text-white/50 uppercase">
-                  <span className="hidden sm:inline">File</span>
-                  <span className="hidden sm:inline">Edit</span>
-                  <span className="hidden sm:inline">Clip</span>
-                  <span>Sequence</span>
-                  <span className="hidden sm:inline">Window</span>
-               </div>
-               <div className="font-mono text-[0.65rem] tracking-[0.15em] text-white/40 uppercase">
-                  {active.label}.prproj
-               </div>
-            </div>
-
-            {/* Top row: program monitor + bin */}
-            <div className="grid gap-px bg-white/5 md:grid-cols-[1.6fr_1fr]">
-               {/* Program monitor — reacts to playhead */}
-               <div className="relative aspect-video overflow-hidden bg-[#0d0d0d]">
-                  <div className="absolute top-3 left-3 z-10 font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase">
-                     Program
-                  </div>
-
-                  {/* Scene swap — instant cut, no flash */}
-                  <AnimatePresence initial={false}>
-                     {touched && (
-                        <motion.div
-                           key={`${active.id}-${activeClip?.label ?? "idle"}-${activeClipIdx}`}
-                           initial={{ opacity: 0 }}
-                           animate={{ opacity: 1 }}
-                           exit={{ opacity: 0 }}
-                           transition={{ duration: 0.08, ease: "linear" }}
-                           className="absolute inset-0"
-                        >
-                           <div
-                              className={`absolute inset-0 bg-gradient-to-br ${sceneMood}`}
-                           />
-                           <div
-                              aria-hidden
-                              className="absolute inset-0 opacity-[0.08]"
-                              style={{
-                                 backgroundImage:
-                                    "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.6) 0.5px, transparent 1px), radial-gradient(circle at 70% 80%, rgba(255,255,255,0.5) 0.5px, transparent 1px)",
-                                 backgroundSize: "3px 3px, 5px 5px",
-                              }}
-                           />
-                           <div className="absolute right-4 bottom-4 left-4">
-                              <div className="mb-1 font-mono text-[0.65rem] tracking-[0.18em] text-brand uppercase">
-                                 {sceneTitle}
-                              </div>
-                              <div className="text-sm font-medium text-white/90">
-                                 {sceneShot}
-                              </div>
-                           </div>
-                           <div
-                              aria-hidden
-                              className="absolute inset-6 border border-white/10"
-                           />
-                           <div
-                              aria-hidden
-                              className="absolute top-1/2 left-1/2 h-6 w-px -translate-x-1/2 -translate-y-1/2 bg-white/20"
-                           />
-                           <div
-                              aria-hidden
-                              className="absolute top-1/2 left-1/2 h-px w-6 -translate-x-1/2 -translate-y-1/2 bg-white/20"
-                           />
-                        </motion.div>
-                     )}
-                  </AnimatePresence>
-
-                  <LiveTimecode tc={timecodeSec} />
-               </div>
-
-               {/* Bin */}
-               <div className="bg-[#141414] p-4">
-                  <div className="mb-3 flex items-center justify-between font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase">
-                     <span>Project bin</span>
-                     <span>{active.bin.length} items</span>
-                  </div>
-                  <div className="space-y-1.5">
-                     <AnimatePresence mode="popLayout" initial={false}>
-                        {active.bin.map((name, i) => (
-                           <motion.div
-                              key={`${active.id}-${name}`}
-                              initial={{ opacity: 0, x: -8 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              exit={{ opacity: 0, x: 8 }}
-                              transition={{
-                                 duration: 0.3,
-                                 delay: i * 0.04,
-                                 ease,
-                              }}
-                              className="flex items-center gap-2 rounded border border-white/5 bg-white/[0.03] px-2.5 py-1.5 text-xs"
-                           >
-                              <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded bg-white/10">
-                                 {name.endsWith(".wav") ||
-                                 name.endsWith(".mp3") ? (
-                                    <Volume2 className="h-3 w-3 text-emerald-400" />
-                                 ) : name.endsWith(".png") ||
-                                   name.endsWith(".cube") ? (
-                                    <Wand2 className="h-3 w-3 text-brand" />
-                                 ) : (
-                                    <Film className="h-3 w-3 text-blue-400" />
-                                 )}
-                              </span>
-                              <span className="truncate font-mono text-[0.7rem] text-white/70">
-                                 {name}
-                              </span>
-                           </motion.div>
-                        ))}
-                     </AnimatePresence>
-                  </div>
-
-                  <div className="mt-4 flex items-center gap-1.5 border-t border-white/5 pt-4">
-                     {[Scissors, Wand2, Volume2].map((Icon, i) => (
-                        <span
-                           key={i}
-                           className="flex h-7 w-7 items-center justify-center rounded border border-white/5 bg-white/[0.03] text-white/50"
-                        >
-                           <Icon className="h-3.5 w-3.5" />
-                        </span>
-                     ))}
-                  </div>
-               </div>
-            </div>
-
-            {/* Timeline */}
-            <div className="border-t border-white/5 bg-[#111] p-4 sm:p-5">
-               <div className="mb-3 flex items-center justify-between font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase">
-                  <span>Timeline · {active.label.toUpperCase()}</span>
-                  <span className="tabular-nums">
-                     00:00 → {Math.floor(active.days * 3)}:00
-                  </span>
-               </div>
-
-               <div className="relative space-y-1.5">
-                  <TimelineRow
-                     label="V2"
-                     clips={tracks.v2}
-                     tierId={active.id}
-                     trackKey="v2"
-                     touched={touched}
-                     showLabel
-                  />
-                  <TimelineRow
-                     label="V1"
-                     clips={tracks.v1}
-                     tierId={active.id}
-                     trackKey="v1"
-                     touched={touched}
-                     showLabel
-                     activeClipIdx={activeClipIdx}
-                  />
-                  <TimelineRow
-                     label="A1"
-                     clips={tracks.a1}
-                     tierId={active.id}
-                     trackKey="a1"
-                     touched={touched}
-                     waveform
-                  />
-                  <TimelineRow
-                     label="A2"
-                     clips={tracks.a2}
-                     tierId={active.id}
-                     trackKey="a2"
-                     touched={touched}
-                     waveform
-                  />
-
-                  {/* Playhead — driven by shared motion value */}
-                  <div className="pointer-events-none absolute inset-y-0 right-0 left-10">
-                     <motion.div
-                        style={{ left: playheadLeft }}
-                        className="absolute top-0 bottom-0 w-px bg-brand shadow-[0_0_12px_rgba(59,130,246,0.55)]"
-                     >
-                        <span className="absolute -top-2 left-0 -translate-x-1/2 rounded-sm bg-brand px-1 py-0.5 font-mono text-[0.55rem] leading-none text-brand-foreground">
-                           ▼
-                        </span>
-                     </motion.div>
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         {/* Client feedback panel */}
-         <div className="mt-6 rounded-2xl border border-border/80 bg-card/40 p-5 sm:p-6">
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-               <div>
-                  <div className="mb-1 flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.2em] text-brand uppercase">
-                     <MessageCircle className="h-3 w-3" />
-                     Client says
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                     Push a button. Watch the cut rebuild in real time.
-                  </div>
-               </div>
-               {lastFeedback && (
-                  <button
-                     type="button"
-                     onClick={resetTracks}
-                     className="rounded-full border border-border/80 bg-background/60 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                     Reset cut
-                  </button>
-               )}
-            </div>
-
-            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-               {feedbacks.map((fb) => {
-                  const isApplied = lastFeedback?.id === fb.id;
+      <MotionProvider>
+         <div ref={rootRef} className="relative">
+            {/* Tier picker */}
+            <div className="mb-6 flex flex-wrap justify-center gap-2">
+               {tiers.map((t) => {
+                  const isActive = t.id === activeId;
                   return (
                      <button
-                        key={fb.id}
+                        key={t.id}
                         type="button"
-                        onClick={() => applyFeedback(fb)}
-                        className={`group relative overflow-hidden rounded-xl border p-4 text-left transition-all ${
-                           isApplied
-                              ? "border-brand/40 bg-brand-muted/50"
-                              : "border-border/80 bg-background/40 hover:border-brand/30 hover:bg-brand-muted/20"
+                        onClick={() => setActiveId(t.id)}
+                        className={`relative flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+                           isActive
+                              ? "border-brand/40 text-foreground"
+                              : "border-border/80 text-muted-foreground hover:text-foreground"
                         }`}
                      >
-                        <div className="mb-1.5 text-sm font-medium">
-                           {fb.label}
-                        </div>
-                        <div className="text-xs text-muted-foreground italic">
-                           &ldquo;{fb.quote}&rdquo;
-                        </div>
-                        {isApplied && (
-                           <motion.div
-                              initial={{ scaleX: 0 }}
-                              animate={{ scaleX: 1 }}
-                              transition={{ duration: 0.5, ease }}
-                              style={{ transformOrigin: "left" }}
-                              className="absolute right-0 bottom-0 left-0 h-0.5 bg-brand"
+                        {isActive && (
+                           <m.span
+                              layoutId="turnaround-pill"
+                              className="absolute inset-0 rounded-full bg-brand-muted"
+                              transition={{
+                                 type: "spring",
+                                 stiffness: 380,
+                                 damping: 32,
+                              }}
                            />
                         )}
+                        <span className="relative flex items-center gap-2">
+                           <span
+                              className={
+                                 isActive
+                                    ? "text-brand"
+                                    : "text-muted-foreground"
+                              }
+                           >
+                              {t.icon}
+                           </span>
+                           <span>{t.label}</span>
+                           <span className="font-mono text-xs text-muted-foreground">
+                              {t.tagline}
+                           </span>
+                        </span>
                      </button>
                   );
                })}
             </div>
 
-            {lastFeedback && (
-               <motion.div
-                  key={lastFeedback.id}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, ease }}
-                  className="mt-4 flex items-center gap-2 rounded-lg border border-brand/20 bg-brand-muted/30 px-3 py-2 text-xs text-muted-foreground"
-               >
-                  <span className="font-mono text-[0.6rem] tracking-[0.2em] text-brand uppercase">
-                     Done
-                  </span>
-                  <span>
-                     Applied &ldquo;{lastFeedback.label}&rdquo; &middot;
-                     timeline rebuilt
-                  </span>
-               </motion.div>
-            )}
-         </div>
-
-         {/* Copy + delivery date */}
-         <div className="mt-6 grid gap-6 md:grid-cols-[1.2fr_1fr] md:items-start">
-            <AnimatePresence mode="wait" initial={false}>
-               <motion.div
-                  key={active.id}
-                  variants={tabVariants}
-                  initial="hidden"
-                  animate="show"
-                  exit={{ opacity: 0, y: -6 }}
-               >
-                  <div className="mb-2 font-mono text-xs tracking-[0.2em] text-brand uppercase">
-                     {active.fit}
+            {/* Premiere mock */}
+            <div className="overflow-hidden rounded-2xl border border-border/80 bg-[#161616] text-white shadow-2xl">
+               {/* Window chrome */}
+               <div className="flex items-center gap-3 border-b border-white/5 bg-[#1c1c1c] px-4 py-2.5">
+                  <div className="flex gap-1.5">
+                     <span className="h-3 w-3 rounded-full bg-red-500/90" />
+                     <span className="h-3 w-3 rounded-full bg-amber-400/90" />
+                     <span className="h-3 w-3 rounded-full bg-emerald-500/90" />
                   </div>
-                  <h3 className="mb-2 text-2xl leading-tight font-bold sm:text-3xl">
-                     {active.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                     {active.body}
-                  </p>
-               </motion.div>
-            </AnimatePresence>
-
-            <motion.div
-               key={active.id + "-card"}
-               initial={{ opacity: 0, y: 8 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.4, ease }}
-               className="rounded-xl border border-border/80 bg-card/60 p-5"
-            >
-               <div className="mb-4 flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.2em] text-muted-foreground uppercase">
-                  <Calendar className="h-3 w-3" />
-                  <span>Deliverable lands</span>
+                  <div className="flex flex-1 items-center justify-center gap-4 font-mono text-[0.65rem] tracking-[0.15em] text-white/50 uppercase">
+                     <span className="hidden sm:inline">File</span>
+                     <span className="hidden sm:inline">Edit</span>
+                     <span className="hidden sm:inline">Clip</span>
+                     <span>Sequence</span>
+                     <span className="hidden sm:inline">Window</span>
+                  </div>
+                  <div className="font-mono text-[0.65rem] tracking-[0.15em] text-white/40 uppercase">
+                     {active.label}.prproj
+                  </div>
                </div>
-               <div className="mb-1 text-2xl font-bold tabular-nums">
-                  {deliveryDate === "" ? (
-                     <Skeleton className="inline-block h-6 w-36 rounded align-middle" />
-                  ) : (
-                     deliveryDate
+
+               {/* Top row: program monitor + bin */}
+               <div className="grid gap-px bg-white/5 md:grid-cols-[1.6fr_1fr]">
+                  {/* Program monitor — reacts to playhead */}
+                  <div className="relative aspect-video overflow-hidden bg-[#0d0d0d]">
+                     <div className="absolute top-3 left-3 z-10 font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase">
+                        Program
+                     </div>
+
+                     {/* Scene swap — instant cut, no flash */}
+                     <AnimatePresence initial={false}>
+                        {touched && (
+                           <m.div
+                              key={`${active.id}-${activeClip?.label ?? "idle"}-${activeClipIdx}`}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.08, ease: "linear" }}
+                              className="absolute inset-0"
+                           >
+                              <div
+                                 className={`absolute inset-0 bg-gradient-to-br ${sceneMood}`}
+                              />
+                              <div
+                                 aria-hidden
+                                 className="absolute inset-0 opacity-[0.08]"
+                                 style={{
+                                    backgroundImage:
+                                       "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.6) 0.5px, transparent 1px), radial-gradient(circle at 70% 80%, rgba(255,255,255,0.5) 0.5px, transparent 1px)",
+                                    backgroundSize: "3px 3px, 5px 5px",
+                                 }}
+                              />
+                              <div className="absolute right-4 bottom-4 left-4">
+                                 <div className="mb-1 font-mono text-[0.65rem] tracking-[0.18em] text-brand uppercase">
+                                    {sceneTitle}
+                                 </div>
+                                 <div className="text-sm font-medium text-white/90">
+                                    {sceneShot}
+                                 </div>
+                              </div>
+                              <div
+                                 aria-hidden
+                                 className="absolute inset-6 border border-white/10"
+                              />
+                              <div
+                                 aria-hidden
+                                 className="absolute top-1/2 left-1/2 h-6 w-px -translate-x-1/2 -translate-y-1/2 bg-white/20"
+                              />
+                              <div
+                                 aria-hidden
+                                 className="absolute top-1/2 left-1/2 h-px w-6 -translate-x-1/2 -translate-y-1/2 bg-white/20"
+                              />
+                           </m.div>
+                        )}
+                     </AnimatePresence>
+
+                     <LiveTimecode tc={timecodeSec} />
+                  </div>
+
+                  {/* Bin */}
+                  <div className="bg-[#141414] p-4">
+                     <div className="mb-3 flex items-center justify-between font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase">
+                        <span>Project bin</span>
+                        <span>{active.bin.length} items</span>
+                     </div>
+                     <div className="space-y-1.5">
+                        <AnimatePresence mode="popLayout" initial={false}>
+                           {active.bin.map((name, i) => (
+                              <m.div
+                                 key={`${active.id}-${name}`}
+                                 initial={{ opacity: 0, x: -8 }}
+                                 animate={{ opacity: 1, x: 0 }}
+                                 exit={{ opacity: 0, x: 8 }}
+                                 transition={{
+                                    duration: 0.3,
+                                    delay: i * 0.04,
+                                    ease,
+                                 }}
+                                 className="flex items-center gap-2 rounded border border-white/5 bg-white/[0.03] px-2.5 py-1.5 text-xs"
+                              >
+                                 <span className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded bg-white/10">
+                                    {name.endsWith(".wav") ||
+                                    name.endsWith(".mp3") ? (
+                                       <Volume2 className="h-3 w-3 text-emerald-400" />
+                                    ) : name.endsWith(".png") ||
+                                      name.endsWith(".cube") ? (
+                                       <Wand2 className="h-3 w-3 text-brand" />
+                                    ) : (
+                                       <Film className="h-3 w-3 text-blue-400" />
+                                    )}
+                                 </span>
+                                 <span className="truncate font-mono text-[0.7rem] text-white/70">
+                                    {name}
+                                 </span>
+                              </m.div>
+                           ))}
+                        </AnimatePresence>
+                     </div>
+
+                     <div className="mt-4 flex items-center gap-1.5 border-t border-white/5 pt-4">
+                        {[Scissors, Wand2, Volume2].map((Icon, i) => (
+                           <span
+                              key={i}
+                              className="flex h-7 w-7 items-center justify-center rounded border border-white/5 bg-white/[0.03] text-white/50"
+                           >
+                              <Icon className="h-3.5 w-3.5" />
+                           </span>
+                        ))}
+                     </div>
+                  </div>
+               </div>
+
+               {/* Timeline */}
+               <div className="border-t border-white/5 bg-[#111] p-4 sm:p-5">
+                  <div className="mb-3 flex items-center justify-between font-mono text-[0.6rem] tracking-[0.18em] text-white/40 uppercase">
+                     <span>Timeline · {active.label.toUpperCase()}</span>
+                     <span className="tabular-nums">
+                        00:00 → {Math.floor(active.days * 3)}:00
+                     </span>
+                  </div>
+
+                  <div className="relative space-y-1.5">
+                     <TimelineRow
+                        label="V2"
+                        clips={tracks.v2}
+                        tierId={active.id}
+                        trackKey="v2"
+                        touched={touched}
+                        showLabel
+                     />
+                     <TimelineRow
+                        label="V1"
+                        clips={tracks.v1}
+                        tierId={active.id}
+                        trackKey="v1"
+                        touched={touched}
+                        showLabel
+                        activeClipIdx={activeClipIdx}
+                     />
+                     <TimelineRow
+                        label="A1"
+                        clips={tracks.a1}
+                        tierId={active.id}
+                        trackKey="a1"
+                        touched={touched}
+                        waveform
+                     />
+                     <TimelineRow
+                        label="A2"
+                        clips={tracks.a2}
+                        tierId={active.id}
+                        trackKey="a2"
+                        touched={touched}
+                        waveform
+                     />
+
+                     {/* Playhead — driven by shared motion value */}
+                     <div className="pointer-events-none absolute inset-y-0 right-0 left-10">
+                        <m.div
+                           style={{ left: playheadLeft }}
+                           className="absolute top-0 bottom-0 w-px bg-brand shadow-[0_0_12px_rgba(59,130,246,0.55)]"
+                        >
+                           <span className="absolute -top-2 left-0 -translate-x-1/2 rounded-sm bg-brand px-1 py-0.5 font-mono text-[0.55rem] leading-none text-brand-foreground">
+                              ▼
+                           </span>
+                        </m.div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            {/* Client feedback panel */}
+            <div className="mt-6 rounded-2xl border border-border/80 bg-card/40 p-5 sm:p-6">
+               <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                     <div className="mb-1 flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.2em] text-brand uppercase">
+                        <MessageCircle className="h-3 w-3" />
+                        Client says
+                     </div>
+                     <div className="text-sm text-muted-foreground">
+                        Push a button. Watch the cut rebuild in real time.
+                     </div>
+                  </div>
+                  {lastFeedback && (
+                     <button
+                        type="button"
+                        onClick={resetTracks}
+                        className="rounded-full border border-border/80 bg-background/60 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+                     >
+                        Reset cut
+                     </button>
                   )}
                </div>
-               <div className="text-xs text-muted-foreground">
-                  if you send footage today
+
+               <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                  {feedbacks.map((fb) => {
+                     const isApplied = lastFeedback?.id === fb.id;
+                     return (
+                        <button
+                           key={fb.id}
+                           type="button"
+                           onClick={() => applyFeedback(fb)}
+                           className={`group relative overflow-hidden rounded-xl border p-4 text-left transition-all ${
+                              isApplied
+                                 ? "border-brand/40 bg-brand-muted/50"
+                                 : "border-border/80 bg-background/40 hover:border-brand/30 hover:bg-brand-muted/20"
+                           }`}
+                        >
+                           <div className="mb-1.5 text-sm font-medium">
+                              {fb.label}
+                           </div>
+                           <div className="text-xs text-muted-foreground italic">
+                              &ldquo;{fb.quote}&rdquo;
+                           </div>
+                           {isApplied && (
+                              <m.div
+                                 initial={{ scaleX: 0 }}
+                                 animate={{ scaleX: 1 }}
+                                 transition={{ duration: 0.5, ease }}
+                                 style={{ transformOrigin: "left" }}
+                                 className="absolute right-0 bottom-0 left-0 h-0.5 bg-brand"
+                              />
+                           )}
+                        </button>
+                     );
+                  })}
                </div>
-               <div className="mt-4 flex items-center gap-2 border-t border-border/60 pt-4 text-xs text-muted-foreground">
-                  <Clock className="h-3.5 w-3.5 text-brand" />
-                  <span>
-                     {active.days} {active.days === 1 ? "day" : "days"} end to
-                     end
-                  </span>
-               </div>
-            </motion.div>
+
+               {lastFeedback && (
+                  <m.div
+                     key={lastFeedback.id}
+                     initial={{ opacity: 0, y: 6 }}
+                     animate={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.35, ease }}
+                     className="mt-4 flex items-center gap-2 rounded-lg border border-brand/20 bg-brand-muted/30 px-3 py-2 text-xs text-muted-foreground"
+                  >
+                     <span className="font-mono text-[0.6rem] tracking-[0.2em] text-brand uppercase">
+                        Done
+                     </span>
+                     <span>
+                        Applied &ldquo;{lastFeedback.label}&rdquo; &middot;
+                        timeline rebuilt
+                     </span>
+                  </m.div>
+               )}
+            </div>
+
+            {/* Copy + delivery date */}
+            <div className="mt-6 grid gap-6 md:grid-cols-[1.2fr_1fr] md:items-start">
+               <AnimatePresence mode="wait" initial={false}>
+                  <m.div
+                     key={active.id}
+                     variants={tabVariants}
+                     initial="hidden"
+                     animate="show"
+                     exit={{ opacity: 0, y: -6 }}
+                  >
+                     <div className="mb-2 font-mono text-xs tracking-[0.2em] text-brand uppercase">
+                        {active.fit}
+                     </div>
+                     <h3 className="mb-2 text-2xl leading-tight font-bold sm:text-3xl">
+                        {active.title}
+                     </h3>
+                     <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                        {active.body}
+                     </p>
+                  </m.div>
+               </AnimatePresence>
+
+               <m.div
+                  key={active.id + "-card"}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease }}
+                  className="rounded-xl border border-border/80 bg-card/60 p-5"
+               >
+                  <div className="mb-4 flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.2em] text-muted-foreground uppercase">
+                     <Calendar className="h-3 w-3" />
+                     <span>Deliverable lands</span>
+                  </div>
+                  <div className="mb-1 text-2xl font-bold tabular-nums">
+                     {deliveryDate === "" ? (
+                        <Skeleton className="inline-block h-6 w-36 rounded align-middle" />
+                     ) : (
+                        deliveryDate
+                     )}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                     if you send footage today
+                  </div>
+                  <div className="mt-4 flex items-center gap-2 border-t border-border/60 pt-4 text-xs text-muted-foreground">
+                     <Clock className="h-3.5 w-3.5 text-brand" />
+                     <span>
+                        {active.days} {active.days === 1 ? "day" : "days"} end
+                        to end
+                     </span>
+                  </div>
+               </m.div>
+            </div>
          </div>
-      </div>
+      </MotionProvider>
    );
 }
 
@@ -891,7 +896,7 @@ function TimelineRow({
                   clips.map((clip, i) => {
                      const isActive = activeClipIdx === i;
                      return (
-                        <motion.div
+                        <m.div
                            key={`${tierId}-${trackKey}-${clip.start}-${clip.width}-${clip.label ?? i}`}
                            layout
                            initial={{
@@ -925,7 +930,7 @@ function TimelineRow({
                                  {clip.label}
                               </span>
                            ) : null}
-                        </motion.div>
+                        </m.div>
                      );
                   })}
             </AnimatePresence>

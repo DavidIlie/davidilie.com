@@ -15,8 +15,9 @@ import {
    Pause,
    Server,
 } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 
+import { MotionProvider } from "~/components/motion";
 import {
    HoverCard,
    HoverCardContent,
@@ -99,7 +100,7 @@ const NowPlayingHoverCard: React.FC<{
                   aria-valuemin={0}
                   aria-valuemax={100}
                >
-                  <motion.div
+                  <m.div
                      className="h-full rounded-full bg-brand"
                      initial={false}
                      animate={{ width: `${pct}%` }}
@@ -333,67 +334,69 @@ export const NowPanel: React.FC<{
    ];
 
    return (
-      <section
-         aria-labelledby="now-panel-heading"
-         className="mx-auto w-full max-w-3xl px-6 py-10 sm:py-16"
-      >
-         <SectionLabel className="mb-5" number="01">
-            <span id="now-panel-heading">Right now</span>
-         </SectionLabel>
-         <div className="overflow-hidden rounded-2xl border border-border/70 bg-card/40 backdrop-blur-xs">
-            <ul className="divide-y divide-border/60">
-               {rows.map((row, i) => (
-                  <motion.li
-                     key={row.key}
-                     initial={
-                        reduceMotion ? { opacity: 1 } : { opacity: 0, y: 6 }
-                     }
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true, margin: "-40px" }}
-                     transition={{
-                        delay: reduceMotion ? 0 : 0.05 * i,
-                        duration: 0.25,
-                        ease,
-                     }}
-                     className="flex items-center gap-3 px-4 py-3 text-sm sm:px-5"
-                  >
-                     <span className="flex h-5 w-5 shrink-0 items-center justify-center text-muted-foreground">
-                        {row.icon}
-                     </span>
-                     {row.labelHref ? (
-                        <Link
-                           href={row.labelHref}
-                           target="_blank"
-                           rel="noreferrer"
-                           className="w-20 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase transition-colors hover:text-brand sm:w-28 sm:text-[0.65rem]"
-                        >
-                           {row.label}
-                        </Link>
-                     ) : (
-                        <span className="w-20 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase sm:w-28 sm:text-[0.65rem]">
-                           {row.label}
+      <MotionProvider>
+         <section
+            aria-labelledby="now-panel-heading"
+            className="mx-auto w-full max-w-3xl px-6 py-10 sm:py-16"
+         >
+            <SectionLabel className="mb-5" number="01">
+               <span id="now-panel-heading">Right now</span>
+            </SectionLabel>
+            <div className="overflow-hidden rounded-2xl border border-border/70 bg-card/40 backdrop-blur-xs">
+               <ul className="divide-y divide-border/60">
+                  {rows.map((row, i) => (
+                     <m.li
+                        key={row.key}
+                        initial={
+                           reduceMotion ? { opacity: 1 } : { opacity: 0, y: 6 }
+                        }
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-40px" }}
+                        transition={{
+                           delay: reduceMotion ? 0 : 0.05 * i,
+                           duration: 0.25,
+                           ease,
+                        }}
+                        className="flex items-center gap-3 px-4 py-3 text-sm sm:px-5"
+                     >
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center text-muted-foreground">
+                           {row.icon}
                         </span>
-                     )}
-                     <span
-                        aria-hidden
-                        className="dotted-leader hidden sm:block"
-                     />
-                     <span className="ml-auto flex min-w-0 flex-1 items-center justify-end gap-2 sm:flex-none">
-                        <span className="min-w-0 text-right text-foreground sm:truncate">
-                           {row.value}
-                        </span>
-                        {row.live ? (
-                           <span className="relative flex h-1.5 w-1.5 shrink-0">
-                              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
-                              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
+                        {row.labelHref ? (
+                           <Link
+                              href={row.labelHref}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="w-20 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase transition-colors hover:text-brand sm:w-28 sm:text-[0.65rem]"
+                           >
+                              {row.label}
+                           </Link>
+                        ) : (
+                           <span className="w-20 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase sm:w-28 sm:text-[0.65rem]">
+                              {row.label}
                            </span>
-                        ) : null}
-                     </span>
-                  </motion.li>
-               ))}
-            </ul>
-         </div>
-      </section>
+                        )}
+                        <span
+                           aria-hidden
+                           className="dotted-leader hidden sm:block"
+                        />
+                        <span className="ml-auto flex min-w-0 flex-1 items-center justify-end gap-2 sm:flex-none">
+                           <span className="min-w-0 text-right text-foreground sm:truncate">
+                              {row.value}
+                           </span>
+                           {row.live ? (
+                              <span className="relative flex h-1.5 w-1.5 shrink-0">
+                                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
+                                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
+                              </span>
+                           ) : null}
+                        </span>
+                     </m.li>
+                  ))}
+               </ul>
+            </div>
+         </section>
+      </MotionProvider>
    );
 };
 

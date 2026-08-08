@@ -1,7 +1,9 @@
 "use client";
 
 import React from "react";
-import { motion, useReducedMotion, type Variants } from "motion/react";
+import { m, useReducedMotion, type Variants } from "motion/react";
+
+import { MotionProvider } from "~/components/motion";
 
 const ease = [0.23, 1, 0.32, 1] as const;
 
@@ -26,15 +28,17 @@ export const FadeUpInView: React.FC<{
    const reduceMotion = useReducedMotion();
    if (reduceMotion) return <div className={className}>{children}</div>;
    return (
-      <motion.div
-         className={className}
-         initial="hidden"
-         whileInView="visible"
-         viewport={{ once: true, margin: "-60px" }}
-         transition={{ delay }}
-         variants={fadeUp}
-      >
-         {children}
-      </motion.div>
+      <MotionProvider>
+         <m.div
+            className={className}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay }}
+            variants={fadeUp}
+         >
+            {children}
+         </m.div>
+      </MotionProvider>
    );
 };
