@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { formatDistanceToNowStrict } from "date-fns";
 import {
    Boxes,
@@ -21,7 +22,8 @@ import {
    HoverCardContent,
    HoverCardTrigger,
 } from "~/components/ui/hover-card";
-import { api } from "~/trpc/react";
+import { Skeleton } from "~/components/ui/skeleton";
+import { useTRPC } from "~/trpc/react";
 import { SectionLabel } from "./section-label";
 
 const fmtTime = (ms: number): string => {
@@ -142,18 +144,23 @@ export const NowPanel: React.FC<{
    lastPushAt?: string;
 }> = ({ currentStreak, lastPushAt }) => {
    const reduceMotion = useReducedMotion();
+   const trpc = useTRPC();
 
    // Both queries are server-prefetched (see page.tsx) and streamed to the
    // client. useSuspenseQuery makes the server suspend until the data resolves
    // and stream the finished markup, so server HTML and client render match —
    // no hydration mismatch. Requires a <Suspense> boundary around <NowPanel>.
-   const [playing] = api.spotify.playingStateAndSong.useSuspenseQuery(
-      undefined,
-      { staleTime: 60_000, refetchInterval: 60_000 },
+   const { data: playing } = useSuspenseQuery(
+      trpc.spotify.playingStateAndSong.queryOptions(undefined, {
+         staleTime: 60_000,
+         refetchInterval: 60_000,
+      }),
    );
-   const [ytStats] = api.cron.statistics.useSuspenseQuery(undefined, {
-      staleTime: 60 * 60_000,
-   });
+   const { data: ytStats } = useSuspenseQuery(
+      trpc.cron.statistics.queryOptions(undefined, {
+         staleTime: 60 * 60_000,
+      }),
+   );
 
    const lastPushLabel = lastPushAt
       ? formatDistanceToNowStrict(new Date(lastPushAt), { addSuffix: true })
@@ -390,6 +397,16 @@ export const NowPanel: React.FC<{
    );
 };
 
+const fallbackValueWidths = [
+   "w-24",
+   "w-32",
+   "w-20",
+   "w-28",
+   "w-16",
+   "w-24",
+   "w-20",
+];
+
 /** Skeleton shown by the <Suspense> boundary while NowPanel's data streams in. */
 export const NowPanelFallback: React.FC = () => (
    <section
@@ -401,14 +418,23 @@ export const NowPanelFallback: React.FC = () => (
       </SectionLabel>
       <div className="overflow-hidden rounded-2xl border border-border/70 bg-card/40 backdrop-blur-xs">
          <ul className="divide-y divide-border/60">
-            {Array.from({ length: 7 }).map((_, i) => (
+            {fallbackValueWidths.map((width, i) => (
                <li
                   key={i}
                   className="flex items-center gap-3 px-4 py-3 sm:px-5"
                >
-                  <span className="h-5 w-5 shrink-0 animate-pulse rounded bg-muted/60" />
-                  <span className="h-3 w-20 shrink-0 animate-pulse rounded bg-muted/60 sm:w-28" />
-                  <span className="ml-auto h-3 w-28 animate-pulse rounded bg-muted/60" />
+                  <Skeleton
+                     className="size-5 shrink-0 rounded-md"
+                     style={{ animationDelay: `${i * 40}ms` }}
+                  />
+                  <Skeleton
+                     className="h-3 w-20 shrink-0 rounded sm:w-28"
+                     style={{ animationDelay: `${i * 40}ms` }}
+                  />
+                  <Skeleton
+                     className={`ml-auto h-3 rounded ${width}`}
+                     style={{ animationDelay: `${i * 40}ms` }}
+                  />
                </li>
             ))}
          </ul>

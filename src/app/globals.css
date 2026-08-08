@@ -286,7 +286,8 @@ html.dark .pageBackground {
       opacity: 1;
    }
    100% {
-      transform: translate3d(var(--drift, 0px), 112vh, 0) rotate(var(--spin, 360deg));
+      transform: translate3d(var(--drift, 0px), 112vh, 0)
+         rotate(var(--spin, 360deg));
       opacity: 0;
    }
 }
@@ -553,6 +554,49 @@ figure[data-rehype-pretty-code-figure] .word--highlighted {
    .UpDownWideAnimation > svg,
    .music-bar,
    .animate-fade-in-up {
+      animation: none !important;
+   }
+}
+
+/* Loader primitives — diagonal shimmer sweep for <Skeleton /> and a gentle
+   opacity pulse for resting placeholder grids. */
+@keyframes skeleton-shimmer {
+   from {
+      background-position: 200% 0;
+   }
+   to {
+      background-position: -200% 0;
+   }
+}
+
+.skeleton-shimmer {
+   background-image: linear-gradient(
+      105deg,
+      transparent 40%,
+      color-mix(in oklab, var(--muted) 90%, transparent) 50%,
+      transparent 60%
+   );
+   background-size: 200% 100%;
+   animation: skeleton-shimmer 1.8s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+   0%,
+   100% {
+      opacity: 1;
+   }
+   50% {
+      opacity: 0.55;
+   }
+}
+
+.skeleton-pulse {
+   animation: skeleton-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+   .skeleton-shimmer,
+   .skeleton-pulse {
       animation: none !important;
    }
 }

@@ -3,11 +3,11 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
+import { Skeleton } from "~/components/ui/skeleton";
+
 const Globe = dynamic(() => import("react-globe.gl"), {
    ssr: false,
-   loading: () => (
-      <div className="h-96 w-full animate-pulse rounded-lg bg-gray-800"></div>
-   ),
+   loading: () => <Skeleton className="h-96 w-full rounded-lg" />,
 });
 
 export const GlobeClient = () => {
