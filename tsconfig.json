@@ -13,7 +13,6 @@
       "resolveJsonModule": true,
       "isolatedModules": true,
       "jsx": "react-jsx",
-      "baseUrl": ".",
       "paths": {
          "#velite": ["./.velite"],
          "~/*": ["./src/*"]
