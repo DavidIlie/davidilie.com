@@ -17,6 +17,13 @@ if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+   cacheComponents: true,
+   partialPrefetching: true,
+   reactCompiler: true,
+   experimental: {
+      turbopackRustReactCompiler: true,
+      useOffline: true,
+   },
    async rewrites() {
       return [
          {
