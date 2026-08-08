@@ -46,9 +46,14 @@ codebase describes itself. If a rule stops being true, delete it.
 - **Two data layers:** Postgres via Prisma (`prisma/schema.prisma` — Post
   views, GitHubProject, YouTubeStatistic, CachedSpotifyStats) and tRPC
   (`src/server/api/router/*`). When debugging state, check both.
-- **`export const dynamic = "force-dynamic"` on the root layout.** Pages
-  are not statically rendered by default. Don't add `generateStaticParams`
-  without checking downstream.
+- **Cache Components is ON** (`cacheComponents` + `partialPrefetching` in
+  `next.config.mjs`). No route segment configs (`dynamic`, `revalidate`,
+  `fetchCache`) — they error. Docker build has NO secrets/DB, so any
+  Prisma/tRPC/external IO in a Server Component must sit behind
+  `await connection()` inside a `<Suspense>` boundary or it breaks the
+  prerender. tRPC uses the options proxy: `prefetch(trpc.x.y.queryOptions())`
+  from `~/trpc/server` on the server, `useTRPC()` + tanstack hooks on the
+  client (`~/trpc/react`). No `api.*` hook style.
 - **`next.config` image hosts** already cover
   `user-images.githubusercontent.com`, `github.com`, `i.scdn.co`,
   `cdn.discordapp.com`, `lh3.googleusercontent.com`. New remote image
