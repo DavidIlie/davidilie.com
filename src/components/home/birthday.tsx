@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Cake, Gift, PartyPopper } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { createPortal } from "react-dom";
 
 import {
@@ -13,6 +13,7 @@ import {
    wordForNumber,
 } from "~/lib/age";
 
+import { MotionProvider } from "~/components/motion";
 import {
    HoverCard,
    HoverCardContent,
@@ -162,7 +163,7 @@ const BirthdayCard: React.FC = () => {
                aria-valuemax={100}
                aria-label="Progress through this year of life"
             >
-               <motion.div
+               <m.div
                   className="h-full rounded-full bg-brand"
                   initial={false}
                   animate={{ width: `${c.pct}%` }}
@@ -361,7 +362,7 @@ export const AgeBadge: React.FC<{ age: string }> = ({ age }) => {
    React.useEffect(() => setMounted(true), []);
 
    return (
-      <>
+      <MotionProvider>
          <HoverCard openDelay={120} closeDelay={80}>
             <HoverCardTrigger asChild>
                <button
@@ -401,6 +402,6 @@ export const AgeBadge: React.FC<{ age: string }> = ({ age }) => {
                </div>,
                document.body,
             )}
-      </>
+      </MotionProvider>
    );
 };

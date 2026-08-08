@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
+import { connection } from "next/server";
 
 import { buildMetadata } from "~/lib/metadata";
 
@@ -13,8 +14,9 @@ import { Founder } from "~/components/home/founder";
 import { HomeHero } from "~/components/home/hero";
 import { FadeUpInView } from "~/components/home/motion-in-view";
 import { NowPanel, NowPanelFallback } from "~/components/home/now-panel";
+import { Skeleton } from "~/components/ui/skeleton";
 import { fetchContributions } from "~/server/github-contributions";
-import { api, HydrateClient } from "~/trpc/server";
+import { HydrateClient, prefetch, trpc } from "~/trpc/server";
 
 export const metadata: Metadata = buildMetadata({
    title: "David Ilie",
@@ -25,24 +27,41 @@ export const metadata: Metadata = buildMetadata({
    image: "/static/me.jpeg",
 });
 
+const titleWidths = ["w-3/5", "w-2/5", "w-1/2", "w-2/3"];
+
 const FeaturedWritingFallback = () => (
-   <section className="mx-auto w-full max-w-3xl px-6 py-12">
-      <div className="h-4 w-32 animate-pulse rounded bg-muted" />
-      <ul className="mt-6 space-y-3">
-         {[0, 1, 2, 3].map((i) => (
-            <li
-               key={i}
-               className="h-7 animate-pulse rounded bg-muted/60"
-               style={{ animationDelay: `${i * 80}ms` }}
-            />
+   <section className="mx-auto w-full max-w-3xl px-6 py-10 sm:py-16">
+      <Skeleton className="mb-6 h-4 w-44" />
+      <ul className="space-y-2">
+         {titleWidths.map((width, i) => (
+            <li key={width} className="flex items-baseline gap-3 px-1 py-2">
+               <Skeleton
+                  className={`h-5 ${width}`}
+                  style={{ animationDelay: `${i * 60}ms` }}
+               />
+               <span
+                  aria-hidden
+                  className="mb-1.5 flex-1 self-end border-b border-dotted border-border/60"
+               />
+               <Skeleton
+                  className="h-4 w-12"
+                  style={{ animationDelay: `${i * 60}ms` }}
+               />
+            </li>
          ))}
       </ul>
+      <div className="mt-5 flex items-center justify-between">
+         <Skeleton className="h-4 w-40" style={{ animationDelay: "240ms" }} />
+         <Skeleton className="h-4 w-20" style={{ animationDelay: "300ms" }} />
+      </div>
    </section>
 );
 
-const Home = async () => {
-   void api.spotify.playingStateAndSong.prefetch();
-   void api.cron.statistics.prefetch();
+const NowPanelSection = async () => {
+   await connection();
+
+   prefetch(trpc.spotify.playingStateAndSong.queryOptions());
+   prefetch(trpc.cron.statistics.queryOptions());
 
    const contributions = await fetchContributions();
    const currentStreak = contributions?.currentStreak;
@@ -56,53 +75,58 @@ const Home = async () => {
          .filter((d) => d.count > 0)
          .at(-1)?.date;
 
+   // HydrateClient must render after the prefetches start — it dehydrates the
+   // query client at render time, so it lives here rather than at page level.
    return (
       <HydrateClient>
-         <div className="relative isolate">
-            <BranchDecor corner="top-right" />
-
-            <HomeHero />
-
-            <Suspense fallback={<NowPanelFallback />}>
-               <NowPanel
-                  currentStreak={currentStreak}
-                  lastPushAt={lastPushAt}
-               />
-            </Suspense>
-
-            <DottedSeparator />
-
-            <FadeUpInView>
-               <Affiliations />
-            </FadeUpInView>
-
-            <DottedSeparator />
-
-            <FadeUpInView>
-               <Founder />
-            </FadeUpInView>
-
-            <DottedSeparator />
-
-            <FadeUpInView>
-               <CurrentlyShipping />
-            </FadeUpInView>
-
-            <DottedSeparator />
-
-            <FadeUpInView>
-               <Cadence />
-            </FadeUpInView>
-
-            <DottedSeparator />
-
-            <FadeUpInView>
-               <Suspense fallback={<FeaturedWritingFallback />}>
-                  <FeaturedWriting />
-               </Suspense>
-            </FadeUpInView>
-         </div>
+         <NowPanel currentStreak={currentStreak} lastPushAt={lastPushAt} />
       </HydrateClient>
+   );
+};
+
+const Home = () => {
+   return (
+      <div className="relative isolate">
+         <BranchDecor corner="top-right" />
+
+         <HomeHero />
+
+         <Suspense fallback={<NowPanelFallback />}>
+            <NowPanelSection />
+         </Suspense>
+
+         <DottedSeparator />
+
+         <FadeUpInView>
+            <Affiliations />
+         </FadeUpInView>
+
+         <DottedSeparator />
+
+         <FadeUpInView>
+            <Founder />
+         </FadeUpInView>
+
+         <DottedSeparator />
+
+         <FadeUpInView>
+            <CurrentlyShipping />
+         </FadeUpInView>
+
+         <DottedSeparator />
+
+         <FadeUpInView>
+            <Cadence />
+         </FadeUpInView>
+
+         <DottedSeparator />
+
+         <FadeUpInView>
+            <Suspense fallback={<FeaturedWritingFallback />}>
+               <FeaturedWriting />
+            </Suspense>
+         </FadeUpInView>
+      </div>
    );
 };
 

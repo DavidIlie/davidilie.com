@@ -6,9 +6,11 @@ import * as runtime from "react/jsx-runtime";
 import Image, { ImageProps } from "next/image";
 import Link from "next/link";
 import { Info, X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 
 import { shimmer } from "~/lib/shimmer";
+
+import { MotionProvider } from "~/components/motion";
 
 // Emil's ease-out from CLAUDE.md
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
@@ -77,15 +79,17 @@ export const CustomImage = ({ alt = "", ...props }: ImageProps) => {
                {alt}
             </figcaption>
          )}
-         <AnimatePresence>
-            {open && (
-               <ImageLightbox
-                  src={props.src as string}
-                  alt={alt}
-                  onClose={() => setOpen(false)}
-               />
-            )}
-         </AnimatePresence>
+         <MotionProvider>
+            <AnimatePresence>
+               {open && (
+                  <ImageLightbox
+                     src={props.src as string}
+                     alt={alt}
+                     onClose={() => setOpen(false)}
+                  />
+               )}
+            </AnimatePresence>
+         </MotionProvider>
       </figure>
    );
 };
@@ -98,7 +102,7 @@ interface ImageLightboxProps {
 
 const ImageLightbox = ({ src, alt, onClose }: ImageLightboxProps) => {
    return (
-      <motion.div
+      <m.div
          role="dialog"
          aria-modal="true"
          aria-label={alt || "Image preview"}
@@ -109,7 +113,7 @@ const ImageLightbox = ({ src, alt, onClose }: ImageLightboxProps) => {
          transition={{ duration: 0.2, ease: EASE_OUT }}
          className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center overscroll-contain bg-black/90 p-4 backdrop-blur-sm sm:p-8"
       >
-         <motion.button
+         <m.button
             type="button"
             onClick={(e) => {
                e.stopPropagation();
@@ -123,8 +127,8 @@ const ImageLightbox = ({ src, alt, onClose }: ImageLightboxProps) => {
             className="fixed top-3 right-3 z-10 inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-black/60 text-white backdrop-blur transition-colors duration-200 hover:bg-black/80 sm:top-4 sm:right-4"
          >
             <X className="h-5 w-5" />
-         </motion.button>
-         <motion.div
+         </m.button>
+         <m.div
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.96 }}
@@ -138,8 +142,8 @@ const ImageLightbox = ({ src, alt, onClose }: ImageLightboxProps) => {
                className="max-h-full max-w-full rounded-lg object-contain shadow-2xl select-none"
                draggable={false}
             />
-         </motion.div>
-      </motion.div>
+         </m.div>
+      </m.div>
    );
 };
 

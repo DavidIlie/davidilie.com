@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { formatDistanceToNowStrict } from "date-fns";
 import {
    Boxes,
@@ -14,14 +15,16 @@ import {
    Pause,
    Server,
 } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 
+import { MotionProvider } from "~/components/motion";
 import {
    HoverCard,
    HoverCardContent,
    HoverCardTrigger,
 } from "~/components/ui/hover-card";
-import { api } from "~/trpc/react";
+import { Skeleton } from "~/components/ui/skeleton";
+import { useTRPC } from "~/trpc/react";
 import { SectionLabel } from "./section-label";
 
 const fmtTime = (ms: number): string => {
@@ -97,7 +100,7 @@ const NowPlayingHoverCard: React.FC<{
                   aria-valuemin={0}
                   aria-valuemax={100}
                >
-                  <motion.div
+                  <m.div
                      className="h-full rounded-full bg-brand"
                      initial={false}
                      animate={{ width: `${pct}%` }}
@@ -142,18 +145,23 @@ export const NowPanel: React.FC<{
    lastPushAt?: string;
 }> = ({ currentStreak, lastPushAt }) => {
    const reduceMotion = useReducedMotion();
+   const trpc = useTRPC();
 
    // Both queries are server-prefetched (see page.tsx) and streamed to the
    // client. useSuspenseQuery makes the server suspend until the data resolves
    // and stream the finished markup, so server HTML and client render match —
    // no hydration mismatch. Requires a <Suspense> boundary around <NowPanel>.
-   const [playing] = api.spotify.playingStateAndSong.useSuspenseQuery(
-      undefined,
-      { staleTime: 60_000, refetchInterval: 60_000 },
+   const { data: playing } = useSuspenseQuery(
+      trpc.spotify.playingStateAndSong.queryOptions(undefined, {
+         staleTime: 60_000,
+         refetchInterval: 60_000,
+      }),
    );
-   const [ytStats] = api.cron.statistics.useSuspenseQuery(undefined, {
-      staleTime: 60 * 60_000,
-   });
+   const { data: ytStats } = useSuspenseQuery(
+      trpc.cron.statistics.queryOptions(undefined, {
+         staleTime: 60 * 60_000,
+      }),
+   );
 
    const lastPushLabel = lastPushAt
       ? formatDistanceToNowStrict(new Date(lastPushAt), { addSuffix: true })
@@ -326,69 +334,81 @@ export const NowPanel: React.FC<{
    ];
 
    return (
-      <section
-         aria-labelledby="now-panel-heading"
-         className="mx-auto w-full max-w-3xl px-6 py-10 sm:py-16"
-      >
-         <SectionLabel className="mb-5" number="01">
-            <span id="now-panel-heading">Right now</span>
-         </SectionLabel>
-         <div className="overflow-hidden rounded-2xl border border-border/70 bg-card/40 backdrop-blur-xs">
-            <ul className="divide-y divide-border/60">
-               {rows.map((row, i) => (
-                  <motion.li
-                     key={row.key}
-                     initial={
-                        reduceMotion ? { opacity: 1 } : { opacity: 0, y: 6 }
-                     }
-                     whileInView={{ opacity: 1, y: 0 }}
-                     viewport={{ once: true, margin: "-40px" }}
-                     transition={{
-                        delay: reduceMotion ? 0 : 0.05 * i,
-                        duration: 0.25,
-                        ease,
-                     }}
-                     className="flex items-center gap-3 px-4 py-3 text-sm sm:px-5"
-                  >
-                     <span className="flex h-5 w-5 shrink-0 items-center justify-center text-muted-foreground">
-                        {row.icon}
-                     </span>
-                     {row.labelHref ? (
-                        <Link
-                           href={row.labelHref}
-                           target="_blank"
-                           rel="noreferrer"
-                           className="w-20 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase transition-colors hover:text-brand sm:w-28 sm:text-[0.65rem]"
-                        >
-                           {row.label}
-                        </Link>
-                     ) : (
-                        <span className="w-20 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase sm:w-28 sm:text-[0.65rem]">
-                           {row.label}
+      <MotionProvider>
+         <section
+            aria-labelledby="now-panel-heading"
+            className="mx-auto w-full max-w-3xl px-6 py-10 sm:py-16"
+         >
+            <SectionLabel className="mb-5" number="01">
+               <span id="now-panel-heading">Right now</span>
+            </SectionLabel>
+            <div className="overflow-hidden rounded-2xl border border-border/70 bg-card/40 backdrop-blur-xs">
+               <ul className="divide-y divide-border/60">
+                  {rows.map((row, i) => (
+                     <m.li
+                        key={row.key}
+                        initial={
+                           reduceMotion ? { opacity: 1 } : { opacity: 0, y: 6 }
+                        }
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-40px" }}
+                        transition={{
+                           delay: reduceMotion ? 0 : 0.05 * i,
+                           duration: 0.25,
+                           ease,
+                        }}
+                        className="flex items-center gap-3 px-4 py-3 text-sm sm:px-5"
+                     >
+                        <span className="flex h-5 w-5 shrink-0 items-center justify-center text-muted-foreground">
+                           {row.icon}
                         </span>
-                     )}
-                     <span
-                        aria-hidden
-                        className="dotted-leader hidden sm:block"
-                     />
-                     <span className="ml-auto flex min-w-0 flex-1 items-center justify-end gap-2 sm:flex-none">
-                        <span className="min-w-0 text-right text-foreground sm:truncate">
-                           {row.value}
-                        </span>
-                        {row.live ? (
-                           <span className="relative flex h-1.5 w-1.5 shrink-0">
-                              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
-                              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
+                        {row.labelHref ? (
+                           <Link
+                              href={row.labelHref}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="w-20 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase transition-colors hover:text-brand sm:w-28 sm:text-[0.65rem]"
+                           >
+                              {row.label}
+                           </Link>
+                        ) : (
+                           <span className="w-20 shrink-0 font-mono text-[0.6rem] tracking-[0.18em] text-muted-foreground uppercase sm:w-28 sm:text-[0.65rem]">
+                              {row.label}
                            </span>
-                        ) : null}
-                     </span>
-                  </motion.li>
-               ))}
-            </ul>
-         </div>
-      </section>
+                        )}
+                        <span
+                           aria-hidden
+                           className="dotted-leader hidden sm:block"
+                        />
+                        <span className="ml-auto flex min-w-0 flex-1 items-center justify-end gap-2 sm:flex-none">
+                           <span className="min-w-0 text-right text-foreground sm:truncate">
+                              {row.value}
+                           </span>
+                           {row.live ? (
+                              <span className="relative flex h-1.5 w-1.5 shrink-0">
+                                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-75" />
+                                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
+                              </span>
+                           ) : null}
+                        </span>
+                     </m.li>
+                  ))}
+               </ul>
+            </div>
+         </section>
+      </MotionProvider>
    );
 };
+
+const fallbackValueWidths = [
+   "w-24",
+   "w-32",
+   "w-20",
+   "w-28",
+   "w-16",
+   "w-24",
+   "w-20",
+];
 
 /** Skeleton shown by the <Suspense> boundary while NowPanel's data streams in. */
 export const NowPanelFallback: React.FC = () => (
@@ -401,14 +421,23 @@ export const NowPanelFallback: React.FC = () => (
       </SectionLabel>
       <div className="overflow-hidden rounded-2xl border border-border/70 bg-card/40 backdrop-blur-xs">
          <ul className="divide-y divide-border/60">
-            {Array.from({ length: 7 }).map((_, i) => (
+            {fallbackValueWidths.map((width, i) => (
                <li
                   key={i}
                   className="flex items-center gap-3 px-4 py-3 sm:px-5"
                >
-                  <span className="h-5 w-5 shrink-0 animate-pulse rounded bg-muted/60" />
-                  <span className="h-3 w-20 shrink-0 animate-pulse rounded bg-muted/60 sm:w-28" />
-                  <span className="ml-auto h-3 w-28 animate-pulse rounded bg-muted/60" />
+                  <Skeleton
+                     className="size-5 shrink-0 rounded-md"
+                     style={{ animationDelay: `${i * 40}ms` }}
+                  />
+                  <Skeleton
+                     className="h-3 w-20 shrink-0 rounded sm:w-28"
+                     style={{ animationDelay: `${i * 40}ms` }}
+                  />
+                  <Skeleton
+                     className={`ml-auto h-3 rounded ${width}`}
+                     style={{ animationDelay: `${i * 40}ms` }}
+                  />
                </li>
             ))}
          </ul>

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
+import { connection } from "next/server";
 
 import { buildMetadata } from "~/lib/metadata";
 
-import { api, HydrateClient } from "~/trpc/server";
+import { HydrateClient, prefetch, trpc } from "~/trpc/server";
 import { SpotifyClientPage } from "./client";
+import { MusicPageSkeleton } from "./skeleton";
 
 export const metadata: Metadata = buildMetadata({
    title: "Music",
@@ -13,16 +15,27 @@ export const metadata: Metadata = buildMetadata({
    path: "/music",
 });
 
-const Page = async () => {
-   void api.spotify.data.prefetch();
-   void api.spotify.playingStateAndSong.prefetch();
+const SpotifyContent = async () => {
+   // Spotify data needs API secrets that don't exist at build time.
+   await connection();
+
+   prefetch(trpc.spotify.data.queryOptions());
+   prefetch(trpc.spotify.playingStateAndSong.queryOptions());
 
    return (
       <HydrateClient>
-         <div className="space-y-6">
-            <SpotifyClientPage />
-         </div>
+         <SpotifyClientPage />
       </HydrateClient>
+   );
+};
+
+const Page = () => {
+   return (
+      <div className="space-y-6">
+         <Suspense fallback={<MusicPageSkeleton />}>
+            <SpotifyContent />
+         </Suspense>
+      </div>
    );
 };
 

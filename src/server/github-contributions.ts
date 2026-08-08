@@ -1,5 +1,7 @@
 import "server-only";
 
+import { cacheLife, cacheTag } from "next/cache";
+
 import { env } from "~/env.mjs";
 
 const query = `
@@ -92,6 +94,9 @@ const computeStats = (weeks: ContributionWeek[]) => {
 };
 
 export async function fetchContributions(): Promise<ContributionData | null> {
+   "use cache";
+   cacheLife("hours");
+   cacheTag("github-contributions");
    try {
       const res = await fetch("https://api.github.com/graphql", {
          method: "POST",
@@ -103,7 +108,6 @@ export async function fetchContributions(): Promise<ContributionData | null> {
             query,
             variables: { login: env.GITHUB_JOB_USERNAME },
          }),
-         next: { revalidate: 3600 },
       });
       if (!res.ok) {
          console.error(`GitHub contributions fetch: ${res.status}`);

@@ -1,21 +1,20 @@
 import "./globals.css";
 
+import { Suspense } from "react";
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
-import { headers } from "next/headers";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider } from "@wrksz/themes/next";
 import PlausibleProvider from "next-plausible";
 
-import { env } from "~/env.mjs";
-
+import AppErrorBoundary from "~/components/app-error-boundary";
 import { BackgroundPattern } from "~/components/background-pattern";
 import { ConditionalCTA } from "~/components/conditional-cta";
 import Footer from "~/components/footer";
+import { FooterServer } from "~/components/footer-server";
 import NavBar from "~/components/navbar";
+import { OfflineBanner } from "~/components/offline-banner";
 import { TRPCReactProvider } from "~/trpc/react";
-
-export const dynamic = "force-dynamic";
 
 const bricolage = Bricolage_Grotesque({
    subsets: ["latin"],
@@ -88,16 +87,11 @@ export const metadata: Metadata = {
    },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
    children,
 }: {
    children: React.ReactNode;
 }) {
-   const headersList = await headers();
-   const proto = headersList.get("x-forwarded-proto");
-   const url =
-      `${proto}://${headersList.get("host")}` || env.NEXT_PUBLIC_APP_URL;
-
    return (
       <html
          lang="en"
@@ -123,14 +117,21 @@ export default async function RootLayout({
                enableSystem
                storage="localStorage"
             >
-               <TRPCReactProvider baseUrl={url}>
+               <TRPCReactProvider>
                   <BackgroundPattern>
                      <NavBar />
-                     <main className="flex flex-1 flex-col">{children}</main>
+                     <main className="flex flex-1 flex-col">
+                        <AppErrorBoundary>{children}</AppErrorBoundary>
+                     </main>
                      <ConditionalCTA />
-                     <Footer />
+                     <Suspense fallback={<Footer />}>
+                        <FooterServer />
+                     </Suspense>
                   </BackgroundPattern>
-                  <ReactQueryDevtools initialIsOpen={false} />
+                  <OfflineBanner />
+                  {process.env.NODE_ENV === "development" && (
+                     <ReactQueryDevtools initialIsOpen={false} />
+                  )}
                </TRPCReactProvider>
             </ThemeProvider>
          </body>

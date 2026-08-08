@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { connection } from "next/server";
 import { blogs } from "#velite";
 import { formatDistanceToNowStrict } from "date-fns";
 import { ArrowRight } from "lucide-react";
@@ -14,6 +15,9 @@ import { SectionLabel } from "./section-label";
  * order when the views table is unavailable (e.g. local dev without DB).
  */
 export const FeaturedWriting: React.FC = async () => {
+   // Prisma is unreachable during the Docker build — defer to request time.
+   await connection();
+
    const published = blogs.filter((b) => b.published);
    if (published.length === 0) return null;
 
@@ -62,6 +66,7 @@ export const FeaturedWriting: React.FC = async () => {
                   <li key={post.slug}>
                      <Link
                         href={`/blog/${post.slug}`}
+                        prefetch={true}
                         className="group flex flex-col gap-1 rounded-md px-1 py-2 transition-colors hover:bg-muted/50 sm:flex-row sm:items-baseline sm:gap-3"
                      >
                         <span className="min-w-0 truncate text-base font-medium text-foreground transition-colors group-hover:text-brand sm:text-lg">
@@ -91,6 +96,7 @@ export const FeaturedWriting: React.FC = async () => {
             </span>
             <Link
                href="/blog"
+               prefetch={true}
                className="inline-flex items-center gap-1 font-medium text-foreground transition-colors hover:text-brand"
             >
                All writing

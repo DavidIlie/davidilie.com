@@ -1,6 +1,7 @@
 "use client";
 
 import React, { Suspense } from "react";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { Music, Pause } from "lucide-react";
 
 import {
@@ -9,7 +10,7 @@ import {
    TooltipProvider,
    TooltipTrigger,
 } from "~/components/ui/tooltip";
-import { api } from "~/trpc/react";
+import { useTRPC } from "~/trpc/react";
 import ExternalLink from "./external-link";
 import { Socials } from "./socials";
 
@@ -63,7 +64,10 @@ const BuiltInfo = () => {
 export const SPOTIFY_ACCOUNT = `https://open.spotify.com/user/312tjs5nlu2gipgpp3kj77y6xm2m`;
 
 const SpotifySuspense: React.FC = () => {
-   const [data] = api.spotify.playingStateAndSong.useSuspenseQuery();
+   const trpc = useTRPC();
+   const { data } = useSuspenseQuery(
+      trpc.spotify.playingStateAndSong.queryOptions(),
+   );
 
    return (
       <div className="mb-2 flex gap-1 sm:mb-0">

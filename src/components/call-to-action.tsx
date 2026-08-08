@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 export const ServicesButtons: React.FC = () => {
    return (
       <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-         <Link href="/editing-portfolio">
+         <Link href="/editing-portfolio" prefetch={true}>
             <Button
                variant="outline"
                size="lg"
@@ -16,7 +16,7 @@ export const ServicesButtons: React.FC = () => {
                Editing Portfolio
             </Button>
          </Link>
-         <Link href="/developer-portfolio">
+         <Link href="/developer-portfolio" prefetch={true}>
             <Button
                variant="outline"
                size="lg"

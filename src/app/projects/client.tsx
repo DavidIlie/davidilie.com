@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { GitHubProject } from "@prisma/client";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { formatDistance } from "date-fns";
 import {
    ArrowDownWideNarrow,
@@ -13,10 +14,11 @@ import {
    Star,
    X,
 } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, m } from "motion/react";
 
+import { MotionProvider } from "~/components/motion";
 import { Button } from "~/components/ui/button";
-import { api } from "~/trpc/react";
+import { useTRPC } from "~/trpc/react";
 
 const langColors: Record<string, string> = {
    TypeScript: "#3178c6",
@@ -37,7 +39,10 @@ const langColors: Record<string, string> = {
 type SortKey = "stars" | "lastPush" | "name";
 
 export const ClientProjectGitHub = () => {
-   const [githubProjects] = api.cron.github.useSuspenseQuery();
+   const trpc = useTRPC();
+   const { data: githubProjects } = useSuspenseQuery(
+      trpc.cron.github.queryOptions(),
+   );
    const [search, setSearch] = useState("");
    const [sortBy, setSortBy] = useState<SortKey>("stars");
    const [langFilter, setLangFilter] = useState<string | null>(null);
@@ -135,7 +140,7 @@ export const ClientProjectGitHub = () => {
    ];
 
    return (
-      <>
+      <MotionProvider>
          {/* Stats + Search row */}
          <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
@@ -269,21 +274,21 @@ export const ClientProjectGitHub = () => {
          {/* Project Dialog */}
          <AnimatePresence>
             {selectedProject && (
-               <motion.div
+               <m.div
                   className="fixed inset-0 z-50 flex items-center justify-center p-4"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2 }}
                >
-                  <motion.div
+                  <m.div
                      className="fixed inset-0 bg-black/40 backdrop-blur-xs"
                      onClick={() => setSelectedProject(null)}
                      initial={{ opacity: 0 }}
                      animate={{ opacity: 1 }}
                      exit={{ opacity: 0 }}
                   />
-                  <motion.div
+                  <m.div
                      className="relative z-10 flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-2xl"
                      initial={{ opacity: 0, scale: 0.95, y: 20 }}
                      animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -385,10 +390,10 @@ export const ClientProjectGitHub = () => {
                            </a>
                         </Button>
                      </div>
-                  </motion.div>
-               </motion.div>
+                  </m.div>
+               </m.div>
             )}
          </AnimatePresence>
-      </>
+      </MotionProvider>
    );
 };

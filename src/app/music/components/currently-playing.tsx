@@ -2,13 +2,17 @@
 
 import React from "react";
 import Image from "next/image";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { Music } from "lucide-react";
 
 import { SPOTIFY_ACCOUNT } from "~/components/footer";
-import { api } from "~/trpc/react";
+import { useTRPC } from "~/trpc/react";
 
 const CurrentlyPlaying: React.FC = () => {
-   const [data] = api.spotify.playingStateAndSong.useSuspenseQuery();
+   const trpc = useTRPC();
+   const { data } = useSuspenseQuery(
+      trpc.spotify.playingStateAndSong.queryOptions(),
+   );
 
    if (!data.isPlaying)
       return (

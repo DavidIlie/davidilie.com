@@ -1,11 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { formatDistance } from "date-fns";
 import { Clock, Headphones, Monitor, TrendingUp, Users } from "lucide-react";
 
 import { SPOTIFY_ACCOUNT } from "~/components/footer";
-import { api } from "~/trpc/react";
+import { useTRPC } from "~/trpc/react";
 import ArtistCard from "./components/artist-card";
 import CurrentlyPlaying from "./components/currently-playing";
 import SongCard from "./components/song-card";
@@ -13,7 +14,8 @@ import SongCard from "./components/song-card";
 const MOBILE_LIMIT = 6;
 
 export const SpotifyClientPage = () => {
-   const [data] = api.spotify.data.useSuspenseQuery();
+   const trpc = useTRPC();
+   const { data } = useSuspenseQuery(trpc.spotify.data.queryOptions());
    const [songsExpanded, setSongsExpanded] = useState(false);
    const [recentExpanded, setRecentExpanded] = useState(false);
 
