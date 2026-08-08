@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, FileText, Monitor, Smartphone } from "lucide-react";
 import LiteYouTubeEmbed from "react-lite-youtube-embed";
 
@@ -16,7 +17,7 @@ import {
    PhotoshopIcon,
    PremiereIcon,
 } from "~/components/ui/icons";
-import { api } from "~/trpc/react";
+import { useTRPC } from "~/trpc/react";
 import ChiefPatLogo from "../../../public/static/chief-pat-logo.jpg";
 import Header from "./header";
 import { Turnaround } from "./turnaround";
@@ -29,9 +30,12 @@ const formatCount = (n: number): string => {
 };
 
 const EditingPortfolioPage = () => {
-   const ytStats = api.cron.statistics.useQuery(undefined, {
-      staleTime: 60 * 60_000,
-   }).data;
+   const trpc = useTRPC();
+   const ytStats = useQuery(
+      trpc.cron.statistics.queryOptions(undefined, {
+         staleTime: 60 * 60_000,
+      }),
+   ).data;
    const viewsLabel = ytStats ? `${formatCount(ytStats.views)}+` : "10K+";
 
    return (

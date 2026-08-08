@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useMutation, useSuspenseQuery } from "@tanstack/react-query";
 import { usePlausible } from "next-plausible";
 
-import { api } from "~/trpc/react";
+import { useTRPC } from "~/trpc/react";
 
 type BlogPlausibleEvents = {
    "blog-post-viewed": { slug: string };
@@ -17,11 +18,12 @@ export default function ViewCounter({
    trackView: boolean;
 }) {
    const plausible = usePlausible<BlogPlausibleEvents>();
+   const trpc = useTRPC();
    const trackedPlausibleSlugRef = useRef<string | null>(null);
-   const [data] = api.blog.get.useSuspenseQuery({ slug });
+   const { data } = useSuspenseQuery(trpc.blog.get.queryOptions({ slug }));
    const views = (data && data.views) || 0;
 
-   const mutation = api.blog.change.useMutation();
+   const mutation = useMutation(trpc.blog.change.mutationOptions());
 
    useEffect(() => {
       if (!trackView) return;

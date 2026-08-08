@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { GitHubProject } from "@prisma/client";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { formatDistance } from "date-fns";
 import {
    ArrowDownWideNarrow,
@@ -16,7 +17,7 @@ import {
 import { AnimatePresence, motion } from "motion/react";
 
 import { Button } from "~/components/ui/button";
-import { api } from "~/trpc/react";
+import { useTRPC } from "~/trpc/react";
 
 const langColors: Record<string, string> = {
    TypeScript: "#3178c6",
@@ -37,7 +38,10 @@ const langColors: Record<string, string> = {
 type SortKey = "stars" | "lastPush" | "name";
 
 export const ClientProjectGitHub = () => {
-   const [githubProjects] = api.cron.github.useSuspenseQuery();
+   const trpc = useTRPC();
+   const { data: githubProjects } = useSuspenseQuery(
+      trpc.cron.github.queryOptions(),
+   );
    const [search, setSearch] = useState("");
    const [sortBy, setSortBy] = useState<SortKey>("stars");
    const [langFilter, setLangFilter] = useState<string | null>(null);
