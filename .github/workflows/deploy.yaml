@@ -32,6 +32,8 @@ jobs:
            with:
               push: true
               context: .
+              cache-from: type=gha,scope=davidilie-com
+              cache-to: type=gha,mode=max,scope=davidilie-com
               file: ./Dockerfile
               tags: |
                  ${{ env.IMAGE }}:${{ steps.prep.outputs.BUILD_ID }}
