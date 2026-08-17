@@ -8,7 +8,7 @@ jobs:
    execute:
       env:
          IMAGE: ghcr.io/davidilie/portfolio-davidilie
-      runs-on: davidapps-linux-x64
+      runs-on: davidapps-ubuntu
       steps:
          - name: Generate build ID
            id: prep
