@@ -7,7 +7,7 @@ on:
 
 jobs:
    execute:
-      runs-on: davidapps-linux-x64
+      runs-on: davidapps-ubuntu
       steps:
          - uses: satak/webrequest-action@master
            with:
