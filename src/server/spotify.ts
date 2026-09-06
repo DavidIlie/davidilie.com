@@ -165,6 +165,8 @@ export const getPlayingStateAndSong = async (): Promise<{
    progressMs?: number;
    durationMs?: number;
    fetchedAt?: number;
+   deviceName?: string;
+   deviceType?: string;
 }> => {
    try {
       const response = await getNowPlaying();
@@ -189,6 +191,10 @@ export const getPlayingStateAndSong = async (): Promise<{
          typeof song.item.duration_ms === "number"
             ? song.item.duration_ms
             : undefined;
+      const deviceName =
+         typeof song.device?.name === "string" ? song.device.name : undefined;
+      const deviceType =
+         typeof song.device?.type === "string" ? song.device.type : undefined;
 
       return {
          album,
@@ -200,6 +206,8 @@ export const getPlayingStateAndSong = async (): Promise<{
          progressMs,
          durationMs,
          fetchedAt: Date.now(),
+         deviceName,
+         deviceType,
       };
    } catch (_error) {
       return { isPlaying: false };
