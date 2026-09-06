@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { Music } from "lucide-react";
+import { Monitor, Music } from "lucide-react";
 
 import { SPOTIFY_ACCOUNT } from "~/components/footer";
 import { useTRPC } from "~/trpc/react";
@@ -73,6 +73,15 @@ const CurrentlyPlaying: React.FC = () => {
             </h3>
             <p className="truncate text-sm opacity-70">{data.artist}</p>
             <p className="truncate text-xs opacity-50">{data.album}</p>
+            {data.deviceName && (
+               <p className="mt-1 flex items-center gap-1.5 truncate text-xs text-muted-foreground">
+                  <Monitor className="h-3 w-3 shrink-0" aria-hidden="true" />
+                  <span className="truncate">
+                     Playing on {data.deviceName}
+                     {data.deviceType && ` · ${data.deviceType.toLowerCase()}`}
+                  </span>
+               </p>
+            )}
          </div>
       </a>
    );
