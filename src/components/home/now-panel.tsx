@@ -39,6 +39,7 @@ const NowPlayingHoverCard: React.FC<{
    artist?: string;
    album?: string;
    albumImageUrl?: string;
+   deviceName?: string;
    progressMs?: number;
    durationMs?: number;
    fetchedAt?: number;
@@ -47,6 +48,7 @@ const NowPlayingHoverCard: React.FC<{
    artist,
    album,
    albumImageUrl,
+   deviceName,
    progressMs = 0,
    durationMs = 0,
    fetchedAt,
@@ -87,6 +89,11 @@ const NowPlayingHoverCard: React.FC<{
                {album ? (
                   <span className="mt-1 truncate font-mono text-[0.6rem] tracking-[0.14em] text-muted-foreground/80 uppercase">
                      {album}
+                  </span>
+               ) : null}
+               {deviceName ? (
+                  <span className="mt-1 truncate text-[0.65rem] text-muted-foreground">
+                     Playing on {deviceName}
                   </span>
                ) : null}
             </div>
@@ -240,6 +247,7 @@ export const NowPanel: React.FC<{
                      artist={playing.artist}
                      album={playing.album}
                      albumImageUrl={playing.albumImageUrl}
+                     deviceName={playing.deviceName}
                      progressMs={playing.progressMs}
                      durationMs={playing.durationMs}
                      fetchedAt={playing.fetchedAt}
