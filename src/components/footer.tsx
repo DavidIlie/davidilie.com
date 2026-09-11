@@ -93,26 +93,24 @@ const SpotifySuspense: React.FC = () => {
             <TooltipProvider>
                <Tooltip disableHoverableContent={!data.isPlaying}>
                   <TooltipTrigger asChild>
-                     <span className="flex min-w-0 items-baseline gap-1">
-                        <a
-                           href={data.songUrl}
-                           target="_blank"
-                           rel="noreferrer"
-                           className="min-w-0 cursor-pointer font-semibold"
-                        >
-                           <span className="block max-w-[11rem] truncate text-ellipsis">
-                              {data.title}
-                           </span>
-                        </a>
-                        {data.deviceName && (
-                           <span className="max-w-[8rem] shrink-0 truncate text-xs text-muted-foreground">
-                              on {data.deviceName}
-                           </span>
-                        )}
-                     </span>
+                     <a
+                        href={data.songUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="min-w-0 cursor-pointer font-semibold"
+                     >
+                        <span className="block max-w-[11rem] truncate text-ellipsis">
+                           {data.title}
+                        </span>
+                     </a>
                   </TooltipTrigger>
                   <TooltipContent>
                      <p>{data.artist}</p>
+                     {data.deviceName ? (
+                        <p className="text-xs text-muted-foreground">
+                           Playing on {data.deviceName}
+                        </p>
+                     ) : null}
                   </TooltipContent>
                </Tooltip>
             </TooltipProvider>
