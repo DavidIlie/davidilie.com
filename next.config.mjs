@@ -17,6 +17,10 @@ if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+   // CI typechecks before building, so the image build skips it.
+   typescript: {
+      ignoreBuildErrors: process.env.NEXT_SKIP_TYPECHECK === "1",
+   },
    cacheComponents: true,
    partialPrefetching: true,
    reactCompiler: true,

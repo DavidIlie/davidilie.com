@@ -17,7 +17,7 @@ RUN npx prisma generate
 
 COPY . .
 ENV NEXT_PUBLIC_APP_URL="https://davidilie.com"
-RUN SKIP_ENV_VALIDATION=true pnpm build
+RUN SKIP_ENV_VALIDATION=true NEXT_SKIP_TYPECHECK=1 pnpm build
 
 FROM node:${NODE_VERSION}-alpine AS runner
 
